@@ -1,0 +1,72 @@
+{
+  "listen": {
+    "host": "127.0.0.1",
+    "port": 8788
+  },
+  "upstream": {
+    "origin": "https://api.commandcode.ai",
+    "basePath": "/provider/v1",
+    "localPrefix": "/v1",
+    "userAgent": "commandcode-goat-gateway/1.0",
+    "stripClientHeaders": [
+      "x-reasonix-",
+      "x-session-id",
+      "x-conversation-id",
+      "x-topic-id"
+    ],
+    "keepAlive": true,
+    "agentMaxAgeMs": 300000,
+    "firstChunkTimeoutMs": 180000,
+    "streamIdleTimeoutMs": 30000
+  },
+  "prefixAffinity": {
+    "windowMs": 1800000,
+    "maxNewSessionsPerKey": 10,
+    "prefixTtlMs": 1800000,
+    "maxPrefixes": 4000
+  },
+  "maxAttemptsPerRequest": 4,
+  "strategy": "session",
+  "strategyNote": "session = 同一会话粘同一个 key、不同会话按指纹分散；prefix = 新增会话按 system/tools 前缀亲和到同一 key，并有窗口软上限；客户端取消不冷却不切 key；401/402/403/429 立即冷却换 key；5xx/网络错误按 attemptsPerKey 重试同一 key 后再换。",
+  "retryableStatus": [
+    401,
+    402,
+    403,
+    408,
+    429,
+    500,
+    502,
+    503,
+    504
+  ],
+  "cooldownMs": {
+    "unauthorized": 180000,
+    "quota": 600000,
+    "rateLimit": 60000,
+    "server": 15000,
+    "network": 20000,
+    "authModel": 30000
+  },
+  "maxBodyBytes": 67108864,
+  "upstreamTimeoutMs": 900000,
+  "logKeepDays": 30,
+  "attemptsPerKey": 2,
+  "retryDelayMs": 500,
+  "bodyTimeoutMs": 120000,
+  "quotaSync": {
+    "enabled": true,
+    "url": "http://127.0.0.1:8790/quota",
+    "intervalMs": 60000,
+    "timeoutMs": 15000,
+    "mode": "resetSoon",
+    "resetWindow": "weekly",
+    "minWeight": 0.2,
+    "maxWeight": 5,
+    "note": "额度驱动的动态权重（2026-10-01 加）。mode=resetSoon：周期窗口 resetAt 更近的账号拿更大权重，优先把快到期的额度烧掉。resetWindow=weekly —— GOAT 只给 5h/weekly 两个 rolling window 的 resetAt，月度池属 billing cycle、服务端不给日期。只覆盖内存权重，绝不回写 keys.json。"
+  },
+  "loopGuard": {
+    "enabled": true,
+    "mode": "shadow",
+    "note": "degenerate repetition 检测（2026-10-01 接入）。shadow = 只写 logs/loop-guard.jsonl，不干预转发；abort = 命中即断上游并给客户端补 [DONE]。判据是字符级 6-gram 滑动窗口的 novelty（唯一率），窗口 capacity=256/1024 双尺度。阈值由 selftest-loop-guard.mjs 实测校准：capacity=1024 下正常中文散文 0.99 / 代码块 0.55 / markdown 表格 0.31 / deadlock 0.117 / 真循环 0.032。"
+  }
+}

@@ -1,0 +1,4 @@
+- [学习-MIT-18.100B下载清单](学习-MIT-18.100B下载清单.md) — (malformed, check frontmatter)
+- [学习-MIT-18.100B整理完成](学习-MIT-18.100B整理完成.md) — (malformed, check frontmatter)
+- [math-answer-packaging](math-answer-packaging.md) — 数学教程类长回答自动写入独立.md文件，方便一键复制
+- [thread-model-tutorial](thread-model-tutorial.md) — CSAPP线程模型对比教程——主仆vs对等vs预线程化——已生成MD+HTML+PDF三件套

@@ -1,0 +1,18 @@
+packages:
+  - .
+
+nodeLinker: hoisted
+autoInstallPeers: false
+minimumReleaseAgeExclude:
+  - '@vshulcz/deja-vu-darwin-amd64@0.21.3'
+  - '@vshulcz/deja-vu-darwin-arm64@0.21.3'
+  - '@vshulcz/deja-vu-linux-amd64@0.21.3'
+  - '@vshulcz/deja-vu-linux-arm64@0.21.3'
+  - '@vshulcz/deja-vu-windows-amd64@0.21.3'
+  - '@vshulcz/deja-vu-windows-arm64@0.21.3'
+  - '@vshulcz/deja-vu@0.21.3'
+  - dsh-deja@0.21.3
+  - '@lanbaolu/dsh-wechat-bridge@0.9.1'
+  - dshmarket@1.66.6
+patchedDependencies:
+  '@ethanwong-hk/dsh-thinking-guard@1.0.2': patches/@ethanwong-hk__dsh-thinking-guard@1.0.2.patch

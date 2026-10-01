@@ -1,0 +1,13 @@
+{
+  "at": "20261001-2045",
+  "root": "C:/Users/27063/.agents/skills",
+  "reason": "deja 已于 2026-10-01 停用（bundles 已移除 + root cordis.patch.yml 已注释）；hindsight 插件 2026-09-28 已卸（只剩 cordis.patch.yml.hindsight-backup）；microsoft-foundry 是 2026-04-07 从 github microsoft/azure-skills 装的，与本机用途无关",
+  "method": "frontmatter disable-model-invocation: true（不移动不删除）",
+  "restore": "删除各 SKILL.md frontmatter 里的 disable-model-invocation 行，或从 .bak-20261001-2045-pre-disable 还原",
+  "skills": {
+    "deja-history": "disabled",
+    "deja-search": "disabled",
+    "hindsight-coding-agent": "disabled",
+    "microsoft-foundry": "disabled"
+  }
+}

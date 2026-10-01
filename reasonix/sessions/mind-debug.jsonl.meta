@@ -1,0 +1,11 @@
+{
+  "id": "mind-debug",
+  "created_at": "2026-07-31T11:07:56.8139983Z",
+  "updated_at": "2026-07-31T11:07:56.8139983Z",
+  "scope": "global",
+  "topic_id": "legacy_mind-debug_fed67f5e4851",
+  "topic_title": "Count items if cou…",
+  "schema_version": 1,
+  "turns": 1,
+  "preview": "Count items\nif count \u003e 5\n  print hello"
+}

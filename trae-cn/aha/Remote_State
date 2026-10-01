@@ -1,0 +1,103 @@
+{
+   "AhaAiAgentPartitionAlloc": {
+      "params": {
+      },
+      "state": true
+   },
+   "AhaChildProcessBlockDetect": {
+      "params": {
+      },
+      "state": true
+   },
+   "AhaCloseAutoDetectSystemAccessibility": {
+      "params": {
+      },
+      "state": true
+   },
+   "AhaCulledInlineHitTestOptimization": {
+      "params": {
+      },
+      "state": true
+   },
+   "AhaEnableBDMSSdk": {
+      "params": {
+      },
+      "state": true
+   },
+   "AhaEnableDelayedDestroyWebsocket": {
+      "params": {
+         "DelayedDestroyTimeSeconds": 60
+      },
+      "state": true
+   },
+   "AhaEnableGpuModeFallbackForDeviceReset": {
+      "params": {
+      },
+      "state": true
+   },
+   "AhaEnableGwpAsan": {
+      "params": {
+         "MinPhysicalMemorySizeMB": "0",
+         "ProcessEnableList": "NetworkService"
+      },
+      "state": true
+   },
+   "AhaFrameEvictionBugFix": {
+      "params": {
+      },
+      "state": true
+   },
+   "AhaOomV8JsStackCollect": {
+      "params": {
+      },
+      "state": true
+   },
+   "AhaOverrideProcessTitle": {
+      "params": {
+      },
+      "state": true
+   },
+   "AhaRendererPerfMetrics": {
+      "params": {
+      },
+      "state": true
+   },
+   "CrashpadIpcLimitOptimize": {
+      "params": {
+         "SizeThreshold": "8192"
+      },
+      "state": true
+   },
+   "EarlyEstablishGpuChannel": {
+      "params": {
+      },
+      "state": true
+   },
+   "EnableDoctorDetector": {
+      "params": {
+      },
+      "state": false
+   },
+   "EstablishGpuChannelAsync": {
+      "params": {
+      },
+      "state": true
+   },
+   "V8HeapTrackerConfig": {
+      "params": {
+         "LargeAllocCaptureThresholdMB": "2048",
+         "LargeAllocEnable": "true",
+         "LargeAllocMergeOOMStack": "false",
+         "LargeAllocMinCaptureSizeMB": "4",
+         "LargeAllocTopStackCount": "3",
+         "LargeAllocUpgradeThresholdMB": "100",
+         "ReplaceJsStack": "false"
+      },
+      "state": false
+   },
+   "WindowRendererThreadCpuReport": {
+      "params": {
+      },
+      "state": false
+   }
+}

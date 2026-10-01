@@ -1,0 +1,34 @@
+---
+name: installed-skills-round2
+description: 第二批安装的4个Reasonix技能：计划管理+开发方法论+幻灯片+浏览器自动化
+type: reference
+scope: global
+created: 2026-06-01
+---
+# 第二批已安装的 Reasonix 技能
+
+## planning-with-files
+- 来源: OthmanAdi/planning-with-files (22K⭐, MIT, 40贡献者, 66 releases)
+- 能力: Manus 风格文件化计划管理 — 三文件模式 (task_plan.md + findings.md + progress.md)
+- 调用: `run_skill({ name: "planning-with-files" })`
+- 特点: 跨 session 持久化、3-strike 重试协议、5-问重启测试
+
+## superpowers
+- 来源: obra/superpowers (132K⭐, MIT, 30贡献者, v5.1.0)
+- 能力: 完整开发方法论 — TDD + 代码审查 + 调试 + 子代理执行 + 计划执行
+- 调用: `run_skill({ name: "superpowers" })`
+- 特点: 7 个子方法论组合，132K⭐ 顶级项目
+
+## baoyu-slide-deck
+- 来源: JimLiu/baoyu-skills (13K⭐, MIT) — 跳过 danger 技能只取幻灯片部分
+- 能力: 17 种视觉风格的幻灯片生成，多轮确认流程
+- 调用: `run_skill({ name: "baoyu-slide-deck" })`
+- 特点: 与 html-ppt / ppt-master 互补，更偏设计图风格
+
+## playwright-automation
+- 来源: lackeyjb/playwright-skill (2.6K⭐, MIT, v4.1.0)
+- 能力: Playwright 浏览器自动化 — 截图/表单/登录/响应式/链接检查
+- 调用: `run_skill({ name: "playwright-automation" })`
+- 依赖: Node.js + npm install playwright
+
+安全审查结论：四个仓库均无恶意代码，MIT 许可证，已安全转换安装。

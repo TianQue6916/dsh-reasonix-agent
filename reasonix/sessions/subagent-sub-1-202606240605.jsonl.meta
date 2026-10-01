@@ -1,0 +1,11 @@
+{
+  "id": "subagent-sub-1-202606240605",
+  "created_at": "2026-07-31T11:07:57.3206098Z",
+  "updated_at": "2026-07-31T11:07:57.3206098Z",
+  "scope": "global",
+  "topic_id": "legacy_subagent-sub-1-202606240605_83a901bd48cd",
+  "topic_title": "Research the MIT 6…",
+  "schema_version": 1,
+  "turns": 1,
+  "preview": "Research the MIT 6.006 Introduction to Algorithms (Spring 2020) course - spec…"
+}

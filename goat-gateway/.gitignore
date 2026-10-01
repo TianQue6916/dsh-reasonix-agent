@@ -1,0 +1,7 @@
+# 含明文 API key / 运行时状态 / 日志 —— 禁止纳入任何 Git 备份仓库
+keys.json
+state.json
+logs/
+*.bak
+*.bak-*
+.memory-backup/

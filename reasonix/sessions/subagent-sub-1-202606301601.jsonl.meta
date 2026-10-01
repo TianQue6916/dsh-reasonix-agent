@@ -1,0 +1,11 @@
+{
+  "id": "subagent-sub-1-202606301601",
+  "created_at": "2026-07-31T11:07:57.3322762Z",
+  "updated_at": "2026-07-31T11:07:57.3322762Z",
+  "scope": "global",
+  "topic_id": "legacy_subagent-sub-1-202606301601_bd7f6d2614c6",
+  "topic_title": "Verify the followi…",
+  "schema_version": 1,
+  "turns": 1,
+  "preview": "Verify the following technical claims against authoritative sources:\n\n1. LLaM…"
+}

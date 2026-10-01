@@ -1,0 +1,318 @@
+#!/usr/bin/env python3
+"""dsh-session-reframe-fix.py
+
+修复被"整体重压成单个 zstd frame"破坏的 dsh session 文件，同时补上缺失的
+message id。
+
+── 为什么必须按 frame 修 ────────────────────────────────────────────────────
+dsh 的 jsonl backend（@deepseek-ai/dsh-session-persistence-jsonl）不是把文件
+当成一个 zstd 流，而是 **concatenated-frame container**：header 单独一个 frame，
+之后每个 append batch 一个 frame，用于 append / recover。读路径
+`decodeCurrentGeneration()` 会：
+
+    const { frames } = scanZstdFrames(bytes)
+    const header = plaintext.next()          // 第一个 frame
+    assertIndependentHeaderFrame(header.value)
+    //   ↑ 要求首个 frame 解码后 **恰好是一行**，否则抛
+    //     "corrupt Zstandard session log: first frame is not exactly one header line"
+
+所以把整个文件重压成 1 个 frame（哪怕 checksum 正确、标准 zstd 工具都能读），
+dsh 也会判它 corrupt —— session 打不开，重启后被从 workspace 剔除。
+
+编码器（dsh 用的）：
+    import { zstdCompress, constants } from "node:zlib"
+    CHECKSUM_OPTIONS = { params: { [constants.ZSTD_c_checksumFlag]: 1 } }
+即 **每个 frame 带 checksum**，checksumFlag=1。
+
+本脚本的策略：**只动需要改的那个 frame**，其余 frame 的字节 verbatim 复制，
+因此 frame 数量、frame[0] 的"恰好一行"性质、以及所有校验和全部保持。
+
+── id 补法 ─────────────────────────────────────────────────────────────────
+与 2026-09-29 01:47 那轮一致：uuid5(NAMESPACE_DNS, f"{session_id}:{seq}")，
+确定性可复现。
+
+── 用法 ────────────────────────────────────────────────────────────────────
+    python dsh-session-reframe-fix.py            # dry-run，只报告
+    python dsh-session-reframe-fix.py --apply    # 重建（source 保持不变）
+"""
+
+import argparse
+import glob
+import json
+import os
+import sys
+import time
+import uuid
+
+try:
+    import zstandard
+except ImportError:
+    sys.exit("需要 `pip install zstandard`")
+
+ZSTD_MAGIC = 4247762216
+SRC_GLOBS = ("session.v4.jsonl.zstd.bak-*pre-id*",)
+
+
+def scan_zstd_frames(buf, max_frames=float("inf")):
+    """移植自 dsh-session-persistence-jsonl/lib/index.js 的 scanZstdFrames()。
+
+    只扫结构、不解压，因此很快。返回 (frames, torn_start)。
+    frames 是 (start, end) 列表；torn_start 非 None 表示文件尾部有截断 frame。
+    """
+    frames = []
+    offset = 0
+    while offset < len(buf):
+        start = offset
+        if len(buf) - offset < 4:
+            return frames, start
+        if int.from_bytes(buf[offset:offset + 4], "little") != ZSTD_MAGIC:
+            raise ValueError(f"invalid frame magic at byte {offset}")
+        offset += 4
+        if offset == len(buf):
+            return frames, start
+        descriptor = buf[offset]
+        offset += 1
+        if (descriptor & 24) != 0:
+            raise ValueError(f"reserved frame-header bit at byte {offset - 1}")
+        content_size_flag = descriptor >> 6
+        single_segment = (descriptor & 32) != 0
+        checksum = (descriptor & 4) != 0
+        dictionary_flag = descriptor & 3
+        dictionary_bytes = 4 if dictionary_flag == 3 else dictionary_flag
+        if content_size_flag == 0:
+            content_size_bytes = 1 if single_segment else 0
+        else:
+            content_size_bytes = 1 << content_size_flag
+        remaining = (0 if single_segment else 1) + dictionary_bytes + content_size_bytes
+        if len(buf) - offset < remaining:
+            return frames, start
+        offset += remaining
+        while True:
+            if len(buf) - offset < 3:
+                return frames, start
+            block_header = int.from_bytes(buf[offset:offset + 3], "little")
+            offset += 3
+            last_block = (block_header & 1) != 0
+            block_type = (block_header >> 1) & 3
+            block_size = block_header >> 3
+            if block_type == 3:
+                raise ValueError(f"reserved block type at byte {offset - 3}")
+            payload = 1 if block_type == 1 else block_size
+            if len(buf) - offset < payload:
+                return frames, start
+            offset += payload
+            if last_block:
+                break
+        if checksum:
+            if len(buf) - offset < 4:
+                return frames, start
+            offset += 4
+        frames.append((start, offset))
+        if len(frames) == max_frames:
+            return frames, None
+    return frames, None
+
+
+def decompress_frame(buf):
+    """解压单个 frame（zstandard 会校验 frame 内声明的 checksum）。"""
+    return zstandard.ZstdDecompressor().decompressobj().decompress(buf)
+
+
+def compress_frame(plaintext: bytes):
+    """重压成 dsh 期望的形状：单个、独立可解码、带 checksum 的 frame。"""
+    return zstandard.ZstdCompressor(level=3, write_checksum=True).compress(plaintext)
+
+
+def pick_source(sdir):
+    """挑最新的 pre-id 备份作为 source（它必须是未被重压过的合法结构）。"""
+    cands = []
+    for pattern in SRC_GLOBS:
+        cands += glob.glob(os.path.join(sdir, pattern))
+    if not cands:
+        return None
+    return max(cands, key=os.path.getmtime)
+
+
+def is_header_frame_ok(plaintext: bytes) -> bool:
+    """dsh 的 assertIndependentHeaderFrame() 等价检查。
+
+    逐字对应 dsh-session-persistence-jsonl:
+        if (plaintext.length === 0 || plaintext.indexOf(10) !== plaintext.length - 1)
+            throw ...
+    indexOf 是**第一个**换行 —— 即要求首个 frame 解码后恰好是一行。
+    写成 rfind 会退化成"末尾有换行就算过"，对「单 frame 包住整个文件」的坏结构
+    给出假阴性，必须用 find。
+    """
+    return len(plaintext) > 0 and plaintext.find(b"\n") == len(plaintext) - 1
+
+
+def fix_session(sdir, apply: bool):
+    sid = os.path.basename(sdir)
+    dest = os.path.join(sdir, "session.v4.jsonl.zstd")
+    source = pick_source(sdir)
+    result = {"session": sid, "source": os.path.basename(source) if source else None}
+    if source is None:
+        result["status"] = "NO-SOURCE"
+        return result
+
+    data = open(source, "rb").read()
+    frames, torn = scan_zstd_frames(data)
+    if torn is not None:
+        result["status"] = "SOURCE-TORN"
+        return result
+    if not frames:
+        result["status"] = "SOURCE-EMPTY"
+        return result
+
+    plaintexts = []
+    for s, e in frames:
+        plaintexts.append(decompress_frame(data[s:e]))
+    result["frames"] = len(frames)
+    result["src_header_ok"] = is_header_frame_ok(plaintexts[0])
+
+    out = []
+    patched = 0
+    rewritten = 0
+    for (s, e), plain in zip(frames, plaintexts):
+        text = plain.decode("utf-8")
+        lines = text.split("\n")
+        changed = False
+        for i, line in enumerate(lines):
+            if not line.strip():
+                continue
+            try:
+                obj = json.loads(line)
+            except Exception:
+                continue
+            if obj.get("type") != "user/message":
+                continue
+            d = obj.get("data")
+            if not isinstance(d, dict) or d.get("id"):
+                continue
+            d["id"] = str(uuid.uuid5(uuid.NAMESPACE_DNS, f"{sid}:{obj.get('seq')}"))
+            lines[i] = json.dumps(obj, ensure_ascii=False, separators=(",", ":"))
+            changed = True
+            patched += 1
+        if changed:
+            out.append(compress_frame("\n".join(lines).encode("utf-8")))
+            rewritten += 1
+        else:
+            out.append(data[s:e])  # verbatim
+
+    rebuilt = b"".join(out)
+    result["patched"] = patched
+    result["rewritten_frames"] = rewritten
+
+    # ── 自验：结构与内容双重 ────────────────────────────────────────────
+    vframes, vtorn = scan_zstd_frames(rebuilt)
+    check = {
+        "same_frame_count": len(vframes) == len(frames),
+        "no_torn": vtorn is None,
+    }
+    try:
+        vplain = [decompress_frame(rebuilt[s:e]) for s, e in vframes]
+        check["all_frames_decode"] = True
+        check["header_ok"] = is_header_frame_ok(vplain[0])
+        # 逐行对比：只允许 data.id 一处差异
+        old_all = b"".join(plaintexts).decode("utf-8").split("\n")
+        new_all = b"".join(vplain).decode("utf-8").split("\n")
+        check["same_line_count"] = len(old_all) == len(new_all)
+        diffs = 0
+        for a, b in zip(old_all, new_all):
+            if a != b:
+                diffs += 1
+                oa, ob = json.loads(a), json.loads(b)
+                ta = {k: v for k, v in oa.items() if k != "data"}
+                tb = {k: v for k, v in ob.items() if k != "data"}
+                da = dict(oa.get("data") or {})
+                db = dict(ob.get("data") or {})
+                added = set(db) - set(da)
+                removed = set(da) - set(db)
+                if ta != tb or added != {"id"} or removed or any(da[k] != db[k] for k in da):
+                    check["only_id_differs"] = False
+        if diffs != patched:
+            check["only_id_differs"] = False
+        check.setdefault("only_id_differs", True)
+    except Exception as exc:
+        check["all_frames_decode"] = False
+        check["error"] = str(exc)
+    result["verify"] = check
+    ok = all(bool(v) for v in check.values())
+
+    if not apply:
+        result["status"] = "WOULD-FIX" if patched else "clean"
+        return result
+    if not ok:
+        result["status"] = "VERIFY-FAILED"
+        return result
+    if not patched:
+        result["status"] = "clean"
+        # 结构可能仍是坏的（没 id 要补但文件被压成单 frame）→ 也要重建
+        if len(frames) == 1 and not is_header_frame_ok(plaintexts[0]):
+            pass
+        else:
+            return result
+
+    if os.path.exists(dest):
+        os.replace(dest, dest + f".broken-{time.strftime('%Y%m%d-%H%M%S')}")
+    with open(dest, "wb") as f:
+        f.write(rebuilt)
+    result["status"] = "FIXED"
+    return result
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--apply", action="store_true")
+    ap.add_argument("--scan-all", action="store_true",
+                    help="额外全盘扫描：找所有 frame[0] 不是'恰好一行'的文件")
+    args = ap.parse_args()
+
+    home = os.environ.get("DSH_HOME") or os.path.join(os.path.expanduser("~"), ".dsh")
+    base = os.path.join(home, "sessions")
+
+    targets = sorted({os.path.dirname(p)
+                      for g in SRC_GLOBS
+                      for p in glob.glob(os.path.join(base, "*", "*", g))})
+    print(f"发现 {len(targets)} 个被重压过的 session（凭 pre-id 备份判定）\n")
+    print(f"{'session':44} {'frames':>7} {'hdr':>4} {'+id':>4} {'重压frame':>8}  verify")
+    bad = []
+    for d in targets:
+        r = fix_session(d, args.apply)
+        if r["status"] in ("NO-SOURCE", "SOURCE-TORN", "SOURCE-EMPTY", "VERIFY-FAILED"):
+            print(f"{r['session'][:42]:44}  !! {r['status']}")
+            bad.append(r)
+            continue
+        v = r.get("verify", {})
+        vok = "OK" if v and all(bool(x) for x in v.values()) else f"!! {v}"
+        print(f"{r['session'][:42]:44} {r['frames']:>7} {str(r['src_header_ok'])[:4]:>4} {r['patched']:>4} {r['rewritten_frames']:>8}  {vok}")
+    if not args.apply:
+        print("\ndry-run。加 --apply 重建（source 备份不动，旧目标存为 .broken-<ts>）。")
+
+    if args.scan_all:
+        print("\n=== 全盘扫描：frame[0] 不是'恰好一行'的文件 ===")
+        n = 0
+        for dirpath, _dirs, files in os.walk(base):
+            for fn in files:
+                if fn != "session.v4.jsonl.zstd":
+                    continue
+                p = os.path.join(dirpath, fn)
+                try:
+                    d = open(p, "rb").read()
+                    fr, torn = scan_zstd_frames(d)
+                    if not fr:
+                        print(f"  {os.path.basename(dirpath):44} 空/torn")
+                        n += 1
+                        continue
+                    first = decompress_frame(d[fr[0][0]:fr[0][1]])
+                    if not is_header_frame_ok(first) or torn is not None:
+                        print(f"  {os.path.basename(dirpath):44} frames={len(fr)} torn={torn} hdr_ok={is_header_frame_ok(first)}")
+                        n += 1
+                except Exception as exc:
+                    print(f"  {os.path.basename(dirpath):44} ERR {exc}")
+                    n += 1
+        print(f"  共 {n} 个可疑文件")
+
+
+if __name__ == "__main__":
+    main()

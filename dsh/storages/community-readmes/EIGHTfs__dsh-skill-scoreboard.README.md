@@ -1,0 +1,253 @@
+# dsh-skill-scoreboard
+
+> skill 使用记分板：模型每真正加载一个 skill 就自动记分，无需手动维护 `skill-scoreboard.md`。运行时数据写在 `$DSH_HOME/.dsh/skill-scoreboard/skill-usage.json`，默认 git 忽略。v1.3.0 在**设置侧边栏**提供「Skill 记分板」页面；v1.4.0 起在 `agent/pre-step` 把记分榜与 skill 实际路径注入给 AI；v1.6.0 同时记录两种记分规则（按会话去重 / 每次加载）；v1.8.0 页面改为**三选项卡**（Skill 排行 / 会话榜 / 管理）并新增会话维度排行榜；v1.8.1 Skill 排行固定按会话去重降序（去重与加载两种次数同列显示，不再切换规则）；v1.8.2 会话榜显示**持久化会话标题**（历史会话也能解析出标题，取不到则显示短 id），记分扩展为 **read 工具直接读 skill 文件同样记分**；v1.8.3 代码质量重构（拆分长函数/降圈复杂度/提取重复字面量，行为不变）。
+
+### 界面预览
+
+Skill 排行（按会话去重降序，去重与加载两种次数同列显示，分页 20 条/页）：
+
+![Skill 排行](assets/panel-skill.png)
+
+会话榜（按去重 skill 数降序，可展开看该会话加载过哪些 skill，可点击打开会话）：
+
+![会话榜](assets/panel-session.png)
+
+管理（导出 / 导入（合并、覆盖）/ 数据概览）：
+
+![管理](assets/panel-manage.png)
+
+> **界面模拟页**：`assets/preview.html`（单文件自包含，双击即可打开；跑的是真实 `lib/client.js` + 假数据，
+> 三选项卡、分页、会话展开、导入导出全部可点，改动只留在页面内）
+> **截图声明**：`screenshots.json`（仓库根、与 `package.json` 同级，列出 `assets/panel-*.png`）——
+> DSH 插件榜单按此文件自动收录截图，作者推自己的仓库即生效，无需到榜单仓库提 PR
+
+## 目录
+
+- [界面预览](#界面预览)
+- [架构设计](#架构设计)
+- [文件目录结构及作用](#文件目录结构及作用)
+- [启动脚本](#启动脚本)
+- [API 总览](#api-总览)
+- [数据结构](#数据结构)
+- [页面结构（三选项卡）](#页面结构三选项卡)
+- [版本列表](#版本列表)
+- [注意事项](#注意事项)
+- [开发计划 / 疑难杂症](#开发计划--疑难杂症)
+
+## 架构设计
+
+核心链路：监听 `tools/result` → skill 工具执行成功后记分 → 落盘 → 宿主只读 API → 设置页展示；另在 `agent/pre-step` 注入记分榜给 AI。
+
+- **判定**：`exec.name === "skill"`，从 `arguments.name` 取 skill 名；结果带 `isError` 的不计分。
+- **两种次数**：`count` 按会话去重（同会话同一 skill 只计 1，跨会话累加）；`loads` 每次成功加载都 +1；`callId` 防同一调用重复写。
+- **会话表（v1.8.0）**：记分时同步写顶层 `sessions` 表（`{ [sessionId]: { loads, distinct, skills, firstUsedAt, lastUsedAt } }`），记录**该会话加载过哪些 skill、各几次**，供会话榜使用。
+- **路径解析**：注入时经 `skills` 服务（`get()` / `list()` 的 `path` / `resourceBase`）解析 skill 实际文件路径，失败则扫描 `ai-work-archive/skills/`、插件 `skills/`、`.dsh/skills/` 等目录兜底；设置页 UI 不显示路径。
+- **展示**：宿主端 `GET /api/skill-scoreboard` 只读接口（返回 skill 榜 + 会话榜 + 概览字段）+ 浏览器半侧挂 **设置 → 侧边栏 →「Skill 记分板」**（`settings.section` 独立页面，三个选项卡）。
+- **注入（v1.4.0+）**：`agent/pre-step` 事件（与 dsh-git-push 相同时机），每个 agent 首次 step 注入一次：记分榜 Top N（含会话去重 / 加载两种次数）+ 每个 skill 的**实际文件路径**。开关 `injectEnabled`、条数 `injectTopN`。
+- **不扫会话日志**：`Session` 没有公开 `events` 字段，且 `agent/pre-step` 发生在本步 `skill` 调用之前，扫日志会漏记——因此记分只在 `tools/result` 发生。
+
+```
+skill 工具执行成功
+    ↓
+tools/result 事件
+    ↓
+name === "skill" 且结果非错误
+    ↓
+skill-usage.json（skills 榜 + sessions 会话表）
+    ←── GET /api/skill-scoreboard（宿主只读接口）
+    ↓
+设置侧边栏「Skill 记分板」三选项卡页面（浏览器）
+    ↓
+agent/pre-step（每个 agent 首次 step）
+    ↓
+记分榜 Top N + skill 实际路径 注入给 AI
+```
+
+## 文件目录结构及作用
+
+| 路径 | 作用 |
+|---|---|
+| `lib/index.js` | 插件入口：`apply` 监听 `tools/result`，同时记 `count`（会话去重）、`loads`（每次加载）与 `sessions` 会话表；注册 `GET /api/skill-scoreboard`（含会话榜）与 export/import；`agent/pre-step` 注入记分榜 + skill 实际路径 |
+| `lib/store.js` | 宿主半侧 · 数据层（1.0.2 从 `index.js` 拆出）：读 `saveData`（临时文件 + rename 原子写）/ 归一化 `normalizeScoreboardPayload` / 合并 `mergeScoreboard` / 记分 `recordSkillUse`·`recordSessionUse` |
+| `lib/skillpath.js` | 宿主半侧 · 路径解析（1.0.2 拆出）：「skill 名 ↔ 实际文件路径」双向解析——`resolveSkillPath`（先问 skills 服务、失败扫文件系统兜底）与 `makeSkillPathIndex`（懒构建 + TTL 的路径索引，供 `read` 工具直接读 skill 文件记分） |
+| `lib/titles.js` | 宿主半侧 · 会话标题（1.0.2 拆出）：四级取标题（活跃会话快照 → 折叠日志 `session/title` 事件 → cwd 目录名 → 短 id 兜底），限并发 + 落盘缓存 `session-titles.json` + `warm` 预热 |
+| `lib/routes.js` | 宿主半侧 · HTTP 路由（1.0.1 拆出）：`GET /api/skill-scoreboard` 与 export/import 端点 |
+| `lib/util.js` | 通用小工具（1.0.1 拆出）：`createSemaphore` / `shortIdOf` / `errMsg` 等零依赖助手 |
+| `lib/client.js` | 浏览器半侧：注册 `settings.section` 侧边栏「Skill 记分板」+ 三选项卡页面（Skill 排行 / 会话榜 / 管理），排行分页、会话标题解析与打开会话、导入导出，中英双语 |
+| `cordis.patch.yml` | bundle patch：insert `id: skill-scoreboard` |
+| `skills/dsh-skill-scoreboard.md` | 插件手册 skill |
+| `test/test-scoreboard.mjs` | 宿主半侧单测：记分去重 + 会话表 + v1→v2 迁移 + API/导入导出（mock ctx + 临时数据文件） |
+| `test/test-client.mjs` | 前端冒烟测试：最小 React 替身渲染三选项卡、翻页、分页、会话展开、管理页 |
+| `test/_hooks/host-resolver.mjs` | 测试期宿主依赖解析钩子（零依赖方案）：把 `@deepseek-ai/*` 裸导入解析到宿主已装的 node_modules，使单测能 import `lib/index.js`——仓库不需装依赖、不需软链接 |
+| `$DSH_HOME/.dsh/skill-scoreboard/skill-usage.json` | 运行时记分数据（git 忽略，不入库） |
+| `package.json` | 包名 / 版本 / `dsh.bundle.patch` / `dsh.skills` / `dsh.client` / `files`+`repository` 等 npm 发布元数据 |
+| `.npmignore` | npm pack 排除规则：`*.bak` / `.trash/` / 锁文件（`npm pack --dry-run` 验证 6 文件入库） |
+
+## 启动脚本
+
+本插件随 DSH web profile 装载，没有独立进程，也没有 `start.sh`。
+
+```bash
+# 1) 源码进 profile（真实目录拷贝，不要软链到无 node_modules 的源码目录）
+cp -a ./dsh-skill-scoreboard profiles/web/local-plugins/dsh-skill-scoreboard
+
+# 2) package.json 声明 file: 依赖，并写入 dsh.profile.bundles
+#    "dsh-skill-scoreboard": "file:./local-plugins/dsh-skill-scoreboard"
+
+# 3) cordis.patch.yml insert
+#    - insert:
+#        - id: skill-scoreboard
+#          name: dsh-skill-scoreboard
+#          config:
+#            enabled: true
+
+# 4) dry-run：能 import，且导出 name / inject / apply
+cd profiles/web
+node --input-type=module -e 'import * as m from "dsh-skill-scoreboard"; console.log(m.name, m.inject, typeof m.apply)'
+
+# 5) 自测（零依赖：宿主依赖经 test/_hooks/ 解析钩子注入，仓库内不装 node_modules）
+node --import ./test/_hooks/host-resolver.mjs --test test/*.mjs   # 两套单测一起跑
+node --import ./test/_hooks/host-resolver.mjs test/test-scoreboard.mjs   # 宿主半侧
+node --import ./test/_hooks/host-resolver.mjs test/test-client.mjs       # 前端渲染冒烟
+
+# 6) 改 patch / 插件代码（宿主半侧）后重启 web profile 才会加载新 hооk；
+#    只改 lib/client.js 可用 clientModules.rebuilt('dsh-skill-scoreboard') 热刷新（免重启）
+```
+
+启动成功时进程日志：
+
+```
+[skill-scoreboard] ✅ 已启动，数据文件: …/.dsh/skill-scoreboard/skill-usage.json，当前记录 N 个 skill
+[skill-scoreboard] ✅ 已注册 GET /api/skill-scoreboard + export/import
+```
+
+## API 总览
+
+记分在 `tools/result` 上自动发生；v1.2.0 起提供只读查询 API 供设置页使用；v1.8.0 起返回体带会话榜。
+
+| 入口 | 说明 |
+|---|---|
+| `tools/result` | 观察 skill 工具最终结果记分；**v1.8.2 起 read 工具直接读 skill 文件路径同样记分**（同步更新 skill 榜与会话表） |
+| `GET /api/skill-scoreboard` | 只读：返回 `{ok, total, totalLoads, recorded, updatedAt, dataFile, skills:[…], sessions:[…]}`。`skills` 按 `count` 降序（最多 200 条），`sessions` 按 `distinct` 降序（并列按 `loads`、再按 `lastUsedAt`，最多 200 条）；v1.8.2 起每行带 `title`（宿主解析的持久化会话标题，兜底短 id） |
+| `GET /api/skill-scoreboard/export` | 导出完整记分 JSON（`version:2 / skills / sessions / updatedAt / exportedAt`） |
+| `POST /api/skill-scoreboard/import?merge=true\|false` | 导入记分 JSON；默认 merge 累加合并（含会话表），`merge=false` 整表替换。v1 旧格式（无 `sessions`）自动反推会话表 |
+| 配置 `enabled` | `false` 时不挂监听 |
+| 配置 `dataFile` | 覆盖默认数据路径（默认 `$DSH_HOME/.dsh/skill-scoreboard/skill-usage.json`） |
+| 配置 `injectEnabled`（v1.4.0） | `false` 时不注入记分榜（默认 true） |
+| 配置 `injectTopN`（v1.4.0） | 注入 Top N 个 skill 及路径（默认 25） |
+
+## 数据结构
+
+v1.8.0 起为 **v2**：在 v1 的 `skills` 之外新增顶层 `sessions` 会话表。
+
+```json
+{
+  "version": 2,
+  "skills": {
+    "dsh-restart-gate": {
+      "count": 2,
+      "loads": 3,
+      "lastUsedAt": "2026-09-10T08:57:00.000Z",
+      "sessions": ["session-<uuid>"],
+      "callIds": ["call-0296d410-70b8-4e49-896a-2ce906ea8993-174"]
+    }
+  },
+  "sessions": {
+    "session-<uuid>": {
+      "loads": 3,
+      "distinct": 2,
+      "skills": { "dsh-restart-gate": 2, "full-context-read": 1 },
+      "firstUsedAt": "2026-09-10T08:50:00.000Z",
+      "lastUsedAt": "2026-09-10T08:57:00.000Z"
+    }
+  },
+  "updatedAt": "2026-09-10T08:57:00.000Z"
+}
+```
+
+- `skills[name].count`：按会话去重的累计次数（跨会话累加）
+- `skills[name].loads`：每次成功加载都 +1 的累计次数
+- `skills[name].sessions`：已计分的会话 id 列表（用于去重判定）
+- `skills[name].callIds`：已计分的工具调用 id（防同一调用重复写）
+- `sessions[id].loads`：该会话加载 skill 的总次数
+- `sessions[id].distinct`：该会话加载过的**不同** skill 数（会话榜排序主键，越多越靠前）
+- `sessions[id].skills`：该会话每个 skill 的加载次数（会话行展开时展示）
+- `sessions[id].loadsEstimated`：v1 迁移估计标记（旧数据无法还原每次加载，`loads` 用 `distinct` 兜底）
+
+> **v1 → v2 迁移**：读取旧文件时自动迁移（v1 只有 `skills[].sessions[]`，反推出会话表；`distinct` 准确、`loads` 为估计值并标记 `loadsEstimated`），下次写盘即为 v2。
+>
+> **注意**：数据文件默认路径为 `$DSH_HOME/.dsh/skill-scoreboard/skill-usage.json`（非插件源码目录下的 `data/skill-usage.json`）。可通过配置项 `dataFile` 覆盖路径。
+
+查排行：
+
+```bash
+# 默认路径
+python3 - <<'PY'
+import json
+from pathlib import Path
+p = Path.home() / '.dsh' / 'skill-scoreboard' / 'skill-usage.json'
+if not p.exists():  # 兜底：用 DSH_HOME 定位（换机即用，不写死本机路径）
+    import os
+    p = Path(os.environ.get('DSH_HOME', Path.home() / '.dsh')) / 'skill-scoreboard' / 'skill-usage.json'
+d = json.loads(p.read_text())
+rows = sorted(d.get("skills", {}).items(), key=lambda kv: kv[1].get("count", 0), reverse=True)
+for name, rec in rows[:10]:
+    print(rec.get("count", 0), rec.get("loads", 0), name, rec.get("lastUsedAt"))
+# 会话榜
+sess = sorted(d.get("sessions", {}).items(), key=lambda kv: kv[1].get("distinct", 0), reverse=True)
+for sid, rec in sess[:10]:
+    print(rec.get("distinct", 0), rec.get("loads", 0), sid)
+PY
+```
+
+最小配置：
+
+```yaml
+- insert:
+    - id: skill-scoreboard
+      name: dsh-skill-scoreboard
+      config:
+        enabled: true
+        # dataFile: /path/to/skill-usage.json
+        # injectEnabled: true
+        # injectTopN: 25
+```
+
+## 页面结构（三选项卡）
+
+设置 → 侧边栏 →「Skill 记分板」，仿插件市场的顶部选项卡：
+
+| 选项卡 | 内容 |
+|---|---|
+| **Skill** | skill 使用排行，固定按**会话去重**次数降序（并列按名称）。表格列 `# / skill / 去重次数 / 加载次数 / 最近使用`，去重列为高亮主列、加载列常显；列表分页（`« ‹ 页码… › »` + 每页 10/20/50 条 + 「共 N 条 · 第 p/x 页」） |
+| **会话** | 加载过 skill 的会话排行榜。按 `distinct`（去重 skill 数）降序，**越多越靠前**，并列按 `loads`、再按最近活动；行显示会话标题（v1.8.2：宿主依次经活跃 `sessions` 快照 `displayTitle` → 持久化日志 `session/title` 事件 → 工作目录名 → 短 id 解析；历史会话也能出标题，不再一律「无标题」）与短 id、去重数、加载数、最近活动；点击标题可打开该会话；行首 `▸` 展开显示该会话加载过的 skill；同样分页 |
+| **管理** | 数据概览（skill 数 / 会话数 / 累计去重 / 累计加载 / 最近写入 / 数据文件路径 / v1 迁移估计提示）+ 导出 JSON + 导入 JSON（合并 / 覆盖两种模式）+ 顶部刷新 |
+
+## 版本列表
+
+| 版本 | 内容 |
+|------|------|
+| 1.0.4 | **修复「设置里有入口、点进去空白」+ 生成器去私有路径**：① 渲染修复——`dictListeners` / `subscribeDict` / `loadDict` 三个外置 i18n 助手此前被定义在 `createModule` factory 内部，而消费它们的 `ScoreboardPage` 是顶层函数，组件在 `useEffect` 里调用 `subscribeDict` 抛 `ReferenceError: subscribeDict is not defined`，React 随即卸载整棵树，表现为设置面板点进去一片空白（宿主日志与接口均无异常，属静默失败）；三者已移回顶层作用域（与 `L` / `NS` 同级）。② `assets/preview-gen.mjs` 原先写死一个本机私有绝对路径（他人 clone 后无法运行），改为自动定位：`DSH_ROOT` 显式指定 → `DSH_HOME` 同级/上级 → 逐级上溯，并支持 `REACT_UMD_DIR` / `REACT_DOM_UMD_DIR` 覆盖；README 中的排查示例同样改为按 `DSH_HOME` 定位，不再含本机路径。③ **预览页渲染语义修正**：`assets/preview-gen.mjs` 的 `slots` 垫片此前把 `register` 的第二参当「渲染函数」直接调用（`__PAGE_RENDER__()`），而真实宿主把它当 **React 组件**交给 reconciler——两种语义不同，正是这一点让旧预览页长期「看起来正常」、掩盖了本次的作用域缺陷。现改为按真实宿主语义渲染，并外套 **类错误边界**（`getDerivedStateFromError` / `componentDidCatch`）+ mount 后空容器检测，组件渲染或 effect 抛错时把堆栈打到页面上而非留一片空白；交互能力（三选项卡、分页、会话展开、导入导出）保持可点。④ **预览页 i18n 字典修复**：垫片的假 `fetch` 分支顺序有误——`/api/skill-scoreboard/i18n` 同样以 `/api/skill-scoreboard` 为前缀，被排在后面的通用快照分支先命中，字典请求拿到的是记分快照而非字典，于是 `L` 只剩导航兜底的两个 key，预览页到处显示 `settings.totalBadge` 这类原始 key 而非译文；已把 i18n 分支提到最前，实测 `/api/skill-scoreboard/i18n` 返回 zh(51 key)/en 完整字典。⑤ **client.js 整体包 IIFE（修「Failed to load plugins」隐患）**：手写插件的 `client.js` 自带自注册 `window.__ModuleLoader__.load` 调用时，client-modules 聚合会**原样拼接整个文件**，顶层 `let`/`const`/`function` 因此全部落进聚合文件的**同一个顶层作用域**。本文件顶层原有 **55 个声明**，与同聚合的 `dsh-session-migrate` 有 **10 个重名**（`createModule` / `tr` / `ensureCss` / `cssText` / `dictListeners` / `subscribeDict` / `localeCtx` / `activeLocaleId` / `FETCH_TIMEOUT_MS` / `SETTINGS_SECTION_ORDER`）——顶层 `let` 重名是**解析期 SyntaxError**，会让整个聚合脚本失效，浏览器表现为**整个插件列表加载不出来**（报错串里只有 `@deepseek-ai/dsh-*` 官方插件名，它们只是被连坐，真凶是手写插件）。此前未暴露，是因为 `dsh-session-migrate` 已单方面包了 IIFE 把冲突挡掉；本插件是**唯一还没隔离的裸插件**，一旦出现第三个手写插件或对方去掉 IIFE，聚合立刻全废。现整体包 IIFE（首行 `(() => {`、末尾 `})();`），顶层声明归零，与官方 `factory` 闭包效果一致，**零改名**。**验证**：`vm` 作用域实测 11 个关键声明**零泄漏到全局**；与 `dsh-session-migrate` 拼接后 `node --check` 与 `new Function` 双双通过（反证：去掉对方 IIFE 即复现 `SyntaxError: Identifier 'SETTINGS_SECTION_ORDER' has already been declared`）；真实 React 环境下模块注册 / factory / apply / 组件渲染四步全过；30 断言全过 |
+| 1.0.3 | **1/4** **修复「设置里有入口、点进去空白」**：`dictListeners` / `subscribeDict` / `loadDict` 三个外置 i18n 助手此前被定义在 `createModule` factory **内部**（2026-09-14 字典外置化时引入），而消费它们的 `ScoreboardPage` 是**顶层函数**——组件在 `useEffect` 里调用 `subscribeDict` 抛 `ReferenceError: subscribeDict is not defined`，React 随即卸载整棵树，表现为设置面板点进去一片空白（宿主日志与接口均无异常，属静默失败）。已把三者移回顶层作用域（与 `L` / `NS` 同级），30 断言仍全过。（该缺陷同时促使 preview 预览页改用真实宿主渲染语义，见 1.0.4 ③）<br>**2/4** **字典外置化（方案A，替代 Loader 内嵌修复）**：弃用「内嵌 JS 对象字面量」，改为宿主半侧把外置 `lib/i18n/{zh,en}.json` 经新增 `GET /api/skill-scoreboard/i18n` 暴露、客户端 `apply` 后由 `loadDict()` fetch 拉取合并进 `L`——DSH 浏览器端 `require` 不支持相对路径 JSON 的解法即绕开 require 走 HTTP。源码仅保留导航标签 `settings.title/desc` 最小同步兜底，语言仍跟随 DSH 全局界面语言；`lib/i18n/*.json` 成为单份权威，改 dict 无需重打包 client bundle。`test-client.mjs` 假 fetch 按 URL 分流（i18n→真实外置 json，其余→快照）适配新架构，30 断言全过<br>**3/4** **Loader 修复**：客户端字典 `require('./i18n/*.json')` 在 DSH 浏览器端 ModuleLoader 下抛 `client-modules: require(...) missed the module table`（宿主 require 只认模块表词/seed/已注册工厂，不解析相对路径 JSON）——字典内嵌为 JS 对象字面量（源文本保留 `lib/i18n/*.json`），插件不再加载失败<br>**4/4** **打包修复 + 补 peer 声明**：`lib/` 下三份备份文件（`client.js.bak` / `index.js.bak` / `routes.js.bak`，共 78KB）虽未被 git 跟踪，但 `files` 白名单是目录级的（`lib`），`npm pack` 会把它们一并打进发布包 —— 已移入回收站，发布包文件数 16 → 13；新增 `peerDependencies` 声明宿主提供的 `@deepseek-ai/dsh-llm` 与 `@deepseek-ai/schemastery`，范围写成带显式预发布分支的形式（`>=0.0.1-rc.1 <0.1.0 || >=0.1.0-rc.1 <0.2.0-0`），避免 node-semver 只在「比较符元组与目标版本一致且自带预发布标签」时才放行预发布版这一规则，导致用户安装时遇到静默排除引发 ERESOLVE |；**表头缺 key 修复**：`panelHeadRow` 用 `cols.map()` 生成表头列却未给 `key`，React 对无 key 的列表项告警（用下标而非类名——`dshsb_headcount` 同时用于「去重次数」与「加载次数」两列，类名会撞车）；**界面模拟页** `assets/preview.html`（跑真实 `lib/client.js` + 假数据，三选项卡、分页、会话展开、导入导出可点，由 `assets/preview-gen.mjs` 生成）+ **三张面板截图** `assets/panel-{skill,session,manage}.png` 与仓库根 `screenshots.json`（DSH 插件榜单按此文件自动收录截图，推自己的仓库即生效，无需到榜单仓库提 PR） |
+| 1.0.2 | **宿主半侧按职责拆分为独立模块**（`lib/index.js` 从 1100+ 行降到 347 行；行为不变、110 条断言全通过）：`lib/store.js`（数据层：原子写 / 归一化 / 合并 / 记分）、`lib/skillpath.js`（skill 名 ↔ 实际路径双向解析 + 懒构建 TTL 索引）、`lib/titles.js`（四级取会话标题 + 限并发 + 落盘缓存 + 预热）从入口拆出；入口只保留 `apply` 接线与注入。拆分后每个模块单一职责、均不反向依赖 `index.js`，README 结构表同步 |
+| 1.0.1 | 重建历史为单提交：记分板插件全量审计 + 代码质量重构（行为不变）。**文案 i18n 化**（zh.json / en.json 两份 JSON 由 `lib/i18n/` 提供，客户端 `require` 读取，不再硬编码中文串）；**零依赖**（package.json 仅保留宿主提供的 schemastery / dsh-llm 作为 peer，移除 node_modules 实体，安装不留依赖树）；**结构拆分**（`lib/routes.js` HTTP 路由、`lib/util.js` 通用小工具从 `lib/index.js` 拆出）；改名去模糊（`data`→`payload`/`store`、`tmp`→`tmpFile`、`obj`→`parsed`/`cacheMap`）、重复字面量与超时/排序魔数提取为具名常量、空 `catch` 全部补说明注释；审计 **0 blocker / 0 warning 拦截项，91 分 A**（可读性 6 / 可维护性 12，其余八维满分）；新增 .test 测试豁免；README 措辞清理 |
+| 1.0.0 | 代码级自动记录；旧手动记分板分数迁入；配套 skill；运行时数据 git 忽略。**以下为 1.0.0 内的功能迭代明细**（历次改动曾以 1.1.0–1.8.4 编号记录，但 `package.json` 的 `version` 字段未同步更新，为避免版本号与实际不符，现统一归入 1.0.0）：<br>**1.1.0** 改听 `tools/result`。不再读不存在的 `session.events`，skill 真正执行完才记分；**1.1.1** 按 git-push README 模板重写文档；GitHub About 改为插件一句话说明；**1.2.0** **设置页记分卡**：新增 `GET /api/skill-scoreboard` 只读查询 API + `lib/client.js` 设置卡（设置 → 插件配置 →「Skill 记分榜」；dsh.client web bundle 注入）；**1.3.0** **设置侧边栏页面**：浏览器半侧改挂 `settings.section`（设置 → 侧边栏 →「Skill 记分板」独立页面：按次数降序、刷新、空态/错误态、中英双语跟随当前语言），不再占插件配置页卡片位；**1.4.0** **agent/pre-step 注入**：与 dsh-git-push 相同时机，每个 agent 首次 step 注入记分榜 Top N（次数降序）+ 每个 skill 的**实际文件路径**（经 `skills` 服务与技能仓库/工作区扫描解析，供 AI 参考；设置页 UI 不显示路径）；配置 `injectEnabled` / `injectTopN`；**1.5.0** **导入导出记分文件 + 自动建目录**：设置页「导出 / 导入」；`GET /api/skill-scoreboard/export` 下载 JSON；`POST /api/skill-scoreboard/import?merge=true\|false` 合并或整表替换。数据文件父目录不存在时 `mkdir` 再建，避免首次写失败；**1.6.0** **两种记分规则可切换**：同时记录 `count`（按会话去重）与 `loads`（每次成功加载）；设置页可切换展示。注入文本同时带两种次数，并扫描兜底解析 skill 实际文件路径（`skills.get().path` 为空时仍能给出路径）；**1.7.0** 设置页显示模式改为下拉列表选择（按会话去重 / 每次加载 / 全部），导入支持合并 / 覆盖模式选择；**1.8.0** **三选项卡 + 会话榜**：页面改仿插件市场的顶部选项卡「Skill / 会话 / 管理」；Skill 内两种排行（去重 / 全部加载）改为二级翻页并支持分页；新增会话维度排行榜（按去重 skill 数降序，可展开看该会话加载过的 skill，可打开会话）；管理页收纳导入导出。数据升级 **v2**：新增顶层 `sessions` 会话表（记分时同步记录会话 id 与每个 skill 的加载次数），旧 v1 数据启动时自动迁移；API 返回会话榜与概览字段；新增 `test-client.mjs` 前端冒烟测试；**1.8.1** **Skill 排行去掉规则切换**：两种次数本就同列显示、切换选项只改高亮，故移除「按会话去重 / 按全部加载」二级选项及其描述，固定按会话去重降序；同步精简 `sortSkillRows` 与 subTab 样式。**修复样式重复注入**：`ensureCss` 在 v1.8.0 重构后引用了不在其作用域内的 `name`（浏览器里解析为 `window.name`，值为空串），于是 `data-plugin-css` 被写成空串、去重查询永不命中，每次渲染都往 `<head>` 重复插入一份 `<style>`；改用顶层常量 `NS` 后只注入一次。`test-client.mjs` 补该 DOM 注入路径的回归断言；**1.8.2** **会话标题 + read 直接读文件记分**：会话榜此前全部显示「无标题会话」——根因是 client 侧 `sessions.list` 只含活跃会话、历史会话查不到标题。改为宿主半侧解析标题注入 API：①活跃会话快照 `displayTitle` → ②`sessionPersistence.inspect` 读日志折叠 `session/title` 事件（与 dsh-session-conductor 同法）→ ③`cwd` 目录名 → ④短 id 兜底；**性能修复**：标题解析限并发（同时最多 2 个 inspect）+ 结果落盘缓存 `session-titles.json` + apply 后后台预热，API 首响应从实测 8.8s 降到毫秒级（原实现对所有会话并发解压 zstd 日志）。**稳定性修复**：管理页曾引用其作用域外的 `skillRows`（ManagePanel 为顶层函数而非 ScoreboardPage 内部函数），数据未加载（`state.recorded=0`）时点「管理」tab 会求值该未定义变量 → ReferenceError → settings.section 无错误边界 → 整个设置面板消失；已移除该死引用，加载中点管理不再崩。记分扩展：`tools/result` 中 `read` 工具若 `file_path` 命中已知 skill 文件路径（懒构建路径索引，TTL 5min）同样记一次分——AI 直接读 skill 文件 = 加载。`buildSnapshot` 变异步注入 title；两套测试各补 read 记分 / 标题解析断言；**1.8.3** **代码质量重构（行为不变）**：按 code_audit 全量扫描结论拆分长函数与高圈复杂度函数——`normalizeScoreboardPayload`（复杂度 12）与 `mergeScoreboard`（12）拆为子表函数（`normalizeSkillsTable` / `normalizeSessionsTable` / `mergeSkillTables` / `mergeSessionTables`），`makeTitleResolver`（41→31）拆出 `titleFromSessionSnapshot` / `titleFromInspect` / `cachedTitle`，`ScoreboardPage`（18→11）拆出 `snapshotToState` / `badgeFor` / `panelHeadRow` / `panelBody`；提取重复字面量为帮助函数 `isPlainObject` / `num0` / `emptyV2` / `errMsg`；全部 110 条断言（test-scoreboard 80 + test-client 30）通过，安全性/性能/测试覆盖三维保持满分；**1.8.4** **测试归位 test/ 目录 + 审计跳过**：单测文件移入 `test/`（相对引用同步改为 `../lib/`），test 目录放 `.test` 空文件标记——内置 code_audit 扫描自动跳过该目录（`test/**` 的重复字面量/魔数等噪音不再计入评分，扫描 finding 从 272 降到 197）；README 测试路径同步更新 |
+
+## 注意事项
+
+- 运行时数据默认不入库（`.gitignore` 含 `data/skill-usage.json`）。公开仓库不要把记分文件提交进去。
+- 软链到无 `node_modules` 的源码目录会导致 ESM 解析 `@deepseek-ai/schemastery` 失败，用真实目录拷贝。
+- 改 `lib/index.js` 或 patch 后必须重启 web profile，当前进程不会热加载这段 hооk；只改 `lib/client.js` 可用 `clientModules.rebuilt('dsh-skill-scoreboard')` 免重启热刷。
+- 只统计工具名 `skill` 的成功调用。失败的 skill 加载不计分。
+- 同一会话重复加载同一 skill：`count` 只计 1 次，`loads` 每次成功加载都 +1；会话表按每次加载累计。
+- 会话榜的会话标题依赖宿主客户端 `sessions` 服务（`ctx.get('sessions')`）。服务不可用时只显示短 id，页面功能不受影响。
+- v1 旧数据迁移出的会话 `loads` 是估计值（等于 `distinct`），管理页会提示；后续新记分即为真实值。
+
+## 开发计划 / 疑难杂症
+
+- [x] HTTP 只读接口：按 `count` 返回排行，不必直接读 JSON（v1.2.0 已实现为 GET /api/skill-scoreboard）
+- [x] 设置侧边栏独立页面（v1.3.0：settings.section「Skill 记分板」，替代插件配置页卡片）
+- [x] 会话维度排行榜（v1.8.0：顶层 `sessions` 表 + 会话选项卡）
+- [x] 观察点从 `agent/pre-step` + `session.events` 改为 `tools/result`
+- [ ] 数据文件放到 profile 数据目录，避免装在 `node_modules` 里被 `pnpm install` 清掉
+- [ ] 会话榜按子代理会话（`agent.id` 兜底产生的裸 uuid）单独标注来源

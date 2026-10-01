@@ -1,0 +1,10 @@
+{
+    "hooks":  {
+                  "SessionStart":  [
+                                       {
+                                           "command":  "C:\\PROGRA~1\\nodejs\\node.exe D:\\Toolbox\\goat-gateway\\goat-quota-hook.mjs",
+                                           "timeout":  15000
+                                       }
+                                   ]
+              }
+}

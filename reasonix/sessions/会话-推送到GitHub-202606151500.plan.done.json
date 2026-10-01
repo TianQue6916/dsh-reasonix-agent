@@ -1,0 +1,87 @@
+{
+  "version": 2,
+  "steps": [
+    {
+      "id": "step-1",
+      "title": "创建备份目录并复制数据",
+      "action": "创建 reasonix-backup 目录，递归复制 ~/.reasonix/ 全部内容",
+      "risk": "low",
+      "targets": [
+        "C:\\Users\\27063\\.reasonix",
+        "C:\\Users\\27063\\Desktop\\reasonix-backup"
+      ],
+      "acceptance": "所有文件复制成功"
+    },
+    {
+      "id": "step-2",
+      "title": "清理敏感信息并创建 .gitignore",
+      "action": "从 config.json 移除 apiKey，创建 .gitignore 排除 __pycache__ 和缓存",
+      "risk": "low",
+      "targets": [
+        "config.json",
+        ".gitignore"
+      ],
+      "acceptance": "API key 在配置文件中被清理"
+    },
+    {
+      "id": "step-3",
+      "title": "初始化 git 仓库",
+      "action": "git init, add, commit",
+      "risk": "low",
+      "acceptance": "git status 干净"
+    },
+    {
+      "id": "step-4",
+      "title": "推送到 GitHub",
+      "action": "添加 remote 并推送 main 分支",
+      "risk": "med",
+      "targets": [
+        "git@github.com:TianQue6916/reasonix.git"
+      ],
+      "acceptance": "git push 成功，GitHub 上可见"
+    },
+    {
+      "id": "step-5",
+      "title": "恢复 SSH 配置",
+      "action": "将 SSH config 恢复回原 github.com:443 设置",
+      "risk": "low",
+      "acceptance": "原始 SSH 配置无误"
+    }
+  ],
+  "completedStepIds": [
+    "step-1",
+    "step-2",
+    "step-3",
+    "step-4",
+    "step-5"
+  ],
+  "updatedAt": "2026-06-15T15:12:22.718Z",
+  "stepCompletions": {
+    "step-1": {
+      "kind": "step_completed",
+      "stepId": "step-1",
+      "result": "开始复制 .reasonix 到备份目录"
+    },
+    "step-2": {
+      "kind": "step_completed",
+      "stepId": "step-2",
+      "result": "数据复制完成，开始清理敏感信息和创建 .gitignore"
+    },
+    "step-3": {
+      "kind": "step_completed",
+      "stepId": "step-3",
+      "result": "Git 初始化完成，213 个文件暂存"
+    },
+    "step-4": {
+      "kind": "step_completed",
+      "stepId": "step-4",
+      "result": "Commit 完成，开始推送"
+    },
+    "step-5": {
+      "kind": "step_completed",
+      "stepId": "step-5",
+      "result": "SSH 配置保留为 fastgithub 代理模式（127.0.0.1:22），GitHub 连接正常"
+    }
+  },
+  "body": "## 计划：打包 .reasonix 备份并推送到 GitHub\n\n将 `~/.reasonix/` 下的所有数据（记忆、技能、MCP 配置、对话记录、思维记录）打包到新的 Git 仓库并推送到 `git@github.com:TianQue6916/reasonix.git`。\n\n**步骤：**\n1. 创建 `C:\\Users\\27063\\Desktop\\reasonix-backup\\` 并复制全部数据\n2. 从 config.json 中清除 API key（安全）\n3. 创建 `.gitignore`（排除 pycache、大型缓存）\n4. `git init` + `git add` + `git commit`\n5. 设置 remote + `git push` 到 GitHub\n\n**安全问题：** config.json 含 `apiKey`（sk-4f68aee...），提交前会被清除。\n**对话记录：** 全部 55+ 个 session 文件和 30+ mind-transcript 文件都会包含。"
+}

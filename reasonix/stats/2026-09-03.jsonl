@@ -1,0 +1,2 @@
+{"ts":"2026-09-03T15:09:16.6347508+08:00","model":"commandcode-goat/deepseek/deepseek-v4-flash","source":"cli","prompt":32657,"completion":15,"reasoning":11,"cache_hit":256,"cache_miss":32401,"total":32672,"requests":1}
+{"ts":"2026-09-03T15:09:16.8794265+08:00","source":"cli","turn":true}

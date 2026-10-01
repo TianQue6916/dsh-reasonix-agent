@@ -1,0 +1,109 @@
+{
+  "version": 2,
+  "steps": [
+    {
+      "id": "step-install",
+      "title": "安装依赖 + 配置 API Key",
+      "action": "npm install + 更新 .env 中 OPENAI_API_KEY",
+      "risk": "low",
+      "targets": [
+        ".reasonix/package.json",
+        ".reasonix/.env"
+      ],
+      "acceptance": "npm install 成功，.env 中 API Key 非占位符",
+      "verification": [
+        "cd .reasonix && node -e \"require('openai'); console.log('OK')\""
+      ]
+    },
+    {
+      "id": "step-mcp-config",
+      "title": "配置基础 MCP 服务器",
+      "action": "在 mcp-config.json 中添加 filesystem/memory/sequential-thinking 三个服务器",
+      "risk": "low",
+      "targets": [
+        ".reasonix/mcp-config.json"
+      ],
+      "acceptance": "mcp-config.json 包含 3 个有效 MCP 服务器",
+      "verification": [
+        "node -e \"JSON.parse(require('fs').readFileSync('.reasonix/mcp-config.json','utf-8')).mcpServers|length\""
+      ]
+    },
+    {
+      "id": "step-overleaf",
+      "title": "实现 Overleaf MCP Server",
+      "action": "创建 src/index.js 实现 Overleaf MCP 服务器（git 模式）",
+      "risk": "med",
+      "targets": [
+        ".reasonix/mcp-servers/mcp-server-overleaf/src/index.js"
+      ],
+      "acceptance": "Overleaf MCP 服务器可启动并注册工具",
+      "verification": [
+        "cd .reasonix/mcp-servers/mcp-server-overleaf && node src/index.js --help 2>&1 | head -5"
+      ]
+    },
+    {
+      "id": "step-tool-dispatch",
+      "title": "修复工具调度 fallback 逻辑",
+      "action": "agent.js 中 skills.execute 传短名；添加找不到工具的明确报错",
+      "risk": "low",
+      "targets": [
+        ".reasonix/src/agent.js"
+      ],
+      "acceptance": "内置技能可被 LLM 调用",
+      "verification": [
+        "grep -n 'skills.execute' .reasonix/src/agent.js"
+      ]
+    },
+    {
+      "id": "step-sse-transport",
+      "title": "添加 SSE/Streamable HTTP Transport",
+      "action": "mcp-client.js 中自动检测并切换 StdioClientTransport / StreamableHTTPClientTransport",
+      "risk": "med",
+      "targets": [
+        ".reasonix/src/mcp-client.js"
+      ],
+      "acceptance": "streamable+ 开头的 URL 自动使用 HTTP transport",
+      "verification": [
+        "grep -n 'StreamableHTTPClientTransport\\|SSEClientTransport' .reasonix/src/mcp-client.js"
+      ]
+    },
+    {
+      "id": "step-dynamic-prompt",
+      "title": "System Prompt 动态化",
+      "action": "_buildSystemPrompt 改为读取实际 MCP 工具列表生成工具描述",
+      "risk": "low",
+      "targets": [
+        ".reasonix/src/agent.js"
+      ],
+      "acceptance": "system prompt 仅包含在线 MCP 服务器的工具描述",
+      "verification": [
+        "grep -n 'buildSystemPrompt\\|mcpTools' .reasonix/src/agent.js"
+      ]
+    },
+    {
+      "id": "step-python-sync",
+      "title": "修复 Python 脚本双轨问题",
+      "action": "让 Python 脚本可读写项目内 mcp-config.json，同步系统配置",
+      "risk": "low",
+      "targets": [
+        ".reasonix/fix_mcp.py",
+        ".reasonix/clean_mcp.py"
+      ],
+      "acceptance": "Python 脚本可同时处理系统 config.json 和项目 mcp-config.json"
+    },
+    {
+      "id": "step-getstatus",
+      "title": "修复 getStatus() description 引用",
+      "action": "移除对不存在的 description 字段的引用；添加稳定性修复",
+      "risk": "low",
+      "targets": [
+        ".reasonix/src/mcp-client.js"
+      ],
+      "acceptance": "getStatus() 不再返回空 description"
+    }
+  ],
+  "completedStepIds": [],
+  "updatedAt": "2026-06-02T13:56:25.668Z",
+  "body": "## 方案：系统性修复全部 MCP 桥接问题\n\n您当前的 Resonix Agent 存在 **9 个 MCP 桥接问题**，从阻塞级到架构级。以下是完整诊断和分步修复方案。\n\n---\n\n### 问题全景\n\n| # | 严重度 | 问题 | 位置 |\n|---|--------|------|------|\n| 1 | 🔴 阻塞 | `node_modules` 未安装，全部依赖缺失 | 项目根 |\n| 2 | 🔴 阻塞 | `.env` 中 `OPENAI_API_KEY` 是占位符 | `.env` |\n| 3 | 🔴 阻塞 | `mcp-config.json` 为空(没有配置任何 MCP 服务器) | `.reasonix/mcp-config.json` |\n| 4 | 🔴 阻塞 | Overleaf MCP Server 的 `src/index.js` 不存在但被声明 | `.reasonix/mcp-servers/mcp-server-overleaf/src/` |\n| 5 | 🟡 功能 | 工具调度 fallback 传递了带前缀的名字，内置技能永远匹配不上 | `.reasonix/src/agent.js:220-226` |\n| 6 | 🟡 功能 | 只支持 `StdioClientTransport`，无法连接远程 SSE/streamable MCP | `.reasonix/src/mcp-client.js:39` |\n| 7 | 🟡 功能 | System prompt 硬编码了大量不存在的 MCP 工具，LLM 会被误导 | `.reasonix/src/agent.js:33-93` |\n| 8 | ⚪ 架构 | Python 脚本 (`fix_mcp.py`) 操作 `~/.reasonix/config.json`，JS 用项目内 `mcp-config.json`，双轨不同步 | 全体 Python 脚本 |\n| 9 | ⚪ 质量 | `getStatus()` 引用 `description` 字段但配置中不存在 | `.reasonix/src/mcp-client.js:178` |\n\n---\n\n### 步骤分解\n\n**Step 1: 安装依赖 + 配置 API Key** (阻塞修复)\n- `npm install` 安装全部 `node_modules`\n- 更新 `.env` 中 `OPENAI_API_KEY` 为有效 Key（移除占位符）\n- 验证 `npx` 和 Node 可用\n\n**Step 2: 创建真实的 MCP 服务器配置** (阻塞修复)\n- 在 `mcp-config.json` 中配置 3 个基础 MCP 服务器：\n  - `filesystem` — `@modelcontextprotocol/server-filesystem`\n  - `memory` — `@modelcontextprotocol/server-memory`\n  - `sequential-thinking` — `@modelcontextprotocol/server-sequential-thinking`\n\n**Step 3: 修复 Overleaf MCP Server** (阻塞修复)\n- 创建 `src/index.js` — 实现完整的 Overleaf MCP 服务器（基于 git mode）\n\n**Step 4: 修复工具调度逻辑** (功能修复)\n- `agent.js` 中 fallback 到 `skills.execute()` 时传不带前缀的短名\n- 增加「找不到工具」的明确错误信息\n\n**Step 5: 添加 Streamable HTTP / SSE Transport** (功能修复)\n- 在 `mcp-client.js` 中添加 `SSEClientTransport` 支持\n- 自动检测 transport 类型：stdio 命令 vs URL\n\n**Step 6: 动态生成 System Prompt** (功能修复)\n- `_buildSystemPrompt()` 改为基于实际 `mcp.tools` 生成工具列表\n- 从 system prompt 中移除硬编码的工具名\n\n**Step 7: Python 脚本同步** (架构修复)\n- 让 Python 脚本同时读取/写入项目内 `mcp-config.json`\n- 添加双端同步函数\n\n**Step 8: 修复 `getStatus()`** (质量修复)\n- 移除对不存在的 `description` 字段的引用\n- 添加更健壮的 `serverStatus` 输出\n\n---\n\n### 风险与注意事项\n- **Step 5** (SSE Transport) 需要 `@modelcontextprotocol/sdk` 支持 — 确认 SDK v1.12.1 已内置 `StreamableHTTPClientTransport`\n- **Step 3** (Overleaf Server) 是新建文件，需要 git 模式的基础实现\n- **Step 7** (Python 同步) 可能需要用户确认 `~/.reasonix/config.json` 中的现有配置",
+  "summary": "修复全部 9 个 MCP 桥接问题：依赖安装、MCP 服务器配置、Overleaf 服务器实现、工具调度 bug、SSE Transport、动态 prompt、Python/JS 同步"
+}

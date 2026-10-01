@@ -1,0 +1,174 @@
+diff --git a/lib/index.js b/lib/index.js
+index 07263980028f67ee9b2eca799200fb7ce35e1947..7f18f111bfe0c8a5f0954321a615e9437d3bad1c 100644
+--- a/lib/index.js
++++ b/lib/index.js
+@@ -19,6 +19,7 @@
+ 
+ import { homedir } from 'node:os';
+ import { join } from 'node:path';
++import { pathToFileURL } from 'node:url';
+ 
+ export const name = 'dsh-thinking-guard';
+ 
+@@ -53,6 +54,18 @@ const DEFAULTS = {
+     sparseMinCount: 5,
+     sparseMinRatio: 0.15,
+     sparseMinTotal: 6,
++    // 退化循环：多尺度 novelty（窗口内 distinct n-gram 占比）。
++    // 覆盖「短句变体交替」型循环 —— 每句都略有变化但整体在原地打转。
++    // 实测（C:/tmp/fx/：40 条真实退化 + 163 条正常 reasoning，流式每 1024 字符检查）：
++    //   单独启用 novelty（窗口 4096、阈值 0.20）：检出 40/40、误报 0.6%、
++    //     中位命中 6144 字符。
++    //   对照现网的 sparse-repeat 一档：检出 40/40、误报 9.2%、中位命中 3072 字符。
++    //   ⇒ novelty 误报低一个数量级，但命中晚一倍。
++    // ⚠ 窗口必须 >= 循环周期：novelty = distinct gram 数 / 窗口内 gram 总数，
++    //   distinct 的上界由「内容池」决定，周期比窗口长时窗口里全是新内容。
++    // ⚠ 窗口 16384 在真实样本上只检出 8/40（样本多不足 16384 字符，窗口永不 ready）。
++    noveltyWindow: 4096,
++    noveltyThreshold: 0.2,
+     // 每累积多少字符做一次退化检查
+     checkEveryChars: 1024,
+     // 是否向会话注入说明
+@@ -62,6 +75,16 @@ const DEFAULTS = {
+ 
+ let createUserMessage = null;
+ 
++// 「实义字符」：至少一个汉字或拉丁字母。
++// 句子级与稀疏级复读这两档都建立在「短句」之上，而句子切分（按 。！？!?.
++// 与换行切）会把编号与标记切成独立短句 —— 有序列表的 3. / 13. / 1.，
++// 勾选标记，表格分隔线等等。这些「句子」在正常输出里天然高频出现，
++// 却完全不含语义重复。实测 163 条正常 reasoning：这两档误报 11 例，
++// 命中样本全部落在上述形态上。
++// 加上这条过滤后：总误报 15 例降到 4 例（9.2% 降到 2.5%），
++// 而 40 条真实退化的检出 40/40 与中位命中位置均不变。
++const MEANINGFUL = /[\p{Script=Han}\p{Script=Latin}]/u;
++
+ // harness 包不在用户插件的解析路径上，按候选顺序显式解析。
+ // 路径由 homedir() / DSH_HOME 推导，不硬编码具体用户名——
+ // 否则安装路径会随包分发，泄露维护者的本机目录结构。
+@@ -76,7 +99,12 @@ const LLM_CANDIDATES = [
+ async function resolveMessageFactory() {
+     for (const candidate of LLM_CANDIDATES) {
+         try {
+-            const mod = await import(candidate);
++            // Windows 上 `import('C:\\...')` 会被当作 URL scheme 而抛
++            // ERR_UNSUPPORTED_ESM_URL_SCHEME：Node 的 ESM loader 只接受
++            // file/data/node 三种 scheme，绝对路径必须转成 file:// URL。
++            // 不修则 resolveMessageFactory 恒为 null：熔断本身仍生效，
++            // 但 notify 与 autoContinue 两条注入全部静默失效（只能看日志）。
++            const mod = await import(pathToFileURL(candidate).href);
+             if (typeof mod.createUserMessage === 'function') return mod.createUserMessage;
+         } catch {
+             // 试下一个候选
+@@ -94,6 +122,8 @@ function mergeConfig(raw) {
+         ['DSH_THINKING_ONLY_MS', 'thinkingOnlyMs'],
+         ['DSH_MAX_THINKING_CHARS', 'maxThinkingChars'],
+         ['DSH_THINKING_REPEAT_THRESHOLD', 'repeatThreshold'],
++        ['DSH_THINKING_NOVELTY_WINDOW', 'noveltyWindow'],
++        ['DSH_THINKING_NOVELTY_THRESHOLD', 'noveltyThreshold'],
+     ];
+     for (const [envKey, cfgKey] of numeric) {
+         const value = Number(env(envKey));
+@@ -122,7 +152,13 @@ export function detectDegenerate(text, cfg) {
+             cursor -= unit;
+         }
+         if (count >= cfg.repeatThreshold) {
+-            return { kind: 'repeat-unit', unit: window.slice(window.length - unit), count };
++            const unitText = window.slice(window.length - unit);
++            // 纯空白单元（缩进、连续空格、空行）不构成「重复短语」。
++            // 判定它会让格式化良好的输出（缩进代码、表格对齐）持续误报：
++            // 实测在 163 个正常 reasoning 样本上造成 3 例误熔断，命中单元均为 "    "。
++            // 跳过并继续向上找更长的非空白单元。
++            if (!/\S/.test(unitText)) continue;
++            return { kind: 'repeat-unit', unit: unitText, count };
+         }
+     }
+ 
+@@ -131,7 +167,7 @@ export function detectDegenerate(text, cfg) {
+     const parts = normalized
+         .split(/(?<=[。！？!?.\n])/)
+         .map((part) => part.trim())
+-        .filter((part) => part.length >= 4);
++        .filter((part) => part.length >= 4 && MEANINGFUL.test(part));
+     if (parts.length >= cfg.sentenceMinParts) {
+         const freq = new Map();
+         for (const part of parts) freq.set(part, (freq.get(part) ?? 0) + 1);
+@@ -161,7 +197,8 @@ export function detectDegenerate(text, cfg) {
+     const shortParts = bigWindow
+         .split(/(?<=[。！？!?.\n])/)
+         .map((part) => part.trim())
+-        .filter((part) => part.length >= 2 && part.length <= cfg.sparseMaxUnit);
++        .filter((part) => part.length >= 2 && part.length <= cfg.sparseMaxUnit
++            && MEANINGFUL.test(part));
+     if (shortParts.length >= cfg.sparseMinTotal) {
+         const shortFreq = new Map();
+         for (const part of shortParts) shortFreq.set(part, (shortFreq.get(part) ?? 0) + 1);
+@@ -197,6 +234,29 @@ export function detectDegenerate(text, cfg) {
+         if (density >= cfg.gramDensity) return { kind: 'gram-density', density: Number(density.toFixed(3)), peak };
+     }
+ 
++    // 5) novelty：大窗口内的 n-gram 新颖度（distinct / total）。
++    //    与上面四档正交：不看某个短语重复了几次，而看整个窗口里
++    //    有多少内容是新出现的。因此对「每句都略有变化」的变体循环有效。
++    //    无状态实现：直接取 text 尾部 noveltyWindow 个字符；窗口未填满
++    //    （请求还很短）时返回 null，不做判断。
++    const nw = cfg.noveltyWindow ?? DEFAULTS.noveltyWindow;
++    const novWindow = (text ?? '').slice(-nw);
++    if (novWindow.length >= nw) {
++        const seen = new Set();
++        const total = novWindow.length - cfg.gramSize + 1;
++        for (let i = 0; i < total; i += 1) seen.add(novWindow.slice(i, i + cfg.gramSize));
++        const novelty = seen.size / total;
++        const limit = cfg.noveltyThreshold ?? DEFAULTS.noveltyThreshold;
++        if (novelty < limit) {
++            return {
++                kind: 'novelty',
++                novelty: Number(novelty.toFixed(4)),
++                window: nw,
++                threshold: limit,
++            };
++        }
++    }
++
+     return null;
+ }
+ 
+@@ -214,6 +274,7 @@ function formatNotice(reason, detail, st, cfg) {
+             if (detail.kind === 'repeat-unit') why = `短语「${detail.unit}」连续重复 ${detail.count} 次`;
+             else if (detail.kind === 'sentence-repeat') why = `句模「${detail.sample}」重复 ${detail.count} 次（占比 ${detail.ratio}）`;
+             else if (detail.kind === 'sparse-repeat') why = `短句「${detail.sample}」在最近 ${cfg.sparseWindow} 字内出现 ${detail.count} 次（稀疏复读）`;
++            else if (detail.kind === 'novelty') why = `最近 ${detail.window} 字的新颖度仅 ${detail.novelty}（低于 ${detail.threshold}）`;
+             else why = `6-gram 密度 ${detail.density}`;
+             return `${head}\n原因：思考内容陷入重复循环（${why}）。${stats}\n${tail}`;
+         }
+@@ -385,8 +446,11 @@ export function apply(ctx, config) {
+                 if (text === '') return;
+                 st.reasoningChars += text.length;
+                 st.sinceCheck += text.length;
+-                // 尾部缓冲按窗口两倍截断，避免无限增长
+-                st.tail = (st.tail + text).slice(-cfg.gramWindow * 2);
++                // 尾部缓冲至少要容纳 novelty 窗口，否则第五档拿不到足够文本。
++                // 取 max(gramWindow*2, noveltyWindow + 512)，512 是留给
++                // gramSize 边界与下一次检查间隙的余量。
++                const tailCap = Math.max(cfg.gramWindow * 2, (cfg.noveltyWindow ?? 4096) + 512);
++                st.tail = (st.tail + text).slice(-tailCap);
+                 break;
+             }
+             case 'text-delta': {
+@@ -396,7 +460,8 @@ export function apply(ctx, config) {
+                     st.lastProgressAt = Date.now();
+                     // 文本同样进入退化窗口：反复输出同段文本也是空转
+                     st.sinceCheck += text.length;
+-                    st.tail = (st.tail + text).slice(-cfg.gramWindow * 2);
++                    const tailCapT = Math.max(cfg.gramWindow * 2, (cfg.noveltyWindow ?? 4096) + 512);
++                    st.tail = (st.tail + text).slice(-tailCapT);
+                     break;   // 落到 evaluate：文本退化同样要检查
+                 }
+                 return;
+@@ -431,5 +496,5 @@ export function apply(ctx, config) {
+ 
+     ctx.effect(() => () => states.clear(), 'thinking-guard.state');
+ 
+-    log(`已启用：thinkingOnlyMs=${cfg.thinkingOnlyMs} maxThinkingChars=${cfg.maxThinkingChars} repeatThreshold=${cfg.repeatThreshold}`);
++    log(`已启用：thinkingOnlyMs=${cfg.thinkingOnlyMs} maxThinkingChars=${cfg.maxThinkingChars} repeatThreshold=${cfg.repeatThreshold} noveltyWindow=${cfg.noveltyWindow} noveltyThreshold=${cfg.noveltyThreshold}`);
+ }

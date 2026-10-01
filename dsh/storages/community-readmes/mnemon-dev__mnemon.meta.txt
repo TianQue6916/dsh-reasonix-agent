@@ -1,0 +1,8 @@
+repo=mnemon-dev/mnemon
+desc=LLM-supervised persistent memory for AI agents — graph-based recall, cross-session knowledge, single binary. Works with DeepSeek Harness, Claude Code, OpenClaw, and any agent runtime.
+stars=596
+pushed=2026-09-24T13:44:47Z
+lang=Go
+license=Apache-2.0
+topics=agent-framework,agent-memory,ai-agent,ai-tools,claude,claude-code,cli,context-window,dsh,dsh-plugin,knowledge-graph,llm-agent,llm-memory,llm-supervised,memory,openclaw,persistent-memory
+homepage=https://github.com/mnemon-dev/mnemon#readme

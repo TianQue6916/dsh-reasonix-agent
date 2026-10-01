@@ -1,0 +1,24 @@
+# verify-anchors.patch.yml — 探针：在 headless profile 上挂两个 anchor，用来验证
+# `.agent-presets/**/*.mjs` 的真实行为（这类文件不参与 cordis 的 `patchReload: live`，
+# 所以只改代码、不重启 dsh 是看不到效果的；这个 overlay 让每次验证都跑在一个真进程上）。
+#
+# 用法（cwd 必须是 ~/.dsh，这样 `--patch` 与 `name` 的相对路径才对得上）：
+#   cd ~/.dsh && dsh --profile headless --patch storages/tools/verify-anchors.patch.yml "<任务>"
+#
+# 为什么选 headless：它的 cordis.patch.yml 没挂 context-gate，所以注入在第一轮就进
+# transcript —— 这是最短的验证路径。session 落在 sessions/--C-Users-27063-.dsh--/。
+#
+# 注意：本文件先前放在 profiles/headless/ 下并带点前缀（.verify-anchors.patch.yml），
+# 已移到这里 —— 避免将来有人把它误当成 profile 自带 patch 而被自动加载。
+# 一次性验证 overlay（用完即删）：给 headless 带上两个 anchor
+# headless 没有 context-gate，所以注入在第一轮就可见 —— 最短验证路径。
+- insert:
+    - id: plan-anchor
+      name: ../../.agent-presets/anchored-standard/plan-anchor.mjs
+      config:
+        enabled: true
+
+    - id: thinking-anchor
+      name: ../../.agent-presets/anchored-standard/thinking-anchor.mjs
+      config:
+        enabled: true

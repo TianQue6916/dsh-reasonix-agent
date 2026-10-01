@@ -1,0 +1,11 @@
+{
+  "id": "mind-try",
+  "created_at": "2026-07-31T11:07:57.1098244Z",
+  "updated_at": "2026-07-31T11:07:57.1098244Z",
+  "scope": "global",
+  "topic_id": "legacy_mind-try_90ef10fa2dd8",
+  "topic_title": "if i=15 print(hell…",
+  "schema_version": 1,
+  "turns": 19,
+  "preview": "if i=15\r\n     print(hello world)\r\nelse\r\n    print(hello)\r\nendif\r\n\r\n# 现在这里将会有一…"
+}

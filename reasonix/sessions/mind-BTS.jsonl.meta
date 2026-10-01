@@ -1,0 +1,11 @@
+{
+  "id": "mind-BTS",
+  "created_at": "2026-06-08T15:55:06.6077605Z",
+  "updated_at": "2026-06-08T15:55:06.6077605Z",
+  "scope": "global",
+  "topic_id": "legacy_mind-BTS_3b6c27b06cda",
+  "topic_title": "class tree =这里将定义一…",
+  "schema_version": 1,
+  "turns": 3,
+  "preview": "class tree =这里将定义一个操作大类\r\n    def init (value)\r\n                list A=[]\r\n   …"
+}

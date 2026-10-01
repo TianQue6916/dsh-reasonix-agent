@@ -1,0 +1,977 @@
+{
+ "ts": "20261001-1413",
+ "items": [
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": ".archive-shadowed-20260804",
+   "group": "disable-broken",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\.archive-shadowed-20260804\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "academic-paper-composer",
+   "group": "keep",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\academic-paper-composer\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "academic-paper-strategist",
+   "group": "keep",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\academic-paper-strategist\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "academic-research-skills",
+   "group": "disable-superseded",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\academic-research-skills\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "academic-writing",
+   "group": "keep",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\academic-writing\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "ai-vibe-writing",
+   "group": "disable-superseded",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\ai-vibe-writing\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "ai-vibe-writing-skills",
+   "group": "disable-broken",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\ai-vibe-writing-skills\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "aigc-master",
+   "group": "keep",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\aigc-master\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "algorithms",
+   "group": "disable-filler",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\algorithms\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "anthropic-skills",
+   "group": "disable-collection",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\anthropic-skills\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "anti-ai-detection",
+   "group": "disable-superseded",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\anti-ai-detection\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "anti-aigc-2026",
+   "group": "disable-superseded",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\anti-aigc-2026\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "antigravity-awesome-skills",
+   "group": "disable-collection",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\antigravity-awesome-skills\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "api-design",
+   "group": "disable-filler",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\api-design\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "backend-api",
+   "group": "disable-filler",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\backend-api\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "baoyu-slide-deck",
+   "group": "disable-superseded",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\baoyu-slide-deck\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "bilingual-ocw-translator",
+   "group": "keep",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\bilingual-ocw-translator\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "bilingual-translator",
+   "group": "disable-broken",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\bilingual-translator\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "caveman",
+   "group": "disable-superseded",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\caveman\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "code-review",
+   "group": "disable-filler",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\code-review\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "context-handoff-protocol",
+   "group": "keep",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\context-handoff-protocol\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "control-main-machine",
+   "group": "keep",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\control-main-machine\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "course-summarizer",
+   "group": "keep",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\course-summarizer\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "data-analysis",
+   "group": "disable-filler",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\data-analysis\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "database",
+   "group": "disable-filler",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\database\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "debugging",
+   "group": "disable-filler",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\debugging\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "detailed-docx",
+   "group": "keep",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\detailed-docx\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "devops",
+   "group": "disable-filler",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\devops\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "diagnose",
+   "group": "keep",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\diagnose\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "direct-mode",
+   "group": "keep",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\direct-mode\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "docker",
+   "group": "disable-filler",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\docker\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "docx",
+   "group": "keep",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\docx\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "dsh-gate",
+   "group": "keep",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\dsh-gate\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "dsh-mode",
+   "group": "keep",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\dsh-mode\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "frontend-design",
+   "group": "keep",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\frontend-design\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "frontend-ui",
+   "group": "disable-filler",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\frontend-ui\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "fullstack-dev",
+   "group": "disable-filler",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\fullstack-dev\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "git-workflow",
+   "group": "disable-filler",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\git-workflow\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "grill-me",
+   "group": "disable-superseded",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\grill-me\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "html-ppt",
+   "group": "disable-superseded",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\html-ppt\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "humanizer",
+   "group": "disable-superseded",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\humanizer\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "kubernetes",
+   "group": "disable-filler",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\kubernetes\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "latex-writing",
+   "group": "keep",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\latex-writing\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "learning-method",
+   "group": "disable-filler",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\learning-method\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "linux-admin",
+   "group": "disable-filler",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\linux-admin\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "mcp-builder",
+   "group": "keep",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\mcp-builder\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "mind-language",
+   "group": "keep",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\mind-language\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "mit-ocw-downloader",
+   "group": "keep",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\mit-ocw-downloader\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "ml-engineering",
+   "group": "disable-filler",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\ml-engineering\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "ocw-lecture-translator",
+   "group": "disable-broken",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\ocw-lecture-translator\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "paper-slide-deck",
+   "group": "disable-superseded",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\paper-slide-deck\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "pdf",
+   "group": "keep",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\pdf\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "planning-with-files",
+   "group": "keep",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\planning-with-files\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "playwright-automation",
+   "group": "keep",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\playwright-automation\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "ppt-master",
+   "group": "keep",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\ppt-master\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "product-thinking",
+   "group": "disable-filler",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\product-thinking\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "prompt-engineering",
+   "group": "disable-filler",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\prompt-engineering\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "python",
+   "group": "disable-filler",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\python\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "react-nextjs",
+   "group": "disable-filler",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\react-nextjs\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "reasonix-power-user",
+   "group": "disable-superseded",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\reasonix-power-user\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "refactoring",
+   "group": "disable-filler",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\refactoring\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "rust",
+   "group": "disable-filler",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\rust\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "security",
+   "group": "disable-filler",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\security\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "skill-creator",
+   "group": "keep",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\skill-creator\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "sre",
+   "group": "disable-filler",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\sre\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "subtitleedit",
+   "group": "keep",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\subtitleedit\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "system-design",
+   "group": "disable-filler",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\system-design\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "tdd",
+   "group": "keep",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\tdd\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "technical-writing",
+   "group": "disable-filler",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\technical-writing\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "testing",
+   "group": "disable-filler",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\testing\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "thinking-modes",
+   "group": "keep",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\thinking-modes\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "tool-lean4",
+   "group": "keep",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\tool-lean4\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "tool-offline-wiki",
+   "group": "keep",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\tool-offline-wiki\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "tool-pocketwiki",
+   "group": "keep",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\tool-pocketwiki\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "trailofbits-security",
+   "group": "disable-filler",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\trailofbits-security\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "typescript",
+   "group": "disable-filler",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\typescript\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "vercel-agent-skills",
+   "group": "disable-collection",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\vercel-agent-skills\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "vue-nuxt",
+   "group": "disable-filler",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\vue-nuxt\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "webapp-testing",
+   "group": "disable-superseded",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\webapp-testing\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "xparse-parser",
+   "group": "keep",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\xparse-parser\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.dsh\\skills",
+   "name": "zoom-out",
+   "group": "disable-superseded",
+   "skill_md": "C:\\Users\\27063\\.dsh\\skills\\zoom-out\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": ".archive-shadowed-20260804",
+   "group": "disable-broken",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\.archive-shadowed-20260804\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "academic-paper-composer",
+   "group": "keep",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\academic-paper-composer\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "academic-paper-strategist",
+   "group": "keep",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\academic-paper-strategist\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "academic-research-skills",
+   "group": "disable-superseded",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\academic-research-skills\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "academic-writing",
+   "group": "keep",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\academic-writing\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "ai-vibe-writing",
+   "group": "disable-superseded",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\ai-vibe-writing\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "ai-vibe-writing-skills",
+   "group": "disable-broken",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\ai-vibe-writing-skills\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "aigc-master",
+   "group": "keep",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\aigc-master\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "algorithms",
+   "group": "disable-filler",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\algorithms\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "anthropic-skills",
+   "group": "disable-collection",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\anthropic-skills\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "anti-ai-detection",
+   "group": "disable-superseded",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\anti-ai-detection\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "anti-aigc-2026",
+   "group": "disable-superseded",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\anti-aigc-2026\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "antigravity-awesome-skills",
+   "group": "disable-collection",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\antigravity-awesome-skills\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "api-design",
+   "group": "disable-filler",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\api-design\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "backend-api",
+   "group": "disable-filler",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\backend-api\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "baoyu-slide-deck",
+   "group": "disable-superseded",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\baoyu-slide-deck\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "bilingual-ocw-translator",
+   "group": "keep",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\bilingual-ocw-translator\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "bilingual-translator",
+   "group": "disable-broken",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\bilingual-translator\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "caveman",
+   "group": "disable-superseded",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\caveman\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "code-review",
+   "group": "disable-filler",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\code-review\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "context-handoff-protocol",
+   "group": "keep",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\context-handoff-protocol\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "control-main-machine",
+   "group": "keep",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\control-main-machine\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "course-summarizer",
+   "group": "keep",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\course-summarizer\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "data-analysis",
+   "group": "disable-filler",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\data-analysis\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "database",
+   "group": "disable-filler",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\database\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "debugging",
+   "group": "disable-filler",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\debugging\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "detailed-docx",
+   "group": "keep",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\detailed-docx\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "devops",
+   "group": "disable-filler",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\devops\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "diagnose",
+   "group": "keep",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\diagnose\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "direct-mode",
+   "group": "keep",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\direct-mode\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "docker",
+   "group": "disable-filler",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\docker\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "docx",
+   "group": "keep",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\docx\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "dsh-gate",
+   "group": "keep",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\dsh-gate\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "dsh-mode",
+   "group": "keep",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\dsh-mode\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "frontend-design",
+   "group": "keep",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\frontend-design\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "frontend-ui",
+   "group": "disable-filler",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\frontend-ui\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "fullstack-dev",
+   "group": "disable-filler",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\fullstack-dev\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "git-workflow",
+   "group": "disable-filler",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\git-workflow\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "grill-me",
+   "group": "disable-superseded",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\grill-me\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "html-ppt",
+   "group": "disable-superseded",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\html-ppt\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "humanizer",
+   "group": "disable-superseded",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\humanizer\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "kubernetes",
+   "group": "disable-filler",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\kubernetes\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "latex-writing",
+   "group": "keep",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\latex-writing\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "learning-method",
+   "group": "disable-filler",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\learning-method\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "linux-admin",
+   "group": "disable-filler",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\linux-admin\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "mcp-builder",
+   "group": "keep",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\mcp-builder\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "mind-language",
+   "group": "keep",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\mind-language\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "mit-ocw-downloader",
+   "group": "keep",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\mit-ocw-downloader\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "ml-engineering",
+   "group": "disable-filler",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\ml-engineering\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "ocw-lecture-translator",
+   "group": "disable-broken",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\ocw-lecture-translator\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "paper-slide-deck",
+   "group": "disable-superseded",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\paper-slide-deck\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "pdf",
+   "group": "keep",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\pdf\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "planning-with-files",
+   "group": "keep",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\planning-with-files\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "playwright-automation",
+   "group": "keep",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\playwright-automation\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "ppt-master",
+   "group": "keep",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\ppt-master\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "product-thinking",
+   "group": "disable-filler",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\product-thinking\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "prompt-engineering",
+   "group": "disable-filler",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\prompt-engineering\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "python",
+   "group": "disable-filler",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\python\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "react-nextjs",
+   "group": "disable-filler",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\react-nextjs\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "reasonix-power-user",
+   "group": "disable-superseded",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\reasonix-power-user\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "refactoring",
+   "group": "disable-filler",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\refactoring\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "rust",
+   "group": "disable-filler",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\rust\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "security",
+   "group": "disable-filler",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\security\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "skill-creator",
+   "group": "keep",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\skill-creator\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "sre",
+   "group": "disable-filler",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\sre\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "subtitleedit",
+   "group": "keep",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\subtitleedit\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "system-design",
+   "group": "disable-filler",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\system-design\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "tdd",
+   "group": "keep",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\tdd\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "technical-writing",
+   "group": "disable-filler",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\technical-writing\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "testing",
+   "group": "disable-filler",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\testing\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "thinking-modes",
+   "group": "keep",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\thinking-modes\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "tool-lean4",
+   "group": "keep",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\tool-lean4\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "tool-offline-wiki",
+   "group": "keep",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\tool-offline-wiki\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "tool-pocketwiki",
+   "group": "keep",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\tool-pocketwiki\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "trailofbits-security",
+   "group": "disable-filler",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\trailofbits-security\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "typescript",
+   "group": "disable-filler",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\typescript\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "vercel-agent-skills",
+   "group": "disable-collection",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\vercel-agent-skills\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "vue-nuxt",
+   "group": "disable-filler",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\vue-nuxt\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "webapp-testing",
+   "group": "disable-superseded",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\webapp-testing\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "xparse-parser",
+   "group": "keep",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\xparse-parser\\SKILL.md"
+  },
+  {
+   "root": "C:\\Users\\27063\\.reasonix\\skills",
+   "name": "zoom-out",
+   "group": "disable-superseded",
+   "skill_md": "C:\\Users\\27063\\.reasonix\\skills\\zoom-out\\SKILL.md"
+  }
+ ]
+}

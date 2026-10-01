@@ -1,0 +1,33 @@
+{
+  "name": "dsh-profile-web",
+  "private": true,
+  "dependencies": {
+    "@lanbaolu/dsh-wechat-bridge": "0.9.1",
+    "@local/dsh-plugin-goat-panel": "file:D:/Toolbox/goat-gateway/dsh-plugin-goat-panel",
+    "@mingozhou/dsh-replay": "^0.4.1",
+    "ds-harness-remote": "^0.4.20",
+    "dsh-deja": "^0.21.3",
+    "dsh-headroom": "git+https://github.com/giter00/dsh-headroom.git",
+    "dsh-mnemon": "^0.5.16",
+    "dsh-plugin-local-search": "link:D:/Toolbox/goat-gateway/dsh-plugin-local-search",
+    "dshmarket": "^1.66.2"
+  },
+  "dsh": {
+    "profile": {
+      "bundles": [
+        "@deepseek-ai/dsh-base",
+        "@deepseek-ai/dsh-web-app",
+        "@local/dsh-plugin-goat-panel",
+        "dsh-deja",
+        "dsh-plugin-local-search",
+        "dsh-headroom",
+        "dsh-mnemon",
+        "dshmarket",
+        "@mingozhou/dsh-replay",
+        "ds-harness-remote",
+        "@lanbaolu/dsh-wechat-bridge"
+      ],
+      "patchReload": "live"
+    }
+  }
+}

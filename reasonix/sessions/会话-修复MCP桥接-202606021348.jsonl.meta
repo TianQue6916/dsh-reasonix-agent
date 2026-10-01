@@ -1,0 +1,11 @@
+{
+  "id": "会话-修复MCP桥接-202606021348",
+  "created_at": "2026-07-31T11:07:58.2977523Z",
+  "updated_at": "2026-07-31T11:07:58.2977523Z",
+  "scope": "global",
+  "topic_id": "legacy_会话-修复MCP桥接-202606021348_b750807e6537",
+  "topic_title": "修复全部的mcp桥接问题",
+  "schema_version": 1,
+  "turns": 7,
+  "preview": "修复全部的mcp桥接问题"
+}

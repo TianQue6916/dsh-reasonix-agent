@@ -1,0 +1,52 @@
+# ============================================================
+#  ~/.dsh 本地版本控制（2026-09-28 建立）
+#  目的：让每一次手写的配置/脚本改动都有 commit 可以回指，
+#        记忆与上下文才能"记得自己 git"。
+#  原则：只跟踪手写的 source of truth；
+#        排除 派生数据 / 运行期状态 / 凭据 / 大文件。
+# ============================================================
+
+# --- 凭据：绝不入库（哪怕这是本地仓库）---
+.credentials.yaml
+.credentials.yml
+.env
+.env.*
+remote/
+**/device.key
+local-search-token
+
+# --- 会话 / 缓存 / 派生物（约 600 MB，全部可重建）---
+sessions/
+cache/
+attachments/
+gate/
+tmp-probe/
+_backup*/
+_archived*/
+_dropped*/
+**/node_modules/
+
+# --- 运行期状态 ---
+logs/
+scratch/
+*.log
+*.zstd
+*.lock
+*.sqlite
+*.db
+*.sqlite3
+storages/session_projcache/
+storages/mnemon-draft.json
+storages/plugins.json
+storages/one.json
+storages/*.out.csv
+
+# --- 备份与冲突副本（repo 本身就是备份，备份的备份无意义）---
+*.bak
+*.bak-*
+*.conflict.*
+*.conflict.*.bak
+
+# --- 单文件大块头 / 历史导入 ---
+settings.yaml.imported
+settings.new.yaml

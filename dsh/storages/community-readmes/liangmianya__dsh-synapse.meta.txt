@@ -1,0 +1,8 @@
+repo=liangmianya/dsh-synapse
+desc=A visual, non-linear conversation workspace plugin for DeepSeek Harness ; A canvas-based session explorer and branching workspace for DeepSeek Harness.
+stars=429
+pushed=2026-08-26T13:12:24Z
+lang=JavaScript
+license=MIT
+topics=deepseek,deepseek-harness,dsh,dsh-plugin,dsh-plugin-market,dsh-plugins,plugin
+homepage=

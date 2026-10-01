@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "revision": 0,
+  "revision_known": false,
+  "content_digest": "f648524c9f2fd61fa600ad74b2fc8e001b31f29898661f7c6a3664a2de7f54a9",
+  "transcript_size": 5580,
+  "message_count": 12,
+  "authored_turns": 6,
+  "entries": [
+    {
+      "index": 0,
+      "offset": 0,
+      "length": 52,
+      "role": "user",
+      "authored_turn": 1,
+      "starts_turn": true
+    },
+    {
+      "index": 1,
+      "offset": 52,
+      "length": 608,
+      "role": "assistant",
+      "authored_turn": 1
+    },
+    {
+      "index": 2,
+      "offset": 660,
+      "length": 60,
+      "role": "user",
+      "authored_turn": 2,
+      "starts_turn": true
+    },
+    {
+      "index": 3,
+      "offset": 720,
+      "length": 1113,
+      "role": "assistant",
+      "authored_turn": 2
+    },
+    {
+      "index": 4,
+      "offset": 1833,
+      "length": 52,
+      "role": "user",
+      "authored_turn": 3,
+      "starts_turn": true
+    },
+    {
+      "index": 5,
+      "offset": 1885,
+      "length": 1353,
+      "role": "assistant",
+      "authored_turn": 3
+    },
+    {
+      "index": 6,
+      "offset": 3238,
+      "length": 48,
+      "role": "user",
+      "authored_turn": 4,
+      "starts_turn": true
+    },
+    {
+      "index": 7,
+      "offset": 3286,
+      "length": 692,
+      "role": "assistant",
+      "authored_turn": 4
+    },
+    {
+      "index": 8,
+      "offset": 3978,
+      "length": 52,
+      "role": "user",
+      "authored_turn": 5,
+      "starts_turn": true
+    },
+    {
+      "index": 9,
+      "offset": 4030,
+      "length": 1117,
+      "role": "assistant",
+      "authored_turn": 5
+    },
+    {
+      "index": 10,
+      "offset": 5147,
+      "length": 33,
+      "role": "user",
+      "authored_turn": 6,
+      "starts_turn": true
+    },
+    {
+      "index": 11,
+      "offset": 5180,
+      "length": 400,
+      "role": "assistant",
+      "authored_turn": 6
+    }
+  ],
+  "updated_at": "2026-08-09T18:46:28.810295035Z"
+}

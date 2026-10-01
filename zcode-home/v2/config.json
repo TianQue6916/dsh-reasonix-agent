@@ -1,0 +1,362 @@
+{
+  "provider": {
+    "builtin:bigmodel": {
+      "name": "Bigmodel - API Key",
+      "kind": "anthropic",
+      "options": {
+        "apiKey": "",
+        "baseURL": "https://open.bigmodel.cn/api/anthropic"
+      },
+      "enabled": false,
+      "source": "custom",
+      "models": {
+        "GLM-5.3": {
+          "reasoning": {
+            "enabled": true,
+            "variants": [
+              "low",
+              "max",
+              "high"
+            ],
+            "defaultVariant": "max"
+          },
+          "limit": {
+            "context": 1000000,
+            "output": 128000
+          },
+          "modalities": {
+            "input": [
+              "text"
+            ],
+            "output": [
+              "text"
+            ]
+          },
+          "zcode": {
+            "modified": false,
+            "priority": 99
+          }
+        },
+        "GLM-5.3-Flash": {
+          "reasoning": {
+            "enabled": true,
+            "variants": [
+              "low",
+              "max",
+              "high"
+            ],
+            "defaultVariant": "max"
+          },
+          "limit": {
+            "context": 1000000,
+            "output": 128000
+          },
+          "modalities": {
+            "input": [
+              "text",
+              "image",
+              "video"
+            ],
+            "output": [
+              "text"
+            ]
+          },
+          "zcode": {
+            "modified": false,
+            "priority": 100
+          }
+        }
+      },
+      "systemDisabledReason": "oauth_provider_inactive"
+    },
+    "builtin:zai": {
+      "name": "Z.ai - API Key",
+      "kind": "anthropic",
+      "options": {
+        "apiKey": "",
+        "baseURL": "https://api.z.ai/api/anthropic",
+        "apiKeyRequired": true
+      },
+      "source": "custom",
+      "models": {
+        "GLM-5.3": {
+          "reasoning": {
+            "enabled": true,
+            "variants": [
+              "low",
+              "max",
+              "high"
+            ],
+            "defaultVariant": "max"
+          },
+          "limit": {
+            "context": 1000000,
+            "output": 128000
+          },
+          "modalities": {
+            "input": [
+              "text"
+            ],
+            "output": [
+              "text"
+            ]
+          },
+          "zcode": {
+            "modified": false,
+            "priority": 99
+          }
+        },
+        "GLM-5.3-Flash": {
+          "reasoning": {
+            "enabled": true,
+            "variants": [
+              "low",
+              "max",
+              "high"
+            ],
+            "defaultVariant": "max"
+          },
+          "limit": {
+            "context": 1000000,
+            "output": 128000
+          },
+          "modalities": {
+            "input": [
+              "text",
+              "image",
+              "video"
+            ],
+            "output": [
+              "text"
+            ]
+          },
+          "zcode": {
+            "modified": false,
+            "priority": 100
+          }
+        }
+      }
+    },
+    "builtin:bigmodel-coding-plan": {
+      "name": "BigModel - Coding Plan",
+      "kind": "anthropic",
+      "options": {
+        "apiKey": "",
+        "baseURL": "https://open.bigmodel.cn/api/anthropic"
+      },
+      "enabled": false,
+      "source": "custom",
+      "models": {
+        "GLM-5.3": {
+          "reasoning": {
+            "enabled": true,
+            "variants": [
+              "low",
+              "max",
+              "high"
+            ],
+            "defaultVariant": "max"
+          },
+          "limit": {
+            "context": 1000000,
+            "output": 128000
+          },
+          "modalities": {
+            "input": [
+              "text"
+            ],
+            "output": [
+              "text"
+            ]
+          },
+          "zcode": {
+            "modified": false,
+            "priority": 99
+          }
+        },
+        "GLM-5.3-Flash": {
+          "reasoning": {
+            "enabled": true,
+            "variants": [
+              "low",
+              "max",
+              "high"
+            ],
+            "defaultVariant": "max"
+          },
+          "limit": {
+            "context": 1000000,
+            "output": 128000
+          },
+          "modalities": {
+            "input": [
+              "text",
+              "image",
+              "video"
+            ],
+            "output": [
+              "text"
+            ]
+          },
+          "zcode": {
+            "modified": false,
+            "priority": 100
+          }
+        }
+      },
+      "systemDisabledReason": "oauth_provider_inactive"
+    },
+    "builtin:bigmodel-start-plan": {
+      "name": "BigModel- Coding Plan",
+      "kind": "anthropic",
+      "options": {
+        "apiKey": "",
+        "baseURL": "https://zcode.z.ai/api/v1/zcode-plan/anthropic"
+      },
+      "enabled": false,
+      "source": "custom",
+      "models": {},
+      "systemDisabledReason": "oauth_provider_inactive"
+    },
+    "builtin:zai-coding-plan": {
+      "name": "Z.ai - Coding Plan",
+      "kind": "anthropic",
+      "options": {
+        "apiKey": "bb31d3c71eae41268b37e0ae6912732c.RHo78tzSDiI16nsh",
+        "baseURL": "https://api.z.ai/api/anthropic",
+        "apiKeyRequired": true
+      },
+      "enabled": false,
+      "source": "custom",
+      "models": {
+        "GLM-5.3": {
+          "reasoning": {
+            "enabled": true,
+            "variants": [
+              "low",
+              "max",
+              "high"
+            ],
+            "defaultVariant": "max"
+          },
+          "limit": {
+            "context": 1000000,
+            "output": 128000
+          },
+          "modalities": {
+            "input": [
+              "text"
+            ],
+            "output": [
+              "text"
+            ]
+          },
+          "zcode": {
+            "modified": false,
+            "priority": 99
+          }
+        },
+        "GLM-5.3-Flash": {
+          "reasoning": {
+            "enabled": true,
+            "variants": [
+              "low",
+              "max",
+              "high"
+            ],
+            "defaultVariant": "max"
+          },
+          "limit": {
+            "context": 1000000,
+            "output": 128000
+          },
+          "modalities": {
+            "input": [
+              "text",
+              "image",
+              "video"
+            ],
+            "output": [
+              "text"
+            ]
+          },
+          "zcode": {
+            "modified": false,
+            "priority": 100
+          }
+        }
+      },
+      "systemDisabledReason": "coding_plan_not_entitled"
+    },
+    "builtin:zai-start-plan": {
+      "name": "Z.ai - Coding Plan",
+      "kind": "anthropic",
+      "options": {
+        "apiKey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMzY1ZGUyNWEtZjViYi00ZDVkLTk0M2ItNTY4NzY2ZjA3MjUzIiwic3ViIjoiMzY1ZGUyNWEtZjViYi00ZDVkLTk0M2ItNTY4NzY2ZjA3MjUzIiwiaWF0IjoxNzg3OTkzMzM1fQ.7Zw_7HQsIeBdppEygygvMYS_3oEKJBAMgG-kWgtFO7o",
+        "baseURL": "https://zcode.z.ai/api/v1/zcode-plan/anthropic",
+        "apiKeyRequired": true
+      },
+      "enabled": false,
+      "source": "custom",
+      "models": {
+        "GLM-5.3": {
+          "reasoning": {
+            "enabled": true,
+            "variants": [
+              "low",
+              "max",
+              "high"
+            ],
+            "defaultVariant": "max"
+          },
+          "limit": {
+            "context": 1000000,
+            "output": 128000
+          },
+          "modalities": {
+            "input": [
+              "text"
+            ],
+            "output": [
+              "text"
+            ]
+          },
+          "zcode": {
+            "modified": false,
+            "priority": 99
+          }
+        },
+        "GLM-5.3-Flash": {
+          "reasoning": {
+            "enabled": true,
+            "variants": [
+              "low",
+              "max",
+              "high"
+            ],
+            "defaultVariant": "max"
+          },
+          "limit": {
+            "context": 1000000,
+            "output": 128000
+          },
+          "modalities": {
+            "input": [
+              "text",
+              "image",
+              "video"
+            ],
+            "output": [
+              "text"
+            ]
+          },
+          "zcode": {
+            "modified": false,
+            "priority": 100
+          }
+        }
+      },
+      "systemDisabledReason": "coding_plan_not_entitled"
+    }
+  }
+}

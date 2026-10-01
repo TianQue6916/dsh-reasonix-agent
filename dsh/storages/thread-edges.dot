@@ -1,0 +1,126 @@
+digraph thread_edges {
+  rankdir=LR;
+  node [shape=box,fontsize=10];
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "a400c155-df37-4970-8f8c-1079fa5c5cc9" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "6fdd948e-8bfd-4cba-a815-b6df92e4c945" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "cfa4d386-3bc1-4ce1-9056-436fc87f0c2a" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "9e84b0f1-e232-4629-9d5e-3a3c0e7e47de" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "66b3b4ab-12e7-4fe5-99f9-cb63ad0fd638" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "session-e6237262-fa87-413f-9f2a-b2d93935c811" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "05554f8f-6e59-4a16-8d86-50c826ae7d97" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "8c9ca6b8-1cc4-471b-a458-f86d3655d46a" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "4b33f68a-c052-4a61-be1d-242567f86785" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "874ccdcd-c85e-4ef5-a003-1e1ef4e203dc" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "b0d3af62-0a2d-4171-95bd-102e247db677" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "cc102912-62ef-4eaa-8124-1743113563fb" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "ed0c428f-dd12-42d7-98c9-0436719c414c" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "13189afd-2dfc-4e1c-aefb-b9c2fe15fd6f" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "dd9e1277-2e43-42aa-9093-e4c59bfb8ab4" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "c830b4af-cfb2-434b-8b08-3ce486064530" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "6527a5d5-7e74-45a6-8018-75307dd691fb" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "0cf4a7c1-4bf5-4763-8273-f79a45f4ebd2" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "d05f2845-5cd3-441c-9994-7cf56338c74f" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "96916099-9bfd-499c-a83a-350a6d66a12c" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "731a6a15-2fcb-46a0-9565-7be4c1ba8568" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "68026ac5-70ab-4f6c-8ca1-d43c92797617" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "session-75a734d6-f638-4261-8f0e-6a0a4e1714ef" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "ede7b52b-e6ac-4149-bbab-868c29b9a7f9" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "da47da9e-d088-4478-a6fd-0667ec60b141" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "ec8ef782-3f7e-46bc-b168-195c375043ef" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "dfcae2fa-29a1-4c86-81c1-1d3a76f57d18" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "42aec449-4a77-4f5f-92aa-5ff74999e311" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "720698d1-c491-4c88-abdd-2caf7a01bdd2" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "3ad199e5-e8c6-4700-a132-0111fee3c3b7" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "6baedb6d-56dc-4451-81d3-3f7f084ef0fd" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "19778519-14b1-48fc-a34f-a2164c13a047" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "d47e6ee8-04a9-4df2-b91d-f85240d4390a" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "d37f2224-1497-49b1-bf84-50f4a57e03f6" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "9439c3b2-ad83-48d9-bc20-6e3bef4285cf" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "5b3c166a-4ec8-4fb2-85ab-cd862bdc19dd" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "fda3469e-3cb8-4e6e-b537-047bf8c7cca5" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "ed9542f2-47f2-4794-ae86-f10922adcbba" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "19d5a257-f4f2-442c-a05a-294b0e3795b1" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "33891be8-3154-4b33-a5b3-d55e1753babe" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "69cad818-741e-4869-be17-178dbdd4c5b9" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "f075d146-9c68-42cc-bb2b-a4610c63ce57" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "20818ea0-b276-44d1-bbc5-08e38fb284bb" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "7d7bc0ed-5452-4f64-815c-b477075e4abf" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "50cf469b-7212-42dd-be1e-101b6cfd1b38" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "e0d51bdd-7fb0-4e29-b527-79fafa9602f9" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "af499cab-1bea-48a0-a76d-ce96e5061688" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "4eaec36d-2c5a-403f-9b7a-f7740c4d3c42" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "98bdfe21-5762-4646-858c-e6398d59ec84" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "feaf2186-e239-432a-a7f6-7b782f5abc73" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "a400c155-df37-4970-8f8c-1079fa5c5cc9" [color="#2ecc71",penwidth=1.6];
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "6fdd948e-8bfd-4cba-a815-b6df92e4c945" [color="#2ecc71",penwidth=1.6];
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "cfa4d386-3bc1-4ce1-9056-436fc87f0c2a" [color="#2ecc71",penwidth=1.6];
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "9e84b0f1-e232-4629-9d5e-3a3c0e7e47de" [color="#2ecc71",penwidth=1.6];
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "66b3b4ab-12e7-4fe5-99f9-cb63ad0fd638" [color="#2ecc71",penwidth=1.6];
+  "session-e6237262-fa87-413f-9f2a-b2d93935c811" -> "05554f8f-6e59-4a16-8d86-50c826ae7d97" [color="#2ecc71",penwidth=1.6];
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "8c9ca6b8-1cc4-471b-a458-f86d3655d46a" [color="#2ecc71",penwidth=1.6];
+  "4b33f68a-c052-4a61-be1d-242567f86785" -> "874ccdcd-c85e-4ef5-a003-1e1ef4e203dc" [color="#2ecc71",penwidth=1.6];
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "b0d3af62-0a2d-4171-95bd-102e247db677" [color="#2ecc71",penwidth=1.6];
+  "session-e6237262-fa87-413f-9f2a-b2d93935c811" -> "cc102912-62ef-4eaa-8124-1743113563fb" [color="#2ecc71",penwidth=1.6];
+  "ed0c428f-dd12-42d7-98c9-0436719c414c" -> "13189afd-2dfc-4e1c-aefb-b9c2fe15fd6f" [color="#2ecc71",penwidth=1.6];
+  "dd9e1277-2e43-42aa-9093-e4c59bfb8ab4" -> "c830b4af-cfb2-434b-8b08-3ce486064530" [color="#2ecc71",penwidth=1.6];
+  "6527a5d5-7e74-45a6-8018-75307dd691fb" -> "0cf4a7c1-4bf5-4763-8273-f79a45f4ebd2" [color="#2ecc71",penwidth=1.6];
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "d05f2845-5cd3-441c-9994-7cf56338c74f" [color="#2ecc71",penwidth=1.6];
+  "session-e6237262-fa87-413f-9f2a-b2d93935c811" -> "96916099-9bfd-499c-a83a-350a6d66a12c" [color="#2ecc71",penwidth=1.6];
+  "session-e6237262-fa87-413f-9f2a-b2d93935c811" -> "731a6a15-2fcb-46a0-9565-7be4c1ba8568" [color="#2ecc71",penwidth=1.6];
+  "session-e6237262-fa87-413f-9f2a-b2d93935c811" -> "68026ac5-70ab-4f6c-8ca1-d43c92797617" [color="#2ecc71",penwidth=1.6];
+  "session-75a734d6-f638-4261-8f0e-6a0a4e1714ef" -> "ede7b52b-e6ac-4149-bbab-868c29b9a7f9" [color="#2ecc71",penwidth=1.6];
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "da47da9e-d088-4478-a6fd-0667ec60b141" [color="#2ecc71",penwidth=1.6];
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "ec8ef782-3f7e-46bc-b168-195c375043ef" [color="#2ecc71",penwidth=1.6];
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "dfcae2fa-29a1-4c86-81c1-1d3a76f57d18" [color="#2ecc71",penwidth=1.6];
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "42aec449-4a77-4f5f-92aa-5ff74999e311" [color="#2ecc71",penwidth=1.6];
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "720698d1-c491-4c88-abdd-2caf7a01bdd2" [color="#2ecc71",penwidth=1.6];
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "3ad199e5-e8c6-4700-a132-0111fee3c3b7" [color="#2ecc71",penwidth=1.6];
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "6baedb6d-56dc-4451-81d3-3f7f084ef0fd" [color="#2ecc71",penwidth=1.6];
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "19778519-14b1-48fc-a34f-a2164c13a047" [color="#2ecc71",penwidth=1.6];
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "d47e6ee8-04a9-4df2-b91d-f85240d4390a" [color="#2ecc71",penwidth=1.6];
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "d37f2224-1497-49b1-bf84-50f4a57e03f6" [color="#2ecc71",penwidth=1.6];
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "9439c3b2-ad83-48d9-bc20-6e3bef4285cf" [color="#2ecc71",penwidth=1.6];
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "5b3c166a-4ec8-4fb2-85ab-cd862bdc19dd" [color="#2ecc71",penwidth=1.6];
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "fda3469e-3cb8-4e6e-b537-047bf8c7cca5" [color="#2ecc71",penwidth=1.6];
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "ed9542f2-47f2-4794-ae86-f10922adcbba" [color="#2ecc71",penwidth=1.6];
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "19d5a257-f4f2-442c-a05a-294b0e3795b1" [color="#2ecc71",penwidth=1.6];
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "33891be8-3154-4b33-a5b3-d55e1753babe" [color="#2ecc71",penwidth=1.6];
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "69cad818-741e-4869-be17-178dbdd4c5b9" [color="#2ecc71",penwidth=1.6];
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "f075d146-9c68-42cc-bb2b-a4610c63ce57" [color="#2ecc71",penwidth=1.6];
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "20818ea0-b276-44d1-bbc5-08e38fb284bb" [color="#2ecc71",penwidth=1.6];
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "7d7bc0ed-5452-4f64-815c-b477075e4abf" [color="#2ecc71",penwidth=1.6];
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "50cf469b-7212-42dd-be1e-101b6cfd1b38" [color="#2ecc71",penwidth=1.6];
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "e0d51bdd-7fb0-4e29-b527-79fafa9602f9" [color="#2ecc71",penwidth=1.6];
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "af499cab-1bea-48a0-a76d-ce96e5061688" [color="#2ecc71",penwidth=1.6];
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "4eaec36d-2c5a-403f-9b7a-f7740c4d3c42" [color="#2ecc71",penwidth=1.6];
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "98bdfe21-5762-4646-858c-e6398d59ec84" [color="#2ecc71",penwidth=1.6];
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "feaf2186-e239-432a-a7f6-7b782f5abc73" [color="#2ecc71",penwidth=1.6];
+  "w1" [label="workflow
+核验近三天 dsh/reasonix 的 64 条努力记录是否真的成立，并给出可复验手段"];
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "w1";
+  "w2" [label="workflow
+最小可用性探测：确认 agent hook 是否可用"];
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "w2";
+  "w5" [label="workflow
+单组核验探测，定位失败原因"];
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "w5";
+  "a3" [label="workflow:agent
+Run the bash command `echo PROBE_OK` and reply with exactly what it pr", style=dashed];
+  "w2" -> "a3";
+  "a4" [label="workflow:agent
+Reply with exactly: PLAIN_OK", style=dashed];
+  "w2" -> "a4";
+  "a6" [label="subagent
+你在为一台 Windows 11 机器上的 dsh（DeepSeek Harness，npm 包 `@deepseek-ai/dsh`）0.", style=dashed];
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "a6";
+  "a7" [label="subagent
+为 Windows 11 上的 dsh（DeepSeek Harness，`@deepseek-ai/dsh` 0.1.7-rc.2，web", style=dashed];
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "a7";
+  "a8" [label="subagent
+Reply with exactly the word READY and nothing else. Do not use any too", style=dashed];
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "a8";
+  "a9" [label="subagent
+一个农夫有 17 只羊，除了 9 只以外全都跑了，还剩几只？请先在心里推导，然后只回答最终数字。", style=dashed];
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "a9";
+}

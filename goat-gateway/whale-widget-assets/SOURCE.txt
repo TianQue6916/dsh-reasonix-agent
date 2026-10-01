@@ -1,0 +1,3 @@
+﻿来源: https://github.com/MeteorNOX/DeepSeek-Balance-Whale-Widget (MIT 代码 / assets 按 as-is)
+取用日期: 2026-09-24
+用于: goat-tray.ps1 桌面挂件的鲸鱼娘形象（assets/DSniang02.png → assets/whalegirl.png 抠白底）

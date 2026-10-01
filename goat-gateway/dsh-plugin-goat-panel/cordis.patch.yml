@@ -1,0 +1,4 @@
+# GOAT quota panel bundle -- inserts the web UI plugin (session-header quota badge).
+- insert:
+    - id: goat-quota-panel
+      name: '@local/dsh-plugin-goat-panel'

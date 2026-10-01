@@ -1,0 +1,146 @@
+Harness stores:
+  claude       missing   ~\.claude\projects  (0 files)
+  codex        found     ~\.codex;~\Library\Developer\Xcode\CodingAssistant\codex  (0 files, 3 not recognised here)
+  opencode     missing   ~\.local\share\opencode\opencode.db
+  aider        missing   ~\.aider.chat.history.md  (0 files)
+  gemini       missing   ~\.gemini  (0 files)
+  cursor       missing   ~\AppData\Roaming\Cursor\User, ~\.cursor  (0 CLI transcripts)
+  antigravity  missing   ~\.gemini\antigravity*  (0 files)
+  grok         missing   ~\.grok\sessions  (0 files)
+  qwen         missing   ~\.qwen\projects  (0 files)
+  kimi         missing   ~\.kimi-code\sessions  (0 files)
+  goose        missing   ~\AppData\Roaming\Block\goose\data\sessions  (0 legacy files)
+  hermes       missing   ~\.hermes\profiles  (0 stores)
+  cline        missing   ~\.cline\data\sessions  (0 files)
+  roo          missing   VS Code globalStorage rooveterinaryinc.roo-cline  (0 files)
+  kilocode     missing   VS Code globalStorage kilocode.kilo-code  (0 task files)
+  senpi        missing   ~\.senpi\agent\sessions  (0 files)
+  kimchi       missing   ~\.config\kimchi\harness\sessions  (0 files)
+  commandcode  parsed-zero ~\.reasonix\sessions  (115 files, 99 not recognised here, 49 indexed sessions)
+  zcode        found     ~\.zcode\projects;~\.zcode\cli\db\db.sqlite  (0 files, CLI store present, 222 indexed sessions)
+  gjc          missing   ~\.gjc\agent\sessions  (0 files)
+  kiro         missing   ~\.kiro\sessions  (0 CLI files)
+  cherrystudio unplugged CherryStudio/Data/Agents/.claude  (0 files)
+  continue     found     ~\.continue\sessions  (5 files, 5 indexed sessions)
+  pi           missing   ~\.pi\agent\sessions  (0 files)
+  openclaw     missing   ~\.openclaw\agents  (0 files)
+  copilot      found     ~\.copilot\session-state  (1 file, 1 not recognised here, 1 indexed session)
+  copilot-chat found     ~\AppData\Roaming\Code\User  (43 files, 2 indexed sessions, 1 of them shared by two transcripts)
+  omp          missing   ~\.omp\agent\sessions  (0 files)
+  prime        missing   ~\.prime\agent\sessions  (0 files)
+  amp          missing   ~\.local\share\amp\threads  (0 files)
+  codewhale    missing   ~\.codewhale\sessions  (0 files)
+  deepseek     found     ~\.dsh\sessions  (578 files, 572 indexed sessions, 2 of them shared by two transcripts)
+  zed          missing   ~\AppData\Local\Zed\threads\threads.db
+  crush        missing   ~\.local\share\crush\projects.json  (0 stores)
+  deja         missing   ~\AppData\Roaming\deja\notes.jsonl  (notes)
+  warning      commandcode files found but newest parsed to zero
+
+Tools:
+  sqlite3      found (needed for opencode and Cursor IDE stores)
+  git          found (needed for changed-file notes, worktree names and the task signal)
+
+Trust policy:
+  default      no file at ~\.config\deja\policy.json — every origin activates everywhere
+  not recalled */.claude/jobs/* (default)
+
+MCP wiring:
+  claude-code  not wired      guidance missing     ~\.claude.json
+  codex        not wired      guidance missing     ~\.codex\config.toml
+  opencode     config missing guidance missing     ~\.config\opencode\opencode.json
+  cursor       config missing guidance missing     ~\.cursor\mcp.json
+  gemini       config missing guidance missing     ~\.gemini\settings.json
+  antigravity  config missing guidance missing     ~\.gemini\config\mcp_config.json
+  grok         config missing guidance missing     ~\.grok\config.toml
+  qwen         config missing guidance missing     ~\.qwen\settings.json
+  kimi         config missing guidance missing     ~\.kimi-code\mcp.json
+  cline        config missing guidance unsupported ~\.cline\data\settings\cline_mcp_settings.json
+  pi           config missing guidance missing     ~\.pi\agent\mcp.json
+  omp          config missing guidance missing     ~\.omp\agent\mcp.json
+  amp          config missing guidance missing     ~\.config\amp\settings.json
+  prime        config missing guidance missing     ~\.prime\agent\settings.json
+  openclaw     config missing guidance missing     ~\.openclaw\openclaw.json
+  copilot      config missing guidance missing     ~\.copilot\skills\deja-history\SKILL.md
+  vscode       not wired      guidance missing     ~\AppData\Roaming\Code\User\mcp.json
+  hermes       config missing guidance missing     ~\.hermes\config.yaml
+  goose        config missing guidance missing     ~\AppData\Roaming\Block\goose\config\config.yaml
+  continue     not wired      guidance missing     ~\.continue\config.yaml
+  crush        config missing guidance missing     ~\.config\crush\crush.json
+  zed          config missing guidance missing     ~\AppData\Roaming\Zed\settings.json
+  deepseek     config missing guidance missing     ~\.dsh\cordis.patch.yml
+  roo          config missing guidance missing     ~\AppData\Roaming\Code\User\globalStorage\rooveterinaryinc.roo-cline\settings\mcp_settings.json
+  kilocode     config missing guidance missing     ~\AppData\Roaming\Code\User\globalStorage\kilocode.kilo-code\settings\mcp_settings.json
+  kiro         config missing guidance missing     ~\.kiro\settings\mcp.json
+  senpi        config missing guidance missing     ~\.senpi\agent\mcp.json
+  kimchi       config missing guidance unsupported ~\.config\kimchi\harness\mcp.json
+  gjc          config missing guidance missing     ~\.gjc\agent\mcp.json
+  zcode        config missing guidance unsupported ~\.zcode\cli\config.json
+  commandcode  config missing guidance missing     ~\.commandcode\mcp.json
+  cherrystudio config missing guidance missing     ~\.config\deja\cherrystudio-mcp.json
+
+Commands:
+  claude-code  missing        ~\.claude\commands\deja.md
+  opencode     missing        ~\.config\opencode\commands\deja.md
+  cursor       missing        ~\.cursor\commands\deja.md
+  roo          missing        ~\.roo\commands\deja.md
+  kilocode     missing        ~\.config\kilo\commands\deja.md
+  crush        missing        ~\.config\crush\commands\deja.md
+  omp          missing        ~\.omp\agent\commands\deja.md
+  gjc          missing        ~\.gjc\agent\commands\deja.md
+  commandcode  missing        ~\.commandcode\commands\deja.md
+  copilot-chat missing        ~\AppData\Roaming\Code\User\prompts\deja.prompt.md
+  antigravity  missing        ~\.gemini\config\plugins\deja\skills\deja-history\SKILL.md
+  codex        missing        ~\.agents\skills\deja-history\SKILL.md
+  copilot      missing        ~\.copilot\skills\deja-history\SKILL.md
+  gemini       missing        ~\.agents\skills\deja-history\SKILL.md
+  grok         missing        ~\.agents\skills\deja-history\SKILL.md
+  kimi         missing        ~\.agents\skills\deja-history\SKILL.md
+  openclaw     missing        ~\.agents\skills\deja-history\SKILL.md
+  qwen         missing        ~\.agents\skills\deja-history\SKILL.md
+  zed          missing        ~\.agents\skills\deja-history\SKILL.md
+               `skill` means there is no file of deja's to install: the skill is the command there, and each harness spells the invocation its own way
+
+Sync:
+  peers        no other machines yet — `deja sync ssh <host>` once, then `deja sync` keeps them all in step
+
+Hooks:
+  claude-code  missing      ~\.claude\settings.json
+  codex-hook   missing      ~\.codex\hooks.json
+  opencode     missing     ~\.config\opencode\plugins\deja.js
+  cursor       missing     ~\.cursor\hooks.json
+  gemini       missing     ~\.gemini\extensions\deja\hooks\hooks.json
+  qwen         missing     ~\.qwen\settings.json
+  kimi         missing     ~\.kimi-code\config.toml
+  antigravity  missing     ~\.gemini\config\plugins\deja\hooks.json
+  pi           missing     ~\.pi\agent\extensions\deja.ts
+  senpi        missing     ~\.senpi\agent\extensions\deja.ts
+  gjc          missing     ~\.gjc\agent\extensions\deja.ts
+  hermes       missing     ~\.hermes\plugins\deja\__init__.py
+  openclaw     missing     ~\.openclaw\hooks\deja-recall\handler.js
+  cline        missing     ~\.cline\plugins\deja\index.js
+  omp          missing     ~\.omp\agent\extensions\deja\index.js
+  amp          missing     ~\.config\amp\plugins\deja.ts
+  prime        missing     ~\.prime\agent\extensions\deja.ts
+  deepseek     missing     ~\.dsh\plugins\deja\auto.js
+  goose        missing     ~\.agents\plugins\deja\hooks\hooks.json
+  crush        missing     ~\.config\crush\crush.json
+  grok         missing     ~\.grok\hooks\deja.json
+  zcode        missing     ~\.zcode\cli\config.json
+  commandcode  missing     ~\.commandcode\settings.json
+  aider        missing     ~\.config\deja\aider-context.md  (context file — refreshed by `deja aider`, not by aider itself)
+  roo          missing     ~\.agents\skills\deja-history\SKILL.md  (guidance — the agent is told to call recall, not handed it)
+
+Index:
+  location ~\.cache\deja\index.db
+  exclusions 0 active patterns
+  security plaintext on disk — protected by file permissions only, no encryption or access control
+  status   built (size=42.7 MB, updated=2026-09-27 00:11)
+  freshness up to date
+
+Embedding:
+  endpoint   unavailable
+
+Version:
+  current  0.21.2
+  latest   v0.21.2
+  status   up to date

@@ -1,0 +1,233 @@
+{
+  "schemaVersion": 2,
+  "fetchedAt": 1780244486696,
+  "source": "official",
+  "entries": [
+    {
+      "name": "ac.inference.sh/mcp",
+      "title": "inference.sh",
+      "description": "Run 150+ AI apps — image, video, audio, LLMs, 3D and more. Browse, execute, stream results.",
+      "source": "official",
+      "install": {
+        "runtime": "remote",
+        "transport": "streamable-http",
+        "url": "https://sh.inference.ac"
+      }
+    },
+    {
+      "name": "ac.tandem/docs-mcp",
+      "title": "ac.tandem/docs-mcp",
+      "description": "Remote MCP server for Tandem docs, install guides, SDKs, workflows, and agent setup help.",
+      "source": "official",
+      "install": {
+        "runtime": "remote",
+        "transport": "streamable-http",
+        "url": "https://tandem.ac/mcp"
+      }
+    },
+    {
+      "name": "agency.lona/trading",
+      "title": "agency.lona/trading",
+      "description": "AI-powered trading strategy development: backtesting, market data, and portfolio analysis",
+      "source": "official",
+      "install": {
+        "runtime": "remote",
+        "transport": "streamable-http",
+        "url": "https://mcp.lona.agency/mcp"
+      },
+      "homepage": "https://lona.agency"
+    },
+    {
+      "name": "ai.aarna/atars-mcp",
+      "title": "aTars MCP",
+      "description": "Crypto market signals, technical indicators, and sentiment analysis for AI agents.",
+      "source": "official",
+      "install": {
+        "runtime": "remote",
+        "transport": "streamable-http",
+        "url": "https://mcp.aarna.ai/mcp"
+      },
+      "homepage": "https://mcp.aarna.ai/mcp"
+    },
+    {
+      "name": "ai.abmeter/abmeter",
+      "title": "ABMeter",
+      "description": "Feature flagging and A/B testing platform with AI-first experimentation workflows.",
+      "source": "official",
+      "install": {
+        "runtime": "remote",
+        "transport": "streamable-http",
+        "url": "https://mcp.abmeter.ai"
+      },
+      "homepage": "https://abmeter.ai"
+    },
+    {
+      "name": "ai.adadvisor/mcp-server",
+      "title": "AdAdvisor MCP Server",
+      "description": "Query Meta Ads performance data — accounts, campaigns, ad sets, ads, metrics & settings.",
+      "source": "official",
+      "install": {
+        "runtime": "remote",
+        "transport": "streamable-http",
+        "url": "https://api.adadvisor.ai/mcp"
+      },
+      "homepage": "https://www.adadvisor.ai?utm_source=mcp-registry",
+      "iconUrl": "https://app.adadvisor.ai/adadvisor-logo.png"
+    },
+    {
+      "name": "ai.adeu/adeu",
+      "title": "ai.adeu/adeu",
+      "description": "Automated DOCX Redlining Engine",
+      "source": "official",
+      "install": {
+        "runtime": "pypi",
+        "transport": "stdio",
+        "packageId": "adeu",
+        "version": "1.5.2"
+      }
+    },
+    {
+      "name": "ai.adramp/google-ads",
+      "title": "ai.adramp/google-ads",
+      "description": "Google Ads MCP server — manage campaigns, keywords, and metrics.",
+      "source": "official",
+      "install": {
+        "runtime": "remote",
+        "transport": "sse",
+        "url": "https://mcp.adramp.ai/sse"
+      }
+    },
+    {
+      "name": "ai.adweave/meta-ads-mcp",
+      "title": "AdWeave — Meta Ads MCP Server",
+      "description": "Meta Ads MCP server with 47 tools for campaigns, creatives, audiences, and insights.",
+      "source": "official",
+      "install": {
+        "runtime": "remote",
+        "transport": "streamable-http",
+        "url": "https://mcp.adweave.ai/meta-ads-mcp"
+      }
+    },
+    {
+      "name": "ai.agentdm/agentdm",
+      "title": "AgentDM",
+      "description": "Agent-to-agent messaging platform using MCP for cross-model communication.",
+      "source": "official",
+      "install": {
+        "runtime": "remote",
+        "transport": "streamable-http",
+        "url": "https://api.agentdm.ai/api/v1/grid"
+      }
+    },
+    {
+      "name": "ai.agentic-news/mcp",
+      "title": "Agentic News",
+      "description": "AI-powered news intelligence — 21 tools for personalized monitoring, briefings, and semantic search",
+      "source": "official",
+      "install": {
+        "runtime": "remote",
+        "transport": "streamable-http",
+        "url": "https://api.agentic-news.ai/mcp"
+      },
+      "homepage": "https://agentic-news.ai/mcp"
+    },
+    {
+      "name": "ai.agenticshelf/graffeo",
+      "title": "Graffeo Coffee Roasting",
+      "description": "Live MCP catalog for Graffeo Coffee Roasting — North Beach SF specialty coffee since 1935.",
+      "source": "official",
+      "install": {
+        "runtime": "remote",
+        "transport": "streamable-http",
+        "url": "https://api.agenticshelf.ai/m/graffeo/mcp"
+      },
+      "homepage": "https://www.graffeo.com"
+    },
+    {
+      "name": "ai.agenticshelf/mcp",
+      "title": "Agentic Shelf",
+      "description": "Hosted MCP for e-commerce: live product catalog, stock, and pricing for AI agents.",
+      "source": "official",
+      "install": {
+        "runtime": "remote",
+        "transport": "streamable-http",
+        "url": "https://api.agenticshelf.ai/mcp"
+      },
+      "homepage": "https://www.agenticshelf.ai"
+    },
+    {
+      "name": "ai.agenticterminal/directory",
+      "title": "Agentic Terminal Directory",
+      "description": "Verified merchants accepting agentic payments on Lightning/L402/BOLT12/USDT — search, verify, pay.",
+      "source": "official",
+      "install": {
+        "runtime": "remote",
+        "transport": "streamable-http",
+        "url": "https://mcp.agenticterminal.ai/mcp"
+      },
+      "homepage": "https://agenticterminal.ai"
+    },
+    {
+      "name": "ai.agentrapay/agentra",
+      "title": "ai.agentrapay/agentra",
+      "description": "Identity oracle and trust layer for autonomous AI agents. Bidirectional KYA and trust scoring.",
+      "source": "official",
+      "install": {
+        "runtime": "remote",
+        "transport": "sse",
+        "url": "https://api.agentrapay.ai/mcp"
+      }
+    },
+    {
+      "name": "ai.agenttrust/mcp-server",
+      "title": "AgentTrust — Identity & Trust for A2A Agents",
+      "description": "Identity, trust, and A2A orchestration for autonomous AI agents. Official A2A partner.",
+      "source": "official",
+      "install": {
+        "runtime": "npm",
+        "transport": "stdio",
+        "packageId": "@agenttrust/mcp-server",
+        "version": "1.1.1",
+        "requiredEnv": [
+          "AGENTTRUST_API_KEY"
+        ]
+      },
+      "homepage": "https://agenttrust.ai",
+      "iconUrl": "https://agenttrust.ai/icon.png"
+    },
+    {
+      "name": "ai.aliengiraffe/spotdb",
+      "title": "ai.aliengiraffe/spotdb",
+      "description": "Ephemeral data sandbox for AI workflows with guardrails and security",
+      "source": "official"
+    },
+    {
+      "name": "ai.alpic.mcp/alpic-mcp",
+      "title": "Alpic",
+      "description": "Manage your projects, debug deployment, and check analytics for any MCP server you host with Alpic",
+      "source": "official",
+      "install": {
+        "runtime": "remote",
+        "transport": "streamable-http",
+        "url": "https://mcp.alpic.ai"
+      },
+      "homepage": "https://alpic.ai",
+      "iconUrl": "https://raw.githubusercontent.com/alpic-ai/public-assets/refs/heads/main/alpic%20logo%20light%20200x200.png"
+    },
+    {
+      "name": "ai.alpic.test/test-mcp-server",
+      "title": "ai.alpic.test/test-mcp-server",
+      "description": "Alpic Test MCP Server - great server!",
+      "source": "official",
+      "install": {
+        "runtime": "remote",
+        "transport": "streamable-http",
+        "url": "https://test.alpic.ai/"
+      }
+    }
+  ],
+  "pagination": {
+    "pagesLoaded": 1,
+    "nextCursor": "ai.alpic.test/test-mcp-server:0.0.1"
+  }
+}

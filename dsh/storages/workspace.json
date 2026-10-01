@@ -1,0 +1,86 @@
+{
+  "unit": {
+    "name": "workspace",
+    "version": 2
+  },
+  "global": {
+    "initialized": true,
+    "workspaceIds": [
+      "20fb2971-702e-47e1-bd06-a877a416f9ab",
+      "6997a74e-f398-4a24-91da-0ca9ed872133"
+    ],
+    "archivedSessionIds": [],
+    "pinnedSessionIds": [
+      "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144"
+    ]
+  },
+  "tables": {
+    "workspaces": {
+      "6997a74e-f398-4a24-91da-0ca9ed872133": {
+        "path": "C:\\Users\\27063",
+        "title": "27063",
+        "sessionIds": [
+          "session-9d88e9c6-1e4f-4410-bba7-e166f46eeb53",
+          "session-a6288d3e-debd-4b5a-b3cf-f555d705537a",
+          "session-9dc3824f-a2ff-46b2-b886-2970eafb181c",
+          "session-69af6e5e-a542-4683-b88a-2fcbf816c198",
+          "session-33713e9e-e49b-40b1-8034-13babd31f3d0",
+          "session-93c8a0ac-8f28-4b16-9812-80a288fa93b5",
+          "session-10ca9bfe-4689-474d-8d7f-cc9c8d8abe30",
+          "session-53a2334b-ad19-4b07-8138-c79333e91f5e",
+          "session-3a65fe96-6bd4-4f66-988a-04414dd2af48",
+          "session-cc0b9bc8-8723-45d5-8a50-116026978798",
+          "session-5f6dc578-b76d-4fd1-ba53-91bd291d0854",
+          "session-f391ca6e-2470-42e1-9eef-eb011cc3bcb5",
+          "session-8ac3c6dd-f1ee-41e8-b9f6-122552a661b6",
+          "session-97b36472-307c-4328-babf-1141ae17c0c1",
+          "session-cfdfbfc3-5546-480b-97b5-83390987c5a6",
+          "session-75e8d503-2ea2-446e-9140-3dc6a2162255",
+          "session-b652b7bc-a2d4-430b-9fa4-3978fd8b2928",
+          "session-7071d758-4956-4e01-9835-08eabe229c7f",
+          "session-181c755f-6f29-479f-b05e-069396abbc1c",
+          "session-80ecd846-4122-45b4-aab0-0961c6ec0160",
+          "session-28d5d739-1bde-4548-801d-749948cc8aec",
+          "session-530c58a8-eccd-4ca0-b2d8-cd4a44f366a2",
+          "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144",
+          "session-e6237262-fa87-413f-9f2a-b2d93935c811",
+          "session-75a734d6-f638-4261-8f0e-6a0a4e1714ef",
+          "session-f3aa043f-249a-4674-8755-863c5ac84fbb",
+          "session-488edcbf-227d-4eed-bbb1-7b25dcdd44b6",
+          "session-42cb9491-0952-422e-8aae-68e3b86f112d",
+          "session-b95a0988-8750-41ab-b47e-dcfc86dc1468",
+          "session-a6a281f1-b811-4ad2-95e9-02a045513a9b",
+          "session-a6444565-68f0-437e-8d92-955d3524b285",
+          "session-bedf6077-8a3e-4a49-90ce-8b98349b52f9",
+          "session-40f026ed-6f62-4b9a-a031-3c1994f7f150",
+          "session-06bd5f22-5b52-482a-8bc6-6de5e0363b12",
+          "session-b8b06648-979e-4d33-b078-b7488f13ca2f",
+          "session-8e3ec71e-1752-4bd5-821e-4820b9c17b1e",
+          "session-e04fc5f7-2399-4dce-9400-8e08dabcc237",
+          "session-2384dd7a-7f74-4ec7-a86b-605146ab5760",
+          "session-fe9f4944-5725-45cc-b1ec-5563b0e84b5a",
+          "session-49848d04-3038-4992-a54d-9e82fc6969d8",
+          "session-a57e11b1-544d-49c9-973d-e549ab0efdb0",
+          "session-33af0692-e7c4-435a-b19e-20aa649023b7",
+          "session-8fe87f2b-646d-46c7-8a52-8f520c5e8613",
+          "session-e83cd0dd-f774-4ff4-b54e-05bfa8501a61",
+          "session-c2beb22c-9a79-4dc5-b92c-5560405aa66a",
+          "session-6779d630-abd5-43ed-a591-ecaa78c29e6a",
+          "session-c26e4c02-9c12-4d79-9b76-73761c9bf92e"
+        ],
+        "createdAt": "2026-08-15T14:14:04.871Z",
+        "updatedAt": "2026-10-01T14:00:29.677Z"
+      },
+      "20fb2971-702e-47e1-bd06-a877a416f9ab": {
+        "path": "C:\\Users\\27063\\Documents\\DSH",
+        "title": "微信桥接",
+        "sessionIds": [
+          "session-fc131eb5-14c6-448c-a6cb-981bd4fb7c90",
+          "wb-cf29d3b9eb6f-im-bot--o9cq802gbUa4ccZXIxmu2hVNkvYc-im-wechat-1790760671221-3a72dfb1"
+        ],
+        "createdAt": "2026-09-30T09:31:11.250Z",
+        "updatedAt": "2026-09-30T10:15:59.521Z"
+      }
+    }
+  }
+}

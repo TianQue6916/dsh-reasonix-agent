@@ -1,0 +1,14 @@
+{
+  "name": "@local/dsh-plugin-goat-quota",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Expose Command Code GOAT quota (5h / weekly / monthly) as a dsh tool",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/dsh-tools": "*"
+  }
+}

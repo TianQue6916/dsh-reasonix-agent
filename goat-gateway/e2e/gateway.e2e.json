@@ -1,0 +1,25 @@
+{
+  "listen": {
+    "host": "127.0.0.1",
+    "port": 8897
+  },
+  "upstream": {
+    "origin": "http://127.0.0.1:8896",
+    "basePath": "/provider/v1",
+    "localPrefix": "/v1",
+    "firstChunkTimeoutMs": 10000,
+    "streamIdleTimeoutMs": 10000
+  },
+  "strategy": "session",
+  "logKeepDays": 1,
+  "retryDelayMs": 50,
+  "attemptsPerKey": 1,
+  "maxAttemptsPerRequest": 1,
+  "quotaSync": {
+    "enabled": false
+  },
+  "loopGuard": {
+    "enabled": true,
+    "mode": "shadow"
+  }
+}

@@ -1,0 +1,8 @@
+repo=giter00/dsh-headroom
+desc=deepSeek harness上下文压缩工具
+stars=13
+pushed=2026-08-23T19:20:08Z
+lang=JavaScript
+license=Apache-2.0
+topics=deepseek-harness-plugin,dsh-plugin,dsh-plugins
+homepage=

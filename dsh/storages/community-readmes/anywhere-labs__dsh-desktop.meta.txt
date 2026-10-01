@@ -1,0 +1,8 @@
+repo=anywhere-labs/dsh-desktop
+desc=为 DeepSeek Harness (DSH) 插件生态打造的现代化桌面端解决方案。万物皆「插件」，桌面本身也是「插件」。
+stars=29064
+pushed=2026-09-25T22:27:38Z
+lang=TypeScript
+license=MIT
+topics=cordis,cordis-plugin,deepseek,deepseek-harness,desktop,dsh,dsh-plugin,dsh-plugin-desktop
+homepage=https://dshdesktop.cn

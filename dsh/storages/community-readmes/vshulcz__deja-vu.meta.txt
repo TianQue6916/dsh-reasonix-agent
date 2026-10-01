@@ -1,0 +1,8 @@
+repo=vshulcz/deja-vu
+desc=One memory shared by Claude Code, Codex, Cursor, Copilot CLI, OpenClaw and 29 more coding agents, built from the session history already on disk. A fix found in one agent comes back in any of them, including months of sessions from before you installed it. No LLM, no embeddings, one local Go binary.
+stars=1037
+pushed=2026-09-26T15:43:55Z
+lang=Go
+license=MIT
+topics=agent-memory,agents,ai,claude-code,claude-code-hooks,claude-code-plugins,codex,coding-agents,deepseek-harness,dsh-plugin,gemini-cli-extension,genai,kimi-code,mcp,mcp-server,memory,opencode,qwen-code,session-history,zed-extension
+homepage=https://vshulcz.github.io/deja-vu/

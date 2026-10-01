@@ -1,0 +1,58 @@
+{
+  "recentProjects": [],
+  "locale": "zh-CN",
+  "localePreference": "zh-CN",
+  "terminalInheritSystemProfile": true,
+  "embeddedBrowserAllowInsecureCertificates": false,
+  "computerUseComposerEntryHidden": true,
+  "taskAutoArchiveEnabled": false,
+  "taskAutoArchiveOlderThanDays": 7,
+  "closeToTrayOnWindows": true,
+  "closeToTrayOnWindowsMigrationInitialized": true,
+  "keepAwakeWhileRunning": false,
+  "desktopWindowSize": {
+    "width": 1230,
+    "height": 770,
+    "maximized": true
+  },
+  "desktopChromiumHardwareAccelerationEnabled": true,
+  "messageStreamShowReasoning": true,
+  "messageStreamShowReasoningMigrationInitialized": true,
+  "messageStreamShowTodos": true,
+  "toolGroupingExploreEnabled": true,
+  "toolGroupingTerminalEnabled": true,
+  "toolGroupingChangesEnabled": false,
+  "zcodeInteractionBehavior": "queue",
+  "askUserQuestionAutoResolutionEnabled": true,
+  "modelIoFullRetentionEnabled": false,
+  "optimizeAgentExperienceEnabled": true,
+  "optimizeAgentExperienceMigrationInitialized": true,
+  "enabledBuiltinAgentCliProviders": [
+    "glm"
+  ],
+  "modelProviderFamilyModes": {
+    "zai": "oauth"
+  },
+  "modelProviderFamilySelectedKeys": {
+    "zai": "coding-plan:builtin:zai-coding-plan"
+  },
+  "providerFamilyDomain": "zai",
+  "providerFamilyDomainUpdatedAt": 1787993333826,
+  "providerFamilyDomainMigrated": true,
+  "repoSnapshotIndexingEnabled": false,
+  "instantGrepIndexingEnabled": false,
+  "nativeSearchEnhancementsEnabled": true,
+  "memoryEnabled": false,
+  "lastWorkspaceSession": [
+    {
+      "kind": "local",
+      "workspacePath": "C:\\Users\\27063\\.zcode\\workspace\\default",
+      "workspacePurpose": "conversation"
+    }
+  ],
+  "lastActiveTabIndex": 0,
+  "receivePreviewUpdates": false,
+  "autoDownloadAndInstallUpdates": false,
+  "skippedElectronUpdateVersions": {},
+  "settingsSyncFirstRunPromptHandled": true
+}

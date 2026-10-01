@@ -1,0 +1,8 @@
+repo=EIGHTfs/dsh-skill-scoreboard
+desc=DSH skill 使用记分板：监听 tools/result，按会话去重自动累计 skill 加载次数。
+stars=1
+pushed=2026-09-19T13:10:47Z
+lang=HTML
+license=
+topics=dsh-plugin
+homepage=https://github.com/EIGHTfs/dsh-skill-scoreboard

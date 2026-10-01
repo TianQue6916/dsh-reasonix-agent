@@ -1,0 +1,1 @@
+{"type":"object","properties":{"char":{"type":"string"},"stroke":{"type":"integer"}},"required":["char","stroke"]}

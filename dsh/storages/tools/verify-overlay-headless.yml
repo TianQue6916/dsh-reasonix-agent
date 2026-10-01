@@ -1,0 +1,13 @@
+# Non-destructive verification overlay (2026-09-27).
+# Applied with: dsh headless --patch <this file> "<task>"
+# Purpose: prove the dev-tool-search unlock-validation fix and the memory tools
+# work in a FRESH process, without touching the real headless profile.
+- insert:
+    - id: dev-tool-search
+      name: ../../.agent-presets/anchored-standard/dev-tool-search.mjs
+
+    - id: skill-search
+      name: ../../.agent-presets/anchored-standard/skill-search.mjs
+
+    - id: memory-reasonix
+      name: ../../.agent-presets/anchored-standard/memory.mjs

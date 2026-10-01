@@ -1,0 +1,322 @@
+[
+ {
+  "name": "2026-09-23-第三阶段-视觉核对扫描件-按真实页码重排-空-docx-骨架合并为章节索引-wps-脚本交付-kdocs-pull-ps1",
+  "mtime": "09-24 20:26",
+  "desc": "2026-09-23 第三阶段：视觉核对扫描件、按真实页码重排、空 docx 骨架合并为章节索引、WPS 脚本交付（kdocs-pull.ps1）"
+ },
+ {
+  "name": "2026-09-23-课程仓库整理阶段-cpplearning-迁至-codetry-重复文件清理-名字与内容不符修正-information-theory-清理",
+  "mtime": "09-24 20:26",
+  "desc": "2026-09-23 课程仓库整理阶段：CppLearning 迁至 codetry、重复文件清理、名字与内容不符修正、Information-Theory 清理"
+ },
+ {
+  "name": "commandcode-goat-额度查询端点与看板工具",
+  "mtime": "09-24 20:26",
+  "desc": "Command Code GOAT 套餐额度（5小时/周/月）的官方端点与本地看板工具 goat-usage.ps1（2026-09-23 实测打通）"
+ },
+ {
+  "name": "dsh-调用-通知丢失-频繁失败-根因与修复-2026-09-11-实测锁定",
+  "mtime": "09-24 20:27",
+  "desc": "dsh 调用「通知丢失+频繁失败」根因与修复（2026-09-11 实测锁定）"
+ },
+ {
+  "name": "github-public-备份泄露-goat-key-事件与根因修复-2026-09-23",
+  "mtime": "09-24 20:27",
+  "desc": "user_ 前缀的 Command Code GOAT key 曾明文躺在 public 仓库约 3 个月：两个根因（脱敏正则不覆盖 user_ 前缀 + scrub 只扫变更文件）、已完成的修复与历史清理、以及待轮换 key"
+ },
+ {
+  "name": "meta-secret-redaction-select-string-pitfall",
+  "mtime": "09-24 20:27",
+  "desc": "教训：用 Select-String 校验含密钥的配置文件会打印整个匹配行，导致 API key 明文进入会话记录（2026-09-20 对 SE Settings.json 的真实案例）；含正确脱敏写法与事后补救"
+ },
+ {
+  "name": "reasonix-global-workspace-index-cleanup-20260921",
+  "mtime": "09-24 20:27",
+  "desc": "global-workspace 两轮清理（index 22,367→0 未提交）使 Merge-Back 面板两条阻断项归零；定位第三条=活动会话、清理段=30 个 .reasonix/tasks 日志（ignored 也阻止），并指出该 worktree 本就无事可合并"
+ },
+ {
+  "name": "reasonix-launcher-blocked-by-session0-name-collision",
+  "mtime": "09-24 20:27",
+  "desc": "诊断并修复「点任务栏/桌面 Reasonix 图标毫无反应」：根因是 Session 0 里 bot 的 reasonix.exe 与桌面版 launcher 撞镜像名，launcher 无法确认其归属而拒绝启动；已用改名隔离（reasonix-bot.exe）治本"
+ },
+ {
+  "name": "reasonix-project-toml-sandbox-path-pitfall",
+  "mtime": "09-24 20:27",
+  "desc": "read_file 总是失败（FS_NOT_FOUND）的根因与修复：工作区项目级 reasonix.toml 用 ${HOME} 跨平台路径，Windows 下沙箱 canonicalize 失败导致写入落到盘符根、回读失败；含双机共享配置铁律与 26 个 staged 文件含密钥的遗留风险"
+ },
+ {
+  "name": "reasonix-workspace-autocommit-verification-20260923",
+  "mtime": "09-24 20:27",
+  "desc": "检测确认：本对话「工作区占用/Merge-Back」问题的真正修复体是 reasonix-autocommit.ps1 + 每 2 分钟计划任务（非 dsh，排他证据=9/21 dsh 最晚 10:44），并纠正我上轮「用排除换 porcelain=0」的方向性错误"
+ },
+ {
+  "name": "reasonix-workspace-doctor-toolkit",
+  "mtime": "09-24 20:27",
+  "desc": "交付 reasonix-ops 工具包（脚本+README+自动触发技能）：定位并可逆修复「工作区被占用/Merge-Back 报错」四条阻断项，含两个脚本坑与编码铁律"
+ },
+ {
+  "name": "reasonix-workspace-lease-official-solutions",
+  "mtime": "09-24 20:27",
+  "desc": "Reasonix 工作区占用：官方机制原文 + 三类型区分 + 解法清单 + 本机实测，并勘误 8/16 记忆里「写工作区外即不争锁/后台化即释放锁」"
+ },
+ {
+  "name": "reasonix-workspace-write-lease-mechanism",
+  "mtime": "09-24 20:27",
+  "desc": "Reasonix 写锁的真实粒度是「工作区」不是文件；冲突根因 = 机制设计 + Windows 侧 global-workspace 从未瘦身（23,506 文件 / 22,800 git dirty）"
+ },
+ {
+  "name": "share-file-with-user-via-wps",
+  "mtime": "09-24 20:27",
+  "desc": "用户指示：文件就绪后直接用 WPS 打开即可（WPS 自动云同步到手机），不要上传云盘/起 HTTP 服务；微信通道实测不支持发送文件消息"
+ },
+ {
+  "name": "skill-安装-无限四代载荷存档",
+  "mtime": "09-24 20:27",
+  "desc": "无限四代事件全档案（已全部卸载）：用户诉求演变 10 步、升级与拒绝边界、模型输出四层模型、`✗ 购买授权` 的真实含义（评分器 fallback）、Reasonix 技能落点与官方装卸工具"
+ },
+ {
+  "name": "tool-dsh-015-upgrade-20260920",
+  "mtime": "09-24 20:27",
+  "desc": "dsh 0.1.1-rc.2 → 0.1.5-rc.2 升级全过程：备份、兼容性核查、四处必改（str_replace_editor 补挂 / sessionEvents 兼容 / persona text→prefix / junction 重建）、插件面核查、headless 与 web preset 双路径端到端验证、回滚法、双机待办"
+ },
+ {
+  "name": "tool-dsh-infinite-gen4-web-install",
+  "mtime": "09-24 20:27",
+  "desc": "dsh-infinite-gen-4 插件在 web profile 的完整装卸档案：2026-09-23 已完整卸载（dump 长度回到 baseline 17709）、卸载／安装七步、junction 坑、可逆开关机制、三重验证法、代码审阅结论"
+ },
+ {
+  "name": "tool-dsh-maxtokens-config-20260920",
+  "mtime": "09-24 20:27",
+  "desc": "dsh 输出上限（maxTokens）配置：adapter 默认 32768 的来源、已设 defaultMaxTokens 65536 + 4 模型 262144、GOAT 各模型实测接受度表、验证方法与探测命令、以及放开后的长输出实测（中度成功 / 超长遇 TRANSPORT 中断）"
+ },
+ {
+  "name": "tool-dsh-stream-interrupt-retry-20260920",
+  "mtime": "09-24 20:27",
+  "desc": "'dsh 流式中断（TRANSPORT / Stream ended without finish_reason）的调查与处置：两档重试策略（normal 8 次 vs always 无上限）、-AlwaysRetry 开关落地与验证、上游 issue #1263/#2143/#373/#978 与修复 commit 7e95a00、headless 无 resume 的硬限制、超长单次生成两次对照实测'"
+ },
+ {
+  "name": "tool-github-daily-backup-reasonix-dsh-zcode-trae",
+  "mtime": "09-24 20:27",
+  "desc": "建成每次自动备份到 GitHub 的完整机制：reasonix 仓库（子目录 reasonix/dsh/zcode/trae）+ tool-box 仓库（reasonix-ops 脚本）+ 每日 23:30 计划任务，含强制脱敏与 3 个真实脚本 bug 的修法"
+ },
+ {
+  "name": "tool-ocs-ai-tiku-gateway-20260922",
+  "mtime": "09-24 20:27",
+  "desc": "OCS 网课助手的题库配置已指向本地 AI 网关（127.0.0.1:8899，接 Command Code GOAT），含架构、协议细节、OCS elevated 坑、回滚与自启方式"
+ },
+ {
+  "name": "tool-ocs-ai-tiku-gateway-keepalive-20260922",
+  "mtime": "09-24 20:27",
+  "desc": "OCS AI 题库网关「用一会儿突然连接失败」的根因排查（非杀软、非逻辑 bug）+ 计划任务与 1 分钟看门狗保活加固与实测验收"
+ },
+ {
+  "name": "tool-subtitleedit-goat-api-20260920",
+  "mtime": "09-24 20:27",
+  "desc": "SubtitleEdit 翻译引擎已改指 Command Code GOAT：Settings.json 三个字段（DeepSeekUrl/Model/ApiKey）、端到端实测数据、reasoning 占比与速度对比、两个验证坑（.zh-CN.srt 产物名 + PS 5.1 编码 mojibake）、改法与回退"
+ },
+ {
+  "name": "weixin-bot-goat-provider-402-fix",
+  "mtime": "09-24 20:27",
+  "desc": "微信 bot 回复出错（HTTP 402）根因与修复：reasonix-bot home 的 config.toml 仍是官方 DeepSeek provider 且官方已欠费 -0.22；已补 COMMANDCODE_API_KEY 并切到 commandcode-goat（两处配置面需同步的教训）"
+ },
+ {
+  "name": "weixin-bot-turn-hang-and-constrained-bash",
+  "mtime": "09-24 20:27",
+  "desc": "微信 bot 「回复不完整」排查：turn 卡死（无网络/无子进程/无事件三重证据）+ bot 的 bash 在 workspace-write 沙箱下被锁 ConstrainedLanguage；已改 tool_approval_mode=danger-full-access 并重启"
+ },
+ {
+  "name": "wps-知识库-kdocs-wiki-完整抓取与下载方法-2026-09-23-课程资料推-github-进度",
+  "mtime": "09-24 20:27",
+  "desc": "WPS 知识库(kdocs wiki)完整抓取与下载方法 + 2026-09-23 课程资料推 GitHub 进度"
+ },
+ {
+  "name": "扫描件整理方法论-按章合并成册-带书签-dhash-去重-ocr-页码不可用于排序-名字与内容不符需抽查",
+  "mtime": "09-24 20:27",
+  "desc": "扫描件整理方法论：按章合并成册（带书签）+ dHash 去重；OCR 页码不可用于排序；名字与内容不符需抽查"
+ },
+ {
+  "name": "空壳-word-占位文档识别与清理-判定标准-6-042j-547-5-文件-md5-不同-内容不同的教训",
+  "mtime": "09-24 20:27",
+  "desc": "空壳 Word 占位文档识别与清理：判定标准、6.042J 547→5 文件、MD5 不同≠内容不同的教训"
+ },
+ {
+  "name": "鲸鱼娘-goat-额度桌面挂件",
+  "mtime": "09-24 20:27",
+  "desc": "鲸鱼娘三人组挂件 v3：改分层窗口实现真透明、尺寸缩到 400x228、三人统一为 openpet-ai-girls 画风（含 6 个 DPI/截屏/编译踩坑）"
+ },
+ {
+  "name": "2026-09-25-linux-天阙机大同步-reasonix-139-dsh-015rc3-网关落地",
+  "mtime": "09-25 21:35",
+  "desc": "长期离线的 Linux 天阙机一次性对齐 Windows 主力机：reasonix 升 1.39.0（含桌面）、dsh 升 0.1.5-rc.3 并打四处补丁、部署 goat-gateway（systemd user）、config/settings 指向网关、memory+skills 合并、课程文件增量、13 个课程仓库 clone；含 dsh 启动失败的根因（cordis 版本钉死 4.0.2）"
+ },
+ {
+  "name": "dsh-版本线快照-20260925",
+  "mtime": "09-25 21:35",
+  "desc": "dsh 版本现状快照（2026-09-25 实查 npm+GitHub+官网）：无正式版/GA（官网自称开发者预览版），npm latest=0.1.5-rc.3 / next=0.1.7-rc.2，本机 0.1.5-rc.2；桌面端存在于 apps/desktop（Electron，0.1.7-rc.2，仅 mac/win，无公开下载入口）"
+ },
+ {
+  "name": "goat-额度-mcp-植入-reasonix-与-dsh",
+  "mtime": "09-25 21:35",
+  "desc": "把 GOAT 额度以 MCP 方式植入 Reasonix 与 dsh（一个零依赖 stdio server 两边共用）：配置命令、工具名规则、preset 收窄与并发缓存两个大坑"
+ },
+ {
+  "name": "goat-额度-窗口标题方案与时间含义-2026-09-25",
+  "mtime": "09-25 21:35",
+  "desc": "解释额度面板里的三个时间（数据时间 / 5h 与周的窗口重置，滚动窗口非固定时刻）；并记录 Reasonix 侧“窗口标题显示额度”的落地方案（goat-title.ps1 + GoatTitle 计划任务，实测不被 Electron 还原）"
+ },
+ {
+  "name": "goat-额度内置面板-dsh-web-ui-插件与-reasonix-hook",
+  "mtime": "09-25 21:35",
+  "desc": "把 GOAT 额度做成 dsh web 内置面板（UI 插件 + 局部 HTTP 端点），并给 Reasonix 配 hook + MCP；含 dsh 插件安装三坑与无头验证法"
+ },
+ {
+  "name": "goat-额度面板事故复盘-hook-timeout-单位与-dsh-刷新验证",
+  "mtime": "09-25 21:35",
+  "desc": "两个事故的根因与修法：Reasonix hook 的 timeout 单位是毫秒（15 → 会话中断，已由 dsh 修为 15000 并移除 UserPromptSubmit）；dsh 面板不刷新的真因是验证时误杀 dsh web 进程 + 刷新不可见（已改 30s + 时间戳 + ⟳）"
+ },
+ {
+  "name": "reasonix-状态栏余额-json-结构定案-显示开关定位-2026-09-25",
+  "mtime": "09-25 21:35",
+  "desc": "Reasonix 的 balance_url 要求 DeepSeek 钱包余额 JSON 结构（is_available/total_balance/balance_infos[currency,topped_up_balance...]）；数据链路已通（日志有 Go-http-client 请求），看不到是因为状态栏由 statusBarVisible 控制、需在设置“信息栏显示项”里勾选“余额”"
+ },
+ {
+  "name": "reasonix-状态栏余额打桩为-goat-六额度-2026-09-25",
+  "mtime": "09-25 21:35",
+  "desc": "Reasonix 桌面版底部状态栏的 balance（“余额”）项数据源 = provider 级 balance_url；已把它指向本地 http://127.0.0.1:8790/balance（返回 2 账号×5h/周/月 共 6 个额度）+ 请求日志观测法，需重启 Reasonix 生效"
+ },
+ {
+  "name": "tool-dsh-017rc2-upgrade-20260925",
+  "mtime": "09-25 21:35",
+  "desc": "dsh 0.1.5-rc.2 → 0.1.7-rc.2 升级全过程档案（2026-09-25）：settings 导入机制/preset declaration 化/包改名三处迁移、headless+web 双路验证证据、未迁移项、回滚法、token 与 session V4 坑"
+ },
+ {
+  "name": "linux-天阙机-goat-额度同步-reasonix-balance-url-dsh-面板-2026-09-26",
+  "mtime": "09-26 21:35",
+  "desc": "Linux 天阙机补齐 GOAT 额度：重写纯 node 版 quota-http.mjs（原版硬编码 Windows 路径+调 powershell）、建 systemd user service、Reasonix 加 balance_url（~/.reasonix/config.toml 第134行）、补全 dsh 插件 client.js 并注册进 web profile；含远端 ssh 命令一律走 .sh 文件的教训"
+ },
+ {
+  "name": "reasonix-状态栏余额刷新时机与本地时区纠正-2026-09-25",
+  "mtime": "09-26 21:35",
+  "desc": "实测 Reasonix 拉取 /balance 的中位间隔 51 秒（数据是新的），界面重渲染绑会话事件（配置改不了）；/balance 增为 7 条（+数据时间）；并纠正机器本地时区是 UTC+4 不是 +8、toLocaleTimeString 在本机不可信"
+ },
+ {
+  "name": "dsh-skills-and-memory-bridge-20260926",
+  "mtime": "09-26 23:03",
+  "desc": "dsh web 与 reasonix 共用技能与记忆已落地：80 个技能镜像生效（分片验证通过）+ 只读记忆插件 memory_search/memory_read 已挂载（待重启 web 生效）"
+ },
+ {
+  "name": "dsh-codex-gap-analysis-and-memory-write-20260926",
+  "mtime": "09-26 23:14",
+  "desc": "dsh 对标 Codex 的缺口清单（sqlite schema 实证）+ 记忆写入能力上线：memory_remember 打通 dsh 到 reasonix 的写入"
+ },
+ {
+  "name": "dsh-agent-personalization-20260926",
+  "mtime": "09-26 23:20",
+  "desc": "dsh agent 个性化：memory_profile 工具 + 画像加权 + persona 画像锚点，把「实质任务前先调画像」从记忆规则升级为机制"
+ },
+ {
+  "name": "dsh-session-index-codex-threads-20260926",
+  "mtime": "09-26 23:28",
+  "desc": "dsh session_index 上线（Codex threads 表对应物）：跨 cwd 会话索引，827 个会话扫描 813ms、title 覆盖 99%；并确认 system32 的 640 个是批量任务独立会话"
+ },
+ {
+  "name": "dsh-session-digest-ondemand-distill-20260926",
+  "mtime": "09-26 23:31",
+  "desc": "dsh session_digest 上线（按需蒸馏会话：任务/轮次/工具调用/结论），并记录「为何不做无条件自动蒸馏」的设计判断"
+ },
+ {
+  "name": "dsh-community-plugin-landscape-20260926",
+  "mtime": "09-26 23:35",
+  "desc": "dsh 社区插件清单（476 个仓库，含直接对应我缺口的 headroom/token/goal/recall/session-lab）+ 出网限制（web_search 402、bash 无网）+ 「应先调研社区再自写」的流程教训"
+ },
+ {
+  "name": "dsh-skill-usage-weighting-20260926",
+  "mtime": "09-26 23:40",
+  "desc": "skill_search 加权上线（调用次数 + 时间远近，公式 match + 0.6*(log1p(loads)+exp(-age/14))）；并记录关键事实：两侧历史都没有技能调用数据，账本从零积累"
+ },
+ {
+  "name": "dsh-community-landscape-v2-and-powershell-egress-20260926",
+  "mtime": "09-26 23:47",
+  "desc": "PowerShell 能出网（bash 被禁）这一能力突破 + 社区实况实时数据（topic:dsh-plugin 16,218 个；更正 dsh-desktop 存在、记忆插件 star 量级）+ headroom/deja-vu 等对应方案"
+ },
+ {
+  "name": "deja-vu-installed-and-reasonix-bridged-20260926",
+  "mtime": "09-27 00:20",
+  "desc": "deja-vu 0.21.2 落地 + 零开发桥接 reasonix（49 会话）；issue #4053 已提交；session-index.mjs 已退役；新配置经 3081 验证通过，3080 待用户择时重启"
+ },
+ {
+  "name": "dsh-plugin-batch2-modlens-vision-20260927",
+  "mtime": "09-27 00:31",
+  "desc": "装了 modlens（视觉插件，4043★）让纯文本 DeepSeek 能看图；含 14 项候选插件清单与判定；并记录解除了一个卡死 22 分钟的 pnpm 安装"
+ },
+ {
+  "name": "github-repo-hygiene-audit-20260927",
+  "mtime": "09-27 00:31",
+  "desc": "2026-09-27 全量审计 17 个本地 repo：learn 有 563MB VS .ipch 垃圾 history（从未 push 过）、IT-full 与 Information-Theory 是 1.3G×2 重复副本、算法导论学习文件无 remote；含 pushall dry-run 结果与处理建议"
+ },
+ {
+  "name": "correction-deepseek-v41-flash-has-native-vision-20260927",
+  "mtime": "09-27 10:10",
+  "desc": "纠错：DeepSeek V4.1 Flash 原生多模态（非 text-only），dsh 与 GOAT 网关均支持图片透传；modlens 非必需（仅对确认 text-only 的模型如 v4-pro 生效）"
+ },
+ {
+  "name": "dev-sidecar-覆盖-gitconfig-与-npmrc-URL级配置绕过-20260927",
+  "mtime": "09-27 10:15",
+  "desc": "dev-sidecar 每次启动都会重写 ~/.gitconfig 与 ~/.npmrc 的代理项（这就是\"手改后 GitHub 还是慢\"的原因）；用 URL 级 http.<url>.proxy 绕过（优先级高于全局 http.proxy），含 release 走镜像的实测数据与 ghdl/ghurl 函数"
+ },
+ {
+  "name": "dsh-batch3-headroom-mimir-and-codex-gap-recheck-20260927",
+  "mtime": "09-27 10:18",
+  "desc": "插件第三批：卸 modlens（手工改 4 处 + 删 .bin shim，并回收 commander/undici）、装 headroom 0.3.0（工具输出可逆压缩）与 Mimir 0.21.0（学术工作台）；用 282 个官方包实证复核 Codex 缺口 #4-#7 全部仍未闭合及社区填充；收录 awesome-dsh-plugins 每日兼容性追踪等社区目录"
+ },
+ {
+  "name": "rule-star-open-source-usage",
+  "mtime": "09-27 10:19",
+  "desc": "元规则：用过/读过/借鉴的开源项目要 star（卸载了也要 star）。累计 21 个；并订正 GitHub 操作手法——bash 本就有网，用 --noproxy 绕开死代理即可，不必再绕 PowerShell"
+ },
+ {
+  "name": "reasonix-autocommit-and-github-backup-restored-20260927",
+  "mtime": "09-27 10:32",
+  "desc": "reasonix/dsh 自动 commit 与 GitHub 每日备份三件套（autocommit / merge-context / backup-to-github）因 Desktop/reasonix-ops 被移进 工具箱/ 而失效 3 天，2026-09-27 用 junction 修复并实测恢复；含四个遗留隐患"
+ },
+ {
+  "name": "dev-tool-search-false-unlock-fix-and-preset-reload-boundary-20260927",
+  "mtime": "09-27 10:33",
+  "desc": "dev_tool_search 谎报解锁的 bug（无条件回显入参、零校验）已修，10 个单元用例 + 真机 headless 端到端双验证（假名 NOT unlocked / 真名解锁且 memory_profile 真的进了下一轮 request header）；实测 preset 热重载边界（新 row 对新 session 即时生效、改文件内容不进已有 session）；memory_* 已写进 UNLOCKABLE_INDEX"
+ },
+ {
+  "name": "network-egress-git-ghproxy-mirrors-20260927",
+  "mtime": "09-27 10:35",
+  "desc": "【二次订正·已定位真因】curl 的 000 不是连不上、也不是代理死了，而是 dev-sidecar 做 MITM 导致证书信任失败（-v 可见 CONNECT 200 + Proxy-agent: dev-sidecar；curl -k 即 200，git 因 .gitconfig 里 sslVerify=false 而通）；我先前两次误判都源于采样到边车重启窗口；含 URL 级配置绕行正解、000/403/TLS 三分法与「不要重"
+ },
+ {
+  "name": "headless-profile-degraded-3-tools-no-persona-20260927",
+  "mtime": "09-27 10:41",
+  "desc": "【已修复并验证】headless 批处理线（798 session / 95% 流量）原先只有 3 个工具、无 read/write、system prompt 里 persona 那行是**静默 no-op**（正确字段是 personaPrefix，z.object 非 strict 会丢弃未知 key）；已同步语言契约 + dev-tool-search/skill-search/memory 三条 row，实测工具面 3→6→8"
+ },
+ {
+  "name": "dsh-hooks-claude-code-setup-and-headless-finding-20260927",
+  "mtime": "09-27 10:57",
+  "desc": "dsh 挂 Claude Code hook 兼容层的完整做法（已配置成功）+ 实测 headless profile 不派发 hook 事件、web 待验；含 dsh-mimir 两个原有故障与「N entry did not activate」这个诊断手段"
+ },
+ {
+  "name": "daily-kit-git-scratch-and-pushall-20260927",
+  "mtime": "09-27 11:05",
+  "desc": "daily-kit 双机落地（2026-09-27）：Windows D:/00-Inbox + Linux ~/00-Inbox 流水区每天清零 + pushall 批量推现有 repo；用 PREFIX=days/win/ 与 days/lin/ 避免两台撞 tag；最大坑是 remote.origin.fetch 不限定会让 gc 完全失效（实测 58MB 不降）；35 项回归测试全绿"
+ },
+ {
+  "name": "dsh-mimir-incompatible-with-017rc2-typert-codec-20260927",
+  "mtime": "09-27 11:21",
+  "desc": "dsh-mimir 0.21.0 与 dsh 0.1.7-rc.2 不兼容：typert-loader 的 requireStrictCodec 要求 invocation codec 带 create() 工厂，Mimir 的 research/addEvidenceEdge 没有 → boot 时 1 entry did not activate，用户侧表现为「插件都没有、全是故障」；因 3080 启动早于 Mimir 安装所以只有"
+ },
+ {
+  "name": "github-加速体系与镜像自动选优-20260927",
+  "mtime": "09-27 11:21",
+  "desc": "GitHub 加速三路径体系（git 走固定镜像 / 下载走每日选优 / 浏览器走 dev-sidecar）+ 镜像生态三类分化实测（Range/clone 兼容性/36 倍波动）+ 自动化程度盘点 + 8 个踩坑"
+ },
+ {
+  "name": "强制搜索优先级-local-wiki-github",
+  "mtime": "09-27 13:13",
+  "desc": "搜索必须优先 local-search（离线维基/PocketWiki + GitHub 全站），只有无结果才用 exa/parallel/nothumansearch"
+ }
+]

@@ -1,0 +1,17 @@
+lockfileVersion: '9.0'
+
+settings:
+  autoInstallPeers: false
+  excludeLinksFromLockfile: false
+
+importers:
+
+  .:
+    dependencies:
+      dsh-plugin-local-search:
+        specifier: link:D:/Toolbox/goat-gateway/dsh-plugin-local-search
+        version: link:D:/Toolbox/goat-gateway/dsh-plugin-local-search
+packages:
+
+snapshots:
+

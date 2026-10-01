@@ -1,0 +1,115 @@
+{
+  "version": 2,
+  "steps": [
+    {
+      "id": "step-1",
+      "title": "创建目录结构",
+      "action": "创建7个分类子目录",
+      "risk": "low",
+      "targets": [
+        "D:\\b站视频\\解析视频\\数学分析"
+      ]
+    },
+    {
+      "id": "step-2",
+      "title": "复制并重命名讲义PDF",
+      "action": "将23份讲义复制到01-讲义笔记，按L01-L23重命名",
+      "risk": "low",
+      "targets": [
+        "01-讲义笔记"
+      ]
+    },
+    {
+      "id": "step-3",
+      "title": "复制完整讲义",
+      "action": "复制lec_full.pdf到02-完整讲义",
+      "risk": "low"
+    },
+    {
+      "id": "step-4",
+      "title": "复制并重命名习题集",
+      "action": "将10份习题复制到03-习题集，按PS01-PS10重命名",
+      "risk": "low",
+      "targets": [
+        "03-习题集"
+      ]
+    },
+    {
+      "id": "step-5",
+      "title": "复制复习资料",
+      "action": "将期中期末复习PDF复制到04-复习资料",
+      "risk": "low"
+    },
+    {
+      "id": "step-6",
+      "title": "复制并重命名字幕",
+      "action": "将字幕PDF+WebVTT复制到06-字幕文件，与视频编号对应",
+      "risk": "low",
+      "targets": [
+        "06-字幕文件"
+      ]
+    },
+    {
+      "id": "step-7",
+      "title": "生成说明文档",
+      "action": "生成视频和教材的移入指南",
+      "risk": "low"
+    }
+  ],
+  "completedStepIds": [
+    "step-1",
+    "step-2",
+    "step-3",
+    "step-4",
+    "step-5",
+    "step-6",
+    "step-7"
+  ],
+  "updatedAt": "2026-06-16T16:17:42.984Z",
+  "stepCompletions": {
+    "step-1": {
+      "kind": "step_completed",
+      "stepId": "step-1",
+      "result": "创建7个分类子目录",
+      "title": "创建目录结构"
+    },
+    "step-2": {
+      "kind": "step_completed",
+      "stepId": "step-2",
+      "result": "23份讲义已按L01-L23命名复制到01-讲义笔记",
+      "title": "复制并重命名讲义PDF"
+    },
+    "step-3": {
+      "kind": "step_completed",
+      "stepId": "step-3",
+      "result": "lec_full.pdf → 02-完整讲义\\18.100B-Full-Lecture-Notes.pdf",
+      "title": "复制完整讲义"
+    },
+    "step-4": {
+      "kind": "step_completed",
+      "stepId": "step-4",
+      "result": "10份习题 → 03-习题集\\PS01-PS10.pdf",
+      "title": "复制并重命名习题集"
+    },
+    "step-5": {
+      "kind": "step_completed",
+      "stepId": "step-5",
+      "result": "期中期末复习 → 04-复习资料",
+      "title": "复制复习资料"
+    },
+    "step-6": {
+      "kind": "step_completed",
+      "stepId": "step-6",
+      "result": "50个字幕文件（25讲×PDF+WebVTT）→ 06-字幕文件",
+      "title": "复制并重命名字幕"
+    },
+    "step-7": {
+      "kind": "step_completed",
+      "stepId": "step-7",
+      "result": "README.txt 已放入05视频/06字幕/07教材",
+      "title": "生成说明文档"
+    }
+  },
+  "body": "# MIT 18.100B 资料分门别类整理方案\n\n## 目标目录\n`D:\\b站视频\\解析视频\\数学分析\\`\n\n## 目录结构\n```\n数学分析\\\n├── 01-讲义笔记\\         ← 23份讲义PDF (L01-L23)\n├── 02-完整讲义\\         ← 合集PDF (lec_full)\n├── 03-习题集\\           ← 10份习题PDF (PS01-PS10)\n├── 04-复习资料\\         ← 期中+期末复习\n├── 05-视频讲座\\         ← 25个MP4 (Thunder下载完成后移入)\n├── 06-字幕文件\\         ← 字幕PDF + WebVTT\n└── 07-教材教参\\         ← 教材PDF (下载后放入)\n```\n\n## 重命名规则\n- 讲义: `L01-Introduction-to-Real-Numbers.pdf` (编号+英文标题)\n- 习题: `PS01-Problem-Set-1.pdf`\n- 复习: `Midterm-Review.pdf` / `Final-Exam-Review.pdf`\n- 完整讲义: `18.100B-Real-Analysis-Full-Lecture-Notes.pdf`\n- 视频: `V01-Introduction-to-Real-Numbers.mp4` (与讲义对应)\n- 字幕: `V01-Introduction-to-Real-Numbers_transcript.pdf` + `.webvtt`\n\n## 执行步骤\n1. 创建7个分类子目录\n2. 复制讲义PDF → 01-讲义笔记\\（重命名）\n3. 复制完整讲义PDF → 02-完整讲义\\\n4. 复制习题PDF → 03-习题集\\（重命名）\n5. 复制复习PDF → 04-复习资料\\\n6. 复制字幕 → 06-字幕文件\\（重命名）\n7. 生成视频占位说明（Thunder下载完成后指导移入）",
+  "summary": "MIT 18.100B 资料整理：分7类目录+重命名"
+}

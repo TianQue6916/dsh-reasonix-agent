@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "overrides": [
+    {
+      "scope": "global",
+      "source": "user_config",
+      "server": "goat-quota",
+      "enabled": true
+    }
+  ]
+}

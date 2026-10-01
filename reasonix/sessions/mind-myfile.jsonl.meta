@@ -1,0 +1,11 @@
+{
+  "id": "mind-myfile",
+  "created_at": "2026-07-31T11:07:56.8471841Z",
+  "updated_at": "2026-07-31T11:07:56.8471841Z",
+  "scope": "global",
+  "topic_id": "legacy_mind-myfile_6e2930c48d28",
+  "topic_title": "Count items print …",
+  "schema_version": 1,
+  "turns": 2,
+  "preview": "Count items\nprint done"
+}

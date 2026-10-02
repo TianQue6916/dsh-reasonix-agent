@@ -1,0 +1,7 @@
+# The loader entry id stays `message-tree` on purpose: Moeblack's
+# dsh-message-edit uses the id `message-edit`, and two entries sharing an id
+# collide when both plugins are installed. `name` is the package to import,
+# so it follows the package rename.
+- insert:
+    - id: message-tree
+      name: dsh-plugin-message-edit

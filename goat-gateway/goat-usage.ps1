@@ -6,6 +6,8 @@
     GET /alpha/billing/credits   -> windowLimits.fiveHour / weekly {used, cap, resetAt, exceeded}
                                     credits.monthlyCredits = 本月剩余额度
     GET /alpha/usage/summary     -> 当前计费周期已用额度（totalCredits）
+    GET /alpha/billing/subscriptions -> data.currentPeriodEnd = 月度额度重置时刻（订阅计费周期，
+                                    订阅锚定而非自然月；credits 端点完全不提供月窗口时间）
 
   月度上限 = 本周期已用 + 本月剩余（实测两账号均 ≈ 70）
 
@@ -38,12 +40,24 @@ function Get-Usage([string]$bearer) {
   $h = @{ Authorization = "Bearer $bearer" }
   $credits = Invoke-RestMethod -Uri "$Api/alpha/billing/credits" -Headers $h -TimeoutSec 25 -UseBasicParsing
   $summary = Invoke-RestMethod -Uri "$Api/alpha/usage/summary" -Headers $h -TimeoutSec 25 -UseBasicParsing
+  # 月度额度不是 rate-limit window：credits 端点里 monthlyCredits 只有余额、**没有任何时间字段**
+  # （windowLimits 的成员只有 limited / exceeded / fiveHour / weekly）。月度的重置时间 = 订阅
+  # 计费周期的结束时刻，只能从 /alpha/billing/subscriptions 取 currentPeriodEnd。实测两账号都是
+  # 「订阅锚定」而非自然月：163 created 2026-09-07 -> 周期 09-07..10-07；qq created 2026-09-03
+  # -> 周期 09-03..10-03。该端点失败不致命（key 可能没有订阅），置 $null 由消费方降级。
+  $monthReset = $null
+  try {
+    $sub = Invoke-RestMethod -Uri "$Api/alpha/billing/subscriptions" -Headers $h -TimeoutSec 25 -UseBasicParsing
+    $body = if ($null -ne $sub.data) { $sub.data } else { $sub }
+    if ($body.currentPeriodEnd) { $monthReset = [DateTimeOffset]::Parse([string]$body.currentPeriodEnd).ToUnixTimeMilliseconds() }
+  } catch {}
   [pscustomobject]@{
     fiveHour  = $credits.windowLimits.fiveHour
     weekly    = $credits.windowLimits.weekly
     monthUsed = [double]$summary.totalCredits
     monthLeft = [double]$credits.credits.monthlyCredits
     monthCap  = [double]$summary.totalCredits + [double]$credits.credits.monthlyCredits
+    monthReset = $monthReset
     requests  = $summary.totalCount
     tokens    = $summary.totalTokens
     exceeded  = $credits.windowLimits.exceeded
@@ -119,7 +133,7 @@ function Render {
           currency = $b.currency; available = $b.total; granted = $b.granted; toppedUp = $b.toppedUp; apiAvailable = $b.isAvailable
           fiveHourUsed = $null; fiveHourCap = $null; fiveHourReset = $null; fiveHourExceeded = $null
           weeklyUsed = $null; weeklyCap = $null; weeklyReset = $null; weeklyExceeded = $null
-          monthUsed = $null; monthLeft = $null; monthCap = $null
+          monthUsed = $null; monthLeft = $null; monthCap = $null; monthReset = $null
           requests = $null; tokens = $null
           fetchedAt = (Get-Date).ToString('s')
         }
@@ -130,7 +144,7 @@ function Render {
         name = $k.name; error = $null; kind = 'goat'; plan = 'individual-goat'
         fiveHourUsed = $u.fiveHour.used; fiveHourCap = $u.fiveHour.cap; fiveHourReset = $u.fiveHour.resetAt; fiveHourExceeded = $u.fiveHour.exceeded
         weeklyUsed = $u.weekly.used; weeklyCap = $u.weekly.cap; weeklyReset = $u.weekly.resetAt; weeklyExceeded = $u.weekly.exceeded
-        monthUsed = $u.monthUsed; monthLeft = $u.monthLeft; monthCap = $u.monthCap
+        monthUsed = $u.monthUsed; monthLeft = $u.monthLeft; monthCap = $u.monthCap; monthReset = $u.monthReset
         requests = $u.requests; tokens = $u.tokens
         fetchedAt = (Get-Date).ToString('s')
       }
@@ -176,7 +190,7 @@ try {
     foreach ($w in @(
         @{ n = '5小时'; used = $r.fiveHourUsed; cap = $r.fiveHourCap; reset = $r.fiveHourReset; ex = $r.fiveHourExceeded },
         @{ n = '本周 '; used = $r.weeklyUsed; cap = $r.weeklyCap; reset = $r.weeklyReset; ex = $r.weeklyExceeded },
-        @{ n = '本月 '; used = $r.monthUsed; cap = $r.monthCap; reset = $null; ex = $null }
+        @{ n = '本月 '; used = $r.monthUsed; cap = $r.monthCap; reset = $r.monthReset; ex = $null }
       )) {
       $pct = if ($w.cap -le 0) { 0 } else { [math]::Round(100 * $w.used / $w.cap, 1) }
       $line = '  {0} [{1}] {2,5}%  {3,7:N2} / {4,-7:N2}' -f $w.n, (Write-Bar $w.used $w.cap), $pct, $w.used, $w.cap

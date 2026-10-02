@@ -184,6 +184,7 @@ window.__ModuleLoader__.load({
                   }),
                   jsx.jsx("div", { style: { color: "var(--dsw-alias-label-tertiary, #999)", fontSize: "11px", opacity: 0.9 }, children:
                     "\u7a97\u53e3\u91cd\u7f6e\uFF1A5h " + fmtReset(r.fiveHourReset) + " \u00b7 \u5468 " + fmtReset(r.weeklyReset)
+                    + (r.monthReset ? " · 月 " + fmtReset(r.monthReset) : "")
                   })
                 ] });
               })

@@ -264,6 +264,11 @@ function loadKeys() {
       })(),
       // quotaAccount（2026-10-01 加）：从 quota-http 的哪一行取额度。缺省用 key 的 name。
       quotaAccount: typeof k.quotaAccount === 'string' && k.quotaAccount ? k.quotaAccount : (k.name || ''),
+      // pathPrefixes（2026-10-02 加）：该 key 独家认领的客户端 path 前缀，语义见 pathAllowed()。
+      // 不写/空数组 = 不认领（在未被认领的 path 上照常参与，行为与改动前一致）。
+      pathPrefixes: Array.isArray(k.pathPrefixes)
+        ? k.pathPrefixes.filter((x) => typeof x === 'string' && x.length > 0)
+        : null,
     }));
   keysCache = { mtime: st.mtimeMs, keys };
   return keys;
@@ -850,6 +855,35 @@ function extractLastUsage(text) {
 //
 // 两个函数都遵循「不声明 = 不干预」：key 没写 models 就永远进候选（既有 GOAT key 的
 // 行为逐位不变），没写 modelMap 就原样转发。
+// ── path 独家认领（2026-10-02 加）────────────────────────────────────────
+//
+// WHY：多上游改造后 selectKey 只看 model，但各上游的**路由空间并不相同**。
+//   实测（2026-10-02 14:42）：POST /anthropic/v1/messages（官方 DeepSeek 的
+//   Anthropic 兼容端点，dsh 的 web_search 走这条）其 model 是
+//   deepseek/deepseek-v4.1-flash —— GOAT 与官方都声明支持，于是被分给
+//   priority 100 的 GOAT key，转发成
+//     POST https://api.commandcode.ai/provider/v1/anthropic/v1/messages → 404
+//   GOAT 压根没有 anthropic 路由。这类请求必须由「认识该 path 的上游」服务。
+//
+// 设计：显式认领制（不是黑名单）。
+//   · 没有任何 key 认领该 path → 全部 enabled key 照常参与（/v1/* 聊天路径逐位不变）
+//   · 有 key 认领 → 该 path 上只保留认领者；未声明 pathPrefixes 的 key 一律出局
+// 好处：GOAT 那两个 key 无需写任何配置就能自动让开，也不存在
+//       「忘了给谁加配置 = 静默把请求送去错上游」的坑。
+function pathClaimed(keys, pathname) {
+  if (!pathname) return false;
+  return keys.some(
+    (k) => Array.isArray(k.pathPrefixes) && k.pathPrefixes.some((x) => pathname.startsWith(x)),
+  );
+}
+
+function pathAllowed(keyEntry, pathname, claimed) {
+  const pfx = keyEntry && keyEntry.pathPrefixes;
+  // 未声明 pathPrefixes 的 key：无人认领时照常参与，有人认领时出局（见上方注释）。
+  if (!Array.isArray(pfx) || !pfx.length) return !claimed;
+  return pathname ? pfx.some((x) => pathname.startsWith(x)) : true;
+}
+
 function modelSupported(keyEntry, model) {
   if (!model) return true;                                  // 非 chat 请求（GET 等）不参与过滤
   const ms = keyEntry && keyEntry.models;
@@ -1146,7 +1180,12 @@ function forward(clientReq, clientRes, keyEntry, body, meta) {
           clearFirstChunk();
           armStreamIdle();
           const chunkStr = c.toString('utf8');
-          if (tail.length < 65536) tail += chunkStr;
+          // usage 只出现在 SSE 流的最末尾。旧写法是「前 64KiB 封顶，写满就不再追加」——
+          // 长流（dsh 的大 prompt 很常见）会在 64KiB 处停住，末尾的 usage 永远提取不到；
+          // 实测生产日志里只有约 15% 的 OK 行带 usage。改成滑动窗口：始终保留**最后** 64KiB。
+          // 回归用例见 selftest.mjs 的 1b（长流 usage tail）。
+          tail += chunkStr;
+          if (tail.length > 65536) tail = tail.slice(-65536);
           // 先喂 loop-guard 再转发：命中时本 chunk 就不再传给客户端，少吐一段循环文本。
           // 解析必须在 write 之前，所以这里用 SseDeltaParser 增量切帧（跨 chunk 也能切对）。
           if (guardOn && !guardFired) {
@@ -1370,6 +1409,8 @@ function handleLocal(req, res, url) {
           weightStatic: k.weight,
           weightEffective: Number(effWeight(k).toFixed(3)),
           weightFromQuota: quotaWeights.has(k.quotaAccount || k.name),
+          // pathPrefixes（2026-10-02 加）：该 key 独家认领的 path 前缀；null/空 = 不认领。
+          pathPrefixes: k.pathPrefixes,
         };
       }),
     });
@@ -1518,21 +1559,28 @@ async function handle(req, res) {
     stream: !!(parsed && parsed.stream === true),
     fp: sessionFingerprint(parsed, req.headers),
     prefixFp: prefixFingerprint(parsed),
+    // path（2026-10-02 加）：path 独家认领的判定依据，见 pathClaimed()。
+    path: url.pathname,
   };
 
   const enabledKeys = loadKeys().filter((k) => k.enabled);
   // 多上游过滤（2026-10-01）：官方 key 只服务 deepseek 系两个模型 —— 请求 gpt-6-luna 时
   // 它必须在候选集之外，否则会白吃一个上游 400/404 再进冷却。
-  const all = enabledKeys.filter((k) => modelSupported(k, meta.model));
+  const pathOwned = pathClaimed(enabledKeys, meta.path);
+  const all = enabledKeys.filter(
+    (k) => modelSupported(k, meta.model) && (!pathOwned || pathAllowed(k, meta.path, pathOwned)),
+  );
   if (!all.length) {
     if (enabledKeys.length && meta.model) {
       sendJSON(res, 400, {
         error: {
           message:
             `goat-gateway: 没有 key 能服务 model '${meta.model}'` +
-            `（${enabledKeys.length} 个 enabled key 均声明不支持它）`,
+            (meta.path ? ` @ path '${meta.path}'` : '') +
+            `（${enabledKeys.length} 个 enabled key 均不支持它或未认领该 path）`,
           type: 'gateway_no_key_for_model',
           model: meta.model,
+          path: meta.path,
           keys: enabledKeys.map((k) => k.name),
         },
       });

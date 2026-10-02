@@ -18,8 +18,8 @@ importers:
         specifier: 0.9.1
         version: 0.9.1(@deepseek-ai/schemastery@3.18.4)
       '@local/dsh-plugin-goat-panel':
-        specifier: file:D:/Toolbox/goat-gateway/dsh-plugin-goat-panel
-        version: file:D:/Toolbox/goat-gateway/dsh-plugin-goat-panel
+        specifier: link:D:/Toolbox/goat-gateway/dsh-plugin-goat-panel
+        version: link:D:/Toolbox/goat-gateway/dsh-plugin-goat-panel
       '@local/dsh-thinking-language':
         specifier: file:D:/Toolbox/dsh-thinking-language
         version: file:D:/Toolbox/dsh-thinking-language
@@ -85,9 +85,6 @@ packages:
 
   '@leichtgewicht/ip-codec@2.0.5':
     resolution: {integrity: sha512-Vo+PSpZG2/fmgmiNzYK9qWRh8h/CHrwD0mo1h1DzL4yzHNSfWYujGTYsWGreD000gcgmZ7K4Ys6Tx9TxtsKdDw==}
-
-  '@local/dsh-plugin-goat-panel@file:D:/Toolbox/goat-gateway/dsh-plugin-goat-panel':
-    resolution: {directory: D:/Toolbox/goat-gateway/dsh-plugin-goat-panel, type: directory}
 
   '@local/dsh-thinking-language@file:D:/Toolbox/dsh-thinking-language':
     resolution: {directory: D:/Toolbox/dsh-thinking-language, type: directory}
@@ -724,8 +721,6 @@ snapshots:
       qrcode-terminal: 0.12.0
 
   '@leichtgewicht/ip-codec@2.0.5': {}
-
-  '@local/dsh-plugin-goat-panel@file:D:/Toolbox/goat-gateway/dsh-plugin-goat-panel': {}
 
   '@local/dsh-thinking-language@file:D:/Toolbox/dsh-thinking-language': {}
 

@@ -1,0 +1,51 @@
+{
+  "_readme": [
+    "dsh-context 本地价目覆盖表（USD / 1M tokens）。",
+    "为什么需要：dsh-context 只认 models.dev 的价目本。走自建 gateway 时 provider 名（如 commandcode-goat）",
+    "在 models.dev 里不存在，model id 又是 'org/model' 形态（'deepseek/deepseek-v4.1-flash' 以 'deepseek/' 开头",
+    "而非 'deepseek-'），于是 priceFaceOf 的『DeepSeek 一手价目本』分支被跳过，落到 model-side 索引用 org 段解析 ——",
+    "而 models.dev 的 deepseek provider 只有 v4-flash / v4-flash-vision-exp / v4-pro / deepseek-flash 四个 model，",
+    "根本没有 deepseek-v4.1-flash；其余 carrier 又是多个第三方 gateway（不满足 lone-carrier）⇒ 返回 null ⇒ 面板显示『费用 —』。",
+    "本机实测：这一对占 1410 个 session / 2.4449B token = 全机 token 的 96%，但贡献 0 元。",
+    "",
+    "改完这个文件后执行：",
+    "  node ~/.dsh/storages/tools/patch-dsh-context-pricing.mjs --apply",
+    "然后重启 DeepSeek Harness App（node_modules 里的 client bundle 不参与 HMR）。",
+    "",
+    "键 = harness 上报的 (provider, model) 原样字符串（不做任何正规化，精确匹配才生效）。",
+    "hit = cache_read / miss = 未命中 input / write = cache_write / out = output（含 reasoning）。",
+    "peakProviders = 这些 provider 的 peak 桶按 x2 计价（DeepSeek 官方峰时价特征）。",
+    "  注意 deepseek-official / deepseek-account 本来就走 deepseek 分支，已经有了，不必列。",
+    "  全部桶都落在 peak 时，加进 peakProviders 会让总额翻倍 —— 只有在确认 goat 套餐按官方峰时价计费时才打开。"
+  ],
+  "prices": {
+    "commandcode-goat": {
+      "deepseek/deepseek-v4.1-flash": {
+        "hit": 0.003,
+        "miss": 0.15,
+        "write": 0.15,
+        "out": 0.6
+      }
+    },
+    "deepseek-official": {
+      "deepseek/deepseek-v4-flash": {
+        "hit": 0.003,
+        "miss": 0.15,
+        "write": 0.15,
+        "out": 0.6
+      },
+      "deepseek/deepseek-v4-pro": {
+        "hit": 0.003625,
+        "miss": 0.435,
+        "write": 0.435,
+        "out": 0.87
+      }
+    }
+  },
+  "peakProviders": [],
+  "_priceBasis": {
+    "deepseek/deepseek-v4.1-flash": "取 models.dev 同族 deepseek/deepseek-v4-flash 的刊登价（input 0.15 / cache_read 0.003 / output 0.6）。第三方 carrier 报价同区间：nano-gpt 0.13/0.006/0.52、llmgateway-providers 0.15/0.003/0.6。",
+    "deepseek/deepseek-v4-flash": "原文抄自 models.dev deepseek provider（input 0.15 / cache_read 0.003 / output 0.6）。",
+    "deepseek/deepseek-v4-pro": "原文抄自 models.dev deepseek provider（input 0.435 / cache_read 0.003625 / output 0.87）。"
+  }
+}

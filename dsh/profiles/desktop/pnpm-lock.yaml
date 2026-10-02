@@ -12,8 +12,11 @@ importers:
         specifier: 0.9.1
         version: 0.9.1(@deepseek-ai/schemastery@3.18.4)
       '@local/dsh-plugin-goat-panel':
-        specifier: file:D:/Toolbox/goat-gateway/dsh-plugin-goat-panel
-        version: file:D:/Toolbox/goat-gateway/dsh-plugin-goat-panel
+        specifier: link:D:/Toolbox/goat-gateway/dsh-plugin-goat-panel
+        version: link:D:/Toolbox/goat-gateway/dsh-plugin-goat-panel
+      '@local/dsh-thinking-language':
+        specifier: file:D:/Toolbox/dsh-thinking-language
+        version: file:D:/Toolbox/dsh-thinking-language
       '@mingozhou/dsh-replay':
         specifier: ^0.4.1
         version: 0.4.1
@@ -42,8 +45,8 @@ importers:
         specifier: link:D:/Toolbox/goat-gateway/dsh-plugin-local-search
         version: link:D:/Toolbox/goat-gateway/dsh-plugin-local-search
       dsh-plugin-message-edit:
-        specifier: 1.2.0
-        version: 1.2.0
+        specifier: file:../../vendor/dsh-plugin-message-edit-1.2.0-pr7.tgz
+        version: file:../../vendor/dsh-plugin-message-edit-1.2.0-pr7.tgz
       dsh-quick-toc:
         specifier: 0.8.2
         version: 0.8.2(@deepseek-ai/schemastery@3.18.4)
@@ -383,8 +386,8 @@ packages:
   '@lezer/yaml@1.0.4':
     resolution: {integrity: sha512-2lrrHqxalACEbxIbsjhqGpSW8kWpUKuY6RHgnSAFZa6qK62wvnPxA8hGOwOoDbwHcOFs5M4o27mjGu+P7TvBmw==}
 
-  '@local/dsh-plugin-goat-panel@file:D:/Toolbox/goat-gateway/dsh-plugin-goat-panel':
-    resolution: {directory: D:/Toolbox/goat-gateway/dsh-plugin-goat-panel, type: directory}
+  '@local/dsh-thinking-language@file:D:/Toolbox/dsh-thinking-language':
+    resolution: {directory: D:/Toolbox/dsh-thinking-language, type: directory}
 
   '@marijn/find-cluster-break@1.0.4':
     resolution: {integrity: sha512-Wy0V7+SGUjnF9/TkiM1hKVDPj7jKXduPNboMVtHTA8dySMURWqfg/JZ9E2Sq8JgSJmkl7k7Qe9FLeMSrSraWmQ==}
@@ -1146,8 +1149,9 @@ packages:
       '@deepseek-ai/dsh-app-boot':
         optional: true
 
-  dsh-plugin-message-edit@1.2.0:
-    resolution: {integrity: sha512-L5OkR5hknuzKA9iN4GcBJnctggI2ZApLnOBVjheKSfkhl0OfnvL7LcorYlF+QqsZlAd1HZG0Ypy8BuCJtyOB0A==}
+  dsh-plugin-message-edit@file:../../vendor/dsh-plugin-message-edit-1.2.0-pr7.tgz:
+    resolution: {integrity: sha512-YOWFxP035YxnJYYPibB166lBP9H59pXC35QxWwgD748Xgq7+Mhod1qZclAXpk0+7P2Ct1F45rhw2wZmamuOGSA==, tarball: file:../../vendor/dsh-plugin-message-edit-1.2.0-pr7.tgz}
+    version: 1.2.0
     engines: {dsh: '>=0.2.0-rc.2 <0.3.0-0'}
     peerDependencies:
       '@deepseek-ai/dsh': '>=0.2.0-rc.2 <0.3.0-0'
@@ -1892,7 +1896,7 @@ snapshots:
       '@lezer/highlight': 1.2.5
       '@lezer/lr': 1.4.10
 
-  '@local/dsh-plugin-goat-panel@file:D:/Toolbox/goat-gateway/dsh-plugin-goat-panel': {}
+  '@local/dsh-thinking-language@file:D:/Toolbox/dsh-thinking-language': {}
 
   '@marijn/find-cluster-break@1.0.4': {}
 
@@ -2627,7 +2631,7 @@ snapshots:
       yaml: 2.9.1
       zod: 4.6.5
 
-  dsh-plugin-message-edit@1.2.0: {}
+  dsh-plugin-message-edit@file:../../vendor/dsh-plugin-message-edit-1.2.0-pr7.tgz: {}
 
   dsh-quick-toc@0.8.2(@deepseek-ai/schemastery@3.18.4):
     optionalDependencies:

@@ -301,5 +301,30 @@ console.log('T13 默认配置：goat 关闭（成本安全），且不因此让 
   assert.equal(p6.available(), true, 'goat 关闭时 provider 仍必须 available（github/deepseek/wiki 还在）');
   ok('enableGoat 默认 false；goat 关闭不影响 provider 的 available()');
 }
+
+console.log('T14 search()：deepseek 报 402 Insufficient Balance → 熔断（余额类错误必须并入凭证类）');
+{
+  // 回归断言。2026-10-02 之前 deepseek 的熔断正则只有 /api key|credential|account/i，
+  // 而官方余额耗尽返回的是 402 "Insufficient Balance" —— 不匹配 ⇒ 不熔断 ⇒ 每搜一次都白打一轮
+  // （民警：goat 那侧的正则从一开始就含 balance|insufficient|credit|quota，二者不一致）。
+  const balanceWeb = {
+    searchProviders: new Map([['deepseek-official', {
+      id: 'deepseek-official',
+      available: () => true,
+      search: async () => { calls.deepseek += 1; throw new Error('402 Insufficient Balance'); },
+    }]]),
+  };
+  const cfg = { ...DEFAULT_CONFIG, aggregatorUrl: `http://127.0.0.1:${server.address().port}`, tokenFile: '', enableGoat: false, deepseekFailureCooldownMs: 600000 };
+  const provider = new LocalSearchProvider(() => cfg, balanceWeb);
+  provider.searchGithub = async () => [src(1, 'gh')];
+  provider.searchAggregator = async () => [src(1, 'wiki')];   // 照 T12 的写法：stub 成 1 条，避开 mock server 本身的 2 条
+  calls.deepseek = 0;
+  const r1 = await provider.search({ query: 'balance probe one', maxResults: 8 });
+  assert.equal(calls.deepseek, 1, '第一次搜索应向 deepseek 发起一次');
+  assert.equal(labels(r1.sources), 'github,wiki', 'deepseek 失败但 github/wiki 照常返回');
+  await provider.search({ query: 'balance probe two', maxResults: 8 });
+  assert.equal(calls.deepseek, 1, '熔断后第二次搜索不应再打 deepseek');
+  ok('402 Insufficient Balance → 熔断 600s，不再每搜一次白打官方');
+}
 server.close();
 console.log(`\nselftest: ${passed} 组全部通过`);

@@ -20,6 +20,11 @@
         "path": "C:\\Users\\27063",
         "title": "27063",
         "sessionIds": [
+          "session-cbcbf62e-3c8f-4fdb-b0eb-79f675b468ab",
+          "session-fe208132-a641-4626-9173-d49f717049a6",
+          "session-ff0aa307-cd70-45ba-a759-42da4ae2e7e1",
+          "session-72adf88a-47de-402f-b0af-2c31f0d35302",
+          "session-e15fd72c-5a26-43fb-9850-b7703e6fca1f",
           "session-9d88e9c6-1e4f-4410-bba7-e166f46eeb53",
           "session-a6288d3e-debd-4b5a-b3cf-f555d705537a",
           "session-9dc3824f-a2ff-46b2-b886-2970eafb181c",
@@ -69,7 +74,7 @@
           "session-c26e4c02-9c12-4d79-9b76-73761c9bf92e"
         ],
         "createdAt": "2026-08-15T14:14:04.871Z",
-        "updatedAt": "2026-10-01T14:00:29.677Z"
+        "updatedAt": "2026-10-02T14:06:14.690Z"
       },
       "20fb2971-702e-47e1-bd06-a877a416f9ab": {
         "path": "C:\\Users\\27063\\Documents\\DSH",

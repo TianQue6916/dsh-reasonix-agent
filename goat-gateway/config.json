@@ -12,7 +12,8 @@
       "x-reasonix-",
       "x-session-id",
       "x-conversation-id",
-      "x-topic-id"
+      "x-topic-id",
+      "x-api-key"
     ],
     "keepAlive": true,
     "agentMaxAgeMs": 300000,

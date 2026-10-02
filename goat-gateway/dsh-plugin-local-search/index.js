@@ -259,7 +259,7 @@ class LocalSearchProvider {
           console.warn(`[local-search] goat source paused for ${Math.round(cooldown / 1000)}s: ${reason}`);
         }
       }
-      if (entry.source === 'deepseek' && /api key|credential|account/i.test(reason)) {
+      if (entry.source === 'deepseek' && /api key|credential|401|403|account|not registered|credit|quota|balance|insufficient/i.test(reason)) {
         const cooldown = Number(cfg.deepseekFailureCooldownMs ?? 600000);
         if (cooldown > 0) {
           this.deepseekDisabledUntil = Date.now() + cooldown;

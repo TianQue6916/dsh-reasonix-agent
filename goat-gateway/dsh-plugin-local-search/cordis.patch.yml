@@ -28,7 +28,9 @@
         goatMaxUses: 3                            # 一次请求内最多几轮 server tool 搜索
         goatCacheTtlMs: 120000
         goatFailureCooldownMs: 300000             # 凭证/额度类失败熔断 5 分钟
-        enableDeepseek: true
+        # 2026-10-02（官方余额 -0.22）：关掉。deepseek 源走 registry 的 provider 打 api.deepseek.com，
+        # 余额为负时 provider.available() 为假，每次搜索白打一轮子查询。充值后改回 true。
+        enableDeepseek: false
         # dsh 里 deepseek 官方搜索 provider 注册的 id 是 deepseek-official，
         # 不是 profile patch 里那一行的 row id（web-search-deepseek）
         deepseekProviderId: "deepseek-official"

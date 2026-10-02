@@ -1,10 +1,16 @@
 ---
+id: legacy-dcbe8b3cb243e125856f7b9e
+revision: 1
+created_at: "2026-09-30T10:57:49.385722Z"
+updated_at: "2026-09-30T10:57:49.385722Z"
 name: dsh-replay-cost-tile-missing-model-rule
 description: replay 成本 tile 对 muse 等 model 整个不渲染的根因（estimateCost undefined 短路）与 patch-replay-pricing.mjs 修复
-type: reference
-scope: global
-created: 2026-09-30
+metadata:
+  type: user
+  fact_type: reference
+  scope: global
 ---
+
 `@mingozhou/dsh-replay`（v0.4.1）Overview 的成本 tile 对 muse 等 model **整个不渲染**（不是显示 $0）。
 
 **根因**：`src/core/cost.ts` 的 `estimateCost` 是 session 级 first-match-wins，

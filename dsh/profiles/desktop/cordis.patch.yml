@@ -807,6 +807,9 @@
               low: low
               high: high
               max: max
+            input:
+              - text
+              - image
           - id: moonshotai/Kimi-K3
             name: Kimi K3
             contextWindow: 1000000
@@ -1348,3 +1351,10 @@
   name: "@deepseek-ai/dsh-client-ui-theme"
   config:
     preference: system
+- id: better-sidebar
+  name: dsh-better-sidebar
+  config:
+    agentOpenTools: true
+    titleBarScheme: preset
+    titleBarPresetId: dsh-desktop
+    titleBarCompat: true

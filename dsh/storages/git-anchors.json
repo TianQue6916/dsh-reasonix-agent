@@ -572,6 +572,50 @@
           "dirty": 0
         }
       ]
+    },
+    "thinking-guard-bundle-accidentally-dropped-20261001": {
+      "at": "2026-10-02T06:47:10.484Z",
+      "repos": [
+        {
+          "repo": "C:/Users/27063/.dsh",
+          "branch": "main",
+          "head": "a9389cc",
+          "dirty": 2
+        }
+      ]
+    },
+    "goat-gateway-path-独家认领机制": {
+      "at": "2026-10-02T06:50:26.715Z",
+      "repos": [
+        {
+          "repo": "C:/Users/27063/.dsh",
+          "branch": "main",
+          "head": "99173d3",
+          "dirty": 1
+        }
+      ]
+    },
+    "dsh-context-pricing-overlay-patch-20261002": {
+      "at": "2026-10-02T07:26:43.368Z",
+      "repos": [
+        {
+          "repo": "C:/Users/27063/.dsh",
+          "branch": "main",
+          "head": "17c7d00",
+          "dirty": 1
+        }
+      ]
+    },
+    "goat-gateway-sse-tail-truncation-fix-20261002": {
+      "at": "2026-10-02T08:04:46.905Z",
+      "repos": [
+        {
+          "repo": "C:/Users/27063/.dsh",
+          "branch": "main",
+          "head": "479ed86",
+          "dirty": 1
+        }
+      ]
     }
   }
 }

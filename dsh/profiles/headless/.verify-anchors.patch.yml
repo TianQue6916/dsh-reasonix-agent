@@ -1,0 +1,12 @@
+# 一次性验证 overlay（用完即删）：给 headless 带上两个 anchor
+# headless 没有 context-gate，所以注入在第一轮就可见 —— 最短验证路径。
+- insert:
+    - id: plan-anchor
+      name: ../../.agent-presets/anchored-standard/plan-anchor.mjs
+      config:
+        enabled: true
+
+    - id: thinking-anchor
+      name: ../../.agent-presets/anchored-standard/thinking-anchor.mjs
+      config:
+        enabled: true

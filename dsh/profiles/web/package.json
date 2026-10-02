@@ -4,7 +4,7 @@
   "dependencies": {
     "@ethanwong-hk/dsh-thinking-guard": "^1.0.2",
     "@lanbaolu/dsh-wechat-bridge": "0.9.1",
-    "@local/dsh-plugin-goat-panel": "file:D:/Toolbox/goat-gateway/dsh-plugin-goat-panel",
+    "@local/dsh-plugin-goat-panel": "link:D:/Toolbox/goat-gateway/dsh-plugin-goat-panel",
     "@local/dsh-thinking-language": "file:D:/Toolbox/dsh-thinking-language",
     "@mingozhou/dsh-replay": "^0.4.1",
     "ds-harness-remote": "^0.4.20",
@@ -26,7 +26,8 @@
         "dshmarket",
         "@mingozhou/dsh-replay",
         "@lanbaolu/dsh-wechat-bridge",
-        "@local/dsh-thinking-language"
+        "@local/dsh-thinking-language",
+        "@ethanwong-hk/dsh-thinking-guard"
       ],
       "patchReload": "live"
     }

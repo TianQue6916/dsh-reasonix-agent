@@ -3,7 +3,7 @@
   "private": true,
   "dependencies": {
     "@lanbaolu/dsh-wechat-bridge": "0.9.1",
-    "@local/dsh-plugin-goat-panel": "file:D:/Toolbox/goat-gateway/dsh-plugin-goat-panel",
+    "@local/dsh-plugin-goat-panel": "link:D:/Toolbox/goat-gateway/dsh-plugin-goat-panel",
     "@local/dsh-thinking-language": "file:D:/Toolbox/dsh-thinking-language",
     "@mingozhou/dsh-replay": "^0.4.1",
     "billion-context": "0.1.178",
@@ -14,7 +14,7 @@
     "dsh-headroom": "git+https://github.com/giter00/dsh-headroom.git",
     "dsh-mnemon": "^0.5.21",
     "dsh-plugin-local-search": "link:D:/Toolbox/goat-gateway/dsh-plugin-local-search",
-    "dsh-plugin-message-edit": "1.2.0",
+    "dsh-plugin-message-edit": "file:../../vendor/dsh-plugin-message-edit-1.2.0-pr7.tgz",
     "dsh-quick-toc": "0.8.2",
     "dshmarket": "^1.66.7"
   },
@@ -33,9 +33,9 @@
         "@local/dsh-thinking-language",
         "dsh-context",
         "billion-context",
-        "dsh-plugin-message-edit",
         "dsh-quick-toc",
-        "dsh-better-sidebar"
+        "dsh-better-sidebar",
+        "dsh-plugin-message-edit"
       ],
       "patchReload": "live"
     }

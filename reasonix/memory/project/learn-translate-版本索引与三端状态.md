@@ -1,39 +1,43 @@
 ---
 id: mem-3c1ffea0b8bf4184e2b335a4d211f51e
-revision: 1
+revision: 2
 created_at: "2026-10-22T14:54:26.222Z"
-updated_at: "2026-10-22T14:54:26.222Z"
+updated_at: "2026-10-22T15:19:53.970Z"
 name: learn-translate-版本索引与三端状态
-description: "learn-translate v4.2.2 终态索引：169 行 / 19 references / 5 版本沿革 / 三端实为 2 副本 / 备份链"
+description: "learn-translate v4.3 终态：174 行 / 20 references / 6 版沿革 / 铁律 31 讲解图 / 三端 2 副本"
 metadata:
   type: user
   fact_type: reference
   scope: project
 ---
 
-## 技能 `learn-translate` 当前版本（截至 2026-10-22 23:10）
+## 技能 `learn-translate` 当前版本（截至 2026-10-22 23:20）
 
-v4.2.2：`SKILL.md` **169 行**，references **19 个**，三端 sha256 一致。
+**v4.3**：`SKILL.md` **174 行**，references **20 个**（另有 1 个 `.bak`），三端 sha256 一致（SKILL `379dd4a64b` / figures `dfbe5f3663`）。
 
-### 版本沿革（每版一句话，细节在 `references/changelog.md`）
+### 版本沿革（细节在 `references/changelog.md`）
 | 版本 | 内容 |
 |---|---|
-| v4.0 | 从"翻译技能"升为「方舟学习引擎」：A 翻译（原 8 步逐字不动）/ B 学习（定锚→取料→四问→验证→落盘）；四问锚点（本质 / 公式 / 现实承重+消失测试 / 拓展四层 L1-L4）；资料层；铁律 26→30 |
-| v4.1 | 改名 `learn-translate`；铁律 21 去 Reasonix 时代化；`§A2` 补主力机输出路径；锚点卡落 `Desktop/课程文件/锚点卡/<课程>/`（Desktop 实测只有 工具箱/程序/课程文件）；description 468→342；加「与相邻技能边界」表 |
-| v4.2 | 补 **学习科学证据分级** `references/learning-science.md`：九条学习法逐条判 [MA]/[RCT]/[EXP]/[CS]/[OBS]/[D] |
-| v4.2.1 | 数字核到 DOI；纠一处误引（0.73/0.39 疑似串 Hattie 2009） |
-| v4.2.2 | 加 **人-AI 讨论协议**（`learning-engine.md` 末节，默认角色「审稿人」） |
+| v4.0 | 翻成「方舟学习引擎」：A 翻译（原 8 步逐字不动）/ B 学习；四问锚点（本质 / 公式 / 现实承重+消失测试 / 拓展四层）；铁律 26→30 |
+| v4.1 | 改名 `learn-translate`；铁律 21 去 Reasonix 时代化；`§A2` 补主力机路径；锚点卡落 `Desktop/课程文件/锚点卡/<课程>/`；description 468→342 |
+| v4.2 | 学习科学证据分级 `learning-science.md`（九条学习法标 [MA]/[RCT]/[EXP]/[CS]/[OBS]/[D]） |
+| v4.2.1 | 数字核到 DOI（Rowland g=0.50 [0.42,0.58] 等）；纠 0.73/0.39 误引 |
+| v4.2.2 | 人-AI 讨论协议（默认角色「审稿人」） |
+| **v4.3** | **讲解用图标准 `figures.md`（73 行）+ 铁律 31 + 契约 16** |
 
-### references 清单（19）
-原 16 个（format / toolchain / prompts / ps-workflow / vision-check / image-pipeline / notes-guide / workflow-core / workflow-large-scale / ironrules-format / ironrules-process / ironrules-roles-sources / chapter-briefs / quickstart-faq / runtime-and-appendix / changelog）+ 3 个新：`learning-engine.md`（179 行，四问 + 讨论协议）、`sources.md`（检索顺序 + 分级 + 社区手法）、`learning-science.md`（证据分级 + 禁用句式）。
+### v4.3 要点（用户要求「帮助理解的图像也有很高要求，参照社区经验」）
+- 五条硬标准**全带可判定判据**：coherence（指着元素问"删掉失去什么"）/ signaling（**遮标题**看能否指出重点）/ contiguity（禁「编号+远处对照表」）/ 一图一主张 / caption 必须**可被反驳的主张句**
+- 数学图专规：截断轴必标 break、多子图共享 min/max、离散量不画光滑曲线、误差/样本数必须画、对数轴、**黑白打印可读**（他会打印讲义）、色盲调色板给色值（Okabe-Ito / Paul Tol `#DDAA33 #BB5566 #004488` / CUDO `#FF4B00 #F6AA00 #03AF7A #005AFF #4DC4FF`）
+- **源码必须入库** `assets/src/*.py|.html|.tex`，禁止只交裸 PNG
+- 证据：多媒体原则 **[MA]**（Noetel et al.，中等平均改善、原则间差异大）、coherence **[EXP]**（Mayer et al. 2001，无关材料**降低**理解）、seductive details [EXP] 效应小；Tufte 与调色板属 [D]/[OBS] 但零代价
+- 社区出处：learning-wiki 的 `claims/coherence-principle-irrelevant-material-hurts-learning.md`、`principles/contiguity.md`、`principles/signaling.md`、`claims/seductive-details-effect.md`；`sksat/bambu-rs` 的 `color-universal-design/SKILL.md`；osint-foresight 的 `DATA_VISUALIZATION_BEST_PRACTICES_MASTER.md`
+- 路由拆分：`原书插图（保留/裁切）` → `image-pipeline.md` + 铁律 26；`帮助理解的图` → `figures.md` + 铁律 31（此前两类混在一起）
 
-### 位置与生效（实测）
+### 三端与生效
 - dsh 读 `~/.dsh/skills` → junction → `C:/Users/27063/ai-skills`
-- `.reasonix/skills/learn-translate` 与 ai-skills 那份 **inode 相同** ⇒ 真副本只有 2 个（ai-skills + `AppData/Roaming/reasonix/skills`）
-- `skill_search` 实时扫目录，改完**当场命中，无需重启 dsh**
-- 备份链：`SKILL.md.bak-20261022-pre-v40-ark`、`learning-science.md.bak-20261022-pre-numbers`
+- `.reasonix/skills/learn-translate` 与 ai-skills 那份 **inode 相同** ⇒ 真副本 2 个（ai-skills + `AppData/Roaming/reasonix/skills`）
+- `skill_search` 实时扫目录，改完当场生效，**无需重启**
 
-### 协作偏好（用户反复确认过的）
-- 名字改动、结构改动要给他**选项 + 推荐**，不要自行拍板
-- 文件写入：单次 shell heredoc 超 ~8 KB 中文会截断 ⇒ 分段 ≤3 KB + `wc -l`/`tail`/grep 校验
-- 三端同步纪律：先让字节一致再增删，否则同步器"仅一方有→补齐"会把删掉的文件补回来
+### 踩坑（复用）
+- 单次 shell heredoc 写 >8 KB 中文会**截断**；python 三引号里含英文 `"` 会 SyntaxError ⇒ 分段写（≤3 KB）+ 用中文引号 + `wc -l`/`tail`/grep 验证
+- 含反斜杠路径的 python 字符串用 `r"""..."""`（否则 `\U` 转义报错）

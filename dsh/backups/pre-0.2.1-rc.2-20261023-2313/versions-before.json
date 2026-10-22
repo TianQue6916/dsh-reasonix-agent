@@ -1,0 +1,76 @@
+{
+  "desktop": {
+    "deps": {
+      "@lanbaolu/dsh-wechat-bridge": "0.9.1",
+      "@local/dsh-plugin-goat-panel": "link:D:/Toolbox/goat-gateway/dsh-plugin-goat-panel",
+      "@local/dsh-thinking-language": "file:D:/Toolbox/dsh-thinking-language",
+      "billion-context": "0.1.204",
+      "ds-harness-remote": "^0.4.27",
+      "dsh-better-sidebar": "0.24.1",
+      "dsh-context": "0.63.0",
+      "dsh-deja": "^0.21.3",
+      "dsh-headroom": "git+https://github.com/giter00/dsh-headroom.git",
+      "dsh-mnemon": "^0.5.21",
+      "dsh-plugin-local-search": "link:D:/Toolbox/goat-gateway/dsh-plugin-local-search",
+      "dsh-plugin-message-edit": "file:../../vendor/dsh-plugin-message-edit-1.2.0-pr7.tgz",
+      "dsh-quick-toc": "0.8.2",
+      "dshmarket": "^1.66.8"
+    },
+    "bundles": [
+      "@deepseek-ai/dsh-base",
+      "@deepseek-ai/dsh-web-app",
+      "@local/dsh-plugin-goat-panel",
+      "dsh-plugin-local-search",
+      "dsh-headroom",
+      "dsh-mnemon",
+      "dshmarket",
+      "@lanbaolu/dsh-wechat-bridge",
+      "@local/dsh-thinking-language",
+      "dsh-context",
+      "billion-context",
+      "dsh-quick-toc",
+      "dsh-better-sidebar",
+      "dsh-plugin-message-edit",
+      "@ethanwong-hk/dsh-thinking-guard"
+    ]
+  },
+  "web": {
+    "deps": {
+      "@ethanwong-hk/dsh-thinking-guard": "^1.0.2",
+      "@lanbaolu/dsh-wechat-bridge": "0.9.1",
+      "@local/dsh-plugin-goat-panel": "link:D:/Toolbox/goat-gateway/dsh-plugin-goat-panel",
+      "@local/dsh-thinking-language": "file:D:/Toolbox/dsh-thinking-language",
+      "ds-harness-remote": "^0.4.20",
+      "dsh-deja": "^0.21.3",
+      "dsh-headroom": "git+https://github.com/giter00/dsh-headroom.git",
+      "dsh-mnemon": "^0.5.20",
+      "dsh-plugin-local-search": "link:D:/Toolbox/goat-gateway/dsh-plugin-local-search",
+      "dshmarket": "^1.66.6"
+    },
+    "bundles": [
+      "@deepseek-ai/dsh-base",
+      "@deepseek-ai/dsh-web-app",
+      "@local/dsh-plugin-goat-panel",
+      "dsh-plugin-local-search",
+      "dsh-headroom",
+      "dsh-mnemon",
+      "dshmarket",
+      "@lanbaolu/dsh-wechat-bridge",
+      "@local/dsh-thinking-language",
+      "@ethanwong-hk/dsh-thinking-guard",
+      "dsh-pilot"
+    ]
+  },
+  "headless": {
+    "deps": {
+      "dsh-plugin-local-search": "link:D:/Toolbox/goat-gateway/dsh-plugin-local-search"
+    },
+    "bundles": [
+      "@deepseek-ai/dsh-base",
+      "@deepseek-ai/dsh-headless",
+      "dsh-plugin-local-search"
+    ]
+  },
+  "_global_dsh": "0.2.0-rc.2",
+  "_backup_at": "2026-10-22T23:14:16"
+}

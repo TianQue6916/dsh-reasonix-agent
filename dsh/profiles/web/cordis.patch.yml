@@ -643,11 +643,6 @@
               - id: tool-workflow
                 name: '@deepseek-ai/dsh-tool-workflow'
 
-              - id: tool-ralph
-                name: '@deepseek-ai/dsh-tool-ralph'
-                config:
-                  subagentProvider: spawn
-                  maxRounds: 64
 
           # ── remaining model-facing rows ─────────────────────────────────────────────
 
@@ -1351,14 +1346,6 @@
   config:
     transcriptView: verbose
 
-# ── Claude Code hook 兼容层（2026-09-27 加入）─────────────────────────────
-# Stop = "when the run is about to stop"：每次 run 结束前触发
-# configPath 在进程启动时读一次 → 改 hooks.json 必须重启 dsh web
-- insert:
-    - id: hooks-claude-code
-      name: '@deepseek-ai/dsh-hooks-claude-code'
-      config:
-        configPath: D:/daily-kit/hooks/hooks.json
 - id: mnemon
   name: dsh-mnemon
   config:

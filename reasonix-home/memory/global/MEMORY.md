@@ -323,6 +323,8 @@
 - [用户学习模式-检索重建型与伴随式复习](用户学习模式-检索重建型与伴随式复习.md) — 用户学习模式定稿：检索-重建型 + 伴随式复习 + 白纸复现日常 + 固定日程；禁推 Anki/日程重排
 - [学业进度-2026-09](学业进度-2026-09.md) — 学业进度与课程计划（截至 2026-09-30）：已完成 6.042J/CSAPP/6.006/Strang 线代，高数大物已考；大二上 P0=6.431 概率论(Bertsekas 读原版)+CS144，P1=Boyd 凸优化前5章+Cover 信息论前6章；实分析 Thomson+Rudin 推进中；非核心课最低投入、作业底线不动。从 USER.md 常驻层迁出的明细
 - [user-md-分层瘦身-20261023](user-md-分层瘦身-20261023.md) — USER.md 常驻层瘦身：学业阶段条目从全量清单(572B)改成指针(290B)，明细迁 fact 学业进度-2026-09，总量 3294→3028B(80%→74%)；删掉与教学协议重复的连接点清单；沉淀分层原则「常驻层只放每轮必须生效的约束，会过期的明细进 fact + 指针」
+- [dsh-replay-卸载与两个悬案查证-20261023](dsh-replay-卸载与两个悬案查证-20261023.md) — 鲸小深=dsh-replay 的 mascot：已从 desktop/web 两个 profile 卸载（deps+bundles+node_modules 共 32.7MB，package.json 已备份），需重启 dsh 生效；顺带查明 hooks-claude-code 自 2026-09-27 起未触发（Stop hook 日志停摆）、tool-ralph 在 275 turns/5520 次调用中零使用
+- [dsh-0.2.1-rc.2-升级全景与进度-20261023](dsh-0.2.1-rc.2-升级全景与进度-20261023.md) — dsh 0.2.1-rc.2 升级全景（2026-10-23）：桌面端 Electron 与 npm CLI 是两条独立升级线，桌面端 app.asar 内置自己的 dsh 运行时，nights feeds 已到 0.2.1-rc.2；已完成备份/删 replay/删 hooks+ralph/CLI 升级；待做插件升级（dsh-context 0.63→0.74 风险最高）与三端回归
 ## 归档说明
 - 原文全量备份：`~/.reasonix/memory-backup-20260816/`（59 份）与 `~/.reasonix/memory-backup-20260816-consolidate/`
 - 合并/蒸馏原始件：`~/.reasonix/memory-archive-20260816/`

@@ -689,9 +689,3 @@
   config:
     maxOutputBytes: 640000
 
-# ── Claude Code hook 兼容层（2026-09-27 加入，用于验证 Stop hook）─────────
-- insert:
-    - id: hooks-claude-code
-      name: '@deepseek-ai/dsh-hooks-claude-code'
-      config:
-        configPath: D:/daily-kit/hooks/hooks.json

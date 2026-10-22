@@ -28,3 +28,7 @@
 {"at":"2026-10-01T11:10:35.185Z","level":"info","event":"install","detail":"billion-context@0.1.178 exit=0 hot=true"}
 {"at":"2026-10-01T12:05:21.356Z","level":"warn","event":"update-blocked","detail":"billion-context: refused while agents are running — session-a0d5fbf8-0fb1-419e-9baf-d95df0190144, session-10ca9bfe-4689-474d-8d7f-cc9c8d8abe30"}
 {"at":"2026-10-01T12:05:21.401Z","level":"warn","event":"update-blocked","detail":"dsh-deja: refused while agents are running — session-a0d5fbf8-0fb1-419e-9baf-d95df0190144, session-10ca9bfe-4689-474d-8d7f-cc9c8d8abe30"}
+{"at":"2026-10-04T06:11:25.109Z","level":"warn","event":"update-blocked","detail":"billion-context: refused while agents are running — session-a0d5fbf8-0fb1-419e-9baf-d95df0190144"}
+{"at":"2026-10-04T06:11:25.200Z","level":"warn","event":"update-blocked","detail":"dsh-context: refused while agents are running — session-a0d5fbf8-0fb1-419e-9baf-d95df0190144"}
+{"at":"2026-10-04T06:11:25.247Z","level":"warn","event":"update-blocked","detail":"dsh-mnemon: refused while agents are running — session-a0d5fbf8-0fb1-419e-9baf-d95df0190144"}
+{"at":"2026-10-04T06:11:25.311Z","level":"warn","event":"update-blocked","detail":"dsh-quick-toc: refused while agents are running — session-a0d5fbf8-0fb1-419e-9baf-d95df0190144"}

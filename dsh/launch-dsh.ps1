@@ -36,6 +36,39 @@ $LogFile   = Join-Path $LogDir "dsh-web-$Port.out.log"
 
 $null = New-Item -ItemType Directory -Force -Path $LogDir
 
+# ---- [caller-trace 2026-10-06] 记录「是谁启动了本脚本」----
+# 缘起：用户报告「每次开机都会出现这个命令行窗口」，但 Startup 文件夹 / HKCU-HKLM Run /
+#       Win32_StartupCommand 全表里都找不到 dsh 启动项。本段把调用者父链写进日志，
+#       下次窗口再出现时直接看 ~/.dsh/logs/launch-dsh-caller.log 就知道元凶。
+# 成本：一次 Add-Content（<5ms），失败静默，不影响主流程。
+try {
+  $traceFile = Join-Path $LogDir "launch-dsh-caller.log"
+  $chain = @()
+  $cur = Get-CimInstance Win32_Process -Filter "ProcessId=$PID" -ErrorAction SilentlyContinue
+  for ($i = 0; $i -lt 8 -and $cur; $i++) {
+    $cl = $cur.CommandLine
+    if ($cl -and $cl.Length -gt 220) { $cl = $cl.Substring(0, 220) + "..." }
+    $chain += ("{0} | {1} | {2}" -f $cur.ProcessId, $cur.Name, $cl)
+    $pp = $cur.ParentProcessId
+    if (-not $pp -or $pp -eq 0) { break }
+    $cur = Get-CimInstance Win32_Process -Filter "ProcessId=$pp" -ErrorAction SilentlyContinue
+  }
+  $commonStartup = [Environment]::GetFolderPath('CommonStartup')
+  $userStartup   = [Environment]::GetFolderPath('Startup')
+  $entries = @()
+  foreach ($d in @($userStartup, $commonStartup)) {
+    if ($d -and (Test-Path $d)) {
+      $entries += (Get-ChildItem -LiteralPath $d -Force -ErrorAction SilentlyContinue | Select-Object -ExpandProperty Name)
+    }
+  }
+  $line = @()
+  $line += "[{0}] mode={1} user={2} pid={3}" -f (Get-Date -Format 'yyyy-MM-dd HH:mm:ss'), $Mode, $env:USERNAME, $PID
+  $line += "  startup[{0}]: {1}" -f $entries.Count, ($entries -join ", ")
+  $line += ($chain | ForEach-Object { "  " + $_ })
+  Add-Content -Path $traceFile -Value ($line -join "`r`n") -Encoding UTF8
+} catch { }
+# ---- [/caller-trace] ----
+
 function Test-PortBusy {
   param([int]$P)
   $null -ne (Get-NetTCPConnection -LocalPort $P -State Listen -ErrorAction SilentlyContinue)

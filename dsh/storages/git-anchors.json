@@ -616,6 +616,479 @@
           "dirty": 1
         }
       ]
+    },
+    "mnemon-idle-review-maxtokens-truncation-fix-20261003": {
+      "at": "2026-10-03T05:31:43.983Z",
+      "repos": [
+        {
+          "repo": "C:/Users/27063/.dsh",
+          "branch": "main",
+          "head": "86b3288",
+          "dirty": 1
+        }
+      ]
+    },
+    "dsh-compaction-summary-language-zh-patch-20261003": {
+      "at": "2026-10-03T05:38:44.297Z",
+      "repos": [
+        {
+          "repo": "C:/Users/27063/.dsh",
+          "branch": "main",
+          "head": "9de794d",
+          "dirty": 3
+        }
+      ]
+    },
+    "dsh-maxtokens-notice-suppress-patch-20261003": {
+      "at": "2026-10-03T05:48:00.109Z",
+      "repos": [
+        {
+          "repo": "C:/Users/27063/.dsh",
+          "branch": "main",
+          "head": "42f5bf6",
+          "dirty": 5
+        }
+      ]
+    },
+    "dsh-reasoning-language-selflock-and-echo-filter-20261003": {
+      "at": "2026-10-03T08:19:42.702Z",
+      "repos": [
+        {
+          "repo": "C:/Users/27063/.dsh",
+          "branch": "main",
+          "head": "e4578a7",
+          "dirty": 1
+        }
+      ]
+    },
+    "dsh-thinking-guard-name-scope-fix-20261003": {
+      "at": "2026-10-03T10:13:57.858Z",
+      "repos": [
+        {
+          "repo": "C:/Users/27063/.dsh",
+          "branch": "main",
+          "head": "9f6e0dd",
+          "dirty": 3
+        }
+      ]
+    },
+    "dsh-profile-manifest-change-requires-restart-20261003": {
+      "at": "2026-10-03T11:11:50.764Z",
+      "repos": [
+        {
+          "repo": "C:/Users/27063/.dsh",
+          "branch": "main",
+          "head": "e7cf21e",
+          "dirty": 0
+        }
+      ]
+    },
+    "thinking-chain-english-lock-rootcause-20261004": {
+      "at": "2026-10-03T16:18:45.997Z",
+      "repos": [
+        {
+          "repo": "C:/Users/27063/.dsh",
+          "branch": "main",
+          "head": "e48dc71",
+          "dirty": 1
+        }
+      ]
+    },
+    "stall-guard-turn-freeze-fix-20261004": {
+      "at": "2026-10-04T02:40:29.785Z",
+      "repos": [
+        {
+          "repo": "C:/Users/27063/.dsh",
+          "branch": "main",
+          "head": "37d46e8",
+          "dirty": 0
+        }
+      ]
+    },
+    "finish-length-is-internal-64token-20261004": {
+      "at": "2026-10-04T03:20:35.109Z",
+      "repos": [
+        {
+          "repo": "C:/Users/27063/.dsh",
+          "branch": "main",
+          "head": "60357ea",
+          "dirty": 1
+        }
+      ]
+    },
+    "stall-guard-toolbreaker-not-wired-20261004": {
+      "at": "2026-10-04T03:41:57.956Z",
+      "repos": [
+        {
+          "repo": "C:/Users/27063/.dsh",
+          "branch": "main",
+          "head": "2fc0b84",
+          "dirty": 1
+        }
+      ]
+    },
+    "headroom-searchfold-timestamp-corruption-fix-20261004": {
+      "at": "2026-10-04T03:49:15.043Z",
+      "repos": [
+        {
+          "repo": "C:/Users/27063/.dsh",
+          "branch": "main",
+          "head": "50fb7d5",
+          "dirty": 2
+        }
+      ]
+    },
+    "thinking-guard-config-precedence-and-tune-20261004": {
+      "at": "2026-10-04T03:56:42.511Z",
+      "repos": [
+        {
+          "repo": "C:/Users/27063/.dsh",
+          "branch": "main",
+          "head": "860846a",
+          "dirty": 1
+        }
+      ]
+    },
+    "mnemon-idlereview-never-ran-20261004": {
+      "at": "2026-10-04T04:02:13.758Z",
+      "repos": [
+        {
+          "repo": "C:/Users/27063/.dsh",
+          "branch": "main",
+          "head": "a2bbf49",
+          "dirty": 0
+        }
+      ]
+    },
+    "tm-usage-first-plugin-desktop-token-meter-fix-20261004": {
+      "at": "2026-10-04T07:46:02.892Z",
+      "repos": [
+        {
+          "repo": "C:/Users/27063/.dsh",
+          "branch": "main",
+          "head": "a929482",
+          "dirty": 4
+        }
+      ]
+    },
+    "billion-context-community-solution-and-dsh-preset-blindspot-20261004": {
+      "at": "2026-10-04T07:48:39.515Z",
+      "repos": [
+        {
+          "repo": "C:/Users/27063/.dsh",
+          "branch": "main",
+          "head": "9bec61e",
+          "dirty": 0
+        }
+      ]
+    },
+    "dsh-pilot-browser-lab-e2e-20261004": {
+      "at": "2026-10-04T10:18:53.753Z",
+      "repos": [
+        {
+          "repo": "C:/Users/27063/.dsh",
+          "branch": "main",
+          "head": "539811a",
+          "dirty": 0
+        }
+      ]
+    },
+    "windows-temp-d-temp-unwritable-root-cause-20261004": {
+      "at": "2026-10-04T10:19:12.869Z",
+      "repos": [
+        {
+          "repo": "C:/Users/27063/.dsh",
+          "branch": "main",
+          "head": "539811a",
+          "dirty": 1
+        }
+      ]
+    },
+    "restart-handoff-20261004-kernel-temp-and-bc": {
+      "at": "2026-10-04T10:27:59.183Z",
+      "repos": [
+        {
+          "repo": "C:/Users/27063/.dsh",
+          "branch": "main",
+          "head": "671f997",
+          "dirty": 2
+        }
+      ]
+    },
+    "dsh-compaction-threshold-and-audit-pitfalls-20261004": {
+      "at": "2026-10-04T11:29:51.030Z",
+      "repos": [
+        {
+          "repo": "C:/Users/27063/.dsh",
+          "branch": "main",
+          "head": "2779e0f",
+          "dirty": 3
+        }
+      ]
+    },
+    "dsh-wincu-and-pilot-promoted-to-production-web-20261004": {
+      "at": "2026-10-04T11:33:13.209Z",
+      "repos": [
+        {
+          "repo": "C:/Users/27063/.dsh",
+          "branch": "main",
+          "head": "9c0c8a1",
+          "dirty": 3
+        }
+      ]
+    },
+    "python-windows-backslash-heredoc-trap": {
+      "at": "2026-10-04T11:34:07.238Z",
+      "repos": [
+        {
+          "repo": "C:/Users/27063/.dsh",
+          "branch": "main",
+          "head": "8a927ef",
+          "dirty": 2
+        }
+      ]
+    },
+    "goat-gateway-quota动态权重-resetWindow必须用month": {
+      "at": "2026-10-04T12:14:36.595Z",
+      "repos": [
+        {
+          "repo": "C:/Users/27063/.dsh",
+          "branch": "main",
+          "head": "c2d4299",
+          "dirty": 0
+        }
+      ]
+    },
+    "本机-D盘-Toolbox-原生进程拒写只能走MSYS": {
+      "at": "2026-10-04T12:14:37.119Z",
+      "repos": [
+        {
+          "repo": "C:/Users/27063/.dsh",
+          "branch": "main",
+          "head": "c2d4299",
+          "dirty": 1
+        }
+      ]
+    },
+    "dsh-desktop-app-status-breakpoint-nosandbox-20261004": {
+      "at": "2026-10-04T14:35:36.295Z",
+      "repos": [
+        {
+          "repo": "C:/Users/27063/.dsh",
+          "branch": "main",
+          "head": "7dbec8b",
+          "dirty": 2
+        }
+      ]
+    },
+    "dsh-asar-inspection-and-objective-9-10-findings-20261004": {
+      "at": "2026-10-04T14:40:00.326Z",
+      "repos": [
+        {
+          "repo": "C:/Users/27063/.dsh",
+          "branch": "main",
+          "head": "7dbec8b",
+          "dirty": 8
+        }
+      ]
+    },
+    "tianque-linux-unreachable-dualboot-and-gateway-patch-prep-20261004": {
+      "at": "2026-10-04T14:46:35.230Z",
+      "repos": [
+        {
+          "repo": "C:/Users/27063/.dsh",
+          "branch": "main",
+          "head": "7dbec8b",
+          "dirty": 21
+        }
+      ]
+    },
+    "dsh-profile-models-block-parsing-traps-and-probe-choice-20261004": {
+      "at": "2026-10-04T15:04:06.064Z",
+      "repos": [
+        {
+          "repo": "C:/Users/27063/.dsh",
+          "branch": "main",
+          "head": "c66c45f",
+          "dirty": 7
+        }
+      ]
+    },
+    "dsh-desktop-requires-no-sandbox": {
+      "at": "2026-10-06T05:41:35.752Z",
+      "repos": [
+        {
+          "repo": "C:/Users/27063/.dsh",
+          "branch": "main",
+          "head": "d5288bc",
+          "dirty": 4
+        }
+      ]
+    },
+    "dsh-web-3080-logon-task-REDACTED": {
+      "at": "2026-10-06T15:17:03.914Z",
+      "repos": [
+        {
+          "repo": "C:/Users/27063/.dsh",
+          "branch": "main",
+          "head": "dac43d8",
+          "dirty": 4
+        }
+      ]
+    },
+    "dsh-mnemon-embedding-enabled-20261006": {
+      "at": "2026-10-06T15:17:04.229Z",
+      "repos": [
+        {
+          "repo": "C:/Users/27063/.dsh",
+          "branch": "main",
+          "head": "dac43d8",
+          "dirty": 5
+        }
+      ]
+    },
+    "dsh-desktop-blank-conversation-pane-null-source-guard-20261007": {
+      "at": "2026-10-07T04:49:04.450Z",
+      "repos": [
+        {
+          "repo": "C:/Users/27063/.dsh",
+          "branch": "main",
+          "head": "e50000e",
+          "dirty": 5
+        }
+      ]
+    },
+    "dsh-desktop-core-bundles-load-from-asar": {
+      "at": "2026-10-07T11:46:58.189Z",
+      "repos": [
+        {
+          "repo": "C:/Users/27063/.dsh",
+          "branch": "main",
+          "head": "5ea2003",
+          "dirty": 8
+        }
+      ]
+    },
+    "goat-gateway-deepseek-official-disabled-20261016": {
+      "at": "2026-10-16T03:41:29.338Z",
+      "repos": [
+        {
+          "repo": "C:/Users/27063/.dsh",
+          "branch": "main",
+          "head": "2fb2621",
+          "dirty": 0
+        }
+      ]
+    },
+    "cache-hit-degradation-attribution-20261016": {
+      "at": "2026-10-16T03:42:23.987Z",
+      "repos": [
+        {
+          "repo": "C:/Users/27063/.dsh",
+          "branch": "main",
+          "head": "2fb2621",
+          "dirty": 1
+        }
+      ]
+    },
+    "bili-compress-frequency-tuned-20261016": {
+      "at": "2026-10-16T03:53:33.669Z",
+      "repos": [
+        {
+          "repo": "C:/Users/27063/.dsh",
+          "branch": "main",
+          "head": "9c59958",
+          "dirty": 0
+        }
+      ]
+    },
+    "dsh-preset-effective-path-and-pruner-tuned-20261016": {
+      "at": "2026-10-16T04:05:41.844Z",
+      "repos": [
+        {
+          "repo": "C:/Users/27063/.dsh",
+          "branch": "main",
+          "head": "9c59958",
+          "dirty": 4
+        }
+      ]
+    },
+    "bili-compression-policy-final-20261016": {
+      "at": "2026-10-16T04:57:17.257Z",
+      "repos": [
+        {
+          "repo": "C:/Users/27063/.dsh",
+          "branch": "main",
+          "head": "915f3b1",
+          "dirty": 1
+        }
+      ]
+    },
+    "bili-allow-dsh-compaction-and-manual-compact-20261016": {
+      "at": "2026-10-16T08:50:09.255Z",
+      "repos": [
+        {
+          "repo": "C:/Users/27063/.dsh",
+          "branch": "main",
+          "head": "8ccb5e9",
+          "dirty": 0
+        }
+      ]
+    },
+    "bilingual-ocw-translator-v4.0-方舟学习引擎": {
+      "at": "2026-10-22T14:19:53.746Z",
+      "repos": [
+        {
+          "repo": "C:/Users/27063/.dsh",
+          "branch": "main",
+          "head": "61eb01c",
+          "dirty": 9
+        }
+      ]
+    },
+    "learn-translate-v4.1-技能终态": {
+      "at": "2026-10-22T14:25:22.016Z",
+      "repos": [
+        {
+          "repo": "C:/Users/27063/.dsh",
+          "branch": "main",
+          "head": "61eb01c",
+          "dirty": 45
+        }
+      ]
+    },
+    "learn-translate-v4.2-学习科学证据分级": {
+      "at": "2026-10-22T14:32:15.661Z",
+      "repos": [
+        {
+          "repo": "C:/Users/27063/.dsh",
+          "branch": "main",
+          "head": "e345f7d",
+          "dirty": 5
+        }
+      ]
+    },
+    "bili-window-150000-deadlock-根因与修复": {
+      "at": "2026-10-22T14:32:43.379Z",
+      "repos": [
+        {
+          "repo": "C:/Users/27063/.dsh",
+          "branch": "main",
+          "head": "e345f7d",
+          "dirty": 7
+        }
+      ]
+    },
+    "memory-system-efficiency-audit-20261022": {
+      "at": "2026-10-22T14:36:19.710Z",
+      "repos": [
+        {
+          "repo": "C:/Users/27063/.dsh",
+          "branch": "main",
+          "head": "e345f7d",
+          "dirty": 9
+        }
+      ]
     }
   }
 }

@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "applied": [
+    {
+      "target": "npm-js",
+      "path": "C:\\Users\\27063\\AppData\\Roaming\\npm\\node_modules\\@deepseek-ai\\dsh\\node_modules\\@deepseek-ai\\dsh-compaction-basic\\lib\\index.js",
+      "at": "2026-10-03T13:38:12",
+      "offsets": [
+        14877
+      ],
+      "before": "English engineering prose",
+      "after": "Chinese engineering prose",
+      "sha256_before": null
+    },
+    {
+      "target": "desktop-asar",
+      "path": "C:\\Users\\27063\\AppData\\Local\\Programs\\DeepSeek Harness\\resources\\app.asar",
+      "at": "2026-10-03T13:38:12",
+      "offsets": [
+        46685547,
+        46706307,
+        46724657
+      ],
+      "before": "English engineering prose",
+      "after": "Chinese engineering prose",
+      "sha256_before": null
+    }
+  ]
+}

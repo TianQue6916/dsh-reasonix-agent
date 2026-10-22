@@ -7,7 +7,7 @@
  * 不是我另写一份复刻。断言覆盖：
  *   ① 本地表命中（这正是修的那件事）
  *   ② 一个回归护栏：没被本地表覆盖的 (provider, model) 行为与打补丁前逐字一致
- *   ③ 真实 token 桶算出来的钱 = ¥281.31（打补丁前是 null）
+ *   ③ 真实 token 桶算出来的钱 = ¥283.98（打补丁前是 null）
  *   ④ 本地表是精确匹配，不是兜底放水
  *
  * 用法：node ~/.dsh/storages/tools/test-dsh-context-pricing.mjs [--target <client.js>]
@@ -113,8 +113,8 @@ console.log('[1] 本地价目覆盖表本身')
 check('LOCAL_PRICES 有 commandcode-goat 分支', M.LOCAL_PRICES['commandcode-goat'] !== undefined)
 const f1 = M.localFaceOf('commandcode-goat', 'deepseek/deepseek-v4.1-flash')
 check('localFaceOf 命中主力那一对', f1 !== null)
-check('  rate.hit = 0.003', f1?.rate.hit === 0.003, String(f1?.rate.hit))
-check('  rate.out = 0.6', f1?.rate.out === 0.6, String(f1?.rate.out))
+check('  rate.hit = 0.0030285', f1?.rate.hit === 0.0030285, String(f1?.rate.hit))
+check('  rate.out = 0.6057', f1?.rate.out === 0.6057, String(f1?.rate.out))
 check('localFaceOf 对未列出的 model 返回 null', M.localFaceOf('commandcode-goat', 'z-ai/glm-5.3-flash') === null)
 check('localFaceOf 对未列出的 provider 返回 null', M.localFaceOf('nano-gpt', 'deepseek/deepseek-v4.1-flash') === null)
 check('peakProviders 默认为空数组', Array.isArray(M.LOCAL_PEAK_PROVIDERS) && M.LOCAL_PEAK_PROVIDERS.length === 0)
@@ -124,7 +124,7 @@ console.log('[2] priceFaceOf：打补丁前为 null 的输入现在有价')
 const faceMain = M.priceFaceOf(book, 'commandcode-goat', 'deepseek/deepseek-v4.1-flash')
 check('主力那一对不再 null', faceMain !== null)
 check('  pid 透出 dsh provider 原名', faceMain?.pid === 'commandcode-goat', String(faceMain?.pid))
-check('  rate.miss = 0.15', faceMain?.rate.miss === 0.15, String(faceMain?.rate.miss))
+check('  rate.miss = 0.151425', faceMain?.rate.miss === 0.151425, String(faceMain?.rate.miss))
 const faceOfficial = M.priceFaceOf(book, 'deepseek-official', 'deepseek/deepseek-v4-flash')
 check('deepseek-official + org 前缀 model 也不再 null', faceOfficial !== null, JSON.stringify(faceOfficial))
 
@@ -151,8 +151,8 @@ const usage = {
 const usd = M.estimateSessionCost(usage, book, 'usd')
 const cny = M.estimateSessionCost(usage, book, 'cny')
 check('estimateSessionCost 不再返回 null', usd !== null)
-check('USD = 42.19659584', close(usd, 42.19659584), String(usd))
-check('CNY = ¥281.31（USD / 0.15 的固定换算）', close(cny, 281.3106389333333, 1e-9), String(cny))
+check('USD = 42.5974635014895', close(usd, 42.5974635014895), String(usd))
+check('CNY = ¥283.98（USD / 0.15 的固定换算）', close(cny, 283.98309000993, 1e-9), String(cny))
 const mixed = {
   'commandcode-goat': {
     'deepseek/deepseek-v4.1-flash': { peak: { cacheRead: 2339563247, uncached: 62342226, cacheWrite: 0, output: 43044287 } },
@@ -160,7 +160,7 @@ const mixed = {
   }
 }
 const mixedUsd = M.estimateSessionCost(mixed, book, 'usd')
-check('同一 provider 下两类 model 能同时计价（没被本地分支挡住）', mixedUsd !== null && mixedUsd > 42.19659584, String(mixedUsd))
+check('同一 provider 下两类 model 能同时计价（没被本地分支挡住）', mixedUsd !== null && mixedUsd > 42.5974635014895, String(mixedUsd))
 
 console.log('')
 console.log('结果：' + passed + ' passed, ' + failed + ' failed')

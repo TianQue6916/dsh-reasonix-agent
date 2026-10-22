@@ -1,0 +1,862 @@
+{
+ "machine": "天阙九泉",
+ "generatedAt": "2026-10-04T03:11:27.776237Z",
+ "dsh": {
+  "perKey": {
+   "commandcode-goat\tdeepseek/deepseek-v4.1-flash": {
+    "buckets": {
+     "cacheRead": 2454909342,
+     "uncachedInput": 83766965,
+     "output": 46149287,
+     "cacheWrite": 0
+    },
+    "sessions": 1453,
+    "steps": 28759,
+    "llmMs": 348720516,
+    "cost_cny": 320.4781916884796,
+    "priced": true
+   },
+   "commandcode-goat\tmeta/muse-spark-1.3-contributor": {
+    "buckets": {
+     "cacheRead": 6024,
+     "uncachedInput": 79507,
+     "output": 18808,
+     "cacheWrite": 0
+    },
+    "sessions": 3,
+    "steps": 8,
+    "llmMs": 405710,
+    "cost_cny": 0.0,
+    "priced": false
+   },
+   "?\t?": {
+    "buckets": {
+     "cacheRead": 66304,
+     "uncachedInput": 23422,
+     "output": 66049,
+     "cacheWrite": 0
+    },
+    "sessions": 18,
+    "steps": 21,
+    "llmMs": 982422,
+    "cost_cny": 0.0,
+    "priced": false
+   },
+   "deepseek-official\tdeepseek-flash": {
+    "buckets": {
+     "cacheRead": 1249152,
+     "uncachedInput": 96749,
+     "output": 57147,
+     "cacheWrite": 0
+    },
+    "sessions": 3,
+    "steps": 35,
+    "llmMs": 289208,
+    "cost_cny": 0.0,
+    "priced": false
+   },
+   "commandcode-goat\tdeepseek/deepseek-v4-pro": {
+    "buckets": {
+     "cacheRead": 33490944,
+     "uncachedInput": 1705299,
+     "output": 4000283,
+     "cacheWrite": 0
+    },
+    "sessions": 103,
+    "steps": 1187,
+    "llmMs": 59951904,
+    "cost_cny": 28.95637297999999,
+    "priced": true
+   },
+   "commandcode-goat\tdeepseek/deepseek-v4-flash": {
+    "buckets": {
+     "cacheRead": 40814080,
+     "uncachedInput": 297617,
+     "output": 224340,
+     "cacheWrite": 0
+    },
+    "sessions": 23,
+    "steps": 335,
+    "llmMs": 2694723,
+    "cost_cny": 2.0112585999999997,
+    "priced": true
+   },
+   "commandcode-goat\tgoogle/gemini-3.8-flash": {
+    "buckets": {
+     "cacheRead": 0,
+     "uncachedInput": 18818,
+     "output": 4090,
+     "cacheWrite": 0
+    },
+    "sessions": 6,
+    "steps": 7,
+    "llmMs": 190910,
+    "cost_cny": 0.0,
+    "priced": false
+   },
+   "commandcode-goat\tclaude-sonnet-5": {
+    "buckets": {
+     "cacheRead": 0,
+     "uncachedInput": 0,
+     "output": 0,
+     "cacheWrite": 0
+    },
+    "sessions": 3,
+    "steps": 3,
+    "llmMs": 0,
+    "cost_cny": 0.0,
+    "priced": false
+   },
+   "deepseek-official\tdeepseek-v4-flash": {
+    "buckets": {
+     "cacheRead": 33664,
+     "uncachedInput": 22708,
+     "output": 17018,
+     "cacheWrite": 0
+    },
+    "sessions": 8,
+    "steps": 8,
+    "llmMs": 149002,
+    "cost_cny": 0.0,
+    "priced": false
+   },
+   "commandcode-goat\tgpt-5.6-luna": {
+    "buckets": {
+     "cacheRead": 0,
+     "uncachedInput": 15448,
+     "output": 10,
+     "cacheWrite": 0
+    },
+    "sessions": 2,
+    "steps": 2,
+    "llmMs": 4970,
+    "cost_cny": 0.0,
+    "priced": false
+   },
+   "commandcode-goat\tmoonshotai/Kimi-K2.7-Code-Highspeed": {
+    "buckets": {
+     "cacheRead": 0,
+     "uncachedInput": 5298,
+     "output": 80,
+     "cacheWrite": 0
+    },
+    "sessions": 2,
+    "steps": 2,
+    "llmMs": 6473,
+    "cost_cny": 0.0,
+    "priced": false
+   },
+   "deepseek-official\tdeepseek/deepseek-v4-flash": {
+    "buckets": {
+     "cacheRead": 0,
+     "uncachedInput": 0,
+     "output": 0,
+     "cacheWrite": 0
+    },
+    "sessions": 2,
+    "steps": 2,
+    "llmMs": 0,
+    "cost_cny": 0.0,
+    "priced": true
+   },
+   "commandcode-goat\tz-ai/glm-5.3-flash": {
+    "buckets": {
+     "cacheRead": 0,
+     "uncachedInput": 2902,
+     "output": 5,
+     "cacheWrite": 0
+    },
+    "sessions": 1,
+    "steps": 1,
+    "llmMs": 7285,
+    "cost_cny": 0.0,
+    "priced": false
+   },
+   "commandcode-goat\tmoonshotai/Kimi-K3": {
+    "buckets": {
+     "cacheRead": 0,
+     "uncachedInput": 3262,
+     "output": 13,
+     "cacheWrite": 0
+    },
+    "sessions": 1,
+    "steps": 1,
+    "llmMs": 5409,
+    "cost_cny": 0.0,
+    "priced": false
+   },
+   "commandcode-goat\tgpt-5.4-mini": {
+    "buckets": {
+     "cacheRead": 0,
+     "uncachedInput": 0,
+     "output": 0,
+     "cacheWrite": 0
+    },
+    "sessions": 1,
+    "steps": 1,
+    "llmMs": 0,
+    "cost_cny": 0.0,
+    "priced": false
+   },
+   "deepseek-official\tdeepseek/deepseek-v4-pro": {
+    "buckets": {
+     "cacheRead": 0,
+     "uncachedInput": 0,
+     "output": 0,
+     "cacheWrite": 0
+    },
+    "sessions": 2,
+    "steps": 2,
+    "llmMs": 0,
+    "cost_cny": 0.0,
+    "priced": true
+   },
+   "commandcode-goat\txai/grok-4.7": {
+    "buckets": {
+     "cacheRead": 1152,
+     "uncachedInput": 2346,
+     "output": 98,
+     "cacheWrite": 0
+    },
+    "sessions": 1,
+    "steps": 1,
+    "llmMs": 2949,
+    "cost_cny": 0.0,
+    "priced": false
+   },
+   "commandcode-goat\tclaude-fable-5-1": {
+    "buckets": {
+     "cacheRead": 0,
+     "uncachedInput": 0,
+     "output": 0,
+     "cacheWrite": 0
+    },
+    "sessions": 1,
+    "steps": 1,
+    "llmMs": 0,
+    "cost_cny": 0.0,
+    "priced": false
+   },
+   "commandcode-goat\tclaude-haiku-4-5-20251001": {
+    "buckets": {
+     "cacheRead": 0,
+     "uncachedInput": 0,
+     "output": 0,
+     "cacheWrite": 0
+    },
+    "sessions": 1,
+    "steps": 1,
+    "llmMs": 0,
+    "cost_cny": 0.0,
+    "priced": false
+   },
+   "commandcode-goat\tgpt-6-sol": {
+    "buckets": {
+     "cacheRead": 0,
+     "uncachedInput": 0,
+     "output": 0,
+     "cacheWrite": 0
+    },
+    "sessions": 1,
+    "steps": 1,
+    "llmMs": 0,
+    "cost_cny": 0.0,
+    "priced": false
+   },
+   "deepseek-account\tdeepseek-flash": {
+    "buckets": {
+     "cacheRead": 0,
+     "uncachedInput": 3386,
+     "output": 2,
+     "cacheWrite": 0
+    },
+    "sessions": 1,
+    "steps": 1,
+    "llmMs": 578,
+    "cost_cny": 0.0,
+    "priced": false
+   },
+   "commandcode-goat\tclaude-opus-5-5": {
+    "buckets": {
+     "cacheRead": 0,
+     "uncachedInput": 0,
+     "output": 0,
+     "cacheWrite": 0
+    },
+    "sessions": 1,
+    "steps": 1,
+    "llmMs": 0,
+    "cost_cny": 0.0,
+    "priced": false
+   },
+   "commandcode-goat\tgoogle/gemini-3.5-flash-lite": {
+    "buckets": {
+     "cacheRead": 0,
+     "uncachedInput": 0,
+     "output": 0,
+     "cacheWrite": 0
+    },
+    "sessions": 1,
+    "steps": 1,
+    "llmMs": 0,
+    "cost_cny": 0.0,
+    "priced": false
+   },
+   "commandcode-goat\tgpt-5.5": {
+    "buckets": {
+     "cacheRead": 0,
+     "uncachedInput": 0,
+     "output": 0,
+     "cacheWrite": 0
+    },
+    "sessions": 1,
+    "steps": 1,
+    "llmMs": 0,
+    "cost_cny": 0.0,
+    "priced": false
+   }
+  },
+  "perDay": {
+   "2026-10-01": {
+    "buckets": {
+     "cacheRead": 58570368,
+     "uncachedInput": 5149693,
+     "output": 1823608,
+     "cacheWrite": 0
+    },
+    "sessions": 67
+   },
+   "2026-09-29": {
+    "buckets": {
+     "cacheRead": 162816,
+     "uncachedInput": 115252,
+     "output": 21541,
+     "cacheWrite": 0
+    },
+    "sessions": 9
+   },
+   "2026-10-02": {
+    "buckets": {
+     "cacheRead": 13070080,
+     "uncachedInput": 1970194,
+     "output": 472748,
+     "cacheWrite": 0
+    },
+    "sessions": 20
+   },
+   "2026-09-28": {
+    "buckets": {
+     "cacheRead": 39805056,
+     "uncachedInput": 2714553,
+     "output": 595896,
+     "cacheWrite": 0
+    },
+    "sessions": 41
+   },
+   "2026-10-03": {
+    "buckets": {
+     "cacheRead": 15426816,
+     "uncachedInput": 2777709,
+     "output": 818273,
+     "cacheWrite": 0
+    },
+    "sessions": 22
+   },
+   "2026-09-30": {
+    "buckets": {
+     "cacheRead": 118500847,
+     "uncachedInput": 11271493,
+     "output": 1200179,
+     "cacheWrite": 0
+    },
+    "sessions": 36
+   },
+   "2026-09-27": {
+    "buckets": {
+     "cacheRead": 16129024,
+     "uncachedInput": 720350,
+     "output": 309748,
+     "cacheWrite": 0
+    },
+    "sessions": 46
+   },
+   "2026-10-04": {
+    "buckets": {
+     "cacheRead": 9990528,
+     "uncachedInput": 1214380,
+     "output": 276143,
+     "cacheWrite": 0
+    },
+    "sessions": 7
+   },
+   "2026-09-26": {
+    "buckets": {
+     "cacheRead": 1722444471,
+     "uncachedInput": 47744185,
+     "output": 31417174,
+     "cacheWrite": 0
+    },
+    "sessions": 813
+   },
+   "2026-09-07": {
+    "buckets": {
+     "cacheRead": 62346112,
+     "uncachedInput": 924089,
+     "output": 1717998,
+     "cacheWrite": 0
+    },
+    "sessions": 47
+   },
+   "2026-09-20": {
+    "buckets": {
+     "cacheRead": 1538560,
+     "uncachedInput": 121339,
+     "output": 220705,
+     "cacheWrite": 0
+    },
+    "sessions": 33
+   },
+   "2026-09-23": {
+    "buckets": {
+     "cacheRead": 289844224,
+     "uncachedInput": 5896943,
+     "output": 5879582,
+     "cacheWrite": 0
+    },
+    "sessions": 299
+   },
+   "2026-09-21": {
+    "buckets": {
+     "cacheRead": 122296448,
+     "uncachedInput": 2507596,
+     "output": 1790197,
+     "cacheWrite": 0
+    },
+    "sessions": 31
+   },
+   "2026-09-05": {
+    "buckets": {
+     "cacheRead": 678656,
+     "uncachedInput": 91793,
+     "output": 237394,
+     "cacheWrite": 0
+    },
+    "sessions": 11
+   },
+   "2026-09-04": {
+    "buckets": {
+     "cacheRead": 1527936,
+     "uncachedInput": 248397,
+     "output": 269833,
+     "cacheWrite": 0
+    },
+    "sessions": 47
+   },
+   "2026-09-08": {
+    "buckets": {
+     "cacheRead": 45696,
+     "uncachedInput": 16338,
+     "output": 3940,
+     "cacheWrite": 0
+    },
+    "sessions": 5
+   },
+   "2026-09-06": {
+    "buckets": {
+     "cacheRead": 9431808,
+     "uncachedInput": 735042,
+     "output": 1874398,
+     "cacheWrite": 0
+    },
+    "sessions": 35
+   },
+   "2026-09-03": {
+    "buckets": {
+     "cacheRead": 360704,
+     "uncachedInput": 62355,
+     "output": 191940,
+     "cacheWrite": 0
+    },
+    "sessions": 9
+   },
+   "2026-09-11": {
+    "buckets": {
+     "cacheRead": 297472,
+     "uncachedInput": 74243,
+     "output": 444435,
+     "cacheWrite": 0
+    },
+    "sessions": 25
+   },
+   "2026-09-10": {
+    "buckets": {
+     "cacheRead": 8064,
+     "uncachedInput": 4312,
+     "output": 8,
+     "cacheWrite": 0
+    },
+    "sessions": 5
+   },
+   "2026-09-22": {
+    "buckets": {
+     "cacheRead": 6651520,
+     "uncachedInput": 284663,
+     "output": 651750,
+     "cacheWrite": 0
+    },
+    "sessions": 18
+   },
+   "2026-08-15": {
+    "buckets": {
+     "cacheRead": 33408,
+     "uncachedInput": 16600,
+     "output": 16901,
+     "cacheWrite": 0
+    },
+    "sessions": 6
+   },
+   "2026-09-25": {
+    "buckets": {
+     "cacheRead": 2048,
+     "uncachedInput": 5628,
+     "output": 67,
+     "cacheWrite": 0
+    },
+    "sessions": 4
+   },
+   "2026-09-24": {
+    "buckets": {
+     "cacheRead": 41408000,
+     "uncachedInput": 1376580,
+     "output": 302772,
+     "cacheWrite": 0
+    },
+    "sessions": 3
+   }
+  },
+  "sessions": 1639
+ },
+ "reasonix": {
+  "perKey": {
+   "deepseek\tdeepseek-v4-flash": {
+    "buckets": {
+     "cacheRead": 90167936,
+     "uncachedInput": 1426327,
+     "output": 541529,
+     "cacheWrite": 0
+    },
+    "requests": 682,
+    "cost_cny": 0.62163022,
+    "reported_lines": 108
+   },
+   "?\t?": {
+    "buckets": {
+     "cacheRead": 0,
+     "uncachedInput": 0,
+     "output": 0,
+     "cacheWrite": 0
+    },
+    "requests": 309,
+    "cost_cny": 0.0,
+    "reported_lines": 0
+   },
+   "commandcode-goat\tdeepseek/deepseek-v4-flash": {
+    "buckets": {
+     "cacheRead": 68282112,
+     "uncachedInput": 915154,
+     "output": 1676741,
+     "cacheWrite": 0
+    },
+    "requests": 609,
+    "cost_cny": 17.738793,
+    "reported_lines": 603
+   },
+   "commandcode-goat\tdeepseek/deepseek-v4.1-flash": {
+    "buckets": {
+     "cacheRead": 962559101,
+     "uncachedInput": 133597366,
+     "output": 5759402,
+     "cacheWrite": 0
+    },
+    "requests": 4675,
+    "cost_cny": 177.55707450899965,
+    "reported_lines": 4582
+   },
+   "commandcode-goat\tclaude-fable-5-1": {
+    "buckets": {
+     "cacheRead": 0,
+     "uncachedInput": 0,
+     "output": 0,
+     "cacheWrite": 0
+    },
+    "requests": 1,
+    "cost_cny": 0.0,
+    "reported_lines": 1
+   },
+   "commandcode-goat\tgoogle/gemini-3.8-flash": {
+    "buckets": {
+     "cacheRead": 0,
+     "uncachedInput": 38225,
+     "output": 41,
+     "cacheWrite": 0
+    },
+    "requests": 1,
+    "cost_cny": 0.038753696,
+    "reported_lines": 1
+   }
+  },
+  "perDay": {
+   "2026-08-05": {
+    "buckets": {
+     "cacheRead": 31025536,
+     "uncachedInput": 448280,
+     "output": 151270,
+     "cacheWrite": 0
+    },
+    "requests": 245,
+    "cost_cny": 0.0
+   },
+   "2026-08-10": {
+    "buckets": {
+     "cacheRead": 5333120,
+     "uncachedInput": 131024,
+     "output": 51825,
+     "cacheWrite": 0
+    },
+    "requests": 64,
+    "cost_cny": 0.0
+   },
+   "2026-08-11": {
+    "buckets": {
+     "cacheRead": 8876928,
+     "uncachedInput": 118179,
+     "output": 70727,
+     "cacheWrite": 0
+    },
+    "requests": 95,
+    "cost_cny": 0.0
+   },
+   "2026-08-12": {
+    "buckets": {
+     "cacheRead": 5190784,
+     "uncachedInput": 133969,
+     "output": 37046,
+     "cacheWrite": 0
+    },
+    "requests": 62,
+    "cost_cny": 0.0
+   },
+   "2026-08-13": {
+    "buckets": {
+     "cacheRead": 32157568,
+     "uncachedInput": 350263,
+     "output": 153450,
+     "cacheWrite": 0
+    },
+    "requests": 146,
+    "cost_cny": 0.0
+   },
+   "2026-08-16": {
+    "buckets": {
+     "cacheRead": 7064576,
+     "uncachedInput": 218145,
+     "output": 60371,
+     "cacheWrite": 0
+    },
+    "requests": 117,
+    "cost_cny": 0.48017852000000005
+   },
+   "2026-08-18": {
+    "buckets": {
+     "cacheRead": 519424,
+     "uncachedInput": 26467,
+     "output": 16840,
+     "cacheWrite": 0
+    },
+    "requests": 16,
+    "cost_cny": 0.14145169999999999
+   },
+   "2026-09-03": {
+    "buckets": {
+     "cacheRead": 256,
+     "uncachedInput": 32401,
+     "output": 15,
+     "cacheWrite": 0
+    },
+    "requests": 2,
+    "cost_cny": 0.0
+   },
+   "2026-09-06": {
+    "buckets": {
+     "cacheRead": 67395456,
+     "uncachedInput": 850534,
+     "output": 1654881,
+     "cacheWrite": 0
+    },
+    "requests": 584,
+    "cost_cny": 17.445530999999992
+   },
+   "2026-09-08": {
+    "buckets": {
+     "cacheRead": 886400,
+     "uncachedInput": 32219,
+     "output": 21845,
+     "cacheWrite": 0
+    },
+    "requests": 32,
+    "cost_cny": 0.293262
+   },
+   "2026-09-12": {
+    "buckets": {
+     "cacheRead": 9366784,
+     "uncachedInput": 355745,
+     "output": 148919,
+     "cacheWrite": 0
+    },
+    "requests": 76,
+    "cost_cny": 1.1495748700000004
+   },
+   "2026-09-13": {
+    "buckets": {
+     "cacheRead": 41723136,
+     "uncachedInput": 1195169,
+     "output": 406730,
+     "cacheWrite": 0
+    },
+    "requests": 190,
+    "cost_cny": 3.691288964
+   },
+   "2026-09-14": {
+    "buckets": {
+     "cacheRead": 9188096,
+     "uncachedInput": 792097,
+     "output": 62711,
+     "cacheWrite": 0
+    },
+    "requests": 44,
+    "cost_cny": 1.2383565979999998
+   },
+   "2026-09-20": {
+    "buckets": {
+     "cacheRead": 116780160,
+     "uncachedInput": 2203845,
+     "output": 690384,
+     "cacheWrite": 0
+    },
+    "requests": 719,
+    "cost_cny": 7.370343548999996
+   },
+   "2026-09-21": {
+    "buckets": {
+     "cacheRead": 94560512,
+     "uncachedInput": 570870,
+     "output": 414859,
+     "cacheWrite": 0
+    },
+    "requests": 429,
+    "cost_cny": 4.160670647999999
+   },
+   "2026-09-22": {
+    "buckets": {
+     "cacheRead": 34566144,
+     "uncachedInput": 313347,
+     "output": 199666,
+     "cacheWrite": 0
+    },
+    "requests": 228,
+    "cost_cny": 1.820465553999999
+   },
+   "2026-09-23": {
+    "buckets": {
+     "cacheRead": 422005629,
+     "uncachedInput": 84924737,
+     "output": 2272666,
+     "cacheWrite": 0
+    },
+    "requests": 1920,
+    "cost_cny": 103.42884096699991
+   },
+   "2026-09-24": {
+    "buckets": {
+     "cacheRead": 60114304,
+     "uncachedInput": 38730235,
+     "output": 274441,
+     "cacheWrite": 0
+    },
+    "requests": 213,
+    "cost_cny": 41.42007279100002
+   },
+   "2026-09-25": {
+    "buckets": {
+     "cacheRead": 101525120,
+     "uncachedInput": 1683865,
+     "output": 529824,
+     "cacheWrite": 0
+    },
+    "requests": 520,
+    "cost_cny": 5.889083202999992
+   },
+   "2026-09-26": {
+    "buckets": {
+     "cacheRead": 14873088,
+     "uncachedInput": 808151,
+     "output": 220045,
+     "cacheWrite": 0
+    },
+    "requests": 159,
+    "cost_cny": 2.0046577819999993
+   },
+   "2026-09-27": {
+    "buckets": {
+     "cacheRead": 669568,
+     "uncachedInput": 27137,
+     "output": 29176,
+     "cacheWrite": 0
+    },
+    "requests": 18,
+    "cost_cny": 0.158726066
+   },
+   "2026-09-28": {
+    "buckets": {
+     "cacheRead": 6360576,
+     "uncachedInput": 353962,
+     "output": 149054,
+     "cacheWrite": 0
+    },
+    "requests": 67,
+    "cost_cny": 1.0876247229999998
+   },
+   "2026-09-29": {
+    "buckets": {
+     "cacheRead": 9679232,
+     "uncachedInput": 234679,
+     "output": 69964,
+     "cacheWrite": 0
+    },
+    "requests": 92,
+    "cost_cny": 0.714846778
+   },
+   "2026-10-02": {
+    "buckets": {
+     "cacheRead": 26260992,
+     "uncachedInput": 774569,
+     "output": 158058,
+     "cacheWrite": 0
+    },
+    "requests": 143,
+    "cost_cny": 1.9503750349999995
+   },
+   "2026-10-03": {
+    "buckets": {
+     "cacheRead": 14885760,
+     "uncachedInput": 667183,
+     "output": 132946,
+     "cacheWrite": 0
+    },
+    "requests": 96,
+    "cost_cny": 1.5109006770000002
+   }
+  },
+  "files": 25
+ }
+}

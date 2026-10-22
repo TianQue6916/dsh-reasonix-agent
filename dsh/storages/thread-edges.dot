@@ -1,9 +1,142 @@
 digraph thread_edges {
   rankdir=LR;
   node [shape=box,fontsize=10];
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "session-9cf09938-2bd8-43d5-aa59-79513d3f17d4" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "df645f53-2dd6-432a-8c3b-56b0871ce1c3" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "fdd3c38c-cb34-4aac-974d-73ec1860e9bc" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "session-f2046870-9844-415e-8237-7dfe9dfec305" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "session-36f78711-72e5-420f-bb88-4c67db3e54a7" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "session-5a61244d-c257-4491-838c-65e14309fa68" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "session-3a799b2b-2dfa-4b76-8c72-2b941b6588f3" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "f7174fbd-e39f-4610-bdf4-a129270ae9e2" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "session-856644af-a8fd-49ad-9994-41eef8a72ea1" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "session-cb03454a-4703-4718-884e-508a2fed10b0" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "4eb6edbc-3a6f-4b42-a72b-7a86bf2d8081" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "ff2fda66-70f6-4110-9893-6ed6450acbf0" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "af0acc1c-e9c4-4acd-83e8-8066426f6943" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "79513227-2101-48c0-8a33-aaa4cd3f56d7" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "f43004c7-ec0f-49ad-bb69-3425115e0e10" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "718597a4-78c4-4b7d-a13d-ee1ca1b3059d" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "0e6e240b-11d6-44ad-90e6-d35b2edd7303" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "e5b71353-071b-4a87-9966-b50a11408fb4" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "e3bbb52b-06ae-4f8c-8c98-8199974cca6a" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "dc43106f-fc83-471e-a9e2-0f91337308d2" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "session-d60ed9f2-5dd1-4459-8c66-2b021e39ad6d" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "d7773a9f-fec3-458a-8979-a380d41ddfdc" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "session-cd64d1ac-d965-4776-8f6d-08619d525126" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "af816964-1d52-46c6-be56-1355aebc2fd1" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "c2a636a5-6964-4bcb-9c47-e7067d747fe1" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "2caa2861-5957-4297-8286-e2c6764ef8c8" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "2a2582b9-a8e8-449e-b785-a7b59ae22189" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "cee9f1ce-d065-4b7d-8c21-c99ef1654faa" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "416d61f8-d7ac-493b-a96f-b11fc59d016f" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "e19a60ef-1fc1-432d-adad-fd005232c254" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "session-81076132-69dc-4447-869a-55abdb874958" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "5376b68c-9a55-4902-b263-edf7f33e2d66" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "session-07dffa93-771a-4287-81e7-9f5c6c43294a" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "c63540f6-2b4b-406d-b8b2-e2dcfa1b64e7" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "db8138a1-c76d-4fc3-904c-51d9f3020583" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "7e1a3e3d-85fb-4e91-b9fe-11a531d9c0ed" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "00d5b28b-ee85-4dd2-af39-645b84efd553" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "e5db8c84-0828-494e-87b7-682cb94266a4" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "aa0c1701-bd58-4374-8f7d-e1f7cb067009" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "session-fa5b0de7-8c3a-4d5f-bc58-dfef0654e20b" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "91ca49fb-6b6b-4aed-9dc0-2de074e8a80b" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "b92e7c91-2d2c-4a1c-8f4a-436591516ba1" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "c3d2cad5-7320-4a5c-93cf-16683ea26269" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "3d5b5ff9-f1ce-4aa5-bb10-fa877b5be76b" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "c63cdc3e-5734-4030-9b73-fcad12747f6d" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "4021b5ca-d1b9-4157-a075-8be7b43d4a33" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "bd87afc5-1c58-4daf-bb48-f345960c812a" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "4863e338-842e-4a0b-881f-3573e9ce4092" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "session-d74208b0-684c-4bc0-9995-527a56b34157" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "883074c5-7c9a-4a65-92e1-9fd90b1f3b31" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "93495843-0db0-4525-9ea1-0746c861867f" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "1c2aae50-de5b-4858-ac18-08a67ed01eee" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "246396a7-ea62-4be0-b0eb-a1b4c0d6932e" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "session-c424a630-aeb0-455a-a4b6-8bef5d97015c" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "cb1d5914-74de-4799-a43c-417a11e7a7d5" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "32385fcd-5183-4308-a9ed-4e7a7cf59e96" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "22b34f55-392f-4237-ae73-73dfc154a4cb" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "2627826e-b22e-4afc-935b-a16eb9dd0c31" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "4a2efe7c-4508-4441-842e-1166e9a2e26e" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "9059fe37-47ab-4566-ba0b-8a0087b137c6" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "session-5cc47bcb-7935-4111-9b71-e1c994da0f42" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "546d361a-287b-4c14-a2c8-c8c147cec7d1" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "6ed935a3-913a-454a-9d1b-7c2f3bdb6127" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "6fc12a85-042e-4ede-903c-14d7b99a182f" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "89e26276-442d-476d-9068-4bf9bf1e0a91" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "0d5bdff6-fbf2-4350-bbc8-8814903546c8" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "91ba4ec0-9d51-4056-9311-d8f87893784f" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "9187eb30-aa36-445c-95ae-a9490b021111" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "4cedb31a-a2be-4024-9b3d-33f24faf9385" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "c7917746-e5f6-418d-9f20-dc8bdd79a429" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "session-530c58a8-eccd-4ca0-b2d8-cd4a44f366a2" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "f7af5b71-efee-47eb-85b7-5563c6944ada" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "c64a75b5-e5bc-471b-9ca4-3362799b7494" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "77917cf3-ef5d-492a-b34a-97b3d887a198" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "1f195ee3-9736-4869-ae94-15da2024765b" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "fd551f47-d369-487b-9014-c1ede5bfb357" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "386756e2-7a82-40de-a897-846a65bbfb2e" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "08ad9cb5-9b13-4c62-bb7c-4d345958a735" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "8679e54c-90b7-4507-afac-e139c7814dd2" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "cd8669a0-8cf7-4784-af06-b586709f7b23" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "f1e74b85-2736-4d0e-9a27-f93126c8c583" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "7e8b6ad3-0a56-452e-a6c0-1273b996c2f9" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "1c79726f-0c3d-402c-a1a7-8380f61d5739" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "793bc47c-2b1f-4cae-9d5b-8d4c6235b532" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "0cfbb08d-61db-44f2-a64e-03ee66ab7590" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "cbdcd63e-b675-4bba-b8cd-014481b50a40" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "05d1233b-7b34-4962-952b-13c5835d4af9" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "7cc7375e-3039-490e-811f-ffa6bcd34252" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "8e5b1e89-925c-429c-a310-f8fe1b2614b1" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "77649028-f1a0-4db0-b47e-66cf91c36adb" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "67f3bdc1-e771-473b-b5aa-4c2ac7ddc507" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "f140029c-d263-4b86-a8f1-8b3a6989326d" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "267ff28d-031b-457f-89bd-64c8bab9e923" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "3026ea0d-17b4-41af-a70f-5a2bf07a0776" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "35993b49-7518-48bb-8c8e-c8c21425ae79" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "02d0985b-899f-4e0b-942b-d16521d91948" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "8f08fdb4-2bbe-4e13-9421-b923027c3509" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "session-243425b3-e21f-4aba-a033-ca00e415934e" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "session-d4de29f8-8069-472d-89a7-ae619d7ee2e3" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "1b917187-9e8a-450e-bcc9-c4974ba3eb80" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "c2f17333-c2c0-4a16-a5eb-ae5259ba4a96" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "2c0ead8c-9b10-4be6-9269-417d89d00267" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "62146b7c-4f66-496b-ab89-e7d586d66272" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "80491699-1fd9-4534-ae32-4d2c7329301a" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "session-8c63dd12-6ddf-4519-a5fd-da24c226ee2c" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "session-e31d5eaa-97e8-41e6-8034-337a45b7631a" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "99590068-40ee-40fd-9dfa-bff20f4b4fa6" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "4975890e-0e9c-4c31-adfa-4e919b58c735" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "session-964176a7-2f29-4e25-82e8-6df81738d831" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "5dc0140d-0ea4-4e4a-835d-d938cb004a08" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "1dc350c2-e541-4fdd-bb48-adc83d92cb7c" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "fc403f77-7ec0-40c2-9963-9c530cfe4057" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "685264fd-ced8-44c3-8551-13b629273b97" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "2272e69f-bdc6-4da2-b4bb-5f23bd57ed94" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "a12d0f09-9c70-44b1-aae6-e7730606e2ab" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "session-19b055a6-49f7-43fd-8fbe-d11b3e786ec4" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "5d124e9f-2cab-4045-a6bb-d0892cb8c6fb" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "bb17cf14-7a80-4960-ad8a-49570d3fb014" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "session-b65a9a67-80a1-403c-b899-45b0ac351801" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "84e1871b-bc39-4b36-b2a4-e986eed0995f" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "3c2b7e5d-d75f-463b-a925-b409cd7eeb77" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "e899dcc1-3710-4d06-955b-a564e381daf5" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "57ada998-02f4-41af-a4c8-ecf6faba9ab3" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "54933889-ece5-478b-aa38-7dc97cdc7ee4" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "67f31ebf-7d89-47ff-a338-4faf29e61720" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "12ab4fd6-c05d-49c2-adf8-226e5f4d448e" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "a9827410-5b63-4759-b429-2b67852e801b" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "ab047fcc-be03-4003-aaaa-acc975e77e5f" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "d294ad9f-96b1-4eef-ba9a-0228fcd48f9f" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "session-cbcbf62e-3c8f-4fdb-b0eb-79f675b468ab" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "419d65ec-2c00-4508-baf9-03c1a25436dc" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "abf75ecf-4e40-448f-9ad7-5bedb6b2a843" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "ac2e264b-f1a6-44ab-89a1-116a3d628404" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
   "session-ff0aa307-cd70-45ba-a759-42da4ae2e7e1" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
   "702ce91f-bcb5-4617-8a7e-f7fe3fd3d59f" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
-  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
   "85a20d57-55ff-483c-a588-9de220dfb57b" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
   "session-33713e9e-e49b-40b1-8034-13babd31f3d0" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
   "e8a1df79-be1b-4561-969e-fda13b2fa448" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
@@ -155,6 +288,121 @@ digraph thread_edges {
   "4eaec36d-2c5a-403f-9b7a-f7740c4d3c42" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
   "98bdfe21-5762-4646-858c-e6398d59ec84" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
   "feaf2186-e239-432a-a7f6-7b782f5abc73" [shape=ellipse,fillcolor="#3498db",style=filled,fontcolor=white];
+  "session-9cf09938-2bd8-43d5-aa59-79513d3f17d4" -> "df645f53-2dd6-432a-8c3b-56b0871ce1c3" [color="#2ecc71",penwidth=1.6];
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "fdd3c38c-cb34-4aac-974d-73ec1860e9bc" [color="#2ecc71",penwidth=1.6];
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "session-f2046870-9844-415e-8237-7dfe9dfec305" [color="#2ecc71",penwidth=1.6];
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "session-36f78711-72e5-420f-bb88-4c67db3e54a7" [color="#2ecc71",penwidth=1.6];
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "session-5a61244d-c257-4491-838c-65e14309fa68" [color="#2ecc71",penwidth=1.6];
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "session-3a799b2b-2dfa-4b76-8c72-2b941b6588f3" [color="#2ecc71",penwidth=1.6];
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "f7174fbd-e39f-4610-bdf4-a129270ae9e2" [color="#2ecc71",penwidth=1.6];
+  "session-856644af-a8fd-49ad-9994-41eef8a72ea1" -> "session-cb03454a-4703-4718-884e-508a2fed10b0" [color="#2ecc71",penwidth=1.6];
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "4eb6edbc-3a6f-4b42-a72b-7a86bf2d8081" [color="#2ecc71",penwidth=1.6];
+  "session-cb03454a-4703-4718-884e-508a2fed10b0" -> "ff2fda66-70f6-4110-9893-6ed6450acbf0" [color="#2ecc71",penwidth=1.6];
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "af0acc1c-e9c4-4acd-83e8-8066426f6943" [color="#2ecc71",penwidth=1.6];
+  "session-cb03454a-4703-4718-884e-508a2fed10b0" -> "79513227-2101-48c0-8a33-aaa4cd3f56d7" [color="#2ecc71",penwidth=1.6];
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "f43004c7-ec0f-49ad-bb69-3425115e0e10" [color="#2ecc71",penwidth=1.6];
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "718597a4-78c4-4b7d-a13d-ee1ca1b3059d" [color="#2ecc71",penwidth=1.6];
+  "session-cb03454a-4703-4718-884e-508a2fed10b0" -> "0e6e240b-11d6-44ad-90e6-d35b2edd7303" [color="#2ecc71",penwidth=1.6];
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "e5b71353-071b-4a87-9966-b50a11408fb4" [color="#2ecc71",penwidth=1.6];
+  "session-cb03454a-4703-4718-884e-508a2fed10b0" -> "e3bbb52b-06ae-4f8c-8c98-8199974cca6a" [color="#2ecc71",penwidth=1.6];
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "dc43106f-fc83-471e-a9e2-0f91337308d2" [color="#2ecc71",penwidth=1.6];
+  "session-d60ed9f2-5dd1-4459-8c66-2b021e39ad6d" -> "d7773a9f-fec3-458a-8979-a380d41ddfdc" [color="#2ecc71",penwidth=1.6];
+  "session-cd64d1ac-d965-4776-8f6d-08619d525126" -> "af816964-1d52-46c6-be56-1355aebc2fd1" [color="#2ecc71",penwidth=1.6];
+  "session-cd64d1ac-d965-4776-8f6d-08619d525126" -> "c2a636a5-6964-4bcb-9c47-e7067d747fe1" [color="#2ecc71",penwidth=1.6];
+  "session-cb03454a-4703-4718-884e-508a2fed10b0" -> "2caa2861-5957-4297-8286-e2c6764ef8c8" [color="#2ecc71",penwidth=1.6];
+  "session-9cf09938-2bd8-43d5-aa59-79513d3f17d4" -> "2a2582b9-a8e8-449e-b785-a7b59ae22189" [color="#2ecc71",penwidth=1.6];
+  "session-9cf09938-2bd8-43d5-aa59-79513d3f17d4" -> "cee9f1ce-d065-4b7d-8c21-c99ef1654faa" [color="#2ecc71",penwidth=1.6];
+  "session-9cf09938-2bd8-43d5-aa59-79513d3f17d4" -> "416d61f8-d7ac-493b-a96f-b11fc59d016f" [color="#2ecc71",penwidth=1.6];
+  "session-9cf09938-2bd8-43d5-aa59-79513d3f17d4" -> "e19a60ef-1fc1-432d-adad-fd005232c254" [color="#2ecc71",penwidth=1.6];
+  "session-81076132-69dc-4447-869a-55abdb874958" -> "5376b68c-9a55-4902-b263-edf7f33e2d66" [color="#2ecc71",penwidth=1.6];
+  "session-07dffa93-771a-4287-81e7-9f5c6c43294a" -> "c63540f6-2b4b-406d-b8b2-e2dcfa1b64e7" [color="#2ecc71",penwidth=1.6];
+  "session-81076132-69dc-4447-869a-55abdb874958" -> "db8138a1-c76d-4fc3-904c-51d9f3020583" [color="#2ecc71",penwidth=1.6];
+  "session-81076132-69dc-4447-869a-55abdb874958" -> "7e1a3e3d-85fb-4e91-b9fe-11a531d9c0ed" [color="#2ecc71",penwidth=1.6];
+  "session-9cf09938-2bd8-43d5-aa59-79513d3f17d4" -> "00d5b28b-ee85-4dd2-af39-645b84efd553" [color="#2ecc71",penwidth=1.6];
+  "session-81076132-69dc-4447-869a-55abdb874958" -> "e5db8c84-0828-494e-87b7-682cb94266a4" [color="#2ecc71",penwidth=1.6];
+  "session-81076132-69dc-4447-869a-55abdb874958" -> "aa0c1701-bd58-4374-8f7d-e1f7cb067009" [color="#2ecc71",penwidth=1.6];
+  "session-fa5b0de7-8c3a-4d5f-bc58-dfef0654e20b" -> "91ca49fb-6b6b-4aed-9dc0-2de074e8a80b" [color="#2ecc71",penwidth=1.6];
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "b92e7c91-2d2c-4a1c-8f4a-436591516ba1" [color="#2ecc71",penwidth=1.6];
+  "session-856644af-a8fd-49ad-9994-41eef8a72ea1" -> "c3d2cad5-7320-4a5c-93cf-16683ea26269" [color="#2ecc71",penwidth=1.6];
+  "session-856644af-a8fd-49ad-9994-41eef8a72ea1" -> "3d5b5ff9-f1ce-4aa5-bb10-fa877b5be76b" [color="#2ecc71",penwidth=1.6];
+  "session-856644af-a8fd-49ad-9994-41eef8a72ea1" -> "c63cdc3e-5734-4030-9b73-fcad12747f6d" [color="#2ecc71",penwidth=1.6];
+  "session-856644af-a8fd-49ad-9994-41eef8a72ea1" -> "4021b5ca-d1b9-4157-a075-8be7b43d4a33" [color="#2ecc71",penwidth=1.6];
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "bd87afc5-1c58-4daf-bb48-f345960c812a" [color="#2ecc71",penwidth=1.6];
+  "session-856644af-a8fd-49ad-9994-41eef8a72ea1" -> "4863e338-842e-4a0b-881f-3573e9ce4092" [color="#2ecc71",penwidth=1.6];
+  "session-d74208b0-684c-4bc0-9995-527a56b34157" -> "883074c5-7c9a-4a65-92e1-9fd90b1f3b31" [color="#2ecc71",penwidth=1.6];
+  "session-d74208b0-684c-4bc0-9995-527a56b34157" -> "93495843-0db0-4525-9ea1-0746c861867f" [color="#2ecc71",penwidth=1.6];
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "1c2aae50-de5b-4858-ac18-08a67ed01eee" [color="#2ecc71",penwidth=1.6];
+  "session-856644af-a8fd-49ad-9994-41eef8a72ea1" -> "246396a7-ea62-4be0-b0eb-a1b4c0d6932e" [color="#2ecc71",penwidth=1.6];
+  "session-c424a630-aeb0-455a-a4b6-8bef5d97015c" -> "cb1d5914-74de-4799-a43c-417a11e7a7d5" [color="#2ecc71",penwidth=1.6];
+  "session-9cf09938-2bd8-43d5-aa59-79513d3f17d4" -> "32385fcd-5183-4308-a9ed-4e7a7cf59e96" [color="#2ecc71",penwidth=1.6];
+  "session-c424a630-aeb0-455a-a4b6-8bef5d97015c" -> "22b34f55-392f-4237-ae73-73dfc154a4cb" [color="#2ecc71",penwidth=1.6];
+  "session-9cf09938-2bd8-43d5-aa59-79513d3f17d4" -> "2627826e-b22e-4afc-935b-a16eb9dd0c31" [color="#2ecc71",penwidth=1.6];
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "4a2efe7c-4508-4441-842e-1166e9a2e26e" [color="#2ecc71",penwidth=1.6];
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "9059fe37-47ab-4566-ba0b-8a0087b137c6" [color="#2ecc71",penwidth=1.6];
+  "session-5cc47bcb-7935-4111-9b71-e1c994da0f42" -> "546d361a-287b-4c14-a2c8-c8c147cec7d1" [color="#2ecc71",penwidth=1.6];
+  "session-5cc47bcb-7935-4111-9b71-e1c994da0f42" -> "6ed935a3-913a-454a-9d1b-7c2f3bdb6127" [color="#2ecc71",penwidth=1.6];
+  "session-5cc47bcb-7935-4111-9b71-e1c994da0f42" -> "6fc12a85-042e-4ede-903c-14d7b99a182f" [color="#2ecc71",penwidth=1.6];
+  "session-5cc47bcb-7935-4111-9b71-e1c994da0f42" -> "89e26276-442d-476d-9068-4bf9bf1e0a91" [color="#2ecc71",penwidth=1.6];
+  "session-81076132-69dc-4447-869a-55abdb874958" -> "0d5bdff6-fbf2-4350-bbc8-8814903546c8" [color="#2ecc71",penwidth=1.6];
+  "session-81076132-69dc-4447-869a-55abdb874958" -> "91ba4ec0-9d51-4056-9311-d8f87893784f" [color="#2ecc71",penwidth=1.6];
+  "session-5cc47bcb-7935-4111-9b71-e1c994da0f42" -> "9187eb30-aa36-445c-95ae-a9490b021111" [color="#2ecc71",penwidth=1.6];
+  "session-5cc47bcb-7935-4111-9b71-e1c994da0f42" -> "4cedb31a-a2be-4024-9b3d-33f24faf9385" [color="#2ecc71",penwidth=1.6];
+  "session-5cc47bcb-7935-4111-9b71-e1c994da0f42" -> "c7917746-e5f6-418d-9f20-dc8bdd79a429" [color="#2ecc71",penwidth=1.6];
+  "session-530c58a8-eccd-4ca0-b2d8-cd4a44f366a2" -> "f7af5b71-efee-47eb-85b7-5563c6944ada" [color="#2ecc71",penwidth=1.6];
+  "session-81076132-69dc-4447-869a-55abdb874958" -> "c64a75b5-e5bc-471b-9ca4-3362799b7494" [color="#2ecc71",penwidth=1.6];
+  "session-530c58a8-eccd-4ca0-b2d8-cd4a44f366a2" -> "77917cf3-ef5d-492a-b34a-97b3d887a198" [color="#2ecc71",penwidth=1.6];
+  "session-81076132-69dc-4447-869a-55abdb874958" -> "1f195ee3-9736-4869-ae94-15da2024765b" [color="#2ecc71",penwidth=1.6];
+  "session-81076132-69dc-4447-869a-55abdb874958" -> "fd551f47-d369-487b-9014-c1ede5bfb357" [color="#2ecc71",penwidth=1.6];
+  "session-81076132-69dc-4447-869a-55abdb874958" -> "386756e2-7a82-40de-a897-846a65bbfb2e" [color="#2ecc71",penwidth=1.6];
+  "session-5cc47bcb-7935-4111-9b71-e1c994da0f42" -> "08ad9cb5-9b13-4c62-bb7c-4d345958a735" [color="#2ecc71",penwidth=1.6];
+  "session-81076132-69dc-4447-869a-55abdb874958" -> "8679e54c-90b7-4507-afac-e139c7814dd2" [color="#2ecc71",penwidth=1.6];
+  "session-5cc47bcb-7935-4111-9b71-e1c994da0f42" -> "cd8669a0-8cf7-4784-af06-b586709f7b23" [color="#2ecc71",penwidth=1.6];
+  "session-5cc47bcb-7935-4111-9b71-e1c994da0f42" -> "f1e74b85-2736-4d0e-9a27-f93126c8c583" [color="#2ecc71",penwidth=1.6];
+  "session-5cc47bcb-7935-4111-9b71-e1c994da0f42" -> "7e8b6ad3-0a56-452e-a6c0-1273b996c2f9" [color="#2ecc71",penwidth=1.6];
+  "session-5cc47bcb-7935-4111-9b71-e1c994da0f42" -> "1c79726f-0c3d-402c-a1a7-8380f61d5739" [color="#2ecc71",penwidth=1.6];
+  "session-5cc47bcb-7935-4111-9b71-e1c994da0f42" -> "793bc47c-2b1f-4cae-9d5b-8d4c6235b532" [color="#2ecc71",penwidth=1.6];
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "0cfbb08d-61db-44f2-a64e-03ee66ab7590" [color="#2ecc71",penwidth=1.6];
+  "session-5cc47bcb-7935-4111-9b71-e1c994da0f42" -> "cbdcd63e-b675-4bba-b8cd-014481b50a40" [color="#2ecc71",penwidth=1.6];
+  "session-81076132-69dc-4447-869a-55abdb874958" -> "05d1233b-7b34-4962-952b-13c5835d4af9" [color="#2ecc71",penwidth=1.6];
+  "session-81076132-69dc-4447-869a-55abdb874958" -> "7cc7375e-3039-490e-811f-ffa6bcd34252" [color="#2ecc71",penwidth=1.6];
+  "session-81076132-69dc-4447-869a-55abdb874958" -> "8e5b1e89-925c-429c-a310-f8fe1b2614b1" [color="#2ecc71",penwidth=1.6];
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "77649028-f1a0-4db0-b47e-66cf91c36adb" [color="#2ecc71",penwidth=1.6];
+  "session-5cc47bcb-7935-4111-9b71-e1c994da0f42" -> "67f3bdc1-e771-473b-b5aa-4c2ac7ddc507" [color="#2ecc71",penwidth=1.6];
+  "session-5cc47bcb-7935-4111-9b71-e1c994da0f42" -> "f140029c-d263-4b86-a8f1-8b3a6989326d" [color="#2ecc71",penwidth=1.6];
+  "session-5cc47bcb-7935-4111-9b71-e1c994da0f42" -> "267ff28d-031b-457f-89bd-64c8bab9e923" [color="#2ecc71",penwidth=1.6];
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "3026ea0d-17b4-41af-a70f-5a2bf07a0776" [color="#2ecc71",penwidth=1.6];
+  "session-9cf09938-2bd8-43d5-aa59-79513d3f17d4" -> "35993b49-7518-48bb-8c8e-c8c21425ae79" [color="#2ecc71",penwidth=1.6];
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "02d0985b-899f-4e0b-942b-d16521d91948" [color="#2ecc71",penwidth=1.6];
+  "session-9cf09938-2bd8-43d5-aa59-79513d3f17d4" -> "8f08fdb4-2bbe-4e13-9421-b923027c3509" [color="#2ecc71",penwidth=1.6];
+  "session-d4de29f8-8069-472d-89a7-ae619d7ee2e3" -> "1b917187-9e8a-450e-bcc9-c4974ba3eb80" [color="#2ecc71",penwidth=1.6];
+  "session-9cf09938-2bd8-43d5-aa59-79513d3f17d4" -> "c2f17333-c2c0-4a16-a5eb-ae5259ba4a96" [color="#2ecc71",penwidth=1.6];
+  "session-243425b3-e21f-4aba-a033-ca00e415934e" -> "2c0ead8c-9b10-4be6-9269-417d89d00267" [color="#2ecc71",penwidth=1.6];
+  "session-243425b3-e21f-4aba-a033-ca00e415934e" -> "62146b7c-4f66-496b-ab89-e7d586d66272" [color="#2ecc71",penwidth=1.6];
+  "session-9cf09938-2bd8-43d5-aa59-79513d3f17d4" -> "80491699-1fd9-4534-ae32-4d2c7329301a" [color="#2ecc71",penwidth=1.6];
+  "session-8c63dd12-6ddf-4519-a5fd-da24c226ee2c" -> "session-e31d5eaa-97e8-41e6-8034-337a45b7631a" [color="#2ecc71",penwidth=1.6];
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "99590068-40ee-40fd-9dfa-bff20f4b4fa6" [color="#2ecc71",penwidth=1.6];
+  "session-8c63dd12-6ddf-4519-a5fd-da24c226ee2c" -> "4975890e-0e9c-4c31-adfa-4e919b58c735" [color="#2ecc71",penwidth=1.6];
+  "session-964176a7-2f29-4e25-82e8-6df81738d831" -> "5dc0140d-0ea4-4e4a-835d-d938cb004a08" [color="#2ecc71",penwidth=1.6];
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "1dc350c2-e541-4fdd-bb48-adc83d92cb7c" [color="#2ecc71",penwidth=1.6];
+  "session-964176a7-2f29-4e25-82e8-6df81738d831" -> "fc403f77-7ec0-40c2-9963-9c530cfe4057" [color="#2ecc71",penwidth=1.6];
+  "session-964176a7-2f29-4e25-82e8-6df81738d831" -> "685264fd-ced8-44c3-8551-13b629273b97" [color="#2ecc71",penwidth=1.6];
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "2272e69f-bdc6-4da2-b4bb-5f23bd57ed94" [color="#2ecc71",penwidth=1.6];
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "a12d0f09-9c70-44b1-aae6-e7730606e2ab" [color="#2ecc71",penwidth=1.6];
+  "session-19b055a6-49f7-43fd-8fbe-d11b3e786ec4" -> "5d124e9f-2cab-4045-a6bb-d0892cb8c6fb" [color="#2ecc71",penwidth=1.6];
+  "session-19b055a6-49f7-43fd-8fbe-d11b3e786ec4" -> "bb17cf14-7a80-4960-ad8a-49570d3fb014" [color="#2ecc71",penwidth=1.6];
+  "session-b65a9a67-80a1-403c-b899-45b0ac351801" -> "84e1871b-bc39-4b36-b2a4-e986eed0995f" [color="#2ecc71",penwidth=1.6];
+  "session-b65a9a67-80a1-403c-b899-45b0ac351801" -> "3c2b7e5d-d75f-463b-a925-b409cd7eeb77" [color="#2ecc71",penwidth=1.6];
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "e899dcc1-3710-4d06-955b-a564e381daf5" [color="#2ecc71",penwidth=1.6];
+  "session-b65a9a67-80a1-403c-b899-45b0ac351801" -> "57ada998-02f4-41af-a4c8-ecf6faba9ab3" [color="#2ecc71",penwidth=1.6];
+  "session-b65a9a67-80a1-403c-b899-45b0ac351801" -> "54933889-ece5-478b-aa38-7dc97cdc7ee4" [color="#2ecc71",penwidth=1.6];
+  "session-b65a9a67-80a1-403c-b899-45b0ac351801" -> "67f31ebf-7d89-47ff-a338-4faf29e61720" [color="#2ecc71",penwidth=1.6];
+  "session-b65a9a67-80a1-403c-b899-45b0ac351801" -> "12ab4fd6-c05d-49c2-adf8-226e5f4d448e" [color="#2ecc71",penwidth=1.6];
+  "session-b65a9a67-80a1-403c-b899-45b0ac351801" -> "a9827410-5b63-4759-b429-2b67852e801b" [color="#2ecc71",penwidth=1.6];
+  "session-b65a9a67-80a1-403c-b899-45b0ac351801" -> "ab047fcc-be03-4003-aaaa-acc975e77e5f" [color="#2ecc71",penwidth=1.6];
+  "session-b65a9a67-80a1-403c-b899-45b0ac351801" -> "d294ad9f-96b1-4eef-ba9a-0228fcd48f9f" [color="#2ecc71",penwidth=1.6];
+  "session-cbcbf62e-3c8f-4fdb-b0eb-79f675b468ab" -> "419d65ec-2c00-4508-baf9-03c1a25436dc" [color="#2ecc71",penwidth=1.6];
+  "session-cbcbf62e-3c8f-4fdb-b0eb-79f675b468ab" -> "abf75ecf-4e40-448f-9ad7-5bedb6b2a843" [color="#2ecc71",penwidth=1.6];
+  "session-cbcbf62e-3c8f-4fdb-b0eb-79f675b468ab" -> "ac2e264b-f1a6-44ab-89a1-116a3d628404" [color="#2ecc71",penwidth=1.6];
   "session-ff0aa307-cd70-45ba-a759-42da4ae2e7e1" -> "702ce91f-bcb5-4617-8a7e-f7fe3fd3d59f" [color="#2ecc71",penwidth=1.6];
   "session-ff0aa307-cd70-45ba-a759-42da4ae2e7e1" -> "85a20d57-55ff-483c-a588-9de220dfb57b" [color="#2ecc71",penwidth=1.6];
   "session-33713e9e-e49b-40b1-8034-13babd31f3d0" -> "e8a1df79-be1b-4561-969e-fda13b2fa448" [color="#2ecc71",penwidth=1.6];
@@ -287,49 +535,208 @@ digraph thread_edges {
   "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "4eaec36d-2c5a-403f-9b7a-f7740c4d3c42" [color="#2ecc71",penwidth=1.6];
   "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "98bdfe21-5762-4646-858c-e6398d59ec84" [color="#2ecc71",penwidth=1.6];
   "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "feaf2186-e239-432a-a7f6-7b782f5abc73" [color="#2ecc71",penwidth=1.6];
-  "w1" [label="workflow
+  "w0" [label="workflow
 核验近三天 dsh/reasonix 的 64 条努力记录是否真的成立，并给出可复验手段"];
-  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "w1";
-  "w2" [label="workflow
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "w0";
+  "w1" [label="workflow
 最小可用性探测：确认 agent hook 是否可用"];
-  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "w2";
-  "w5" [label="workflow
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "w1";
+  "w4" [label="workflow
 单组核验探测，定位失败原因"];
-  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "w5";
-  "w10" [label="workflow
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "w4";
+  "w9" [label="workflow
 对 14 条双机分歧的 memory fact 做模型驱动的合并归一，任何一侧独有信息都不得丢失"];
-  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "w10";
-  "w12" [label="workflow
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "w9";
+  "w11" [label="workflow
 把超长的 SKILL.md 重构为「精简索引 + references/ 按需读取」，并证明零信息丢失"];
-  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "w12";
-  "a3" [label="workflow:agent
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "w11";
+  "w16" [label="workflow
+核验近三天 dsh/reasonix 的 64 条努力记录是否真的成立，并给出可复验手段"];
+  "session-f2046870-9844-415e-8237-7dfe9dfec305" -> "w16";
+  "w17" [label="workflow
+最小可用性探测：确认 agent hook 是否可用"];
+  "session-f2046870-9844-415e-8237-7dfe9dfec305" -> "w17";
+  "w20" [label="workflow
+单组核验探测，定位失败原因"];
+  "session-f2046870-9844-415e-8237-7dfe9dfec305" -> "w20";
+  "w25" [label="workflow
+对 14 条双机分歧的 memory fact 做模型驱动的合并归一，任何一侧独有信息都不得丢失"];
+  "session-f2046870-9844-415e-8237-7dfe9dfec305" -> "w25";
+  "w27" [label="workflow
+把超长的 SKILL.md 重构为「精简索引 + references/ 按需读取」，并证明零信息丢失"];
+  "session-f2046870-9844-415e-8237-7dfe9dfec305" -> "w27";
+  "w30" [label="workflow
+核验近三天 dsh/reasonix 的 64 条努力记录是否真的成立，并给出可复验手段"];
+  "session-36f78711-72e5-420f-bb88-4c67db3e54a7" -> "w30";
+  "w31" [label="workflow
+最小可用性探测：确认 agent hook 是否可用"];
+  "session-36f78711-72e5-420f-bb88-4c67db3e54a7" -> "w31";
+  "w34" [label="workflow
+单组核验探测，定位失败原因"];
+  "session-36f78711-72e5-420f-bb88-4c67db3e54a7" -> "w34";
+  "w39" [label="workflow
+对 14 条双机分歧的 memory fact 做模型驱动的合并归一，任何一侧独有信息都不得丢失"];
+  "session-36f78711-72e5-420f-bb88-4c67db3e54a7" -> "w39";
+  "w41" [label="workflow
+把超长的 SKILL.md 重构为「精简索引 + references/ 按需读取」，并证明零信息丢失"];
+  "session-36f78711-72e5-420f-bb88-4c67db3e54a7" -> "w41";
+  "w44" [label="workflow
+核验近三天 dsh/reasonix 的 64 条努力记录是否真的成立，并给出可复验手段"];
+  "session-5a61244d-c257-4491-838c-65e14309fa68" -> "w44";
+  "w45" [label="workflow
+最小可用性探测：确认 agent hook 是否可用"];
+  "session-5a61244d-c257-4491-838c-65e14309fa68" -> "w45";
+  "w48" [label="workflow
+单组核验探测，定位失败原因"];
+  "session-5a61244d-c257-4491-838c-65e14309fa68" -> "w48";
+  "w53" [label="workflow
+对 14 条双机分歧的 memory fact 做模型驱动的合并归一，任何一侧独有信息都不得丢失"];
+  "session-5a61244d-c257-4491-838c-65e14309fa68" -> "w53";
+  "w55" [label="workflow
+把超长的 SKILL.md 重构为「精简索引 + references/ 按需读取」，并证明零信息丢失"];
+  "session-5a61244d-c257-4491-838c-65e14309fa68" -> "w55";
+  "w58" [label="workflow
+核验近三天 dsh/reasonix 的 64 条努力记录是否真的成立，并给出可复验手段"];
+  "session-3a799b2b-2dfa-4b76-8c72-2b941b6588f3" -> "w58";
+  "w59" [label="workflow
+最小可用性探测：确认 agent hook 是否可用"];
+  "session-3a799b2b-2dfa-4b76-8c72-2b941b6588f3" -> "w59";
+  "w62" [label="workflow
+单组核验探测，定位失败原因"];
+  "session-3a799b2b-2dfa-4b76-8c72-2b941b6588f3" -> "w62";
+  "w67" [label="workflow
+对 14 条双机分歧的 memory fact 做模型驱动的合并归一，任何一侧独有信息都不得丢失"];
+  "session-3a799b2b-2dfa-4b76-8c72-2b941b6588f3" -> "w67";
+  "w69" [label="workflow
+把超长的 SKILL.md 重构为「精简索引 + references/ 按需读取」，并证明零信息丢失"];
+  "session-3a799b2b-2dfa-4b76-8c72-2b941b6588f3" -> "w69";
+  "a2" [label="workflow:agent
 Run the bash command `echo PROBE_OK` and reply with exactly what it pr", style=dashed];
-  "w2" -> "a3";
-  "a4" [label="workflow:agent
+  "w59" -> "a2";
+  "a3" [label="workflow:agent
 Reply with exactly: PLAIN_OK", style=dashed];
-  "w2" -> "a4";
-  "a6" [label="subagent
+  "w59" -> "a3";
+  "a5" [label="subagent
 你在为一台 Windows 11 机器上的 dsh（DeepSeek Harness，npm 包 `@deepseek-ai/dsh`）0.", style=dashed];
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "a5";
+  "a6" [label="subagent
+为 Windows 11 上的 dsh（DeepSeek Harness，`@deepseek-ai/dsh` 0.1.7-rc.2，web", style=dashed];
   "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "a6";
   "a7" [label="subagent
-为 Windows 11 上的 dsh（DeepSeek Harness，`@deepseek-ai/dsh` 0.1.7-rc.2，web", style=dashed];
+Reply with exactly the word READY and nothing else. Do not use any too", style=dashed];
   "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "a7";
   "a8" [label="subagent
-Reply with exactly the word READY and nothing else. Do not use any too", style=dashed];
-  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "a8";
-  "a9" [label="subagent
 一个农夫有 17 只羊，除了 9 只以外全都跑了，还剩几只？请先在心里推导，然后只回答最终数字。", style=dashed];
-  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "a9";
-  "a11" [label="workflow:agent
+  "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144" -> "a8";
+  "a10" [label="workflow:agent
 校验一个合并产物是否丢失了信息。用 bash 执行下面的检查并如实汇报。  目录 ${d} 下有 win.md / lin.md / mer", style=dashed];
-  "w10" -> "a11";
-  "a13" [label="workflow:agent
+  "w67" -> "a10";
+  "a12" [label="workflow:agent
 独立校验一个 skill 重构是否丢失内容。**只做校验，不要修改任何文件。**  目录 ${dir} 下：orig_SKILL.md（原文", style=dashed];
-  "w12" -> "a13";
+  "w69" -> "a12";
+  "a18" [label="workflow:agent
+Run the bash command `echo PROBE_OK` and reply with exactly what it pr", style=dashed];
+  "w59" -> "a18";
+  "a19" [label="workflow:agent
+Reply with exactly: PLAIN_OK", style=dashed];
+  "w59" -> "a19";
+  "a21" [label="subagent
+你在为一台 Windows 11 机器上的 dsh（DeepSeek Harness，npm 包 `@deepseek-ai/dsh`）0.", style=dashed];
+  "session-f2046870-9844-415e-8237-7dfe9dfec305" -> "a21";
+  "a22" [label="subagent
+为 Windows 11 上的 dsh（DeepSeek Harness，`@deepseek-ai/dsh` 0.1.7-rc.2，web", style=dashed];
+  "session-f2046870-9844-415e-8237-7dfe9dfec305" -> "a22";
+  "a23" [label="subagent
+Reply with exactly the word READY and nothing else. Do not use any too", style=dashed];
+  "session-f2046870-9844-415e-8237-7dfe9dfec305" -> "a23";
   "a24" [label="subagent
+一个农夫有 17 只羊，除了 9 只以外全都跑了，还剩几只？请先在心里推导，然后只回答最终数字。", style=dashed];
+  "session-f2046870-9844-415e-8237-7dfe9dfec305" -> "a24";
+  "a26" [label="workflow:agent
+校验一个合并产物是否丢失了信息。用 bash 执行下面的检查并如实汇报。  目录 ${d} 下有 win.md / lin.md / mer", style=dashed];
+  "w67" -> "a26";
+  "a28" [label="workflow:agent
+独立校验一个 skill 重构是否丢失内容。**只做校验，不要修改任何文件。**  目录 ${dir} 下：orig_SKILL.md（原文", style=dashed];
+  "w69" -> "a28";
+  "a32" [label="workflow:agent
+Run the bash command `echo PROBE_OK` and reply with exactly what it pr", style=dashed];
+  "w59" -> "a32";
+  "a33" [label="workflow:agent
+Reply with exactly: PLAIN_OK", style=dashed];
+  "w59" -> "a33";
+  "a35" [label="subagent
+你在为一台 Windows 11 机器上的 dsh（DeepSeek Harness，npm 包 `@deepseek-ai/dsh`）0.", style=dashed];
+  "session-36f78711-72e5-420f-bb88-4c67db3e54a7" -> "a35";
+  "a36" [label="subagent
+为 Windows 11 上的 dsh（DeepSeek Harness，`@deepseek-ai/dsh` 0.1.7-rc.2，web", style=dashed];
+  "session-36f78711-72e5-420f-bb88-4c67db3e54a7" -> "a36";
+  "a37" [label="subagent
+Reply with exactly the word READY and nothing else. Do not use any too", style=dashed];
+  "session-36f78711-72e5-420f-bb88-4c67db3e54a7" -> "a37";
+  "a38" [label="subagent
+一个农夫有 17 只羊，除了 9 只以外全都跑了，还剩几只？请先在心里推导，然后只回答最终数字。", style=dashed];
+  "session-36f78711-72e5-420f-bb88-4c67db3e54a7" -> "a38";
+  "a40" [label="workflow:agent
+校验一个合并产物是否丢失了信息。用 bash 执行下面的检查并如实汇报。  目录 ${d} 下有 win.md / lin.md / mer", style=dashed];
+  "w67" -> "a40";
+  "a42" [label="workflow:agent
+独立校验一个 skill 重构是否丢失内容。**只做校验，不要修改任何文件。**  目录 ${dir} 下：orig_SKILL.md（原文", style=dashed];
+  "w69" -> "a42";
+  "a46" [label="workflow:agent
+Run the bash command `echo PROBE_OK` and reply with exactly what it pr", style=dashed];
+  "w59" -> "a46";
+  "a47" [label="workflow:agent
+Reply with exactly: PLAIN_OK", style=dashed];
+  "w59" -> "a47";
+  "a49" [label="subagent
+你在为一台 Windows 11 机器上的 dsh（DeepSeek Harness，npm 包 `@deepseek-ai/dsh`）0.", style=dashed];
+  "session-5a61244d-c257-4491-838c-65e14309fa68" -> "a49";
+  "a50" [label="subagent
+为 Windows 11 上的 dsh（DeepSeek Harness，`@deepseek-ai/dsh` 0.1.7-rc.2，web", style=dashed];
+  "session-5a61244d-c257-4491-838c-65e14309fa68" -> "a50";
+  "a51" [label="subagent
+Reply with exactly the word READY and nothing else. Do not use any too", style=dashed];
+  "session-5a61244d-c257-4491-838c-65e14309fa68" -> "a51";
+  "a52" [label="subagent
+一个农夫有 17 只羊，除了 9 只以外全都跑了，还剩几只？请先在心里推导，然后只回答最终数字。", style=dashed];
+  "session-5a61244d-c257-4491-838c-65e14309fa68" -> "a52";
+  "a54" [label="workflow:agent
+校验一个合并产物是否丢失了信息。用 bash 执行下面的检查并如实汇报。  目录 ${d} 下有 win.md / lin.md / mer", style=dashed];
+  "w67" -> "a54";
+  "a56" [label="workflow:agent
+独立校验一个 skill 重构是否丢失内容。**只做校验，不要修改任何文件。**  目录 ${dir} 下：orig_SKILL.md（原文", style=dashed];
+  "w69" -> "a56";
+  "a60" [label="workflow:agent
+Run the bash command `echo PROBE_OK` and reply with exactly what it pr", style=dashed];
+  "w59" -> "a60";
+  "a61" [label="workflow:agent
+Reply with exactly: PLAIN_OK", style=dashed];
+  "w59" -> "a61";
+  "a63" [label="subagent
+你在为一台 Windows 11 机器上的 dsh（DeepSeek Harness，npm 包 `@deepseek-ai/dsh`）0.", style=dashed];
+  "session-3a799b2b-2dfa-4b76-8c72-2b941b6588f3" -> "a63";
+  "a64" [label="subagent
+为 Windows 11 上的 dsh（DeepSeek Harness，`@deepseek-ai/dsh` 0.1.7-rc.2，web", style=dashed];
+  "session-3a799b2b-2dfa-4b76-8c72-2b941b6588f3" -> "a64";
+  "a65" [label="subagent
+Reply with exactly the word READY and nothing else. Do not use any too", style=dashed];
+  "session-3a799b2b-2dfa-4b76-8c72-2b941b6588f3" -> "a65";
+  "a66" [label="subagent
+一个农夫有 17 只羊，除了 9 只以外全都跑了，还剩几只？请先在心里推导，然后只回答最终数字。", style=dashed];
+  "session-3a799b2b-2dfa-4b76-8c72-2b941b6588f3" -> "a66";
+  "a68" [label="workflow:agent
+校验一个合并产物是否丢失了信息。用 bash 执行下面的检查并如实汇报。  目录 ${d} 下有 win.md / lin.md / mer", style=dashed];
+  "w67" -> "a68";
+  "a70" [label="workflow:agent
+独立校验一个 skill 重构是否丢失内容。**只做校验，不要修改任何文件。**  目录 ${dir} 下：orig_SKILL.md（原文", style=dashed];
+  "w69" -> "a70";
+  "a151" [label="subagent
+你是研究助手。任务：调研「LLM agent harness 的自动上下文压缩（auto compaction）阈值」社区最佳实践，产出一份", style=dashed];
+  "session-243425b3-e21f-4aba-a033-ca00e415934e" -> "a151";
+  "a192" [label="subagent
 任务：提取一个单行超长 JSON 文件里的对话内容并原样返回要点。  文件路径：C:Users27063Desktop会话断点dsh桌面版无", style=dashed];
-  "session-e15fd72c-5a26-43fb-9850-b7703e6fca1f" -> "a24";
-  "a26" [label="subagent
+  "session-e15fd72c-5a26-43fb-9850-b7703e6fca1f" -> "a192";
+  "a194" [label="subagent
 You are a diagnostic probe. Do exactly this and nothing else:  1. Run ", style=dashed];
-  "ae73f9f3-2381-46ef-8ba0-aea30f42e710" -> "a26";
+  "ae73f9f3-2381-46ef-8ba0-aea30f42e710" -> "a194";
 }

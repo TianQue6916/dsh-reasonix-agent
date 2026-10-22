@@ -38,11 +38,12 @@
 - [skill-安装-无限四代载荷存档](skill-安装-无限四代载荷存档.md) — 无限四代事件全档案（已全部卸载）：诉求演变、拒绝边界、`✗ 购买授权` 真实含义
 - [meta-secret-redaction-select-string-pitfall](meta-secret-redaction-select-string-pitfall.md) — 教训：Select-String 校验含密钥配置会打印整行，key 明文进会话记录；含正确脱敏写法
 
-## 四、双机与远程控制（4）
+## 四、双机与远程控制（5）
 - [windows-main-machine-full](windows-main-machine-full.md) — 主力机「天阙九泉」完整远控信息（SSH + RustDesk + IPv6），唯一凭据源
 - [tailscale-tianque-jiuquan-mesh](tailscale-tianque-jiuquan-mesh.md) — Tailscale 组网：Linux 100.79.96.82 / Windows 100.84.67.49，开机自启与安装坑
 - [ssh-passwordless-and-tool-skills-20260804](ssh-passwordless-and-tool-skills-20260804.md) — 免密 SSH（tqjq/天阙九泉）+ skill shadow 修复 + 3 个工具 skill
 - [工具-网络与远程](工具-网络与远程.md) — Tailscale/SSH/dev-sidecar 网络与远程配置汇总
+- [弟弟机-远程通道-LAPTOP-SDOQT8E5](弟弟机-远程通道-LAPTOP-SDOQT8E5.md) — 弟弟机双地址（LAN 192.168.1.10 / Radmin 26.222.168.225）+ SSH/Radmin 端口与指纹（2026-10-05）
 
 ## 五、Reasonix 本体：工作区 / 并发 / 系统（17）
 - [reasonix-32-parallel-limit-and-translation-division](reasonix-32-parallel-limit-and-translation-division.md) — 单批 ≤32 并行；模型铁律（2026-09-10）：全任务统一 v4.1 flash；全资源搜索
@@ -276,6 +277,47 @@
 - [windows-task-REDACTED](windows-task-REDACTED.md) — 两个验收陷阱：ScheduledTask 的 LastTaskResult 不是退出码；node 内置 zstd 静默截断多 frame 流
 - [强制搜索优先级-local-wiki-github](强制搜索优先级-local-wiki-github.md) — 搜索必须优先 local-search（离线维基/PocketWiki + GitHub 全站），只有无结果才用 exa/parallel/nothumansearch
 
+- [mnemon-idle-review-maxtokens-truncation-fix-20261003](mnemon-idle-review-maxtokens-truncation-fix-20261003.md) — dsh-mnemon 后台 review subagent 被 4096 输出上限截断（显示「已达到输出 token 上限」）的根因、修法与验收口径
+- [dsh-compaction-summary-language-zh-patch-20261003](dsh-compaction-summary-language-zh-patch-20261003.md) — 把 dsh compaction 摘要指令从英文改成中文的本地补丁（等长替换 npm js + desktop asar，含脚本/state/README/验证口径）
+- [dsh-maxtokens-notice-suppress-patch-20261003](dsh-maxtokens-notice-suppress-patch-20261003.md) — dsh「已达到输出 token 上限」通知的隐藏补丁（等长替换两处 UI guard + 完整验证与回滚）
+- [dsh-reasoning-language-selflock-and-echo-filter-20261003](dsh-reasoning-language-selflock-and-echo-filter-20261003.md) — 思考链锁英文的根因是 pi-ai 回灌自身 reasoning_content；gateway 侧棘轮补丁已上线
+- [dsh-thinking-guard-name-scope-fix-20261003](dsh-thinking-guard-name-scope-fix-20261003.md) — thinking-guard `failed to import` 真根因 = 包内 patch row 用裸名而真包名带 scope；修法在 node_modules 源头那份，不能改 profile row
+- [dsh-profile-manifest-change-requires-restart-20261003](dsh-profile-manifest-change-requires-restart-20261003.md) — dsh 改 profile manifest（bundles/deps）会触发 requires-a-process-restart，导致 turn 中断 + 上下文丢失；含 interrupted closer 的识别判据与排除链
+- [thinking-chain-english-lock-rootcause-20261004](thinking-chain-english-lock-rootcause-20261004.md) — 思考链恒英文的真根因（gateway 回灌自锁）与 reasoning-echo-filter 修法、实测棘轮数据、复现命令
+- [stall-guard-turn-freeze-fix-20261004](stall-guard-turn-freeze-fix-20261004.md) — stall-guard preset 模块：turn 永久冻住的结构性兜底 + toolBreaker 熔断（原理、代码锚点、验证方法）
+- [finish-length-is-internal-64token-20261004](finish-length-is-internal-64token-20261004.md) — gateway finish=length 全部来自 dsh session-title 的 64-token 辅助请求；已把 maxOutputTokens 提到 512
+- [stall-guard-toolbreaker-not-wired-20261004](stall-guard-toolbreaker-not-wired-20261004.md) — stall-guard 熔断机制真根因（isError 抓不到命令失败）+ 端到端验证通道 + session 落盘结构修正
+- [headroom-searchfold-timestamp-corruption-fix-20261004](headroom-searchfold-timestamp-corruption-fix-20261004.md) — dsh-headroom 的 search-fold 会把时间戳等「冒号+数字」行误判成 grep 结果并篡改内容；已修 SEARCH_LINE_RE 的 .+? → \S+?
+- [thinking-guard-config-precedence-and-tune-20261004](thinking-guard-config-precedence-and-tune-20261004.md) — thinking-guard 的配置覆盖层级（bundle patch 被 profile row 覆盖）+ 4 个真 trip session 证据 + 新参数 300000/200000/verbose
+- [mnemon-idlereview-never-ran-20261004](mnemon-idlereview-never-ran-20261004.md) — mnemon idleReview 验收：配置侧已生效、但 review 从未真正运行的证据与判据
+- [tm-usage-first-plugin-desktop-token-meter-fix-20261004](tm-usage-first-plugin-desktop-token-meter-fix-20261004.md) — desktop App 从 app.asar 加载 core ⇒ 文件 patch 无效；改用 profile-level plugin 包装 ctx.tokenMeter.measure 覆盖两侧
+- [billion-context-community-solution-and-dsh-preset-blindspot-20261004](billion-context-community-solution-and-dsh-preset-blindspot-20261004.md) — billion-context 的社区解法 = 关掉原生 auto-compaction；但它自己承认 dsh 有盲区（#1772 preset 内实例 patch 命不中）；实测复现 + 我们机器上双重压缩的实证
+- [dsh-pilot-browser-lab-e2e-20261004](dsh-pilot-browser-lab-e2e-20261004.md) — C 任务：browser-use 在隔离 browser-lab 里端到端跑通（dsh-pilot v0.7.2 + Edge --no-sandbox）
+- [windows-temp-d-temp-unwritable-root-cause-20261004](windows-temp-d-temp-unwritable-root-cause-20261004.md) — 本机总根因：用户级 TEMP=D:\Temp 不可写，且进程级 TEMP 必须在 workspace 之外
+- [restart-handoff-20261004-kernel-temp-and-bc](restart-handoff-20261004-kernel-temp-and-bc.md) — 重启交接：已批准三件事待执行、重启后第一件事与接管清单、本轮踩坑
+- [dsh-compaction-threshold-and-audit-pitfalls-20261004](dsh-compaction-threshold-and-audit-pitfalls-20261004.md) — dsh auto-compaction 的真实阈值判据链、audit 脚本 v1 的两个测量坑、token-meter Junction 事实
+- [dsh-wincu-and-pilot-promoted-to-production-web-20261004](dsh-wincu-and-pilot-promoted-to-production-web-20261004.md) — C/B 两条能力推生产 web profile 的精确步骤、为何用复制而非 npm、可复现判据与回滚路径
+- [python-windows-backslash-heredoc-trap](python-windows-backslash-heredoc-trap.md) — 本机 python 脚本含 Windows 反斜杠路径必炸（已踩 5 次）的根因与唯一可靠修法：文件内零反斜杠 + 正斜杠路径
+- [goat-gateway-quota动态权重-resetWindow必须用month](goat-gateway-quota动态权重-resetWindow必须用month.md) — goat-gateway 的 quota 动态权重窗口必须读 monthReset，用 weekly 会把优先级排反（2026-10-04 修正）
+- [本机-D盘-Toolbox-原生进程拒写只能走MSYS](本机-D盘-Toolbox-原生进程拒写只能走MSYS.md) — D:\80-系统\Toolbox（=D:\Toolbox junction）对原生 Windows 进程拒写，只有 MSYS 侧能写；改 gateway.mjs 必须先 stop
+- [dsh-desktop-app-status-breakpoint-nosandbox-20261004](dsh-desktop-app-status-breakpoint-nosandbox-20261004.md) — desktop App 双击无反应的真因：0x80000003 STATUS_BREAKPOINT，非 admin 下 Chromium sandbox 起不来，解法 = --no-sandbox（与 Edge 同源）
+- [dsh-asar-inspection-and-objective-9-10-findings-20261004](dsh-asar-inspection-and-objective-9-10-findings-20261004.md) — asar 只读工具用法、desktop 产物布局、reasoning-autofold 未进 asar 的三条硬约束、session 面板差额的准确数字与坑
+- [tianque-linux-unreachable-dualboot-and-gateway-patch-prep-20261004](tianque-linux-unreachable-dualboot-and-gateway-patch-prep-20261004.md) — tianque 与 node 同属一台机双系统（Linux 侧物理不可达），以及 Linux gateway 补丁的待执行序列与已备好的脚本/选项
+- [dsh-profile-models-block-parsing-traps-and-probe-choice-20261004](dsh-profile-models-block-parsing-traps-and-probe-choice-20261004.md) — dsh profile patch 的 models 块边界两个坑、!!js 让 pyyaml 误报、两个 probe 脚本的漏判差异与 throttle 风险
+- [dsh-desktop-requires-no-sandbox](dsh-desktop-requires-no-sandbox.md) — dsh 桌面版本机必须带 --no-sandbox（否则 0x80000003 崩溃）；三处快捷方式都要带，app 更新后会回归
+- [dsh-web-3080-logon-task-REDACTED](dsh-web-3080-logon-task-REDACTED.md) — 开机命令行窗口元凶 = Task Scheduler 任务 dsh-web-3080（LogonTrigger PT20S）；已禁用；含 schtasks 坏掉的绕行手法与 caller-trace 探针
+- [dsh-mnemon-embedding-enabled-20261006](dsh-mnemon-embedding-enabled-20261006.md) — dsh mnemon embedding 已开（desktop+web 两处 enabled: true）：开关位置、语义、两层状态、验证命令与 intent 限制
+- [dsh-desktop-blank-conversation-pane-null-source-guard-20261007](dsh-desktop-blank-conversation-pane-null-source-guard-20261007.md) — dsh desktop 会话页全黑的根因（source.kind 无判空）与 13 处 null-guard 修复 + 生效条件
+- [dsh-desktop-core-bundles-load-from-asar](dsh-desktop-core-bundles-load-from-asar.md) — desktop App 的 renderer 从 app.asar 内加载 core client bundle（不是 node_modules）；修复要用 asar-core-guard.mjs 重建 asar
+- [goat-gateway-deepseek-official-disabled-20261016](goat-gateway-deepseek-official-disabled-20261016.md) — goat-gateway 的 deepseek-official key 已禁用（UAC 提权 + reload），以及 D 盘非提权写入的真实边界
+- [cache-hit-degradation-attribution-20261016](cache-hit-degradation-attribution-20261016.md) — billion-context / dsh cache hit 退化的权威归因（cache-report + degenerate-fold），以及「不是插件在不断压缩」的证据
+- [bili-compress-frequency-tuned-20261016](bili-compress-frequency-tuned-20261016.md) — bili 压缩频率已调低（nudgeGrowthTokens 150000 + preserveRecent 加大）并重启生效；附带「改 config 必须 kill bili 让 dsh 自动拉起」的手法
+- [dsh-preset-effective-path-and-pruner-tuned-20261016](dsh-preset-effective-path-and-pruner-tuned-20261016.md) — agent preset 真实生效路径（.agent-presets 已废除，须改 profiles/*/cordis.patch.yml）+ T3 pruner 阈值 8192→32768 已落地并双向验证
+- [bili-compression-policy-final-20261016](bili-compression-policy-final-20261016.md) — bili 压缩策略最终定案（injectNudge=false + maxContextLimit 60%）+ 50 倍价差的经济学依据 + kill 后需手动重启的教训
+- [bili-allow-dsh-compaction-and-manual-compact-20261016](bili-allow-dsh-compaction-and-manual-compact-20261016.md) — bili 开 allowDshCompaction 恢复 /compact 手动压缩；二层开关（auto:false + allowDshCompaction:true）的区别；kill bili 不会自动拉起已成定论
+- [bili-window-150000-deadlock-根因与修复](bili-window-150000-deadlock-根因与修复.md) — dsh 会话 502 preflight_compress_failed 的根因：bili compress.modelContextLimit 压低窗口 + summary 后端不可用形成死锁；修复与验证路径
+- [memory-system-efficiency-audit-20261022](memory-system-efficiency-audit-20261022.md) — 记忆系统 memory 链路审查（2026-10-22）：写入/同步/入库实时且去重有效，但 memory_search 是多词子串匹配而非语义检索——context window 上下文窗口、压缩 compact、语义相近查询常 0 命中，397/398 条 embedding 闲置；oplog 99.8% 空转、edges 33 条/节点过密；已给 description 加检索冗余规范
+- [禁止把没查写成等有网-web-search始终可用](禁止把没查写成等有网-web-search始终可用.md) — 用户纠正「一直有网啊」：本机 CLI 无外网但 web_search 一直可用，禁止把「没查」写成「等有网再查」
 ## 归档说明
 - 原文全量备份：`~/.reasonix/memory-backup-20260816/`（59 份）与 `~/.reasonix/memory-backup-20260816-consolidate/`
 - 合并/蒸馏原始件：`~/.reasonix/memory-archive-20260816/`
@@ -283,3 +325,5 @@
 - 双机冲突留存：`*.conflict.linux.*.bak` / `*.conflict.win.*.bak`（同步策略为「冲突保留双份」，绝不覆盖）
 
 - [dsh replay cost tile missing model rule](dsh-replay-cost-tile-missing-model-rule.md) — [global/reference] replay 成本 tile 对 muse 等 model 整个不渲染的根因（estimateCost undefined 短路）与 patch-replay-pricing.mjs 修复
+
+- [dsh 桌面端「对话莫名其妙断开」根因取证 + maxTokens 收敛 + 暂停熔断（2026-10-03）](dsh-桌面端频繁中断-根因取证与-maxtokens-收敛-20261003.md) — [global/project] interrupted 只是 resume 补记；真身是 turn 卡死；thinking-guard 确在熔断但 cancel 无 durable 痕迹（已按用户要求暂停）；v4.1-flash maxTokens 降至 131072

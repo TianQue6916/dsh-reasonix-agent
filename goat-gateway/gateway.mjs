@@ -13,6 +13,7 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { createLoopGuard, SseDeltaParser, DEFAULT_LOOP_GUARD } from './loop-guard.mjs';
+import { monitorEventLoopDelay } from 'node:perf_hooks';
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const p = (...a) => path.join(ROOT, ...a);
@@ -87,9 +88,17 @@ const DEFAULTS = {
   //     'left'      = 月剩余比例高者权重大（均衡派）
   //     'resetSoon' = 周期窗口 resetAt 更近者权重大（「套餐结束时间更近的优先」）
   //     'resetLate' = 周期窗口 resetAt 更远者权重大
-  //   resetWindow: 时间型口径读哪个窗口的 resetAt —— GOAT 只有 5h / weekly 两个
-  //     rolling window 带时间戳，月度池属 billing cycle、没有日期；官方余额行
-  //     没有窗口，时间型口径下自动跳过、保持静态 weight。
+  //   resetWindow: 时间型口径读哪个窗口的 resetAt —— 'fivehour' | 'weekly' | 'month'，
+  //     分别读 fiveHourReset / weeklyReset / monthReset。三个字段都由
+  //     goat-usage.ps1 -Json 直接给出（monthReset 是 billing cycle 结束时刻，
+  //     服务端字段，不是本地推算）。官方余额行三窗口全为 null，时间型口径下
+  //     自动跳过、保持静态 weight。
+  //   ⚠ 2026-10-04 修正：此处原写「GOAT 只有 5h / weekly 两个 rolling window 带
+  //     时间戳，月度池属 billing cycle、没有日期」，并据此把 resetWindow 定成
+  //     weekly —— 这个前提是错的，monthReset 一直都在 quota-http 的返回里。
+  //     而 weekly 与 month 的远近顺序**可以相反**（163 周重置更远、月重置更近），
+  //     选错窗口会把优先级整个排反：实测表现为「疯狂烧刚充值的 qq，
+  //     放着 3 天后作废的 163 不动」。
   //   min/maxWeight: 把 score∈[0,1] 线性映射到的权重区间。
   quotaSync: {
     enabled: true,
@@ -325,7 +334,8 @@ async function syncQuota() {
     const lo = Number.isFinite(Number(qs.minWeight)) ? Number(qs.minWeight) : 0.2;
     const hi = Number.isFinite(Number(qs.maxWeight)) ? Number(qs.maxWeight) : 5;
     const mode = String(qs.mode || 'used').toLowerCase();
-    const qsw = String(qs.resetWindow || 'weekly').toLowerCase() === 'fivehour' ? 'fiveHourReset' : 'weeklyReset';
+    const RW_COL = { fivehour: 'fiveHourReset', weekly: 'weeklyReset', month: 'monthReset' };
+    const qsw = RW_COL[String(qs.resetWindow || 'weekly').toLowerCase()] || 'weeklyReset';
     const timed = mode === 'resetsoon' || mode === 'resetlate';
     const now = Date.now();
     const remOf = (row) => {
@@ -820,6 +830,29 @@ function stripHopByHop(headers) {
 
 // 从 SSE tail 中提取最后一个 "usage":{...}，支持 prompt_tokens_details 这类嵌套对象。
 // 旧实现用 /"usage":\{[^}]*\}/ 会在第一个内层 } 处截断，导致日志里的 usage 不是合法 JSON。
+// finish-log-start
+// 从 SSE tail 里取最后一个非 null 的 finish_reason（上游为何收流）。
+// tail 是末尾 64KiB 滑动窗口，而 finish_reason 只在流的最后几帧 ⇒ 一定在窗口内。
+function extractFinishReason(text) {
+  const key = '"finish_reason"';
+  let idx = text.lastIndexOf(key);
+  while (idx >= 0) {
+    const colon = text.indexOf(':', idx + key.length);
+    if (colon < 0) return '';
+    let i = colon + 1;
+    while (i < text.length && /\s/.test(text[i])) i += 1;
+    if (text[i] === '"') {
+      const end = text.indexOf('"', i + 1);
+      if (end > i) {
+        const v = text.slice(i + 1, end);
+        if (v && v !== 'null') return v;
+      }
+    }
+    idx = text.lastIndexOf(key, idx - 1);
+  }
+  return '';
+}
+// finish-log-end
 function extractLastUsage(text) {
   const key = '"usage"';
   let idx = text.lastIndexOf(key);
@@ -925,6 +958,61 @@ function mapPath(url, up) {
 }
 
 // ── 单次上游转发；成功即原样转发给客户端并返回 {ok:true}（含流空闲超时保护）───
+// reasoning-echo-filter-start (2026-10-03)
+// 为什么：dsh 的 pi-ai 适配层把上一步自己的 reasoning 以 reasoning_content 回灌给模型
+//（@earendil-works/pi-ai/dist/api/openai-completions.js 的 nonEmptyThinkingBlocks 分支）。
+// 回灌是语言自锁的载体：同一上下文重复 6 次，保留英文回灌 0/6 中文，删掉/本地化 3-4/6
+//（Fisher p≈0.033，见 ~/.dsh/storages/tools/patch-gateway-reasoning-filter.py 头注释）。
+// 策略=棘轮：非中文 reasoning 不回灌，中文原样保留 ⇒ 一旦有一步中文就被自己强化并收敛。
+// 开关 = logs/.reasoning-filter.json 是否存在（每请求现读，改完不用重启）。
+const ECHO_FILTER_FIELDS = ['reasoning_content', 'reasoning', 'reasoning_text'];
+const ECHO_FILTER_DEFAULT = { enabled: true, minCjk: 0.25, mode: 'strip', uaHints: ['deepseek-harness'], verbose: false };
+function echoFilterConfig() {
+  try {
+    const f = p('logs', '.reasoning-filter.json');
+    if (!fs.existsSync(f)) return null;
+    const raw = JSON.parse(fs.readFileSync(f, 'utf8'));
+    const cfg = { ...ECHO_FILTER_DEFAULT, ...(raw && typeof raw === 'object' ? raw : {}) };
+    return cfg.enabled === false ? null : cfg;
+  } catch {
+    return null;
+  }
+}
+function cjkRatioOf(text) {
+  const s = String(text);
+  const han = s.match(/[\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff]/g);
+  const hanN = han ? han.length : 0;
+  const lat = s.match(/[A-Za-z]/g);
+  const latN = lat ? lat.length : 0;
+  if (!hanN && !latN) return 1;
+  return hanN / (hanN + latN);
+}
+function filterReasoningEcho(parsed, req, cfg) {
+  if (!cfg || !parsed || !Array.isArray(parsed.messages)) return null;
+  const ua = String((req && req.headers && req.headers['user-agent']) || '');
+  if (Array.isArray(cfg.uaHints) && cfg.uaHints.length && !cfg.uaHints.some((h) => ua.includes(String(h)))) return null;
+  const min = Number(cfg.minCjk);
+  const floor = isFinite(min) ? min : 0.25;
+  const stats = { seen: 0, dropped: 0, kept: 0, chars: 0 };
+  for (const m of parsed.messages) {
+    if (!m || typeof m !== 'object' || m.role !== 'assistant') continue;
+    for (const field of ECHO_FILTER_FIELDS) {
+      const v = m[field];
+      if (typeof v !== 'string' || !v.length) continue;
+      stats.seen += 1;
+      if (cjkRatioOf(v) >= floor) {
+        stats.kept += 1;
+        continue;
+      }
+      stats.dropped += 1;
+      stats.chars += v.length;
+      if (cfg.mode === 'empty') m[field] = '';
+      else delete m[field];
+    }
+  }
+  return stats;
+}
+// reasoning-echo-filter-end
 function forward(clientReq, clientRes, keyEntry, body, meta) {
   return new Promise((resolve) => {
     let clientGone = false;
@@ -1217,10 +1305,11 @@ function forward(clientReq, clientRes, keyEntry, body, meta) {
             try { clientRes.end(); } catch {}
           }
           const usage = extractLastUsage(tail);
+          const finishReason = extractFinishReason(tail);
           log(
             `OK id=${reqId} ${clientReq.method} ${target} key=${keyEntry.name} status=${status} ${elapsed()}ms` +
               ` sess=${sess} model=${model} stream=${isStream} clientUa=${JSON.stringify(origUa)} ua=${JSON.stringify(String(headers['user-agent'] || ''))}` +
-              `${usage ? ' usage=' + usage : ''}`,
+              `${usage ? ' usage=' + usage : ''}${finishReason ? ' finish=' + finishReason : ''}`,
           );
           finishStream({ ok: true, status, usage });
         });
@@ -1554,6 +1643,37 @@ async function handle(req, res) {
   } catch {
     parsed = null;
   }
+  // bodylog-start (2026-10-03 诊断：真实请求体落盘；见 ~/.dsh/storages/tools/patch-gateway-bodylog.py)
+  try {
+    if (parsed && fs.existsSync(p('logs', '.bodylog-on'))) {
+      const bd = p('logs', 'bodies');
+      fs.mkdirSync(bd, { recursive: true });
+      const have = fs.readdirSync(bd).filter((f) => f.endsWith('.json')).length;
+      if (have < 8) {
+        const stamp = new Date().toISOString().replace(/[:.]/g, '-');
+        fs.writeFileSync(path.join(bd, stamp + '-' + have + '.json'), body);
+        log(`BODYLOG id=${req._reqId} bytes=${body.length} n=${have}`);
+      }
+    }
+  } catch {}
+  // bodylog-end
+  // echo-filter-call-start (2026-10-03；见 patch-gateway-reasoning-filter.py)
+  try {
+    const echoCfg = echoFilterConfig();
+    const echoStats = filterReasoningEcho(parsed, req, echoCfg);
+    if (echoStats && echoStats.dropped > 0) {
+      body = Buffer.from(JSON.stringify(parsed), 'utf8');
+      log(
+        `ECHO-FILTER id=${req._reqId} dropped=${echoStats.dropped} kept=${echoStats.kept}` +
+          ` chars=${echoStats.chars} minCjk=${echoCfg.minCjk} mode=${echoCfg.mode} bytes=${body.length}`,
+      );
+    } else if (echoStats && echoStats.verbose) {
+      log(`ECHO-FILTER id=${req._reqId} dropped=0 kept=${echoStats.kept}`);
+    }
+  } catch (echoErr) {
+    log(`ECHO-FILTER-ERR ${String(echoErr && echoErr.message ? echoErr.message : echoErr)}`);
+  }
+  // echo-filter-call-end
   const meta = {
     model: parsed && typeof parsed.model === 'string' ? parsed.model : '',
     stream: !!(parsed && parsed.stream === true),
@@ -1723,6 +1843,31 @@ server.listen(CFG.listen.port, CFG.listen.host, () => {
       ` defaultUpstream=${upstreamLabel(resolveUpstream(null))}` +
       ` keys=[${keys.map((k) => k.name + (k.enabled ? '' : ':off') + '@' + upstreamLabel(resolveUpstream(k))).join(', ')}]`,
   );
+  // gateway-hb-start (2026-10-04 诊断：gateway event-loop 延迟心跳；见 ~/.dsh/storages/tools/patch-gateway-hb.py)
+  try {
+    const __hbEld = monitorEventLoopDelay({ resolution: 20 });
+    __hbEld.enable();
+    const __hbTimer = setInterval(() => {
+      try {
+        const p50 = __hbEld.percentile(50) / 1e6;
+        const p99 = __hbEld.percentile(99) / 1e6;
+        const mx = __hbEld.max / 1e6;
+        const mem = process.memoryUsage();
+        log(
+          `HB elu[ms] p50=${p50.toFixed(1)} p99=${p99.toFixed(1)} max=${mx.toFixed(1)}` +
+            ` rss=${Math.round(mem.rss / 1048576)}MB heap=${Math.round(mem.heapUsed / 1048576)}MB` +
+            ` res=${process.getActiveResourcesInfo().length}`,
+        );
+        __hbEld.reset();
+      } catch {
+        /* 诊断代码绝不拖倒 gateway */
+      }
+    }, 5000);
+    if (typeof __hbTimer.unref === 'function') __hbTimer.unref();
+  } catch {
+    /* monitorEventLoopDelay 不可用时静默 */
+  }
+  // gateway-hb-end
 });
 
 pruneLogs();

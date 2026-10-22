@@ -11,7 +11,10 @@
     ],
     "archivedSessionIds": [],
     "pinnedSessionIds": [
-      "session-a0d5fbf8-0fb1-419e-9baf-d95df0190144"
+      "session-992f3685-514d-4bf4-8b23-886e09c68aff",
+      "session-cb03454a-4703-4718-884e-508a2fed10b0",
+      "session-81076132-69dc-4447-869a-55abdb874958",
+      "session-9cf09938-2bd8-43d5-aa59-79513d3f17d4"
     ]
   },
   "tables": {
@@ -20,6 +23,30 @@
         "path": "C:\\Users\\27063",
         "title": "27063",
         "sessionIds": [
+          "session-67bc5cf1-3f98-4918-b1ab-11fac16e82ca",
+          "session-992f3685-514d-4bf4-8b23-886e09c68aff",
+          "session-04931c48-4597-4403-94bf-2c2852da9c30",
+          "session-f2046870-9844-415e-8237-7dfe9dfec305",
+          "session-5a61244d-c257-4491-838c-65e14309fa68",
+          "session-6a2c1e70-b667-4ec5-9d06-2b5d5855442d",
+          "session-cd64d1ac-d965-4776-8f6d-08619d525126",
+          "session-d60ed9f2-5dd1-4459-8c66-2b021e39ad6d",
+          "session-07dffa93-771a-4287-81e7-9f5c6c43294a",
+          "session-fa5b0de7-8c3a-4d5f-bc58-dfef0654e20b",
+          "session-cb03454a-4703-4718-884e-508a2fed10b0",
+          "session-d74208b0-684c-4bc0-9995-527a56b34157",
+          "session-856644af-a8fd-49ad-9994-41eef8a72ea1",
+          "session-c424a630-aeb0-455a-a4b6-8bef5d97015c",
+          "session-81076132-69dc-4447-869a-55abdb874958",
+          "session-5cc47bcb-7935-4111-9b71-e1c994da0f42",
+          "session-d4de29f8-8069-472d-89a7-ae619d7ee2e3",
+          "session-9cf09938-2bd8-43d5-aa59-79513d3f17d4",
+          "session-243425b3-e21f-4aba-a033-ca00e415934e",
+          "session-8c63dd12-6ddf-4519-a5fd-da24c226ee2c",
+          "session-964176a7-2f29-4e25-82e8-6df81738d831",
+          "session-19b055a6-49f7-43fd-8fbe-d11b3e786ec4",
+          "session-b65a9a67-80a1-403c-b899-45b0ac351801",
+          "session-7abdf7bc-4baa-4ec6-b10d-cbebd0fd04c6",
           "session-cbcbf62e-3c8f-4fdb-b0eb-79f675b468ab",
           "session-fe208132-a641-4626-9173-d49f717049a6",
           "session-ff0aa307-cd70-45ba-a759-42da4ae2e7e1",
@@ -74,7 +101,7 @@
           "session-c26e4c02-9c12-4d79-9b76-73761c9bf92e"
         ],
         "createdAt": "2026-08-15T14:14:04.871Z",
-        "updatedAt": "2026-10-02T14:06:14.690Z"
+        "updatedAt": "2026-10-22T14:27:27.407Z"
       },
       "20fb2971-702e-47e1-bd06-a877a416f9ab": {
         "path": "C:\\Users\\27063\\Documents\\DSH",

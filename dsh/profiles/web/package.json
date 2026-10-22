@@ -27,7 +27,8 @@
         "@mingozhou/dsh-replay",
         "@lanbaolu/dsh-wechat-bridge",
         "@local/dsh-thinking-language",
-        "@ethanwong-hk/dsh-thinking-guard"
+        "@ethanwong-hk/dsh-thinking-guard",
+        "dsh-pilot"
       ],
       "patchReload": "live"
     }

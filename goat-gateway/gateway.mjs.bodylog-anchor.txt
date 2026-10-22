@@ -1,0 +1,2 @@
+  const meta = {
+    model: parsed && typeof parsed.model === 'string' ? parsed.model : '',

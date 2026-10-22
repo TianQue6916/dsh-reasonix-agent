@@ -1,0 +1,25 @@
+{
+  "stamp": "20261003-134709",
+  "old": "max-tokens",
+  "new": "max-tokenz",
+  "targets": [
+    {
+      "label": "npm-js",
+      "path": "C:\\Users\\27063\\AppData\\Roaming\\npm\\node_modules\\@deepseek-ai\\dsh\\node_modules\\@deepseek-ai\\dsh-client-ui-chat\\lib\\client.js",
+      "offsets": [
+        464175,
+        464564
+      ],
+      "size": 565455
+    },
+    {
+      "label": "desktop-asar",
+      "path": "C:\\Users\\27063\\AppData\\Local\\Programs\\DeepSeek Harness\\resources\\app.asar",
+      "offsets": [
+        19677465,
+        19677854
+      ],
+      "size": 121348951
+    }
+  ]
+}

@@ -6,6 +6,9 @@
 //   3. 兜底：高层全部冷却后低层顶上
 //   4. quota 动态权重 mode='used'：月已用比例高者 weight 更大
 //   5. quota 动态权重 mode='resetSoon'：周期窗口 resetAt 更近者 weight 更大
+//   5b. resetWindow 三选一 fivehour|weekly|month，month 读 monthReset。T8 专门钉死这条：
+//       weekly 与 month 的远近顺序**可以相反**，读错窗口会把优先级整个排反
+//       （2026-10-04 线上 bug 的回归测试）
 //   6. 没有周期窗口的行（官方余额）不参与时间型口径，保持静态 weight
 //   7. quota 拉取失败 → quotaSync.ok=false，不崩、路由照常
 //   8. 动态权重确实改变分配方向（大样本下 weight 大的 key 背更多会话）
@@ -86,7 +89,7 @@ const quotaUp = http.createServer((req, res) => {
 let goatPort = 0;
 let officialPort = 0;
 
-function writeConfig(mode = 'used') {
+function writeConfig(mode = 'used', resetWindow = 'weekly') {
   writeJson(configPath, {
     listen: { host: '127.0.0.1', port: PORT },
     upstream: { origin: `http://127.0.0.1:${goatPort}`, basePath: '/provider/v1', localPrefix: '/v1' },
@@ -106,7 +109,7 @@ function writeConfig(mode = 'used') {
       intervalMs: 3600000,
       timeoutMs: 3000,
       mode,
-      resetWindow: 'weekly',
+      resetWindow,
       minWeight: 0.2,
       maxWeight: 5,
     },
@@ -358,6 +361,52 @@ async function main() {
     // 反例保护：weight 最大却最少被选 = 权重方向反了
     assert((c['goat-B-key'] || 0) > (c['goat-A-key'] || 0),
       `goatB(95%) 应比 goatA(10%) 背更多会话，实际 ${JSON.stringify(c)}`);
+  });
+
+  // T8 ── resetWindow='month'：必须读 monthReset，绝不能退回 weeklyReset
+  //
+  // 这是 2026-10-04 线上 bug 的回归测试。当时 resetWindow 被钉死成 'weekly'，
+  // 而真实两个 GOAT 账号的周重置与月重置**远近顺序相反**：
+  //   163 -> weeklyReset 更远(158h)、monthReset 更近(75h)、月只剩 4.89/70
+  //   qq  -> weeklyReset 更近(139h)、monthReset 更远(713h)、月刚重置剩 65.6/70
+  // 于是「优先烧快作废的额度」被实现成了「优先烧刚充值的额度」：
+  // 当天 5326 次请求全打在 qq 上，163 只拿到 24 次，那 4.89 眼看要白白重置掉。
+  //
+  // 构造：故意让 weeklyReset 的顺序与 monthReset **完全相反**。
+  // 只要实现读的是 weeklyReset，下面的顺序断言就会以「B > C > A」的形式炸掉。
+  await step("T8 mode='resetSoon' + resetWindow='month'：按 monthReset 排序（而非 weeklyReset）", async () => {
+    const now = Date.now();
+    quotaRows = [
+      // 月重置最近(2d)、周重置最远(6d) —— 163 的真实形状
+      { name: 'goatA', monthUsed: 65, monthCap: 70, monthReset: now + 2 * DAY, weeklyReset: now + 6 * DAY },
+      // 两者居中(4d)
+      { name: 'goatC', monthUsed: 20, monthCap: 70, monthReset: now + 4 * DAY, weeklyReset: now + 4 * DAY },
+      // 月重置最远(6d)、周重置最近(2d) —— qq 的真实形状
+      { name: 'goatB', monthUsed: 4, monthCap: 70, monthReset: now + 6 * DAY, weeklyReset: now + 2 * DAY },
+      // 官方余额行：kind=official、三窗口全 null
+      { name: 'official1', kind: 'official', available: 1.2, currency: 'CNY',
+        fiveHourReset: null, weeklyReset: null, monthReset: null },
+    ];
+    writeConfig('resetSoon', 'month');
+    await reload();
+    await resetCooldowns();
+    const h = await health();
+    assert(h.quotaSync.ok === true, `quotaSync 应 ok，实际 ${JSON.stringify(h.quotaSync)}`);
+    assert(h.quotaSync.resetWindow === 'month',
+      `quotaSync 应回显 resetWindow=month，实际 ${JSON.stringify(h.quotaSync)}`);
+    const n = byName(h);
+    assert(Math.abs(n.goatA.weightEffective - 5) < 0.01,
+      `月重置最近的 goatA 应拿满权重 5，实际 ${n.goatA.weightEffective}`);
+    assert(Math.abs(n.goatB.weightEffective - 0.2) < 0.01,
+      `月重置最远的 goatB 应拿最低权重 0.2，实际 ${n.goatB.weightEffective}`);
+    // 照妖镜：读错窗口时这三者顺序会整个倒过来（B > C > A）
+    assert(n.goatA.weightEffective > n.goatC.weightEffective && n.goatC.weightEffective > n.goatB.weightEffective,
+      '必须按 monthReset 排成 A(2d) > C(4d) > B(6d)；若拿到 B > C > A，说明读的是 weeklyReset，'
+      + `实际 ${JSON.stringify({ A: n.goatA.weightEffective, B: n.goatB.weightEffective, C: n.goatC.weightEffective })}`);
+    assert(n.official1.weightFromQuota === false && n.official1.weightEffective === 1,
+      '官方行三窗口全 null → 时间型口径下必须跳过、保持静态 weight 1');
+    assert(Array.isArray(h.quotaSync.detail) && h.quotaSync.detail.some((d) => d.indexOf('剩 ') > 0),
+      `detail 应带剩余时长标签，实际 ${JSON.stringify(h.quotaSync.detail)}`);
   });
 
   child.kill();

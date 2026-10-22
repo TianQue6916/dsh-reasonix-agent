@@ -51,7 +51,7 @@
   "maxBodyBytes": 67108864,
   "upstreamTimeoutMs": 900000,
   "logKeepDays": 30,
-  "attemptsPerKey": 2,
+  "attemptsPerKey": 1,
   "retryDelayMs": 500,
   "bodyTimeoutMs": 120000,
   "quotaSync": {
@@ -60,10 +60,10 @@
     "intervalMs": 60000,
     "timeoutMs": 15000,
     "mode": "resetSoon",
-    "resetWindow": "weekly",
+    "resetWindow": "month",
     "minWeight": 0.2,
     "maxWeight": 5,
-    "note": "额度驱动的动态权重（2026-10-01 加）。mode=resetSoon：周期窗口 resetAt 更近的账号拿更大权重，优先把快到期的额度烧掉。resetWindow=weekly —— GOAT 只给 5h/weekly 两个 rolling window 的 resetAt，月度池属 billing cycle、服务端不给日期。只覆盖内存权重，绝不回写 keys.json。"
+    "note": "额度驱动的动态权重（2026-10-01 加）。mode=resetSoon：周期窗口 resetAt 更近的账号拿更大权重，优先把快到期的额度烧掉。resetWindow=month 读 monthReset（2026-10-04 修正：原为 weekly，依据「月度池服务端不给日期」是错的；实测 163 weeklyReset 更远、monthReset 更近，用 weekly 会把优先级排反）。只覆盖内存权重，绝不回写 keys.json。"
   },
   "loopGuard": {
     "enabled": true,

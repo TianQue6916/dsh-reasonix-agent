@@ -51,7 +51,7 @@ dsh plugin --profile web list             # 列出该 profile 的插件依赖
 | 四个基本子空间与秩 | 8000 汉字 | ✅ 完整，结果文件 45.7KB / **10287 汉字**，自然收束无截断 |
 | 矩阵分解全景 | **30000 汉字**（≈ 40K tokens） | ❌ 流式中途失败：事件 `llm/retry` → `{"message":"Stream ended without finish_reason","code":"TRANSPORT"}`，随后 `llm/retry-started`（策略 maxRetries=5、退避 500ms→10s、抖动 0.1，覆盖 EMPTY_RESPONSE/RATE_LIMIT/SERVER/TIMEOUT/TRANSPORT）；该会话 15 分钟无新事件、无任何 assistant 内容落盘 → 手动停掉进程（status 转 failed） |
 
-- **结论（关键区分）**：`maxTokens` 放开解决的是「被上限截断」；**一次生成几万字的瓶颈是流式传输时长/稳定性，与 maxTokens 无关**。长任务仍应分块 —— 与 `bilingual-ocw-translator` 既有的「单块 ≤18KB」规范一致。
+- **结论（关键区分）**：`maxTokens` 放开解决的是「被上限截断」；**一次生成几万字的瓶颈是流式传输时长/稳定性，与 maxTokens 无关**。长任务仍应分块 —— 与 `learn-translate`（原名 bilingual-ocw-translator）既有的「单块 ≤18KB」规范一致。
 - **卡住时怎么收**：`dsh-gate-conc.ps1` **没有 kill 参数**；按进程命令行匹配 TaskId 定位后停进程：
   `Get-CimInstance Win32_Process -Filter "Name='node.exe'" | Where-Object { $_.CommandLine -match 'dsh' }` → 找到对应的 `dsh-gate-runner.ps1 <TaskId>` 与 `node ... bin.js --profile headless --patch ...` 两个 PID，`Stop-Process -Force`（注意别误伤同时在跑的其它任务）。
 - **诊断入口**：会话事件里的 `llm/retry` / `llm/retry-started` / `assistant/attempt`。

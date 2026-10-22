@@ -177,6 +177,35 @@ export function apply(ctx, config) {
         }
 
         const payload = render(text, cfg)
+
+        // plan-anchor v2: skip identical.
+        // 本插件每步都会「删掉历史里上一条自己的消息 + 在尾部追加新的」。那条旧消息
+        // 位于**历史中间**，删它会让从该位置往后的消息序列整体错位 —— prefix cache
+        // 从此处全部失效。绝大多数步 PLAN.md 根本没变，却仍在付这笔钱。
+        // 因此：只有确认历史里已有一条**逐字节相同**的副本时才跳过（一条都不动），
+        // 拿不准（找不到自己的消息 / 内容不同）时一律照旧删除+重投，绝不赌。
+        // stats.skipped 会记下跳过的步数，可直接观测省了多少次注入。
+        try {
+          if (cfg.skipIdentical !== false) {
+            const mine = messages.filter(isOwnMessage)
+            const last = mine.length > 0 ? mine[mine.length - 1] : null
+            if (last !== null) {
+              const covered =
+                (typeof last.text === 'string' && last.text === payload) ||
+                (Array.isArray(last.content) &&
+                  last.content.length > 0 &&
+                  last.content[0] !== null &&
+                  typeof last.content[0] === 'object' &&
+                  last.content[0].text === payload)
+              if (covered) {
+                stats.skipped += 1
+                return decision
+              }
+            }
+          }
+        } catch {
+          // 任何异常一律走原路（删除+重投），绝不因为优化而漏注入
+        }
         const kept = cfg.pruneHistory === false ? messages : messages.filter((m) => !isOwnMessage(m))
         stats.injected += 1
         stats.pruned += messages.length - kept.length

@@ -50,3 +50,12 @@ storages/*.out.csv
 # --- 单文件大块头 / 历史导入 ---
 settings.yaml.imported
 settings.new.yaml
+
+# --- 2026-10-04 磁盘写入治理 ---
+# 被跟踪的一整个 Edge profile 运行期 cache（1132 文件 / 29 MB，随浏览变化）
+storages/tools/edge-lite/
+# 构建中间产物与归档（单文件 116 MB / 51 MB，git 会反复存新版本）
+storages/tools/_asar-work.asar
+*.asar
+.backup/
+backups/*.tar.zst

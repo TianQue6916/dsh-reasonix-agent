@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=批量打印中心
+Name[en]=Batch Print Center
+Comment=挑多个文件 → 看页数和第一页预览 → 一键全部打印
+Comment[en]=Pick many files, check pages and first-page preview, print them all at once
+Exec=python3 /home/tianque/printcenter.py %F
+Icon=printer
+Terminal=false
+Categories=Utility;
+MimeType=application/pdf;image/jpeg;image/png;image/webp;image/tiff;
+StartupNotify=true

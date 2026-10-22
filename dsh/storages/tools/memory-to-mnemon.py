@@ -9,7 +9,7 @@
   * 按 markdown 的 `##` 分节切块，用**字节**预算（mnemon 是 Go，len() 数 UTF-8 字节：
     content ≤ 8000 字节、每个 tag ≤ 100 字节）—— 初版按字符数算会直接被拒
 """
-import os, re, json, sys, subprocess, argparse, datetime, shutil, tempfile, time
+import os, re, json, sys, subprocess, argparse, datetime, shutil, tempfile, time, hashlib
 
 def blen(s): return len(s.encode("utf-8"))
 def cutb(s, maxb):
@@ -52,12 +52,14 @@ def discover_scopes(root):
         out.append(("reasonix-root", rh))
     return out
 
-def build_insights(scopes, only=None):
-    """scopes: [(label, dir), ...]"""
+def build_insights(scopes, only=None, want=None):
+    """scopes: [(label, dir), ...]；want 为 "label/file" 集合时只处理这些（增量同步）"""
     found = []
     for label, d in scopes:
         for f in list_facts(d):
             if only and f != only and f != only + ".md":
+                continue
+            if want is not None and f"{label}/{f}" not in want:
                 continue
             found.append((label, d, f))
     if only and not found:
@@ -141,6 +143,66 @@ def build_insights(scopes, only=None):
             ins.append({"content": cutb(c, MAXB), "category": cat, "importance": imp, "tags": tags, "source": "user"})
     return files, ins
 
+# ── 增量同步状态（2026-10-23 加） ──────────────────────────────────────────────
+# 背景：全量重喂时 oplog 里 import 12 条 vs import-skip 4988 条（99.8% 空转）——每次
+# 都把 334 个 md 全部重算、重写一份 3 MB draft，再让 mnemon 逐条判重。改成按文件指纹
+# 只喂变化的那些；首次运行（无状态文件）仍走全量，失败时不写状态，所以永远可重放。
+SYNC_STATE = os.path.expanduser("~/.dsh/storages/mnemon-sync-state.json")
+
+
+def _fingerprint(path):
+    st = os.stat(path)
+    h = hashlib.sha256()
+    with open(path, "rb") as fh:
+        for blk in iter(lambda: fh.read(1 << 20), b""):
+            h.update(blk)
+    return {"m": st.st_mtime_ns, "s": st.st_size, "h": h.hexdigest()}
+
+
+def load_sync_state():
+    try:
+        with open(SYNC_STATE, encoding="utf8") as fh:
+            d = json.load(fh)
+        return d if isinstance(d, dict) else {}
+    except (OSError, ValueError):
+        return {}
+
+
+def save_sync_state(state):
+    try:
+        os.makedirs(os.path.dirname(SYNC_STATE), exist_ok=True)
+        tmp = SYNC_STATE + ".tmp"
+        with open(tmp, "w", encoding="utf8", newline="") as fh:
+            json.dump(state, fh, ensure_ascii=False, indent=0, sort_keys=True)
+        os.replace(tmp, SYNC_STATE)
+    except OSError:
+        pass
+
+
+def select_changed(scopes, state):
+    """返回 (want: set of "label/file", next_state, stats)。mtime+size 先筛，变了才比 sha256。"""
+    want, nxt = set(), {}
+    changed = same = 0
+    for label, d in scopes:
+        for f in list_facts(d):
+            key = f"{label}/{f}"
+            path = os.path.join(d, f)
+            try:
+                fp = _fingerprint(path)
+            except OSError:
+                continue
+            nxt[key] = fp
+            prev = state.get(key)
+            if prev and prev.get("m") == fp["m"] and prev.get("s") == fp["s"]:
+                same += 1
+            elif prev and prev.get("h") == fp["h"]:
+                same += 1          # touch 过但内容没变：只更新指纹，不重喂
+            else:
+                want.add(key)
+                changed += 1
+    return want, nxt, {"changed": changed, "unchanged": same}
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--src", action="append", default=None,
@@ -150,6 +212,8 @@ def main():
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--only", default=None,
                     help="只同步一个 fact（文件名或 name，可省 .md）—— 供 memory_remember 实时触发")
+    ap.add_argument("--full", action="store_true",
+                    help="忽略增量状态，强制全量重喂（排障用）")
     a = ap.parse_args()
 
     # 可观测性：计划任务只暴露 LastTaskResult，而实测它在脚本崩溃时仍报 0
@@ -172,7 +236,18 @@ def main():
     if not scopes:
         emit(f"[mnemon-sync] 在 {a.memory_root} 下没有发现任何 scope，跳过")
         return 0
-    files, ins = build_insights(scopes, a.only)
+    want, next_state, stats = (None, None, None)
+    if not a.only and not a.full:
+        state = load_sync_state()
+        # 首次运行（无状态）也要算 next_state，否则基线永远建立不起来
+        want, next_state, stats = select_changed(scopes, state)
+        if state and stats["changed"] == 0:
+            emit(f"[mnemon-sync] 增量：{stats['unchanged']} 个 fact 全部未变，跳过（--full 可强制全量）")
+            save_sync_state(next_state)
+            return 0
+        emit(f"[mnemon-sync] 增量：changed={stats['changed']} unchanged={stats['unchanged']}"
+             + ("" if state else "（无同步状态文件 ⇒ 首次建立基线，全量）"))
+    files, ins = build_insights(scopes, a.only, want)
     if not ins:
         emit(f"[mnemon-sync] only={a.only} 没有可写入的 insight，跳过")
         return 0
@@ -200,6 +275,23 @@ def main():
     tail = (r.stdout or r.stderr or "").strip().splitlines()
     emit("  " + "\n  ".join(tail[-4:]))
     emit(f"[mnemon-sync] done rc={r.returncode} draft={draft_path}")
+    if r.returncode == 0 and not a.dry_run:
+        if next_state is not None:
+            save_sync_state(next_state)
+        elif a.only:
+            # --only（memory_remember 实时触发）成功后也要回填指纹，
+            # 否则下一次全量会把这条已经喂过的 fact 再喂一遍。
+            st = load_sync_state()
+            fn = a.only if a.only.endswith(".md") else a.only + ".md"
+            for label, d in scopes:
+                fp_path = os.path.join(d, fn)
+                if os.path.isfile(fp_path):
+                    try:
+                        st[f"{label}/{fn}"] = _fingerprint(fp_path)
+                    except OSError:
+                        pass
+            if st:
+                save_sync_state(st)
     if a.only and not a.dry_run:
         try:
             os.remove(draft_path)

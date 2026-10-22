@@ -59,3 +59,16 @@ storages/tools/_asar-work.asar
 *.asar
 .backup/
 backups/*.tar.zst
+
+# --- 运行期状态（2026-10-22 实测治理）---
+# 近 300 条 auto commit 里的出现次数：dsh-headroom-ccr 156 / daemon.pid 41 /
+# daemon-port 39 / thread-edges 35 / git-anchors 34 / workspace 28。
+# 这些是每 20 分钟被重写的派生状态：跟踪它们让 git log 全是噪音、diff 无意义、
+# 也无法回指「哪个手写改动造成了什么」。需要时可 git add -f 临时加回。
+storages/dsh-headroom-ccr.json
+storages/git-anchors.json
+storages/workspace.json
+storages/thread-edges.json
+storages/thread-edges.dot
+wechat-bridge/daemon.pid
+wechat-bridge/daemon-port.json

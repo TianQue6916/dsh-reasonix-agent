@@ -21,6 +21,19 @@
 
 ## 进行中
 
+### ★ 已完成：GitHub 备份线静默断链 20 天 — 根因 / 修复 / 看门狗（2026-10-22 22:30~22:40）
+      **两件事必须分开判**：① 本地 autocommit（任务 `\DshConfigAutocommit`，每 20 分钟）**全程健康** —— Last Result 0，实测 22:29 手动 `/Run` 得 `b8a794a`（48 files）、22:30:01 自动再跑得 `e345f7d`；`~/.dsh` 532 commits 里 529 条 `auto:` 格式；**该 repo 无 remote、脚本明令永不 push**，与 GitHub 无关。② 每日 GitHub 备份（任务 `\ReasonixGitHubBackup`，23:30）**死了 20 天**。
+      **断链证据**：repo `Desktop\工具箱\reasonix-ops\repo` 的 HEAD 停在 `aaee3bf backup: 2026-10-02 23:31`；`%APPDATA%\reasonix\github-backup.log` mtime = Oct 2 23:31（最后一行「已推送到 GitHub === 完成 ===」）；任务 Last Run 2026/10/20 23:30、**Last Result -196608 (0xFFFD0000)**。
+      **根因**：`C:\Users\27063\Desktop\reasonix-ops` junction **不存在（MISSING）** —— 09-27 修好的那条被删了。任务 `Task To Run` = `powershell -File "C:\Users\27063\Desktop\reasonix-ops\backup-to-github.ps1"` ⇒ 进程根本没进入脚本 ⇒ **脚本第一行 `Log '=== backup-to-github 开始 ==='` 都没执行** ⇒ 日志一行没有 ⇒ 静默。对照：`C:\Users\27063\reasonix-ops` 是**真实目录**（Get-Item Target 空、Attributes 无 ReparsePoint），所以用它的 `DshConfigAutocommit` 毫发无伤 —— 这就是一条活一条死的机制解释。
+      **修复 A（用户拍板）**：`New-Item -ItemType Junction -Path Desktop\reasonix-ops -Target Desktop\工具箱\reasonix-ops`，**任务定义一字未改**（避开 09-27 记的 `Set-ScheduledTask` 把 Arguments 整体覆盖的坑）。验证 `attrs=Directory, ReparsePoint` + `backup-to-github.ps1` 可达。
+      **第二道坎（安全机制正常工作）**：第一次重跑 `exit 3` —— `!! 字节级全扫发现 5 个文件含密钥（白名单外类型）→ 中止，不推送`，命中 `goat-gateway/.tmpdiag/*.html`（10-03 抓的 Claude Code 文档页）。判定 **假阳性**：`sk-REDACTED` 这类 HTML class 名匹配了 `sk-[A-Za-z0-9_-]{16,}`；且 `git log --all --diff-filter=A -- 'goat-gateway/.tmpdiag/*'` 为空 ⇒ 这 5 个文件**从未 commit**，没进过 public 远端。处置：脚本 goat-gateway 的 `XD` 加 `'.tmpdiag'`（备份 `backup-to-github.ps1.bak-20261022-pre-tmpdiag-exclude`）+ `git rm -r --cached goat-gateway/.tmpdiag` + 删 repo 内工作树副本。
+      **结果（三重验收）**：`696143b backup: 2026-10-22 22:37`，将提交 356 个文件，脱敏扫描 2860 改 23，字节级全扫 + 兜底校验均通过；本地 `rev-parse HEAD` == `ls-remote origin refs/heads/master` == `696143b3faef82e2fad6d26ed7a974deeb8a278b`，`origin/master..master` = 0，工作树 0 脏。
+      **加固 C（用户拍板）**：新建 `C:\Users\27063\reasonix-ops\backup-watchdog.ps1`（**真实目录，不经 junction**，与故障点解耦）+ 任务 `\ReasonixBackupWatchdog`（每日 23:45 + 开机后 5 分钟，`wscript.exe run-hidden.vbs` 隐藏窗口，StartWhenAvailable，电池不限，MultipleInstances=IgnoreNew，时限 10 分钟）。三条判据：`CALL-PATH-MISSING`（任务实际调用的路径不可达）/ `STALE-HEAD`（repo HEAD > 30h）/ `UNPUSHED`（master 领先 origin）。输出 `%APPDATA%\reasonix\backup-watchdog.log`（每次 OK 或 ALERT）+ `backup-alert.json`（仅 ALERT 时写、OK 时自删）。**三分支实测**：默认 → `OK  head-fresh  callpath=ok` exit 0；`-MaxAgeHours 0` → `ALERT  STALE-HEAD: 0.0h old (696143b ...)` + json 生成；经计划任务 `/Run` → OK 且 json 被删除。注册需管理员（`Register-ScheduledTask` Access denied）⇒ `Start-Process -Verb RunAs`，注册日志 `~/.dsh/logs/backup-watchdog-register.log`。
+      **新教训（三条，都可复现）**：
+      1. Git Bash 里给 `git -C` 传 `/c/Users/...` 中文路径时**不要**加 `MSYS_NO_PATHCONV=1` —— 加了 git 报 `fatal: cannot change to '/c/...': No such file or directory`，不加则成功（同一路径同一 shell，实测两次）。`MSYS_NO_PATHCONV` 只该用于 `schtasks` 这类 Windows 原生程序收 `/参数` 的场合。
+      2. 在 `Desktop\工具箱\reasonix-ops` 里用 **python 覆写已存在的 `.ps1` → PermissionError 13**；同类新建（`.txt`、`cp` 出的 `.bak`）与 `sed -i` 均成功 ⇒ 改这类脚本走 `sed -i`。注意 `sed -i` 会把 CRLF 全部转成 LF（实测 243→0），必须 `sed -i 's/\r*$/\r/'` 复原，再用 `[Parser]::ParseFile` 验 `parse errors: 0` 才敢跑。
+      3. **静默失败的真正盲点不是「脚本挂了」，而是「产物不新鲜却没人量」** —— 脚本一挂，日志就完全不写，任何「读自己日志」的自检会一起沉默。看门狗必须判**外部产物**（repo HEAD 的 commit 时间 / ahead 数 / 调用路径可达性），且自身放在不与故障共享单点的路径上。
+      **遗留（待用户拍板，未动）**：`TianQue6916/reasonix.git` 仍是 **public**（09-27 记的隐患 1 至今未处理）；本轮 356 个文件已推到 public 远端，内容为 `~/.dsh`（profile patch / PLAN / storages）+ goat-gateway + 各 editor 配置，脚本已强制脱敏，但脱敏≠隔离。
 ### ★ 已完成：B 会话（a0d5fbf8）502 死锁根因与修复（2026-10-22 22:55）
       **症状**：会话每条消息都 502 `preflight_compress_failed`；`/compact` 报 `Compaction could not produce a useful summary`；导出 zip 里 35355 行 JSONL **零损坏**（会话本体没坏，坏的是这条 lane 的压缩判定）。
       **根因链（源码 + 运行态互证）**：
@@ -32,11 +45,12 @@
       **验证**：重启后 `/__bili/sessions` 所有活跃 session `contextWindow: 150000 → 868928`；本会话 122k/868k = 14%；`conflicts` 清零。
       **教训**：① `modelContextLimit` 只会「制造」硬墙，**永远不要低于真实窗口**，更别把它当省钱旋钮——墙一触发而 summary 后端不可用，整条会话不可救；② bili 的 `compress` 不热生效，改完必须 `taskkill` 让 supervisor 重拉；③ 判断 bili 实际窗口别猜，直接看 `/__bili/sessions` 的 `contextWindow` 字段。
 
-### ★ 已完成：技能 `learn-translate` v4.2（原 bilingual-ocw-translator）（2026-10-22）
+### ★ 已完成：技能 `learn-translate` v4.2.2（原 bilingual-ocw-translator）（2026-10-22）
       **动机**：目标不再只是翻译，而是「大一统理论与第一性原理」的具体实现；压缩即智能；每学一处要查资料 + 想清「现实世界什么功能由它实现」+ 大量拓展进阶；社区经验十分重要。用户拍板改名 `learn-translate`。
       **落法**：形态 A 翻译（原 8 步流水线逐字不动）/ B 学习（5 步：定锚→取料→四问→验证→落盘）；四问锚点 = 本质 / 公式 / **现实承重（`X 承重于 <系统> 的 <功能>` + 消失测试 + `[未定位]` 纪律）** / 拓展四层（L1 上游·L2 平行·L3 实现 `文件:行`·L4 arXiv，P1-P4）；资料分级 A>B>C；核心契约 15 条、铁律 30 条（新增学习类 27-30）、references 18 个（+`learning-engine.md`、+`sources.md`），原 16 refs 与 26 铁律零删除。
       **v4.1 顺手修的旧病**：① 铁律 21「Reasonix 不派子代理」→「宿主内建子代理一律不用，全转主力机」（去 Reasonix 时代化）；② `§A2` 输出表只有小电脑 Linux 路径，补主力机五类落盘位置；③ 锚点卡原本无路径 → `C:/Users/27063/Desktop/课程文件/锚点卡/<课程>/`（Desktop 实测无 `课程笔记`）；④ 新增「与相邻技能边界」表（course-summarizer / learning-method / tool-offline-wiki / thinking-modes）；⑤ description 压 468→342 字符。
       **v4.2（补学习科学证据分级）**：用户追问「社区学习经验是否融入」→ 自查只融了**检索手法**，没融**学习法本身的证据强弱**。新增 `references/learning-science.md`（57 行，技能第 19 个 ref）：[MA]/[RCT]/[EXP]/[CS]/[OBS]/**[D 社区口传]** 六级；九条学习法逐条判级——自测 [MA]（Rowland 2014 带反馈 g≈0.73 vs 0.39）、间隔 [MA]（Cepeda 2006，254 项研究，D+1/3/7/21 只是启发式）、**费曼技巧 [D] 无一手来源**、**learning styles [MA] 无证据→禁用句式**、艾宾浩斯 [CS] 但 n=1 + 无意义音节、Anki SM-2 是 [D] 工程调度工具。连带改 `learning-engine.md` 间隔段（必须给反馈）、铁律 29（学习法主张同样分级）、核心契约 14。三端 sha 一致（SKILL `e93bc46187`）。
+      **v4.2.2（人-AI 讨论协议）**：用户定调「核心就是我的脑袋和 AI，难问题都会和你讨论」⇒ AI = **外部裁判 + 第二推导引擎**，缺的是裁判不是产出。写进 `learning-engine.md` 末节：入口三样（你的版本 / 卡在哪 / 试过什么）、**角色四档（默认「审稿人」只挑错不给答案；不指定会滑向「同伴」）**、产物三样（+「如果我要推翻它，从哪里下手」）、防 sycophancy（标 A/B/C/`[判断]`、定期自我推翻、可独立复核）、跨模型对撞 `dsh-remote -m deepseek-v4.1-flash -e max`（分歧点信息量 > 共识点）、AI 短板三条、**禁忌「先问机制再定位缺口」**（禁推 Anki 抽卡 / 日程重排）。落 3 条记忆：`人-AI讨论协议-审稿人角色与防sycophancy`（global feedback）、`用户学习模式-检索重建型与伴随式复习`（global user，含禁止清单）、`learn-translate-版本索引与三端状态`（project reference）。三端 sha 一致（SKILL `3f1bda3971`）。
       **三端实测**：dsh 读 `~/.dsh/skills` → junction `C:/Users/27063/ai-skills`；`.reasonix/skills/learn-translate` 与 ai-skills 那份 **inode 相同**（同一份）⇒ 真副本 2 个（ai-skills + `AppData/Roaming`）；sha256 三处一致；`skill_search` 当场命中**无需重启**。备份 `SKILL.md.bak-20261022-pre-v40-ark`。
       **教训**：单次 shell heredoc 写 >8 KB 中文会截断（v4.0 主文档断在第 148 行半句）——长文件分段写（每段 ≤3 KB）+ `wc -l`/`tail`/grep 锚点验证；含反斜杠路径的 python 三引号必须 `r"""..."""`。
 

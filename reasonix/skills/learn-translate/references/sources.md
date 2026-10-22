@@ -20,7 +20,9 @@
 | `web_search` provider | `local-wiki-github`，rank `github(0) > deepseek(1) > wiki(2)` | 找 GitHub 仓库与官方文档 |
 | 主力机 dsh | `dsh-remote -m deepseek-v4.1-flash -e <off/low/high/max>` | 大批量检索、摘要、交叉核对 |
 
-⚠️ 本机 CLI 不走 system proxy，`curl` 打外网域名常 `http_code=000`；需要真联网时走浏览器（Edge headless）或 `web_search`，别浪费时间在 curl 上重试。
+⚠️ 本机 **CLI 不走 system proxy**，`curl` 打外网域名常 `http_code=000`（DNS 被注）；但 **`web_search` 三源插件随时可用**，浏览器（Edge headless）也可用。别在 curl 上反复重试浪费时间。
+
+🚨 **禁止把「没查」写成「等有网再查」**（2026-10-22 用户明确纠正过一次：原话「一直有网啊」）。要引数字就当场查；查不到就写「检索未找到 + 已用检索式」，不许写「待有网」。
 
 ## 3. 一手源清单（按学科，写进锚点卡时直接引用）
 

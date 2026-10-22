@@ -316,7 +316,13 @@
 - [bili-compression-policy-final-20261016](bili-compression-policy-final-20261016.md) — bili 压缩策略最终定案（injectNudge=false + maxContextLimit 60%）+ 50 倍价差的经济学依据 + kill 后需手动重启的教训
 - [bili-allow-dsh-compaction-and-manual-compact-20261016](bili-allow-dsh-compaction-and-manual-compact-20261016.md) — bili 开 allowDshCompaction 恢复 /compact 手动压缩；二层开关（auto:false + allowDshCompaction:true）的区别；kill bili 不会自动拉起已成定论
 - [bili-window-150000-deadlock-根因与修复](bili-window-150000-deadlock-根因与修复.md) — dsh 会话 502 preflight_compress_failed 的根因：bili compress.modelContextLimit 压低窗口 + summary 后端不可用形成死锁；修复与验证路径
-- [memory-system-efficiency-audit-20261022](memory-system-efficiency-audit-20261022.md) — 记忆系统 memory 链路审查（2026-10-22）：写入/同步/入库实时且去重有效，但 memory_search 是多词子串匹配而非语义检索——context window 上下文窗口、压缩 compact、语义相近查询常 0 命中，397/398 条 embedding 闲置；oplog 99.8% 空转、edges 33 条/节点过密；已给 description 加检索冗余规范
+- [memory-system-efficiency-audit-20261022](memory-system-efficiency-audit-20261022.md) — 记忆系统 memory 审查（2026-10-22）：写入/同步/入库健康；三条检索路径分化——memory_search 纯子串多词归零、mnemon search 分词打分良好、mnemon_recall 走 nomic-embed-text 向量+strict-v1；修正「embedding 闲置」的旧结论；同步已改增量、edges 33 条/节点过密、USER.md 80% 满
+- [禁止把没查写成等有网-web-search始终可用](禁止把没查写成等有网-web-search始终可用.md) — 用户纠正「一直有网啊」：本机 CLI 无外网但 web_search 一直可用，禁止把「没查」写成「等有网再查」
+- [memory-to-mnemon-增量同步-20261023](memory-to-mnemon-增量同步-20261023.md) — memory-to-mnemon 同步脚本 memory sync 从全量重喂改成按文件指纹增量：mnemon-sync-state.json 记 mtime+size+sha256，首次自建基线、rc≠0 不写状态可重放、新增 --full 强制全量、--only 实时路径成功后回填指纹。实测第二次运行 0.27 秒零 oplog 增长（原来 22 秒 + 348 条空转），oplog 里 99.8% import-skip 的浪费消除
+- [人-AI讨论协议-审稿人角色与防sycophancy](人-AI讨论协议-审稿人角色与防sycophancy.md) — 人-AI 讨论协议：入口三样 / 角色四档（默认审稿人）/ 产物三样 / 防 sycophancy + 跨模型对撞
+- [用户学习模式-检索重建型与伴随式复习](用户学习模式-检索重建型与伴随式复习.md) — 用户学习模式定稿：检索-重建型 + 伴随式复习 + 白纸复现日常 + 固定日程；禁推 Anki/日程重排
+- [学业进度-2026-09](学业进度-2026-09.md) — 学业进度与课程计划（截至 2026-09-30）：已完成 6.042J/CSAPP/6.006/Strang 线代，高数大物已考；大二上 P0=6.431 概率论(Bertsekas 读原版)+CS144，P1=Boyd 凸优化前5章+Cover 信息论前6章；实分析 Thomson+Rudin 推进中；非核心课最低投入、作业底线不动。从 USER.md 常驻层迁出的明细
+- [user-md-分层瘦身-20261023](user-md-分层瘦身-20261023.md) — USER.md 常驻层瘦身：学业阶段条目从全量清单(572B)改成指针(290B)，明细迁 fact 学业进度-2026-09，总量 3294→3028B(80%→74%)；删掉与教学协议重复的连接点清单；沉淀分层原则「常驻层只放每轮必须生效的约束，会过期的明细进 fact + 指针」
 ## 归档说明
 - 原文全量备份：`~/.reasonix/memory-backup-20260816/`（59 份）与 `~/.reasonix/memory-backup-20260816-consolidate/`
 - 合并/蒸馏原始件：`~/.reasonix/memory-archive-20260816/`

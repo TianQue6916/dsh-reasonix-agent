@@ -21,18 +21,20 @@
 
 ## 进行中
 
-### ⏳ 进行中：dsh 0.2.1-rc.2 全量适配（重启后从这里接）
-      **背景**：桌面端 Electron「DeepSeek Harness」bundle 的 dsh 是 0.2.0-rc.2，npm CLI 也是 0.2.0-rc.2；新版 0.2.1-rc.2（2026-10-17）。两条升级线独立：桌面端走 `download.deepseek.com/dsh-desk/feeds/win-x64/nightly.yml`（已指向 0.2.1-rc.2，安装包 289 MB），CLI 走 npm。
+### ⏳ 进行中：dsh 0.2.1-rc.2 全量适配（**只剩桌面端重启 + 回归**）
+      **两条独立升级线**：① 桌面端 Electron `DeepSeek Harness.exe`（`%LOCALAPPDATA%\Programs\DeepSeek Harness\`，asar 121 MB 内置 dsh 运行时），走 `download.deepseek.com/dsh-desk/feeds/win-x64/nightly.yml`（nightly 已到 0.2.1-rc.2）；② npm CLI `@deepseek-ai/dsh`。
       **已完成**：
-      1. 备份 → `~/.dsh/backups/pre-0.2.1-rc.2-20261023-2313/`（三 profile 的 package.json / cordis.patch.yml / cordis.yml + versions-before.json + installed-before.json + ROLLBACK.md），git tag `pre-0.2.1-rc.2-20261023-2313`。
-      2. 卸载 `@mingozhou/dsh-replay`（用户口中的「鲸小深」= 它的 mascot）：desktop + web 的 deps/bundles/node_modules，共 32.7 MB。
-      3. 删除 `@deepseek-ai/dsh-hooks-claude-code`（三 profile 的 insert 块）+ `dsh-tool-ralph`（desktop/web preset row）。**证据**：Stop hook 日志停在 2026-09-27、`host-stdio.log` 零痕迹；ralph 在 275 turns / 5520 次工具调用中零使用。
-      4. **CLI 已升到 0.2.1-rc.2**（npm 后台安装完成，实测 `~/.dsh/../npm/@deepseek-ai/dsh/package.json` = 0.2.1-rc.2）。
-      **待做（重启后继续）**：
-      1. 验证 CLI 新版：`dsh --version`、`dsh --profile web --dump-config` rc=0；确认 `dsh-tool-ralph` 已从 base 消失（旧 base 自带，我们只删了 patch 覆盖）。
-      2. **插件升级**（`~/.dsh/profiles/*/package.json`，用 pnpm）：dsh-context 0.63.0→**0.74.0**（跨 11 minor，最高风险）、ds-harness-remote 0.4.27→0.5.17、dsh-quick-toc 0.8.2→0.10.2、dsh-better-sidebar 0.24.1→0.28.0、dsh-mnemon 0.5.21→0.5.34、dsh-deja 0.21.3→0.23.0、dshmarket 1.66.8→1.67.0。**不动**：billion-context 0.1.204（已最新，即当天修好的压缩链）、@lanbaolu/dsh-wechat-bridge 0.9.1（已最新）。git 依赖 `dsh-headroom`、`@ethanwong-hk/dsh-thinking-guard` 需单独 git 查（npm 404）。
-      3. 三端回归：bili `/__bili/sessions` 的 `contextWindow` 仍须是 **868928**（不是 150000）；mnemon 写入→同步仍实时；wechat bridge 不双响应；`dsh-hooks-claude-code` 与 `dsh-tool-ralph` 不再出现在 dump-config 里。
-      **关键提醒**：`dsh-replay` 卸载与新 CLI 都**必须重启才生效**；pnpm 安装中途被打断会留半装状态，所以插件升级要在一个完整的空档里做。
+      1. 备份 `~/.dsh/backups/pre-0.2.1-rc.2-20261023-2313/` + git tag `pre-0.2.1-rc.2-20261023-2313`（三 profile 配置 + versions-before/installed-before + ROLLBACK.md）。
+      2. 卸载 `@mingozhou/dsh-replay`（= 用户口中「鲸小深」的 mascot）：desktop+web 共 32.7 MB。
+      3. 删 `dsh-hooks-claude-code`（三 profile insert 块）+ `dsh-tool-ralph`（desktop/web preset row）。证据：Stop hook 日志停在 09-27、ralph 在 275 turns/5520 次调用中零使用。
+      4. **CLI → 0.2.1-rc.2**（`dsh --version` 实测）。
+      5. **插件全升**：desktop = dsh-mnemon 0.5.34 / dshmarket 1.67.0 / dsh-better-sidebar 0.28.0 / dsh-quick-toc 0.10.2 / dsh-deja 0.23.0 / dsh-context **0.74.0** / ds-harness-remote **0.5.17**；web = dsh-mnemon 0.5.34 / dshmarket 1.67.0 / dsh-deja 0.23.0 / ds-harness-remote 0.5.17。不动 billion-context 0.1.204（= 当天修好的压缩链）、wechat-bridge 0.9.1（已最新）。
+      6. **★ 堵掉最大一颗雷**：0.2.1-rc.2 引入了**强制兼容检查**，会用 `skipping profile bundle ... incompatible` 跳过两个插件 —— `dsh-headroom@0.3.0`（要求 dsh-agent `<0.2.0-0`）与 `@lanbaolu/dsh-wechat-bridge@0.9.1`（要求 `^0.1.0-rc.6`）。实测证据：web profile 在 0.2.1-rc.2 下 dump-config 有 2 条 skip；而 desktop 端 headroom-ccr.json 02:00 还在更新、wechat daemon 端口 13444 还活着 ⇒ 说明桌面端靠 `profiles/desktop/compatibility.json`（09-30 建）里的 exact-version 豁免在跑。**处置**：给 desktop/compatibility.json 两个包都追加 `"0.2.1-rc.2"`（备份 `.bak-20261023-pre-add-021rc2`）；web 用 `dsh plugin --profile web allow-version <pkg>@<ver> --dsh-version 0.2.1-rc.2 --accept-risk` 走官方通道，dump-config skip 计数已归零。
+      **剩余（重启后做）**：
+      1. 桌面端点更新（pending 包已就绪：`%LOCALAPPDATA%\@deepseek-aidsh-desktop-updater\pending\deepseek-harness-0.2.1-rc.2-win-x64.exe`，289,385,456 B，sha512 与 nightly.yml 一致）。
+      2. 回归：`/__bili/sessions` 的 `contextWindow` 仍须 **868928**；`dsh-headroom-ccr.json` 继续增长；wechat daemon 端口活着；mnemon 写入→同步仍实时；`dsh-tool-ralph`/`hooks-claude-code` 不再出现在配置里。
+      3. 若桌面端起不来：回滚 = 重装旧版 + `cp` 回 backups 里的三份配置 + `git reset --hard pre-0.2.1-rc.2-20261023-2313`。
+
 
 ### ★ 已完成：备份链路三项加固 A/B/C（2026-10-22 22:50~23:05，用户拍板「开始吧」）
       **P0-A 噪音 commit 治理**：依据「近 300 条 auto commit 里的出现频次」实测（`storages/dsh-headroom-ccr.json` **156 次**、`wechat-bridge/daemon.pid` 41、`daemon-port.json` 39、`storages/thread-edges.*` 35、`storages/git-anchors.json` 34、`storages/workspace.json` 28 —— 对照真正手写的 `PLAN.md` 才 43）⇒ `.gitignore` 追加 7 条运行期状态 + `git rm --cached`；备份脚本 `dsh` target 的 `XF` 同步加这 7 个名字（备份 `backup-to-github.ps1.bak-20261022-pre-runtime-xf`；改后 CRLF 245 / BOM 保留 / `parse errors: 0`）。遗留：`storages/mnemon-sync-state.json` 变动不频繁，暂留跟踪。

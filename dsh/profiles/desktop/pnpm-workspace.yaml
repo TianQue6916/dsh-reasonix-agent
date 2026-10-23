@@ -13,9 +13,11 @@ minimumReleaseAgeExclude:
   - '@vshulcz/deja-vu@0.21.3'
   - dsh-deja@0.21.3
   - '@lanbaolu/dsh-wechat-bridge@0.9.1'
-  - dshmarket@1.66.6 || 1.66.7
+  - dshmarket@1.66.6 || 1.66.7 || 1.67.0
   - dsh-context@0.62.2 || 0.63.0
   - dsh-mnemon-provider-mnemon-native@0.5.8
   - dsh-mnemon-source-memory-spaces@0.5.14
   - dsh-mnemon@0.5.21
-  - billion-context@0.1.178 || 0.1.184
+  - billion-context@0.1.178 || 0.1.184 || 0.1.204
+  - dsh-quick-toc@0.10.2
+  - ds-harness-remote@0.5.17

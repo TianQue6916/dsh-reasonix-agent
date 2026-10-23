@@ -6,16 +6,16 @@
     "@local/dsh-plugin-goat-panel": "link:D:/Toolbox/goat-gateway/dsh-plugin-goat-panel",
     "@local/dsh-thinking-language": "file:D:/Toolbox/dsh-thinking-language",
     "billion-context": "0.1.204",
-    "ds-harness-remote": "^0.4.27",
-    "dsh-better-sidebar": "0.24.1",
-    "dsh-context": "0.63.0",
-    "dsh-deja": "^0.21.3",
+    "ds-harness-remote": "^0.5.17",
+    "dsh-better-sidebar": "0.28.0",
+    "dsh-context": "0.74.0",
+    "dsh-deja": "^0.23.0",
     "dsh-headroom": "git+https://github.com/giter00/dsh-headroom.git",
-    "dsh-mnemon": "^0.5.21",
+    "dsh-mnemon": "^0.5.34",
     "dsh-plugin-local-search": "link:D:/Toolbox/goat-gateway/dsh-plugin-local-search",
     "dsh-plugin-message-edit": "file:../../vendor/dsh-plugin-message-edit-1.2.0-pr7.tgz",
-    "dsh-quick-toc": "0.8.2",
-    "dshmarket": "^1.66.8"
+    "dsh-quick-toc": "0.10.2",
+    "dshmarket": "^1.67.0"
   },
   "dsh": {
     "profile": {

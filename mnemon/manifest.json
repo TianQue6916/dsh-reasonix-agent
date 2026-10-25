@@ -2,7 +2,7 @@
   "format": "mnemonpack",
   "version": 1,
   "scope": "full",
-  "exportedAt": "2026-10-25T20:45:15.303Z",
+  "exportedAt": "2026-10-25T21:45:38.504Z",
   "source": {
     "plugin": "dsh-mnemon",
     "pluginVersion": "0.5.34"
@@ -27,16 +27,16 @@
     },
     {
       "component": "memory-spaces",
-      "files": 3,
-      "bytes": 29393446,
-      "items": 2
+      "files": 4,
+      "bytes": 41849653,
+      "items": 3
     }
   ],
   "sync": {
     "channel": "git",
     "branch": "mnemon-sync",
     "subdir": "mnemon/",
-    "pushedAt": "2026-10-25T20:45:15.303Z",
+    "pushedAt": "2026-10-25T21:45:38.504Z",
     "machine": {
       "id": "12436911-9001-44ad-a259-047c9ba7c8eb",
       "label": "天阙九泉",

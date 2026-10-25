@@ -2,12 +2,20 @@
   "version": 1,
   "bodies": [
     {
-      "id": "default",
+      "id": "6b85637e-c16b-4bc0-a858-9a58e0e88a6a",
       "name": "default",
       "description": "Existing Mnemon Store discovered on disk.",
       "active": true,
       "createdAt": "2026-10-01T07:56:33.296Z",
-      "updatedAt": "2026-10-01T07:56:33.296Z"
+      "updatedAt": "2026-10-25T20:45:15.222Z"
+    },
+    {
+      "id": "default",
+      "name": "default",
+      "description": "Existing Mnemon Store discovered on disk.",
+      "active": true,
+      "createdAt": "2026-09-27T15:20:10.688Z",
+      "updatedAt": "2026-10-25T19:37:54.001Z"
     }
   ]
 }

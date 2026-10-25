@@ -75,7 +75,9 @@ memory_remember / mnemon_runtime_memory
 
 ### M7 双机拓扑
 
-- Windows：`~/.reasonix/memory` 是 **Junction** → `%APPDATA%easonix\memory`（实测 `LinkType=Junction`）；`~/.dsh/skills` 也是 Junction → `%APPDATA%easonix\skills`。`~/.reasonix` 是旧 CLI 路径，Desktop 读 APPDATA 那份。
+- Windows：`~/.reasonix/memory` 是 **Junction** → `%APPDATA%
+easonix\memory`（实测 `LinkType=Junction`）；`~/.dsh/skills` 也是 Junction → `%APPDATA%
+easonix\skills`。`~/.reasonix` 是旧 CLI 路径，Desktop 读 APPDATA 那份。
 - Linux：`~/.dsh/skills` 是 **symlink** → `~/.reasonix/skills`（方向与 Windows 相反，别跨机套用结论）。
 - 后果：`find` / `os.walk` / `du` **不跟随 reparse point** ⇒ `find ~/.dsh/skills -name SKILL.md` 返回 0 是测量假象（曾把一次假警报炒成「技能目录被清空」）。数真实文件要用 PowerShell `Get-ChildItem -Recurse` 或 `find -L`。
 
@@ -179,3 +181,54 @@ deja-0213-upgrade-dsh-integration-and-dual-reasonix-home-20260927.md
 - **画像的 single writer 未定**：reasonix 侧画像 fact 更新（`user-persona-*` / `academic-level-*`）不会自动同步进 runtime `USER.md`，现在靠会话内 `mnemon_runtime_memory` 手改；若自动化，必须走 dsh 侧插件写路径（协议禁止直改 memories.json）。
 - **`edges 13161 / 398 节点 = 33 条/节点`**（entity 边占 82%、weight 均值 0.97）意味着 `mnemon_related` 区分度低 —— 是否已在后续版本改善，未验证。
 - **compaction 与记忆写入的竞态**：`PLAN.md` 记录了 compaction 触发判据（`tokenMeter.measure(session).totalTokens`）与 `runtimeMemory.maintenanceMaxTokens`（默认 8192）的存在，但**没有一条实测记录证明「compaction 期间写入 memory 会丢或串行化」** —— 这个因果关系目前只是合理怀疑，不写进定论。
+
+---
+
+## 2026-10-26 附：一次真实的库内整理（软删 107 条，含判据与两个坑）
+
+### 症状
+
+recall 的结果位被**同源碎片**占满：441 条存活 insight 里，**51 组同标题、涉及 158 条（36%）**，
+最大两组 `discrete-math ×22` / `advanced-math ×18`（同一课程会话被切成多段入库）。
+每次 recall 只给 **6 个结果位** ⇒ 一问相关话题就被同组碎片吃满，等于把检索预算烧在重复内容上。
+
+### 关键判据：**完全同内容的重复 = 0**
+
+所以「去重」不能靠 md5 —— 这 158 条正文各不相同（182 B → 5052 B）。
+它们是**同源多版本/片段**，判据必须换成「按 `content` 首行标题分组，组内择优」：
+
+```python
+rows = c.execute("select id,content,length(content),updated_at from insights where deleted_at is null")
+by[content.split('
+',1)[0].strip()].append(row)   # 按标题分组
+dup = {k: v for k, v in by.items() if len(v) > 1}
+```
+
+### 处置（B 方案）与结果
+
+每组保留**内容最长**的一条（并列取 `updated_at` 最新 —— 抢救「信息量」而非「时间」，短碎片往往是被截断的那半），
+其余用 `mnemon forget <id>` **软删**（只写 `insights.deleted_at`，内容保留、查询排除、可回滚）。
+
+| 指标 | 前 | 后 |
+|---|---|---|
+| 存活 insight | 441 | **335** |
+| 唯一标题数 | 390 | **335**（= 存活数，重复组 0） |
+| `recall "离散数学 Chernoff Bound"` | 22 条碎片挤满结果位 | **只回 1 条最完整版** |
+
+### 两个批量执行坑（都实测过，别凭直觉写循环）
+
+1. **`if timeout 20 mnemon forget "$id" >/dev/null 2>&1; then` 在 `while read` 循环里 100% 失败**（60/60、106/106 全 rc≠0）；
+   改成 `out=$(timeout 20 mnemon forget "$id" 2>&1); rc=$?` 后 102/105 成功。
+   已排除的原因：行尾 ``、文件编码、db 锁、单条耗时（362 ms）。**真因未确证** ⇒ 批量调 CLI 固定用「赋值捕获 + `rc=$?`」这一种写法。
+2. **`rc=1` 的语义是「已删过」（幂等）**，不是失败。105 条里 3 条 rc=1 正是先前已删的。**判据看 db 计数，不看退出码**（同 08 篇 D2 的原则）。
+
+### 根因（未确证，写在存疑里而不是当结论）
+
+疑似 `dsh-mnemon-strategy-auto-capture` 把同一会话按轮次切段入库。**只清理不修根因会复发** ——
+下次再出现 51 组同标题时，先确认捕获策略，再决定要不要限制「单会话最多入库 N 段」。
+
+### 与 D 定论的关系
+
+这条实测给 06 篇的 D 系列补了一个反例式的注脚：**「canonical 是可重建的投影」不等于「投影可以无脑堆积」**。
+memory-spaces 里的 insight 数量是有成本的（检索预算 6 位/次），所以「入库策略」本身是需要设计的，
+和 runtime 层「4096/10240 字节预算」在本质上是同一个问题：**稀缺资源是上下文，不是磁盘**。

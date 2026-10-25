@@ -347,7 +347,7 @@
 - [git-add-all-deletes-when-worktree-incomplete](git-add-all-deletes-when-worktree-incomplete.md) — 铁律：git add -A 在工作树不完整时等于删除指令；配套的存在性/内容断言与「push 成功≠内容在」判据
 - [dsh-reasonix-agent-kb-index](dsh-reasonix-agent-kb-index.md) — 经验库 kb/ 在 dsh-reasonix-agent 仓库根：13 篇索引、固定结构、维护规约与本地直接维护路径
 - [git-github-clone-index-pack-failure](git-github-clone-index-pack-failure.md) — git clone GitHub 反复失败的根因：DevSidecar 破坏 pack 流；修复=insteadOf 改走 SSH
-- [mnemon-dedupe-by-title-and-cli-batch](mnemon-dedupe-by-title-and-cli-batch.md) — mnemon 记忆库去重实战：按标题分组择优保留（最长优先）+ CLI 批量软删，含两个必踩的写法坑
+- [mnemon-dedupe-by-title-and-cli-batch](mnemon-dedupe-by-title-and-cli-batch.md) — mnemon 碎片根因已确证：vault 同步走 upsert 而 auto-capture 走 append；含去重脚本、每日卫生检查挂载点与三个治本选项
 - [mnemon-runtime-memory-tool-schema](mnemon-runtime-memory-tool-schema.md) — mnemon_runtime_memory 的正确参数形状（action 枚举 add/replace/remove）与 schema 定位方法，禁用猜测
 ## 归档说明
 - 原文全量备份：`~/.reasonix/memory-backup-20260816/`（59 份）与 `~/.reasonix/memory-backup-20260816-consolidate/`

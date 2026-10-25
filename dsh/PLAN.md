@@ -55,6 +55,13 @@
         批量坑：`if <cli> >/dev/null 2>&1; then` 在 while-read 里 100% 失败（改 `out=$(...); rc=$?` 后 102/105 成功，真因未确证）；
         **rc=1 = 已删过（幂等），判据看 db 不看退出码**。清单留档 `~/.dsh/logs/mnemon-dedupe-20261026.json`。
         根因疑似 auto-capture 把同一会话按轮次切段入库（未确证）⇒ 不修根因会复发。
+      **⑨ 碎片根因已确证（同日晚）**：**不是数据脏，是两条写入通路语义不一致** —— vault → mnemon 走 `memory-to-mnemon.py`
+        按 name **upsert** 且主动跳过 `.revisions`；而 **auto-capture / idle checkpoint review 直接写 mnemon、绕过 vault，每次 append 不按标题去重**
+        （`mnemon-strategy-auto-capture: disabled: false`，`idleReviewMs: 30000`）。证据：`discrete-math` 在 vault 里**不存在**；
+        vault 323 md vs mnemon 337 唯一标题（mnemon 反而更多）；oplog 里 `import` 与 auto-capture 写入是两类记录。
+        **治标已落地**：`~/.dsh/storages/tools/mnemon-dedupe.py`（默认报告 / `--apply` 才软删 / 判据=存活数==唯一标题数），
+        已挂进 `backup-to-github.ps1` §5.5（只报告不删，`-DryRun` 实测日志出现 `mnemon 卫生: 存活 337 / 唯一标题 337 / 重复组 0`）。
+        **治本三选项待拍板**：① `idleReviewMs` 30s→300s（零风险）② 关 auto-capture ③ 改插件按标题 replace 或让它改走 vault。
 
 ### ★ 已落地：实现语言策略定论 = 方案 A 分层混合（2026-10-26）
       **用户诉求**：「能否要求 agent 写的绝大多数处理的东西由 C 写而不是 Python？想要稳定和效率，注意社区经验，看看大家都是怎么做的。」

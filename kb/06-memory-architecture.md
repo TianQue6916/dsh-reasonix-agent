@@ -242,10 +242,35 @@ dup = {k: v for k, v in by.items() if len(v) > 1}
 ⇒ **推论**：这条通路的产物质量不差（它独立写出的 `git-github-clone-index-pack-failure` 事实准确到"DevSidecar 加头改写流导致 pack 损坏"），
 所以问题不在"要不要它"，而在 **"它没有 name 幂等"**。
 
-### 治标（已落地）
+### ★ 再精确一层：insight 是 **append-only**，而两条通路都只做"写新"、不做"回收旧"
 
-`~/.dsh/storages/tools/mnemon-dedupe.py`：默认只报告，`--apply` 才软删；策略=组内保留最长（并列取最新）；
-判据=**存活条数 == 唯一标题数**；已挂进 `backup-to-github.ps1` §5.5（只报告不删，`-DryRun` 也跑）。
+mnemon 的数据模型：更新 = **新记录 + 旧记录软删（`deleted_at`）**。但：
+
+| 通路 | 判变化 | 缺的动作 |
+|---|---|---|
+| vault → `memory-to-mnemon.py` | `mtime+size+sha256` 指纹变了就 `import` | **不软删同 name 的旧 insight** |
+| auto-capture / idle review | 每次 idle 直接写 | **完全没有 name 幂等** |
+
+**实证（最关键的一条）**：把 fact `mnemon-dedupe-by-title-and-cli-batch` 从 rev1 更新到 rev2，几秒后 mnemon 里就出现同标题第二条
+（1518 B 旧版 + 2298 B 新版并存）—— **不需要 auto-capture 参与，只靠 vault 同步就能产生碎片**。
+
+⇒ 所以碎片不是"写太多"，是 **"版本累积没有回收"**。vault 侧 upsert 只保证磁盘上只有一份，**不保证 mnemon 里只有一条**。
+
+### 治标（已落地并端到端验证）
+
+`~/.dsh/storages/tools/mnemon-dedupe.py`：
+- 按 `content` 首行标题分组 → 组内保留最长（并列取 `updated_at` 最新）→ 其余 `mnemon forget` 软删；
+- 默认只报告，`--apply` 才删；判据 **存活条数 == 唯一标题数**；
+- 已挂进 `backup-to-github.ps1` **§5.5**：每日 23:30 **自动收口**（重复组 ≤ 20 时 `--apply`；> 20 只告警，防异常大批删除）。
+- 验证：`-DryRun` 日志出现 `mnemon 卫生: 存活 337 / 唯一标题 337 / 重复组 0 / 待删 0`；分支逻辑单测能提取到 `软删 ok=0 fail=0 → …`。
+
+### 三个工程坑（都踩过）
+
+1. **Windows 上 python `subprocess` 调 `mnemon` 会 `FileNotFoundError`** —— 它是 npm 的**无扩展名 bash shim**，`CreateProcess` 执行不了。必须 `shutil.which("mnemon.cmd")`。
+2. **`if <cmd> >/dev/null 2>&1; then` 在 `while read` 循环里 100% 失败**（60/60、106/106 全 rc≠0），改 `out=$(cmd 2>&1); rc=$?` 后 102/105 成功（真因未确证）。
+3. **用 python 改 CRLF 的 `.ps1` 时，`'?
+'` 会被 python 解释成真实控制字符**，写进去后 PowerShell 正则被切成多行 ——
+   **语法校验仍能过**（Parser 只看语法），但语义已坏。⇒ 改 PowerShell 正则必须用 raw string / `chr(92)`，且改完**看 `repr()` 而不是只跑 Parser**。
 
 ### 治本（三个选项，未执行，需拍板）
 

@@ -11,10 +11,11 @@
   python mnemon-dedupe.py --min-group 3 --json-out out.json
 判据（fail 条件）：存活条数 == 唯一标题数。
 """
-import argparse, collections, datetime, json, os, sqlite3, subprocess, sys
+import argparse, collections, datetime, json, os, shutil, sqlite3, subprocess, sys
 
 DB = os.path.expanduser("~/.mnemon/data/default/mnemon.db")
-CLI = "mnemon"
+# Windows 上 mnemon 是 npm shim（无扩展名的 bash 脚本 + mnemon.cmd），必须解析到 .cmd 才能被 CreateProcess 执行
+CLI = shutil.which("mnemon.cmd") or shutil.which("mnemon") or "mnemon"
 
 def load(db):
     c = sqlite3.connect(f"file:{db}?mode=ro", uri=True)

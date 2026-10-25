@@ -10,20 +10,20 @@
       "updatedAt": "2026-10-25T21:45:38.420Z"
     },
     {
-      "id": "6b85637e-c16b-4bc0-a858-9a58e0e88a6a",
+      "id": "3a42565d-e42c-48ce-a12c-54fa52f6c151",
       "name": "default",
       "description": "Existing Mnemon Store discovered on disk.",
       "active": true,
-      "createdAt": "2026-10-01T07:56:33.296Z",
-      "updatedAt": "2026-10-25T20:45:15.222Z"
+      "createdAt": "2026-09-27T15:20:10.688Z",
+      "updatedAt": "2026-10-25T22:17:50.918Z"
     },
     {
       "id": "default",
       "name": "default",
       "description": "Existing Mnemon Store discovered on disk.",
       "active": true,
-      "createdAt": "2026-09-27T15:20:10.688Z",
-      "updatedAt": "2026-10-25T19:37:54.001Z"
+      "createdAt": "2026-10-01T07:56:33.296Z",
+      "updatedAt": "2026-10-01T07:56:33.296Z"
     }
   ]
 }

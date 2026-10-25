@@ -18,8 +18,8 @@ importers:
         specifier: file:D:/Toolbox/dsh-thinking-language
         version: file:D:/Toolbox/dsh-thinking-language
       billion-context:
-        specifier: 0.1.204
-        version: 0.1.204(@types/node@16.9.1)
+        specifier: 0.1.206
+        version: 0.1.206
       ds-harness-remote:
         specifier: ^0.5.17
         version: 0.5.17

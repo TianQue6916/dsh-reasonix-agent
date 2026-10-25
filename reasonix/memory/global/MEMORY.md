@@ -325,6 +325,18 @@
 - [user-md-分层瘦身-20261023](user-md-分层瘦身-20261023.md) — USER.md 常驻层瘦身：学业阶段条目从全量清单(572B)改成指针(290B)，明细迁 fact 学业进度-2026-09，总量 3294→3028B(80%→74%)；删掉与教学协议重复的连接点清单；沉淀分层原则「常驻层只放每轮必须生效的约束，会过期的明细进 fact + 指针」
 - [dsh-replay-卸载与两个悬案查证-20261023](dsh-replay-卸载与两个悬案查证-20261023.md) — 鲸小深=dsh-replay 的 mascot：已从 desktop/web 两个 profile 卸载（deps+bundles+node_modules 共 32.7MB，package.json 已备份），需重启 dsh 生效；顺带查明 hooks-claude-code 自 2026-09-27 起未触发（Stop hook 日志停摆）、tool-ralph 在 275 turns/5520 次调用中零使用
 - [dsh-0.2.1-rc.2-升级全景与进度-20261023](dsh-0.2.1-rc.2-升级全景与进度-20261023.md) — dsh 0.2.1-rc.2 升级全景（2026-10-23）：桌面端 Electron 与 npm CLI 是两条独立升级线，桌面端 app.asar 内置自己的 dsh 运行时，nights feeds 已到 0.2.1-rc.2；已完成备份/删 replay/删 hooks+ralph/CLI 升级；待做插件升级（dsh-context 0.63→0.74 风险最高）与三端回归
+- [dsh-desktop-就地升级-绕开NSIS-20261023](dsh-desktop-就地升级-绕开NSIS-20261023.md) — dsh 桌面端就地升级成功（Electron 44.0.0→44.7.0，dsh 0.2.0-rc.2→0.2.1-rc.2）：官方 NSIS 安装器在这台机器上永远 rc=2（各种参数/关应用/换目录全试过），改用「exe 偏移 863248 找 7z 签名 → py7zr 解包 → 整目录 rename 替换」，路径不变所以快捷方式与任务栏 pinned 全保留；附本机 shell 三个坑（python 调 schtasks 必败、powershell detached 不执行、schtasks+bat 才可靠）
+- [bili-无条件拒绝dsh原生compaction-20261023](bili-无条件拒绝dsh原生compaction-20261023.md) — /compact 永久失败的真实原因：bili 0.1.204 把 allowDshCompaction 的 opt-in 删了（#3651），拒绝变成无条件；session log 里 compaction/end 的 error 是 422 dsh_compaction_refused；UI 文案「could not produce a useful summary」有误导性；已删无效键；zstd session log 解法
+- [dsh-bili-压缩正确姿势](dsh-bili-压缩正确姿势.md) — bili 压缩机制、/compact 前提、全局化改造与手动 compress 流程（2026-10-23）
+- [windows-powershell-5.1-vs-7-与-dsh-pwsh-tool](windows-powershell-5.1-vs-7-与-dsh-pwsh-tool.md) — 本机 PowerShell 形态：5.1 内置 + 7.6.8 MSI 并存、dsh pwsh tool 的 exe 解析链与构造期缓存坑、WDAC 拦 5.1 脚本、$OutputEncoding 吞中文
+- [学习文档交付-linux端待处理文件夹](学习文档交付-linux端待处理文件夹.md) — 学习文档双端落盘规则（Windows D:\Desktop\课程文件\待处理文件夹 + Linux 天阙机同名目录），含两端路径、SSH 通道、Windows 端 sandbox 已放开待重启
+- [dsh-sandbox-windows-写限制与danger-full-access](dsh-sandbox-windows-写限制与danger-full-access.md) — dsh 在 Windows 的 bash tool 固定跑 Low IL，D 盘等 Medium 目录写不进去；解法是提权给目录降 integrity level（2026-10-25 实测通）
+- [学习文档自检清单与出图坑-learn-translate](学习文档自检清单与出图坑-learn-translate.md) — learn-translate 学习文档交付前的判据化自检清单 + v1 十项问题 + matplotlib/heredoc 转义坑
+- [markdown-KaTeX渲染校验与无效数学公式](markdown-KaTeX渲染校验与无效数学公式.md) — MarkText 里 <无效数学公式> 的根因（\\[2pt] 的 \[ 被当成 display math 定界符）+ 两条 KaTeX 机械校验脚本与基线
+- [dsh-web-search-deepseek-search-api](dsh-web-search-deepseek-search-api.md) — dsh-plugin-local-search 新增 deepseekSearch 源（直连 /v1/tools/search）+ D:\80-系统 是 High IL 保护目录
+- [dsh-web-search-wiki-fetch-failed-修复](dsh-web-search-wiki-fetch-failed-修复.md) — wiki 源 fetch failed 根因（Electron fetch 走浏览器代理）+ http.request 修复 + deepseek 渠道清理
+- [dsh-web-search-三源齐活-20261025](dsh-web-search-三源齐活-20261025.md) — 重启后实测：github + deepseekSearch + wiki 三源齐活，wiki fetch failed 已治愈
+- [dsh-local-search-插件已迁到C盘-junction法](dsh-local-search-插件已迁到C盘-junction法.md) — local-search 插件从 D:\80-系统 迁到 C:\Users\27063\.dsh\plugins，用 junction 重指向，不需要提权
 ## 归档说明
 - 原文全量备份：`~/.reasonix/memory-backup-20260816/`（59 份）与 `~/.reasonix/memory-backup-20260816-consolidate/`
 - 合并/蒸馏原始件：`~/.reasonix/memory-archive-20260816/`

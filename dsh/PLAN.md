@@ -21,19 +21,50 @@
 
 ## 进行中
 
-### ⏳ 进行中：dsh 0.2.1-rc.2 全量适配（**只剩桌面端重启 + 回归**）
-      **两条独立升级线**：① 桌面端 Electron `DeepSeek Harness.exe`（`%LOCALAPPDATA%\Programs\DeepSeek Harness\`，asar 121 MB 内置 dsh 运行时），走 `download.deepseek.com/dsh-desk/feeds/win-x64/nightly.yml`（nightly 已到 0.2.1-rc.2）；② npm CLI `@deepseek-ai/dsh`。
-      **已完成**：
-      1. 备份 `~/.dsh/backups/pre-0.2.1-rc.2-20261023-2313/` + git tag `pre-0.2.1-rc.2-20261023-2313`（三 profile 配置 + versions-before/installed-before + ROLLBACK.md）。
-      2. 卸载 `@mingozhou/dsh-replay`（= 用户口中「鲸小深」的 mascot）：desktop+web 共 32.7 MB。
-      3. 删 `dsh-hooks-claude-code`（三 profile insert 块）+ `dsh-tool-ralph`（desktop/web preset row）。证据：Stop hook 日志停在 09-27、ralph 在 275 turns/5520 次调用中零使用。
-      4. **CLI → 0.2.1-rc.2**（`dsh --version` 实测）。
-      5. **插件全升**：desktop = dsh-mnemon 0.5.34 / dshmarket 1.67.0 / dsh-better-sidebar 0.28.0 / dsh-quick-toc 0.10.2 / dsh-deja 0.23.0 / dsh-context **0.74.0** / ds-harness-remote **0.5.17**；web = dsh-mnemon 0.5.34 / dshmarket 1.67.0 / dsh-deja 0.23.0 / ds-harness-remote 0.5.17。不动 billion-context 0.1.204（= 当天修好的压缩链）、wechat-bridge 0.9.1（已最新）。
-      6. **★ 堵掉最大一颗雷**：0.2.1-rc.2 引入了**强制兼容检查**，会用 `skipping profile bundle ... incompatible` 跳过两个插件 —— `dsh-headroom@0.3.0`（要求 dsh-agent `<0.2.0-0`）与 `@lanbaolu/dsh-wechat-bridge@0.9.1`（要求 `^0.1.0-rc.6`）。实测证据：web profile 在 0.2.1-rc.2 下 dump-config 有 2 条 skip；而 desktop 端 headroom-ccr.json 02:00 还在更新、wechat daemon 端口 13444 还活着 ⇒ 说明桌面端靠 `profiles/desktop/compatibility.json`（09-30 建）里的 exact-version 豁免在跑。**处置**：给 desktop/compatibility.json 两个包都追加 `"0.2.1-rc.2"`（备份 `.bak-20261023-pre-add-021rc2`）；web 用 `dsh plugin --profile web allow-version <pkg>@<ver> --dsh-version 0.2.1-rc.2 --accept-risk` 走官方通道，dump-config skip 计数已归零。
-      **剩余（重启后做）**：
-      1. 桌面端点更新（pending 包已就绪：`%LOCALAPPDATA%\@deepseek-aidsh-desktop-updater\pending\deepseek-harness-0.2.1-rc.2-win-x64.exe`，289,385,456 B，sha512 与 nightly.yml 一致）。
-      2. 回归：`/__bili/sessions` 的 `contextWindow` 仍须 **868928**；`dsh-headroom-ccr.json` 继续增长；wechat daemon 端口活着；mnemon 写入→同步仍实时；`dsh-tool-ralph`/`hooks-claude-code` 不再出现在配置里。
-      3. 若桌面端起不来：回滚 = 重装旧版 + `cp` 回 backups 里的三份配置 + `git reset --hard pre-0.2.1-rc.2-20261023-2313`。
+### ★ 定论 + 已落地：关机后 13~21 秒自己冷启动 = BIOS AC 假边沿（2026-10-25）
+      **现象**：用户报告「晚上关机，电脑自己启动了，好几次」。60 天日志扫出 **26 次**「正常关机（109 Shutdown Off + 6006）→ 13~33 秒后冷启动」，BootType 全 `0x0`（完整 POST，非 S4/S0ix 恢复）；08-28 / 09-11 / 09-25 各出现「关机→自启→再关→再自启」连发 3 次；概率约 26/74 ≈ 35%；延迟中位数 17 秒。
+      **根因判定**：BIOS 的 `Power On after AC Loss`（用户主动开启，用于「智能插座断电→通电」远程开机）+ **EC 在 S5 下对 `AC_PRESENT` 的一次假判定**。`AC_PRESENT` 是带阈值 + 去抖窗口的比较器输出，不是导线通断 ⇒ 物理上「一直插着电」与逻辑上「EC 认为 AC 掉过再回来」可同时为真；关机后负载骤降 → 适配器电压漂移 → 假边沿 → 策略执行 Power On。**13~21 秒 = 适配器空载稳定 + 去抖窗口的时间尺度**，不是「等唤醒源」。
+      **已排除（附证据）**：① OS 定时唤醒：`WakeToRun` 任务空、`powercfg /waketimers` 空；② 快速启动/混合关机：`HiberbootEnabled=0`、`powercfg /a` 明示「快速启动：当前系统策略禁用」；③ 从睡眠恢复：60 天 BootType `0x0`×68 / `0x1`×0，**hiberfil.sys 12.69 GB 存在但一次 S4 都没用过**；④ AC 掉电恢复（电池不在）：`BatteryStatus=2`、电池 100% OK 在位；⑤ RTC 定时：第二次关机后不再触发、延迟非整点；⑥ **WoL**：官方文档确认主板无此功能（Realtek 驱动里 `S5WakeOnLan=开启` 只是 NDIS 高级属性 UI，不代表固件实现），`WakeUpType=6` 疑为 BIOS 静态 DMI 值、未证实动态；⑦ **miIO 插座断电**：插座与电脑不在同一局域网（电脑走手机 USB 共享 192.168.0.100/.102 + 有线 ICS 192.168.243.1），UDP 54321 跨不了网段；且小米插座功率自动化最短间隔 1 分钟 ≫ 21 秒窗口。
+      **不可解的硬冲突**：`Power On` 的判据就是「AC 出现 0→1 边沿」，而「远程开机（APP 断电→通电）」与「关机后假边沿」是同一信号，信号层不可区分 ⇒ 无法靠单个 BIOS 选项两全；`Last State` 不能用（远程开机时机器本就在 S5，`Last State` 会保持关机）。
+      **已落地（方案 B，OS 侧自愈）**：
+        - 脚本 `C:\Users\27063\.dsh\storages\tools\wake-guard.ps1` —— 开机读最近一条 `Kernel-Power 109`，若「本次 boot 时间 − 109 时间」< 60 秒则判假自启并 `shutdown /s /t 0 /f`；含日志、事件日志就绪重试（≤120s）、循环保护（1 小时内最多处理 3 次，防无限开关机）、`-DryRun` / `-GraceSeconds` / `-ThresholdSeconds` 参数。
+        - 计划任务 `WakeGuard`：`AtStartup` + **Delay=PT20S** + `SYSTEM` / `Highest`，`ExecutionTimeLimit=5min`，`StartWhenAvailable`。
+        - **验证已过**：① 干跑正常分支 `gap=38601s ≥ 60s → OK: normal boot`；② 干跑 phantom 分支（放大阈值）`DRYRUN: would shut down now`；③ 任务 XML `state=Ready delay=PT20S user=SYSTEM`；④ **手动触发 LastResult=0，SYSTEM 上下文真实跑通并写入 `dryrun=False` 日志**（证明 SYSTEM 能读 System 日志、能写 `C:\Users\27063\.dsh\logs`）。
+        - **踩坑**：PowerShell 字符串转义是 `` ` `` 不是 `\` —— `"... -File \"{0}\""` 里的 `\"` 被解析成「字面反斜杠 + 字符串结束」，`{0}` 变裸代码块导致整个脚本 parse 失败、一行不执行（靠 `[Parser]::ParseFile` 才查出）。改用 `[char]34` 拼接双引号。另：`New-ScheduledTaskTrigger -AtStartup` 设 `$trigger.Delay` 会丢，**必须在 `New-ScheduledTask` 之后设 `$task.Triggers[0].Delay`**。
+        - 安装脚本 `wake-guard-setup.ps1`（同目录），日志 `C:\Users\27063\.dsh\logs\{wake-guard.log, wake-guard-setup.log}`。
+        - **回滚**：`schtasks /delete /tn WakeGuard /f`
+      **待验**：下次真实关机若触发假自启，日志应出现 `PHANTOM: shutting down now`，且 `off->boot`（109→27 间隔 ≤120s）不再产生「关机后又开机」的净结果。
+      **独立问题（勿混入）**：`10-18 12:36` 与 `10-23 09:51` 各有一次 `Kernel-Power 41`，BugcheckCode `0xEF`(CRITICAL_PROCESS_DIED) / `0x154`(UNEXPECTED_STORE_EXCEPTION)，`PowerButtonTimestamp=0`（非长按）；`0x154` 与存储栈相关，值得单独查。
+
+### ★ 终端环境定论：5.1 全盘失效 → 交互式 shell 迁到 pwsh 7（2026-10-24）
+      **症状**：在 `Windows PowerShell`（5.1.26100.9711）里任何 `.ps1` 都报 `is not digitally signed` —— profile 加载失败 + `dsh` 命中 `npm\dsh.ps1` 也失败。
+      **判定**：不是 ExecutionPolicy 设置问题。实测 `Get-ExecutionPolicy -List` = CurrentUser RemoteSigned / LocalMachine Unrestricted / 无 GPO，手写 `.ps1` 无 `Zone.Identifier`，但显式 `-ExecutionPolicy RemoteSigned` 与 `AllSigned` 均被拒，只有 `Bypass` 通过。⇒ 5.1 的 `SystemPolicy.GetLockdownPolicy()` 被机器级 WDAC script enforcement（`CiPolicies\Active` 下 8 个 `.cip`，`CodeIntegrityPolicyEnforcementStatus=2`）判成 Enforce，覆盖了 RemoteSigned 的「本地文件免签」豁免；`LanguageMode` 仍为 FullLanguage（强制签名 ≠ ConstrainedLanguage）。**pwsh 7.6.8 跑同一文件正常**。
+      **已落地**：① 5.1 profile 迁到 `C:\Users\27063\Documents\PowerShell\Microsoft.PowerShell_profile.ps1`（原目录不存在），`ghm` 改为 `& pwsh -NoProfile`；已验语法 OK、ghurl/ghdl/ghdlx/ghm/ghmirror_base 五个函数加载成功，`ghmirror.ps1` 在 7 下语法 OK。② `pwsh` 已在 PATH（`C:\Program Files\PowerShell\7`），Win+R 输 `pwsh` 直开 7。③ WT `defaultProfile` = `{574e775e-…}` = PowerShell 7（本来就是）。
+      **Win+R -> powershell 已生效（2026-10-24 23:2x 复核）**：`HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\powershell.exe` (default) = `C:\Program Files\PowerShell\pwsh.exe`、`Path` = `C:\Program Files\PowerShell`。该值与我给用户的那份 UAC 提权脚本写的内容完全一致 ⇒ 只能是那两次 `Start-Process -Verb RunAs` 之一被确认执行（我的 tool 进程对 HKCU 是 WinError 5 只读，排除自写；HKLM 仍是 5.1 未动）。用户主观「没运行过脚本」= 他没在终端里手打，但确认过 UAC 框。
+      **生效边界（实测）**：① `ShellExecute` 路径（Win+R / 开始菜单 / 资源管理器）→ 查 App Paths，HKCU 优先于 HKLM ⇒ 得到 7.6.8。② `PATH` 路径（cmd.exe 或任意 PowerShell 内部输入 `powershell`，以及 `Start-Process powershell`）→ `where powershell` 仍为 `C:\Windows\System32\WindowsPowerShell1.0\powershell.exe`（5.1，`FileVersion 10.0.26100.8972`）⇒ 仍 5.1。要覆盖 ② 只能改系统 PATH，代价大于收益，不做。
+      **回滚一行**：`reg delete "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\powershell.exe" /f`
+      **兜底**：在 5.1 里跑 dsh 用 `dsh.cmd`（npm 的 cmd shim，不经 `.ps1`），已验证 `dsh.cmd --version` = `0.2.1-rc.2`。
+
+### ★ compress 工具的正确用法（2026-10-23，踩坑记录）
+      **它是 tool，不是斜杠命令。** `/compress` 不存在；dsh 的斜杠命令叫 **`/compact`**（包 `@deepseek-ai/dsh-command-compact`，`USAGE = "Usage: /compact (no arguments)"`），且要求 agent 处于 idle，否则回 `busy`。
+      **正确的调用形态**（空调用必然失败，报 `kind=missing-content`）：
+      ```js
+      compress({ content: [
+        { startId: "m00364", endId: "m00950", summary: "…", topic: "可选短标题" }
+      ]})
+      ```
+      **三条硬约束**：① **一次给完** —— 多个 range 全塞进同一个 call 的 `content` 数组，不能分多次调用；② **summary 自己写**，模型不代劳，写不好就是真丢信息（要包含路径、判据、原话、时间锚点）；③ startId/endId 用回放里的 ref id（形如 `m00175`），不要带 XML 包装。
+      **实测收益**：m00364–m00950 回收 280K tokens，m00361–m00363 + m00951–m01741 回收 325K，合计约 605K，三个 block 落地后返回 `No compressible ranges remain`。
+
+
+### ★ 已完成：dsh 0.2.1-rc.2 全量适配（2026-10-23 11:58，**桌面端没走官方安装器**）
+      **结果**：桌面端 Electron **44.0.0 → 44.7.0**、内置 dsh **0.2.0-rc.2 → 0.2.1-rc.2**；CLI 也已 0.2.1-rc.2；插件 12 个全升。
+      **官方 NSIS 安装器在这台机器上永远 rc=2**（穷举：`/S` 0.6s、`/S --updated` 0.7s、`/S /NCRC` 3.7s、`/S /D=临时目录` 51s 产出 0 文件、应用全 taskkill 后仍 rc=2、UI「安装并重启」卡十几分钟）。签名 Valid、无 Zone.Identifier ⇒ 排除参数/占用/签名。**别再调参数了。**
+      **实际走的路**：安装器内嵌 app-64.7z（7z 签名在 exe 偏移 **863248**）→ 切出来 `py7zr` 解开（8708 条目 = 7811 文件 / 1094 MB）→ 关应用 → **两个 rename**（安装目录→`.old-20261023`，解压目录→安装目录）→ 原路径启动。**路径一字未动 ⇒ 桌面/任务栏 pinned 全保留。**
+      **必须整目录换**：Electron 44.0.0→44.7.0，`DeepSeek Harness.exe` 244,481,512→246,343,144，`app.asar` 121,348,951→182,794,869；只换 asar 会崩。
+      **回归全绿**：asar 内版本串 `0.2.1-rc.2`；bili `/__bili/sessions` 四个会话 `contextWindow` 全 **868928**；`dsh-headroom-ccr.json` 1.73 MB 继续长；wechat daemon port 10425 OK；`host-stdio.log`/`stall-guard.log` **零 skip**（`profiles/desktop/compatibility.json` 预置的 0.2.1-rc.2 豁免生效）；旧版完整留在 `%LOCALAPPDATA%\Programs\DeepSeek Harness.old-20261023`（1.06 GB）可回滚。
+      **本机 shell 三个坑（实测）**：① python `subprocess` 调 `schtasks` 一律 "cannot find the path specified"（即使 cwd/完整路径都对），改用 **bash 里 `cmd //c "C:\Windows\System32\schtasks.exe ..."`**；② python `Popen(['powershell','-File',...], DETACHED_PROCESS)` 起的脚本**一行不执行、零输出**，别用 powershell 做后台脚本；③ **`schtasks + .bat` 是唯一可靠的脱离应用执行方式**，bat 里延时用 `ping -n N 127.0.0.1 >nul`（任务调度器无终端，`timeout /t` 会报错）。
+      **遗留**：① `dsh-tmp\app-64.7z` 0.29 GB、`dsh-tmp\app-new` 已移走、旧安装目录 1.06 GB —— 观察几天后清；② **`/compact` 仍报 "Compaction could not produce a useful summary"**（与窗口 150000 那件事无关，待查）；③ 新版自带 `experimental-session-search` / `experimental-cot-translation-bundle` / `dsh-tool-schedule` 等 10 个新能力未评估。
 
 
 ### ★ 已完成：备份链路三项加固 A/B/C（2026-10-22 22:50~23:05，用户拍板「开始吧」）
@@ -1331,3 +1362,42 @@ cache 命中的项直接从 iconcache 取图 ⇒ 正常；未命中项必须现�
 - [ ] C. 试用 `alsvike/windows-icon-refresher`
 - [ ] D. 从备份还原 iconcache（需先停 explorer）
 - [ ] E. 清理 `ShellIconOverlayIdentifiers` 19>15（WPS 4 + 百度网盘 7 + OneDrive 7；DLL 实测全部可加载，非本次病因）
+
+## 2026-10-23 Linux→Windows dsh 远程化（已落地，隧道验证通过）
+
+**目标**：天阙 Linux 侧不再承担 dsh 的算力，只留一个 ssh 隧道进程。
+
+**关键实测（决定性）**：
+- 物理链路：Windows Realtek 2.5GbE `192.168.243.1` ↔ Linux USB 千兆网卡 `enx00e04c074608` `192.168.243.2`，Link 1000 Mb/s，双向 ping **1.0–1.6 ms**。
+- Tailscale 却全程走 DERP 中继（`tailscale ping` = `pong via DERP(nue) in ~420ms`），**没有用上这条有线链路**。
+- 因此两条路径首字节差 150 倍：`--L 3080` 经 DERP = **810–1920 ms**；经内网 IP = **5.2–9.0 ms**。
+
+**已做**：
+1. Windows：`~/.dsh/launch-dsh.ps1 -Mode Serve` 起 `dsh --profile web --port 3080 --no-open`（绑 127.0.0.1）。日志 `~/.dsh/logs/dsh-web-3080.out.log`，token 在里面。
+2. Linux：`~/.config/systemd/user/dsh-tunnel.service`（enabled + active），`ssh -N -L 3080:127.0.0.1:3080 27063@192.168.243.1`，常驻内存 **2.3 MB**，`Restart=always`。
+3. Linux 侧说明文档：`~/.local/share/dsh-tunnel/README.md`（含用法 + 回滚）。
+4. 备份：`~/.ssh/config.bak-20261023-100317`（Linux）；git tag `pre-remote-experiment-20261023`。
+
+**验收数据（Linux 侧 curl，带 token cookie）**：握手 303 = 7.9 ms；index 200 = 5.6 / 5.9 / 7.3 ms，size 40246 B。
+
+**已知未解**：
+- ⚠️ 3080 进程在一次 Chrome headless 页面抓取后**无故退出**（日志无 error，停在启动成功行）；改用前台方式重启后存活至今。原因未定位 —— 若再次消失，先查是否被 headless 浏览器/内存压力带走。
+- session 单写者：desktop 与 web 共用 `DSH_HOME=~/.dsh` 且无跨进程锁 ⇒ Windows 本地开 desktop 时不要在远程 web 里开同一 session。
+- harness 跑在 Windows，workspace = `C:\Users\27063` ⇒ Linux 的 `/media/OS/课程文件` 对 agent 不可见。
+- Windows 重启后 3080 不自启（计划任务 `dsh-web-3080` 于 2026-10-06 禁用）⇒ 需手动 `launch-dsh.ps1 -Mode Serve`。
+- Linux 的 `dsh-remote` 派发脚本仍走 `tqjq` → Tailscale DERP（420 ms）。改 `~/.ssh/config` 的 `tqjq` HostName 到 `192.168.243.1`（或新增 `tqjq-lan`）可让整套派发快 200 倍 —— **未做，待用户拍板**。
+
+**回滚（30 秒）**：Linux 侧 `systemctl --user disable --now dsh-tunnel && rm ~/.config/systemd/user/dsh-tunnel.service && systemctl --user daemon-reload`；Windows 侧杀 3080 的 node/cmd 进程即可，无配置改动。
+
+**2026-10-23 补（Linux 无 desktop 版）**：官方 `dsh-desk` feed 只发 `win-x64`，`linux-x64`/`linux-arm64`/`darwin-*` 全 404 ⇒ Linux 不存在 Electron 版。已在 Linux 侧补 `~/.local/bin/dsh-remote-gui` + `~/.local/share/applications/dsh-remote.desktop`：`google-chrome --app=.../?token=`（自动抓 token、独立 user-data-dir、WM_CLASS=DeepSeekHarness），实测出窗口 `0x02200003 TianQue DeepSeek Harness`。图形会话是 X11 / `DISPLAY=:1`（不是 :0）。
+
+### ★ 已完成：`/compress` 全局化（2026-10-23 12:29）
+**目标**：让「压上下文」在所有会话都可用，不再依赖每个会话临时 `dev_tool_search` 解锁。
+**根因**：bili 的 `compress`/`decompress`/`acp_status` 是这条 lane 上唯一可靠的压缩入口（摘要由模型写，不依赖 bili 那个从没成功过的摘要后端），但它们此前既不在 bootstrap 集也不在 promoted keep-set，只能现解锁；而已经处于 compaction 态的会话（catalog 被裁成 `compactionTools`，如 minecraft `session-9cf09938`）连 `dev_tool_search` 都没有，永远解锁不了。
+**改了两处**（备份 `*.bak-20261023-122906-pre-resident-context-tools`，`node --check` OK，行尾已还原 LF）：
+1. `.agent-presets/anchored-standard/tool-bootstrap.mjs:147` 新增 `const RESIDENT_CONTEXT_TOOLS = ['compress', 'decompress', 'acp_status', 'search_context']`；`:309` promoted 分支的 keep 集合并入它。
+2. `profiles/desktop/cordis.patch.yml:224` `compactionTools` 末尾加 `compress` —— 让 compaction 态也能自救。
+**不动 bootstrap 集**：第一轮仍只有 `bash`/`str_replace_editor`，issue #11 的 anchoring 证据（Minimal 对 5/5 vs 标准族 11/11）不受影响。
+**生效时机**：需重启 dsh —— mjs 是 cordis 加载时 import 的，2026-09-27 实测过「改 preset 文件内容不进已有 session」。重启后验证：任一会话的工具列表应直接出现 `compress`。
+**另配套**：技能 `C:\Users\27063\.dsh\skills\compress\SKILL.md`（`skill_search`/`skill_load` 双验证通过），触发词 `/compress`、`压上下文`。
+**回滚**：把两个 `.bak-20261023-122906-pre-resident-context-tools` 拷回原位并重启。

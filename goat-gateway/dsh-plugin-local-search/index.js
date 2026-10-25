@@ -20,6 +20,7 @@
 // token 走本地文件，不写进插件配置；GitHub token 优先环境变量，其次 git credential fill。
 
 import fs from 'node:fs';
+import http from 'node:http';
 import https from 'node:https';
 import os from 'node:os';
 import tls from 'node:tls';
@@ -29,7 +30,10 @@ const IS_WIN = process.platform === 'win32';
 const HOME = os.homedir();
 
 /** 来源 rank：数字小的排前面（github > goat > deepseek > wiki）。 */
-export const SOURCE_RANK = { github: 0, goat: 1, deepseek: 2, wiki: 3 };
+// rank：github > deepseekSearch > goat > deepseek > wiki
+// deepseekSearch 直连 JSON API（¥5/1000 次，2026-11-01 前免费），不吃 token，
+// 且返回 rerank_score / authority 可做阈值过滤；goat / deepseek 是「一次 model turn 换结果」，贵一个量级。
+export const SOURCE_RANK = { github: 0, deepseekSearch: 1, bing: 2, goat: 3, deepseek: 4, wiki: 5 };
 
 const DEFAULT_CONFIG = {
   aggregatorUrl: process.env.LOCAL_SEARCH_AGGREGATOR_URL || 'http://100.79.96.82:8810',
@@ -49,6 +53,14 @@ const DEFAULT_CONFIG = {
   enableGithub: true,
   enableDeepseek: true,
   enableGoat: false,
+  // DeepSeek Search API（2026-10 上线，自研搜索引擎）——直连 JSON，不经过模型。
+  // 文档 https://api-docs.deepseek.com/zh-cn/guides/search
+  // 计费：¥5 / 1000 次成功请求（仅 HTTP 200 且 results 非空才计费），count 不影响单价。
+  // 2026-11-01 00:00 前免费。QPS 100（账号级）。
+  enableDeepseekSearch: true,
+  // Bing HTML 搜索：免 key、国内直连（cn.bing.com 可达），用来补足条数。
+  // 实测单次给 10 条（RSS 只给 1 条，first=11/21 拿回同样结果 ⇒ 无 cookie 不分页）。
+  enableBing: true,
 
   // ── goat：本地 goat gateway 的 Anthropic server-side web_search ──────────────
   // gateway.mjs 自己只透传，但上游（api.commandcode.ai/provider/v1）在 Anthropic
@@ -79,8 +91,31 @@ const DEFAULT_CONFIG = {
   // 凭证缺失/账号错误这类不会自愈的失败，熔断这么久不再发起（0 = 不熔断）
   deepseekFailureCooldownMs: 600000,
 
+  // ── DeepSeek Search API（POST /v1/tools/search）────────────────────
+  deepseekSearchBaseUrl: process.env.DEEPSEEK_SEARCH_BASE_URL || 'https://api.deepseek.com',
+  deepseekSearchApiKeyEnv: 'DEEPSEEK_API_KEY',
+  // key 只写在 .env 里，dsh 的 launch env 不一定继承到插件进程
+  deepseekSearchEnvFile: `${HOME}/.dsh/.env`,
+  // count 只影响返回条数（1~50），不影响计费
+  deepseekSearchCount: 10,
+  // 是否让 API 回传网页正文（Markdown）；false 时 content 恒为空
+  deepseekSearchNeedContent: false,
+  // rerank_score 阈值：官方口径 >=1.5 为优质；0 = 不过滤
+  deepseekSearchMinRerankScore: 0,
+  deepseekSearchTimeoutMs: 30000,
+  deepseekSearchCacheTtlMs: 120000,
+  deepseekSearchFailureCooldownMs: 600000,
+
+  // ── Bing HTML（免 key 兜底源）────────────────────────────────────
+  bingBaseUrl: process.env.BING_SEARCH_BASE_URL || 'https://cn.bing.com',
+  bingUserAgent:
+    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36',
+  bingTimeoutMs: 25000,
+  bingCacheTtlMs: 120000,
+  bingFailureCooldownMs: 300000,
+
   timeoutMs: 20000,
-  maxResults: 8,
+  maxResults: 30,
 
   enableFallback: true,
   fallbackProviderId: 'multi-search',
@@ -118,6 +153,194 @@ function timedSignal(parent, timeoutMs) {
     }
   }
   return controller.signal;
+}
+
+
+/**
+ * 纯 node:http 的 GET-JSON 助手。
+ *
+ * 为什么不用 fetch：dsh 跑在 Electron 里，全局 fetch 可能是 Chromium 的 net.fetch，
+ * 走的是浏览器网络栈（含系统代理 / PAC）。内网地址 100.79.96.82:8810 经代理必挂，
+ * 实机表现就是 `[local-search] wiki source failed: fetch failed`。
+ * node:http 是 Node 原生栈，绕开代理，和命令行 curl 的行为一致。
+ */
+function httpGetJson(urlObj, headers, timeoutMs, parentSignal) {
+  // 顺序很重要：先声明全部状态 + 先绑 error handler，再处理 abort / timeout。
+  // 否则 AbortSignal 已经 aborted 时，destroy() 会在 error handler 绑定之前发出 'error'，
+  // 变成未捕获的 'error' event，直接把进程打挂（实测过）。
+  return new Promise((resolve, reject) => {
+    let settled = false;
+    let timer = null;
+    let req = null;
+    let onAbort = null;
+
+    const finish = (fn, val) => {
+      if (settled) return;
+      settled = true;
+      if (timer) clearTimeout(timer);
+      if (parentSignal && onAbort) parentSignal.removeEventListener?.('abort', onAbort);
+      fn(val);
+    };
+    finish.resolve = (v) => finish(resolve, v);
+    finish.reject = (e) => finish(reject, e);
+
+    req = http.request(
+      {
+        hostname: urlObj.hostname,
+        port: urlObj.port || 80,
+        path: urlObj.pathname + urlObj.search,
+        method: 'GET',
+        headers,
+      },
+      (res) => {
+        let body = '';
+        res.setEncoding('utf8');
+        res.on('data', (chunk) => {
+          body += chunk;
+          if (body.length > 8_000_000) {
+            if (req) req.destroy();
+            finish.reject(new Error('response too large'));
+          }
+        });
+        res.on('end', () => {
+          if (res.statusCode >= 200 && res.statusCode < 300) {
+            try {
+              finish.resolve(JSON.parse(body));
+            } catch (error) {
+              finish.reject(new Error(`invalid JSON: ${error.message}`));
+            }
+            return;
+          }
+          finish.reject(new Error(`local-search HTTP ${res.statusCode}: ${body.slice(0, 160)}`));
+        });
+      },
+    );
+
+    // 必须在任何 destroy() 之前绑定，否则 'error' 无人接管
+    req.on('error', (error) => {
+      const cause = error?.cause?.code || error?.code || '';
+      finish.reject(new Error(cause ? `${error.message} (${cause})` : error.message));
+    });
+
+    onAbort = () => {
+      if (req) req.destroy();
+      finish.reject(new Error('aborted'));
+    };
+    if (parentSignal) {
+      if (parentSignal.aborted) {
+        onAbort();
+        return;
+      }
+      parentSignal.addEventListener('abort', onAbort, { once: true });
+    }
+
+    timer = setTimeout(() => {
+      if (req) req.destroy();
+      finish.reject(new Error(`timeout after ${timeoutMs}ms`));
+    }, timeoutMs);
+    timer.unref?.();
+
+    req.end();
+  });
+}
+
+
+
+/** 纯 node:https 的 GET-文本助手（给 Bing HTML 用；不走 Chromium 代理栈）。 */
+function httpGetText(urlObj, headers, timeoutMs, parentSignal) {
+  const lib = urlObj.protocol === 'http:' ? http : https;
+  return new Promise((resolve, reject) => {
+    let settled = false;
+    let timer = null;
+    let req = null;
+    let onAbort = null;
+    const finish = (fn, val) => {
+      if (settled) return;
+      settled = true;
+      if (timer) clearTimeout(timer);
+      if (parentSignal && onAbort) parentSignal.removeEventListener?.('abort', onAbort);
+      fn(val);
+    };
+    req = lib.request(
+      {
+        hostname: urlObj.hostname,
+        port: urlObj.port || (urlObj.protocol === 'http:' ? 80 : 443),
+        path: urlObj.pathname + urlObj.search,
+        method: 'GET',
+        headers,
+      },
+      (res) => {
+        if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location) {
+          res.resume();
+          try {
+            finish(resolve, httpGetText(new URL(res.headers.location, urlObj), headers, timeoutMs, parentSignal));
+          } catch (error) {
+            finish(reject, error);
+          }
+          return;
+        }
+        let body = '';
+        res.setEncoding('utf8');
+        res.on('data', (chunk) => {
+          body += chunk;
+          if (body.length > 6_000_000) {
+            if (req) req.destroy();
+            finish(reject, new Error('response too large'));
+          }
+        });
+        res.on('end', () => {
+          if (res.statusCode >= 200 && res.statusCode < 300) {
+            finish(resolve, body);
+            return;
+          }
+          finish(reject, new Error(`HTTP ${res.statusCode}: ${body.slice(0, 160)}`));
+        });
+      },
+    );
+    req.on('error', (error) => {
+      const cause = error?.cause?.code || error?.code || '';
+      finish(reject, new Error(cause ? `${error.message} (${cause})` : error.message));
+    });
+    onAbort = () => {
+      if (req) req.destroy();
+      finish(reject, new Error('aborted'));
+    };
+    if (parentSignal) {
+      if (parentSignal.aborted) {
+        onAbort();
+        return;
+      }
+      parentSignal.addEventListener('abort', onAbort, { once: true });
+    }
+    timer = setTimeout(() => {
+      if (req) req.destroy();
+      finish(reject, new Error(`timeout after ${timeoutMs}ms`));
+    }, timeoutMs);
+    timer.unref?.();
+    req.end();
+  });
+}
+
+/**
+ * 给 wiki 源构造查询变体。
+ *
+ * 实测（2026-10-25）Linux 侧聚合器用的是英文版 Wikipedia ZIM
+ * （wikipedia_en_all_nopic_2026-06.zim）：
+ *   query = "DeepSeek V4 模型 参数"      -> 0 条
+ *   query = "DeepSeek V4 model parameters" -> 6 条
+ *   query = "DeepSeek"                    -> 20 条
+ * 中文 query 对英文词条几乎是零命中，所以对含 ASCII 词的混合 query 补一个纯英文变体。
+ */
+function buildWikiQueryVariants(query) {
+  const q = String(query || '').trim();
+  if (!q) return [];
+  const variants = [q];
+  // 去掉非 ASCII 后仍然有 ≥2 个字符的英文片段，才值得单独查一次
+  const ascii = q.replace(/[^\x20-\x7E]/g, ' ').replace(/\s+/g, ' ').trim();
+  if (ascii && ascii !== q && ascii.replace(/[^A-Za-z0-9]/g, '').length >= 2) {
+    variants.push(ascii);
+  }
+  return variants;
 }
 
 /**
@@ -185,6 +408,13 @@ class LocalSearchProvider {
     this.goatDisabledUntil = 0;
     this.goatCooldownWarned = false;
     this.goatKeyCache = undefined;
+    this.deepseekSearchCache = new Map();
+    this.deepseekSearchDisabledUntil = 0;
+    this.deepseekSearchCooldownWarned = false;
+    this.deepseekSearchKeyCache = undefined;
+    this.bingCache = new Map();
+    this.bingDisabledUntil = 0;
+    this.bingCooldownWarned = false;
   }
 
   available() {
@@ -192,6 +422,8 @@ class LocalSearchProvider {
     if (cfg.enableWiki !== false && cfg.aggregatorUrl) return true;
     if (cfg.enableGithub !== false) return true;
     if (cfg.enableDeepseek !== false) return true;
+    if (cfg.enableDeepseekSearch !== false) return true;
+    if (cfg.enableBing !== false) return true;
     return cfg.enableGoat !== false && Boolean(cfg.goatBaseUrl);
   }
 
@@ -210,6 +442,24 @@ class LocalSearchProvider {
     }
     if (cfg.enableGithub !== false) {
       plan.push({ source: 'github', run: () => this.searchGithub(query, maxResults, signal) });
+    }
+    if (cfg.enableDeepseekSearch !== false) {
+      if (Date.now() >= (this.deepseekSearchDisabledUntil || 0)) {
+        plan.push({ source: 'deepseekSearch', run: () => this.searchDeepseekSearchCached(query, maxResults, signal) });
+      } else if (!this.deepseekSearchCooldownWarned) {
+        this.deepseekSearchCooldownWarned = true;
+        const left = Math.round(((this.deepseekSearchDisabledUntil || 0) - Date.now()) / 1000);
+        console.warn(`[local-search] deepseekSearch source skipped for another ${left}s (cooldown after credential failure)`);
+      }
+    }
+    if (cfg.enableBing !== false) {
+      if (Date.now() >= (this.bingDisabledUntil || 0)) {
+        plan.push({ source: 'bing', run: () => this.searchBingCached(query, maxResults, signal) });
+      } else if (!this.bingCooldownWarned) {
+        this.bingCooldownWarned = true;
+        const left = Math.round(((this.bingDisabledUntil || 0) - Date.now()) / 1000);
+        console.warn(`[local-search] bing source skipped for another ${left}s (cooldown)`);
+      }
     }
     if (cfg.enableGoat !== false && cfg.goatBaseUrl) {
       if (Date.now() >= (this.goatDisabledUntil || 0)) {
@@ -247,6 +497,14 @@ class LocalSearchProvider {
           this.deepseekDisabledUntil = 0;
           this.deepseekCooldownWarned = false;
         }
+        if (entry.source === 'deepseekSearch') {
+          this.deepseekSearchDisabledUntil = 0;
+          this.deepseekSearchCooldownWarned = false;
+        }
+        if (entry.source === 'bing') {
+          this.bingDisabledUntil = 0;
+          this.bingCooldownWarned = false;
+        }
         return;
       }
       const reason = String(outcome.reason?.message || outcome.reason);
@@ -265,6 +523,22 @@ class LocalSearchProvider {
           this.deepseekDisabledUntil = Date.now() + cooldown;
           this.deepseekCooldownWarned = false;
           console.warn(`[local-search] deepseek source paused for ${Math.round(cooldown / 1000)}s: ${reason}`);
+        }
+      }
+      if (entry.source === 'bing' && /HTTP 4\d\d|ECONN|ETIMEDOUT|ENOTFOUND/i.test(reason)) {
+        const cooldown = Number(cfg.bingFailureCooldownMs ?? 300000);
+        if (cooldown > 0) {
+          this.bingDisabledUntil = Date.now() + cooldown;
+          this.bingCooldownWarned = false;
+          console.warn(`[local-search] bing source paused for ${Math.round(cooldown / 1000)}s: ${reason}`);
+        }
+      }
+      if (entry.source === 'deepseekSearch' && /api key|credential|401|402|403|balance|insufficient/i.test(reason)) {
+        const cooldown = Number(cfg.deepseekSearchFailureCooldownMs ?? 600000);
+        if (cooldown > 0) {
+          this.deepseekSearchDisabledUntil = Date.now() + cooldown;
+          this.deepseekSearchCooldownWarned = false;
+          console.warn(`[local-search] deepseekSearch source paused for ${Math.round(cooldown / 1000)}s: ${reason}`);
         }
       }
     });
@@ -311,16 +585,45 @@ class LocalSearchProvider {
     const cfg = this.getConfig();
     const token = this.localSearchToken();
     if (!token) throw new Error(`missing local-search token (${cfg.tokenFile})`);
-    const url = new URL('/search', cfg.aggregatorUrl);
-    url.searchParams.set('q', query);
-    url.searchParams.set('max', String(maxResults));
-    const response = await fetch(url, {
-      headers: { 'x-local-search-token': token },
-      signal: timedSignal(signal, cfg.timeoutMs || 20000),
-    });
-    if (!response.ok) throw new Error(`local-search HTTP ${response.status}`);
-    const data = await response.json();
-    return Array.isArray(data.sources) ? data.sources : [];
+
+    const variants = buildWikiQueryVariants(query);
+    if (variants.length === 0) return [];
+
+    // 每个变体各查一次（内网免费，成本只在延迟），按 URL 去重后合并
+    const settle = await Promise.allSettled(
+      variants.map((variantQuery) => {
+        const url = new URL('/search', cfg.aggregatorUrl);
+        url.searchParams.set('q', variantQuery);
+        url.searchParams.set('max', String(maxResults));
+        // 用 node:http 而不是 fetch —— 见 httpGetJson 注释（Electron 的 fetch 走代理，内网必挂）
+        return httpGetJson(
+          url,
+          { 'x-local-search-token': token },
+          Number(cfg.timeoutMs || 20000),
+          signal,
+        );
+      }),
+    );
+
+    const seen = new Set();
+    const merged = [];
+    let firstError = null;
+    for (const outcome of settle) {
+      if (outcome.status !== 'fulfilled') {
+        if (!firstError) firstError = outcome.reason;
+        continue;
+      }
+      const list = Array.isArray(outcome.value?.sources) ? outcome.value.sources : [];
+      for (const item of list) {
+        const key = String(item?.url || '').trim();
+        if (!key || seen.has(key)) continue;
+        seen.add(key);
+        merged.push(item);
+      }
+    }
+    // 全部变体都失败才抛错；只要有一个成功就返回已拿到的
+    if (merged.length === 0 && firstError) throw firstError;
+    return merged;
   }
 
   // ── goat：本地 gateway 的 Anthropic server-side web_search ──────────────────
@@ -476,6 +779,186 @@ class LocalSearchProvider {
     this.deepseekCache.set(key, { at: now, promise });
     if (this.deepseekCache.size > 32) {
       for (const [k, v] of this.deepseekCache) if (now - v.at >= ttl) this.deepseekCache.delete(k);
+    }
+    return await promise;
+  }
+
+  // ── DeepSeek Search API：POST /v1/tools/search ──────────────────────────
+  // 官方文档 https://api-docs.deepseek.com/zh-cn/guides/search
+  // 与 searchDeepseek 的根本区别：那条路让模型跑一轮搜索（吃 input token），
+  // 这条是纯 JSON 检索（按成功请求计费 ¥5/1000 次，2026-11-01 00:00 前免费）。
+  // 响应字段：rerank_score(0~3，>=1.5 优质) / title / url / snippet / summary(600~800字)
+  //           / content(need_content=true 时) / site_name / site_icon / date / authority(0~4)
+  // 计费口径：只有 HTTP 200 且 results 非空才计费，count 不影响单价；QPS 100（账号级）
+  deepseekSearchApiKey() {
+    if (this.deepseekSearchKeyCache !== undefined) return this.deepseekSearchKeyCache;
+    const cfg = this.getConfig();
+    const envName = String(cfg.deepseekSearchApiKeyEnv || 'DEEPSEEK_API_KEY');
+    const fromEnv = process.env[envName];
+    if (fromEnv) return (this.deepseekSearchKeyCache = fromEnv.trim());
+    const envFile = cfg.deepseekSearchEnvFile || cfg.goatEnvFile;
+    if (envFile) {
+      const raw = readTextFile(envFile);
+      for (const line of raw.split(/\r?\n/)) {
+        const i = line.indexOf('=');
+        if (i <= 0) continue;
+        if (line.slice(0, i).trim() === envName) {
+          const value = line.slice(i + 1).trim().replace(/^["']|["']$/g, '');
+          if (value) return (this.deepseekSearchKeyCache = value);
+        }
+      }
+    }
+    return (this.deepseekSearchKeyCache = '');
+  }
+
+  async searchDeepseekSearch(query, maxResults, signal) {
+    const cfg = this.getConfig();
+    const key = this.deepseekSearchApiKey();
+    if (!key) {
+      throw new Error(
+        `missing DeepSeek API key (env ${cfg.deepseekSearchApiKeyEnv || 'DEEPSEEK_API_KEY'} / file ${cfg.deepseekSearchEnvFile || cfg.goatEnvFile})`,
+      );
+    }
+    const count = Math.max(1, Math.min(Number(cfg.deepseekSearchCount ?? 10), 50));
+    const body = {
+      query: String(query).slice(0, 128),
+      count,
+      need_content: cfg.deepseekSearchNeedContent === true,
+    };
+    const base = String(cfg.deepseekSearchBaseUrl || 'https://api.deepseek.com').replace(/\/+$/, '');
+    const response = await fetch(`${base}/v1/tools/search`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        authorization: `Bearer ${key}`,
+      },
+      body: JSON.stringify(body),
+      signal: timedSignal(signal, cfg.deepseekSearchTimeoutMs || 30000),
+    });
+    if (!response.ok) {
+      const detail = await response.text().catch(() => '');
+      const error = new Error(`DeepSeek search HTTP ${response.status}: ${detail.slice(0, 200)}`);
+      error.status = response.status;
+      throw error;
+    }
+    const payload = await response.json();
+    const results = Array.isArray(payload?.results) ? payload.results : [];
+    const minScore = Number(cfg.deepseekSearchMinRerankScore ?? 0);
+    const sources = [];
+    for (const item of results) {
+      if (!item || typeof item.url !== 'string' || !item.url) continue;
+      const score = Number(item.rerank_score);
+      // 设了阈值就必须「有分数且达标」；无分数视为不合格，否则阈值形同虚设
+      if (minScore > 0 && !(Number.isFinite(score) && score >= minScore)) continue;
+      const source = {
+        url: item.url,
+        provider: 'deepseek-search',
+        title: String(item.title || item.url),
+        snippet: String(item.summary || item.snippet || '').replace(/\s+/g, ' ').trim().slice(0, 400),
+      };
+      if (item.date) source.publishedAt = String(item.date);
+      if (item.site_name) source.siteName = String(item.site_name);
+      if (Number.isFinite(score)) source.rerankScore = score;
+      const authority = Number(item.authority);
+      if (Number.isFinite(authority) && authority >= 0) source.authority = authority;
+      if (item.content) source.content = String(item.content);
+      sources.push(source);
+    }
+    // 稳定降序：rerank_score 高的在前；无分数的排最后并保持原顺序
+    sources.sort((a, b) => {
+      const av = a.rerankScore === undefined ? -1 : a.rerankScore;
+      const bv = b.rerankScore === undefined ? -1 : b.rerankScore;
+      return bv - av;
+    });
+    return sources;
+  }
+
+  async searchDeepseekSearchCached(query, maxResults, signal) {
+    const cfg = this.getConfig();
+    const ttl = Number(cfg.deepseekSearchCacheTtlMs ?? 120000);
+    if (!(ttl > 0)) return await this.searchDeepseekSearch(query, maxResults, signal);
+    const key = `dss\u0000${maxResults}\u0000${query}`;
+    const now = Date.now();
+    const hit = this.deepseekSearchCache.get(key);
+    if (hit && now - hit.at < ttl) return await hit.promise;
+    const promise = this.searchDeepseekSearch(query, maxResults, signal).catch((error) => {
+      this.deepseekSearchCache.delete(key);
+      throw error;
+    });
+    this.deepseekSearchCache.set(key, { at: now, promise });
+    if (this.deepseekSearchCache.size > 32) {
+      for (const [k, v] of this.deepseekSearchCache) if (now - v.at >= ttl) this.deepseekSearchCache.delete(k);
+    }
+    return await promise;
+  }
+
+
+  // ── Bing HTML（免 key 兜底源）──────────────────────────────────────────
+  // cn.bing.com 国内可直连（不走代理），HTML 里 <li class="b_algo"> 是结果块。
+  // 单次 10 条；RSS 只给 1 条，first=11/21 拿回同样结果（无 cookie 时分页失效）。
+  async searchBing(query, maxResults, signal) {
+    const cfg = this.getConfig();
+    const base = String(cfg.bingBaseUrl || 'https://cn.bing.com').replace(/\/+$/, '');
+    const url = new URL('/search', base);
+    url.searchParams.set('q', String(query).slice(0, 200));
+    url.searchParams.set('count', String(Math.max(10, Math.min(Number(maxResults) || 10, 50))));
+    const html = await httpGetText(
+      url,
+      {
+        'user-agent': cfg.bingUserAgent || 'Mozilla/5.0',
+        accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+        'accept-language': 'zh-CN,zh;q=0.9,en;q=0.8',
+      },
+      Number(cfg.bingTimeoutMs || 25000),
+      signal,
+    );
+
+    const decode = (s) =>
+      String(s)
+        .replace(/<[^>]+>/g, '')
+        .replace(/&amp;/g, '&')
+        .replace(/&lt;/g, '<')
+        .replace(/&gt;/g, '>')
+        .replace(/&quot;/g, '"')
+        .replace(/&#39;/g, "'")
+        .replace(/&nbsp;/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+
+    const out = [];
+    const seen = new Set();
+    for (const block of html.split('<li class="b_algo"').slice(1)) {
+      const m = /<h2[^>]*>\s*<a[^>]*href="([^"]+)"[^>]*>([\s\S]*?)<\/a>/.exec(block);
+      if (!m) continue;
+      const url = m[1];
+      if (!/^https?:/i.test(url) || seen.has(url)) continue;
+      seen.add(url);
+      const source = { url, provider: 'bing', title: decode(m[2]) || url };
+      const sn = /<p[^>]*>([\s\S]*?)<\/p>/.exec(block);
+      if (sn) {
+        const snippet = decode(sn[1]);
+        if (snippet) source.snippet = snippet.slice(0, 400);
+      }
+      out.push(source);
+    }
+    return out;
+  }
+
+  async searchBingCached(query, maxResults, signal) {
+    const cfg = this.getConfig();
+    const ttl = Number(cfg.bingCacheTtlMs ?? 120000);
+    if (!(ttl > 0)) return await this.searchBing(query, maxResults, signal);
+    const key = `bing\u0000${maxResults}\u0000${query}`;
+    const now = Date.now();
+    const hit = this.bingCache.get(key);
+    if (hit && now - hit.at < ttl) return await hit.promise;
+    const promise = this.searchBing(query, maxResults, signal).catch((error) => {
+      this.bingCache.delete(key);
+      throw error;
+    });
+    this.bingCache.set(key, { at: now, promise });
+    if (this.bingCache.size > 32) {
+      for (const [k, v] of this.bingCache) if (now - v.at >= ttl) this.bingCache.delete(k);
     }
     return await promise;
   }

@@ -5,6 +5,11 @@
    "loads": 1,
    "firstUsedAt": 1790495618536,
    "lastUsedAt": 1790495618536
+  },
+  "compress": {
+   "loads": 1,
+   "firstUsedAt": 1792729448367,
+   "lastUsedAt": 1792729448367
   }
  }
 }

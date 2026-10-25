@@ -129,6 +129,11 @@
 "m": 1792679563010479600,
 "s": 2534
 },
+"global/bili-无条件拒绝dsh原生compaction-20261023.md": {
+"h": "00616f66308e2b27b44db1847e0513cf9fc92e67bc9af69a42ec618fba20c199",
+"m": 1792728228112653200,
+"s": 3494
+},
 "global/bilingual-ocw-translator-refactored-v2.md": {
 "h": "a045947e66e1df237fc279c4f9ad4a8b39b196b73a0f174034e8d9a6dacf6a1b",
 "m": 1786280401647133200,
@@ -324,6 +329,11 @@
 "m": 1790475510112519200,
 "s": 7811
 },
+"global/dsh-bili-压缩正确姿势.md": {
+"h": "9edf1cbbdba30880b76826ec65fc46fcc2c4f5b32df9e2a75983067882ffebb3",
+"m": 1792729876349568900,
+"s": 3034
+},
 "global/dsh-codex-gap-analysis-and-memory-write-20260926.md": {
 "h": "7d27efa55038aeb40304618aca04dedc7f0c5758fc3f5915718552824608495f",
 "m": 1790485543120969400,
@@ -394,6 +404,11 @@
 "m": 1791265295346004600,
 "s": 2732
 },
+"global/dsh-desktop-就地升级-绕开NSIS-20261023.md": {
+"h": "cc9acc749f06b75840450597cab2546201e925b41f2a204da206fa917ae87fc2",
+"m": 1792728028190206500,
+"s": 4009
+},
 "global/dsh-dual-machine-sync-migration-20260930.md": {
 "h": "bee10ea72ad0fcb368756c19293a642090c8c5a1568ba6211aa0217ee92027d0",
 "m": 1790776873297919000,
@@ -438,6 +453,11 @@
 "h": "ec742a9fd7ed9e114f9478be69414f8681b483b19490ee87f14afd0eca95ae60",
 "m": 1790582088282176100,
 "s": 3465
+},
+"global/dsh-local-search-插件已迁到C盘-junction法.md": {
+"h": "03abf9af93196278c70d098bdac38a12917a7fd93ef23973f1d873d881c2ec56",
+"m": 1792941263797424000,
+"s": 2899
 },
 "global/dsh-market-installed-20260928.md": {
 "h": "6d39c7a85cd8872e4deb041ddd9a347488026c4012889765b870ecde09eab6af",
@@ -569,6 +589,11 @@
 "m": 1790590495744110800,
 "s": 2816
 },
+"global/dsh-sandbox-windows-写限制与danger-full-access.md": {
+"h": "bd486bb946bbd413ff6a40651459a89352b68ea8ceeecd3eb07b87259c2107bb",
+"m": 1792907447011923600,
+"s": 3211
+},
 "global/dsh-session-digest-ondemand-distill-20260926.md": {
 "h": "07448dc419850e298ee4dd1d0d3d5812533fe14c2085f98e5989d31718ba2ac7",
 "m": 1790485543952653100,
@@ -624,15 +649,30 @@
 "m": 1791299823566533300,
 "s": 3151
 },
+"global/dsh-web-search-deepseek-search-api.md": {
+"h": "a74183322dd5ae58a3498c30145d3bd5ee8bc5c8a9c998d3eff7e74de21c32ab",
+"m": 1792911476429710900,
+"s": 3449
+},
 "global/dsh-web-search-multi-removed-and-fallback-repointed-20260927.md": {
 "h": "b3ae046b5f7ef03bf8ce9a164cebcba2d8f00eb816d1fd7c0c757117b9484baf",
 "m": 1790522803224459600,
 "s": 3560
 },
+"global/dsh-web-search-wiki-fetch-failed-修复.md": {
+"h": "967e9fbf4801cc222b5090cde44120b74304cccd9302753c38f013cccbb9865b",
+"m": 1792920943117469500,
+"s": 4064
+},
 "global/dsh-web-search-三源聚合最终形态.md": {
 "h": "683b7b428000543502c1f876fbf2ee0e7e0f7b11d18d921f4a2f49eeecfae780",
 "m": 1790835258895003200,
 "s": 4685
+},
+"global/dsh-web-search-三源齐活-20261025.md": {
+"h": "8b767e3601eec327a69ed78d3ab771980a4b63da5f0f5c8e544e034b755f67e4",
+"m": 1792923925482395100,
+"s": 1851
 },
 "global/dsh-web-search-四源聚合最终形态.md": {
 "h": "aeab8caf52eb3f24268accf1b66932d05b1cc913aa7081c076b7bf2d70407369",
@@ -848,6 +888,11 @@
 "h": "d06775a5571184d06d62f2745f22ff6e623446217ece5c4ea2949786a2f646c6",
 "m": 1790428127261057100,
 "s": 4940
+},
+"global/markdown-KaTeX渲染校验与无效数学公式.md": {
+"h": "dddbb05819efaa0e73a92889a47f0d4583ca3ae94ebb34b4491f91d950e9cc0f",
+"m": 1792861430002557700,
+"s": 2472
 },
 "global/memory-index-self-heal-20260928.md": {
 "h": "6b71b3e59c5bbf2ce5cdb69e363ee70e988fb6cf45722ebf8ae9e060872efea6",
@@ -1249,6 +1294,11 @@
 "m": 1785493876561385700,
 "s": 2012
 },
+"global/windows-powershell-5.1-vs-7-与-dsh-pwsh-tool.md": {
+"h": "572226484d630aa1c1735ee11bf6b1d66592f11d68e5b3072633dcad28d7e31c",
+"m": 1792750348545023700,
+"s": 7251
+},
 "global/windows-task-REDACTED.md": {
 "h": "a54ea4e889a99171be493ae2f48b8064417e5a59b8d748b442d50275649bc6bd",
 "m": 1790580865303743100,
@@ -1338,6 +1388,16 @@
 "h": "9cb76c4e14122a65007e13c013d0d11303e3f18ef79407edc3361baca6331e28",
 "m": 1790836023061749100,
 "s": 49271
+},
+"global/学习文档交付-linux端待处理文件夹.md": {
+"h": "2399d69d4215781b29d0d5a04b1747a53c9412a21d310a544257dae2d19d9f17",
+"m": 1792854718164384100,
+"s": 3309
+},
+"global/学习文档自检清单与出图坑-learn-translate.md": {
+"h": "f27c4ae0fb18c95be44533ee22c2cb4f7c5feca1e78beeb7b31977047acadc37",
+"m": 1792861080445941000,
+"s": 4347
 },
 "global/工具-B站与影视下载.md": {
 "h": "9fa63a49a45c3ac25bf517b51d9eee4eadfbbb517837dac1390ea1b2073228d3",
@@ -1563,6 +1623,11 @@
 "h": "94688792cf6b87f5e8a46b0521af9f4dce6cba54e976499441593d990171980e",
 "m": 1786800107888451500,
 "s": 1610
+},
+"project/tianque-cpu-power-limit-ec-mmio-与-platform-profile.md": {
+"h": "0fe727801ad1567d681d83747609d3e02e5d2370f4453a8047e032fbf603979a",
+"m": 1792861036948795600,
+"s": 5636
 },
 "reasonix-root/REASONIX.md": {
 "h": "8971fb02e7550a8b680bef01be7d2fb5d99384ecf3bc9798080864a56fc30db6",

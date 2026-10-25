@@ -52,3 +52,9 @@ dsh/remote/
 **/remote/servers/
 **/device.key
 **/trusted-peers.json
+
+# 大模型 / 派生数据（2026-10-26 GH001 事故后加：228MB onnx 曾致 push 被拒）
+*.onnx
+*.safetensors
+*.gguf
+*.tar.zst

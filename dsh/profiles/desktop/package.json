@@ -5,7 +5,7 @@
     "@lanbaolu/dsh-wechat-bridge": "0.9.1",
     "@local/dsh-plugin-goat-panel": "link:D:/Toolbox/goat-gateway/dsh-plugin-goat-panel",
     "@local/dsh-thinking-language": "file:D:/Toolbox/dsh-thinking-language",
-    "billion-context": "0.1.204",
+    "billion-context": "0.1.206",
     "ds-harness-remote": "^0.5.17",
     "dsh-better-sidebar": "0.28.0",
     "dsh-context": "0.74.0",
@@ -34,7 +34,9 @@
         "dsh-quick-toc",
         "dsh-better-sidebar",
         "dsh-plugin-message-edit",
-        "@ethanwong-hk/dsh-thinking-guard"
+        "@ethanwong-hk/dsh-thinking-guard",
+        "ds-harness-remote",
+        "@deepseek-ai/dsh-experimental-voice-input-bundle"
       ],
       "patchReload": "live"
     }

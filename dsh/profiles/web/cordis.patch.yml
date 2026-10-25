@@ -60,6 +60,17 @@
               enabled: true
               heartbeatMs: 5000
 
+          # ── tool probe ────────────────────────────────────────────────────────────
+          # 最小 tool-call 探针：只挂 tools/execute，把 (name, durMs, isError) 追加到
+          # $DSH_HOME/logs/tool-calls.jsonl。不接 OTel、不发网络、不改任何调用行为。
+          # 目的：用运行时证据验证 dsh-tools/lib/types/index.d.ts:58 的 waterfall 签名，
+          # 并在首次命中时 dump exec / result 的真实字段形状（那条 _shape 记录）。
+          # 首条 _shape 拿到后即可关掉（config.enabled: false）。
+          - id: tool-probe
+            name: ../../.agent-presets/anchored-standard/tool-probe.mjs
+            config:
+              enabled: true
+
           # ── stall guard ─────────────────────────────────────────────────────────────
           # 让「turn 永久冻住」在结构上不可能发生。dsh-llm / dsh-agent-loop 里没有 stream 级 timeout
           # （dsh-llm 只 import 了 MAX_TIMER_DELAY_MS），agent-loop 的
@@ -1330,17 +1341,11 @@
   config:
     agents: []
     maxParallelToolCalls: 100
-- id: web-search-deepseek
-  name: "@deepseek-ai/dsh-web-search-deepseek"
-  config:
-    apiKeyEnv: DEEPSEEK_API_KEY
-    # 每个 query 都会打一次 deepseek 搜索（一次 Messages model turn）；
-    # dsh-tool-web 的 searchMaxQueries 默认 4 ⇒ 100 会让最坏情况变成 400 次内部搜索。
-    maxUses: 3
 - id: pwsh-sandbox
   name: "@deepseek-ai/dsh-pwsh-sandbox"
   config:
     maxOutputBytes: 640000
+    pwshPath: 'C:\Program Files\PowerShell\7\pwsh.exe'
 - id: ui-chat
   name: "@deepseek-ai/dsh-client-ui-chat"
   config:
@@ -1541,3 +1546,17 @@
     auto: false
     maxTokens: 32768
 
+
+# 2026-10-25 覆盖插件配置。注意：patch 对 config 是「整体替换」不是深合并，
+# 所以必须把全部开关写全，否则会回落到 DEFAULT_CONFIG（那里 enableDeepseek 默认 true）。
+- id: local-wiki-github
+  config:
+    enableGithub: true
+    enableDeepseekSearch: true
+    enableBing: true
+    enableWiki: true
+    enableGoat: false
+    enableDeepseek: false
+    maxResults: 30
+    deepseekSearchCount: 30
+    tagTitles: true

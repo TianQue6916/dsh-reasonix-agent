@@ -20,6 +20,13 @@
         #   而 dsh-tool-web 的 searchMaxQueries 默认 4 ⇒ 最坏 ~$0.15/次用户级搜索。
         #   质量确实更好（命中答案所在页 + 诚实说找不到）；要开请显式改 true。
         enableGoat: false
+
+        # ── DeepSeek Search API（2026-10 上线，直连 /v1/tools/search）──────
+        # ¥5 / 1000 次成功请求（仅 200 且 results 非空才计费），count 不影响单价；
+        # 2026-11-01 00:00 前免费；QPS 100（账号级）；不吃 token，与模型解耦。
+        # 需要 DEEPSEEK_API_KEY（写在 ~/.dsh/.env，或在 launch env 里）。
+        # 是「直连 JSON 检索」，与上面 enableDeepseek（让模型跑一轮搜索）不是一回事。
+        enableDeepseekSearch: true
         goatBaseUrl: "http://127.0.0.1:8788/v1"
         goatModel: "claude-sonnet-5-5"
         goatApiKeyEnv: "COMMANDCODE_API_KEY"

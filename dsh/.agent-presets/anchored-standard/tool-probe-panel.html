@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>dsh tool-call live</title>
+<style>
+:root{
+  --bg:#05080d; --panel:#0a1018; --line:#131f2e; --txt:#7f95af;
+  --hot:#00e5ff; --ok:#26e0a0; --err:#ff4060; --dim:#33465c;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; background:
+    radial-gradient(900px 420px at 18% -8%, #0d2033 0%, transparent 62%),
+    radial-gradient(700px 380px at 92% 4%, #0a1a2c 0%, transparent 58%),
+    var(--bg);
+  color:var(--txt); font:13px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace;
+  display:flex; flex-direction:column; overflow:hidden;
+}
+header{
+  display:flex; align-items:center; gap:18px; padding:14px 22px 10px;
+  border-bottom:1px solid var(--line); flex:none;
+}
+h1{margin:0; font-size:14px; font-weight:600; color:#dceeff; letter-spacing:.13em}
+h1 b{color:var(--hot); text-shadow:0 0 16px rgba(0,229,255,.65)}
+#dot{width:8px;height:8px;border-radius:50%;background:#2a3a4d;transition:.25s;flex:none}
+#dot.on{background:var(--ok); box-shadow:0 0 10px var(--ok), 0 0 22px rgba(38,224,160,.5)}
+#dot.off{background:var(--err); box-shadow:0 0 10px var(--err)}
+#state{font-size:11px;color:var(--dim);letter-spacing:.06em}
+.stats{margin-left:auto; display:flex; gap:20px; font-size:11px; color:var(--dim)}
+.stats span b{color:#c3ddf7; font-weight:600; margin-left:4px}
+.stats span.hot b{color:var(--hot); text-shadow:0 0 10px rgba(0,229,255,.4)}
+
+/* ── 灯阵 ─────────────────────────────────── */
+#lamps{
+  display:flex; flex-wrap:wrap; gap:8px; padding:12px 22px;
+  border-bottom:1px solid var(--line); flex:none; min-height:52px;
+}
+.lamp{
+  display:flex; align-items:center; gap:7px; padding:5px 11px 5px 8px;
+  border:1px solid var(--line); border-radius:999px; background:#080e16;
+  transition:border-color .2s, box-shadow .2s, background .2s;
+  position:relative; overflow:hidden;
+}
+.lamp .b{
+  width:7px;height:7px;border-radius:50%; background:var(--c);
+  opacity:.34; transition:opacity .18s, box-shadow .18s;
+}
+.lamp .nm{font-size:11px;color:#6d8299;transition:color .2s}
+.lamp .ct{font-size:10px;color:#3d5068}
+.lamp.lit{border-color:var(--c); background:#0b1622}
+.lamp.lit .nm{color:#dceeff}
+.lamp.lit .b{opacity:1; box-shadow:0 0 9px var(--c), 0 0 20px var(--c)}
+.lamp.lit::after{
+  content:''; position:absolute; inset:0; border-radius:999px;
+  background:radial-gradient(circle at 12% 50%, var(--c), transparent 62%);
+  opacity:.22; animation:fade .9s ease-out forwards; pointer-events:none;
+}
+@keyframes fade{from{opacity:.3}to{opacity:0}}
+
+/* ── 实时瀑布 ─────────────────────────────── */
+#stream{flex:1; overflow-y:auto; padding:8px 22px 26px; scroll-behavior:smooth}
+#stream::-webkit-scrollbar{width:8px}
+#stream::-webkit-scrollbar-thumb{background:#16202e;border-radius:4px}
+.row{
+  display:grid; grid-template-columns:150px 1fr 78px; gap:12px; align-items:center;
+  padding:5px 0; border-bottom:1px solid #0c141d;
+  animation:slidein .3s cubic-bezier(.2,.9,.3,1);
+}
+@keyframes slidein{
+  from{opacity:0; transform:translateY(-9px)}
+  to{opacity:1; transform:none}
+}
+.row .nm{font-size:11.5px; color:#8fa8c4; text-align:right; overflow:hidden;
+  text-overflow:ellipsis; white-space:nowrap}
+.row .track{height:11px; background:#0a121c; border-radius:3px; position:relative; overflow:hidden}
+.row .bar{
+  position:absolute; left:0; top:0; bottom:0; border-radius:3px;
+  background:linear-gradient(90deg, var(--c), color-mix(in srgb, var(--c) 40%, transparent));
+  box-shadow:0 0 12px -2px var(--c);
+  animation:grow .42s cubic-bezier(.2,.9,.3,1);
+}
+@keyframes grow{from{transform:scaleX(0); transform-origin:left}to{transform:scaleX(1); transform-origin:left}}
+.row .bar .spark{
+  position:absolute; top:0; bottom:0; width:26%;
+  background:linear-gradient(90deg,transparent,#fff9,transparent);
+  animation:sweep .7s ease-out forwards;
+}
+@keyframes sweep{from{left:-26%}to{left:100%}}
+.row .dv{font-size:11px; color:#5f7893; text-align:right; font-variant-numeric:tabular-nums}
+.row.err .bar{background:linear-gradient(90deg,var(--err),#7a1a2c)}
+.row.err .dv{color:var(--err)}
+.row.nested .nm::before{content:'\21b3 '; color:#3d5068}
+.row.fresh .track{box-shadow:0 0 0 1px color-mix(in srgb,var(--c) 55%,transparent) inset}
+#empty{padding:56px 0; text-align:center; color:#2c3d52; font-size:12px; line-height:2.2}
+#empty kbd{background:#0d1622;border:1px solid var(--line);border-radius:4px;padding:1px 6px;color:#4d6178}
+footer{flex:none; padding:7px 22px; border-top:1px solid var(--line); font-size:10.5px; color:#26384c}
+</style>
+</head>
+<body>
+<header>
+  <h1>dsh <b>LIVE</b> TOOL-CALL</h1>
+  <div id="dot"></div><div id="state">connecting…</div>
+  <div class="stats">
+    <span>调用<b id="s-n">0</b></span>
+    <span>耗时<b id="s-t">0</b></span>
+    <span>最慢<b id="s-m">0</b></span>
+    <span class="hot">最近<b id="s-l">–</b></span>
+  </div>
+</header>
+
+<div id="lamps"></div>
+<div id="stream"><div id="empty">等待 tool call…<br><kbd>在 dsh 里跑任意工具，这里就会亮</kbd></div></div>
+<footer>数据来自 <code>tools/execute</code> waterfall · 进程随 dsh 启动与关闭 · 页面可随时刷新，历史会重放最近 200 条</footer>
+
+<script>
+const $ = id => document.getElementById(id);
+const stream = $('stream'), lampsEl = $('lamps'), emptyEl = $('empty');
+
+const lamps = new Map();     // name -> {el, dot, nm, ct, n}
+const rows = [];             // 已渲染的 row 元素（用于裁剪）
+const MAXROWS = 200;
+let total = 0, sumDur = 0, maxDur = 0;
+
+const hueOf = name => {
+  let h = 0;
+  for (let i = 0; i < name.length; i++) h = (h * 31 + name.charCodeAt(i)) >>> 0;
+  return (h * 137.508) % 360;
+};
+const colOf = name => 'hsl(' + hueOf(name).toFixed(1) + ' 92% 63%)';
+
+function ensureLamp(name) {
+  if (lamps.has(name)) return lamps.get(name);
+  const c = colOf(name);
+  const el = document.createElement('div');
+  el.className = 'lamp';
+  el.style.setProperty('--c', c);
+  el.innerHTML = '<div class="b"></div><div class="nm"></div><div class="ct">0</div>';
+  el.querySelector('.nm').textContent = name;
+  lampsEl.appendChild(el);
+  const rec = { el, ct: el.querySelector('.ct'), n: 0 };
+  lamps.set(name, rec);
+  return rec;
+}
+
+function light(name) {
+  const L = ensureLamp(name);
+  L.n += 1;
+  L.ct.textContent = L.n;
+  L.el.classList.remove('lit');
+  void L.el.offsetWidth;          // 重启动画
+  L.el.classList.add('lit');
+  clearTimeout(L.t);
+  L.t = setTimeout(() => L.el.classList.remove('lit'), 900);
+}
+
+function push(ev) {
+  if (emptyEl && emptyEl.parentNode) emptyEl.remove();
+
+  light(ev.name);
+
+  const c = colOf(ev.name);
+  const row = document.createElement('div');
+  row.className = 'row' + (ev.ok ? '' : ' err') + (ev.nested ? ' nested' : '') + ' fresh';
+  row.style.setProperty('--c', c);
+
+  const nm = document.createElement('div');
+  nm.className = 'nm'; nm.textContent = ev.name; nm.title = ev.name;
+
+  const track = document.createElement('div');
+  track.className = 'track';
+  const bar = document.createElement('div');
+  bar.className = 'bar';
+  const max = Math.max(maxDur, ev.dur, 1);
+  bar.style.width = Math.max(1.5, (ev.dur / max) * 100) + '%';
+  const spark = document.createElement('div');
+  spark.className = 'spark';
+  bar.appendChild(spark);
+  track.appendChild(bar);
+
+  const dv = document.createElement('div');
+  dv.className = 'dv';
+  dv.textContent = ev.dur >= 1000 ? (ev.dur / 1000).toFixed(2) + 's' : ev.dur.toFixed(0) + 'ms';
+
+  row.append(nm, track, dv);
+  stream.insertBefore(row, stream.firstChild);
+  rows.push(row);
+
+  setTimeout(() => row.classList.remove('fresh'), 1000);
+
+  total += 1; sumDur += ev.dur; maxDur = Math.max(maxDur, ev.dur);
+  $('s-n').textContent = total;
+  $('s-t').textContent = sumDur >= 1000 ? (sumDur / 1000).toFixed(1) + 's' : sumDur.toFixed(0) + 'ms';
+  $('s-m').textContent = maxDur >= 1000 ? (maxDur / 1000).toFixed(2) + 's' : maxDur.toFixed(0) + 'ms';
+  $('s-l').textContent = ev.name;
+
+  // 重算所有 bar 宽度（相对当前最大值）
+  if (maxDur > 0) {
+    for (const r of rows) {
+      const b = r.querySelector('.bar');
+      const w = parseFloat(b.dataset.w || '0');
+      if (w) b.style.width = Math.max(1.5, (w / maxDur) * 100) + '%';
+    }
+  }
+  bar.dataset.w = ev.dur;
+
+  while (rows.length > MAXROWS) {
+    const old = rows.shift();
+    old.remove();
+  }
+  stream.scrollTop = 0;
+}
+
+const es = new EventSource('/events');
+
+es.onopen = () => { $('dot').className = 'on'; $('state').textContent = 'connected'; };
+es.onerror = () => { $('dot').className = 'off'; $('state').textContent = 'reconnecting…'; };
+es.onmessage = m => {
+  try {
+    const ev = JSON.parse(m.data);
+    if (ev.t === 'hello') { $('state').textContent = 'connected · ' + (ev.backlog || 0) + ' 条历史'; return; }
+    if (ev.t === 'tool') push(ev);
+  } catch (_) {}
+};
+</script>
+</body>
+</html>

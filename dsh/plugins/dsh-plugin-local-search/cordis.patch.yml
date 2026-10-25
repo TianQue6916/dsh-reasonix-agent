@@ -1,0 +1,69 @@
+# dsh-plugin-local-search bundle patch
+# 把 web_search 的 provider 换成「GitHub + goat/Claude + DeepSeek 官方 + 本地 wiki」四源并发聚合。
+# rank：github(0) > goat(1) > deepseek(2) > wiki(3)；四路同时发起，结果统一合并返回。
+# 改本文件的 config 要重启 dsh 进程（node_modules 里的 bundle 不参与 HMR）。
+- insert:
+    - id: local-wiki-github
+      name: dsh-plugin-local-search
+      config:
+        # ── 四路来源（默认全开、并发）──────────────────────────────
+        enableGithub: true
+        priorityOwner: "TianQue6916"
+
+        # ── goat（Command Code GOAT，走 Anthropic Messages 路由）───────────
+        # 上游 api.commandcode.ai 在 /provider/v1/messages 上支持原生 web_search_20250305
+        # server tool；62 个 allowlist 模型里只有 claude-sonnet-5-5 能用。
+        # 它是唯一的 Claude 模型，其余模型走 openai-completions 路由吃不到 server tool。
+        # ⚠ 默认关闭（2026-10-01）：goat 走 claude-sonnet-5-5，账本拟合出
+        #   $2.00/M input + $10.03/M output（7 行零残差）；Anthropic 的 server tool
+        #   会把搜索结果块回灌进 context 并按 input token 计费 ⇒ 单次 ~$0.038，
+        #   而 dsh-tool-web 的 searchMaxQueries 默认 4 ⇒ 最坏 ~$0.15/次用户级搜索。
+        #   质量确实更好（命中答案所在页 + 诚实说找不到）；要开请显式改 true。
+        enableGoat: false
+
+        # ── DeepSeek Search API（2026-10 上线，直连 /v1/tools/search）──────
+        # ¥5 / 1000 次成功请求（仅 200 且 results 非空才计费），count 不影响单价；
+        # 2026-11-01 00:00 前免费；QPS 100（账号级）；不吃 token，与模型解耦。
+        # 需要 DEEPSEEK_API_KEY（写在 ~/.dsh/.env，或在 launch env 里）。
+        # 是「直连 JSON 检索」，与上面 enableDeepseek（让模型跑一轮搜索）不是一回事。
+        enableDeepseekSearch: true
+        goatBaseUrl: "http://127.0.0.1:8788/v1"
+        goatModel: "claude-sonnet-5-5"
+        goatApiKeyEnv: "COMMANDCODE_API_KEY"
+        goatEnvFile: "C:/Users/27063/.dsh/.env"   # key 只在这个文件里，env 里没有
+        goatTimeoutMs: 50000                      # 实测单次 6-10s，给足余量
+        goatMaxUses: 3                            # 一次请求内最多几轮 server tool 搜索
+        goatCacheTtlMs: 120000
+        goatFailureCooldownMs: 300000             # 凭证/额度类失败熔断 5 分钟
+        # 2026-10-02（官方余额 -0.22）：关掉。deepseek 源走 registry 的 provider 打 api.deepseek.com，
+        # 余额为负时 provider.available() 为假，每次搜索白打一轮子查询。充值后改回 true。
+        enableDeepseek: false
+        # dsh 里 deepseek 官方搜索 provider 注册的 id 是 deepseek-official，
+        # 不是 profile patch 里那一行的 row id（web-search-deepseek）
+        deepseekProviderId: "deepseek-official"
+        # 一次 deepseek 搜索 = 一次 Messages model turn，单独给超时预算；
+        # 必须小于 dsh-tool-web 的 searchTimeoutMs（web profile 里配 60000）
+        deepseekTimeoutMs: 50000
+        # 同一 query 短期复用：dsh-tool-web 的 searchMaxQueries 默认 4，
+        # 4 路并发子查询撞上同一 query 时不重复打 model turn。
+        # 注意：goat 源也有同款 cache（key 前缀隔离），互不干扰
+        deepseekCacheTtlMs: 120000
+        # 凭证缺失这类不会自愈的失败，熔断 10 分钟不再发起（0 = 不熔断）
+        deepseekFailureCooldownMs: 600000
+        enableWiki: true
+        # ── 合并规则 ─────────────────────────────────────────────
+        maxResults: 8
+        # false = 按 rank 分块（github 块 → goat 块 → deepseek 块 → wiki 块）
+        # true  = round-robin 交错（github1, goat1, deepseek1, wiki1, github2, …）
+        interleaveSources: false
+        # true 时把来源名写进 title（[github] xxx），方便肉眼区分四源
+        tagTitles: true
+        # ── 兜底（四源全空才触发）─────────────────────────────────
+        # 注意别指向 deepseek-official / goat：它们已是并发来源，代码里会显式拦住避免白跑一次 model turn
+        enableFallback: true
+        fallbackProviderId: "multi-search"
+        timeoutMs: 20000
+
+- id: web
+  config:
+    searchProvider: local-wiki-github

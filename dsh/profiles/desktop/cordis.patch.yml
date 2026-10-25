@@ -5,6 +5,28 @@
 # 其中 @deepseek-ai/dsh-workflow-worker-thread 一行按官方迁移改为 @deepseek-ai/dsh-workflow-ptc。
 # 旧目录仍被 headless patch 引用，未删除。
 
+# tool-probe 必须声明在 host-plane（顶层），不能放进 preset 的 plugins 列表。
+# 原因（2026-10-23 13:30 实测）：tools/execute 的分发点是
+#   dsh-tools/lib/index.js:3427
+#     const carrier = scopeTarget(this, exec.agent);
+#     await this.ctx.waterfall(carrier, "tools/execute", mutableExec, ...)
+# carrier 是 ToolRuntime 的 scope 目标，所以只有 host-plane 的 listener 收得到。
+# 证据：整个依赖树里唯二用 ctx.on("tools/execute") 的两个插件
+# （dsh-tool-call-timeout-policy/lib/index.js:116、dsh-session-checkpoint-policy/lib/index.js:66）
+# 都声明在 dsh-base/cordis.patch.yml，而不是 profile 的 preset 列表里。
+# 放进 preset 的表现是：apply() 正常执行、日志文件被创建，但一条记录都不写。
+# 注意语法：顶层 `- id: X` 是「修改已存在的 entry」，新增必须走 `- insert:`。
+# 直接写 `- id: tool-probe` 会得到
+#   dsh: patch: entry "tool-probe" not found
+- insert:
+    - id: tool-probe
+      name: ../../.agent-presets/anchored-standard/tool-probe.mjs
+      config:
+        enabled: true
+        live: true
+        port: 8770 # 实时面板 http://127.0.0.1:8770/
+        backlog: 200 # 新连接重放的历史条数
+
 - id: agent-preset-registry
   config:
     default: anchored-standard
@@ -221,8 +243,17 @@
               includeSubagents: false
               # Post-compaction core work set: the model is mid-task and needs to keep
               # working, but faces a small catalog instead of the full Standard set.
-              compactionTools: [ read, write, edit, glob, grep, todo_write, ask_user_question ]
-
+              compactionTools:
+                [
+                  read,
+                  write,
+                  edit,
+                  glob,
+                  grep,
+                  todo_write,
+                  ask_user_question,
+                  compress
+                ]
           # ── subagent language contract ──────────────────────────────────────────────
           # A delegated child does NOT inherit the persona row below: `dsh-subagent` writes
           # the SAME system-prompt section name ("deployment:persona-prefix" =
@@ -642,7 +673,6 @@
 
               - id: tool-workflow
                 name: '@deepseek-ai/dsh-tool-workflow'
-
 
           # ── remaining model-facing rows ─────────────────────────────────────────────
 
@@ -1292,17 +1322,11 @@
   config:
     agents: []
     maxParallelToolCalls: 100
-- id: web-search-deepseek
-  name: "@deepseek-ai/dsh-web-search-deepseek"
-  config:
-    apiKeyEnv: DEEPSEEK_API_KEY
-    # 每个 query 都会打一次 deepseek 搜索（一次 Messages model turn）；
-    # dsh-tool-web 的 searchMaxQueries 默认 4 ⇒ 100 会让最坏情况变成 400 次内部搜索。
-    maxUses: 3
 - id: pwsh-sandbox
   name: "@deepseek-ai/dsh-pwsh-sandbox"
   config:
     maxOutputBytes: 640000
+    pwshPath: 'C:\Program Files\PowerShell\7\pwsh.exe'
 - id: ui-chat
   name: "@deepseek-ai/dsh-client-ui-chat"
   config:
@@ -1401,13 +1425,13 @@
 - id: ui-chat
   name: "@deepseek-ai/dsh-client-ui-chat"
   config:
-    transcriptView: normal
+    transcriptView: verbose
     performanceUsage: detailed
 - id: ui-theme
   name: "@deepseek-ai/dsh-client-ui-theme"
   config:
     preference: system
-    fontSize: 17
+    fontSize: 13
 - id: better-sidebar
   name: dsh-better-sidebar
   config:
@@ -1504,4 +1528,31 @@
   config:
     auto: false
     maxTokens: 32768
+- id: dsh-context
+  name: dsh-context
+  config:
+    overviewAutoSteps: "300"
+    defaultOverviewRange: 7d
 
+# 2026-10-24：desktop profile 需要写 D:\Desktop（学习文档双端落盘；桌面是 junction → D:\Desktop）。
+# 此前 shell 跑在 Low IL 受限令牌（WRITE_RESTRICTED），D 盘全程 EPERM。
+# 回滚：删掉本段并重启 dsh 进程。
+# 注意（2026-10-24 实测）：patchReload HMR 不重建已构造的 sandbox-policy service，
+# 改完当前进程的 shell 仍是 Low IL，必须重启 Reasonix.exe 才生效。
+- id: sandbox-policy
+  config:
+    mode: danger-full-access
+
+# 2026-10-25 覆盖插件配置。注意：patch 对 config 是「整体替换」不是深合并，
+# 所以必须把全部开关写全，否则会回落到 DEFAULT_CONFIG（那里 enableDeepseek 默认 true）。
+- id: local-wiki-github
+  config:
+    enableGithub: true
+    enableDeepseekSearch: true
+    enableBing: true
+    enableWiki: true
+    enableGoat: false
+    enableDeepseek: false
+    maxResults: 30
+    deepseekSearchCount: 30
+    tagTitles: true

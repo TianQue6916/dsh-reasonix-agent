@@ -12,7 +12,20 @@
       "agentPreset": "standard",
       "qualityFloor": "standard",
       "toolApprovalMode": "danger-full-access"
+    },
+    {
+      "id": "tab_03798f1759b1dec4fb28735e5ae8b1b0",
+      "scope": "global",
+      "workspaceRoot": "C:\\Users\\27063\\AppData\\Roaming\\reasonix\\global-workspace",
+      "workspaceId": "global",
+      "topicId": "manual-35c028533d3aa724573383b77a506428",
+      "sessionId": "desktop-manual-35c028533d3aa724573383b77a506428",
+      "model": "commandcode-goat/deepseek/deepseek-v4.1-flash",
+      "tokenMode": "full",
+      "agentPreset": "standard",
+      "qualityFloor": "standard",
+      "toolApprovalMode": "danger-full-access"
     }
   ],
-  "activeTab": "tab_960ece72840624aee958dfdc185c522b"
+  "activeTab": "tab_03798f1759b1dec4fb28735e5ae8b1b0"
 }

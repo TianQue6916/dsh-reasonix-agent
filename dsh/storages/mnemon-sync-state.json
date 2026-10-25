@@ -455,9 +455,9 @@
 "s": 3465
 },
 "global/dsh-local-search-插件已迁到C盘-junction法.md": {
-"h": "03abf9af93196278c70d098bdac38a12917a7fd93ef23973f1d873d881c2ec56",
-"m": 1792941263797424000,
-"s": 2899
+"h": "b71410e114a5e8e66948cde74f4eff5f19d1cd0b906afe7f0e87f5d0fd68cf83",
+"m": 1792942459578751700,
+"s": 2867
 },
 "global/dsh-market-installed-20260928.md": {
 "h": "6d39c7a85cd8872e4deb041ddd9a347488026c4012889765b870ecde09eab6af",
@@ -553,6 +553,11 @@
 "h": "6f21be8bc0af031ba50b19d681f1b948dba409781c755c8e9cd8c99305d8ec32",
 "m": 1790774160721446300,
 "s": 3180
+},
+"global/dsh-pwsh-常驻化-p1.md": {
+"h": "19db3dbeb5e8a006d4d0a9f190caa04dc59f2292ce964e4d145c94f94bb349d7",
+"m": 1792953549032907200,
+"s": 5259
 },
 "global/dsh-reasoning-language-selflock-and-echo-filter-20261003.md": {
 "h": "ae8dc4b850614401c51ae97b81281baa6915d47ec28bfe23f2d96ebab6b9b693",
@@ -759,6 +764,11 @@
 "m": 1790485544368665600,
 "s": 4174
 },
+"global/github-repo-renamed-dsh-reasonix-agent.md": {
+"h": "722f9dc0f2c3a8b684d840ca0d193d7c063ef9ef908084e0e27a2f6ffcc751db",
+"m": 1792955480555252000,
+"s": 3337
+},
 "global/github-加速体系与镜像自动选优-20260927.md": {
 "h": "8b4dad731f0f40d2e56535f01323d6f69e3af6e2f66292cfab02d7347ab254f7",
 "m": 1790835866625783400,
@@ -878,6 +888,11 @@
 "h": "148fe0d5c8938d40a9889bc1a3c4306b15fc75df62d8f69e3c857da6fcc8a9bb",
 "m": 1790620165297072200,
 "s": 4035
+},
+"global/linux-gateway-undici-ipv6-timeout.md": {
+"h": "3dd5e4f3c7bacb0873ff494dc21917db2fa6df462ed31968e59645aa8a310656",
+"m": 1792955230626758800,
+"s": 3102
 },
 "global/linux-ntfs-automount-media-os.md": {
 "h": "2a9977a837c04f7a099e908a244a7e268dfb2bbb5c9ec571e3df4fc1d643ceb1",
@@ -1123,6 +1138,11 @@
 "h": "d81a11f5a776bc81524926c28a5af99b9283595d1c93b7e52b4ac4708da2b098",
 "m": 1790835668949145800,
 "s": 2718
+},
+"global/spawn-vs-常驻-worker-实测.md": {
+"h": "c2713dd0a08e824fe8a3678ac7bacb6ce2733eee0716cfb0a20e621bf5e32863",
+"m": 1792951711829964900,
+"s": 4058
 },
 "global/ssh-passwordless-and-tool-skills-20260804.md": {
 "h": "dee3f5b802d5d7972dc4d1c1fb0acab767bb92c8dd03dee47cdc778670f861a4",
@@ -1398,6 +1418,11 @@
 "h": "f27c4ae0fb18c95be44533ee22c2cb4f7c5feca1e78beeb7b31977047acadc37",
 "m": 1792861080445941000,
 "s": 4347
+},
+"global/实现语言分层契约-方案A.md": {
+"h": "185543412bf5e4aacd26c46f4744e1921c2a8d699e62e9b14c65fc86ddb7497c",
+"m": 1792951333687412200,
+"s": 8914
 },
 "global/工具-B站与影视下载.md": {
 "h": "9fa63a49a45c3ac25bf517b51d9eee4eadfbbb517837dac1390ea1b2073228d3",

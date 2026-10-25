@@ -485,7 +485,6 @@ class LocalSearchProvider {
     }
 
     const settled = await Promise.allSettled(plan.map((entry) => entry.run()));
-    try { console.warn("[local-search] probe " + plan.map((e,i) => e.source + "=" + (settled[i].status === "fulfilled" ? (Array.isArray(settled[i].value) ? settled[i].value.length : "nonarray") : "ERR:" + String(settled[i].reason && settled[i].reason.message || settled[i].reason).slice(0,90))).join(" ") + " max=" + maxResults + " req=" + String(request && request.maxResults)); } catch (e) {}
     const groups = [];
     plan.forEach((entry, index) => {
       const outcome = settled[index];

@@ -21,6 +21,75 @@
 
 ## 进行中
 
+### ★ 已落地：实现语言策略定论 = 方案 A 分层混合（2026-10-26）
+      **用户诉求**：「能否要求 agent 写的绝大多数处理的东西由 C 写而不是 Python？想要稳定和效率，注意社区经验，看看大家都是怎么做的。」
+      **结论**：不能「绝大多数 C」，要**分层** —— Python = control plane（编排 / 胶水 / 短命工具），C/Rust 只在过门槛时进 data plane。用户在三选项里拍板 **A**（不选 B = 全 PyO3 核心库，不选 C = 全 C + 独立 exe）。
+      **两条第一性原理**：
+        1. **效率**：`T(N) = T_startup + c·N`，`N* = (T_startup_py − T_startup_c)/(c_py − c_c)`。**本机实测 `N* ≈ 8×10^5`**（启动差 15.5 ms ÷ (19.8 − 0.3) ns/iter），与事前估计的 6×10^5 同量级 ⇒ 内层循环 < 10^6 或只跑一次时用 C 重写永远亏。参照系：一次 tool round-trip 是 5–20 s；**pwsh -NoProfile 启动 200.8 ms = python 21.4 ms 的 9.4 倍 = gcc exe 7.8 ms 的 26 倍** ⇒ 用户抱怨的「命令太慢」是**调用次数 / cold-spawn pwsh**，不是字节码。
+        2. **稳定性方向是反的**：C 的失败模式是 UB → 越界 / use-after-free / 未初始化 → 静默损坏、几小时后崩在别处、无 traceback；Python 是 traceback + 行号 ⇒ **agent 高速生成的 C 比 agent 生成的 Python 危险一个量级**（可诊断性 = agent 迭代的收敛速度）。C 稳是因为人写 + review + ASan + 长测试，不是语言本身。
+      **提效优先级（固定次序，前两步成本≈0）**：① 合并 / 减少工具调用 → ② 消灭 O(N) 解释器循环（NumPy / Polars / 系统工具 vectorize）→ ③ 长驻 worker 复用进程（消灭 T_startup）→ ④ 才考虑 native。**稳定靠进程边界**（独立 exe + stdin/stdout JSON 契约，崩溃 = 子进程非零 exit，主控可重试/降级），不靠换语言。
+      **社区锚点（用户明确要求「看大家怎么做的」）**：CPython 官方文档自承手工 `Py_INCREF/DECREF` 是扩展崩溃首要来源、推 pybind11 / nanobind / Cython 而非裸 C API；2015 年后新做的 Python native 层全是 Rust（polars / pydantic-core / ruff / uv / tokenizers / orjson；NumPy 的 C/Fortran 是 1990s 遗产），Rust 胜在生命周期编译期检查 + `catch_unwind` 转异常 + `abi3`/maturin 出 wheel 免重编；工业界迁移方向是 **C → Rust/Go**（ripgrep / fd / zoxide / delta），与「为了稳上 C」正相反；**最强一条：别自己写 C，调用已经用 C 写好的系统工具**（robocopy /MT、findstr、wevtutil、reg、fsutil、rg）。
+      **本机硬约束（2026-10-26 实测）**：唯一编译器是 **MinGW-W64 UCRT 15.2.0**（`C:\mingw64\bin\gcc.exe`，另有 `D:\Octave-11.3.0\mingw64\bin\gcc.exe` 一份，PATH 顺序会打架）；**无 rustc / cargo / cl / clang / zig / MSVC**（vswhere 无输出）⇒ 方案 B/C 都是真工程立项（要装 rustup + VS Build Tools，几 GB），不是「让 agent 随手写」；MinGW 产物依赖 `libgcc_s_seh-1.dll` / `libwinpthread-1.dll`，需 `-static`；**WDAC 已复核（2026-10-26）**：`CodeIntegrityPolicyEnforcementStatus=2`（Enforced）与 VBS=2 属实，但那是 **HVCI 内核态 CI**（驱动签名强制）；用户态由 Smart App Control 管而 `VerifiedAndReputablePolicyState=0`（SAC 关闭）⇒ **未签名 exe 正常执行**（实测 gcc 编的 hello.exe/sumloop.exe/countneedle.exe 全部 exit=0、结果正确）、CodeIntegrity 日志无 3077（拦截）事件。⇒ **native 路线在技术上可行**，不是最大不确定性。另：`.ps1` 被拒签的真因是 **MOTW（Zone.Identifier）+ RemoteSigned**（5.1 CurrentUser=RemoteSigned / LocalMachine=Unrestricted；pwsh7 LocalMachine=RemoteSigned），不是 WDAC —— 解 MOTW 即可（`Unblock-File`）。。
+      **本机 benchmark 实测（2026-10-26 01:53–02:00，脚本与产物在 `.dsh/scratch/lang-bench-20261026/`，全部可复跑）**：
+        - **启动开销（中位数，各 warm×3 后测 21 次）**：`python -c pass` **21.40 ms**；`python -c "import json,re,pathlib"` **38.67 ms**；`hello.exe`（gcc -O2 -static）**7.79 ms**；`cmd /c exit` 15.60 ms；**`pwsh -NoProfile` 200.76 ms**。
+          ⇒ pwsh 启动是 Python 的 **9.4×**、C 的 **26×**。他反复说的「命令太慢」，成本基本都在这里，不在语言。
+        - **内层循环成本 `c`（s = Σi）**：`c_py = 19.8 ns/iter`（**CPython 3.13.9 的 PEP 659 specializing interpreter，比教科书常说的 60 ns 快 3 倍**）；`c_numpy = 0.21–0.49 ns`；`c_C` 被进程启动淹没（N=10^7 时 C 端到端 8.89 ms，其中 5.92 ms 是启动）。
+          ⇒ 交叉点 `N* = 15.5 ms / 19.5 ns ≈ 8×10^5`。N=10^6 时 Python 19.73 ms vs C 7.64 ms（2.6×）；N=10^7 时 198 ms vs 8.89 ms（22×）。
+          **关键**：N=10^4 时 Python 0.17 ms vs C 5.96 ms —— **Python 快 35 倍**（C 全在付启动）。这就是「小任务用 C 永远亏」的硬数字。
+          **另一个关键**：N=10^7 时 **NumPy 4.86 ms < 自己写 C 再 spawn 8.89 ms** —— 消灭解释器循环比换语言更有效。
+        - **102 MB 日志数 `ERROR`（每行 71 B / 1.4 M 行 / 14000 次命中）**：
+          | 实现 | ms | MB/s | 备注 |
+          |---|---|---|---|
+          | `findstr /M`（只判断存在） | **9.1** | 11220 | 扫描最快，但**不给计数** |
+          | `python data.count(b"ERROR")`（预读内存） | **12.07** | 8458 | C 内核 two-way，拿计数最快的可行方案 |
+          | `python f.read()`（纯 I/O） | 35.42 | 2883 | **I/O 硬底，任何语言都逃不掉** |
+          | `C countneedle.exe`（memchr）端到端 | 53.08 | 1924 | 启动 5.9 + fread 35 吃掉了扫描收益 |
+          | `python mmap + count` 端到端 | 67.05 | 1523 | |
+          | `findstr /C`（输出 14000 行） | 135.2 | 755 | 格式化/输出主导 |
+          | `python for line in f` 逐行 | 324.5 | 315 | 1.4 M 次解释器迭代 |
+          | **`pwsh Select-String`** | **2754** | **37** | **最慢，大文件禁用** |
+          ⇒ **手写 C（53 ms）比 Python `bytes.count`（12 ms）慢 4.4 倍**：因为你付了进程启动 + fread 拷贝，而 Python 的 count 内核本身就是 C。**「自己写 C」在做文本处理时净收益为负。**
+          ⇒ 同一任务里 324 ms ↔ 12 ms 的差别**不是语言，是写法**（逐行 for vs `bytes.count`）—— 这正是「提效优先级②」的实测证据。
+          ⇒ 反例：`Select-String` 只有 37 MB/s，比 `bytes.count` 慢 **228 倍**。**PowerShell cmdlet 不是「快」的代名词**，这条推翻了「用系统工具天然更快」的直觉（`findstr /M` 才是真快的那一个，但它不给计数）。
+        - **冷启动 vs 常驻（2026-10-26 追加实测，N=100 个 O(1) 请求，测的全是进程/会话开销）**：
+          | 方案 | 总 ms | 每请求 ms | 相对 pwsh cold |
+          |---|---|---|---|
+          | pwsh cold-spawn ×100 | **21672.6** | **216.73** | 1.0× |
+          | pwsh 合并成 1 条 `-Command` | **224.9** | 2.25 | **96.4×** |
+          | pwsh 常驻 worker（stdin 协议） | **230.7** | 2.31 | 93.9× |
+          | py cold-spawn ×100 (`python -c`) | 2397.4 | 23.97 | 9.0× |
+          | py 常驻 worker（stdin 协议） | **33.9** | **0.34** | **639×** |
+          | C cold-spawn ×100 (`argc.exe`) | 697.9 | 6.98 | 31.1× |
+          | C 常驻 worker（stdin 协议） | **7.5** | **0.08** | **2878×** |
+          ⇒ **pwsh 100 次 cold-spawn = 21.7 秒**，这就是他每天在付的钱。**合并成一条 `-Command` 就省 96.4×，零架构改动**（`a; b; c` 串起来即可）；常驻只再多 5.8 ms（协议开销），所以**优先选更简单的「合并」**。
+          ⇒ **归一化**：消灭 cold-spawn 省 **21.4 s**；在常驻模式下把 Python 换成 C 只省 **26 ms**（33.9 vs 7.5）。**换语言的收益比「消灭 spawn」低约 820 倍。** 这是方案 A 的闭环证据。
+        - **追加基线（同一批测量，median 15 次）**：`bash -c exit` **24.77 ms** / `bash --noprofile --norc -c exit` 24.76 ms / `sh -c exit` 23.93 ms / `python -c pass` 22.11 ms / `pwsh -NoProfile -NonInteractive` **209.01 ms**。
+        - **架构发现（重要，可操作）**：`profiles/desktop/cordis.patch.yml:383` 的 `persistent-shell` 组是 `disabled: !!js process.platform === 'win32'` ⇒ **Windows 上从来没有真正常驻的 bash**，每次 `bash` tool 调用都是 cold-spawn、付 ~24.8 ms；而 Linux 侧是 PTY 常驻。
+          实测证据：连续两次 `echo $$` 得到 **461 → 528（不同 PID）** ⇒ 确认非持久。Windows 侧 `bash` tool 由本地的 `custom-bash.mjs` 注册（platform-exclusive 替代行）。
+          ⇒ **实操结论：本 harness 里优先用 `bash` tool 而不是 `pwsh` tool**（24.8 ms vs 209 ms，差 8.4 倍）；只有在必须用 PowerShell 语义（.NET 对象、cmdlet）时才调 pwsh，且一次调用里串完所有相关命令。
+        - **踩坑记录**：Git Bash 里 `cmd //c 'findstr /C:"[ERROR]" ...'` 会因引号/方括号转义返回 `exit=1`（假阴性）；改用 `subprocess.run(["findstr", ...])` 列表式调用才拿到正确结果（14000）。⇒ 在 Windows 上测外部命令别经过 bash 转义层。
+      **已落地（harness 层，方案 P1：pwsh 常驻化，2026-10-26）**：
+        - **根因**：`profiles/desktop/cordis.patch.yml` 的 `persistent-shell` group 是 `disabled: !!js process.platform === 'win32'` ⇒ **Windows 上从没挂载过任何 PTY backend**。所以 `bash` 走 `custom-bash.mjs`（普通 `bash -c`，**24.8 ms/次**，无 sandbox）、`pwsh` 走 `dsh-tool-pwsh`（cold spawn，**209 ms/次**）。
+        - **关键事实**：需要的包**全都已经装了**（`dsh-terminal` / `dsh-terminal-bash` / `dsh-tool-bash-persistent` / `dsh-tool-pwsh-persistent`，均 v0.2.1-rc.2）。`dsh-tool-pwsh-persistent` 的 README 明确支持 **「Windows ConPTY or a POSIX pwsh」**；`dsh-terminal-bash` 的 schema 是 `shellDialect: z.union(["bash","pwsh"]).default("bash")` 且**显式 shellPath 优先于 dialect 默认值**（源码 `config.shellPath !== void 0 && length > 0 ? config.shellPath : ...`）。
+        - **改动（只改 desktop；web/headless 待 P1 稳定后同步）**：
+          ① `tool-pwsh` 的门控从「非 win32 启用」改为 `disabled: !!js process.platform === 'win32'`。**必须**：两个包都注册工具名 `pwsh`，同一 layer 重复注册会被 tools registry 拒绝（同 352-357 行对 bash 的警告）。
+          ② 在 `custom-bash` 之后新增 win32-exclusive group：
+             `pty-win`（`group: true` / `disabled: !!js process.platform !== 'win32'` / `isolate.terminals: true`）→
+             `pty-win-backend`(@deepseek-ai/dsh-terminal) → `terminal-pwsh-win`(@deepseek-ai/dsh-terminal-bash，`shellDialect: pwsh`、`shellPath: C:\Program Files\PowerShell\7\pwsh.exe`、`timeoutMs: 300000`) → `persistent-pwsh-win`(@deepseek-ai/dsh-tool-pwsh-persistent，`timeoutMs: 300000`、`maxOutputChars: 16000`)。
+        - **验证**：PyYAML parse OK；**门控对称性求值**确认 win32 上 `tool-pwsh` = DISABLED、`pty-win` = ENABLED；`persistent-bash` 仍被父 group 关掉 ⇒ 不与 `custom-bash` 争 `bash` 名；**无重复注册**；全文件无控制字符。
+        - **踩坑（重要，会重犯）**：用 python heredoc 写 YAML 时，`'C:\...\PowerShell\7\pwsh.exe'` 里的 `\7` 被 python 解释成**八进制转义 BEL(0x07)** —— 路径少了一级目录、混入不可见控制字符、PyYAML 与肉眼都看不出来。**Windows 路径一律用 raw 字符串写**，写完扫描 `ord(c)<9 or 11<=ord(c)<=31`。
+        - **✅ 重启后验收通过（2026-10-26 02:37，同一 session 实测）**：① 连续两次 `$PID` = **17824 / 17824**（相同）⇒ 真常驻；② 第一次调用设的 `$env:TESTVAR` 在第二次调用仍为 `kept-across-calls`，`Get-Location` 也保留 ⇒ 状态跨调用持久；③ 中文输出正常（`汉字 与 ★`）、`[Console]::OutputEncoding` = **utf-8**、PSVersion = **7.6.8**；④ `SessionState.LanguageMode` = **FullLanguage**（**README 警告的 ConstrainedLanguage 风险未发生**）；⑤ 无错误事件，`bash` 工具行为不变。
+        - **实测收益（`logs/tool-calls.jsonl` 的 `durMs`，这是整个 tool-call 往返，不只是进程启动）**：`pwsh` cold（重启前 **n=40**）**median 677 ms**（min 480 / p90 4158 / max 19928）→ persistent（重启后 n=3：**1134 预热 / 245 / 133**）**稳态 median 189 ms** ⇒ **省 488 ms/次 = −72%，加速 3.59×**。预热 1134 ms（ConPTY 起 shell）只付一次。
+          **关键修正**：`677 − 209`（纯 `pwsh -NoProfile` 启动）= **~468 ms 是 `dsh-tool-pwsh` 自身的 seam/harness 开销**（它的描述是 "over the bash executor seam"，很可能套了一层 bash 再起 pwsh）。所以真实收益比预估的「209 → 0」更大 —— 常驻化把启动和 seam 两层一起砍掉了。
+          参照：`bash`（`custom-bash`）重启后 n=4 median 330 ms，但样本全是 `echo`/`ls` 短命令，与重启前 n=1051 的 median 711 ms（含大量重命令）**不可直接比较**。
+        - **⚠️ 新的语义不对称（必须记住）**：`pwsh` 现在**有状态**（cwd / `$env:` / 函数 / 后台 job 跨调用保留），`bash` 仍**无状态**（每次冷启动新进程）。后果：① 在 pwsh 里 `cd` 之后 bash 不会跟着；② 在 pwsh 里设的 `$env:` 会一直留着，可能累积污染。
+          约束：① 在 pwsh 里做有状态操作后显式 `cd` 回 `C:\Users\27063`；② **`timeoutMs` 绝不调小** —— README 明说 `Reset, never repair`，工具级超时会直接关 shell 并丢掉全部状态（命令内部的 coreutils `timeout` 不受影响）。
+        - **观察期**：连续几天看 `pwsh` 的 `isError` 与 p90；marker 提取失败会降级到 silence 慢路径，表现为 durMs 突然跳到 1 s+。稳定后再同步 web / headless。
+        - **回滚**：`cp profiles/desktop/cordis.patch.yml.bak-20261026-pre-pty-win profiles/desktop/cordis.patch.yml` + 再重启。
+        - **预期收益**：pwsh **209 ms → ~2 ms**（按一天 200 次调用 ≈ 省 42 s/天）。`bash` 的 24.8 ms 本轮不动（README 说 persistent shell "cannot serve win32"，需要另立 P2 试验）。
+      **已落地**：三端 persona prefix 加**第 7 条「语言分层契约」** —— `profiles/desktop/cordis.patch.yml:307` 后 / `web:287` 后 / `headless:33` 后（`persona.prefix` ×2 + `system-prompt.personaPrefix` ×1），备份 `cordis.patch.yml.bak-20261026-pre-lang-contract`；PyYAML（自定义 `!`/`js` multi-constructor）三份均 parse OK，prefix 长度 1690 / 1690 / 1659 chars，续行缩进与原条目一致。详细论证存 fact `实现语言分层契约-方案A`（global）。patch 参与 `patchReload: live` ⇒ **开新会话即生效，不必重启 dsh**。
+      **欠账（剩余）**：① 没测「常驻 worker vs 每次 cold-spawn」的差距（按上面的数应在 5.9–200 ms/次量级，若某个流程一天调 100 次 pwsh 就是 20 s/天，值得实测）；② 没测 `robocopy /MT` 的并行度曲线（PLAN 里那次 6.9 GB / 410 s 的事件就是反面素材）；③ `rg`（ripgrep）本机**不存在**（`where rg` 空）⇒ 若要长期的日志检索工具，需先装；④ PowerShell 5.1 报 `.ps1` 未签名的 MOTW 归因是推断（`RemoteSigned` + 文件带 Zone.Identifier 可解释），**未用 `Get-Item -Stream Zone.Identifier` 直接验证**。
+
 ### ★ 定论 + 已落地：关机后 13~21 秒自己冷启动 = BIOS AC 假边沿（2026-10-25）
       **现象**：用户报告「晚上关机，电脑自己启动了，好几次」。60 天日志扫出 **26 次**「正常关机（109 Shutdown Off + 6006）→ 13~33 秒后冷启动」，BootType 全 `0x0`（完整 POST，非 S4/S0ix 恢复）；08-28 / 09-11 / 09-25 各出现「关机→自启→再关→再自启」连发 3 次；概率约 26/74 ≈ 35%；延迟中位数 17 秒。
       **根因判定**：BIOS 的 `Power On after AC Loss`（用户主动开启，用于「智能插座断电→通电」远程开机）+ **EC 在 S5 下对 `AC_PRESENT` 的一次假判定**。`AC_PRESENT` 是带阈值 + 去抖窗口的比较器输出，不是导线通断 ⇒ 物理上「一直插着电」与逻辑上「EC 认为 AC 掉过再回来」可同时为真；关机后负载骤降 → 适配器电压漂移 → 假边沿 → 策略执行 Power On。**13~21 秒 = 适配器空载稳定 + 去抖窗口的时间尺度**，不是「等唤醒源」。
@@ -40,8 +109,8 @@
       **症状**：在 `Windows PowerShell`（5.1.26100.9711）里任何 `.ps1` 都报 `is not digitally signed` —— profile 加载失败 + `dsh` 命中 `npm\dsh.ps1` 也失败。
       **判定**：不是 ExecutionPolicy 设置问题。实测 `Get-ExecutionPolicy -List` = CurrentUser RemoteSigned / LocalMachine Unrestricted / 无 GPO，手写 `.ps1` 无 `Zone.Identifier`，但显式 `-ExecutionPolicy RemoteSigned` 与 `AllSigned` 均被拒，只有 `Bypass` 通过。⇒ 5.1 的 `SystemPolicy.GetLockdownPolicy()` 被机器级 WDAC script enforcement（`CiPolicies\Active` 下 8 个 `.cip`，`CodeIntegrityPolicyEnforcementStatus=2`）判成 Enforce，覆盖了 RemoteSigned 的「本地文件免签」豁免；`LanguageMode` 仍为 FullLanguage（强制签名 ≠ ConstrainedLanguage）。**pwsh 7.6.8 跑同一文件正常**。
       **已落地**：① 5.1 profile 迁到 `C:\Users\27063\Documents\PowerShell\Microsoft.PowerShell_profile.ps1`（原目录不存在），`ghm` 改为 `& pwsh -NoProfile`；已验语法 OK、ghurl/ghdl/ghdlx/ghm/ghmirror_base 五个函数加载成功，`ghmirror.ps1` 在 7 下语法 OK。② `pwsh` 已在 PATH（`C:\Program Files\PowerShell\7`），Win+R 输 `pwsh` 直开 7。③ WT `defaultProfile` = `{574e775e-…}` = PowerShell 7（本来就是）。
-      **Win+R -> powershell 已生效（2026-10-24 23:2x 复核）**：`HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\powershell.exe` (default) = `C:\Program Files\PowerShell\pwsh.exe`、`Path` = `C:\Program Files\PowerShell`。该值与我给用户的那份 UAC 提权脚本写的内容完全一致 ⇒ 只能是那两次 `Start-Process -Verb RunAs` 之一被确认执行（我的 tool 进程对 HKCU 是 WinError 5 只读，排除自写；HKLM 仍是 5.1 未动）。用户主观「没运行过脚本」= 他没在终端里手打，但确认过 UAC 框。
-      **生效边界（实测）**：① `ShellExecute` 路径（Win+R / 开始菜单 / 资源管理器）→ 查 App Paths，HKCU 优先于 HKLM ⇒ 得到 7.6.8。② `PATH` 路径（cmd.exe 或任意 PowerShell 内部输入 `powershell`，以及 `Start-Process powershell`）→ `where powershell` 仍为 `C:\Windows\System32\WindowsPowerShell1.0\powershell.exe`（5.1，`FileVersion 10.0.26100.8972`）⇒ 仍 5.1。要覆盖 ② 只能改系统 PATH，代价大于收益，不做。
+      **Win+R -> powershell 已生效（2026-10-24 23:2x 复核）**：`HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\powershell.exe` (default) = `C:\Program Files\PowerShell\7\pwsh.exe`、`Path` = `C:\Program Files\PowerShell\7`。该值与我给用户的那份 UAC 提权脚本写的内容完全一致 ⇒ 只能是那两次 `Start-Process -Verb RunAs` 之一被确认执行（我的 tool 进程对 HKCU 是 WinError 5 只读，排除自写；HKLM 仍是 5.1 未动）。用户主观「没运行过脚本」= 他没在终端里手打，但确认过 UAC 框。
+      **生效边界（实测）**：① `ShellExecute` 路径（Win+R / 开始菜单 / 资源管理器）→ 查 App Paths，HKCU 优先于 HKLM ⇒ 得到 7.6.8。② `PATH` 路径（cmd.exe 或任意 PowerShell 内部输入 `powershell`，以及 `Start-Process powershell`）→ `where powershell` 仍为 `C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe`（5.1，`FileVersion 10.0.26100.8972`）⇒ 仍 5.1。要覆盖 ② 只能改系统 PATH，代价大于收益，不做。
       **回滚一行**：`reg delete "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\powershell.exe" /f`
       **兜底**：在 5.1 里跑 dsh 用 `dsh.cmd`（npm 的 cmd shim，不经 `.ps1`），已验证 `dsh.cmd --version` = `0.2.1-rc.2`。
 

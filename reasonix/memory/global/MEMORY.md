@@ -336,7 +336,12 @@
 - [dsh-web-search-deepseek-search-api](dsh-web-search-deepseek-search-api.md) — dsh-plugin-local-search 新增 deepseekSearch 源（直连 /v1/tools/search）+ D:\80-系统 是 High IL 保护目录
 - [dsh-web-search-wiki-fetch-failed-修复](dsh-web-search-wiki-fetch-failed-修复.md) — wiki 源 fetch failed 根因（Electron fetch 走浏览器代理）+ http.request 修复 + deepseek 渠道清理
 - [dsh-web-search-三源齐活-20261025](dsh-web-search-三源齐活-20261025.md) — 重启后实测：github + deepseekSearch + wiki 三源齐活，wiki fetch failed 已治愈
-- [dsh-local-search-插件已迁到C盘-junction法](dsh-local-search-插件已迁到C盘-junction法.md) — local-search 插件从 D:\80-系统 迁到 C:\Users\27063\.dsh\plugins，用 junction 重指向，不需要提权
+- [dsh-local-search-插件已迁到C盘-junction法](dsh-local-search-插件已迁到C盘-junction法.md) — 搜索 8 条上限的根因定论：插件侧正常(53→30条)，卡在 dsh-tool-web 的 slice(0,8)；附 junction 免提权迁移法
+- [实现语言分层契约-方案A](实现语言分层契约-方案A.md) — 用户拍板「方案 A：分层混合」+ 本机 benchmark 实测（N*≈8e5、pwsh 200ms、bytes.count 12ms vs 手写 C 53ms、WDAC 不拦未签名 exe）
+- [spawn-vs-常驻-worker-实测](spawn-vs-常驻-worker-实测.md) — 实测冷启动 vs 常驻 worker：pwsh 100 次 spawn=21.7s，合并成一条省 96.4×，换语言只省 26ms；Windows 侧 persistent-shell 被 disabled（bash tool 也是 cold-spawn 24.8ms）
+- [dsh-pwsh-常驻化-p1](dsh-pwsh-常驻化-p1.md) — pwsh 常驻化 P1 已上线验收：PID 相同、状态持久、FullLanguage；677→189ms（-72%，3.59×）；cold 路径有 468ms 是 seam 开销；pwsh 有状态而 bash 无状态
+- [linux-gateway-undici-ipv6-timeout](linux-gateway-undici-ipv6-timeout.md) — Linux dsh/goat-gateway 所有网关失败根因：undici fetch 不回退 IPv4（Happy Eyeballs），修复=node 加 --dns-result-order=ipv4first
+- [github-repo-renamed-dsh-reasonix-agent](github-repo-renamed-dsh-reasonix-agent.md) — GitHub 仓库 reasonix 已改名 dsh-reasonix-agent，并新建 kb/ 工程经验库（13 篇，从 312 fact + PLAN.md 提炼），含推送方式与两条待办
 ## 归档说明
 - 原文全量备份：`~/.reasonix/memory-backup-20260816/`（59 份）与 `~/.reasonix/memory-backup-20260816-consolidate/`
 - 合并/蒸馏原始件：`~/.reasonix/memory-archive-20260816/`

@@ -181,7 +181,7 @@ fact 语料（`C:/Users/27063/AppData/Roaming/reasonix/memory/global/`，命中�
 - `dsh-desktop-renders-package-client-modules-20260930.md` — `platform: "web"` 不影响桌面加载、HMR 边界、`app-update.yml` nightly
 - `dsh-desktop-profile-full-port-20260930.md` — desktop 不覆盖已有配置、移植清单、`compatibility.json` 精确版本豁免
 - `dsh-requires-node20-not-platform-gated-20260930.md` — `node:util.parseEnv` 需 20.12+、`EBADENGINE` 只 WARN
-- `dsh-web-3080-logon-task-disabled-20261006.md` — `\dsh-web-3080` 全定义、schtasks 坏掉的绕行、caller-trace 探针
+- `dsh-web-3080-logon-task-REDACTED.md` — `\dsh-web-3080` 全定义、schtasks 坏掉的绕行、caller-trace 探针
 - `autostart-verification-method-20260928.md` — 先证明真重启、父链判谁启动
 - `dsh-sandbox-windows-写限制与danger-full-access.md` — bash tool 恒 Low IL、`danger-full-access` 不解除、`icacls /setintegritylevel` 修法
 - `goat-额度-窗口标题方案与时间含义-2026-09-25.md` — 三处时间语义、`goat-title.ps1` + `GoatTitle`

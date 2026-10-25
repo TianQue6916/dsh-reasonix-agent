@@ -1,52 +1,43 @@
 ---
 id: mem-ff69b59954147fc22333299821f13574
-revision: 1
+revision: 2
 created_at: "2026-10-25T15:14:23.796Z"
-updated_at: "2026-10-25T15:14:23.796Z"
+updated_at: "2026-10-25T15:34:19.577Z"
 name: dsh-local-search-插件已迁到C盘-junction法
-description: "local-search 插件从 D:\\80-系统 迁到 C:\\Users\\27063\\.dsh\\plugins，用 junction 重指向，不需要提权"
+description: "搜索 8 条上限的根因定论：插件侧正常(53→30条)，卡在 dsh-tool-web 的 slice(0,8)；附 junction 免提权迁移法"
 metadata:
   type: user
   fact_type: reference
   scope: global
 ---
 
-## 结论（2026-10-25）
+## 最终定位（2026-10-25 深夜，探针实测）
 
-`dsh-plugin-local-search` 的实体位置已从 `D:\80-系统\Toolbox\goat-gateway\dsh-plugin-local-search`（symlink 路径 `D:\Toolbox\...`）**迁到 `C:\Users\27063\.dsh\plugins\dsh-plugin-local-search`**。三端 profile 的 `node_modules/dsh-plugin-local-search` 都是 **junction**，现在全部指向 C 盘这份。
+在 `dsh-plugin-local-search` 的 `search()` 里 `Promise.allSettled` 之后插一行 `console.warn` 打印各源结果数，重启 dsh 后搜一次，`~/.dsh/logs/host-stdio.log` 得到：
 
-**以后改插件代码改 C 盘这份**：`C:\Users\27063\.dsh\plugins\dsh-plugin-local-search\index.js`。
-D 盘那份（47238 B / 27 文件）保留为原始备份，已无人引用。
-
-## 为什么不再需要提权（关键 lesson）
-
-`D:\80-系统` 是 **High Integrity Level** 保护目录：ACL 显示 `Authenticated Users: Modify` 但普通进程写入一律 Access denied（python/PowerShell/cmd/touch 全失败），`Get-Acl -Audit` 还报 SeSecurityPrivilege 不足。之前所有「改了代码装不上」都卡在这。
-
-**绕法**：`node_modules/<pkg>` 是 **junction（目录联接）**，创建/重定向 junction **不需要管理员权限**（只要对链接所在目录有写权限）。步骤：
-
-```powershell
-# 1. 复制实体到 C 盘可写位置
-# 2. 删旧链接（只删 reparse point，不碰目标）：
-[System.IO.Directory]::Delete($link, $false)
-# 3. 用 cmd 的 mklink /J 重建（PowerShell 的 New-Item -ItemType Junction 在带尾斜杠时会存成 Global\ 前缀导致解析到旧目标，别用）
-cmd /c "mklink /J `"$link`" `"$target`""
+```
+[err] [local-search] probe wiki=9 github=4 deepseekSearch=30 bing=10 max=30 req=8
 ```
 
-三端（desktop/headless/web）都做一遍。验证：三处 `md5sum .../index.js` 一致且等于 C 盘副本。
+**解读**：
+- 四源全部正常返回：wiki 9 / github 4 / deepseekSearch 30 / bing 10 = 53 条原始
+- `max=30` ⇒ **maxResults 修复生效**（把 dsh 传的 `req=8` 覆盖成配置的 30）
+- `req=8` ⇒ `dsh-tool-web` 传给 provider 的 `request.maxResults` 恒为 8
 
-## 为什么 Start-Process -Verb RunAs 弹不出 UAC
+**⇒ 插件侧完全正确，30 条已就绪。卡在最后一层：`dsh-tool-web` 只展示前 8 条。**
 
-dsh 的 tool 进程**不在交互式会话**里，`consent.exe` 无法在其窗口站上创建弹窗 ⇒ `Start-Process -Verb RunAs` 静默返回，无 consent 进程、无日志、文件时间戳不变。**不是权限配置问题，是会话隔离问题**。以后凡是 High IL 写操作，要么用户手动点（bat 右键管理员运行），要么走 junction 这类免提权路径。
+判定依据：两次不同 query 返回的 8 条分布不同（一次 github 4 + deepseekSearch 4，一次 github 5 + deepseekSearch 3），但都是 `mergeSources` 按 `SOURCE_RANK = {github:0, deepseekSearch:1, bing:2, goat:3, deepseek:4, wiki:5}` 排序后的前 8 条 —— 说明 tool 拿到 30 条后做了 `slice(0, 8)`。
 
-## 本次顺带修掉的 bug
+**这个 8 改不了**：`dsh-tool-web` 在 `resources/app.asar`（182 MB）里，`dump-desktop-config.ps1` 显示它的 config 只有 `fetch: true` 和 `searchTimeoutMs: 60000`，**没有 maxResults 项**；`web_search` tool 的 schema 也只有 `queries`，不接受 `maxResults` 参数（多传会被 schema 拒绝）。要改只能 asar 解包重打包，风险 >> 收益（8 条已按 rank 最优）。
 
-`maxResults` 被 `dsh-tool-web` 传的 `request.maxResults`（恒为 8）压回 8 条，配置调 30 无效。新逻辑（index.js:433-437）：
+**结论：不动了。** 社区实践 `max_results` 也是 5-10（省 context），8 条够用。
 
-```js
-const configuredMax = Math.max(1, Number(cfg.maxResults || 30));
-const requestedMax = Number(request?.maxResults);
-const maxResults = Number.isFinite(requestedMax) && requestedMax > configuredMax
-  ? Math.floor(requestedMax) : configuredMax;
-```
+## 测速与行为数据
 
-改完必须**重启 dsh 主进程**（node_modules 模块不参与 HMR）。
+- 直调 `new LocalSearchProvider(() => cfg, {}).search({query, maxResults: 8})` → `total=30 bySource={github:8, deepseekSearch:8, bing:8, wiki:6}`，耗时 **11.4 s**（wiki 最慢，libzim 全文搜索）
+- dsh 的 `dsh-tool-web` 配 `searchTimeoutMs: 60000`（60 s），**不是超时砍掉的**
+
+## 附带发现
+
+- `D:\80-系统` 是 High Integrity Level 保护目录，普通进程写不进；但 `node_modules/<pkg>` 是 **junction**，重定向 junction **不需要管理员权限** ⇒ 插件实体已迁到 `C:\Users\27063\.dsh\plugins\dsh-plugin-local-search`（48716 B），三端 junction 都指过去。**以后改插件改这里，不是 D 盘。**
+- 从 dsh 的 tool 进程调 `Start-Process -Verb RunAs` 弹不出 UAC（非交互式会话，`consent.exe` 无法在其窗口站创建弹窗）⇒ High IL 写操作只能手动或走免提权路径。

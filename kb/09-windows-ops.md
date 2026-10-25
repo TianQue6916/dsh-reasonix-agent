@@ -226,7 +226,7 @@ timeout 20 cmd //c "reg query \"HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\A
 
 - `dsh-sandbox-windows-写限制与danger-full-access.md`（Low IL 的第一手结论 + icacls 解法）
 - `dsh-desktop-requires-no-sandbox.md`、`dsh-desktop-app-status-breakpoint-nosandbox-20261004.md`
-- `dsh-web-3080-logon-task-disabled-20261006.md`（`schtasks` 坏掉 + 直接读 XML 的手法）
+- `dsh-web-3080-logon-task-REDACTED.md`（`schtasks` 坏掉 + 直接读 XML 的手法）
 - `autostart-verification-method-20260928.md`（`Last Run Time` 不可信、logon 触发未实测）
 - `dsh-pwsh-常驻化-p1.md`（3.59× 与 seam 成本分解）
 - `ds-harness-remote-installed-20260928.md`、`dsh-gate-双机路由铁律.md`（已作废，仅溯源）、`dsh-dual-machine-sync-migration-20260930.md`、`dual-machine-sync-convergence-pitfalls-20261001.md`
@@ -243,3 +243,24 @@ timeout 20 cmd //c "reg query \"HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\A
 3. **logon 触发从未被真实开机验证**（需一次整机重启配合）：开机自启这条严格说是"实现正确 + 手动触发验证过"。
 4. **`WakeGuard` 的实战验证尚未发生**：只在 `-DryRun` 与手动触发下通过。
 5. 两次 `Kernel-Power 41`（`0xEF` CRITICAL_PROCESS_DIED / `0x154` UNEXPECTED_STORE_EXCEPTION，`PowerButtonTimestamp=0`）是**独立问题**，与假边沿无关，未查。
+
+### 2026-10-26 实测补充：把整个 repo 降 IL 的真实成本
+
+D3 的 icacls 解法在本仓库上跑过一次真实规模的实验（为了让 agent 能直接维护该 repo，不是为了演示）：
+
+| 项 | 实测值 |
+|---|---|
+| 目标 | `D:\Desktop\工具箱\reasonix-ops\repo`（含 `.git` 724 MB / 1207 文件）+ 工作树，合计 **13992 个对象** |
+| 命令 | `icacls <repo> /setintegritylevel (OI)(CI)Low /T /C /Q` |
+| 耗时 | **12.8 s**，rc = 0，`Successfully processed 13992 files; Failed processing 0 files` |
+| 结果 | `repo` = `Low Mandatory Level:(OI)(CI)(NW)`；`.git\config`、`.git\index` = `Low Mandatory Level:(I)(NW)` |
+| 之后 | `git remote set-url` / `git commit` / `git push` 全部正常（此前 `.git/config` 报 `Permission denied`） |
+
+**两个操作要点**（否则会白试一轮）：
+
+1. **`/T` 取决于你要改什么**：只新建文件 → 目录 `(OI)(CI)Low` 足够；要让 `git checkout/pull` 覆盖**已有**文件，
+   已有文件本身也必须是 Low ⇒ 必须 `/T`。13992 个对象 12.8 s，成本可接受（`icacls` 只改元数据，不读内容）。
+2. **弹 UAC 的姿势**：从 **pwsh 7** 执行
+   `Start-Process -FilePath pwsh.exe -Verb RunAs -Wait -ArgumentList @('-NoProfile','-ExecutionPolicy','Bypass','-File','<脚本>')`；
+   提权进程的 stdout 拿不到 ⇒ 脚本所有输出必须**自己写日志到 C 盘**（本例 `C:\Users\27063\_rx-kb\relabel.log`）。
+   5.1 不参与这条链路（它在本机被 WDAC 打死，见 D4）。

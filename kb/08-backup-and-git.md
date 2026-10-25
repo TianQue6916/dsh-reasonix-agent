@@ -258,3 +258,40 @@ PLAN 段：`C:\Users\27063\.dsh\PLAN.md` 第 139–158 行（备份三项加固 
 3. **改名同步未完成（2026-10-26 实测）**：脚本第 31 行 `$RepoUrl` 与 `repo` 的 `origin` 仍是旧名 `git@github.com:TianQue6916/reasonix.git`，与 README 表的"⚠️ 待改：D 盘对本机 agent 只读"一致。
 4. **新的活故障（fact 未记录，本章据日志实测）**：2026-10-25 23:33 `push 失败: ... GH001 ... model.int8.onnx is 228.15 MB`；本地 `master` 领先 `origin/master` **3 个 commit**，该文件已在 index（`git ls-files -s` 有记录，239233841 B）。修法见 R5。
 5. **字节层全扫有 40 MB 跳过上限**（`if(-not $fi2 -or $fi2.Length -gt 40MB){ continue }`），超限文件既不扫描也不告警 —— 与 GH001 同类盲区。**看门狗的 `UNPUSHED` 判据也只说"领先 origin"，不解释为什么推不上去**（领先 3 个 commit 会持续 ALERT 而无诊断）。两处是否都该补"末行日志含 error"未定。
+
+---
+
+## 2026-10-26 更新（本节晚于上方正文，冲突时以此为准）
+
+### ✅ 已修：GH001 断链 3 天
+
+- **现象**：`2026-10-25 23:33` push 被拒 `GH001: File too large`；本地领先 origin 3 个 commit，备份线静默断 3 天。
+- **根因链**：`f3fe6ba`（10-23 备份）把 `dsh/speech-to-text/sensevoice/models/sensevoice-onnx/model.int8.onnx`
+  （**228.2 MB**）纳入跟踪 ⇒ 该 commit 及其后两个 commit 全部推不上去。脱敏校验全过 ——
+  **体积不是一个脱敏维度**。
+- **修法**：`git reset --mixed origin/master`（把 3 个未推 commit 压平成一个，等价内容、剔除大文件）
+  → `*.onnx` 双写进 `.gitignore` 与脚本 `$XF` → `git rm --cached` 50.9 MB 的 `dsh/.backup/*.tar.zst`。
+  回滚点 tag `bak-pre-gh001-fix`（`ece7a51`）。
+- **新判据（写进 runbook）**：push 后必须校验 `git rev-parse HEAD` == `git ls-remote origin refs/heads/master`，
+  **并且** `git ls-tree -r -l origin/master | awk '$4>104857600'` 为空。
+  只看「push 命令返回码」不够。
+
+### ⚠️ 新反例（本轮亲手踩的，代价 = 一次误删远端内容）
+
+**X-new · 远端用 API 直推 + 本地 `reset --mixed` + `git add -A` = 把远端文件记成删除。**
+
+序列：① 因为 D 盘只读，`kb/` 是用 GitHub Git Data API 直接写进远端 tree 的（本地工作树从未有过这些文件）；
+② 修 GH001 时执行 `git reset --mixed origin/master`；③ 紧接着 `git add -A` ——
+**工作树里没有 `kb/` 与 `README.md`，git 就按「删除」暂存**，commit 上去了，远端 `kb/` 归零。
+
+两条可推广的教训：
+
+1. **`git add -A` 的语义是「让 index 等于工作树」。** 只要工作树不完整（API 直推 / 稀疏检出 / 外部改动），
+   它同时就是一条删除指令。⇒ 工作树可能不完整时只用精确路径 `git add <path>`，
+   并在 commit 前做一次**存在性断言**（如 `git diff --cached --name-only | grep -c '^kb/'` 应为 13）。
+2. **「push 成功」不等于「内容还在」** —— 校验查 tree，不查退出码（与 D2 同一条原则的另一面）。
+
+### 建议（未实施）
+
+- 看门狗增两条断言：`origin/master` 上关键路径的文件数（如 `kb/*.md` = 13）与最大 blob 体积。
+- 在**提交前**加体积闸：staged 中存在 >100 MB 文件即中止（exit 6），比等 GitHub 拒更早。

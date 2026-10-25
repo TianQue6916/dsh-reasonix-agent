@@ -305,6 +305,12 @@
                    涉及教学 / 翻译 / 方案设计 / 代码等实质任务前，先调 `memory_profile` 校准讲法与深度：
                    走「本质 → 公式 → 跨学科连接」；不甩他未学过的概念（群论 / 环论 / 拓扑 / 非标准分析）；
                    不掩盖核心思想，不只给公式，不空洞赞美。
+                   7. 语言分层契约（2026-10-26 拍板「方案 A：分层混合」，同日本机实测校准）：
+                      默认用 Python 写编排 / 胶水 / 短命工具；**不要**为「稳定」或「效率」把常规脚本改写成 C —— agent 写的 C 缺陷是静默内存破坏，比 Python traceback 危险一个量级。
+                      本机实测：进程启动 python 21.4 ms / gcc -O2 -static exe 7.8 ms / **pwsh -NoProfile 200.8 ms**；内层成本 c_py 19.8 ns（CPython 3.13 PEP 659）、c_numpy 0.3 ns ⇒ 交叉点 N* ≈ 8×10^5，N < 10^6 或只跑一次时 C 永远亏。
+                      102 MB 数关键字：`bytes.count` 12 ms ≪ 手写 C(memchr) exe 端到端 53 ms（启动 5.9 + fread 35 吃掉收益）≪ 逐行 for 325 ms ≪ pwsh Select-String 2754 ms（**大文件禁用**）。
+                      提效优先级（成本递增）：① 合并工具调用、别反复 cold-spawn pwsh ② 消灭 O(N) 解释器循环（NumPy / bytes.count / 系统批处理）③ 长驻 worker 复用进程 ④ 才 native。稳定靠进程边界（独立 exe + stdin/stdout JSON），不靠换语言。
+                      要 native 就选 Rust+PyO3（abi3）或 C+独立 exe，不手写 CPython C API。上 native 门槛：N > 10^7 且高频**且常驻**，或需 < 10 ms 的确定性延迟。会被 agent 反复改的代码一律 Python。
               complete: true
               includeRuntimeContext: false
 
@@ -352,7 +358,11 @@
 
           - id: tool-pwsh
             name: '@deepseek-ai/dsh-tool-pwsh'
-            disabled: !!js process.platform !== 'win32'
+            # 2026-10-26 方案 P1：改由常驻版 dsh-tool-pwsh-persistent 提供 `pwsh`（见下方 pty-win group）。
+            # 两个包注册同一个工具名 `pwsh`，同一 layer 重复注册会被 tools registry 拒绝（参见 352-357 行的同类警告）
+            # ⇒ 必须在这里关掉冷启动版，否则 session 创建会失败。
+            # win32 → 由下方 pty-win group 的常驻版提供；非 win32 → 保留这个冷启动版（Linux 侧无 PTY pwsh 时才用它）
+            disabled: !!js process.platform === 'win32'
 
           # The Minimal preset's shell: a PTY-backed persistent bash, schema-identical
           # to the official `minimal` preset's `persistent-shell` group so the first
@@ -417,6 +427,31 @@
           - id: custom-bash
             name: ../../.agent-presets/anchored-standard/custom-bash.mjs
             disabled: !!js process.platform !== 'win32'
+          - id: pty-win
+            name: cordis:group
+            group: true
+            disabled: !!js process.platform !== 'win32'
+            isolate:
+              terminals: true
+            config:
+              - id: pty-win-backend
+                name: '@deepseek-ai/dsh-terminal'
+
+              # Windows 上唯一的 PTY 后端路径：Windows ConPTY 上的 pwsh 方言。
+              # dsh-tool-pwsh-persistent 的 README 明确支持 "Windows ConPTY or a POSIX pwsh"。
+              - id: terminal-pwsh-win
+                name: '@deepseek-ai/dsh-terminal-bash'
+                config:
+                  shellDialect: pwsh
+                  shellPath: 'C:\Program Files\PowerShell\7\pwsh.exe'
+                  timeoutMs: 300000
+
+              - id: persistent-pwsh-win
+                name: '@deepseek-ai/dsh-tool-pwsh-persistent'
+                config:
+                  timeoutMs: 300000
+                  maxOutputChars: 16000
+
 
           # ── filesystem ──────────────────────────────────────────────────────────────
 
@@ -691,7 +726,10 @@
             config:
               fetch: false
               searchTimeoutMs: 60000
-
+              # 2026-10-26：默认 8（lib/index.js 的 WEB_SEARCH_MAX_RESULTS = 8，Config.searchMaxResults default 也是 8）
+              # 会先作为 request.maxResults 传给 provider，再作为 mergeSearchResults 的截断值，
+              # 导致 bing/wiki 因 SOURCE_RANK 靠后永远没名额。32 = 4 源 x 8。
+              searchMaxResults: 74
     - id: mcp-goatquota
       name: '@deepseek-ai/dsh-mcp-client'
       config:
@@ -702,7 +740,7 @@
 - id: ui-settings-general
   name: "@deepseek-ai/dsh-client-ui-settings-general"
   config:
-    welcomeNoticeVersion: 2026-08-13.1
+    welcomeNoticeVersion: 2026-09-28.1
 - id: agent-default-model
   name: "@deepseek-ai/dsh-agent-default-model"
   config:
@@ -1351,6 +1389,9 @@
         include:mnemon-strategy-scoped:
           enabled: true
           config: {}
+        include:mnemon-strategy-light-context:
+          enabled: true
+          config: {}
     recallQuality:
       policy: strict-v1
       lowScoreThreshold: 0.25
@@ -1365,13 +1406,9 @@
     recallMode: guided
     writebackMode: guided
     idleReviewMs: 30000
-    # 2026-10-03：mnemon 的 idle checkpoint review subagent 默认 maxTokens=4096
-    # （dsh-mnemon/lib/index.js:63 DEFAULT_IDLE_REVIEW.maxTokens），reviewer 一边推理一边写
-    # WRITE_SCHEMA 结构化结果时会把 4096 用尽 ⇒ turn/end reason={"kind":"max-tokens"} ⇒
-    # 客户端渲染 message.maxTokens 那条「已达到输出 token 上限…发送继续」通知。提到 32768。
-    # schema 上限 131072（dsh-mnemon/lib/index.js:225 IdleReviewSchema.maxTokens）。
     idleReview:
       maxTokens: 32768
+    syncEnabled: true
 
 # ── 微信 bot 桥接（2026-09-30 从 reasonix 侧迁入）────────────────────────────
 # 迁移第 1 步已完成（不影响 reasonix 侧，微信全程照常服务）：
@@ -1553,6 +1590,10 @@
     enableWiki: true
     enableGoat: false
     enableDeepseek: false
-    maxResults: 30
-    deepseekSearchCount: 30
+    maxResults: 74
+    deepseekSearchCount: 50
     tagTitles: true
+- id: mnemon-strategy-light-context
+  disabled: false
+- id: mnemon-strategy-general
+  disabled: false

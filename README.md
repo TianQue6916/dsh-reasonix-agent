@@ -34,22 +34,24 @@
 
 | # | 位置 | 现状 |
 |---|---|---|
-| 1 | `backup-to-github.ps1` 的 `$RepoUrl`（第 31 行）与头部注释（第 4 行） | ⚠️ 待改：D 盘对本机 agent 只读（Low IL），需人工或用提权 shell 改 |
-| 2 | 本地检出 `repo/` 的 `git remote set-url origin` | ⚠️ 同上（`.git/config` 不可写） |
+| 1 | `backup-to-github.ps1` 的 `$RepoUrl`（第 31 行）与头部注释（第 4 行） | ✅ 已改（2026-10-26，脚本内注记为 v3） |
+| 2 | 本地检出 `repo/` 的 `git remote set-url origin` | ✅ 已改（origin → 新名） |
 | 3 | `reasonix/memory/global/*.md` 中提到旧 URL 的 fact | 历史记录，保留原样（它们是当时的事实） |
 
 ---
 
-### 改名时发现的两条活故障（2026-10-26，未修，需人工）
+### ✅ 改名时发现的两条活故障，已在本轮修复（2026-10-26）
 
-1. **备份线当前是断的**：`2026-10-25 23:33` 的 push 被 GitHub 以 **GH001（文件过大）** 拒绝 ——
-   `dsh/speech-to-text/sensevoice/models/sensevoice-onnx/model.int8.onnx`（**228.15 MB**）已进入 index，
-   本地 `master` 因此**领先 `origin/master` 3 个 commit**。
-   修法（不要用 LFS）：把 `*.onnx` 加进排除清单（`$XF` / `.gitignore`），`git rm --cached` 该文件，再 push。
-   同类盲区：字节层全扫有 40 MB 跳过上限，看门狗只报 `UNPUSHED` 不报原因。
-2. **改名同步未完成**：`backup-to-github.ps1:31` 的 `$RepoUrl` 与本地 `repo` 的 `origin` 仍指向旧名
-   `git@github.com:TianQue6916/reasonix.git`（靠 GitHub redirect 还能用，但不是长久之计）。
-   之所以没自动改：本机 agent 的 bash tool 固定跑 **Low IL**，而 `D:/`（`C:/Users/27063/Desktop` 是它的 junction）对它只读。
+1. **备份线断链 3 天 → 已修**：`2026-10-25 23:33` 的 push 被 GitHub 以 **GH001（文件过大）** 拒绝，
+   元凶是 `dsh/speech-to-text/sensevoice/models/sensevoice-onnx/model.int8.onnx`（**228.2 MB**），
+   由 `f3fe6ba`（10-23 备份）引入 ⇒ 其后 3 个 commit 全部推不上去。
+   修法：`git reset --mixed origin/master` 把 3 个未推 commit 压平成一个（等价内容、剔除大文件）；
+   `*.onnx` / `*.tar.zst` 双写进 `.gitignore` 与脚本 `$XF`；另移出 50.9 MB 的 `dsh/.backup/*.tar.zst`。
+   回滚点：tag `bak-pre-gh001-fix`（`ece7a51`）。
+2. **改名同步 → 已修**：`$RepoUrl` 与 `origin` 都指向新名。
+   原先改不了的硬原因：agent 的 bash tool 固定 **Low IL**，而 `D:`（`C:/Users/27063/Desktop` 是它的 junction）对它只读。
+   解法是一次 UAC 的 `icacls <repo> /setintegritylevel (OI)(CI)Low /T`（**13992 个对象 / 12.8 s**），
+   之后本机 agent 可直接维护本仓库。细节见 [`kb/09-windows-ops.md`](kb/09-windows-ops.md)。
 
 ## 二、备份镜像
 

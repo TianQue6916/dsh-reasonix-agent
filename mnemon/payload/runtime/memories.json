@@ -1,0 +1,221 @@
+{
+  "version": 1,
+  "entries": [
+    {
+      "content": "语言契约（用户明确定过，最高优先级）：正文中文为主，但技术术语保留英文原文、不做意译——禁止 provider→\"提供方\"、registry→\"注册表\"、seam→\"接缝\"、candidate→\"候选\"、materialize→\"物化\"、verbatim→\"逐字\"、declaration row→\"声明行\"；正例 skill/patch/bundle/provider/session/scope/rank/hook/token/cache/rollout/sandbox 一律保留原词。代码、路径、命令、字段名、包名、API 名原样保留。数学与技术名词用通行英文、解释用中文。思考链同样用中文、英文术语原样保留。",
+      "target": "user",
+      "importance": "critical",
+      "created_at": "2026-09-27T16:29:26.202Z",
+      "updated_at": "2026-09-27T16:29:26.202Z",
+      "origin": {
+        "machine": "12436911-9001-44ad-a259-047c9ba7c8eb",
+        "label": "天阙九泉",
+        "at": "2026-09-27T16:29:26.202Z"
+      }
+    },
+    {
+      "content": "dsh 配置热重载的确切边界（2026-09-28 源码+实测）：dsh web 跑在端口 3080，长期运行。① profile patch 文件 `~/.dsh/profiles/<name>/cordis.patch.yml` 参与 `patchReload: live` 的 HMR，改完**开新会话即生效**，不必重启进程 —— 这是验收 patch 类改动的正确方式。② preset 的 `.mjs`（`~/.dsh/.agent-presets/**`）与 node_modules 里的 client bundle **都不参与 HMR**，必须**重启 dsh 进程**才加载（HMR 只 exact-path watch profile patch 文件本身）。③ `dsh --profile <name> --dump-config` 是零副作用的配置校验方式，可在不重启的情况下确认 patch 合成结果。",
+      "target": "memory",
+      "importance": "normal",
+      "created_at": "2026-09-27T16:29:34.248Z",
+      "updated_at": "2026-09-28T07:24:09.944Z",
+      "origin": {
+        "machine": "12436911-9001-44ad-a259-047c9ba7c8eb",
+        "label": "天阙九泉",
+        "at": "2026-09-28T07:24:09.944Z"
+      }
+    },
+    {
+      "content": "用户身份与长期目标：宁夏大学智能科学与技术本科生（2025-09 入学，宁夏银川），现处大二上（2026.9–12）。自我定位「认知系统架构师」——构建主义研究式学习者：新知识必须在已有偏序图中找到位置，否则不接受；心法「构建第一，分数是副产品」。终局目标是世界一流 AI 博士，本科锚点为「以逻辑为基础的 AGI」（推理系统，而非统计学习），中长期 AGI → 通用量子计算 → 受控核聚变；考研目标宁夏大学信息工程学院 081200 学硕。设备：机械革命（Mechrevo）笔记本（此前误记为 X1 Carbon G7）+ Windows（天阙九泉）/ TianQue Linux 双系统；作息偏夜猫（20 时峰值，凌晨 0–2 活跃）。",
+      "target": "user",
+      "importance": "normal",
+      "created_at": "2026-09-30T09:36:34.836Z",
+      "updated_at": "2026-10-04T12:00:42.481Z",
+      "origin": {
+        "machine": "12436911-9001-44ad-a259-047c9ba7c8eb",
+        "label": "天阙九泉",
+        "at": "2026-10-04T12:00:42.481Z"
+      }
+    },
+    {
+      "content": "协作与教学协议（用户明确要求）：① 实质任务（教学 / 翻译 / 方案 / 代码）前先查画像校准讲法与深度：memory_profile 优先，细节用 mnemon_recall。② 教学固定走「本质 → 公式 → 跨学科连接」：先本质再公式，优先调用他已学连接点（6.042J 离散数学、CSAPP、CLRS 6.006、Strang 线性代数、Thomson 实分析）。③ 不要：空洞赞美、只给公式不给直觉、掩盖或简化核心思想、死记硬背式总结、只给结论而不给推导链。④ 禁止甩未学概念：群论 / 环论 / 拓扑 / 非标准分析。⑤ 验证驱动：先证后信，AI 是「可质疑的推导引擎」而非知识库；方案要给出可复现的「问题 → 方案 → 验证」链。⑥ 他本人的学习协议（设计练习时对齐）：先攻后守（闭卷自推 → 看原证 → 记卡点）、模板内化（每类证明或算法 ≥5 题）、双语双链（英文原版输入 + 中文批注、术语不翻译）。",
+      "target": "user",
+      "importance": "critical",
+      "created_at": "2026-09-30T09:36:46.620Z",
+      "updated_at": "2026-09-30T09:36:46.620Z",
+      "origin": {
+        "machine": "12436911-9001-44ad-a259-047c9ba7c8eb",
+        "label": "天阙九泉",
+        "at": "2026-09-30T09:36:46.620Z"
+      }
+    },
+    {
+      "content": "当前学业阶段（截至 2026-09-30，明细见 fact `学业进度-2026-09`）：大二上 P0 = 6.431 概率论（Bertsekas 原版）+ CS144（含 Lab）；P1 = Boyd 凸优化前 5 章 + Cover 信息论前 6 章。实分析推进中（Thomson + Rudin）。非核心课最低投入、作业底线不动。",
+      "target": "user",
+      "importance": "normal",
+      "created_at": "2026-09-30T09:37:10.414Z",
+      "updated_at": "2026-10-22T14:55:12.736Z",
+      "origin": {
+        "machine": "12436911-9001-44ad-a259-047c9ba7c8eb",
+        "label": "天阙九泉",
+        "at": "2026-10-22T14:55:12.736Z"
+      }
+    },
+    {
+      "content": "dsh 记忆分层（2026-09-30 实测定论）：① canonical 语料是 reasonix 的 md fact（~/.reasonix/memory/**），经 ~/.dsh/storages/tools/memory-to-mnemon.py 只落到 memory-spaces（durable-evidence Source，~/.mnemon/data/default/mnemon.db）→ 只在 mnemon_recall 命中时进上下文，不常驻。② 常驻层是 runtime Source（~/.mnemon/runtime/{memories.json,USER.md,MEMORY.md}），容量 user 4096B / memory 10240B（dsh-mnemon-source-runtime 的 userLimitBytes / memoryLimitBytes 可覆盖，上限 1MB），只能用 mnemon_runtime_memory 写，两个 md 是生成投影、禁止直接编辑。③ 写入纪律：新 fact 先写 reasonix 语料（memory_remember，自动 sync 进 mnemon）；只有「每轮都必须知道」的才另写 runtime hot memory。④ 2026-09-30 补的缺口：REASONIX.md 已纳入 python 扫描（tag src:reasonix-root），memory_profile 已进 promoted resident 集（tool-bootstrap.mjs 的 RESIDENT_MEMORY_TOOLS），画像三条（身份/协作教学协议/当前学业阶段）已 compact 进 USER.md。",
+      "target": "memory",
+      "importance": "normal",
+      "created_at": "2026-09-30T09:38:33.673Z",
+      "updated_at": "2026-09-30T09:38:33.673Z",
+      "origin": {
+        "machine": "12436911-9001-44ad-a259-047c9ba7c8eb",
+        "label": "天阙九泉",
+        "at": "2026-09-30T09:38:33.673Z"
+      }
+    },
+    {
+      "content": "dsh web_search 形态（2026-10-01 定稿）：provider = `local-wiki-github`（自建插件 `D:/Toolbox/goat-gateway/dsh-plugin-local-search`；web/desktop/headless 三端共用同一条 symlink bundle，改插件即三端同改）。**三源并发聚合（不是 fallback 链）**，rank `github(0) > deepseek(1) > wiki(2)`（wiki = Linux 侧 PocketWiki + 离线 Wikipedia，`100.79.96.82:8810`）；maxResults=8 时配额 3/3/2 保证三源都露面，剩余名额按 rank 回填，跨源同 URL 保留高 rank。deepseek 官方 provider 注册的 id 是 **`deepseek-official`**（不是 row id `web-search-deepseek`）；凭证在**每次搜索时** resolve ⇒ 补 key 不用重启，缺 key 触发 600s 熔断并降级（github/wiki 照常返回）。`maxUses` 2026-10-01 由 100 改为 **3**。细节、指纹与验证方式见 reasonix fact「dsh-web-search-三源聚合最终形态」；desktop 的合成配置只能用 `~/.dsh/storages/tools/dump-desktop-config.ps1` 看（CLI dump-config 被 Electron 守卫拒绝）。",
+      "target": "memory",
+      "importance": "normal",
+      "created_at": "2026-10-01T06:15:14.178Z",
+      "updated_at": "2026-10-01T06:15:14.178Z",
+      "origin": {
+        "machine": "12436911-9001-44ad-a259-047c9ba7c8eb",
+        "label": "天阙九泉",
+        "at": "2026-10-01T06:15:14.178Z"
+      }
+    },
+    {
+      "content": "本机网络是「分层可用」而非「无外网」（2026-10-02 实测，修正此前错误结论）：① CLI（curl / python-urllib / git）不读 WinINET system proxy，打 huggingface.co / google.com → http_code=000 exit 28，因为 DNS 被 GFW 注入（同一域名多次解析得到 104.31.142.88 / 75.126.164.178 / 96.44.137.28 等互相矛盾的地址，IPv6 夹 2a03:2880:...:face:b00c），DoH 亦被封（cloudflare-dns.com → curl(35) Connection was reset）。② 浏览器（Edge / headless puppeteer）读 system proxy → 走 DevSidecar（127.0.0.1:31180/31181，常驻 5 个 dev-sidecar.exe）→ 外网站点可达（HF / GitHub 均 200）。⇒ 需要联网核实外网时优先用 puppeteer + Edge，不要用 curl，也不要假设「没有外网」。",
+      "target": "memory",
+      "importance": "normal",
+      "created_at": "2026-10-01T14:03:26.859Z",
+      "updated_at": "2026-10-02T06:39:51.162Z",
+      "origin": {
+        "machine": "12436911-9001-44ad-a259-047c9ba7c8eb",
+        "label": "天阙九泉",
+        "at": "2026-10-02T06:39:51.162Z"
+      }
+    },
+    {
+      "content": "用户（2026-10-04）明确批评排查命令过慢，原话：「效率太低了,你这命令太慢」。本机排查约定：单次进程内跑完、优先 cmd 内置命令取数据、并行 tool call，避免多次冷启动 powershell.exe 与写文件再绕一圈读。",
+      "target": "memory",
+      "importance": "normal",
+      "created_at": "2026-10-04T11:04:29.179Z",
+      "updated_at": "2026-10-04T11:04:29.179Z",
+      "origin": {
+        "machine": "12436911-9001-44ad-a259-047c9ba7c8eb",
+        "label": "天阙九泉",
+        "at": "2026-10-04T11:04:29.179Z"
+      }
+    },
+    {
+      "content": "面对需要管理员权限的操作时，用户授权 Agent 自行走 UAC 提权，不必再拿技术细节追问；但必须先说明要做什么、有没有危害。",
+      "target": "user",
+      "importance": "normal",
+      "created_at": "2026-10-04T11:16:59.494Z",
+      "updated_at": "2026-10-04T11:16:59.494Z",
+      "origin": {
+        "machine": "12436911-9001-44ad-a259-047c9ba7c8eb",
+        "label": "天阙九泉",
+        "at": "2026-10-04T11:16:59.494Z"
+      }
+    },
+    {
+      "content": "小电脑（Ubuntu 24.04.5 双系统，主机名 TianQue）系统盘为 INTEL SSDPEKKF010T8L（TLC，S/N PHHP937609F91P0D，FW L15P）；Windows 侧主力机原装盘是 KINGSTON OM8TAP41024K1-A00（QLC）。",
+      "target": "memory",
+      "importance": "normal",
+      "created_at": "2026-10-05T05:56:32.610Z",
+      "updated_at": "2026-10-05T05:56:32.610Z",
+      "origin": {
+        "machine": "12436911-9001-44ad-a259-047c9ba7c8eb",
+        "label": "天阙九泉",
+        "at": "2026-10-05T05:56:32.610Z"
+      }
+    },
+    {
+      "content": "小机（小电脑）是 Windows/Linux 双系统，课程资料都存在 Windows 分区；从 Linux 侧挂在 /media/OS，课程视频与其字幕位于 /media/OS/课程文件/{实分析,算法导论6.006,概率导论,算法进阶}（而 /media/OS/linux-home/课程资料 是 20 个 git repo 的讲义/笔记/教材）。",
+      "target": "memory",
+      "importance": "normal",
+      "created_at": "2026-10-05T06:48:12.744Z",
+      "updated_at": "2026-10-05T06:48:12.744Z",
+      "origin": {
+        "machine": "12436911-9001-44ad-a259-047c9ba7c8eb",
+        "label": "天阙九泉",
+        "at": "2026-10-05T06:48:12.744Z"
+      }
+    },
+    {
+      "content": "面对多个可行方案时，用户要求先给出选项、对比与推荐，由本人拍板后再落地；不要自行选定方案直接实现。",
+      "target": "user",
+      "importance": "normal",
+      "created_at": "2026-10-11T16:19:31.591Z",
+      "updated_at": "2026-10-11T16:19:31.591Z",
+      "origin": {
+        "machine": "12436911-9001-44ad-a259-047c9ba7c8eb",
+        "label": "天阙九泉",
+        "at": "2026-10-11T16:19:31.591Z"
+      }
+    },
+    {
+      "content": "用户要求（2026-10-22）：「记得先备份世界再做改动和读取」——对 Minecraft 存档（如 saves\\机械动力）做任何改动或读取前，先 robocopy 备份到 D:\\MINECRAFT\\_backup\\saves-机械动力-<yyyymmdd>，并校验 src/dst bytes 与文件数一致后才动手。",
+      "target": "memory",
+      "importance": "critical",
+      "created_at": "2026-10-22T15:18:33.192Z",
+      "updated_at": "2026-10-22T15:18:33.192Z",
+      "origin": {
+        "machine": "12436911-9001-44ad-a259-047c9ba7c8eb",
+        "label": "天阙九泉",
+        "at": "2026-10-22T15:18:33.192Z"
+      }
+    },
+    {
+      "content": "本机 PowerShell 双装（**2026-10-23 18:10 重启 desktop 后已验证生效**）：5.1.26100.9711 是 OS 组件、不可卸载；7.6.8 在 `C:\\Program Files\\PowerShell\\7`（命令名 `pwsh`），WT 默认 profile 已是 7。① dsh 的 `pwsh` tool 的 exe 由 `dsh-pwsh-local` 的 `resolvePwshPath` 决定，`resolvedPwshPath` **在构造期一次性缓存**（只在 `pwshPath` 配置值变化时重算）⇒ 装/换 PowerShell 后必须**重启 dsh 进程**才生效，profile patch 的 live HMR 无效。三 profile 已钉 `pwshPath: 'C:\\Program Files\\PowerShell\\7\\pwsh.exe'`（web:1344 / desktop:1306 / headless:691）；实测重启后 `pwsh` tool = 7.6.8 / .NET 10.0.13 / `$OutputEncoding=utf-8`，中文经管道给 `findstr` 正常返回（5.1 时代返回空）。② 本机 WDAC 已 Enforced（`CodeIntegrityPolicyEnforcementStatus=2`，8 个 .cip）：**5.1** 跑任何 `.ps1` 都报 \"is not digitally signed\"，`Get-ExecutionPolicy` 显示 RemoteSigned/Unrestricted 是假象，只有 `-ExecutionPolicy Bypass` 能绕；`pwsh -File` 不受影响。③ 当前会话跑在 **desktop** profile（不是 web；3080 未监听）。④ 完整证据链与社区锚点见 reasonix fact `windows-powershell-5.1-vs-7-与-dsh-pwsh-tool`。",
+      "target": "memory",
+      "importance": "normal",
+      "created_at": "2026-10-23T10:12:38.329Z",
+      "updated_at": "2026-10-23T10:15:14.715Z",
+      "origin": {
+        "machine": "12436911-9001-44ad-a259-047c9ba7c8eb",
+        "label": "天阙九泉",
+        "at": "2026-10-23T10:15:14.715Z"
+      }
+    },
+    {
+      "content": "用户规则（2026-10-24）：学习文档/锚点卡完成后直接投递到 Linux 天阙机 `~/桌面/待处理文件夹/{数学,计算机}/`（该目录为 symlink → `/media/OS/linux-home/桌面-待处理文件夹`，NTFS 分区，Windows 侧不可见，只能经 SSH host `tianque` 写入），落位后用 `DISPLAY=:1` xdg-open 在 Linux 端打开（.md 默认 marktext）；不再默认落 Windows 桌面。",
+      "target": "memory",
+      "importance": "critical",
+      "created_at": "2026-10-24T14:36:43.068Z",
+      "updated_at": "2026-10-24T14:36:43.068Z",
+      "origin": {
+        "machine": "12436911-9001-44ad-a259-047c9ba7c8eb",
+        "label": "天阙九泉",
+        "at": "2026-10-24T14:36:43.068Z"
+      }
+    },
+    {
+      "content": "升级 dsh 后，\"插件已安装\"≠\"插件已生效\"。必须对每个插件验证它在真实调用链上产生的副作用（bili 看 nudge/usage 日志、hook 型插件看是否有拦截记录），不能只看版本号对齐、文件存在、dump-config 里有声明。2026-10-26 教训：Linux 升 0.2.1-rc.3 时只核对了装配清单，结果 bili 0 session / 0 nudge，用户发现压缩没工作；Windows 保持 rc.2 一直正常。行为型插件的失败方式是静默的——不报错、不崩溃、只是不干活。",
+      "target": "memory",
+      "importance": "critical",
+      "created_at": "2026-10-25T18:51:52.241Z",
+      "updated_at": "2026-10-25T18:51:52.241Z",
+      "origin": {
+        "machine": "12436911-9001-44ad-a259-047c9ba7c8eb",
+        "label": "天阙九泉",
+        "at": "2026-10-25T18:51:52.241Z"
+      }
+    },
+    {
+      "content": "dsh-reasonix-agent 仓库（2026-10-26 由 reasonix 改名；public / master）既是配置备份镜像，也承载经验库 `kb/`（13 篇，入口 `kb/00-index.md`）。本地检出 `D:\\Desktop\\工具箱\\reasonix-ops\\repo`，该目录已降 Low IL ⇒ agent 可在此直接 commit/push。维护纪律：① 改 repo 只用精确路径 `git add <file>`，**禁用 `git add -A`**（工作树不完整时它等于删除指令，曾误删远端 kb/）；② commit/push 后必须做内容断言 `git show origin/master:<path> | grep -c <记号>`，因为「push 成功」≠「内容还在」。动手前按域查 kb：备份/Git → `kb/08`，Windows 写不进文件与计划任务 → `kb/09`，配置与重启边界 → `kb/02`，方法论 → `kb/01`。",
+      "target": "memory",
+      "importance": "normal",
+      "created_at": "2026-10-25T19:39:54.095Z",
+      "updated_at": "2026-10-25T19:39:54.095Z",
+      "origin": {
+        "machine": "12436911-9001-44ad-a259-047c9ba7c8eb",
+        "label": "天阙九泉",
+        "at": "2026-10-25T19:39:54.095Z"
+      }
+    }
+  ]
+}

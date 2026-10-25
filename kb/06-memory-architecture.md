@@ -219,13 +219,41 @@ dup = {k: v for k, v in by.items() if len(v) > 1}
 
 1. **`if timeout 20 mnemon forget "$id" >/dev/null 2>&1; then` 在 `while read` 循环里 100% 失败**（60/60、106/106 全 rc≠0）；
    改成 `out=$(timeout 20 mnemon forget "$id" 2>&1); rc=$?` 后 102/105 成功。
-   已排除的原因：行尾 ``、文件编码、db 锁、单条耗时（362 ms）。**真因未确证** ⇒ 批量调 CLI 固定用「赋值捕获 + `rc=$?`」这一种写法。
+   已排除的原因：行尾 `
+`、文件编码、db 锁、单条耗时（362 ms）。**真因未确证** ⇒ 批量调 CLI 固定用「赋值捕获 + `rc=$?`」这一种写法。
 2. **`rc=1` 的语义是「已删过」（幂等）**，不是失败。105 条里 3 条 rc=1 正是先前已删的。**判据看 db 计数，不看退出码**（同 08 篇 D2 的原则）。
 
-### 根因（未确证，写在存疑里而不是当结论）
+### ★ 根因（2026-10-26 已确证）：两条写入通路的语义不一致
 
-疑似 `dsh-mnemon-strategy-auto-capture` 把同一会话按轮次切段入库。**只清理不修根因会复发** ——
-下次再出现 51 组同标题时，先确认捕获策略，再决定要不要限制「单会话最多入库 N 段」。
+**不是"数据脏"，是一条路 upsert、另一条路 append。**
+
+| 路径 | 语义 | 结果 |
+|---|---|---|
+| vault（`~/.reasonix/memory/**`）→ `memory-to-mnemon.py` | 按 `name` **upsert**；脚本**主动跳过 `.revisions`**（源码注释：「`.` 开头的目录是修订快照，不是记忆本体」）；自带去重 + `mnemon-sync-state` 增量 | 同一 fact 只有 1 条 |
+| **auto-capture / idle checkpoint review**（`mnemon-strategy-auto-capture` `disabled: false`；`idleReviewMs: 30000`） | **直接写 mnemon，绕过 vault**；每次 idle 检查 append 一条，**不按标题去重** | 同一主题越积越多 |
+
+证据链（可复验）：
+
+1. `discrete-math` 在 vault 里**根本不存在**（`ls ~/.reasonix/memory/global | grep -i discrete-math` 为空）⇒ 这批 insight 不是 vault 同步来的；
+2. vault 有 323 个 md，mnemon 有 337 个唯一标题 —— 数量级吻合，但 mnemon 反而**更多**，差额来自第二条通路；
+3. `profiles/web/cordis.patch.yml:1429` `mnemon-strategy-auto-capture: disabled: false`（无自定义配置）；`:1393` `idleReviewMs: 30000`（30 秒 idle 就跑一次 review）；
+4. oplog 里 `import`（vault 同步）与 auto-capture 的写入是两类记录。
+
+⇒ **推论**：这条通路的产物质量不差（它独立写出的 `git-github-clone-index-pack-failure` 事实准确到"DevSidecar 加头改写流导致 pack 损坏"），
+所以问题不在"要不要它"，而在 **"它没有 name 幂等"**。
+
+### 治标（已落地）
+
+`~/.dsh/storages/tools/mnemon-dedupe.py`：默认只报告，`--apply` 才软删；策略=组内保留最长（并列取最新）；
+判据=**存活条数 == 唯一标题数**；已挂进 `backup-to-github.ps1` §5.5（只报告不删，`-DryRun` 也跑）。
+
+### 治本（三个选项，未执行，需拍板）
+
+| | 做法 | 代价 |
+|---|---|---|
+| ① | `idleReviewMs` 30 s → 300 s（profile patch，HMR 生效，开新 session 即可） | 只降低产生速率，零风险 |
+| ② | `mnemon-strategy-auto-capture: disabled: true` | 彻底不碎片，但丧失"不用手动 memory_remember 也沉淀"的能力 |
+| ③ | 改插件让写入按标题 `replace`，或让 auto-capture 改走 vault（从而享受 upsert） | 治本，但要改插件行为，风险最高 |
 
 ### 与 D 定论的关系
 

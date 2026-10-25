@@ -341,7 +341,14 @@
 - [spawn-vs-常驻-worker-实测](spawn-vs-常驻-worker-实测.md) — 实测冷启动 vs 常驻 worker：pwsh 100 次 spawn=21.7s，合并成一条省 96.4×，换语言只省 26ms；Windows 侧 persistent-shell 被 disabled（bash tool 也是 cold-spawn 24.8ms）
 - [dsh-pwsh-常驻化-p1](dsh-pwsh-常驻化-p1.md) — pwsh 常驻化 P1 已上线验收：PID 相同、状态持久、FullLanguage；677→189ms（-72%，3.59×）；cold 路径有 468ms 是 seam 开销；pwsh 有状态而 bash 无状态
 - [linux-gateway-undici-ipv6-timeout](linux-gateway-undici-ipv6-timeout.md) — Linux dsh/goat-gateway 所有网关失败根因：undici fetch 不回退 IPv4（Happy Eyeballs），修复=node 加 --dns-result-order=ipv4first
-- [github-repo-renamed-dsh-reasonix-agent](github-repo-renamed-dsh-reasonix-agent.md) — GitHub 仓库 reasonix 已改名 dsh-reasonix-agent，并新建 kb/ 工程经验库（13 篇，从 312 fact + PLAN.md 提炼），含推送方式与两条待办
+- [github-repo-renamed-dsh-reasonix-agent](github-repo-renamed-dsh-reasonix-agent.md) — 仓库已改名 dsh-reasonix-agent；D 盘 repo 已降 IL 可直连维护；kb/ 13 篇已上线；GH001 断链已修；含 git add -A 误删的硬教训
+- [windows-low-il-dir-relabel-icacls](windows-low-il-dir-relabel-icacls.md) — Windows 上 agent 写 D 盘的唯一路径：icacls 降 integrity level（含 13992 对象/12.8s 实测与 UAC 姿势）
+- [git-gh001-unpushed-commits-flatten](git-gh001-unpushed-commits-flatten.md) — GitHub GH001 大文件拒绝的完整处置：未推 commit 要压平、排除要双写、判据要查 tree 与体积
+- [git-add-all-deletes-when-worktree-incomplete](git-add-all-deletes-when-worktree-incomplete.md) — 铁律：git add -A 在工作树不完整时等于删除指令；配套的存在性/内容断言与「push 成功≠内容在」判据
+- [dsh-reasonix-agent-kb-index](dsh-reasonix-agent-kb-index.md) — 经验库 kb/ 在 dsh-reasonix-agent 仓库根：13 篇索引、固定结构、维护规约与本地直接维护路径
+- [git-github-clone-index-pack-failure](git-github-clone-index-pack-failure.md) — git clone GitHub 反复失败的根因：DevSidecar 破坏 pack 流；修复=insteadOf 改走 SSH
+- [mnemon-dedupe-by-title-and-cli-batch](mnemon-dedupe-by-title-and-cli-batch.md) — mnemon 记忆库去重实战：按标题分组择优保留（最长优先）+ CLI 批量软删，含两个必踩的写法坑
+- [mnemon-runtime-memory-tool-schema](mnemon-runtime-memory-tool-schema.md) — mnemon_runtime_memory 的正确参数形状（action 枚举 add/replace/remove）与 schema 定位方法，禁用猜测
 ## 归档说明
 - 原文全量备份：`~/.reasonix/memory-backup-20260816/`（59 份）与 `~/.reasonix/memory-backup-20260816-consolidate/`
 - 合并/蒸馏原始件：`~/.reasonix/memory-archive-20260816/`

@@ -21,6 +21,41 @@
 
 ## 进行中
 
+### ★ 已落地：GitHub 仓库改名 + kb 经验库 + 备份线 GH001 修复 + D 盘降 IL（2026-10-26）
+
+      **用户诉求**：「这几周我开了很多对话，有很多经验，你整理一下，放到 GitHub 的 reasonix 仓库去，顺便改个名字。」
+      **① 改名**：`TianQue6916/reasonix` → **`dsh-reasonix-agent`**（public / master）。旧 HTTPS 301、旧 SSH 仍 redirect
+        （实测 `ls-remote` 通）；description + 8 个 topics 已写。改名后 `$RepoUrl` 与本地 `origin` 均已同步。
+      **② 经验库**：仓库根 `kb/` 13 篇 + README（184 KB）。素材 = 312 条 memory fact + PLAN.md（1473 行）；
+        每篇 `D 定论 / M 机制 / J 判据 / X 反例 / R 复现 / S 溯源(fact 文件名) / 存疑`；8 篇由 subagent 并行提炼，
+        各自做了现场只读核对，暴露出 40+ 条跨 fact 矛盾（全部落 `存疑`，未抹平）。
+        00 索引给三条阅读路径（新 agent 上岗 / 出故障 / 要动手改）。
+      **③ 备份线修复**：10-25 23:33 起 push 被 **GH001（文件过大）** 拒 —— `f3fe6ba` 把
+        `sensevoice-onnx/model.int8.onnx`（**228.2 MB**）纳入跟踪 ⇒ 其后 3 个 commit 全推不上去，**静默断 3 天**。
+        修法：`git reset --mixed origin/master` 压平 3 个未推 commit → `*.onnx`/`*.tar.zst` 双写
+        `.gitignore` + 脚本 `$XF` → 另移出 50.9 MB `dsh/.backup/*.tar.zst`。回滚点 tag `bak-pre-gh001-fix`(ece7a51)。
+      **④ D 盘降 IL**：用户授权后走 UAC 执行 `icacls <repo> /setintegritylevel (OI)(CI)Low /T /C /Q`，
+        **13992 对象 / 12.8 s / rc=0**，之后 agent 可直接 `commit`/`push` 该 repo（此前 `.git/config` 恒定 Permission denied）。
+      **⑤ 验收**：`-DryRun` 全流程通过（7 target 同步 → 待处理 44 → 脱敏扫 2880/改写 26 → 字节级全扫通过 →
+        兜底无残留 → 将提交 26 个文件 → 未提交未推送）。远端 HEAD = 本地 = `007b388`，`kb/*.md`=13，>100 MB 文件 0。
+      **⑥ 教训（写进 kb/08 X-new）**：**`git add -A` 的语义是"让 index 等于工作树"** —— 工作树不完整时（API 直推 /
+        稀疏检出）它同时是删除指令。本轮实测代价：`0550a7e` 把 API 直推的 `kb/` 与 README 记成删除，远端归零，
+        靠 C 盘工作副本恢复（`007b388`）。⇒ 工作树可能不完整时只用精确路径 `git add <path>` + **commit 前做存在性断言**；
+        且 **"push 成功"≠"内容还在"，校验必须查 tree 而不是退出码**。
+      **⑦ 第二次自伤（同日晚些，已修 9bc9b37）**：把 README / kb/08 / kb/09 的更新改完后，`commit` 报成功、`push` 也报
+        `007b388..9bc9b37`，但 `git show HEAD:kb/08-backup-and-git.md | grep -c "2026-10-26 更新"` = **0** ——
+        内容根本没进那个 commit（staged 断言只数了文件个数 `kb/` = 13，没验内容）。
+        ⇒ **判据升级：commit/push 后必须对每个关键文件做内容断言**（`git show <ref>:<path> | grep -c <记号>`），
+        文件个数断言只能证明"文件在"，不能证明"内容新"。两类断言都得做。
+      **⑧ 记忆插件整理（同日晚，B 方案）**：mnemon 库 441 条存活里有 **51 组同标题、158 条（36%）** 同源碎片
+        （`discrete-math ×22` / `advanced-math ×18` 等），recall 每次只给 6 个结果位 ⇒ 结果位被同组碎片吃满。
+        关键判据：**完全同内容 = 0**，所以不能靠 md5 去重；改成「按 content 首行标题分组，组内保留最长（并列取 updated_at 最新）」，
+        其余 `mnemon forget` **软删**（只写 `deleted_at`，可回滚）。结果 **441 → 335，唯一标题 335，重复组 0**；
+        `recall "离散数学 Chernoff Bound"` 从 22 条碎片变成只回 1 条完整版。
+        批量坑：`if <cli> >/dev/null 2>&1; then` 在 while-read 里 100% 失败（改 `out=$(...); rc=$?` 后 102/105 成功，真因未确证）；
+        **rc=1 = 已删过（幂等），判据看 db 不看退出码**。清单留档 `~/.dsh/logs/mnemon-dedupe-20261026.json`。
+        根因疑似 auto-capture 把同一会话按轮次切段入库（未确证）⇒ 不修根因会复发。
+
 ### ★ 已落地：实现语言策略定论 = 方案 A 分层混合（2026-10-26）
       **用户诉求**：「能否要求 agent 写的绝大多数处理的东西由 C 写而不是 Python？想要稳定和效率，注意社区经验，看看大家都是怎么做的。」
       **结论**：不能「绝大多数 C」，要**分层** —— Python = control plane（编排 / 胶水 / 短命工具），C/Rust 只在过门槛时进 data plane。用户在三选项里拍板 **A**（不选 B = 全 PyO3 核心库，不选 C = 全 C + 独立 exe）。

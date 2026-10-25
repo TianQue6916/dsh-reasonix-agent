@@ -569,6 +569,11 @@
 "m": 1790733009235679300,
 "s": 2731
 },
+"global/dsh-reasonix-agent-kb-index.md": {
+"h": "17a840f3223b559ffb975a002638f7e5261be0c5c663dfffc2d97631c35976e3",
+"m": 1792957035240906100,
+"s": 3358
+},
 "global/dsh-replay-installed-for-gap5-20260928.md": {
 "h": "d425881cd5838431ddbdb1604d4ea1512cacd7c2f651ec8b73ad693d3c98adc9",
 "m": 1790527589060178600,
@@ -739,6 +744,21 @@
 "m": 1790530353105636500,
 "s": 5483
 },
+"global/git-add-all-deletes-when-worktree-incomplete.md": {
+"h": "45d8653563cbb1de3722a3964ddf008b5c745fb5611719a2a12e1a72959e3860",
+"m": 1792957034840515900,
+"s": 2194
+},
+"global/git-gh001-unpushed-commits-flatten.md": {
+"h": "c4f80190ac931e3a5e49eb1fb1423acc094b332c076ed4efd50c802fb3d02da6",
+"m": 1792957017316213100,
+"s": 2822
+},
+"global/git-github-clone-index-pack-failure.md": {
+"h": "8a93b77430c3ccacde6d52a9b2c3703db4031e0f123b634f064703230ffec5f6",
+"m": 1792957385143453100,
+"s": 2118
+},
 "global/gitbash-schtasks-arg-conversion.md": {
 "h": "ad47f2321d6b1ef98cbaa00e57b888371258c93d71937c1b7b3c1d983f55a9b2",
 "m": 1790567445886759700,
@@ -765,9 +785,9 @@
 "s": 4174
 },
 "global/github-repo-renamed-dsh-reasonix-agent.md": {
-"h": "722f9dc0f2c3a8b684d840ca0d193d7c063ef9ef908084e0e27a2f6ffcc751db",
-"m": 1792955480555252000,
-"s": 3337
+"h": "f88d21597a6100e55150f71882d840be806dde022b0882488015cc4a00c040b8",
+"m": 1792956712842775500,
+"s": 3384
 },
 "global/github-加速体系与镜像自动选优-20260927.md": {
 "h": "8b4dad731f0f40d2e56535f01323d6f69e3af6e2f66292cfab02d7347ab254f7",
@@ -949,6 +969,11 @@
 "m": 1790530235704144700,
 "s": 3061
 },
+"global/mnemon-dedupe-by-title-and-cli-batch.md": {
+"h": "8b3c93bb4f67864f6e3e8872ff4a389f281719ff0496f29676e572058da5440d",
+"m": 1792957553540119100,
+"s": 2822
+},
 "global/mnemon-four-graph-store-verified-20260928.md": {
 "h": "3b8249a70750f7043d08766abcffb56f4fcd01809cb1f3634e8bdb5bcb265a8b",
 "m": 1790526368695687000,
@@ -963,6 +988,11 @@
 "h": "110778bd0e5d470c9f1c3ff3481b6fa1d6f1a328ff99113449cf0cc411d93a29",
 "m": 1791086533492452600,
 "s": 3429
+},
+"global/mnemon-runtime-memory-tool-schema.md": {
+"h": "76b6ee851f63ced17519c13d770674bbab4e7e2588223c6634f8a60c696fc885",
+"m": 1792957553943018400,
+"s": 1846
 },
 "global/mnemon-subagent-self-test-and-verification-result.md": {
 "h": "396c6717b714ebbf0dc8641bd08d96d9e764379fdc30f8e961e280bfdbec88ff",
@@ -1308,6 +1338,11 @@
 "h": "407a09d758058057d8f033c793789cf46bd9d24add830a5ee689b65e774b42f6",
 "m": 1789886750525614300,
 "s": 3630
+},
+"global/windows-low-il-dir-relabel-icacls.md": {
+"h": "e2f6a126eeeaa9680fa8ab3cceb5cb88a05d9688a0b201aedd1baaa86e577563",
+"m": 1792957016897543700,
+"s": 2345
 },
 "global/windows-main-machine-full.md": {
 "h": "8463fafd420df2503c12ae4d23b8c6dcc9d3dff49630e08679270554350424c1",

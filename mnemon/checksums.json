@@ -4,7 +4,7 @@
     "payload/runtime/memories.json": "e45d73cee7332cc295e8a1c452ea6b16cc3f081f027b8965fb66a2770deae049",
     "payload/runtime/USER.md": "e571fb5242179e5c7ed79ca427e1db6c6d8a24859532ccf9815e919ad3a3a411",
     "payload/runtime/MEMORY.md": "2938c5da69e14530ea7694744af074188f0ffac2ed20a21cd8f450a1418c9ecc",
-    "payload/documents/index.json": "92a4e46b1bd9c17edf0570b807548f2df7cc5cdf4bb3af54fbf4c6d8f2256a05",
+    "payload/documents/index.json": "088ef527f8f324df38733b5b9c884f0bb9fc766e2dd6825f7b8ff9340c43d40f",
     "payload/documents/archived/fixture-subagent-catalog-verification-ec8de1b8.md": "f75a9d741f7923a015a91131b904385e86c10fea71f4152ff5440d9dafd4a47b",
     "payload/documents/active/dsh-mnemon-subagent-catalog-persona-goat-gateway-fa611c46.md": "1dabe7a267360de79dbb2f5c977c201bbb7ba7621999cdc46c5e5f2d41daf5aa",
     "payload/documents/active/wechat-bot-reasonix-dsh-wechat-bridge-autostart-c680d4e6.md": "8479c16f4a39082d66a278bda1a8f36c427fae92f9ac413afc81ec9ab8f3d95b",
@@ -176,9 +176,14 @@
     "payload/documents/active/dsh-reasonix-dsh-reasonix-agent-kb-13-2026-10-26-fd45c9c9.md": "d56a571f82d48109e854c8535aa848bdc3c6b7abdf97ebe873353c5a17216d4b",
     "payload/documents/active/linux-dsh-0-2-1-rc-2-native-install-scripts-tmp--2d8ce3ca.md": "73833aeb692faab7cb390d4e644f61d035dcd1fdd55cf676c0d2955903cdad04",
     "payload/documents/active/github-git-clone-invalid-index-pack-output-devsi-d2e14e8f.md": "24499ef63c4e27827aa70e99ef6a0d0d76b47581ea82b6d55d2bbbcc8c04a456",
-    "payload/data/.dsh-memory-bodies.json": "0c2d88bc3be0ba4e6019e7964e42e089e9aeaac57e99274c0d0872f423e79aba",
+    "payload/documents/active/dsh-sync-dsh-py-cron-paramiko-2026-10-26-e5bf259a.md": "75b969c2d16b10b7329a5e484c73f36e10ede20eadf5e498fe6e5c8a379b4a7b",
+    "payload/documents/active/dsh-sync-dsh-py-plan-md-peers-2026-10-26-1a58f1a4.md": "596edcc033943720487f44fb920ccc910c684a770e5d678bd87f48889f2eb2c5",
+    "payload/documents/active/parsecvdd-0-45-drivererror-0-41-parsecvdd-watchd-a997109d.md": "798825fc7cede1eb9b34b3a6265684e3b1a654a49380fe676294094986e5bbf2",
+    "payload/documents/active/dsh-git-2026-10-26-46fe5f9c.md": "6e20f72c70395c0d243cc846eb9c76fd6da9612bab4fc21c62a43196a5001cfc",
+    "payload/documents/active/parsecvdd-low-integrity-electron-no-sandbox-2026-98942c3e.md": "4055a0c566cee9c093d24c7eef6c3d09664f77800ab1a868308804b5b1511ffc",
+    "payload/data/.dsh-memory-bodies.json": "13094bff6be39e78e6ecb2efd31a663af276ae298a18ce8c0a82e31a861f5961",
     "payload/data/075ef288-191a-4ac6-beee-b7ba1bc258c8/mnemon.db": "b1357bdee98362d1080a4408bfb1d3a9b8e2287472363d6fcd3fe243e040a981",
-    "payload/data/3a42565d-e42c-48ce-a12c-54fa52f6c151/mnemon.db": "013beb3565fdcb50c3020a8b8147c091717389bdcae05e58b82d9c3295b85862",
-    "payload/data/default/mnemon.db": "62c61fcd6ffc833e30b07a239b15a6db0643c5bb04aeda4ddca968e69068c0d7"
+    "payload/data/6b85637e-c16b-4bc0-a858-9a58e0e88a6a/mnemon.db": "62c61fcd6ffc833e30b07a239b15a6db0643c5bb04aeda4ddca968e69068c0d7",
+    "payload/data/default/mnemon.db": "f54fd87aa0dfddc87c4566e3ab0dec8d81bf453b3c42f60e90e137f54518f209"
   }
 }

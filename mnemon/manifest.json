@@ -2,7 +2,7 @@
   "format": "mnemonpack",
   "version": 1,
   "scope": "full",
-  "exportedAt": "2026-10-25T22:46:00.785Z",
+  "exportedAt": "2026-10-26T00:19:35.034Z",
   "source": {
     "plugin": "dsh-mnemon",
     "pluginVersion": "0.5.34"
@@ -36,11 +36,11 @@
     "channel": "git",
     "branch": "mnemon-sync",
     "subdir": "mnemon/",
-    "pushedAt": "2026-10-25T22:46:00.785Z",
+    "pushedAt": "2026-10-26T00:19:35.034Z",
     "machine": {
-      "id": "12436911-9001-44ad-a259-047c9ba7c8eb",
-      "label": "天阙九泉",
-      "createdAt": "2026-10-25T18:12:58.343Z"
+      "id": "428198a5-1f7d-4041-b26a-c66b6cd3139e",
+      "label": "TianQue",
+      "createdAt": "2026-10-25T18:10:41.290Z"
     },
     "tombstones": []
   }

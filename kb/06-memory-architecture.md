@@ -268,17 +268,21 @@ mnemon 的数据模型：更新 = **新记录 + 旧记录软删（`deleted_at`�
 
 1. **Windows 上 python `subprocess` 调 `mnemon` 会 `FileNotFoundError`** —— 它是 npm 的**无扩展名 bash shim**，`CreateProcess` 执行不了。必须 `shutil.which("mnemon.cmd")`。
 2. **`if <cmd> >/dev/null 2>&1; then` 在 `while read` 循环里 100% 失败**（60/60、106/106 全 rc≠0），改 `out=$(cmd 2>&1); rc=$?` 后 102/105 成功（真因未确证）。
-3. **用 python 改 CRLF 的 `.ps1` 时，`'?
+3. **用 python 改 CRLF 的 `.ps1` 时，`'
+?
 '` 会被 python 解释成真实控制字符**，写进去后 PowerShell 正则被切成多行 ——
    **语法校验仍能过**（Parser 只看语法），但语义已坏。⇒ 改 PowerShell 正则必须用 raw string / `chr(92)`，且改完**看 `repr()` 而不是只跑 Parser**。
 
 ### 治本（三个选项，未执行，需拍板）
 
-| | 做法 | 代价 |
+| | 做法 | 状态 |
 |---|---|---|
-| ① | `idleReviewMs` 30 s → 300 s（profile patch，HMR 生效，开新 session 即可） | 只降低产生速率，零风险 |
-| ② | `mnemon-strategy-auto-capture: disabled: true` | 彻底不碎片，但丧失"不用手动 memory_remember 也沉淀"的能力 |
-| ③ | 改插件让写入按标题 `replace`，或让 auto-capture 改走 vault（从而享受 upsert） | 治本，但要改插件行为，风险最高 |
+| ① | `idleReviewMs` 30 s → **300 s**（profile patch，`patchReload: live` ⇒ 开新 session 生效，无需重启） | **✅ 2026-10-26 已执行**（web + desktop；headless 无 mnemon）。验证：`dsh --profile web --dump-config \| grep idleReviewMs` → `idleReviewMs: 300000`。原因注释已写进 yml 并指向本篇 |
+| ② | `mnemon-strategy-auto-capture: disabled: true` | 未采纳 —— 它独立写出的 insight 质量不差，问题在缺幂等，不在"该不该写" |
+| ③ | 给 `memory-to-mnemon.py` 补一步「import 成功后软删同标题旧条」 | **未执行（最彻底）**。做完碎片从根上不再产生，每夜收口退化为纯保险。改的是本地脚本不是插件，风险可控 |
+
+**净效果**：产生速率降 10×（①）+ 每夜自动收口兜底（治标）= 碎片不会再见长；
+唯一残留是"vault 里同一 fact 更新一次仍会多一条直到当晚收口"，根治要等 ③。
 
 ### 与 D 定论的关系
 

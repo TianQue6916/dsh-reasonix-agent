@@ -2607,7 +2607,7 @@
       ],
       "createdAt": "2026-10-22T14:46:56.436Z",
       "updatedAt": "2026-10-22T14:46:56.436Z",
-      "lastAccessedAt": "2026-10-26T14:08:14.272Z",
+      "lastAccessedAt": "2026-10-26T15:23:20.697Z",
       "revision": 1,
       "contentHash": "2f5eb6debdf49dcaeecf95cbab73a189df2482da84a8318816fe6bb56ac55e67",
       "sizeBytes": 9172,
@@ -3770,7 +3770,7 @@
       ],
       "createdAt": "2026-10-25T18:43:45.319Z",
       "updatedAt": "2026-10-25T18:43:45.319Z",
-      "lastAccessedAt": "2026-10-26T14:08:14.272Z",
+      "lastAccessedAt": "2026-10-26T15:23:20.697Z",
       "revision": 1,
       "contentHash": "256c13c830fb0dd5c6c3d1bd01d8454955e78f66f738847d2728ccc9a7c0b9b8",
       "sizeBytes": 6951,
@@ -3863,7 +3863,7 @@
       ],
       "createdAt": "2026-10-25T19:44:29.737Z",
       "updatedAt": "2026-10-25T19:44:29.737Z",
-      "lastAccessedAt": "2026-10-25T19:44:29.737Z",
+      "lastAccessedAt": "2026-10-26T15:23:20.697Z",
       "revision": 1,
       "contentHash": "fcec48427535a4ff62d017d2e9a4eb9f3ba0c0604979dfc5a71ed3bc104049ad",
       "sizeBytes": 5370,
@@ -3965,7 +3965,7 @@
       ],
       "createdAt": "2026-10-26T14:08:45.061Z",
       "updatedAt": "2026-10-26T14:08:45.061Z",
-      "lastAccessedAt": "2026-10-26T14:08:45.061Z",
+      "lastAccessedAt": "2026-10-26T15:23:20.697Z",
       "revision": 1,
       "contentHash": "9dd477961c457fa702cc3a3260eaeddb2018077f675785a65b27324df3e57370",
       "sizeBytes": 8742,
@@ -3991,6 +3991,27 @@
       "revision": 1,
       "contentHash": "f6a274a73d0b011f7ee7ea9d1cf48660a5d93aa1b2d69419155f80c7695196c4",
       "sizeBytes": 6876,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "8a3b2174-3c30-4f0b-813a-10982866cba4",
+      "title": "弱网下按需拉取 GitHub 大仓库：SSH 长流断点、partial clone + sparse-checkout 逐目录实测可行路径（2026-10-26）",
+      "description": "在既有代理头根因之上再进一步：SSH 握手/小包全通但 ~100 MB 连续流必断，git fetch <blobsha> 在 partial clone 下被服务端拒绝，可行方案是 --filter=blob:none + sparse-checkout add 逐目录累加；含三条路径对照表、可复现命令与两个操作坑（set 是替换、timeout 杀 checkout 留 index.lock）。",
+      "status": "active",
+      "filename": "github-ssh-partial-clone-sparse-checkout-2026-10-8a3b2174.md",
+      "relativePath": "documents/active/github-ssh-partial-clone-sparse-checkout-2026-10-8a3b2174.md",
+      "sourcePaths": [
+        ".dsh/PLAN.md"
+      ],
+      "sessionIds": [
+        "d1ab4d48-c826-4981-b883-3f4c22e1e5cb"
+      ],
+      "createdAt": "2026-10-26T15:23:37.161Z",
+      "updatedAt": "2026-10-26T15:23:37.161Z",
+      "lastAccessedAt": "2026-10-26T15:23:37.161Z",
+      "revision": 1,
+      "contentHash": "74863e83a5f41e836dc4a75abe929e435d25dc7cb180d1d43af188b0727e48db",
+      "sizeBytes": 5380,
       "memoryBodyIds": []
     }
   ]

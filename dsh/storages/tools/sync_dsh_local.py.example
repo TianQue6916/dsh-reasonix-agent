@@ -1,0 +1,17 @@
+# sync_dsh_local.py —— 本机覆盖（各机自维护，不进同步）
+#
+# 用法：复制成 sync_dsh_local.py，改你需要的那几行。它会在主脚本 main() 之前被加载。
+#
+# import os, sys
+# _here = os.path.dirname(os.path.abspath(__file__))
+# sys.path.insert(0, _here)
+# import sync_dsh as S
+#
+# # 只在本机存在的运行时文件：加进来就不再跨机比对
+# S.R.EXCLUDE_FILES |= {'my-machine-state.json', '.idea'}
+#
+# # 只在本机存在的目录
+# S.R.EXCLUDE_DIRS |= {'my-local-cache'}
+#
+# # 本机额外想镜像的东西（可选）
+# # S.PEER_MIRRORS.append(('other', 'C:/other/path', os.path.expanduser('~/peers/other/x')))

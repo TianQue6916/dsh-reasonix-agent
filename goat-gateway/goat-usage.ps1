@@ -51,6 +51,13 @@ function Get-Usage([string]$bearer) {
     $body = if ($null -ne $sub.data) { $sub.data } else { $sub }
     if ($body.currentPeriodEnd) { $monthReset = [DateTimeOffset]::Parse([string]$body.currentPeriodEnd).ToUnixTimeMilliseconds() }
   } catch {}
+  # 2026-10-29 新增：计费周期起点（summary.periodStart，ISO 字符串）。
+  # 与 monthReset（= subscriptions.currentPeriodEnd）配对，让 UI 能算
+  # 「周期已过 N 天 / 日均消耗 / 剩余 credits 还能撑几天」。拿不到就置 $null，由消费方降级。
+  $periodStartMs = $null
+  if ($summary.periodStart) {
+    try { $periodStartMs = [DateTimeOffset]::Parse([string]$summary.periodStart).ToUnixTimeMilliseconds() } catch {}
+  }
   [pscustomobject]@{
     fiveHour  = $credits.windowLimits.fiveHour
     weekly    = $credits.windowLimits.weekly
@@ -60,6 +67,16 @@ function Get-Usage([string]$bearer) {
     monthReset = $monthReset
     requests  = $summary.totalCount
     tokens    = $summary.totalTokens
+    # 2026-10-29 新增用量字段。官方 usage/summary 的 daily 恒为空数组
+    # （?days= / ?groupBy= / ?period= / ?include= 四种参数实测均不生效），
+    # 所以「按天」粒度只能由消费方拿 periodStart 自己推算，后端只给周期总量。
+    tokensIn    = $summary.totalTokensIn
+    tokensOut   = $summary.totalTokensOut
+    failedCount = $summary.failedCount
+    successRate = $summary.successRate
+    avgCost     = $summary.averageCost
+    periodStart = $periodStartMs
+    periodEnd   = $monthReset
     exceeded  = $credits.windowLimits.exceeded
   }
 }
@@ -135,6 +152,8 @@ function Render {
           weeklyUsed = $null; weeklyCap = $null; weeklyReset = $null; weeklyExceeded = $null
           monthUsed = $null; monthLeft = $null; monthCap = $null; monthReset = $null
           requests = $null; tokens = $null
+          tokensIn = $null; tokensOut = $null; failedCount = $null; successRate = $null; avgCost = $null
+          periodStart = $null; periodEnd = $null
           fetchedAt = (Get-Date).ToString('s')
         }
         continue
@@ -146,6 +165,9 @@ function Render {
         weeklyUsed = $u.weekly.used; weeklyCap = $u.weekly.cap; weeklyReset = $u.weekly.resetAt; weeklyExceeded = $u.weekly.exceeded
         monthUsed = $u.monthUsed; monthLeft = $u.monthLeft; monthCap = $u.monthCap; monthReset = $u.monthReset
         requests = $u.requests; tokens = $u.tokens
+        tokensIn = $u.tokensIn; tokensOut = $u.tokensOut
+        failedCount = $u.failedCount; successRate = $u.successRate; avgCost = $u.avgCost
+        periodStart = $u.periodStart; periodEnd = $u.periodEnd
         fetchedAt = (Get-Date).ToString('s')
       }
     } catch {
@@ -199,7 +221,19 @@ try {
       if ($w.ex) { $line += '  [已超限]' }
       $out += $line
     }
-    $out += ('  本周期合计 {0} 次请求 / {1:N0} tokens' -f $r.requests, $r.tokens)
+    $out += ('  本周期合计 {0} 次请求 / {1:N0} tokens（入 {2:N0} · 出 {3:N0}）' -f $r.requests, $r.tokens, $r.tokensIn, $r.tokensOut)
+    $extra = ('  平均 {0:N4} credits/请求' -f $(if ($r.requests -gt 0) { $r.monthUsed / $r.requests } else { 0 }))
+    if ($null -ne $r.successRate) { $extra += ('  ·  成功 {0}%' -f $r.successRate) }
+    if ($null -ne $r.failedCount -and $r.failedCount -gt 0) { $extra += ('  ·  失败 {0}' -f $r.failedCount) }
+    if ($r.periodStart -and $r.periodEnd) {
+      $spanDays = ([DateTimeOffset]::FromUnixTimeMilliseconds([int64]$r.periodEnd) - [DateTimeOffset]::FromUnixTimeMilliseconds([int64]$r.periodStart)).TotalDays
+      $goneDays = ([DateTimeOffset]::Now - [DateTimeOffset]::FromUnixTimeMilliseconds([int64]$r.periodStart)).TotalDays
+      if ($spanDays -gt 0 -and $goneDays -gt 0) {
+        $perDay = $r.monthUsed / $goneDays
+        $extra += ('  ·  日均 {0:N2} cr（周期已过 {1:N1}/{2:N1} 天，剩 {3:N1} 天）' -f $perDay, $goneDays, $spanDays, ($spanDays - $goneDays))
+      }
+    }
+    $out += $extra
   }
   $out
 }

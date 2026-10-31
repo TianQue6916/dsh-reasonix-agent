@@ -1,0 +1,11 @@
+{
+  "id": "subagent-sub-2-202606301608",
+  "created_at": "2026-07-31T11:07:57.4593715Z",
+  "updated_at": "2026-07-31T11:07:57.4593715Z",
+  "scope": "global",
+  "topic_id": "legacy_subagent-sub-2-202606301608_e070148d3e69",
+  "topic_title": "Verify these speci…",
+  "schema_version": 1,
+  "turns": 1,
+  "preview": "Verify these specific claims:\n\n1. CSAPP 3rd edition TINY Web server (Chapter …"
+}

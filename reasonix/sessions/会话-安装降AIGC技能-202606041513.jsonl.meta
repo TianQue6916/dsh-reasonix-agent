@@ -1,0 +1,11 @@
+{
+  "id": "会话-安装降AIGC技能-202606041513",
+  "created_at": "2026-07-31T11:07:58.7196159Z",
+  "updated_at": "2026-07-31T11:07:58.7196159Z",
+  "scope": "global",
+  "topic_id": "legacy_会话-安装降AIGC技能-202606041513_c902e787f4a1",
+  "topic_title": "根据你的要求，以下是能降低AI率的S…",
+  "schema_version": 1,
+  "turns": 2,
+  "preview": "根据你的要求，以下是能降低AI率的Skill名称和地址：\n\n1. unslop\n地址：https://github.com/mshumer/unslop …"
+}

@@ -32,3 +32,4 @@
 {"at":"2026-10-04T06:11:25.200Z","level":"warn","event":"update-blocked","detail":"dsh-context: refused while agents are running — session-a0d5fbf8-0fb1-419e-9baf-d95df0190144"}
 {"at":"2026-10-04T06:11:25.247Z","level":"warn","event":"update-blocked","detail":"dsh-mnemon: refused while agents are running — session-a0d5fbf8-0fb1-419e-9baf-d95df0190144"}
 {"at":"2026-10-04T06:11:25.311Z","level":"warn","event":"update-blocked","detail":"dsh-quick-toc: refused while agents are running — session-a0d5fbf8-0fb1-419e-9baf-d95df0190144"}
+{"at":"2026-10-29T09:53:07.295Z","level":"warn","event":"update-blocked","detail":"dsh-mnemon: refused while agents are running — session-c8345280-6a33-4307-aa01-33c259e43651, session-54304a52-0140-471f-b7d0-908501961928"}

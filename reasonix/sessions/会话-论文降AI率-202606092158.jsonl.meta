@@ -1,0 +1,11 @@
+{
+  "id": "会话-论文降AI率-202606092158",
+  "created_at": "2026-07-31T11:07:58.9600722Z",
+  "updated_at": "2026-07-31T11:07:58.9600722Z",
+  "scope": "global",
+  "topic_id": "legacy_会话-论文降AI率-202606092158_57803361ccae",
+  "topic_title": "你已经在 R 环境里成功安装了 `b…",
+  "schema_version": 1,
+  "turns": 6,
+  "preview": "你已经在 R 环境里成功安装了 `bibliometrix`，接下来只需要两行代码就能启动它的图形界面。\n\n### 🚀 启动步骤（在 R 或 RStudi…"
+}

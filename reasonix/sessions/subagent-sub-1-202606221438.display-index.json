@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "revision": 0,
+  "revision_known": false,
+  "content_digest": "980e39dc437be14b54be1744cb4914e83fa7446435d3e8df7fb6fb997dd7fe15",
+  "transcript_size": 1301,
+  "message_count": 1,
+  "authored_turns": 1,
+  "entries": [
+    {
+      "index": 0,
+      "offset": 0,
+      "length": 1301,
+      "role": "user",
+      "authored_turn": 1,
+      "starts_turn": true
+    }
+  ],
+  "updated_at": "2026-08-09T18:46:27.632257465Z"
+}

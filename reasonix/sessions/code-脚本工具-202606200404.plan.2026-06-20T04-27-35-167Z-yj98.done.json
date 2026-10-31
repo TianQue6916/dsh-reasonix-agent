@@ -1,0 +1,59 @@
+{
+  "version": 2,
+  "steps": [
+    {
+      "id": "step-1",
+      "title": "创建 OCR 工作脚本",
+      "action": "写 _ocr_worker.py，接收图片路径 + 输出 JSON 结果路径，调用 surya OCR 识别文字"
+    },
+    {
+      "id": "step-2",
+      "title": "创建主控脚本",
+      "action": "写 ocr_then_translate.py：渲染PDF→调用OCR→生成可搜索PDF→调用pdf2zh翻译"
+    },
+    {
+      "id": "step-3",
+      "title": "创建拖拽批处理",
+      "action": "写 PDF翻译-扫描件OCR翻译.bat，直接把 PDF 拖上去一步完成"
+    },
+    {
+      "id": "step-4",
+      "title": "验证",
+      "action": "确认三个文件都在 D:\\Toolbox\\PDFMathTranslate\\ 目录下，名字清晰可辨"
+    }
+  ],
+  "completedStepIds": [
+    "step-1",
+    "step-2",
+    "step-3",
+    "step-4"
+  ],
+  "updatedAt": "2026-06-20T04:27:35.166Z",
+  "stepCompletions": {
+    "step-1": {
+      "kind": "step_completed",
+      "stepId": "step-1",
+      "result": "创建了 _ocr_worker.py，用 marker_ocr 环境的 surya OCR 识别图片文字，输出 JSON",
+      "title": "创建 OCR 工作脚本"
+    },
+    "step-2": {
+      "kind": "step_completed",
+      "stepId": "step-2",
+      "result": "创建了 ocr_then_translate.py - 一站式：渲染PDF→OCR→合成可搜索PDF→pdf2zh翻译",
+      "title": "创建主控脚本"
+    },
+    "step-3": {
+      "kind": "step_completed",
+      "stepId": "step-3",
+      "result": "创建了 PDF翻译-扫描件OCR翻译.bat - 拖拽即可一键 OCR + 翻译",
+      "title": "创建拖拽批处理"
+    },
+    "step-4": {
+      "kind": "step_completed",
+      "stepId": "step-4",
+      "result": "所有文件已确认在 D:\\Toolbox\\PDFMathTranslate\\ 目录下",
+      "title": "验证"
+    }
+  },
+  "body": "在 D:\\Toolbox\\PDFMathTranslate\\ 中创建扫描 PDF 的一站式 OCR + 翻译工具，**不下载任何新东西**，只用你现有的：\n\n1. **marker_ocr 环境**（Surya OCR）— 识别图片中的文字\n2. **PDFMathTranslate 环境**（PyMuPDF + pdf2zh）— 创建可搜索 PDF + 翻译\n\n工作流：拖拽扫描PDF → OCR识别文字 → 生成带文字层的可搜索PDF → 自动翻译\n\n创建3个文件：\n- `_ocr_worker.py` — 调用 marker_ocr 环境做 OCR 识别\n- `ocr_then_translate.py` — 主控脚本（渲染图片、合并文字层、调用翻译）\n- `PDF翻译-扫描件OCR翻译.bat` — 拖拽入口"
+}

@@ -1,0 +1,11 @@
+{
+  "id": "subagent-sub-1-202606161608",
+  "created_at": "2026-07-31T11:07:57.2602915Z",
+  "updated_at": "2026-07-31T11:07:57.2602915Z",
+  "scope": "global",
+  "topic_id": "legacy_subagent-sub-1-202606161608_bfd505c6e4fb",
+  "topic_title": "Find and read the …",
+  "schema_version": 1,
+  "turns": 1,
+  "preview": "Find and read the core logic of how deterministic replacement works in the ai…"
+}

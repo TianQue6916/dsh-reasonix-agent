@@ -1,0 +1,11 @@
+{
+  "id": "subagent-sub-1-202606111417",
+  "created_at": "2026-07-31T11:07:57.2205791Z",
+  "updated_at": "2026-07-31T11:07:57.2205791Z",
+  "scope": "global",
+  "topic_id": "legacy_subagent-sub-1-202606111417_c7351844f2ac",
+  "topic_title": "Research the best …",
+  "schema_version": 1,
+  "turns": 1,
+  "preview": "Research the best open-source OCR/PDF extraction tools for scanned math textb…"
+}

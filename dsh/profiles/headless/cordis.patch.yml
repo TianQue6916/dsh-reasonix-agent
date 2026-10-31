@@ -45,7 +45,7 @@
     - id: tool-bootstrap
       name: ../../.agent-presets/anchored-standard/tool-bootstrap.mjs
       config:
-        bootstrapTools: [ pwsh, str_replace_editor, mcp__goatquota__goat_quota ]
+        bootstrapTools: [ pwsh, bash, str_replace_editor, mcp__goatquota__goat_quota ]
         promoteOn: either
         compactionTools: [ read, write, edit, glob, grep, todo_write, ask_user_question ]
 
@@ -84,6 +84,15 @@
     # ── local git context（2026-09-28）────────────────────────────────────────
     # headless 这条线**没有挂 context-gate**，所以注入在第一轮就可见 ——
     # 这也让它成为验证 git-context.mjs 是否真的生效的最短路径。
+    # ── Windows 的 bash 工具（2026-11-01 加）───────────────────────────────
+    # 之前 headless 只有内置 pwsh，任务里写「用 bash」时 agent 只能拒绝或绕。
+    # 顺带一个好处：这是验证 custom-bash.mjs 分级超时是否生效的最短路径 ——
+    # dsh headless 一次性起会话，跑完就退出，日志里能直接看到 limitMs。
+    - id: custom-bash
+      name: ../../.agent-presets/anchored-standard/custom-bash.mjs
+      disabled: !!js process.platform !== 'win32'
+      config:
+        timeoutMs: 300000
     - id: git-context
       name: ../../.agent-presets/anchored-standard/git-context.mjs
       config:
@@ -703,3 +712,24 @@
     maxResults: 74
     deepseekSearchCount: 50
     tagTitles: true
+# === 子 agent 并发上限：8 → 32（2026-10-28） ===
+# 源码 @deepseek-ai/dsh-subagent static Config:
+#   maxActiveSubagents: z.number().step(1).min(1).max(Number.MAX_SAFE_INTEGER).default(8).volatile()
+# 报错原文：subagent limit reached (active child limit: 8)
+# 与 agent-loop 的 maxParallelToolCalls(100) 是两道独立闸门：前者管 tool 调度，后者管子代理存活数。
+# volatile ⇒ 每次新建/冷恢复前现读，改完即时生效，不必重启。
+- id: subagent
+  config:
+    maxActiveSubagents: 32
+
+# ── journal-hook ─────────────────────────────────────────────────────────────
+# dsh 启动时把日记 sampler 拉起来。原因：sampler 是常驻进程，本机 shell 在 Low IL
+# 下无法写 Startup / schtasks，重启即消失（2026-10-29/30 因此断档两天）。
+# 放在 host-plane（顶层 insert），只 import node:* 内建，全程 try/catch 静默失败。
+# 幂等：sampler 自带命名 mutex；另有 throttleMs 兜住 patchReload 反复触发。
+- insert:
+    - id: journal-hook
+      name: ../../.agent-presets/anchored-standard/journal-hook.mjs
+      config:
+        enabled: true
+        throttleMs: 3600000

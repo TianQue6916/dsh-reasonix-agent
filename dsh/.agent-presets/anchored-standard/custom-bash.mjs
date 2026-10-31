@@ -42,7 +42,8 @@
  * `str_replace_editor` (Minimal's two tools).
  */
 
-import { access } from 'node:fs/promises'
+import { access, appendFile } from 'node:fs/promises'
+import { homedir } from 'node:os'
 import { dirname, join } from 'node:path'
 
 /** Cordis plugin name used by loader diagnostics. */
@@ -52,6 +53,59 @@ export const name = 'custom-bash'
 export const inject = ['subprocess', 'tools']
 
 const DEFAULT_TIMEOUT_MS = 120000
+
+/**
+ * 分级超时规则（2026-10-29）—— **不依赖模型自觉**。
+ *
+ * 背景：给 bash 加了 `timeout` 参数、也在 concurrency-discipline 的注入里写了用法，
+ * 但实测（session-eeb1749b，13:47 创建）schema 有参数、TEXT 是新版，模型仍然**一次都不传**。
+ * 「可选参数」永远竞争不过模型的「少写一点」倾向 —— 所以改成工具自己判断。
+ *
+ * 优先级：模型显式传的 `timeout` > 本表命中 > DEFAULT_TIMEOUT_MS。
+ * 顺序敏感：先匹配的赢（网络类最容易挂，放最前）。
+ */
+/**
+ * 超时可观测性（2026-10-31 加）—— 每次 bash 执行都记一行，回答「到底有没有生效」。
+ *
+ * 为什么需要：分级超时是**自动**套用的，模型不传任何参数也会生效，所以从调用方
+ * 完全看不出来。用户只能怀疑「是不是没生效」。写一行 jsonl 就有硬证据。
+ *
+ * 位置：$DSH_HOME/logs/bash-timeout.jsonl（= ~/.dsh/logs/…）
+ * 字段：ts / limitMs / source(model|heuristic:<n>|default) / cmd（截断 120 字）
+ * 失败静默：日志写不进去不能影响命令执行。
+ */
+const TIMEOUT_LOG = join(homedir(), '.dsh', 'logs', 'bash-timeout.jsonl')
+
+function recordTimeout(command, limitMs, source) {
+  const line = JSON.stringify({
+    ts: new Date().toISOString(),
+    limitMs,
+    source,
+    cmd: String(command ?? '').slice(0, 120),
+  }) + '\n'
+  appendFile(TIMEOUT_LOG, line, 'utf8').catch(() => {})
+}
+
+const TIMEOUT_RULES = [
+  // 可能永久挂住：等 stdin / 等网络 / 交互式
+  { re: /\b(ssh|scp|sftp|rsync|telnet|ncat|nc|ping|tracert|traceroute)\b/, ms: 30_000 },
+  { re: /\b(curl|wget|Invoke-WebRequest|Invoke-RestMethod)\b/, ms: 60_000 },
+  // 慢但该等的：装包 / 仓库 / 构建 / 全量测试
+  { re: /\b(npm|pnpm|yarn|bun|pip|pip3|apt|apt-get|brew|cargo|gem|composer)\s+(install|add|update|upgrade|sync)\b/, ms: 300_000 },
+  { re: /\b(git\s+(clone|fetch|pull)|docker|podman)\b/, ms: 300_000 },
+  { re: /\b(vitest|jest|pytest|tsc|webpack|vite|esbuild|rollup|turbo|nx)\b/, ms: 300_000 },
+  // 会跑但一般几十秒内结束的
+  { re: /\b(dsh\s+--|python3?\s+-c|node\s+-e)\b/, ms: 60_000 },
+]
+
+/** 按命令文本挑一个超时（毫秒）。导出以便单元测试。 */
+export function heuristicTimeoutMs(command) {
+  const cmd = String(command ?? '')
+  for (const rule of TIMEOUT_RULES) {
+    if (rule.re.test(cmd)) return rule.ms
+  }
+  return DEFAULT_TIMEOUT_MS
+}
 const DEFAULT_MAX_OUTPUT_BYTES = 64000
 
 /**
@@ -111,6 +165,10 @@ const commandSchema = {
       type: 'string',
       description: 'Optional working directory; defaults to the session cwd. On Windows, Git Bash paths like /e/foo are accepted and converted to E:\\foo.',
     },
+    timeout: {
+      type: 'number',
+      description: 'OPTIONAL hard wall-clock limit in SECONDS (clamped to the plugin ceiling). Do not bother setting it for routine commands — the tool already applies a graded default (ssh/ping 30s, curl 60s, installs/builds 300s, everything else 120s). Set it only when you know better than those defaults (e.g. a CLI you expect to answer in 5s).',
+    },
   },
   required: ['command'],
   additionalProperties: false,
@@ -118,6 +176,9 @@ const commandSchema = {
 
 /** Register the model-facing `bash` tool. */
 export function apply(ctx, config) {
+  // 启动标记（2026-10-31）：每加载一次插件就写一行，回答「新会话到底拿到的是哪版代码」。
+  // 用户不需要跑任何命令，开个会话然后 `tail ~/.dsh/logs/bash-timeout.jsonl` 就能看到。
+  recordTimeout('(apply)', 0, `apply:v2026-10-31-recordingTimeout, timeoutMs=${String(config?.timeoutMs ?? DEFAULT_TIMEOUT_MS)}`)
   const explicitBashPath = typeof config?.bashPath === 'string' && config.bashPath.length > 0 ? config.bashPath : undefined
   const timeoutMs = Number.isSafeInteger(config?.timeoutMs) && config.timeoutMs > 0 ? config.timeoutMs : DEFAULT_TIMEOUT_MS
   const maxOutputBytes = Number.isSafeInteger(config?.maxOutputBytes) && config.maxOutputBytes > 0 ? config.maxOutputBytes : DEFAULT_MAX_OUTPUT_BYTES
@@ -199,6 +260,31 @@ export function apply(ctx, config) {
         : sessionCwd
       const workdir = normalizeGitBashWorkdir(requested)
       const signal = exec?.signal
+      // ── 硬超时（2026-10-29）────────────────────────────────────────────
+      // 以前 `timeoutMs` 只被读进变量、**从未使用** ⇒ 配置是死的，命令能无限挂住。
+      // 现在：模型可用 `timeout` 参数（秒）指定，被 timeoutMs 上限夹紧；
+      // 到点 abort，spawn 拿合并后的 signal 杀掉整棵进程树。
+      // 额外注入标记 = 极短，用于测「超时到底有没有生效」
+      const modelMs = typeof args.timeout === 'number' && Number.isFinite(args.timeout) && args.timeout > 0
+        ? args.timeout * 1000
+        : undefined
+      const heurMs = heuristicTimeoutMs(args.command)
+      const requestedMs = modelMs !== undefined ? modelMs : Math.min(heurMs, timeoutMs)
+      const limitMs = Math.min(requestedMs, timeoutMs)
+      recordTimeout(args.command, limitMs, modelMs !== undefined ? 'model' : (heurMs !== DEFAULT_TIMEOUT_MS ? `heuristic:${heurMs}` : 'default'))
+      const timeoutController = new AbortController()
+      let timedOut = false
+      const timer = setTimeout(() => {
+        timedOut = true
+        timeoutController.abort(new Error(`bash timed out after ${limitMs}ms`))
+      }, limitMs)
+      // 注意：**不要 unref()** —— unref 让定时器不阻止事件循环退出，事件循环一空
+      // 它就永远不触发，超时形同虚设（2026-10-29 单元测试实测：unsettled await）。
+      // 代价是必须保证每条路径都 clearTimeout（正常路径 / 两个 catch 都已清理）。
+      const effectiveSignal = signal !== undefined
+        ? AbortSignal.any([signal, timeoutController.signal])
+        : timeoutController.signal
+      const timeoutMessage = () => `bash timed out after ${limitMs}ms — aborted: ${String(args.command).slice(0, 160)}`
       const spawnOnce = (cwd) => ctx.subprocess.spawn({
         argv: [shell, '-c', args.command],
         ...cwd !== undefined ? { cwd } : {},
@@ -207,7 +293,7 @@ export function apply(ctx, config) {
           stdout: { maxBytes: maxOutputBytes },
           stderr: { maxBytes: maxOutputBytes },
         },
-        ...signal !== undefined ? { signal } : {},
+        signal: effectiveSignal,
         graceMs: 3000,
       })
       let handle
@@ -217,6 +303,7 @@ export function apply(ctx, config) {
         handle = spawnOnce(workdir)
         outcome = await handle.done
       } catch (error) {
+        if (timedOut) { clearTimeout(timer); throw new Error(timeoutMessage()) }
         const fallback = sessionCwd !== undefined ? normalizeGitBashWorkdir(sessionCwd) : undefined
         if (
           requested !== undefined
@@ -229,6 +316,7 @@ export function apply(ctx, config) {
             handle = spawnOnce(fallback)
             outcome = await handle.done
           } catch (retryError) {
+            if (timedOut) { clearTimeout(timer); throw new Error(timeoutMessage()) }
             throw new Error(`bash spawn failed: ${String(retryError)}`)
           }
         } else {
@@ -237,6 +325,7 @@ export function apply(ctx, config) {
           throw new Error(`bash spawn failed: ${String(error)}`)
         }
       }
+      clearTimeout(timer)
       let stdout = ''
       let stderr = ''
       try {

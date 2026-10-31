@@ -347,8 +347,63 @@
 - [git-add-all-deletes-when-worktree-incomplete](git-add-all-deletes-when-worktree-incomplete.md) — 铁律：git add -A 在工作树不完整时等于删除指令；配套的存在性/内容断言与「push 成功≠内容在」判据
 - [dsh-reasonix-agent-kb-index](dsh-reasonix-agent-kb-index.md) — 经验库 kb/ 在 dsh-reasonix-agent 仓库根：13 篇索引、固定结构、维护规约与本地直接维护路径
 - [git-github-clone-index-pack-failure](git-github-clone-index-pack-failure.md) — git clone GitHub 反复失败的根因：DevSidecar 破坏 pack 流；修复=insteadOf 改走 SSH
-- [mnemon-dedupe-by-title-and-cli-batch](mnemon-dedupe-by-title-and-cli-batch.md) — mnemon 碎片根因已确证：vault 同步走 upsert 而 auto-capture 走 append；含去重脚本、每日卫生检查挂载点与三个治本选项
+- [mnemon-dedupe-by-title-and-cli-batch](mnemon-dedupe-by-title-and-cli-batch.md) — mnemon 碎片：根因（append-only 不回收旧版）+ 治标已落地（每夜自动收口）+ 治本① 已执行（idleReviewMs 30s→300s，dump-config 已验证）
 - [mnemon-runtime-memory-tool-schema](mnemon-runtime-memory-tool-schema.md) — mnemon_runtime_memory 的正确参数形状（action 枚举 add/replace/remove）与 schema 定位方法，禁用猜测
+- [dsh-two-machine-sync-conflict-strategy](dsh-two-machine-sync-conflict-strategy.md) — dsh 双机同步的冲突根因与排除策略（PLAN.md 走 peers 镜像）；连带 paramiko 静默失败链
+- [dsh-sync-hardening-20261026](dsh-sync-hardening-20261026.md) — dsh 双机同步加固：告警/双向镜像/本机覆盖/依赖自检/日志轮转 5 项落地
+- [git-clone-large-repo-early-eof-playbook](git-clone-large-repo-early-eof-playbook.md) — git clone 大仓库 early EOF 的三层根因 + 社区分批回填方案 + sparse-checkout 实测
+- [dsh-reasonix-agent-reading-workspace](dsh-reasonix-agent-reading-workspace.md) — dsh-reasonix-agent 阅读工作区位置、用法、加目录姿势与不重写历史的决定
+- [goat-gateway-loop-guard-abort-mode](goat-gateway-loop-guard-abort-mode.md) — goat-gateway loop-guard：n-gram novelty 判据、阈值依据、abort 动作、提权改配置的三个坑、已知盲区
+- [idle-loop-guard-cross-turn-empty-spinning](idle-loop-guard-cross-turn-empty-spinning.md) — idle-loop-guard.mjs：抓跨 turn「只想不做」的 dsh 侧 preset，结构判据、三 profile 插入位置、必须重启才生效
+- [wake-guard-phantom-boot-action-gate](wake-guard-phantom-boot-action-gate.md) — wake-guard.ps1：旧判据把「用户重启」和「自己发的关机」都当假自启，导致连环关机；修法=按 Kernel-Power 109 的 Action 门控
+- [idle-loop-guard-injection-ineffective-root-cause](idle-loop-guard-injection-ineffective-root-cause.md) — idle-loop-guard 注入无效的三个原因（缺 prepend / 缺 prune / 缺 allowKinds）+ 三次升级阶梯保住任务连续性
+- [agent-cancel-breaks-renderer-steer-instead](agent-cancel-breaks-renderer-steer-instead.md) — agent.cancel 用在「空转」场景会导致前端渲染崩溃（对话区空白、只有轨迹视图可见）；已禁用 idle-loop-guard，教训是社区默认用 steer 不用 cancel
+- [dsh-render-crash-thinking-guard](dsh-render-crash-thinking-guard.md) — dsh 渲染崩溃根因链（thinking-guard v4 source kind）+ 平台差异 + 待办
+- [pdflatex-cm-font-pdf-text-extraction](pdflatex-cm-font-pdf-text-extraction.md) — PdfLaTeX 生成的数学讲义（CM 字体 Custom encoding）文本提取方案：pdftotext 不可用，须 pdfminer.six + 自建行聚类
+- [bilingual-katex-two-pitfalls](bilingual-katex-two-pitfalls.md) — 双语 md 的 KaTeX 校验两个真实坑：extract-formulas 吞公式、批量替换脚本的正则转义
+- [cover信息论目录实为mackay-itila](cover信息论目录实为mackay-itila.md) — 源料鉴定：`源料-教材/Cover信息论/*.pdf` 实为 MacKay《ITILA》，PDF 页 = 书内页 + 12
+- [译注判据-教材翻译模板](译注判据-教材翻译模板.md) — 教材翻译 [译注] 的 8 条可执行判据 + 反面清单 + 范例，派发 worker 时塞进 prompt
+- [MacKay信息论译校-两处硬坑](MacKay信息论译校-两处硬坑.md) — MacKay《Information Theory》PDF 文本层非 UTF-8 + 并发 worker 覆盖同一产出文件的排障定论
+- [mackay-itila-翻译-201-240-事实](mackay-itila-翻译-201-240-事实.md) — MacKay ITILA 各 PDF 块实际章范围、fitz 抽取、headroom 折叠、反斜杠与译注 span 事故
+- [bilingual-并发写冲突-检测与恢复](bilingual-并发写冲突-检测与恢复.md) — 多个翻译 worker 并发写同一个 .bilingual.md 时的症状、检测命令与恢复做法（2026-10-28 Boyd p201-220 事故）
+- [learn-translate-补注-worker-纪律](learn-translate-补注-worker-纪律.md) — 给已译教材补译者注时的四条硬纪律：行级插入、子序列验证、跨文件查重、只写 _补注 目录
+- [boyd-solutions-manual-translation](boyd-solutions-manual-translation.md) — Boyd 凸优化官方解答手册翻译：已交付 p001-040，PDF 文字层符号系统性错映射与已核实原文硬错清单
+- [Boyd答案手册-PDF抽取工具选择](Boyd答案手册-PDF抽取工具选择.md) — Boyd《Convex Optimization》Solutions Manual PDF 必须用 PyMuPDF get_text('text')，不能用 pdftotext -layout
+- [heredoc-折反斜杠-实测](heredoc-折反斜杠-实测.md) — bash heredoc 写 .py 检查脚本时 \\ 会被折成 \,连 << 'PYEOF' 单引号形式也折,导致检查脚本自身静默失效
+- [md2html-lite-离线katex预览](md2html-lite-离线katex预览.md) — md → 离线 KaTeX HTML 的单文件转换器，用于翻译产物的浏览器预览；含两个已修的死循环/错配坑
+- [mackay-itila-图注与公式不自洽-三步定案法](mackay-itila-图注与公式不自洽-三步定案法.md) — MacKay《信息论》图 36.1 等值线漏 shrinkage 因子的定案证据，以及「上界→截距→形状」三步判定法（可复用到其他图注疑案）
+- [boyd-answer-handbook-p161-180-audit](boyd-answer-handbook-p161-180-audit.md) — Boyd答案手册 p161-180 块：8 处可验算硬错的题号与正确式子，供后续块交叉核对
+- [学业状态-2026-10-28-休学](学业状态-2026-10-28-休学.md) — 用户现处休学阶段（时间自由/设备在身边）；学习计划跨度为「大二这一年」而非一学期，原排大三的内容改到大二执行
+- [dsh-concurrency-discipline-waterfall-veto-bug-20261028](dsh-concurrency-discipline-waterfall-veto-bug-20261028.md) — concurrency-discipline 不调 next() 否决整条 agent/pre-step 链，导致 plan-anchor/thinking-anchor/git-context 注入全部消失（2026-10-28 已修）
+- [dsh-plan-anchor-per-session-20261028](dsh-plan-anchor-per-session-20261028.md) — plan-anchor 改为 per-session 规划文件（$DSH_HOME/plans/<session-id>.md 自动建档），全局 PLAN.md 降级为长期档案不再注入
+- [dsh-进程优先级不提-20261028](dsh-进程优先级不提-20261028.md) — dsh 进程优先级经实测决定不提（Normal/High 差 1%，P/E-core 差 2.8 倍但调度器已在 P-core）
+- [plan-anchor-per-session-隔离-2026-10-28](plan-anchor-per-session-隔离-2026-10-28.md) — plan-anchor per-session 规划文件的边界、subagents=own、isSubagent 恒 undefined 的坑、验收判据
+- [dsh-thinking-guard-unreachable-variant-fix-20261028](dsh-thinking-guard-unreachable-variant-fix-20261028.md) — thinking-guard 熔断后注入说明必然失败的根因（cancel 传自定义 kind 撞 assertNever）与修法，注意 node_modules 改动会被 pnpm install 覆盖
+- [dsh-concurrency-discipline-降频-20261028](dsh-concurrency-discipline-降频-20261028.md) — concurrency-discipline 注入降频 cooldownSteps 12→40（两 profile patch），附注入的真实成本是破坏 prefix cache 而非 token
+- [dsh-thinking-guard-保持关闭-决策-20261028](dsh-thinking-guard-保持关闭-决策-20261028.md) — thinking-guard 保持关闭（社区调研后拍板 C）：改走「勤开新会话 + per-session plan」路线，附三插件对比与退化=context-saturation 的证据
+- [dsh-session-age-warn-插件-20261028](dsh-session-age-warn-插件-20261028.md) — 新插件 session-age-warn：会话累计 200 步后提醒换会话（长会话污染对策），两 profile 已挂载，需重启生效
+- [plan-体系-三层结构-2026-10-28](plan-体系-三层结构-2026-10-28.md) — plan 体系三层结构：全局 PLAN.md + PLAN.d/<task>/ 任务目录 + plans/<session-id>.md 会话级，含 git 全量入库策略
+- [linux-windows-迁移核对与relay通信-20261028](linux-windows-迁移核对与relay通信-20261028.md) — Linux→Windows 迁移清单逐项核对：4 项已全部落地（①已过时需反向修正），真正缺口是 Windows 新成果反向同步 Linux，已通过 C:\relay 通知
+- [dsh-sandbox-low-integrity-提权问题-20261028](dsh-sandbox-low-integrity-提权问题-20261028.md) — D:\Toolbox 写入解决：icacls /setintegritylevel "(OI)(CI)Low" 给两个子目录，bash/python/powershell 三路全通，因此不装 dsh-sandbox-allowlist
+- [dsh-0.2.1-rc.4-升级收益评估-20261028](dsh-0.2.1-rc.4-升级收益评估-20261028.md) — dsh rc.2→rc.4 用 npm pack + diff 实证：四个核心包 JS 全部 byte-identical，只改了 package.json 的 version；结论不值得升，等下一个大版本
+- [dsh-插件升级-20261029](dsh-插件升级-20261029.md) — desktop 5 个插件升级完成（billion-context/ds-harness-remote/better-sidebar/deja/quick-toc）；pnpm install 在 Low IL 下会 EPERM 导致 link: 依赖的 symlink 丢失，需 UAC mklink /J 修复
+- [billion-context-compress-工具缺失-20261029](billion-context-compress-工具缺失-20261029.md) — bili 的 compress/acp_status 等 5 个工具消失的真因：tool-bootstrap.mjs 的 keep-set 把第三方工具全裁掉；已加 RESIDENT_ACP_TOOLS，需重启
+- [edge-elevated-实例弹窗-20261029](edge-elevated-实例弹窗-20261029.md) — 修正 Edge 弹窗诊断：启动增强/后台常驻本就是组策略强制关闭的（HKLM 两个 0），孤儿进程是 10/27 异常终止残留，唯一干净解是重启系统
+- [linux-dsh-fix-report-审阅-20261029](linux-dsh-fix-report-审阅-20261029.md) — 审阅 Linux 修复报告：§11 定案是端口冲突（ssh -L 3080 占位），但发现 Windows 侧 3080 已空、实际在 3799，隧道现在指向死端口
+- [dsh-sandbox-allowlist-能力边界-20261029](dsh-sandbox-allowlist-能力边界-20261029.md) — dsh-sandbox-allowlist 在 Windows 只解 write/edit 的应用层围栏（lib/fs.mjs），解不了 bash 子进程的 Low IL MAC 限制（provider.mjs 在 Windows 不挂载）
+- [本机子agent并发实测-20261029](本机子agent并发实测-20261029.md) — 绑 P-core 实测：8 路省 24%（1150→878ms）；社区手段清单——CPU 线 Process Lasso/异类策略/E-core parking 有效，subagent 线插件只排队不限加速
+- [绑核脚本与subagent模型策略-20261029](绑核脚本与subagent模型策略-20261029.md) — 绑核脚本 pin-pcore.ps1（进程树递归绑 P-core，实测 -24%）+ dsh 原生 subagent 模型覆盖机制（resolveChildAgentOptions 源码）+ persona 第 10 条
+- [dsh-sandbox-low-il-病灶与patch](dsh-sandbox-low-il-病灶与patch.md) — dsh Windows ACL sandbox 把 C:\Users\27063 打成 Low IL 的根因、四个后果（含 .lnk 图标全白与 label 跨盘传播）、复发条件与根治 patch
+- [journeymap-日志刷屏与修法](journeymap-日志刷屏与修法.md) — MC 里 JourneyMap 6.0.9 的 VanillaBlockSpriteProxy DEBUG 刷屏导致 5 MB/s 持续写盘：症状、证伪 logLevel、有效修法、对账与两个测量陷阱
+- [lnk-icon-blank-low-mandatory-label](lnk-icon-blank-low-mandatory-label.md) — .lnk 图标全白纸的根因是文件 mandatory label = Low（不是缓存/注册表）；含哈希指纹判据、分离测试法、正确排查顺序与一行修复
+### 补录（202610291051，memory-index-heal）
+
+- [relay-cross-os-mailbox](relay-cross-os-mailbox.md) — 两端 dsh agent 嘱托通道 C:\\relay 的完整实现：真身拓扑、两侧 CLI（Linux relay.py / Windows relay.ps1）、dispatch 远程拉 headless、plansy
+- [websearch-linux-vs-windows-parity](websearch-linux-vs-windows-parity.md) — Linux web 与 Windows desktop 的 web_search 逐层比对：代码同源，差异只在 maxResults/searchMaxResults（8→74），以及 dsh patch 的「整体替换」
+- [不要虚增待办-已否决方案不再提](不要虚增待办-已否决方案不再提.md) — 反馈规则：已排除的备选方案不得重新列为待办，验收清单只列用户要求过的和我弄坏的
+- [本机使用模式-linux常驻不切系统](本机使用模式-linux常驻不切系统.md) — 本机常驻 Linux 不切系统 + 真正的 Windows 是天阙九泉另一台常开机器 —— 决定了双系统/分区/休眠类判断的前提
+
+- [学习文档审计-图内文字必须与正文同等核对](学习文档审计-图内文字必须与正文同等核对.md) — backward-induction 文档 v3 审查：11 处修正 + 2 张图重画；核心教训是图内文字也要按数学核对，且 heredoc 折反斜杠会让整批修改静默丢失
 ## 归档说明
 - 原文全量备份：`~/.reasonix/memory-backup-20260816/`（59 份）与 `~/.reasonix/memory-backup-20260816-consolidate/`
 - 合并/蒸馏原始件：`~/.reasonix/memory-archive-20260816/`

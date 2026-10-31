@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "revision": 0,
+  "revision_known": false,
+  "content_digest": "e0ae8575d91dbe57a0e80c802d19867f82abfe182499aa099ac009fc5538f3e0",
+  "transcript_size": 76089,
+  "message_count": 11,
+  "authored_turns": 1,
+  "entries": [
+    {
+      "index": 0,
+      "offset": 0,
+      "length": 419,
+      "role": "user",
+      "authored_turn": 1,
+      "starts_turn": true
+    },
+    {
+      "index": 1,
+      "offset": 419,
+      "length": 374,
+      "role": "assistant",
+      "authored_turn": 1,
+      "has_tool_calls": true
+    },
+    {
+      "index": 2,
+      "offset": 793,
+      "length": 19212,
+      "role": "tool",
+      "authored_turn": 1,
+      "tool_result": true
+    },
+    {
+      "index": 3,
+      "offset": 20005,
+      "length": 19295,
+      "role": "tool",
+      "authored_turn": 1,
+      "tool_result": true
+    },
+    {
+      "index": 4,
+      "offset": 39300,
+      "length": 480,
+      "role": "assistant",
+      "authored_turn": 1,
+      "has_tool_calls": true
+    },
+    {
+      "index": 5,
+      "offset": 39780,
+      "length": 3786,
+      "role": "tool",
+      "authored_turn": 1,
+      "tool_result": true
+    },
+    {
+      "index": 6,
+      "offset": 43566,
+      "length": 10045,
+      "role": "tool",
+      "authored_turn": 1,
+      "tool_result": true
+    },
+    {
+      "index": 7,
+      "offset": 53611,
+      "length": 361,
+      "role": "assistant",
+      "authored_turn": 1,
+      "has_tool_calls": true
+    },
+    {
+      "index": 8,
+      "offset": 53972,
+      "length": 3571,
+      "role": "tool",
+      "authored_turn": 1,
+      "tool_result": true
+    },
+    {
+      "index": 9,
+      "offset": 57543,
+      "length": 10541,
+      "role": "tool",
+      "authored_turn": 1,
+      "tool_result": true
+    },
+    {
+      "index": 10,
+      "offset": 68084,
+      "length": 8005,
+      "role": "assistant",
+      "authored_turn": 1
+    }
+  ],
+  "updated_at": "2026-08-10T16:02:07.4846076Z"
+}

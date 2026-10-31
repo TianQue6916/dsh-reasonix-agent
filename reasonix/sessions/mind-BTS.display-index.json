@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "revision": 0,
+  "revision_known": false,
+  "content_digest": "8464acc087d0be6efd13b10dedc6307c5e6e4feed12edbc0bc64f464eb6b1623",
+  "transcript_size": 60597,
+  "message_count": 6,
+  "authored_turns": 3,
+  "entries": [
+    {
+      "index": 0,
+      "offset": 0,
+      "length": 2244,
+      "role": "user",
+      "authored_turn": 1,
+      "starts_turn": true
+    },
+    {
+      "index": 1,
+      "offset": 2244,
+      "length": 26521,
+      "role": "assistant",
+      "authored_turn": 1
+    },
+    {
+      "index": 2,
+      "offset": 28765,
+      "length": 2244,
+      "role": "user",
+      "authored_turn": 2,
+      "starts_turn": true
+    },
+    {
+      "index": 3,
+      "offset": 31009,
+      "length": 25826,
+      "role": "assistant",
+      "authored_turn": 2
+    },
+    {
+      "index": 4,
+      "offset": 56835,
+      "length": 2244,
+      "role": "user",
+      "authored_turn": 3,
+      "starts_turn": true
+    },
+    {
+      "index": 5,
+      "offset": 59079,
+      "length": 1518,
+      "role": "assistant",
+      "authored_turn": 3
+    }
+  ],
+  "updated_at": "2026-08-09T18:46:28.53127504Z"
+}

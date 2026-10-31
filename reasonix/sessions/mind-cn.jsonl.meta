@@ -1,0 +1,11 @@
+{
+  "id": "mind-cn",
+  "created_at": "2026-07-31T11:07:56.7941743Z",
+  "updated_at": "2026-07-31T11:07:56.7941743Z",
+  "scope": "global",
+  "topic_id": "legacy_mind-cn_1f5fa1cc9f6d",
+  "topic_title": "# 实现链表反转 Define fu…",
+  "schema_version": 1,
+  "turns": 1,
+  "preview": "# 实现链表反转\nDefine function reverse_list\nif head is null return null"
+}

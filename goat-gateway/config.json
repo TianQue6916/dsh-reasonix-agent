@@ -67,7 +67,19 @@
   },
   "loopGuard": {
     "enabled": true,
-    "mode": "shadow",
-    "note": "degenerate repetition 检测（2026-10-01 接入）。shadow = 只写 logs/loop-guard.jsonl，不干预转发；abort = 命中即断上游并给客户端补 [DONE]。判据是字符级 6-gram 滑动窗口的 novelty（唯一率），窗口 capacity=256/1024 双尺度。阈值由 selftest-loop-guard.mjs 实测校准：capacity=1024 下正常中文散文 0.99 / 代码块 0.55 / markdown 表格 0.31 / deadlock 0.117 / 真循环 0.032。"
+    "mode": "abort",
+    "note": "degenerate repetition 检测（2026-10-01 接入，2026-10-27 切 abort）。判据=字符级 6-gram 滑动窗口 novelty（唯一率），三尺度 fast=256 / slow=4096 / long=16384。slow/long 阈值 0.20 来自离线校准（degen 40 条 max=0.2786 vs ctrl p05=0.6975，检出 40/40 误报 0.6%）。fast 阈值按线上 8359 请求的 405 次命中分布定：<0.02 有 187 次（几乎逐字复制，铁证）、0.15-0.20 有 136 次（擦边，误报未知）。取 reasoning=0.11 覆盖「好。写。输出。」那类短空转（2026-10-26 实测 minFast=0.1055）且排除 136 次擦边；text=0.15 更保守，因为列表/表格天然重复。",
+    "thresholds": {
+      "reasoning": {
+        "fast": 0.11,
+        "slow": 0.2,
+        "long": 0.2
+      },
+      "text": {
+        "fast": 0.15,
+        "slow": 0.2,
+        "long": 0.2
+      }
+    }
   }
 }

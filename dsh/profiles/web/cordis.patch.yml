@@ -137,7 +137,7 @@
             config:
               promoteOn: either
               includeSubagents: true
-              allowKinds: [ skill-invocation, thinking-anchor, plan-anchor ]
+              allowKinds: [ skill-invocation, thinking-anchor, plan-anchor, idle-loop-guard, concurrency-discipline, session-age-warn]
 
           # ── plan anchor ──────────────────────────────────────────────
 
@@ -154,10 +154,38 @@
           # 靠后顺序：thinking-anchor → plan-anchor → dsh-mnemon → … → git-context。
           #
           # source.kind 已加入上面 context-gate 的 allowKinds。
+          - id: concurrency-discipline
+            name: ../../.agent-presets/anchored-standard/concurrency-discipline.mjs
+            config:
+              concurrencyDiscipline:
+                enabled: true
+                cooldownSteps: 40
+                firstAfterSteps: 3
+                skipSubagents: true
+          # 2026-10-28：改为 per-session 规划文件（用户明确要求「给每个会话自动建立独立的任务规划模块」）。
+          # 每步注入 $DSH_HOME/plans/<session-id>.md，首次注入自动建骨架；
+          # 全局 $DSH_HOME/PLAN.md 降级为「跨会话长期档案」，不再自动注入。
+          # subagents: 'own' | 'parent' | 'none' —— 默认 own：**每个会话（含子 agent）各一份独立文件**。
+          # 会话水位提醒（2026-10-28 加，用户拍板「长会话污染」对策选用这个）。
+          # 累计 200 步后注入一次「该收口并开新会话」，之后每 80 步最多再来一次。
+          # 为什么不是自动 compaction / 退化块折叠：那两个一个会压掉对话（踩过
+          # 「上下文突然消失」的坑）、一个要改 transcript 影响 prefix cache。
+          # 本行只注入一句话，不动历史。判据与社区实测见文件头注释。
+          - id: session-age-warn
+            name: ../../.agent-presets/anchored-standard/session-age-warn.mjs
+            config:
+              sessionAgeWarn:
+                enabled: true
+                softSteps: 200
+                reWarnEvery: 80
+                skipSubagents: true
+
           - id: plan-anchor
             name: ../../.agent-presets/anchored-standard/plan-anchor.mjs
             config:
               enabled: true
+              perSession: true
+              subagents: own
 
           # ── thinking-language anchor ────────────────────────────────────────────────
 
@@ -291,6 +319,27 @@
                       102 MB 数关键字：`bytes.count` 12 ms ≪ 手写 C(memchr) exe 端到端 53 ms（启动 5.9 + fread 35 吃掉收益）≪ 逐行 for 325 ms ≪ pwsh Select-String 2754 ms（**大文件禁用**）。
                       提效优先级（成本递增）：① 合并工具调用、别反复 cold-spawn pwsh ② 消灭 O(N) 解释器循环（NumPy / bytes.count / 系统批处理）③ 长驻 worker 复用进程 ④ 才 native。稳定靠进程边界（独立 exe + stdin/stdout JSON），不靠换语言。
                       要 native 就选 Rust+PyO3（abi3）或 C+独立 exe，不手写 CPython C API。上 native 门槛：N > 10^7 且高频**且常驻**，或需 < 10 ms 的确定性延迟。会被 agent 反复改的代码一律 Python。
+                   8. **任何问题都先查资料和社区经验，再动手**（2026-10-29 用户要求，**不限领域**）：
+                      不只是 dsh / 插件 / 沙箱 / 版本升级。数学、算法、语言、系统、工具链、库的用法 —— 凡是能查到现成答案的，都先查。
+                      查哪里随问题变：GitHub Discussions / issue、插件目录（dshbase / dshhub / dshplugin.online）、上游 Agent Notes、官方文档、论文、社区博客。
+                      但**社区结论同样要自己验**：最小脚本复刻、`npm pack` + `diff -rq` 比字节、回源码看行号，别直接照抄。
+                   9. **用了别人的东西就记账、就回馈**（2026-10-29 用户要求，默认礼数，不必等提醒）：
+                      本轮实际采用或受助于某个开源项目 —— 新装的包、clone 的仓库、启用的 skill / plugin、照抄的思路、查过的 issue ——
+                      都在回复里点名（owner/repo）并顺手补 star。批量：`python ~/.dsh/contrib/star-audit.py --star`（幂等，追加 `~/.dsh/contrib/star-ledger.jsonl`）。
+                      自己的仓库（TianQue6916/*）只记账不 star；transitive 依赖不 star。
+                   10. **本机环境的硬判据（2026-10-29 实测，别再重新踩）**：
+                      - **Windows 写权限**：dsh 的 shell 跑在 **Low IL**（`whoami //groups` 看 Mandatory Label）。workspace 之外写不了**不是 ACL 问题** —— no-write-up 优先于 DACL，ACL 给了 Modify 也没用。
+                        解法：`icacls '<目录>' /setintegritylevel "(OI)(CI)Low" /T`，**括号必须加引号**（不加会静默不执行）；`/grant "*S-1-16-4096:..."` 改 DACL 对这层无效。
+                      - **并发三档**：只读/轻量 subagent ≥6 已验证；CPU 密集（构建/测试）**4 路拐点**；**写同一路径只能 1 路**。
+                        四组数据与 E-core 机制**不在这里重复** —— 见每会话的 `[concurrency-discipline]` 注入。
+                      - **生效边界**：preset 的 `.mjs` 改完**开新会话**才重新 import（**不需要重启进程**，2026-10-29 实测证伪旧结论）；
+                        `cordis.patch.yml` 是 live，开新会话生效；**preset row 在会话创建后不追补**（新加的工具要新会话才可见）。
+                      - **`--dump-config` 的边界**：它证明不了运行态；而且 **desktop profile 根本不能用它** ——
+                        `error: profile "desktop" is managed exclusively by the Electron application`。desktop 只能**源码级 grep** + 看**实际注入**。
+                   11. **派发 subagent 的模型策略**（2026-10-29 用户定）：
+                      默认 provider `commandcode-goat` + model `deepseek/deepseek-v4.1-flash`。
+                      `agentOptions` 可**逐字段覆盖** provider / model / reasoningEffort / maxTokens；**不传就继承父 route**（`dsh-subagent/lib/index.js:315-331`）。
+                      换 model 且没给 reasoningEffort 时，dsh 自动丢弃父的 effort（`:329`）。三种都合法，**不要硬编码**。
               complete: true
               includeRuntimeContext: false
 
@@ -403,6 +452,10 @@
           - id: custom-bash
             name: ../../.agent-presets/anchored-standard/custom-bash.mjs
             disabled: !!js process.platform !== 'win32'
+            config:
+              # 2026-10-29：与 persistent-bash 对齐（原来吃 custom-bash.mjs:54 的
+              # DEFAULT_TIMEOUT_MS = 120000）。这是兜底上限，模型仍应用 `timeout N` 前缀。
+              timeoutMs: 300000
 
           # ── filesystem ──────────────────────────────────────────────────────────────
 
@@ -574,8 +627,12 @@
             config:
               - id: compaction-basic
                 name: '@deepseek-ai/dsh-compaction-basic'
+                # 2026-10-29 用户拍板：自动压缩 + 手动 compress 并存，阈值 0.65。
+                # 0.65 < 上游 bili 的 nudgeMaxContextLimitPct(0.70)，所以手动 compress 有机会先出手
+                # （bili 只有在会话已有 active 折叠块时才会本地应答 dsh 的 summarize 调用，#3733）。
                 config:
-                  auto: false
+                  auto: true
+                  thresholdRatio: 0.65
                   maxTokens: 32768
 
               - id: command-compact
@@ -659,7 +716,6 @@
 
               - id: tool-workflow
                 name: '@deepseek-ai/dsh-tool-workflow'
-
 
           # ── remaining model-facing rows ─────────────────────────────────────────────
 
@@ -1377,6 +1433,9 @@
         include:mnemon-strategy-scoped:
           enabled: true
           config: {}
+        include:mnemon-strategy-light-context:
+          enabled: true
+          config: {}
     recallQuality:
       policy: strict-v1
       lowScoreThreshold: 0.25
@@ -1390,14 +1449,10 @@
     lifecycleEnabled: true
     recallMode: guided
     writebackMode: guided
-    idleReviewMs: 30000
-    # 2026-10-03：mnemon 的 idle checkpoint review subagent 默认 maxTokens=4096
-    # （dsh-mnemon/lib/index.js:63 DEFAULT_IDLE_REVIEW.maxTokens），reviewer 一边推理一边写
-    # WRITE_SCHEMA 结构化结果时会把 4096 用尽 ⇒ turn/end reason={"kind":"max-tokens"} ⇒
-    # 客户端渲染 message.maxTokens 那条「已达到输出 token 上限…发送继续」通知。提到 32768。
-    # schema 上限 131072（dsh-mnemon/lib/index.js:225 IdleReviewSchema.maxTokens）。
+    idleReviewMs: 300000
     idleReview:
       maxTokens: 32768
+    syncEnabled: true
 
 # ── 微信 bot 桥接（2026-09-30 从 reasonix 侧迁入）────────────────────────────
 # 迁移第 1 步已完成（不影响 reasonix 侧，微信全程照常服务）：
@@ -1458,12 +1513,22 @@
 # 评测脚本与样本：C:/tmp/fx/{ev6.mjs,degen.jsonl,normal.jsonl}
 - id: thinking-guard
   config:
+    # 2026-10-28 重调：作者源码注释里的实测数据（C:/tmp/fx/，40 条真实退化 + 163 条正常 reasoning）
+    #   novelty（窗口 4096、阈值 0.20）：检出 40/40、误报 0.6%、中位命中 6144 字符
+    #   sparse-repeat              ：检出 40/40、误报 9.2%、中位命中 3072 字符
+    #   ⇒ novelty 误报低一个数量级，代价是命中晚一倍。保留 novelty，关掉 sparse-repeat。
     enabled: false
     thinkingOnlyMs: 300000
     maxThinkingChars: 200000
     repeatThreshold: 3
-    sparseMinCount: 30
+    # 关掉稀疏复读一档（误报 9.2%，命中样本全是列表编号 / 版本号 / 表格分隔线）
+    sparseWindow: 4000
+    sparseMinCount: 999999
+    # novelty 保持作者实测最优值
+    noveltyWindow: 4096
+    noveltyThreshold: 0.2
     gramDensity: 2.7
+    # 不自动继续：autoContinue 会 followup 一条「继续」并开新 attempt ⇒ 重新计时 ⇒ 再熔断
     autoContinue: false
     notify: true
     verbose: true
@@ -1517,13 +1582,14 @@
         transport: stdio
         command: !!js process.execPath
         args:
-          - !!js "process.getBuiltinModule('node:module').createRequire(new URL('package.json', baseUrl)).resolve('dsh-computer-use-win/mcp/server.mjs')"
+          - !!js "process.getBuiltinModule('node:module').createRequire(new
+            URL('package.json',
+            baseUrl)).resolve('dsh-computer-use-win/mcp/server.mjs')"
         toolCallTimeoutMs: 60000
         failOnStartupError: false
         env:
           TEMP: 'C:\Users\27063\AppData\Local\Temp'
           TMP: 'C:\Users\27063\AppData\Local\Temp'
-
 
 # ── /compact 命令在 UI 里消失的修复（2026-10-22） ────────────────────────────
 # 现象：输入框 `/` 菜单里没有 compact 项，`/compact` 被打成普通文本发出去，
@@ -1553,7 +1619,6 @@
     auto: false
     maxTokens: 32768
 
-
 # 2026-10-25 覆盖插件配置。注意：patch 对 config 是「整体替换」不是深合并，
 # 所以必须把全部开关写全，否则会回落到 DEFAULT_CONFIG（那里 enableDeepseek 默认 true）。
 - id: local-wiki-github
@@ -1567,3 +1632,71 @@
     maxResults: 74
     deepseekSearchCount: 50
     tagTitles: true
+# === 子 agent 并发上限：8 → 32（2026-10-28） ===
+# 源码 @deepseek-ai/dsh-subagent static Config:
+#   maxActiveSubagents: z.number().step(1).min(1).max(Number.MAX_SAFE_INTEGER).default(8).volatile()
+# 报错原文：subagent limit reached (active child limit: 8)
+# 与 agent-loop 的 maxParallelToolCalls(100) 是两道独立闸门：前者管 tool 调度，后者管子代理存活数。
+# volatile ⇒ 每次新建/冷恢复前现读，改完即时生效，不必重启。
+- id: subagent
+  config:
+    maxActiveSubagents: 32
+
+# === 会话标题：切到官方 experimental all-prompts provider（2026-10-28） ===
+# bundle @deepseek-ai/dsh-experimental-session-titles-bundle@0.2.1-rc.2 自带 patch 已把
+# session-title-llm（first-prompt）置 disabled: true，并插入下面这一行——但实验包自带的默认值是
+# maxOutputTokens: 64 / maxInputBytes: 4096，两者都会静默失败：
+#   ① 64 token 会被 thinking 吃光（本机 2026-09 实测 643 条 session 全栽在这，见上面 session-title-llm 段注释）；
+#   ② maxInputBytes 超限是 throw 而**不是截断**
+#      （@deepseek-ai/dsh-session-title-llm/lib/index.js:170），
+#      而本机 958 个顶层 session 的聚合 human message 字节数：中位 14533 B，75.3% 超 4096。
+# 取值依据：262144 覆盖 97.4%；剩下 25 条 >256 KB 的超长会话仍会失败，
+#   最长一条 8.7 MB（7656 条 human message）≈ 200 万 token，任何模型都吃不下，属物理不可行。
+# 4096 对齐上游 base 对 first-prompt 的默认 maxOutputTokens（headless profile --dump-config 实测）。
+# 回滚：注释掉下面 config 四行即回到 bundle 默认（64/4096）；
+#   若整体退回 first-prompt，卸载 bundle 后本行只会降级成
+#   `patch: entry "..." not found` 的 warn（实测 exit=0，不阻塞启动），
+#   而 session-title-llm 的 disabled 由 bundle 自带 patch 决定，卸载后自动恢复。
+# [停用 2026-10-29 · 改用 @weibaohui/dsh-smart-title] - id: optional-session-title-all-prompts  # [已停用 2026-10-29 · 改用 @weibaohui/dsh-smart-title]
+#   config:
+#     targetWords: 5
+#     targetCjkCharacters: 10
+#     maxInputBytes: 262144
+#     maxOutputTokens: 4096
+#     timeoutMs: 60000
+
+# === 2026-10-29: 让 dsh 原生自动压缩与 bili 的 compress 工具并存 ===
+# 背景：billion-context 的 bundle patch 插入了 `bili-compaction-gate`
+# （billion-context/dist/agent/dsh-compaction-gate.js），它在 cordis 的
+# `internal/config` 全局 hook 里把任何 preset 里 name 匹配
+# `@deepseek-ai/dsh-compaction-basic` / `@deepseek-ai/dsh-command-compact`
+# 的 row 一律 `disabled: true`（上游 #3354）。所以 preset-anchored-standard
+# 里那条 `auto: true / thresholdRatio: 0.65` 只活在 dump-config 里，
+# 运行态根本没有实例 —— 这就是「上下文涨到 80%+ 也不压」的最后一层原因。
+#
+# 顶掉那条 gate，换成只 provide `biliBasicCompactionPolicy` 服务的 passthrough：
+# 服务在，preset-standard / ptc / minimal 的 inject 依赖得到满足；
+# disable 逻辑不执行，宿主 compaction-basic 正常加载。
+# 详见 plugins/bili-gate-passthrough.mjs 的注释（含代价与回滚方式）。
+# 回滚：把下面 name 改回 `billion-context/dsh-compaction-gate`，重启 dsh。
+# patch 引擎不允许改 row 的 name（`patch: name mismatch ... skipping`），
+# 所以改用 disabled：gate 不执行 => 宿主 compaction-basic 不再被强制 disable。
+# 代价：它 provide 的 `biliBasicCompactionPolicy` 服务随之消失，而
+# billion-context 的 bundle patch 给 preset-standard / preset-ptc / preset-minimal
+# 加了 `inject: [biliBasicCompactionPolicy]` —— 那三个 preset 会停在 pending。
+# 本机只用 anchored-standard（dump 里它没有这条 inject），不受影响；
+# 若以后要在 UI 里切到 standard preset，改成 `disabled: false` 即可回滚。
+- id: bili-compaction-gate
+  disabled: true
+
+# ── journal-hook ─────────────────────────────────────────────────────────────
+# dsh 启动时把日记 sampler 拉起来。原因：sampler 是常驻进程，本机 shell 在 Low IL
+# 下无法写 Startup / schtasks，重启即消失（2026-10-29/30 因此断档两天）。
+# 放在 host-plane（顶层 insert），只 import node:* 内建，全程 try/catch 静默失败。
+# 幂等：sampler 自带命名 mutex；另有 throttleMs 兜住 patchReload 反复触发。
+- insert:
+    - id: journal-hook
+      name: ../../.agent-presets/anchored-standard/journal-hook.mjs
+      config:
+        enabled: true
+        throttleMs: 3600000

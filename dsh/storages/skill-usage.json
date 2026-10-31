@@ -10,6 +10,11 @@
    "loads": 1,
    "firstUsedAt": 1792729448367,
    "lastUsedAt": 1792729448367
+  },
+  "learn-translate": {
+   "loads": 128,
+   "firstUsedAt": 1793093559968,
+   "lastUsedAt": 1793340017633
   }
  }
 }

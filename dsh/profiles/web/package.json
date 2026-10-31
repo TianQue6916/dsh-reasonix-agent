@@ -6,11 +6,13 @@
     "@lanbaolu/dsh-wechat-bridge": "0.9.1",
     "@local/dsh-plugin-goat-panel": "link:D:/Toolbox/goat-gateway/dsh-plugin-goat-panel",
     "@local/dsh-thinking-language": "file:D:/Toolbox/dsh-thinking-language",
-    "ds-harness-remote": "^0.5.17",
-    "dsh-deja": "^0.23.0",
-    "dsh-headroom": "git+https://github.com/giter00/dsh-headroom.git",
+    "@weibaohui/dsh-smart-title": "0.1.9",
+    "billion-context": "^0.1.209",
+    "ds-harness-remote": "^0.5.22",
+    "dsh-deja": "^0.23.1",
     "dsh-mnemon": "^0.5.34",
-    "dsh-plugin-local-search": "link:D:/Toolbox/goat-gateway/dsh-plugin-local-search",
+    "dsh-headroom": "git+https://github.com/giter00/dsh-headroom.git",
+    "dsh-scroll-boost": "^0.6.0",
     "dshmarket": "^1.67.0"
   },
   "dsh": {
@@ -26,7 +28,9 @@
         "@lanbaolu/dsh-wechat-bridge",
         "@local/dsh-thinking-language",
         "@ethanwong-hk/dsh-thinking-guard",
-        "dsh-pilot"
+        "dsh-pilot",
+        "billion-context",
+        "@weibaohui/dsh-smart-title"
       ],
       "patchReload": "live"
     }

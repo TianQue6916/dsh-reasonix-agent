@@ -1,0 +1,95 @@
+{
+ "total": 22005,
+ "fails": 12,
+ "files_with_errors": 8,
+ "bad": {
+  "C:/Users/27063/Documents/翻译修复工作区\\006算法导论\\book\\clrs_chunk05_book163-202.bilingual.md": [
+   {
+    "line": 1067,
+    "kind": "block",
+    "tex": "\\begin{aligned}\nh &\\ge \\lg(n!) \\quad &\\text{(since the \\lg function is monotonically increasing)} \\\\\n  &= \\Omega(n \\lg n). \\quad &\\text{(by equation (3.19))}\n\\e",
+    "err": "KaTeX parse error: Can't use function '\\lg' in text mode at position 56: …ext{(since the \\̲l̲g̲ ̲function is mon…"
+   },
+   {
+    "line": 647,
+    "kind": "inline",
+    "tex": "X_q = I\\,\\{\\text{the ",
+    "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at end of input: …I\\,\\{\\text{the "
+   },
+   {
+    "line": 647,
+    "kind": "inline",
+    "tex": "th smallest element is chosen as the pivot}\\}",
+    "err": "KaTeX parse error: Expected 'EOF', got '}' at position 43: …en as the pivot}̲\\}"
+   }
+  ],
+  "C:/Users/27063/Documents/翻译修复工作区\\100b实分析\\01-讲义笔记  准备打印\\L10.bilingual.md": [
+   {
+    "line": 181,
+    "kind": "inline",
+    "tex": "\binom{n}{i}",
+    "err": "KaTeX parse error: Unexpected character: '\b' at position 1: \b̲inom{n}{i}"
+   }
+  ],
+  "C:/Users/27063/Documents/翻译修复工作区\\100b实分析\\split\\TBB-AllChapters-Portrait_part001_p001-050.bilingual.md": [
+   {
+    "line": 877,
+    "kind": "block",
+    "tex": "x_1 &= 1.00000000000000000000000000000000000000000000000000000000000 \nx_2 &= 1.50000000000000000000000000000000000000000000000000000000000 \nx_3 &= 1.41666666666",
+    "err": "KaTeX parse error: Expected 'EOF', got '&' at position 5: x_1 &̲= 1.00000000000…"
+   }
+  ],
+  "C:/Users/27063/Documents/翻译修复工作区\\data lerning\\Strang_LaLFD_part002_p051-100.bilingual.md": [
+   {
+    "line": 1416,
+    "kind": "inline",
+    "tex": "\\sum\\sigma_i^2\\le(\\sum\\sigma_i)^2=\\sum\\sigma_i^2+2\\sum_{i 用均值—方差把三者读清楚：设 ",
+    "err": "KaTeX parse error: Expected '}', got 'EOF' at end of input: …用均值—方差把三者读清楚：设 "
+   }
+  ],
+  "C:/Users/27063/Documents/翻译修复工作区\\未学课程\\概率导论\\book\\prob_chunk04_p151-200.bilingual.md": [
+   {
+    "line": 989,
+    "kind": "inline",
+    "tex": "& A",
+    "err": "KaTeX parse error: Expected 'EOF', got '&' at position 1: &̲ A"
+   },
+   {
+    "line": 1716,
+    "kind": "inline",
+    "tex": "0 **[problem]** **Problem 9.&#42;** *Mixed random variables.* Probabilistic models sometimes involve random variables that can be viewed as a mixture of a discr",
+    "err": "KaTeX parse error: Expected 'EOF', got '&' at position 29: …** **Problem 9.&̲#42;** *Mixed r…"
+   }
+  ],
+  "C:/Users/27063/Documents/翻译修复工作区\\未学课程\\概率导论\\book\\prob_chunk07_p301-350.bilingual.md": [
+   {
+    "line": 849,
+    "kind": "block",
+    "tex": "\\begin{aligned}\nP(0, \\tau) &= 1 - \\lambda\\tau + o(\\tau),\\\\\nP(1, \\tau) &= \\lambda\\tau + o(\\tau),\\\\\nP(k, \\tau) &= o_k(\\tau), \\qquad \\text{对 } k = 2, 3, \\ldots \\te",
+    "err": "KaTeX parse error: Expected & or \\\\ or \\cr or \\end at end of input: …s \\text{成立}.\n>\n"
+   },
+   {
+    "line": 99,
+    "kind": "inline",
+    "tex": "\\left\\{\\sum_{n=1}^{\\infty} X_n **[problem]** **Problem 18. * The strong law of large numbers.** Let ",
+    "err": "KaTeX parse error: Expected '\\right', got 'EOF' at end of input: …numbers.** Let "
+   }
+  ],
+  "C:/Users/27063/Documents/翻译修复工作区\\未学课程\\概率导论\\book\\prob_chunk09_p401-450.bilingual.md": [
+   {
+    "line": 1529,
+    "kind": "block",
+    "tex": "\\begin{aligned}\n&p_\\Theta(\\theta)\\,p_{X\\mid\\Theta}(x\\mid\\theta), \\qquad &&\\text{（\\Theta 与 X 均为离散型）},\\\\\n&p_\\Theta(\\theta)\\,f_{X\\mid\\Theta}(x\\mid\\theta), \\qquad &",
+    "err": "KaTeX parse error: Undefined control sequence: \\Theta at position 82: …qquad &&\\text{（\\̲T̲h̲e̲t̲a̲ ̲与 X 均为离散型）},\\\\\n…"
+   }
+  ],
+  "C:/Users/27063/Documents/翻译修复工作区\\未学课程\\算法进阶\\lecture\\alg046-lec22-cryptography-encryption.bilingual.md": [
+   {
+    "line": 194,
+    "kind": "inline",
+    "tex": "w_j > \\sum_{i **[note] Note（译者注，M-H 原理与「美丽但已破」）:** **Merkle-Hellman（Merkle & Hellman, 1978）**是最早的公钥密码系统之一，也是「**用 NP 完全问题造密码**」的第一次大胆尝试（维基百科 Merkle–Hellman 词条）：加",
+    "err": "KaTeX parse error: Expected '}', got '&' at position 76: …Hellman（Merkle &̲ Hellman, 1978）…"
+   }
+  ]
+ }
+}

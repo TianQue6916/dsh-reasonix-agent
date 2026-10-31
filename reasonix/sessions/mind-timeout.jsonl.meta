@@ -1,0 +1,11 @@
+{
+  "id": "mind-timeout",
+  "created_at": "2026-06-08T14:32:30.2358896Z",
+  "updated_at": "2026-06-08T14:32:30.2358896Z",
+  "scope": "global",
+  "topic_id": "legacy_mind-timeout_a5013eda7fe9",
+  "topic_title": "test quick",
+  "schema_version": 1,
+  "turns": 1,
+  "preview": "test quick"
+}

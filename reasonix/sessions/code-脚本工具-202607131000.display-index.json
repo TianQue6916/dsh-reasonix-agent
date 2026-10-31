@@ -1,0 +1,610 @@
+{
+  "schema_version": 1,
+  "revision": 0,
+  "revision_known": false,
+  "content_digest": "b43ad29514f66b128e21a94387ad547b7dbf7743fa25039fdb34af2d14227960",
+  "transcript_size": 85829,
+  "message_count": 75,
+  "authored_turns": 3,
+  "entries": [
+    {
+      "index": 0,
+      "offset": 0,
+      "length": 264,
+      "role": "user",
+      "authored_turn": 1,
+      "starts_turn": true
+    },
+    {
+      "index": 1,
+      "offset": 264,
+      "length": 978,
+      "role": "assistant",
+      "authored_turn": 1,
+      "has_tool_calls": true
+    },
+    {
+      "index": 2,
+      "offset": 1242,
+      "length": 1120,
+      "role": "tool",
+      "authored_turn": 1,
+      "tool_result": true
+    },
+    {
+      "index": 3,
+      "offset": 2362,
+      "length": 568,
+      "role": "assistant",
+      "authored_turn": 1,
+      "has_tool_calls": true
+    },
+    {
+      "index": 4,
+      "offset": 2930,
+      "length": 118,
+      "role": "tool",
+      "authored_turn": 1,
+      "tool_result": true
+    },
+    {
+      "index": 5,
+      "offset": 3048,
+      "length": 328,
+      "role": "assistant",
+      "authored_turn": 1,
+      "has_tool_calls": true
+    },
+    {
+      "index": 6,
+      "offset": 3376,
+      "length": 208,
+      "role": "tool",
+      "authored_turn": 1,
+      "tool_result": true
+    },
+    {
+      "index": 7,
+      "offset": 3584,
+      "length": 144,
+      "role": "tool",
+      "authored_turn": 1,
+      "tool_result": true
+    },
+    {
+      "index": 8,
+      "offset": 3728,
+      "length": 2344,
+      "role": "assistant",
+      "authored_turn": 1,
+      "has_tool_calls": true
+    },
+    {
+      "index": 9,
+      "offset": 6072,
+      "length": 120,
+      "role": "tool",
+      "authored_turn": 1,
+      "tool_result": true
+    },
+    {
+      "index": 10,
+      "offset": 6192,
+      "length": 120,
+      "role": "tool",
+      "authored_turn": 1,
+      "tool_result": true
+    },
+    {
+      "index": 11,
+      "offset": 6312,
+      "length": 849,
+      "role": "assistant",
+      "authored_turn": 1,
+      "has_tool_calls": true
+    },
+    {
+      "index": 12,
+      "offset": 7161,
+      "length": 125,
+      "role": "tool",
+      "authored_turn": 1,
+      "tool_result": true
+    },
+    {
+      "index": 13,
+      "offset": 7286,
+      "length": 112,
+      "role": "tool",
+      "authored_turn": 1,
+      "tool_result": true
+    },
+    {
+      "index": 14,
+      "offset": 7398,
+      "length": 1831,
+      "role": "assistant",
+      "authored_turn": 1,
+      "has_tool_calls": true
+    },
+    {
+      "index": 15,
+      "offset": 9229,
+      "length": 113,
+      "role": "tool",
+      "authored_turn": 1,
+      "tool_result": true
+    },
+    {
+      "index": 16,
+      "offset": 9342,
+      "length": 482,
+      "role": "assistant",
+      "authored_turn": 1,
+      "has_tool_calls": true
+    },
+    {
+      "index": 17,
+      "offset": 9824,
+      "length": 136,
+      "role": "tool",
+      "authored_turn": 1,
+      "tool_result": true
+    },
+    {
+      "index": 18,
+      "offset": 9960,
+      "length": 344,
+      "role": "tool",
+      "authored_turn": 1,
+      "tool_result": true
+    },
+    {
+      "index": 19,
+      "offset": 10304,
+      "length": 351,
+      "role": "tool",
+      "authored_turn": 1,
+      "tool_result": true
+    },
+    {
+      "index": 20,
+      "offset": 10655,
+      "length": 2478,
+      "role": "assistant",
+      "authored_turn": 1,
+      "has_tool_calls": true
+    },
+    {
+      "index": 21,
+      "offset": 13133,
+      "length": 113,
+      "role": "tool",
+      "authored_turn": 1,
+      "tool_result": true
+    },
+    {
+      "index": 22,
+      "offset": 13246,
+      "length": 2197,
+      "role": "assistant",
+      "authored_turn": 1
+    },
+    {
+      "index": 23,
+      "offset": 15443,
+      "length": 125,
+      "role": "user",
+      "authored_turn": 2,
+      "starts_turn": true
+    },
+    {
+      "index": 24,
+      "offset": 15568,
+      "length": 2724,
+      "role": "assistant",
+      "authored_turn": 2,
+      "has_tool_calls": true
+    },
+    {
+      "index": 25,
+      "offset": 18292,
+      "length": 118,
+      "role": "tool",
+      "authored_turn": 2,
+      "tool_result": true
+    },
+    {
+      "index": 26,
+      "offset": 18410,
+      "length": 884,
+      "role": "tool",
+      "authored_turn": 2,
+      "tool_result": true
+    },
+    {
+      "index": 27,
+      "offset": 19294,
+      "length": 5582,
+      "role": "assistant",
+      "authored_turn": 2,
+      "has_tool_calls": true
+    },
+    {
+      "index": 28,
+      "offset": 24876,
+      "length": 124,
+      "role": "tool",
+      "authored_turn": 2,
+      "tool_result": true
+    },
+    {
+      "index": 29,
+      "offset": 25000,
+      "length": 1786,
+      "role": "assistant",
+      "authored_turn": 2,
+      "has_tool_calls": true
+    },
+    {
+      "index": 30,
+      "offset": 26786,
+      "length": 218,
+      "role": "tool",
+      "authored_turn": 2,
+      "tool_result": true
+    },
+    {
+      "index": 31,
+      "offset": 27004,
+      "length": 206,
+      "role": "tool",
+      "authored_turn": 2,
+      "tool_result": true
+    },
+    {
+      "index": 32,
+      "offset": 27210,
+      "length": 279,
+      "role": "assistant",
+      "authored_turn": 2,
+      "has_tool_calls": true
+    },
+    {
+      "index": 33,
+      "offset": 27489,
+      "length": 240,
+      "role": "tool",
+      "authored_turn": 2,
+      "tool_result": true
+    },
+    {
+      "index": 34,
+      "offset": 27729,
+      "length": 234,
+      "role": "tool",
+      "authored_turn": 2,
+      "tool_result": true
+    },
+    {
+      "index": 35,
+      "offset": 27963,
+      "length": 4454,
+      "role": "assistant",
+      "authored_turn": 2
+    },
+    {
+      "index": 36,
+      "offset": 32417,
+      "length": 54,
+      "role": "user",
+      "authored_turn": 3,
+      "starts_turn": true
+    },
+    {
+      "index": 37,
+      "offset": 32471,
+      "length": 1576,
+      "role": "assistant",
+      "authored_turn": 3,
+      "has_tool_calls": true
+    },
+    {
+      "index": 38,
+      "offset": 34047,
+      "length": 235,
+      "role": "tool",
+      "authored_turn": 3,
+      "tool_result": true
+    },
+    {
+      "index": 39,
+      "offset": 34282,
+      "length": 232,
+      "role": "assistant",
+      "authored_turn": 3,
+      "has_tool_calls": true
+    },
+    {
+      "index": 40,
+      "offset": 34514,
+      "length": 1507,
+      "role": "tool",
+      "authored_turn": 3,
+      "tool_result": true
+    },
+    {
+      "index": 41,
+      "offset": 36021,
+      "length": 674,
+      "role": "assistant",
+      "authored_turn": 3,
+      "has_tool_calls": true
+    },
+    {
+      "index": 42,
+      "offset": 36695,
+      "length": 239,
+      "role": "tool",
+      "authored_turn": 3,
+      "tool_result": true
+    },
+    {
+      "index": 43,
+      "offset": 36934,
+      "length": 223,
+      "role": "assistant",
+      "authored_turn": 3,
+      "has_tool_calls": true
+    },
+    {
+      "index": 44,
+      "offset": 37157,
+      "length": 271,
+      "role": "tool",
+      "authored_turn": 3,
+      "tool_result": true
+    },
+    {
+      "index": 45,
+      "offset": 37428,
+      "length": 193,
+      "role": "assistant",
+      "authored_turn": 3,
+      "has_tool_calls": true
+    },
+    {
+      "index": 46,
+      "offset": 37621,
+      "length": 1012,
+      "role": "tool",
+      "authored_turn": 3,
+      "tool_result": true
+    },
+    {
+      "index": 47,
+      "offset": 38633,
+      "length": 240,
+      "role": "assistant",
+      "authored_turn": 3,
+      "has_tool_calls": true
+    },
+    {
+      "index": 48,
+      "offset": 38873,
+      "length": 1738,
+      "role": "tool",
+      "authored_turn": 3,
+      "tool_result": true
+    },
+    {
+      "index": 49,
+      "offset": 40611,
+      "length": 1959,
+      "role": "assistant",
+      "authored_turn": 3,
+      "has_tool_calls": true
+    },
+    {
+      "index": 50,
+      "offset": 42570,
+      "length": 105,
+      "role": "tool",
+      "authored_turn": 3,
+      "tool_result": true
+    },
+    {
+      "index": 51,
+      "offset": 42675,
+      "length": 211,
+      "role": "assistant",
+      "authored_turn": 3,
+      "has_tool_calls": true
+    },
+    {
+      "index": 52,
+      "offset": 42886,
+      "length": 287,
+      "role": "tool",
+      "authored_turn": 3,
+      "tool_result": true
+    },
+    {
+      "index": 53,
+      "offset": 43173,
+      "length": 265,
+      "role": "assistant",
+      "authored_turn": 3,
+      "has_tool_calls": true
+    },
+    {
+      "index": 54,
+      "offset": 43438,
+      "length": 254,
+      "role": "tool",
+      "authored_turn": 3,
+      "tool_result": true
+    },
+    {
+      "index": 55,
+      "offset": 43692,
+      "length": 212,
+      "role": "assistant",
+      "authored_turn": 3,
+      "has_tool_calls": true
+    },
+    {
+      "index": 56,
+      "offset": 43904,
+      "length": 240,
+      "role": "tool",
+      "authored_turn": 3,
+      "tool_result": true
+    },
+    {
+      "index": 57,
+      "offset": 44144,
+      "length": 229,
+      "role": "assistant",
+      "authored_turn": 3,
+      "has_tool_calls": true
+    },
+    {
+      "index": 58,
+      "offset": 44373,
+      "length": 452,
+      "role": "tool",
+      "authored_turn": 3,
+      "tool_result": true
+    },
+    {
+      "index": 59,
+      "offset": 44825,
+      "length": 642,
+      "role": "assistant",
+      "authored_turn": 3,
+      "has_tool_calls": true
+    },
+    {
+      "index": 60,
+      "offset": 45467,
+      "length": 387,
+      "role": "tool",
+      "authored_turn": 3,
+      "tool_result": true
+    },
+    {
+      "index": 61,
+      "offset": 45854,
+      "length": 199,
+      "role": "assistant",
+      "authored_turn": 3,
+      "has_tool_calls": true
+    },
+    {
+      "index": 62,
+      "offset": 46053,
+      "length": 1605,
+      "role": "tool",
+      "authored_turn": 3,
+      "tool_result": true
+    },
+    {
+      "index": 63,
+      "offset": 47658,
+      "length": 1809,
+      "role": "assistant",
+      "authored_turn": 3,
+      "has_tool_calls": true
+    },
+    {
+      "index": 64,
+      "offset": 49467,
+      "length": 1611,
+      "role": "tool",
+      "authored_turn": 3,
+      "tool_result": true
+    },
+    {
+      "index": 65,
+      "offset": 51078,
+      "length": 285,
+      "role": "assistant",
+      "authored_turn": 3,
+      "has_tool_calls": true
+    },
+    {
+      "index": 66,
+      "offset": 51363,
+      "length": 27651,
+      "role": "tool",
+      "authored_turn": 3,
+      "tool_result": true
+    },
+    {
+      "index": 67,
+      "offset": 79014,
+      "length": 242,
+      "role": "assistant",
+      "authored_turn": 3,
+      "has_tool_calls": true
+    },
+    {
+      "index": 68,
+      "offset": 79256,
+      "length": 347,
+      "role": "tool",
+      "authored_turn": 3,
+      "tool_result": true
+    },
+    {
+      "index": 69,
+      "offset": 79603,
+      "length": 167,
+      "role": "assistant",
+      "authored_turn": 3,
+      "has_tool_calls": true
+    },
+    {
+      "index": 70,
+      "offset": 79770,
+      "length": 3506,
+      "role": "tool",
+      "authored_turn": 3,
+      "tool_result": true
+    },
+    {
+      "index": 71,
+      "offset": 83276,
+      "length": 843,
+      "role": "assistant",
+      "authored_turn": 3,
+      "has_tool_calls": true
+    },
+    {
+      "index": 72,
+      "offset": 84119,
+      "length": 351,
+      "role": "tool",
+      "authored_turn": 3,
+      "tool_result": true
+    },
+    {
+      "index": 73,
+      "offset": 84470,
+      "length": 1019,
+      "role": "assistant",
+      "authored_turn": 3,
+      "has_tool_calls": true
+    },
+    {
+      "index": 74,
+      "offset": 85489,
+      "length": 340,
+      "role": "tool",
+      "authored_turn": 3,
+      "tool_result": true
+    }
+  ],
+  "updated_at": "2026-08-10T16:02:07.8373411Z"
+}

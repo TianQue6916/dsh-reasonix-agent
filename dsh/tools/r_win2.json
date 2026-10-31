@@ -1,0 +1,221 @@
+{
+ "total": 92636,
+ "fails": 30,
+ "files_with_errors": 17,
+ "bad": {
+  "C:/Users/27063/Desktop/课程文件\\006算法导论\\book\\clrs_chunk03_book083-122.bilingual.md": [
+   {
+    "line": 1330,
+    "kind": "block",
+    "tex": "\\begin{aligned}\n\\mathrm{E}[X] &= \\mathrm{E}\\left[\\sum_{i=1}^{n} X_i\\right] & & \\text{(by equation (5.2))} \\tag{5.4}\\\\\n&= \\sum_{i=1}^{n} \\mathrm{E}[X_i] & & \\tex",
+    "err": "KaTeX parse error: Multiple \\tag"
+   }
+  ],
+  "C:/Users/27063/Desktop/课程文件\\006算法导论\\book\\clrs_chunk05_book163-202.bilingual.md": [
+   {
+    "line": 675,
+    "kind": "inline",
+    "tex": "X_q = I\\,\\{\\text{the ",
+    "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at end of input: …I\\,\\{\\text{the "
+   },
+   {
+    "line": 675,
+    "kind": "inline",
+    "tex": "th smallest element is chosen as the pivot}\\}",
+    "err": "KaTeX parse error: Expected 'EOF', got '}' at position 43: …en as the pivot}̲\\}"
+   }
+  ],
+  "C:/Users/27063/Desktop/课程文件\\006算法导论\\book\\clrs_chunk06_book203-242.bilingual.md": [
+   {
+    "line": 608,
+    "kind": "inline",
+    "tex": "X_{ijk} = I\\{\\text{",
+    "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at end of input: …jk} = I\\{\\text{"
+   },
+   {
+    "line": 608,
+    "kind": "inline",
+    "tex": "}\\}",
+    "err": "KaTeX parse error: Expected 'EOF', got '}' at position 1: }̲\\}"
+   }
+  ],
+  "C:/Users/27063/Desktop/课程文件\\100b实分析\\01-讲义笔记  准备打印\\L10.bilingual.md": [
+   {
+    "line": 185,
+    "kind": "inline",
+    "tex": "\binom{n}{i}",
+    "err": "KaTeX parse error: Unexpected character: '\b' at position 1: \b̲inom{n}{i}"
+   }
+  ],
+  "C:/Users/27063/Desktop/课程文件\\100b实分析\\03-习题集  准备打印\\PS02.bilingual.md": [
+   {
+    "line": 21,
+    "kind": "block",
+    "tex": "> M := \\max\\{|a_1|, |a_2|, \\ldots, |a_{N_0-1}|, |a|+1\\} > 0\n> （若 $N_0 = 1$，则 max 中的有限部分为空集，此时直接取 $M = |a|+1$），\n> ",
+    "err": "KaTeX parse error: Can't use function '$' in math mode at position 66: …|+1\\} > 0\n> （若 $̲N_0 = 1$，则 max …"
+   }
+  ],
+  "C:/Users/27063/Desktop/课程文件\\100b实分析\\split\\TBB-AllChapters-Portrait_part001_p001-050.bilingual.md": [
+   {
+    "line": 877,
+    "kind": "block",
+    "tex": "x_1 &= 1.00000000000000000000000000000000000000000000000000000000000 \nx_2 &= 1.50000000000000000000000000000000000000000000000000000000000 \nx_3 &= 1.41666666666",
+    "err": "KaTeX parse error: Expected 'EOF', got '&' at position 5: x_1 &̲= 1.00000000000…"
+   }
+  ],
+  "C:/Users/27063/Desktop/课程文件\\100b实分析\\split\\TBB-AllChapters-Portrait_part009_p401-450.bilingual.md": [
+   {
+    "line": 1253,
+    "kind": "block",
+    "tex": "\\log 2 = \\sum_{k=1}^{\\infty} \\frac{(-1)^k}{k}.（原文如此；按 Example 10.14 的正确恒等式 $-\\log(1-x)=\\sum_{k=1}^{\\infty}x^k/k$，取 $x=-1$ 时应得 $\\log 2=\\sum_{k=1}^{\\infty}\\frac{(",
+    "err": "KaTeX parse error: Can't use function '$' in math mode at position 76: …e 10.14 的正确恒等式 $̲-\\log(1-x)=\\sum…"
+   },
+   {
+    "line": 1875,
+    "kind": "block",
+    "tex": "\\left(1 + x + \\frac{1}{2!}x^2 + \\frac{1}{3!}x^3 + \\cdots\\right)\n\\left(x - \\frac{1}{3!}x^3 + \\frac{1}{5!}x^5 - \\cdots\\right)\n= x + x^2 + \\frac{1}{3}x^3 + \\cdots（",
+    "err": "KaTeX parse error: Can't use function '$' in math mode at position 164: …^3 + \\cdots（此处 $̲\\sin x$ 系数按正确值 …"
+   },
+   {
+    "line": 1980,
+    "kind": "block",
+    "tex": "e^{\\sin x} = 1 + x + \\frac{1}{2}x^2 - \\frac{1}{6}x^3 + \\cdots（此结果沿用了原书未经修正的 $\\sin x$ 展开 $x-\\frac13x^3+\\frac15x^5-\\cdots$；按正确的 $x-\\frac{x^3}{3!}+\\frac{x^5}{5!}-\\",
+    "err": "KaTeX parse error: Can't use function '$' in math mode at position 77: …（此结果沿用了原书未经修正的 $̲\\sin x$ 展开 $x-\\…"
+   }
+  ],
+  "C:/Users/27063/Desktop/课程文件\\data lerning\\Strang_LaLFD_part002_p051-100.bilingual.md": [
+   {
+    "line": 179,
+    "kind": "block",
+    "tex": "\\begin{aligned}\nS &= LU \\tag{3} \\\\\n  &= LDL^T \\tag{4} \\\\\n  &= A^TA \\tag{5}\n\\end{aligned}\n",
+    "err": "KaTeX parse error: Multiple \\tag"
+   },
+   {
+    "line": 1460,
+    "kind": "inline",
+    "tex": "\\sum\\sigma_i^2\\le(\\sum\\sigma_i)^2=\\sum\\sigma_i^2+2\\sum_{i 用均值—方差把三者读清楚：设 ",
+    "err": "KaTeX parse error: Expected '}', got 'EOF' at end of input: …用均值—方差把三者读清楚：设 "
+   }
+  ],
+  "C:/Users/27063/Desktop/课程文件\\data lerning\\Strang_LaLFD_part003_p101-150.bilingual.md": [
+   {
+    "line": 1021,
+    "kind": "inline",
+    "tex": "U\\SigmaV^{T}",
+    "err": "KaTeX parse error: Undefined control sequence: \\SigmaV at position 2: U\\̲S̲i̲g̲m̲a̲V̲^{T}"
+   }
+  ],
+  "C:/Users/27063/Desktop/课程文件\\data lerning\\Strang_LaLFD_part004_p151-200.bilingual.md": [
+   {
+    "line": 2936,
+    "kind": "block",
+    "tex": "\\begin{aligned}\n\\boldsymbol{0} = \\nabla f(\\boldsymbol{x}^{*}) + A^{\\mathrm{T}}\\boldsymbol{y}^{*} \\qquad & \\boldsymbol{0} \\in \\partial f(\\boldsymbol{x}^{*}) + A^",
+    "err": "KaTeX parse error: Multiple \\tag"
+   },
+   {
+    "line": 3217,
+    "kind": "block",
+    "tex": "\\begin{aligned}\n\\textbf{ADMM} \\qquad \\boldsymbol{x}_{k+1} &= (\\partial F_2 + \\alpha I)^{-1} (\\alpha \\boldsymbol{z}_k − \\alpha \\boldsymbol{u}_k) \\tag{28a} \\\\\n\\bo",
+    "err": "KaTeX parse error: Multiple \\tag"
+   }
+  ],
+  "C:/Users/27063/Desktop/课程文件\\data lerning\\Strang_LaLFD_part005_p201-250.bilingual.md": [
+   {
+    "line": 115,
+    "kind": "block",
+    "tex": "\\boxed{\n\\begin{array}{ll}\n\\textbf{1. Minimize over } R \\ (n \\times r) & \\|A - CR^T\\|_F^2 + \\lambda \\|R\\|_F^2 \\hfill (9) \\\\\n\\textbf{2. Compute this SVD } RD = U\\",
+    "err": "KaTeX parse error: Undefined control sequence: \\hfill at position 110: …mbda \\|R\\|_F^2 \\̲h̲f̲i̲l̲l̲ ̲(9) \\\\\n\\textbf{…"
+   }
+  ],
+  "C:/Users/27063/Desktop/课程文件\\未学课程\\概率导论\\book\\prob_chunk04_p151-200.bilingual.md": [
+   {
+    "line": 1011,
+    "kind": "inline",
+    "tex": "& A",
+    "err": "KaTeX parse error: Expected 'EOF', got '&' at position 1: &̲ A"
+   }
+  ],
+  "C:/Users/27063/Desktop/课程文件\\未学课程\\概率导论\\book\\prob_chunk07_p301-350.bilingual.md": [
+   {
+    "line": 849,
+    "kind": "block",
+    "tex": "\\begin{aligned}\nP(0, \\tau) &= 1 - \\lambda\\tau + o(\\tau),\\\\\nP(1, \\tau) &= \\lambda\\tau + o(\\tau),\\\\\nP(k, \\tau) &= o_k(\\tau), \\qquad \\text{对 } k = 2, 3, \\ldots \\te",
+    "err": "KaTeX parse error: Expected & or \\\\ or \\cr or \\end at position 190: …n style=\"color:#̲1e8449;\">[note]…"
+   },
+   {
+    "line": 886,
+    "kind": "block",
+    "tex": "P(k, T) = e^{-\\lambda T}\\,\\frac{(\\lambda T)^{k}}{k!}, \\qquad k = 0, 1, \\ldots\n> <span style=\"color:#1e8449;\">[note] Note（译者注）:</span> 本节的心脏公式，值得把推导拆成可复用模板，命名为\"小",
+    "err": "KaTeX parse error: Expected 'EOF', got '#' at position 100: …n style=\"color:#̲1e8449;\">[note]…"
+   },
+   {
+    "line": 918,
+    "kind": "block",
+    "tex": "E[N_T] = \\lambda T, \\qquad \\operatorname{var}(N_T) = \\lambda T,\n> <span style=\"color:#1e8449;\">[note] Note（译者注）:</span> 均值等于方差（$E=\\mathrm{var}=\\lambda T$）是泊松分布的",
+    "err": "KaTeX parse error: Expected 'EOF', got '#' at position 86: …n style=\"color:#̲1e8449;\">[note]…"
+   },
+   {
+    "line": 928,
+    "kind": "block",
+    "tex": "F_T(t) = P(T \\le t) = 1 - P(T > t) = 1 - P(0, t) = 1 - e^{-\\lambda t}, \\qquad t > 0 .\n> <span style=\"color:#1e8449;\">[note] Note（译者注）:</span> 推导\"首次到达时间 $T$ 的分布\"",
+    "err": "KaTeX parse error: Expected 'EOF', got '#' at position 108: …n style=\"color:#̲1e8449;\">[note]…"
+   },
+   {
+    "line": 1015,
+    "kind": "block",
+    "tex": "P(T - t > s)\n> <span style=\"color:#1e8449;\">[note] Note（译者注）:</span> 无记忆性是本节最深刻的性质，值得从第一性原理看穿。等式 $P(T>s+t\\mid T>s)=P(T>t)$ 翻译成生存函数就是 $S(s+t)=S(s)S(t)$，这是一个函数方程：",
+    "err": "KaTeX parse error: Expected 'EOF', got '#' at position 35: …n style=\"color:#̲1e8449;\">[note]…"
+   },
+   {
+    "line": 1144,
+    "kind": "block",
+    "tex": "f_{Y_k}(y) = \\frac{\\lambda^k y^{k-1} e^{-\\lambda y}}{(k-1)!}, \\qquad y \\ge 0.\n> <span style=\"color:#1e8449;\">[note] Note（译者注）:</span> 本页演示了一个可复用的\"求密度\"模板，命名为\"δ·f",
+    "err": "KaTeX parse error: Expected 'EOF', got '#' at position 100: …n style=\"color:#̲1e8449;\">[note]…"
+   },
+   {
+    "line": 1311,
+    "kind": "block",
+    "tex": "E[T_1 + T_2 + T_3] = \\frac{1}{3\\lambda} + \\frac{1}{2\\lambda} + \\frac{1}{\\lambda}.\n> <span style=\"color:#1e8449;\">[note] Note（译者注）:</span> Example 6.16 是\"顺序统计量\"思",
+    "err": "KaTeX parse error: Expected 'EOF', got '#' at position 104: …n style=\"color:#̲1e8449;\">[note]…"
+   },
+   {
+    "line": 2310,
+    "kind": "block",
+    "tex": "p_{ij} = P(X_{n+1} = j \\mid X_n = i), \\qquad i,\\, j \\in S.\n> <span style=\"color:#1e8449;\">[note] Note（译者注）:</span> 把 m×m 转移概率矩阵想成一张加权邻接矩阵——这是 6.042J 图论的直系延续：P_{",
+    "err": "KaTeX parse error: Expected 'EOF', got '#' at position 81: …n style=\"color:#̲1e8449;\">[note]…"
+   }
+  ],
+  "C:/Users/27063/Desktop/课程文件\\未学课程\\概率导论\\book\\prob_chunk09_p401-450.bilingual.md": [
+   {
+    "line": 651,
+    "kind": "inline",
+    "tex": "\\*",
+    "err": "KaTeX parse error: Undefined control sequence: \\* at position 1: \\̲*̲"
+   }
+  ],
+  "C:/Users/27063/Desktop/课程文件\\未学课程\\算法进阶\\lecture\\alg046-lec15-linear-programming-lp-reductions-simplex.bilingual.md": [
+   {
+    "line": 24,
+    "kind": "block",
+    "tex": "\\begin{aligned}\n\\text{Minimize} \\quad & x_1 + x_2 + x_3 + x_4 \\\\\n\\text{Subject to} \\quad\n-2x_1 + 8x_2 + 0x_3 + 10x_4 &\\ge 50{,}000 \\quad \\text{(Urban Majority)}",
+    "err": "KaTeX parse error: Multiple \\tag"
+   }
+  ],
+  "C:/Users/27063/Desktop/课程文件\\未学课程\\算法进阶\\lecture\\alg046-lec22-cryptography-encryption.bilingual.md": [
+   {
+    "line": 196,
+    "kind": "inline",
+    "tex": "w_j > \\sum_{i **[note] Note（译者注，M-H 原理与「美丽但已破」）:** **Merkle-Hellman（Merkle & Hellman, 1978）**是最早的公钥密码系统之一，也是「**用 NP 完全问题造密码**」的第一次大胆尝试（维基百科 Merkle–Hellman 词条）：加",
+    "err": "KaTeX parse error: Expected '}', got '&' at position 76: …Hellman（Merkle &̲ Hellman, 1978）…"
+   }
+  ],
+  "C:/Users/27063/Desktop/课程文件\\未学课程\\算法进阶\\recitationnotes\\alg046-rec01-divide-conquer-smarter-interval-scheduling-master-theorem-strassen.bilingual.md": [
+   {
+    "line": 187,
+    "kind": "block",
+    "tex": "\\begin{aligned}\nT(n) &= T\\left(\\frac{n}{5}\\right) + T\\left(\\frac{7n}{10} + 6\\right) + cn \\tag{1}\\\\\n&\\le d\\left(\\frac{n}{5} + 1\\right) + d\\left(\\frac{7n}{10} + 6",
+    "err": "KaTeX parse error: Multiple \\tag"
+   }
+  ]
+ }
+}

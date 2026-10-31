@@ -69,15 +69,30 @@
 "m": 1790774671257288900,
 "s": 2893
 },
+"global/Boyd答案手册-PDF抽取工具选择.md": {
+"h": "c9ba6a5400ab06153c44e1344519cb24823fe633b81823a7b9ba9e0c82a9ad5b",
+"m": 1793167363845298100,
+"s": 1709
+},
+"global/MacKay信息论译校-两处硬坑.md": {
+"h": "6c671ae14fa647485b3df1079f287cc3126189238e06ccad0411bcfb01035973",
+"m": 1793132289103859000,
+"s": 2032
+},
 "global/academic-level-and-teaching-style.md": {
-"h": "dfaa773b38c0678aa5baf4a64971cc2403993fd7b68f4a385e4e5ff78e00dcba",
-"m": 1790160254106164500,
-"s": 2645
+"h": "adcefe7c76f7802721b2bcbf287317d59e7dc68b8f95153b825b00b72c1e53f0",
+"m": 1793178779268389700,
+"s": 3484
 },
 "global/academic-research-skills.md": {
 "h": "b18e4b4d552d4c4a7639522ec4eda9f713618a37f0ef74428c64cae8a5e409c9",
 "m": 1790582468895054400,
 "s": 1514
+},
+"global/agent-cancel-breaks-renderer-steer-instead.md": {
+"h": "411305db6c16ae4a1925b107a731d6a9ce0a6d72e45596a295ac7f84762308ce",
+"m": 1793092291365992000,
+"s": 3339
 },
 "global/api-调用默认-command-code-goat-套餐-key-而非-deepseek-官方.md": {
 "h": "6177873440cc2f06c07c5a2df872953918a077fb72f2817078967173d0df3463",
@@ -134,6 +149,11 @@
 "m": 1792728228112653200,
 "s": 3494
 },
+"global/bilingual-katex-two-pitfalls.md": {
+"h": "6e51ec211e2136fc2d35c5d3612abcf743c9341945b7b7f84a6f728e83187aad",
+"m": 1793130777455530300,
+"s": 2432
+},
 "global/bilingual-ocw-translator-refactored-v2.md": {
 "h": "a045947e66e1df237fc279c4f9ad4a8b39b196b73a0f174034e8d9a6dacf6a1b",
 "m": 1786280401647133200,
@@ -164,10 +184,30 @@
 "m": 1785495430381071500,
 "s": 1923
 },
+"global/bilingual-并发写冲突-检测与恢复.md": {
+"h": "e27de03cca706e47581a320f82bdc2370e364793b630784b3314f8c3cd7814d7",
+"m": 1793132877715305000,
+"s": 2339
+},
 "global/billion-context-community-solution-and-dsh-preset-blindspot-20261004.md": {
 "h": "b3eb76d5f891dab73276b8a6124ce08fe56ca8b5c97beaf6fc4aa2ae056ee307",
 "m": 1791100119205588500,
 "s": 5199
+},
+"global/billion-context-compress-工具缺失-20261029.md": {
+"h": "19846e61a65491fbb58e79d3e9da8a7227bad05a13be665164f7fefc787201e5",
+"m": 1793206167410622000,
+"s": 4462
+},
+"global/boyd-answer-handbook-p161-180-audit.md": {
+"h": "cf5e95915e6b27a38fb366698bf3ae6b0a3d041118126bf05e34e755f57a5933",
+"m": 1793174258447658600,
+"s": 3052
+},
+"global/boyd-solutions-manual-translation.md": {
+"h": "dcb97678280b25eda53f037156f165b1e2edf9e477d55b4046000141c9c30df7",
+"m": 1793133839773051900,
+"s": 2583
 },
 "global/b站视频下载方法-downkyi-ytdlp.md": {
 "h": "775159ac9914ce3e43824a447acd618553c27960afd29839b24611037106bcff",
@@ -213,6 +253,11 @@
 "h": "d4d81803be48111bf5c35c8f5b5caad96c64650d86f7600b955ba42bf706662b",
 "m": 1790771559891526400,
 "s": 2254
+},
+"global/cover信息论目录实为mackay-itila.md": {
+"h": "05fc09e0bc20ef091b3a206011998bc3ed74fbc467e3043316b37420f3f03f01",
+"m": 1793131434885370200,
+"s": 2278
 },
 "global/csapp-summary-methodology.md": {
 "h": "5836bc8e593abe13b0f6964afaa4d814557cdf4a174f0eee0c8d40a557b75c93",
@@ -299,6 +344,11 @@
 "m": 1792682585467902800,
 "s": 4254
 },
+"global/dsh-0.2.1-rc.4-升级收益评估-20261028.md": {
+"h": "2e6ff60168684ad01bcc2ea3cf1369c88875b9a4bd1a73051de48492febcf965",
+"m": 1793204039695134400,
+"s": 2997
+},
 "global/dsh-agent-jobs-v2.md": {
 "h": "9758c252ee90e52d9d9aa81d79e73bb415cdd6fab01355abf58a8a5fc663155c",
 "m": 1790581334549542700,
@@ -358,6 +408,16 @@
 "h": "05ed82c9ad25bba00d599cef64534e56b597e578f413b1e9dc3a4601f03585f3",
 "m": 1791113389898659800,
 "s": 3692
+},
+"global/dsh-concurrency-discipline-waterfall-veto-bug-20261028.md": {
+"h": "2da815ed604a66e9704a38fcb1ae83a6371d2b6a804cf50851f8aa52bce98b5b",
+"m": 1793178486433763400,
+"s": 2933
+},
+"global/dsh-concurrency-discipline-降频-20261028.md": {
+"h": "66ad7454edd14668bbccdb6bfdc0d31d84f1a546378bac5b2c61a684a051960e",
+"m": 1793186533889805400,
+"s": 2056
 },
 "global/dsh-config-editor-writeback-and-mnemon-settings.md": {
 "h": "30496563e8699077e093d3d037c777e4f9cf13514b5bde90c857bbcc777d26cc",
@@ -509,6 +569,11 @@
 "m": 1791109133346615900,
 "s": 7285
 },
+"global/dsh-plan-anchor-per-session-20261028.md": {
+"h": "f4b0ece4a93c7e458936ef39abd960b861334a982a1e393f5e32733d01cac8a3",
+"m": 1793178495791215500,
+"s": 2654
+},
 "global/dsh-plugin-batch2-modlens-vision-20260927.md": {
 "h": "b005d6f6d7d401d8f83b58834901ff6455d9da604c1d8a90c7e7052db2657fee",
 "m": 1790485543911287200,
@@ -574,6 +639,16 @@
 "m": 1792957035240906100,
 "s": 3358
 },
+"global/dsh-reasonix-agent-reading-workspace.md": {
+"h": "ec3a07f315e4acf3f1bcb1fcf821af508b8d54d3cf0b6730b02872a0325d7323",
+"m": 1793029819641957400,
+"s": 2307
+},
+"global/dsh-render-crash-thinking-guard.md": {
+"h": "e2467c99c1ff96d6b71ce50599e1b2a58b97224a7a6dc942ef50656f2420496b",
+"m": 1793127946619974900,
+"s": 3289
+},
 "global/dsh-replay-installed-for-gap5-20260928.md": {
 "h": "d425881cd5838431ddbdb1604d4ea1512cacd7c2f651ec8b73ad693d3c98adc9",
 "m": 1790527589060178600,
@@ -599,10 +674,30 @@
 "m": 1790590495744110800,
 "s": 2816
 },
+"global/dsh-sandbox-allowlist-能力边界-20261029.md": {
+"h": "302e74162d37453b24a8595563ed308ac10260b693d5d0339f642be0edfa2d62",
+"m": 1793207349144075600,
+"s": 3064
+},
+"global/dsh-sandbox-low-il-病灶与patch.md": {
+"h": "57309d54465ee633a38e79f2eb4d99874fb65768bda3a5070d8b7692911db3b7",
+"m": 1793217596542604200,
+"s": 8123
+},
+"global/dsh-sandbox-low-integrity-提权问题-20261028.md": {
+"h": "388428d030a24abddaf43b8a9f0ea8ee03753ce780bf80023018b1866250015c",
+"m": 1793207681457441300,
+"s": 2843
+},
 "global/dsh-sandbox-windows-写限制与danger-full-access.md": {
 "h": "bd486bb946bbd413ff6a40651459a89352b68ea8ceeecd3eb07b87259c2107bb",
 "m": 1792907447011923600,
 "s": 3211
+},
+"global/dsh-session-age-warn-插件-20261028.md": {
+"h": "a14a857006069947e36a05c56d7448950c971b551ec5e0ee7b88138694d0d36a",
+"m": 1793187354427138300,
+"s": 3735
 },
 "global/dsh-session-digest-ondemand-distill-20260926.md": {
 "h": "07448dc419850e298ee4dd1d0d3d5812533fe14c2085f98e5989d31718ba2ac7",
@@ -629,10 +724,25 @@
 "m": 1790835866624733200,
 "s": 4216
 },
+"global/dsh-sync-hardening-20261026.md": {
+"h": "c0c965cb37eef49a36d70ac44feb6e740d06c1583cd50d2ab3656ab709fb9141",
+"m": 1793019341838722800,
+"s": 2175
+},
 "global/dsh-thinking-guard-name-scope-fix-20261003.md": {
 "h": "0841771d50a2d218b28f47b97dc486ab4fe5e2e6ae7e1d1891d3e4790d07dce9",
 "m": 1791022437612319200,
 "s": 2986
+},
+"global/dsh-thinking-guard-unreachable-variant-fix-20261028.md": {
+"h": "6bc0e07badc19bdb5425c4abbaa261ac6f7a8301fe7823d402514bbc66cf3e66",
+"m": 1793186362257965600,
+"s": 2963
+},
+"global/dsh-thinking-guard-保持关闭-决策-20261028.md": {
+"h": "a7109194b7e7f5de57224287efbcb82d9b309d6b3f628b4eb0ebc2d375566d71",
+"m": 1793186899108237300,
+"s": 3088
 },
 "global/dsh-thinking-language-switch-20260930.md": {
 "h": "e6091b0839f243740a2f4e1fe3894f0be305a2e045701a9ceb5840342d112bab",
@@ -648,6 +758,11 @@
 "h": "5fb8c3f4dc13015bd4d35b6d7d8f3d9271e11c3f5ec6ae9c0c426b88a310228a",
 "m": 1790581440569286700,
 "s": 1903
+},
+"global/dsh-two-machine-sync-conflict-strategy.md": {
+"h": "44ca4a9aa4b53581887ea84f5c87e102d4859e7d4d7165adfd50d6141e4b6ed4",
+"m": 1792992501905541300,
+"s": 2953
 },
 "global/dsh-upgrade-to-0.2.0-rc.2-20260930.md": {
 "h": "98aacbda22984d41676dce5fe668ea77297cf52f929ca72a5b6f1079c2a77712",
@@ -694,6 +809,11 @@
 "m": 1791113592826846300,
 "s": 4222
 },
+"global/dsh-插件升级-20261029.md": {
+"h": "51eaf4dcbd72bc4d63c24e91213c9ceec5220e75e2072b6b4f349d07b83002a2",
+"m": 1793205647509884200,
+"s": 3400
+},
 "global/dsh-桌面端频繁中断-根因取证与-maxtokens-收敛-20261003.md": {
 "h": "05c331a2f3d942aba694b0e4c34f9cc4a92f9abea117e7c583d4ef779d9c3eda",
 "m": 1791039681392395900,
@@ -708,6 +828,11 @@
 "h": "f1a920a6634f0306615fd460dd8772ba214695dd98e785072d479367c90e64dc",
 "m": 1789141024178533900,
 "s": 3680
+},
+"global/dsh-进程优先级不提-20261028.md": {
+"h": "fa814ae06c59296bfe71fb2332ab253478c833b05a7c986cb54918b32c3200d8",
+"m": 1793179039148409200,
+"s": 2024
 },
 "global/dual-machine-memory-sync-conflict-copies-and-restores-20260927.md": {
 "h": "19858700b173fbda5eb5b0bf49f4414e4847db4a425e66b30178806f39faef07",
@@ -729,6 +854,11 @@
 "m": 1790518369202043300,
 "s": 4853
 },
+"global/edge-elevated-实例弹窗-20261029.md": {
+"h": "dee26e51fbf18434b15e02f70768e5847d24f1b0918fe607a646852c784b5b5c",
+"m": 1793206723294890100,
+"s": 3654
+},
 "global/english-cet4-prep-mainline-202608.md": {
 "h": "db97f94d5521cfb99191b9e4cf08bb4d36ab3180f305b100ad5fc850f9c2ed1e",
 "m": 1790774655113579500,
@@ -748,6 +878,11 @@
 "h": "45d8653563cbb1de3722a3964ddf008b5c745fb5611719a2a12e1a72959e3860",
 "m": 1792957034840515900,
 "s": 2194
+},
+"global/git-clone-large-repo-early-eof-playbook.md": {
+"h": "c66e60638cdb7f82324baa603351b27483698f0d1f0ee1f1e6e8e57d07e05eea",
+"m": 1793027627891619000,
+"s": 2780
 },
 "global/git-gh001-unpushed-commits-flatten.md": {
 "h": "c4f80190ac931e3a5e49eb1fb1423acc094b332c076ed4efd50c802fb3d02da6",
@@ -813,6 +948,11 @@
 "h": "5173aca3aac802991ae96527df3faac5063718d7d70a46c8f2d1e2f9f3cad5eb",
 "m": 1790711712802181900,
 "s": 3428
+},
+"global/goat-gateway-loop-guard-abort-mode.md": {
+"h": "c493958f834b8cae17b81eda1733038eb70ec7f650ebfbf1ce2f572e75b75565",
+"m": 1793031289673142300,
+"s": 3807
 },
 "global/goat-gateway-path-独家认领机制.md": {
 "h": "3c32a14c587ff3cccaaec7897a95f974a5633ecc824647383932b320773bbfba",
@@ -884,6 +1024,11 @@
 "m": 1791085754777663100,
 "s": 2522
 },
+"global/heredoc-折反斜杠-实测.md": {
+"h": "1e8b2bb7b223cb37a0e6f00a19e9ea499d3fe07943fd64afa3e7f9632fb56ad5",
+"m": 1793168170621626000,
+"s": 1986
+},
 "global/hindsight-broke-headless-incident-20260928.md": {
 "h": "dec226f77eb97c3abb1ce406b2094e211bc0505a959ba7f7a6e3b3e16e0bd21b",
 "m": 1790530530861159600,
@@ -893,6 +1038,16 @@
 "h": "89133b1ad0383738fa3ebbe1ea307b6f2b06d78dea638ac28a8b63ff6049aac0",
 "m": 1790528954667175700,
 "s": 4485
+},
+"global/idle-loop-guard-cross-turn-empty-spinning.md": {
+"h": "0f3393a53cfd856536242b08c52510f62d957de0dee36303672f441f77f4c029",
+"m": 1793031554381556200,
+"s": 2950
+},
+"global/idle-loop-guard-injection-ineffective-root-cause.md": {
+"h": "b6a372ade274de4d7164647599f651ffe5f1d454b6057f12cfd6cdb82cc85fbf",
+"m": 1793091623614712400,
+"s": 3514
 },
 "global/incident-credential-echo-leak.md": {
 "h": "335421c15ac71a085b93ac2d4ed79630ab28d4ddb6bfa7609199c33c52a99825",
@@ -909,6 +1064,21 @@
 "m": 1790620165297072200,
 "s": 4035
 },
+"global/journeymap-日志刷屏与修法.md": {
+"h": "ece8e08e63ffbf4f9f58b70ac81c0ab23c64618282f0a451ab52ddec6942ab28",
+"m": 1793210577461640800,
+"s": 5215
+},
+"global/learn-translate-补注-worker-纪律.md": {
+"h": "e178889c0b43587be9977fc2eead4eae6ac98deb691d8ad843d0b9c9219244ef",
+"m": 1793133089330042300,
+"s": 2814
+},
+"global/linux-dsh-fix-report-审阅-20261029.md": {
+"h": "0f75fd36486af65525ef12a549138fbdd4084d40103605ad136e137c28bc4ea9",
+"m": 1793206618568909500,
+"s": 4447
+},
 "global/linux-gateway-undici-ipv6-timeout.md": {
 "h": "3dd5e4f3c7bacb0873ff494dc21917db2fa6df462ed31968e59645aa8a310656",
 "m": 1792955230626758800,
@@ -919,15 +1089,40 @@
 "m": 1786107601983325600,
 "s": 2195
 },
+"global/linux-windows-迁移核对与relay通信-20261028.md": {
+"h": "b2d6b5edcacc61baac318908c76b38c31fd8c95a49e6a2c5553af71953c258a7",
+"m": 1793191953034865200,
+"s": 3865
+},
 "global/linux-天阙机-goat-额度同步-reasonix-balance-url-dsh-面板-2026-09-26.md": {
 "h": "d06775a5571184d06d62f2745f22ff6e623446217ece5c4ea2949786a2f646c6",
 "m": 1790428127261057100,
 "s": 4940
 },
+"global/lnk-icon-blank-low-mandatory-label.md": {
+"h": "9a8649b784d098dff29be23fdf15e19b22f6474938622faceab7053dfb5cbe53",
+"m": 1793217574060805100,
+"s": 5452
+},
+"global/mackay-itila-图注与公式不自洽-三步定案法.md": {
+"h": "a6ebb8b9068c993a328248cb3cc6304da513e6570f92c94771f13b85be565aca",
+"m": 1793174229650826700,
+"s": 2941
+},
+"global/mackay-itila-翻译-201-240-事实.md": {
+"h": "7eb93f0b3845b2bc0feb58f81e264e3d2a07c01068fe683a30b6f826fee0d484",
+"m": 1793133253521631600,
+"s": 3353
+},
 "global/markdown-KaTeX渲染校验与无效数学公式.md": {
 "h": "dddbb05819efaa0e73a92889a47f0d4583ca3ae94ebb34b4491f91d950e9cc0f",
 "m": 1792861430002557700,
 "s": 2472
+},
+"global/md2html-lite-离线katex预览.md": {
+"h": "cd5402277f678bd19c44eaae210a89224b9ae28d6fbe5d39dc7dab8662a9e518",
+"m": 1793170873216549000,
+"s": 2596
 },
 "global/memory-index-self-heal-20260928.md": {
 "h": "6b71b3e59c5bbf2ce5cdb69e363ee70e988fb6cf45722ebf8ae9e060872efea6",
@@ -970,9 +1165,9 @@
 "s": 3061
 },
 "global/mnemon-dedupe-by-title-and-cli-batch.md": {
-"h": "4737db14f782be4a15161dbd83214a2a89972bc728e16ca98c31f2a68cab1cb8",
-"m": 1792963571105225500,
-"s": 4016
+"h": "7b720b968070c3c65aaaa41b008f2c101e606cce7402fedc09c38e3e0dfd639a",
+"m": 1792990002561777600,
+"s": 3634
 },
 "global/mnemon-four-graph-store-verified-20260928.md": {
 "h": "3b8249a70750f7043d08766abcffb56f4fcd01809cb1f3634e8bdb5bcb265a8b",
@@ -1019,15 +1214,30 @@
 "m": 1790525556236758600,
 "s": 5512
 },
+"global/pdflatex-cm-font-pdf-text-extraction.md": {
+"h": "865347d2efd4260769fde82de7a82a78ec1db5f54d36a323a686c97457136f2a",
+"m": 1793130690401637500,
+"s": 2710
+},
 "global/plan-20260816-second-tianque.md": {
 "h": "ecab0cc81b31989d8866c29ddff15615d97ae5da1223da93e5f0f32868c76bfb",
 "m": 1786887002132360800,
 "s": 3182
 },
+"global/plan-anchor-per-session-隔离-2026-10-28.md": {
+"h": "e94b1ae4a82ab923f87eeaecd431b8b63b7f8bc43122702cd2da99a274cef5ea",
+"m": 1793188101602481700,
+"s": 3173
+},
 "global/plan-anchor-plugin-20261001.md": {
 "h": "6207e89c3a1206a2ab5e7943af11c9474060703d15f68d39790f9ccdfb57fbb0",
 "m": 1790860583709792000,
 "s": 4905
+},
+"global/plan-体系-三层结构-2026-10-28.md": {
+"h": "5585b5228ee2411a4d2004ea802e3362dc1ddddefa15f543eb30d8d17acc63db",
+"m": 1793188102057853500,
+"s": 3225
 },
 "global/probability-independence-user-sticking-point-202609.md": {
 "h": "1aea6643f992c68032f48c57be805455044dad7d29a5f2033bf20b6eeeec0ff9",
@@ -1118,6 +1328,11 @@
 "h": "8a30c051d2539df10518c65babf176f9d19899654df7d23473fe3cf28547eaae",
 "m": 1790336420026186200,
 "s": 3251
+},
+"global/relay-cross-os-mailbox.md": {
+"h": "eb24482954f8179659e3d33576b9c9a3b34cf8849ba2aa2e42623c64589c639b",
+"m": 1793194232119002000,
+"s": 3984
 },
 "global/restart-handoff-20261004-kernel-temp-and-bc.md": {
 "h": "1e9be41d53bdac40a4adbdd40fc0f6dd7b758e5b7a2975e85b57e7fd7755513b",
@@ -1305,9 +1520,9 @@
 "s": 2151
 },
 "global/user-persona-cognitive-system-architect.md": {
-"h": "c5c5c23b36d5b51c8e42075cedba5a27cebf350d2158a0de4fe466ad747906ad",
-"m": 1790835866630624500,
-"s": 10022
+"h": "e07328efa4dea3681a32def327643d813b0cf09bbca5b021217537a0ae15ff6b",
+"m": 1793178378314746800,
+"s": 10276
 },
 "global/v4pro-for-complex-reasoning.md": {
 "h": "eec10fbd124ee6ee2ded175bb64691bf46874e6f04597d52f10da16b45f1af11",
@@ -1318,6 +1533,16 @@
 "h": "c52588f17f0909f38c5eccb9f064e3996050a98232ed47d311bccbd484bf0778",
 "m": 1790495829158221200,
 "s": 9005
+},
+"global/wake-guard-phantom-boot-action-gate.md": {
+"h": "d38cb1d715b9789bf24fa356e7d223f2a943f20b5ab006c5692de0915ed89e30",
+"m": 1793090407795271800,
+"s": 3872
+},
+"global/websearch-linux-vs-windows-parity.md": {
+"h": "555440d6fc8abd47b8f7b21ddff83f21b70a5bf88c19900f6a3e933489ca8444",
+"m": 1793194232257872300,
+"s": 3562
 },
 "global/wechat-bot-migration-to-dsh-step1-20260930.md": {
 "h": "743d8b34f1be67dd966d006f77125ca4e5da93e4957450c73294fe850cb67cd3",
@@ -1374,6 +1599,11 @@
 "m": 1790151849433303600,
 "s": 4261
 },
+"global/不要虚增待办-已否决方案不再提.md": {
+"h": "11d9910a913ff2219f386ca8f0b9c08cd586bcf199c08b31d274d11b868fee27",
+"m": 1793194232295009100,
+"s": 1655
+},
 "global/人-AI讨论协议-审稿人角色与防sycophancy.md": {
 "h": "66a3fc78b807c270bad24f17cec556f1561cf366eb2e9f058cacca269f89e8da",
 "m": 1792680827002804200,
@@ -1408,6 +1638,11 @@
 "h": "4c53b3ed939df51bbc87e97f41707d872df8ef48c2f9674220eeab4fd7cabd0d",
 "m": 1790582468974724600,
 "s": 1114
+},
+"global/学业状态-2026-10-28-休学.md": {
+"h": "1604922e71f1eee1d7baba5d493c98055654a45db52efaeeb278edeaedafc19d",
+"m": 1793178758638268300,
+"s": 3994
 },
 "global/学业进度-2026-09.md": {
 "h": "288ab80281d57a489510070f4db29ac03357cba6b8b967214601d49371bc1d4f",
@@ -1448,6 +1683,11 @@
 "h": "2399d69d4215781b29d0d5a04b1747a53c9412a21d310a544257dae2d19d9f17",
 "m": 1792854718164384100,
 "s": 3309
+},
+"global/学习文档审计-图内文字必须与正文同等核对.md": {
+"h": "61c3b1aa416b4a067b12900b560e4c9d37c9d0849024e1332c314114f9fb8c99",
+"m": 1793290854153687700,
+"s": 3695
 },
 "global/学习文档自检清单与出图坑-learn-translate.md": {
 "h": "f27c4ae0fb18c95be44533ee22c2cb4f7c5feca1e78beeb7b31977047acadc37",
@@ -1569,6 +1809,16 @@
 "m": 1791116076709998000,
 "s": 2935
 },
+"global/本机使用模式-linux常驻不切系统.md": {
+"h": "185ce4200432696bf8057b2840da50752126b2e0c056869aac4b8641f0c77e1a",
+"m": 1793194232460801100,
+"s": 2096
+},
+"global/本机子agent并发实测-20261029.md": {
+"h": "5cfd46c1a336793c2d9e0c4ad694efb270196ca6889c1d5fe608d0722a5d7b66",
+"m": 1793209537445945200,
+"s": 3437
+},
 "global/用户学习模式-检索重建型与伴随式复习.md": {
 "h": "db919349bc443b598b265d96041e0bc6dd142f9bbb7bf5c82bc5708b9013e660",
 "m": 1792680827365336000,
@@ -1599,6 +1849,11 @@
 "m": 1786887003445190500,
 "s": 8052
 },
+"global/绑核脚本与subagent模型策略-20261029.md": {
+"h": "96053ea41ccd6ed3bcb5a6850aed905611697af0a287b959e7c52b2ecbdccf2a",
+"m": 1793209907298194900,
+"s": 3448
+},
 "global/计划-方舟计划.md": {
 "h": "ddfdce989aec254ddec952a57fe3fd945821c20e11cc323ce8d99fa3e1d8ddee",
 "m": 1786887003468832900,
@@ -1608,6 +1863,11 @@
 "h": "51da0289f374c66e6b0ef4e683860ae1e59ac6ae2ee588c3d53db1c820376e49",
 "m": 1790582469117860700,
 "s": 10227
+},
+"global/译注判据-教材翻译模板.md": {
+"h": "e909ea111fffab6ede25e4f044df6bfcf63b513d585f1c9114d4b5c99d3ef71c",
+"m": 1793131897894346200,
+"s": 2390
 },
 "global/输出规范.md": {
 "h": "f2fcc594a9c1b4c6095bca78c0d8b45cb895fc8de53d0fc44aa401e627f8f0de",
@@ -1643,6 +1903,16 @@
 "h": "511e56e51e1d7e46a564141f79c5edf19233ea4bda4ffeaa040cbdddb5ec879c",
 "m": 1790219215771701200,
 "s": 3704
+},
+"project/6042j-mcs-pdf-页码与文本层映射.md": {
+"h": "3eb66e4c25269d3fda7d833677a10a8cecaa42d7614cbe7302c702965766cb36",
+"m": 1793177035813130300,
+"s": 1720
+},
+"project/Boyd凸优化双语译注本-完成状态.md": {
+"h": "24be605fd971612197c8bba1a21ab750d39eb54c381ca54630028e281c8dc6ea",
+"m": 1793175285929479900,
+"s": 2130
 },
 "project/bilingual-ocw-translator-v3.3-muse-refactor.md": {
 "h": "b3a1c351437feca2cec16d117d247488dba76951c265a6de7cc21f442eeb639e",

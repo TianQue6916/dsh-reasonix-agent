@@ -1,0 +1,3736 @@
+{
+ "date": "2026-10-27",
+ "weekday": "周二",
+ "activity": {
+  "segments": [],
+  "total_active_min": 0,
+  "note": "sampler 未采集到该日数据"
+ },
+ "sessions": {
+  "prompts": [
+   {
+    "t": "00:00",
+    "sid": "session-7da4ba19",
+    "text": "可以,之前好像装过,但是问题频发"
+   },
+   {
+    "t": "00:03",
+    "sid": "session-7da4ba19",
+    "text": "可以,你可以先读取看看,然后试试,注意社区经验"
+   },
+   {
+    "t": "00:06",
+    "sid": "session-7da4ba19",
+    "text": "你时间看错了,赶紧开始吧,先列任务"
+   },
+   {
+    "t": "00:16",
+    "sid": "session-7da4ba19",
+    "text": "持续推进"
+   },
+   {
+    "t": "16:14",
+    "sid": "session-4599e285",
+    "text": "电脑重启了,但是我要求的功能没有一个实现了的,难道社区没有相关经验吗"
+   },
+   {
+    "t": "16:14",
+    "sid": "session-7da4ba19",
+    "text": "电脑重启了"
+   },
+   {
+    "t": "16:35",
+    "sid": "session-4599e285",
+    "text": "重启了"
+   },
+   {
+    "t": "16:37",
+    "sid": "session-7da4ba19",
+    "text": "之前你写的一个这个。 用来判断我开机各功。 是否距离上次关击超过60秒中的提的程序，如果没有超过60秒就会将我的任何关。但是现在有一个问题就是这样的，就是说因为。 这样做的话，我没有办法去进行重启的，你知道吗？如果我重启电脑的话，也会导致你的判因为误开机。虽然你的本意是为了防止因为通电问题或者电量过了的问题，端的电脑可经启动。但是现在你的判别条件似乎会有些清晰，我需要你进行查修修改。"
+   },
+   {
+    "t": "16:39",
+    "sid": "session-4599e285",
+    "text": "小心钱卡上面，而是要挂在我的业维的。 为什么不能直接修改这个程序的检索，让他去核心现场上面去检索？"
+   },
+   {
+    "t": "16:41",
+    "sid": "session-7da4ba19",
+    "text": "是全局的吗"
+   },
+   {
+    "t": "16:45",
+    "sid": "session-7da4ba19",
+    "text": "那个关于思维空转的问题没解决"
+   },
+   {
+    "t": "16:46",
+    "sid": "session-4599e285",
+    "text": "好是好了,开机自启等等配置好了吗"
+   },
+   {
+    "t": "16:58",
+    "sid": "session-7da4ba19",
+    "text": "介入之后还要让任务继续啊"
+   },
+   {
+    "t": "17:04",
+    "sid": "session-7da4ba19",
+    "text": "重启了"
+   },
+   {
+    "t": "17:06",
+    "sid": "session-5975e549",
+    "text": "十一月三号月套餐结束,我现在额度采用了百分之三十三,我想知道我现在在学习这方面缺什么,我需要花费这些token来做到这些事情,比如我翻译的讲义不够好什么的,或者视频字幕没翻译完什么的,你看看"
+   },
+   {
+    "t": "17:07",
+    "sid": "session-7da4ba19",
+    "text": "社区怎么解决的"
+   },
+   {
+    "t": "17:09",
+    "sid": "session-5975e549",
+    "text": "还有教材翻译什么的,注意两个机子的所有财产,linux那边盘区很多"
+   },
+   {
+    "t": "17:10",
+    "sid": "session-7da4ba19",
+    "text": "额,出现老毛病了,对话窗口不再显示东西,切换到轨迹才能看到,似乎又是渲染崩溃"
+   },
+   {
+    "t": "17:12",
+    "sid": "session-7da4ba19",
+    "text": "可以,那就2"
+   },
+   {
+    "t": "17:15",
+    "sid": "session-5975e549",
+    "text": "继续吧"
+   },
+   {
+    "t": "17:15",
+    "sid": "session-7da4ba19",
+    "text": "为什么中断?还有,现在即使是重启dsh渲染也还是失败"
+   },
+   {
+    "t": "17:29",
+    "sid": "session-7da4ba19",
+    "text": "频繁中断是怎么回事"
+   },
+   {
+    "t": "17:32",
+    "sid": "session-5975e549",
+    "text": "是这样的我现在有这样的问题。我的意思是说。 看着现在还有额度，干脆按照宪版的这个知识框架，就是这个技能，我一会告诉你是什么技。 就是这个技能的话呢我想用这个技能来翻译一些这个教材啊、讲义啊。 但是现在因为我已经翻译了一部分，还有一部分是没有翻译的。 然后还有很多视频的字幕，他也是没有翻译的。所以现在我需要你点名的是这些东西是哪些东西。 然后去把他们进行一个翻译，去派件去派遣的子代理去把他们进行翻译。同时我认为你或许还可以去抽查一下之前这些已经翻译过的文件。 啊，但是还没有学习，但是已经发。 或者说你直接全抽查了算了，问看是不是有问题。因为我最近没有怎么学习，已经有一些其他的事情。 现在我的诉求就是之以上这些，然后就是需要你根据有可能改进的这个。 技能看一下之前那些讲义翻译的行不行，好不好？ 不过我认为应该都是差不多好。 你只需要着重关注还没有翻译的东西就行。 别的学习方法也可以。"
+   },
+   {
+    "t": "17:32",
+    "sid": "session-7da4ba19",
+    "text": "修复吧"
+   },
+   {
+    "t": "23:10",
+    "sid": "session-7da4ba19",
+    "text": "又断了"
+   },
+   {
+    "t": "23:11",
+    "sid": "session-5975e549",
+    "text": "为什么断了"
+   }
+  ],
+  "sub_prompts": [],
+  "files_touched": {
+   "C:\\relay\\README.md": 3,
+   "C:\\relay\\STATE.md": 4,
+   "C:\\relay\\lin2win\\0-inbox\\20261028T090332Z-0001-smoke-dispatch.md": 1,
+   "C:\\relay\\lin2win\\0-inbox\\20261028T083525Z-0001-welcome-and-selftest.md": 1,
+   "C:\\Users\\27063\\.dsh\\profiles\\headless\\cordis.patch.yml": 2,
+   "C:\\relay\\lin2win\\0-inbox\\20261028T084118Z-0001-reply-from-win.md": 2,
+   "C:/Users/27063/AppData/Local/Temp/ln/L3.txt": 1,
+   "C:/Users/27063/Documents/翻译产出/006算法导论/LNotes 3.bilingual.md": 2,
+   "C:/Users/27063/AppData/Local/Temp/ln/L4.txt": 1,
+   "C:/Users/27063/Documents/翻译产出/006算法导论/LNotes 4.bilingual.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/ln/L5.txt": 1,
+   "C:/Users/27063/Documents/翻译产出/006算法导论/LNotes 5.bilingual.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/ln/L6.txt": 1,
+   "C:/Users/27063/Documents/翻译产出/006算法导论/LNotes 6.bilingual.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/ln/L7.txt": 1,
+   "C:/Users/27063/Documents/翻译产出/006算法导论/LNotes 7.bilingual.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/ln/L8.txt": 1,
+   "C:/Users/27063/Documents/翻译产出/006算法导论/LNotes 8.bilingual.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/ln/L9.txt": 2,
+   "C:/Users/27063/Documents/翻译产出/006算法导论/LNotes 9.bilingual.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/ln/L10.txt": 1,
+   "C:/Users/27063/Documents/翻译产出/006算法导论/LNotes 10.bilingual.md": 2,
+   "C:/Users/27063/AppData/Local/Temp/ln/L11.txt": 1,
+   "C:/Users/27063/Documents/翻译产出/006算法导论/LNotes 11.bilingual.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/check_en.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk12_extract.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk12.txt": 4,
+   "C:/Users/27063/AppData/Local/Temp/mk12_a.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk12_b.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk12_c.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk12_d.md": 2,
+   "C:/Users/27063/AppData/Local/Temp/mk12_fix.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk12_concat.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk12_audit.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk12_span.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk12_idx.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk12_patch.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk12_patch2.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk12_patch3.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk12_patch4.py": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/MacKay信息论/MacKay信息论_p381-400.bilingual.md": 3,
+   "C:/Users/27063/AppData/Local/Temp/mk12_patch5.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk12_final.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk12_find.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk12_patch6.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk12_patch7.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk4_p1.md": 2,
+   "C:/Users/27063/AppData/Local/Temp/mk4_p1b.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk4_p2.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk4_p3.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk4_p23.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk4_p4.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk4_merge.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk4_check.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk4_pages.py": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/MacKay信息论/MacKay信息论_p261-280.bilingual.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk4_patch.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk4_fix2.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk4_fix3.py": 1,
+   "C:/Users/27063/.dsh/tools/reports/_task-教材翻译.md": 11,
+   "C:/Users/27063/AppData/Local/Temp/mackay241/a241-260.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/mackay241/c241-260.txt": 2,
+   "C:/Users/27063/AppData/Local/Temp/mackay241/c261-280.txt": 2,
+   "C:/Users/27063/AppData/Local/Temp/mackay241/p263.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/mackay241/p264.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/mackay241/p249.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/mackay241/part1.md": 2,
+   "C:/Users/27063/AppData/Local/Temp/mackay241/part2.md": 1,
+   "C:/Users/27063/.dsh/tools/译注判据.md": 15,
+   "C:/Users/27063/AppData/Local/Temp/ex16.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/lines16.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/zoom16.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/zoom16b.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/zoom16c.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/verify16.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/p16_part1.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/fix16.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/p16_part2.md": 3,
+   "C:/Users/27063/AppData/Local/Temp/p16_part3.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/p16_part4.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/p16_part5.md": 2,
+   "C:/Users/27063/AppData/Local/Temp/check16.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/notes16.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/fatten16.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/fatten16b.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/fatten16c.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/fatten16d.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/final16.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/fix16b.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/boyd281/src_304_320.txt": 3,
+   "C:/Users/27063/AppData/Local/Temp/boyd281/pi301.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/boyd281/pi303.png": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/Boyd凸优化/Boyd凸优化_p301-320.bilingual.md": 2,
+   "C:/Users/27063/AppData/Local/Temp/boyd281/crop_pi309.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/boyd281/crop_pi310.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/boyd281/crop_pi307.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/boyd281/p299_541.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/boyd281/p299_tail.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/boyd281/p300_541.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/boyd281/p300_541b.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6j3_probe.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6j3_dump.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6j3_full.txt": 3,
+   "C:/Users/27063/AppData/Local/Temp/m6j3png/pg-01.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6j3png/pg-02.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6j3png/pg-03.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6j3png/pg-04.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6j3png/pg-05.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6j3png/pg-06.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6j3png/pg-07.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6j3png/pg-08.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6j3png/pg-09.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6j3png/pg-10.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6j3png/pg-11.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6j3png/pg-12.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6j3png/pg-13.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6j3png/pg-14.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6j3png/pg-15.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6j3png/pg-16.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6j3png/pg-17.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6j3png/pg-18.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6j3png/pg-19.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6j3png/pg-20.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6j3_part1.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6j3_part2.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6j3_part3.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6j3_part4.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6j3_part5.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6j3_part6.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6j3_fix1.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6j3_part7.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6j3_fix2.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6j3_audit.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6j3_fix3.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6j3_fix4.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6j3_count.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/ee/p1-1.png": 1,
+   "C:/Users/27063/Documents/翻译产出/Convex-Optimization-EE364a/HW1 解答.bilingual.md": 1,
+   "C:/Users/27063/Documents/翻译产出/Convex-Optimization-EE364a/HW2 解答.bilingual.md": 1,
+   "C:/Users/27063/Documents/翻译产出/Convex-Optimization-EE364a/HW3 解答.bilingual.md": 9,
+   "C:/Users/27063/Documents/翻译产出/Convex-Optimization-EE364a/HW3 附加题.bilingual.md": 1,
+   "/tmp/hw4a.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/hw4a.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/hw4b.md": 1,
+   "C:/Users/27063/Documents/翻译产出/Convex-Optimization-EE364a/HW4 附加题.bilingual.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/hw5a.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/hw5b.md": 1,
+   "C:/Users/27063/Documents/翻译产出/Convex-Optimization-EE364a/HW5 附加题.bilingual.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/hw6a.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/hw6b.md": 1,
+   "C:/Users/27063/Documents/翻译产出/Convex-Optimization-EE364a/HW6 附加题.bilingual.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/hw7a.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/hw7b.md": 1,
+   "C:/Users/27063/Documents/翻译产出/Convex-Optimization-EE364a/HW7 附加题.bilingual.md": 1,
+   "C:/Users/27063/Documents/翻译产出/Convex-Optimization-EE364a/HW8 解答.bilingual.md": 1,
+   "C:/Users/27063/Documents/翻译产出/Convex-Optimization-EE364a/HW8 附加题.bilingual.md": 1,
+   "C:/Users/27063/Documents/翻译产出/Convex-Optimization-EE364a/作业题号表.bilingual.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/b17_part1.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/b17_part2.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/b17_part3.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/b17_part4.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/b17_check.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b17_check2.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b17_check3.py": 1,
+   "C:/Users/27063/.dsh/tools/katex-check.js": 1,
+   "C:/Users/27063/AppData/Local/Temp/b17_js.py": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/Boyd凸优化/Boyd凸优化_p521-540.bilingual.md": 7,
+   "C:/Users/27063/AppData/Local/Temp/b17_check4.py": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/046复习/Quiz 1.bilingual.md": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/046复习/Quiz 1 - Solutions.bilingual.md": 1,
+   "C:/Users/27063/.dsh/tmp/png/q2p-04.png": 1,
+   "C:/Users/27063/.dsh/tmp/png/q2p-06.png": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/046复习/Quiz 2.bilingual.md": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/046复习/Quiz 2 - Solutions.bilingual.md": 1,
+   "C:/Users/27063/.dsh/tmp/png/fep-11.png": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/046复习/Final Exam.bilingual.md": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/046复习/Final Exam - Solutions.bilingual.md": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/006slides/rec15-dynamic-programming.bilingual.md": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/006slides/rec16-dp-exercises.bilingual.md": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/006slides/rec17-treasureship-wafer.bilingual.md": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/Boyd凸优化/_chk141.py": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/Boyd凸优化/_repair1.py": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/Boyd凸优化/_t.md": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/Boyd凸优化/_repair2.py": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/Boyd凸优化/_seg.md": 9,
+   "C:/Users/27063/Documents/翻译产出/教材/Boyd凸优化/_fixremark.py": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/Boyd凸优化/_insert157.py": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/Boyd凸优化/_fixmarkers.py": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/Boyd凸优化/_lint.py": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/Boyd凸优化/_addyizhu.py": 1,
+   "C:/Users/27063/.dsh/tools/_patch_prob03_b1.py": 2,
+   "C:/Users/27063/.dsh/tools/_patch_prob03_b2.py": 1,
+   "C:/Users/27063/.dsh/tools/_patch_prob03_b3.py": 2,
+   "C:/Users/27063/.dsh/tools/_patch_prob03_b4.py": 1,
+   "C:/Users/27063/.dsh/tools/_patch_B1.py": 1,
+   "C:/Users/27063/.dsh/tools/_patch_B2.py": 1,
+   "C:/Users/27063/.dsh/tools/_patch_B3.py": 1,
+   "C:/Users/27063/Documents/修复产出/TBB-AllChapters-Portrait_part005_p201-250.bilingual.md": 1,
+   "C:/Users/27063/.dsh/tools/_check_dollar.py": 1,
+   "C:/Users/27063/.dsh/tools/_stats.py": 1,
+   "C:/Users/27063/.dsh/tools/_patch_B2b.py": 1,
+   "/tmp/p041_c.txt": 1,
+   "C:/Users/27063/.dsh/tmp_mackay/p041_c.txt": 3,
+   "C:/Users/27063/.dsh/tmp_mackay/p061_c.txt": 3,
+   "C:/Users/27063/.dsh/tmp_mackay/t2.js": 1,
+   "C:/Users/27063/.dsh/tmp_mackay/parts/A1.md": 2,
+   "C:/Users/27063/.dsh/tmp_mackay/parts/A2.md": 1,
+   "C:/Users/27063/.dsh/tmp_mackay/parts/A3.md": 5,
+   "C:/Users/27063/.dsh/tmp_mackay/parts/A4.md": 1,
+   "C:/Users/27063/.dsh/tmp_mackay/parts/B1.md": 1,
+   "C:/Users/27063/.dsh/tmp_mackay/parts/B2.md": 1,
+   "C:/Users/27063/.dsh/tmp_mackay/parts/B3.md": 2,
+   "C:/Users/27063/.dsh/tmp_mackay/parts/B4.md": 2,
+   "C:/Users/27063/.dsh/tmp_mackay/chk.py": 1,
+   "C:/Users/27063/.dsh/tmp_mackay/chk2.py": 1,
+   "C:/Users/27063/.dsh/tmp_mackay/build.py": 1,
+   "C:/Users/27063/.dsh/tmp_mackay/chk3.py": 1,
+   "C:/Users/27063/.dsh/tmp_mackay/tolf.py": 1,
+   "C:/Users/27063/.dsh/tmp_mackay/final.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm4_probe.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm4img/pg-01.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm4img/pg-02.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm4img/pg-03.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm4img/pg-04.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm4img/pg-05.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm4img/pg-06.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm4img/pg-07.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm4img/pg-08.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm4img/pg-09.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm4img/pg-10.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm4_part1.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm4img/pg-11.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm4img/pg-12.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm4img/pg-13.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm4img/pg-14.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm4img/pg-15.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm4img/pg-16.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm4img/pg-17.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm4img/pg-18.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm4img/pg-19.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm4img/pg-20.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm4_part2.md": 3,
+   "C:/Users/27063/AppData/Local/Temp/dm4_crop.py": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/6042J离散数学/_img/fig3-1.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm4_part3.md": 2,
+   "C:/Users/27063/AppData/Local/Temp/dm4_fix3.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm4_part4.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm4_check.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm4_fix_final.py": 2,
+   "C:/Users/27063/.dsh/tools/md2html-lite.py": 6,
+   "C:/Users/27063/AppData/Local/Temp/dm4_htmlcheck.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm4_htmlex.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm4_showbad.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm4_diag.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm4_addcheck.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm4_notemap.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm4_htmlex2.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm4_fixnums.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm4_engl.py": 1,
+   "/tmp/mkchk/pg-18.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/mkchk/pg-18.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/mkchk/pg-06.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/mkchk/seg.md": 5,
+   "C:/Users/27063/AppData/Local/Temp/mkchk/seg2.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mkchk/seg3.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mkchk/seg4.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mkchk/fix7.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mkchk/seg5.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mkchk/app5.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mkchk/ins3.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mkchk/fixlz.py": 2,
+   "C:/Users/27063/AppData/Local/Temp/mkchk/add73.py": 2,
+   "C:/Users/27063/AppData/Local/Temp/mkchk/fix73.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/ext15.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/ans15_sorted.txt": 3,
+   "C:/Users/27063/AppData/Local/Temp/words15.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/ans15_words.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/ans15_part1.md": 2,
+   "C:/Users/27063/AppData/Local/Temp/ans15_part2.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/fix15.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/fix15b.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/ans15_part3.md": 2,
+   "C:/Users/27063/AppData/Local/Temp/ans15_part4.md": 3,
+   "C:/Users/27063/AppData/Local/Temp/merge15.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/list15.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/fix15c.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/verify15.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk161pages/p167.txt": 2,
+   "C:/Users/27063/AppData/Local/Temp/mk161pages/batch_161_165.txt": 2,
+   "C:/Users/27063/AppData/Local/Temp/mk161pages/batch_166_170.txt": 3,
+   "C:/Users/27063/AppData/Local/Temp/mk161pages/batch_171_175.txt": 2,
+   "C:/Users/27063/AppData/Local/Temp/mk161pages/batch_176_180.txt": 3,
+   "C:/Users/27063/AppData/Local/Temp/mk161_part1a.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk161_part1b.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk161pages/batch_181_185.txt": 2,
+   "C:/Users/27063/AppData/Local/Temp/mk161pages/batch_186_190.txt": 2,
+   "C:/Users/27063/AppData/Local/Temp/mk161pages/batch_191_195.txt": 2,
+   "C:/Users/27063/AppData/Local/Temp/mk161pages/batch_196_200.txt": 2,
+   "C:/Users/27063/AppData/Local/Temp/mk161_part2a.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk161_part2b.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk161_audit.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk161_selfextract.py": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/MacKay信息论/MacKay信息论_p181-200.bilingual.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk161_patch2.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk161_patch3.py": 1,
+   "C:/Users/27063/.dsh/tools/reports/wave-mackay161.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk161_fixreport.py": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/Boyd凸优化/Boyd凸优化_p161-180.bilingual.md": 3,
+   "C:/Users/27063/Documents/翻译产出/教材/Boyd凸优化/Boyd凸优化_p181-200.bilingual.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/b16_dump.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b16_raw.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/b16_clean.txt": 2,
+   "C:/Users/27063/AppData/Local/Temp/b16_v505.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/b16_1.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/b16_2.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/b16_3.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/b16_4.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/b16_fix1.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b16_merge.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b16_audit.py": 2,
+   "C:/Users/27063/AppData/Local/Temp/b16_fix2.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b16_fix3.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mkpg/pg01.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/mkpg/pg02.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/mkpg/pg03.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/mkpg/p03.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/mkpg/p04.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/mkpg/p05.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/mkpg/p06.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/mkpg/p07.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/mkpg/p08.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/mkpg/p09.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/mkpg/p10.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/mkpg/p11.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/mkpg/p12.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/mkpg/p13.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/mkpg/p14.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/mkpg/p15.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/mkpg/p16.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/mkpg/p17.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/mkpg/p18.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/mkpg/p19.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/mkpg/p20.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk_p341_360_part1.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk_p341_360_part1b.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk_p341_360_part2.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk_p341_360_part3.md": 3,
+   "C:/Users/27063/AppData/Local/Temp/mk_p341_360_part4.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk_join2.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk_patch1.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk_patch2.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk_stats.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk_patch3.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk_patch4.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk_patch5.py": 1,
+   "C:/Users/27063/Documents/翻译产出/006算法导论/LNotes 12.bilingual.md": 1,
+   "C:/Users/27063/Documents/翻译产出/006算法导论/LNotes 13.bilingual.md": 1,
+   "C:/Users/27063/Documents/翻译产出/006算法导论/LNotes 14.bilingual.md": 1,
+   "C:/Users/27063/Documents/翻译产出/006算法导论/LNotes 15.bilingual.md": 1,
+   "C:/Users/27063/Documents/翻译产出/006算法导论/LNotes 16.bilingual.md": 1,
+   "C:/Users/27063/Documents/翻译产出/006算法导论/LNotes 17.bilingual.md": 1,
+   "C:/Users/27063/Documents/翻译产出/006算法导论/LNotes 18.bilingual.md": 1,
+   "C:/Users/27063/Documents/翻译产出/006算法导论/LNotes 19.bilingual.md": 2,
+   "C:/Users/27063/Documents/翻译产出/006算法导论/LNotes 20.bilingual.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk21/extract.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk21/p501.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk21/p502.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk21/p503.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk21/p504.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk21/p505.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk21/p506.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk21/p507.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk21/p508.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk21/p509.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk21/p510.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk21/p511.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk21/p512.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk21/p513.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk21/p514.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk21/p515.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk21/p516.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk21/p517.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk21/p518.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk21/p519.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk21/p520.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk21/verify.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk21/verify2.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk21/verify3.py": 2,
+   "C:/Users/27063/AppData/Local/Temp/mk21/verify4.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk21/part1.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk21/fix1.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk21/part2.md": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/MacKay信息论/MacKay信息论_p201-220.bilingual.md": 3,
+   "C:/Users/27063/Documents/翻译产出/教材/MacKay信息论/MacKay信息论_p221-240.bilingual.md": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\dm7_split.py": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\dm7pages\\pdf01.txt": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\dm7pages\\pdf02.txt": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\dm7pages\\pdf03.txt": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\dm7pages\\pdf04.txt": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\dm7pages\\pdf05.txt": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\dm7pages\\pdf06.txt": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\dm7pages\\pdf07.txt": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\dm7pages\\pdf08.txt": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\dm7pages\\pdf09.txt": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\dm7pages\\pdf10.txt": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\dm7pages\\pdf11.txt": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\dm7pages\\pdf12.txt": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\dm7pages\\pdf13.txt": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\dm7pages\\pdf14.txt": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\dm7pages\\pdf15.txt": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\dm7pages\\pdf16.txt": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\dm7pages\\pdf17.txt": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\dm7pages\\pdf18.txt": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\dm7pages\\pdf19.txt": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\dm7pages\\pdf20.txt": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\dm7p-08.png": 2,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\dm7p-09.png": 2,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\dm7_crop.py": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\dm7_crop2.py": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\crop_99_413.png": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\crop_100_f.png": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\dm7p-02.png": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\dm7p-03.png": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\dm7p-01.png": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\dm7p-20.png": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\dm7_crop3.py": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\c413.png": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\dm7p-15.png": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\dm7p-16.png": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\dm7_crop4.py": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\c106_34.png": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\c103_a.png": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\dm7p-10.png": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\dm7_part1.md": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\dm7_part2.md": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\dm7_part3.md": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\dm7_part4.md": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\dm7_merge.py": 1,
+   "C:\\Users\\27063\\Documents\\翻译产出\\教材\\6042J离散数学\\6042J离散数学_p101-120.bilingual.md": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\dm7_fix.py": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\dm7_check2.py": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\dm7_fix2.py": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\dm7_fix3.py": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\dm7_fix4.py": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\dm7_stats.py": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\dm7_fix5.py": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\dm7_fix6.py": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\dm7_fix7.py": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\dm7_final.py": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\dm7_mergecheck.js": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\dm7_fix8.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/ex17.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/p241.txt": 3,
+   "C:/Users/27063/AppData/Local/Temp/w17.py": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/Boyd凸优化/Boyd凸优化_p201-220.bilingual.md": 2,
+   "C:/Users/27063/AppData/Local/Temp/seg_a.md": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/Boyd凸优化/Boyd凸优化_p221-240.bilingual.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/seg_b.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/b14_raw.txt": 2,
+   "C:/Users/27063/AppData/Local/Temp/b14_part1.md": 2,
+   "C:/Users/27063/AppData/Local/Temp/b14_part2.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/b14_part3.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/b14_part4.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/b14_chk2.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b14_diag.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b14_fix_tab.py": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/Boyd凸优化/Boyd凸优化_p461-480.bilingual.md": 5,
+   "C:/Users/27063/AppData/Local/Temp/b14_chk3.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b14_stat.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b14_notes.py": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/Boyd凸优化/_p1_front.md": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/Boyd凸优化/_p1_toc.md": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/Boyd凸优化/_p1_preface.md": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/Boyd凸优化/_p1_ch1.md": 2,
+   "C:/Users/27063/Documents/翻译产出/教材/Boyd凸优化/_fix1.py": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/Boyd凸优化/_fix2.py": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/Boyd凸优化/_frag/p2_a.md": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/Boyd凸优化/_frag/p2_b.md": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/Boyd凸优化/_frag/fix3.py": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/Boyd凸优化/_frag/inspect.py": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/Boyd凸优化/_frag/extract2.py": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/Boyd凸优化/_frag/count.py": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/Boyd凸优化/_frag/verify.py": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/Boyd凸优化/_frag/audit.py": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/Boyd凸优化/_frag/softwrap.py": 2,
+   "C:/Users/27063/Documents/翻译产出/教材/Boyd凸优化/_frag/polish.py": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/Boyd凸优化/_frag/termcheck.py": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/Boyd凸优化/_frag/patch_terms.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/boyd_frag_mine/fix_close.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/boyd_frag_mine/headcheck.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm11_crit.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm11img/p177-05.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm11img/p178-06.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm11img/pg-10.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm11img/q-12.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm11img/q-13.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm11img/f-20.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm11img/pg-11.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm11img/f-17.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm11img/z18-18.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm11_crop.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm11img/crop_f18.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm11_crop2.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm11img/crop_f18b.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm11img/z15-15.png": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/6042J离散数学/6042J离散数学_p181-200.bilingual.md": 3,
+   "C:/Users/27063/AppData/Local/Temp/dm11_part2.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm11_part3.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm11_check.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm11_notes.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm11_patch.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm11_cnt.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b26_extract.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b26_pages.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b26_plain.txt": 4,
+   "C:/Users/27063/AppData/Local/Temp/b26_parse.py": 2,
+   "C:/Users/27063/AppData/Local/Temp/b26_check.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b26_fix.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b26_probe.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b26_gen.py": 9,
+   "C:/Users/27063/AppData/Local/Temp/b26_topics.tsv": 1,
+   "C:/Users/27063/AppData/Local/Temp/b26_audit.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b26_fixtopics.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b26_build_refs.py": 2,
+   "C:/Users/27063/AppData/Local/Temp/b26_build_tail.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b26_fixline.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b26_selfcheck.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b26_stats.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b26_pages_audit.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b26_dup.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b26_ranges.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b26_pageoff.py": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/MacKay信息论/MacKay信息论_p281-300.bilingual.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk6_part2.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk6_part3.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk6_part4.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk11/p364.txt": 2,
+   "C:/Users/27063/AppData/Local/Temp/mk11/p365.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk11/p366.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk11/p367.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk11/p368.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk11/p369.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk11/p370.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk11/p371.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk11/p372.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk11/p373.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk11/p374.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk11/p375.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk11/p376.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk11/p377.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk11/p378.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk11/p379.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk11/p380.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk11/fig28_9.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk11/part1.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk11/part1b.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk11/part1c.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk11/part2a.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk11/part2b.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk11/build.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk11/part3a.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk11/part3b.md": 2,
+   "C:/Users/27063/AppData/Local/Temp/mk11/part4a.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk11/part4b.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk11/fix_check.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk11/audit.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk11/fix_note.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk11/fix_note2.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk11/fix_count.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk11/count.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk19_head.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk19_full.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk19_full.txt": 4,
+   "C:/Users/27063/AppData/Local/Temp/mk19_verify.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk19_verify2.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk19_render.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk19png/fig36_1_p465.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk19_crop.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk19png/fig36_1_zoom.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk19png/fig35_2_p461.png": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/MacKay信息论/MacKay信息论_p461-480.bilingual.md": 2,
+   "C:/Users/27063/AppData/Local/Temp/mk19_cmp.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk19_cmp2.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk19_cmp3.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk19_verify3.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk19_verify4.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk19_verify5.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk19_dbg.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk19_doors.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk19_part2.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk19_part3.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk19_part4.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk19_join.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk19_fix1.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk19_check.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk19_show4.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk19_fix2.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk19_fix3.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk19_fix4.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk19_part5.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk19_final.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk19_fix5.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk19_fix6.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/gamma.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/boyd_part1.md": 2,
+   "C:/Users/27063/AppData/Local/Temp/b21_part1.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/b21_part2.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/b21_part3.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/b21_part4.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/feasline.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/b21_check.py": 3,
+   "C:/Users/27063/Documents/翻译产出/教材/Boyd凸优化/Boyd凸优化_p601-620.bilingual.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/b21_fix1.py": 2,
+   "C:/Users/27063/AppData/Local/Temp/b21_fix2.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b21_fix3.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b21_fix4.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b21_fix5.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b21_density.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk15_extract.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk15_raw.txt": 4,
+   "C:/Users/27063/AppData/Local/Temp/mk15_f1.md": 3,
+   "C:/Users/27063/AppData/Local/Temp/mk15_f2.md": 2,
+   "C:/Users/27063/AppData/Local/Temp/mk15_f3.md": 3,
+   "C:/Users/27063/AppData/Local/Temp/mk15_f4.md": 4,
+   "C:/Users/27063/AppData/Local/Temp/mk15_check.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk15_count.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk15_patch1.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk15_patch2.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk15_stat.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk15_patch3.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk15_patch4.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk15_verify_e.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk15_patch5.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk15_patch6.py": 1,
+   "C:/Users/27063/.dsh/tools/reports/_task-内容层审计.md": 3,
+   "C:/Users/27063/.dsh/PLAN.md": 4,
+   "C:/Users/27063/.dsh/tools/reports/派发prompt模板.md": 1,
+   "C:/Users/27063/.dsh/tools/reports/字幕可执行性核查-20261028.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/b20_probe.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b20_dump.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b20_seg1.md": 8,
+   "C:/Users/27063/AppData/Local/Temp/b20_seg2.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/b20_seg3.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/b20_seg4.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/b20_check.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b20_patch.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b20_patch2.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b20_build.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b20_patch3.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b20_patch4.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b10_partA.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/b10_partB.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/b10_partC.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/b10_partD.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/b10_fix1.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b10_note370.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/p475.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/p476.txt": 2,
+   "C:/Users/27063/AppData/Local/Temp/p477.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/p478.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/p479.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/p480.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/p481.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/p482.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/p483.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/p484.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/p485.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/p486.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/b15_p1.md": 2,
+   "C:/Users/27063/AppData/Local/Temp/f470.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/fix1.py": 4,
+   "C:/Users/27063/AppData/Local/Temp/fix1b.py": 2,
+   "C:/Users/27063/AppData/Local/Temp/b15_p2.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/fix2.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b15_fix2.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b15_p3.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/b15_fix3.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b15_p4.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/b15_fix4.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b15_fix5.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b15_fix6.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/fix_bs.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/frag1.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/frag2.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/frag3.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/frag4.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/frag5.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/patch1.py": 2,
+   "C:/Users/27063/AppData/Local/Temp/dedup.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/check2.js": 1,
+   "C:/Users/27063/AppData/Local/Temp/stats.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/patch3.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/patch4.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/fix437.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/fix437b.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/fix431.py": 1,
+   "C:/Users/27063/.dsh/tools/reports/wave-boyd201.md": 1,
+   "C:/Users/27063/Documents/翻译产出/006算法导论/LNotes 1.bilingual.md": 2,
+   "C:/Users/27063/Documents/翻译产出/006算法导论/LNotes 2.bilingual.md": 4,
+   "C:/Users/27063/Documents/翻译产出/教材/Peterson网络/Peterson网络_p001-020.bilingual.md": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/Peterson网络/Peterson网络_p021-040.bilingual.md": 8,
+   "C:/Users/27063/AppData/Local/Temp/b19_probe.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b19_dump.py": 2,
+   "C:/Users/27063/AppData/Local/Temp/b19_raw.txt": 3,
+   "C:/Users/27063/AppData/Local/Temp/b19_part1.md": 6,
+   "C:/Users/27063/AppData/Local/Temp/b19_part2.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/b19_part3.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/b19_part4.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/b19_merge.py": 4,
+   "C:/Users/27063/AppData/Local/Temp/b19_chk.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b19_katex.js": 1,
+   "C:/Users/27063/AppData/Local/Temp/b19_audit.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b19_fix.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b19_notes.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk17.txt": 4,
+   "C:/Users/27063/AppData/Local/Temp/mk17_p1.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk17_insp.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk17_patch1.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk17_p2.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk17_fix2pt.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk17_p3.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk17_calc5.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk17_p4.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk17_patch4.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk17_trim1.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk17_trim2.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk17_trim3.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk17_peek.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk17_trim4.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk17_trim5.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk17_trim6.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk17_stage.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk17_odd.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk17_diag.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk17_repair.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk17_trim6b.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk17_appendix.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk17_g.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk17_gfix.py": 1,
+   "C:/Users/27063/.dsh/tools/reports/_audit_scan.py": 1,
+   "C:/Users/27063/.dsh/tools/reports/_audit_eq.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/p161.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/p161_u.txt": 15,
+   "C:/Users/27063/AppData/Local/Temp/mk_part01.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk_part02.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk_part03.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk_part04.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk_part05.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk_part06.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk_part07.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/p181_u.txt": 11,
+   "C:/Users/27063/AppData/Local/Temp/mk_p181_part01.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk_p181_part02.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk_p181_part03.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk_p181_part04.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk_p181_part05.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk_p181_part06.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk_p181_part07.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/ans13_extract.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/ans13_words.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/p1.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/p2.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/p3.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/p4.md": 1,
+   "C:/Users/27063/Documents/翻译产出/Convex-Optimization-EE364a/CVX Tutorial.bilingual.md": 1,
+   "C:/Users/27063/Documents/翻译产出/Convex-Optimization-EE364a/CVX Lecture Slides.bilingual.md": 2,
+   "C:/Users/27063/Documents/翻译产出/Convex-Optimization-EE364a/Convex.jl Tutorial.bilingual.md": 1,
+   "C:/Users/27063/Documents/翻译产出/Convex-Optimization-EE364a/Chance Constrained Optimization 机会约束优化.bilingual.md": 1,
+   "C:/Users/27063/Documents/翻译产出/Convex-Optimization-EE364a/Convex Optimization Examples 凸优化示例.bilingual.md": 1,
+   "C:/Users/27063/Documents/翻译产出/Convex-Optimization-EE364a/Stochastic Programming 随机规划.bilingual.md": 1,
+   "C:/Users/27063/Documents/翻译产出/Convex-Optimization-EE364a/Filter Design and Equalization 滤波器设计.bilingual.md": 1,
+   "C:/Users/27063/Documents/翻译产出/Convex-Optimization-EE364a/L1 Methods for Convex-Cardinality Problems 第一部分.bilingual.md": 1,
+   "C:/Users/27063/Documents/翻译产出/Convex-Optimization-EE364a/L1 Methods for Convex-Cardinality Problems 第二部分.bilingual.md": 1,
+   "C:/Users/27063/Documents/翻译产出/Convex-Optimization-EE364a/复习课 Review 1.bilingual.md": 1,
+   "C:/Users/27063/Documents/翻译产出/Convex-Optimization-EE364a/复习课 Review 2.bilingual.md": 1,
+   "C:/Users/27063/Documents/翻译产出/Convex-Optimization-EE364a/复习课 Review 4.bilingual.md": 1,
+   "C:/Users/27063/Documents/翻译产出/Convex-Optimization-EE364a/复习课 Review 6.bilingual.md": 1,
+   "C:/Users/27063/Documents/翻译产出/Convex-Optimization-EE364a/复习课 Review 5.bilingual.md": 1,
+   "C:/Users/27063/Documents/翻译产出/Convex-Optimization-EE364a/复习课 Review 7.bilingual.md": 1,
+   "C:/Users/27063/Documents/翻译产出/Convex-Optimization-EE364a/复习课 Review 9.bilingual.md": 1,
+   "C:/Users/27063/Documents/翻译产出/Convex-Optimization-EE364a/期末考试-题目.bilingual.md": 1,
+   "C:/Users/27063/Documents/翻译产出/Convex-Optimization-EE364a/期末考试2006-题目.bilingual.md": 1,
+   "C:/Users/27063/Documents/翻译产出/Convex-Optimization-EE364a/期末考试-解答.bilingual.md": 1,
+   "C:/Users/27063/Documents/翻译产出/Convex-Optimization-EE364a/期末考试2006-解答.bilingual.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/b23_peek.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b23_raw.txt": 3,
+   "C:/Users/27063/AppData/Local/Temp/b23_part1.md": 3,
+   "C:/Users/27063/AppData/Local/Temp/b23_part2.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/b23_part3.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/b23_part4.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/b23_part0.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/b23_part5.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/b23_fix1.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b23_build.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b23_fix2.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b23_envs.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b23_stats.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b23_stats2.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b23_deen.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b23_part2.new.md": 2,
+   "C:/Users/27063/AppData/Local/Temp/b23_deen2.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b23_part3.new.md": 2,
+   "C:/Users/27063/AppData/Local/Temp/b23_fix3.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b23_build2.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b23_gaps.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b23_scan_eng.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b23_fix4.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b23_find.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b23_show1.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b23_show2.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b23_fix5.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b23_build3.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b23_fix6.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b23_page_stats.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b23_fix7.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/ext141.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/lay141.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/ext141s.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/diff141.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/render141.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/crop_p14.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/crop_p5.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/part1.md": 6,
+   "C:/Users/27063/AppData/Local/Temp/b141_1.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/b141_2.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/b141_3.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/b141_4.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/merge141.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/scan141.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/fix141.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/check141.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/fix141b.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/fix141c.py": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/Boyd凸优化/Boyd凸优化_p261-280.bilingual.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/b8_tail.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/b8_note_p261.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/b8_fix.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b8_check.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b8_check2.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b8_fix2.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b8_audit.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b8_fix3.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b8_fix4.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b8_note_slater.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/b8_fix5.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b9_show.py": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/Boyd凸优化/Boyd凸优化_p321-340.bilingual.md": 2,
+   "C:/Users/27063/Documents/翻译产出/教材/Boyd凸优化/Boyd凸优化_p341-360.bilingual.md": 2,
+   "C:/Users/27063/AppData/Local/Temp/b9_notes.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/b9_insert.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/boyd/A.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/boyd/B.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/boyd/C.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/boyd/D1.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/boyd/D2.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/boyd/E.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/boyd/F.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/boyd/G.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/boyd/H.md": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/Boyd凸优化/Boyd凸优化_p101-120.bilingual.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mackay121_seg2a.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mackay121_seg2b.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mackay121_note1.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk/raw_155.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk/raw_156.txt": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/MacKay信息论/MacKay信息论_p141-160.bilingual.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mackay121_seg4.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mackay121_seg5.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mackay121_note2.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mackay121_p160tail.md": 1,
+   "C:/Users/27063/.dsh/tools/reports/wave-mackay121.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6j2_probe.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6j2_dump.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6j2_raw.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6j2png/pg-01.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6j2png/pg-02.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6j2png/pg-03.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6j2png/pg-04.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6j2png/pg-09.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6j2png/pg-10.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6j2png/pg-11.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6j2png/pg-18.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6j2png/pg-19.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6j2png/pg-14.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6j2png/pg-16.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6j2png/pg-13.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6j2_clip.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6j2png/clip12.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6j2png/pg-12.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6j2png/clip17.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6j2_seg1.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6j2_seg2.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6j2_seg3.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6j2_seg4.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6j2_merge.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6j2_selfcheck.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6j2_angle.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6j2_audit.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6j2_fix1.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6j2_notes.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6j2_fix2.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/bp_321.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/grp_321.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/grp_325.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/grp_329.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/grp_333.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/grp_337.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/part2_321.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/grp_341.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/grp_345.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/grp_349.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/grp_353.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/grp_357.txt": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/Boyd凸优化/Boyd凸优化_p041-060.bilingual.md": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/Boyd凸优化/_p1_a.md": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/Boyd凸优化/_p1_b.md": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/Boyd凸优化/_p1_c.md": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/Boyd凸优化/_p2_a.md": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/Boyd凸优化/_p2_b.md": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/Boyd凸优化/_p2_c.md": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/Boyd凸优化/_selfcheck.py": 2,
+   "C:/Users/27063/Documents/翻译产出/教材/Boyd凸优化/Boyd凸优化_p061-080.bilingual.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk/p201-220_a.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk/p201-220_b.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk/p201-220_c.md": 2,
+   "C:/Users/27063/AppData/Local/Temp/mk/p201-220_d.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk/p201-220_e.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk/p201-220_f.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk/p201-220_g.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk/p201-220_h.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk/p221-240_a.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk/p221-240_b.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk/p221-240_c.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk/p221-240_d.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk/p221-240_e.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk/p221-240_f.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk/p221-240_g.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk/p221-240_h.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk/noteA.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk/noteB.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk/fixline.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk/p241-260_a.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk/p241-260_b.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk/p241-260_c.md": 3,
+   "C:/Users/27063/AppData/Local/Temp/mk/p241-260_d.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk/p241-260_e.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk/p241-260_f.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk/p241-260_g.md": 3,
+   "C:/Users/27063/AppData/Local/Temp/mk/p241-260_h.md": 1,
+   "C:/Users/27063/.dsh/tmp_cover/c1_p003.txt": 1,
+   "C:/Users/27063/.dsh/tmp_cover/c1_p004.txt": 1,
+   "C:/Users/27063/.dsh/tmp_cover/c1_p005.txt": 1,
+   "C:/Users/27063/.dsh/tmp_cover/c1_p006.txt": 1,
+   "C:/Users/27063/.dsh/tmp_cover/c1_p007.txt": 1,
+   "C:/Users/27063/.dsh/tmp_cover/c1_p008.txt": 1,
+   "C:/Users/27063/.dsh/tmp_cover/c1_p009.txt": 1,
+   "C:/Users/27063/.dsh/tmp_cover/c1_p010.txt": 1,
+   "C:/Users/27063/.dsh/tmp_cover/c1_p011.txt": 1,
+   "C:/Users/27063/.dsh/tmp_cover/c1_p012.txt": 1,
+   "C:/Users/27063/.dsh/tmp_cover/c1_p013.txt": 1,
+   "C:/Users/27063/.dsh/tmp_cover/c1_p014.txt": 1,
+   "C:/Users/27063/.dsh/tmp_cover/c1_p015.txt": 1,
+   "C:/Users/27063/.dsh/tmp_cover/c1_p016.txt": 1,
+   "C:/Users/27063/.dsh/tmp_cover/c1_p017.txt": 1,
+   "C:/Users/27063/.dsh/tmp_cover/c1_p018.txt": 1,
+   "C:/Users/27063/.dsh/tmp_cover/c1_p019.txt": 1,
+   "C:/Users/27063/.dsh/tmp_cover/c1_p020.txt": 1,
+   "C:/Users/27063/.dsh/tmp_cover/c2_p002.txt": 1,
+   "C:/Users/27063/.dsh/tmp_cover/c2_p003.txt": 1,
+   "C:/Users/27063/.dsh/tmp_cover/c2_p001.txt": 1,
+   "C:/Users/27063/.dsh/tmp_cover/c2_p004.txt": 1,
+   "C:/Users/27063/.dsh/tmp_cover/c2_p005.txt": 1,
+   "C:/Users/27063/.dsh/tmp_cover/c2_p006.txt": 1,
+   "C:/Users/27063/.dsh/tmp_cover/c2_p007.txt": 1,
+   "C:/Users/27063/.dsh/tmp_cover/c2_p008.txt": 1,
+   "C:/Users/27063/.dsh/tmp_cover/c2_p009.txt": 1,
+   "C:/Users/27063/.dsh/tmp_cover/c2_p010.txt": 1,
+   "C:/Users/27063/.dsh/tmp_cover/c2_p011.txt": 1,
+   "C:/Users/27063/.dsh/tmp_cover/c2_p012.txt": 1,
+   "C:/Users/27063/.dsh/tmp_cover/c2_p013.txt": 1,
+   "C:/Users/27063/.dsh/tmp_cover/c2_p014.txt": 1,
+   "C:/Users/27063/.dsh/tmp_cover/c2_p015.txt": 1,
+   "C:/Users/27063/.dsh/tmp_cover/c2_p016.txt": 1,
+   "C:/Users/27063/.dsh/tmp_cover/c2_p017.txt": 1,
+   "C:/Users/27063/.dsh/tmp_cover/c2_p018.txt": 1,
+   "C:/Users/27063/.dsh/tmp_cover/c2_p019.txt": 1,
+   "C:/Users/27063/.dsh/tmp_cover/c2_p020.txt": 1,
+   "C:/Users/27063/.dsh/tmp_cover/roadmap7-07.png": 1,
+   "C:/Users/27063/.dsh/tmp_cover/part1.md": 1,
+   "C:/Users/27063/.dsh/tmp_cover/part2.md": 1,
+   "C:/Users/27063/.dsh/tmp_cover/part3.md": 1,
+   "C:/Users/27063/.dsh/tmp_cover/part4.md": 1,
+   "C:/Users/27063/.dsh/tmp_cover/check.py": 1,
+   "C:/Users/27063/.dsh/tmp_cover/retag.py": 1,
+   "C:/Users/27063/.dsh/tmp_cover/terms.py": 1,
+   "C:/Users/27063/.dsh/tmp_cover/fix1.py": 1,
+   "C:/Users/27063/.dsh/tmp_cover/verify_hamming.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6jwork/png/px-11.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6jwork/png/b5-14.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6jwork/png/b11-20.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6jwork/seg1.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6jwork/seg2.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6jwork/seg3.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6jwork/seg4.md": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/6042J离散数学/6042J离散数学_p001-020.bilingual.md": 2,
+   "C:/Users/27063/AppData/Local/Temp/m6jwork/png/crop-15.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/m6jwork/png/crop2-15.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/ba4_extract.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/ba4_raw.txt": 4,
+   "C:/Users/27063/AppData/Local/Temp/pp12-12.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/pp2-02.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/ba4_w1.py": 2,
+   "C:/Users/27063/AppData/Local/Temp/ba4_w2.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/ba4_w3.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/ba4_w4.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/ba4_chk.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/ba4_fix.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/ba4_chk2.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/ba4_patch.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/ba4_patch2.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/boyd181/extract.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/boyd181/pages.txt": 4,
+   "C:/Users/27063/AppData/Local/Temp/boyd181/rebuild.py": 2,
+   "C:/Users/27063/AppData/Local/Temp/boyd181/part1.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/boyd181/part2.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/boyd181/part3.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/boyd181/part4.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/boyd181/part5.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/boyd181/fix1.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/boyd181/part6.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/boyd181/part7.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/boyd181/part8.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/boyd181/merge.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/boyd181/audit.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/boyd181/fix2.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/boyd181/fix3.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/boyd181/fix4.py": 3,
+   "C:/Users/27063/AppData/Local/Temp/boyd181/audit2.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/boyd181/fix5.py": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/Boyd答案手册/Boyd答案手册_p181-200.bilingual.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/boyd181/cnt.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm6_probe.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm6_dump.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm6img/p-01.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm6img/p-04.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm6img/p-02.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm6img/p-03.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm6img/p-05.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm6img/p-07.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm6img/p-08.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm6img/p-11.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm6_crop.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm6img/crop_p82_table.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm6_crop2.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm6img/crop_p82_sets.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm6img/p-12.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm6img/p-13.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm6img/p-14.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm6img/p-16.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm6img/p-19.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm6img/p-20.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm6_crop3.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm6img/crop_p91_diag.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm6_seg1.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm6_seg2.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm6_seg3.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm6_seg4.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm6_join.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm6_selfcheck.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm6_fails.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm6_fix.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm6_stats.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm6_lens.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm6_get3.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm6_patch.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm6_patch2.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/v1-01.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/v8-08.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/v15-15.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/part_a.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/part_b.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/part_c.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/part_d.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/part_e.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/part_f.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/part_f2.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/part_g.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk18_extract.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk18.txt": 7,
+   "C:/Users/27063/AppData/Local/Temp/mk18_verify.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk18_frag1.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk18_verify2.py": 3,
+   "C:/Users/27063/AppData/Local/Temp/mk18_append.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk18_frag2.md": 2,
+   "C:/Users/27063/AppData/Local/Temp/mk18_frag3.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk18_verify3.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk18_frag4.md": 2,
+   "C:/Users/27063/AppData/Local/Temp/mk18_check.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk18_list.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk18_patch_notes.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk18_patch_notes2.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk18_frag5.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk18_frag6.md": 2,
+   "C:/Users/27063/AppData/Local/Temp/mk18_notes_sum.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk18_patch_frag6.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk18_fix_selftest.py": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/MacKay信息论/MacKay信息论_p441-460.bilingual.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk18_fix3.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk18_fix4.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk18_fix5.py": 1,
+   "C:/Users/27063/Documents/翻译产出/006算法导论/Exams 1.bilingual.md": 2,
+   "C:/Users/27063/Documents/翻译产出/006算法导论/Exams 2.bilingual.md": 2,
+   "C:/Users/27063/Documents/翻译产出/006算法导论/Exams 3.bilingual.md": 1,
+   "C:/Users/27063/Documents/翻译产出/006算法导论/Exams 4.bilingual.md": 1,
+   "C:/Users/27063/Documents/翻译产出/006算法导论/Exams 5.bilingual.md": 1,
+   "C:/Users/27063/Documents/翻译产出/006算法导论/Exams 6.bilingual.md": 1,
+   "C:/Users/27063/Documents/翻译产出/006算法导论/Exams 7.bilingual.md": 1,
+   "C:/Users/27063/Documents/翻译产出/006算法导论/Exams 8.bilingual.md": 1,
+   "C:/Users/27063/Documents/翻译产出/006算法导论/Exams 9.bilingual.md": 1,
+   "C:/Users/27063/Documents/翻译产出/006算法导论/Exams 10.bilingual.md": 1,
+   "C:/Users/27063/Documents/翻译产出/006算法导论/Exams 11.bilingual.md": 1,
+   "C:/Users/27063/Documents/翻译产出/006算法导论/Exams 12.bilingual.md": 1,
+   "C:/Users/27063/Documents/翻译产出/006算法导论/Exams 13.bilingual.md": 1,
+   "C:/Users/27063/Documents/翻译产出/006算法导论/Exams 14.bilingual.md": 1,
+   "/tmp/ex2p3-03.png": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\ex2p3-03.png": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\ex6p7-07.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/boyd_001_020.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/pg-03.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/b1.txt": 2,
+   "C:/Users/27063/AppData/Local/Temp/b2.txt": 2,
+   "C:/Users/27063/AppData/Local/Temp/b1p-09.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/b1p-20.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/b2p-13.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/part2.md": 3,
+   "C:/Users/27063/AppData/Local/Temp/chk.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/chk2.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b2p24-04.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/b2p23-03.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/part3.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/part4.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/part5.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk2.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/addsrc.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/chk3.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/chk4.py": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/Boyd答案手册/Boyd答案手册_p001-020.bilingual.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/patch2.py": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/Boyd凸优化/Boyd凸优化_p241-260.bilingual.md": 2,
+   "C:/Users/27063/AppData/Local/Temp/boyd241_seg2.md": 2,
+   "C:/Users/27063/AppData/Local/Temp/boyd241_seg3.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/boyd241_seg4.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/boyd241_seg5.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/boyd241_seg6.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/boyd241_fixhdr.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/boyd-segA.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/boyd-segB.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/boyd-segC.md": 2,
+   "C:/Users/27063/AppData/Local/Temp/boyd241_fixpages.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/boyd241_undo.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/boyd-p241.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/boyd241_ins_p241.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/boyd-segD.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/boyd-zhuyin2.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/boyd241_build2.py": 1,
+   "C:/Users/27063/.dsh/tools/reports/wave-boyd241.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/b18_probe.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b18_dump.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b18_p1.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/b18_p2.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/b18_p3.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/b18_p4.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/b18_check.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b18_check2.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b18_fix.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b18_fig.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b18_fig_p543.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/b18_fig_p544.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/b18_fig_p545.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/b18_fix2.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b18_fix3.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b18_fix4.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b18_stat.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm10png/p-01.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm10png/p-02.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm10png/p-03.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm10png/p-05.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm10png/p-08.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm10png/p-10.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm10png/p-13.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm10png/p-12.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm10png/p-14.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm10png/p-16.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm10png/p-18.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm10png/crop_flu.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm10png/p-11.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/lp/part1.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/lp/part2.md": 2,
+   "C:/Users/27063/AppData/Local/Temp/lp/part3.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/lp/part4.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/lp/part5.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/lp/build.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/lp/merge2.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/lp/final.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/lp/cnt2.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/lp/final2.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/x9.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/pg-10.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/pg-09.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/boyd_part2.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/boyd_part3.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/boyd_part4.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/merge9.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/fix9.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/chk9.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/fix9b.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/final9.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/patch9.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/chk9f.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/fix9c.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/pmap.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/repage.py": 3,
+   "C:/Users/27063/AppData/Local/Temp/repage2.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/fixstat.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/whnotes.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/fixnote.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b22_extract.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b22_raw.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/b22_show.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b22_clean.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b22_p621.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/b22_p626.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/b22_p631.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/b22_p636.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/b22_part1.md": 7,
+   "C:/Users/27063/AppData/Local/Temp/b22_part2.md": 4,
+   "C:/Users/27063/AppData/Local/Temp/b22_part3.md": 2,
+   "C:/Users/27063/AppData/Local/Temp/b22_part4.md": 3,
+   "C:/Users/27063/AppData/Local/Temp/b22_merge.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b22_inspect.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b22_inspect2.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b22_audit.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b22_amp.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b22_notes.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b22_perpage.py": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/Boyd凸优化/Boyd凸优化_p621-640.bilingual.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/b22_mine.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b22_n14.py": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\mk8_b1.md": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\fix_b1.py": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\mk8_b2.md": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\mk8_b3.md": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\mk8_b4.md": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\mk8_assemble.py": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\mk8_check.py": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\mk8_check2.py": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\mk8_patch.py": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\mk8_gloss.py": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\mk8_stats.py": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\mk8_trim.py": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\mk8_head.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm9_probe.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm9_dump.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm9_plain.txt": 4,
+   "C:/Users/27063/AppData/Local/Temp/dm9png/p-01.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm9png/p-07.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm9png/p-09.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm9png/p-10.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm9png/p-12.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm9png/p-14.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm9png/p-15.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm9png/p-17.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm9png/p-19.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm9png/p-20.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm9png/p-16.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm9png/p-02.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm9png/p-13.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm9png/p-04.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm9_a.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm9_b.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm9_c.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm9_d.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm9_e.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm9_merge.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm9_fix.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm9_stats.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm9_merge2.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm9_tail.md": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/6042J离散数学/6042J离散数学_p141-160.bilingual.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm9_patch2.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm9_patch3.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/p281.txt": 4,
+   "C:/Users/27063/AppData/Local/Temp/p301.txt": 3,
+   "C:/Users/27063/Documents/翻译产出/教材/Boyd凸优化/Boyd凸优化_p281-300.bilingual.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/checkb9.py": 2,
+   "C:/Users/27063/AppData/Local/Temp/b13pg/p461.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/b13pg/p462.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/b13pg/p463.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/b13pg/p464.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/b13pg/p465.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/b13pg/p466.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/b13pg/p467.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/b13pg/p471.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/b13pg/p472.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/b13pg/p473.txt": 1,
+   "C:/Users/27063/AppData/Local/Temp/b13_out_a1.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/gen_notes_a.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/gen_notes_b.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/stat_notes.py": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/Boyd凸优化_补注/Boyd凸优化_p001-020.bilingual.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/trim1.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/fix_note_tag.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/add_affine_note.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mackay_a.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mackay_b.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mackay_c.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mackay_d.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mackay_f.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mackay_g.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b12_a.txt": 2,
+   "C:/Users/27063/AppData/Local/Temp/b12_b.txt": 2,
+   "C:/Users/27063/AppData/Local/Temp/a1.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/a2.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/a3.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/b1.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/b2.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/b3.md": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/Boyd凸优化/Boyd凸优化_p441-460.bilingual.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/patch421.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/patch436.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/patch459.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/patch421b.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/patch459b.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/patch436b.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm8_probe.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm8_dump.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm8img/pg-06.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm8img/pg-18.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm8img/pg-01.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm8img/pg-14.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm8img/pg-20.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm8img/pg-02.png": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/6042J离散数学/6042J离散数学_p121-140.bilingual.md": 3,
+   "C:/Users/27063/AppData/Local/Temp/dm8_part2.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm8_msdiff.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm8_part3.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm8_part4.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm8_merge.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm8_fix.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm8_stats.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm8_edit.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm8_edit2.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm8_edit3.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm8_edit4.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm8_edit5.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm8_merge_check.js": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm8_selfcheck.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm8_final.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm8_fix2.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm8_fix3.py": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/MacKay信息论/Cover信息论_p081-100.bilingual.md": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/MacKay信息论/Cover信息论_p101-120.bilingual.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm12_extract.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm12_hdr.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm12_dump1.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm12_wtxt.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm12img/pg-02.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm12img/pg-08.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm12img/pg-01.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm12img/pg-03.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm12img/pg-04.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm12img/pg-05.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm12img/pg-20.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm12img/pg-19.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm12img/pg-11.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/dm12_p1.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/ps6p1-1.png": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/006slides/MIT6_006S20_q2_sol.bilingual.md": 2,
+   "C:/Users/27063/Documents/翻译产出/教材/006slides/MIT6_006S20_ps6_solutions.bilingual.md": 2,
+   "C:/Users/27063/AppData/Local/Temp/ps7p6-06.png": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/006slides/MIT6_006S20_ps7_solutions.bilingual.md": 3,
+   "C:/Users/27063/AppData/Local/Temp/b25_probe.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b25_dump.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b25_pg.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b25_tail.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b25_part1.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/b25_part2.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/b25_part3.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/b25_part4.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/b25_merge.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b25_check.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b25_notes_add.md": 2,
+   "C:/Users/27063/AppData/Local/Temp/b25_insert.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b25_notes_add2.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/b25_insert2.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b25_insert3.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b25_insert4.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b25_ship.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b25_stat.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b25_notes_add3.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/b25_notes_add4.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/b25_rebuild.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/ext10.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/render10.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/crop10.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/crop_p103_bottom.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/loc10.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/loc10b.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/crop10b.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/crop_31.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/crop10c.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/crop10d.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/crop_31c.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/crop_p114_bottom.png": 1,
+   "C:/Users/27063/AppData/Local/Temp/ans10_p2.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/ans10_p3.md": 3,
+   "C:/Users/27063/AppData/Local/Temp/ans10_p4.md": 2,
+   "C:/Users/27063/AppData/Local/Temp/ans10_p5.md": 2,
+   "C:/Users/27063/AppData/Local/Temp/ans10_p6.md": 9,
+   "C:/Users/27063/AppData/Local/Temp/merge10.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/merge10b.py": 2,
+   "C:/Users/27063/AppData/Local/Temp/diag10.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/diag10b.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/stat10.py": 1,
+   "C:/Users/27063/_rx-kb/kb/02-harness-config.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/seg01.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/seg02.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/seg03.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/seg04.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/seg05.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/seg06.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/seg07.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/seg08.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/seg09.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/seg10.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/check11.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/find_bracket.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/fix_brk.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/check_lt.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/seg11.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/fix_seg11.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/write_final11.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/fix_seg11b.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/converge11.py": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/Boyd答案手册/Boyd答案手册_p121-140.bilingual.md": 1,
+   "C:/Users/27063/Documents/翻译产出/教材/MacKay信息论/MacKay信息论_p301-320.bilingual.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk7_part2.md": 2,
+   "C:/Users/27063/AppData/Local/Temp/mk7_part3.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk7_part4.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk7_part5.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/fix37.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/shrink_notes.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/expand_notes.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/extend_notes.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/extend_notes2.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/final_check.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b24_extract.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b24_p1.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b24_p2.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b24_p3.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b24_part1.md": 4,
+   "C:/Users/27063/AppData/Local/Temp/b24_part2.md": 4,
+   "C:/Users/27063/AppData/Local/Temp/b24_part3.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/b24_part4.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/b24_build.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b24_move.py": 2,
+   "C:/Users/27063/AppData/Local/Temp/b24_move2.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b24_sortcheck.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b24_diff.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b24_wordcheck.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b24_build2.py": 5,
+   "C:/Users/27063/AppData/Local/Temp/b24_build3.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b24_only_prep.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b24_fix.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b24_audit.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk20_extract.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk20_raw.txt": 4,
+   "C:/Users/27063/AppData/Local/Temp/mk20_verify.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk20p2.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk20_fixtitle.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk20p3.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk20p4.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk20p5.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk20_audit.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk20_findnote.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk20_fixA.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk20_fixB.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk20_fails.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk20_fixC.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk20_fixD.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk20_fixE.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk20_fixF.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/mk20_pagedist.py": 1,
+   "C:/Users/27063/AppData/Local/Temp/b11_a.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/b11_b.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/b11_c.md": 1,
+   "C:/Users/27063/AppData/Local/Temp/b11_d.md": 1,
+   "D:\\Desktop\\课程文件\\待处理文件夹\\计算机\\_write_probe.txt": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\learning\\assets\\逆推顺序-叶到根才得到正确值.png": 2,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\learning\\assets\\区间DP-填充顺序必须按区间长度递增.png": 3,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\learning\\assets\\值唯一不等于保证值-同一棵树三种收益.png": 2,
+   "/c/Users/27063/.dsh/.agent-presets/anchored-standard/concurrency-discipline.mjs": 1,
+   "C:/Users/27063/AppData/Roaming": 1,
+   "C:\\Users\\27063\\_moonlight\\setup-sunshine.ps1": 1,
+   "C:\\Users\\27063\\_moonlight\\uac-setup.ps1": 1,
+   "C:\\Users\\27063\\_moonlight\\pvd-shot.png": 1,
+   "C:\\Users\\27063\\_moonlight\\pvd-shot2.png": 1,
+   "C:\\Users\\27063\\_moonlight\\pvd-host.ps1": 2,
+   "C:\\Users\\27063\\_moonlight\\pvd-host2.ps1": 1,
+   "C:\\Users\\27063\\_moonlight\\pvd-shot3.png": 1,
+   "C:\\Users\\27063\\_moonlight\\pvd-custom.png": 1,
+   "C:\\Users\\27063\\_moonlight\\pvd-custom2.png": 1,
+   "C:\\Users\\27063\\_moonlight\\cfg-sunshine.ps1": 1,
+   "C:\\Users\\27063\\_moonlight\\start-pad.ps1": 1,
+   "C:\\Users\\27063\\_moonlight\\fix-firewall.ps1": 1,
+   "C:\\Users\\27063\\_moonlight\\reset-pair.ps1": 1,
+   "C:\\Users\\27063\\_moonlight\\try-output.ps1": 1,
+   "C:\\Users\\27063\\_moonlight\\dd-config.ps1": 1,
+   "C:\\Users\\27063\\_moonlight\\dd-auto.ps1": 1,
+   "C:\\Users\\27063\\_moonlight\\try-wgc.ps1": 1,
+   "C:\\Users\\27063\\_moonlight\\rollback-sunshine.ps1": 1,
+   "C:\\Users\\27063\\Desktop\\fix-sunshine.bat": 1,
+   "C:\\Users\\27063\\_moonlight\\fix-sunshine.bat": 1,
+   "C:\\Users\\27063\\_moonlight\\run-lite.ps1": 1,
+   "C:\\Users\\27063\\_moonlight\\switch-to-lite.bat": 1,
+   "C:\\Users\\27063\\_moonlight\\start-sunshine.bat": 1,
+   "C:\\Users\\27063\\_moonlight\\restore-service.bat": 1,
+   "C:\\Users\\27063\\_moonlight\\pvd-host.cmd": 1,
+   "C:\\Users\\27063\\_moonlight\\fix-vdd.bat": 1,
+   "C:\\Users\\27063\\_moonlight\\setup-autostart.bat": 1,
+   "C:\\Users\\27063\\_moonlight\\repair-vdd.bat": 1,
+   "C:\\Users\\27063\\_moonlight\\upgrade-vdd-041.bat": 1,
+   "C:\\Users\\27063\\Toolbox\\ParsecVDD\\vdd.ps1": 1,
+   "C:\\Users\\27063\\Toolbox\\ParsecVDD\\Start-VDD.cmd": 1,
+   "C:\\Users\\27063\\Toolbox\\ParsecVDD\\Status.cmd": 1,
+   "C:\\Users\\27063\\Toolbox\\ParsecVDD\\install-to-toolbox.cmd": 1,
+   "C:\\Users\\27063\\Toolbox\\ParsecVDD\\copy-to-desktop.cmd": 1,
+   "C:\\Users\\27063\\.dsh\\storages\\tools\\journal\\sampler.pyw": 1,
+   "C:\\Users\\27063\\.dsh\\storages\\tools\\journal\\aggregate.py": 1,
+   "C:\\Users\\27063\\.dsh\\storages\\tools\\journal\\register.ps1": 1,
+   "C:\\Users\\27063\\.dsh\\storages\\tools\\journal\\install-journal-tasks.ps1": 1,
+   "C:\\Users\\27063\\.dsh\\skills\\compress\\SKILL.md": 2,
+   "D:/Toolbox/goat-gateway/dsh-plugin-local-search/index.js": 5,
+   "C:/Users/27063/_dss_methods.js": 1,
+   "C:/Users/27063/_patch_dss.py": 1,
+   "C:/Users/27063/_patch2.py": 1,
+   "C:/Users/27063/_install_dss.ps1": 1,
+   "C:/Users/27063/_selftest_dss.mjs": 1,
+   "C:/Users/27063/_drop_dso.ps1": 1,
+   "C:/Users/27063/_patch_wiki.py": 2,
+   "C:/Users/27063/_install_wiki.ps1": 1,
+   "C:/Users/27063/_patch_wiki2.py": 1,
+   "C:/Users/27063/_test_bing.py": 1,
+   "C:/Users/27063/_patch_bing.py": 1,
+   "C:\\Users\\27063\\_probe_search.mjs": 1,
+   "C:\\Users\\27063\\.dsh\\profiles\\desktop\\cordis.patch.yml": 3,
+   "C:/Users/27063/Desktop/工具箱/reasonix-ops/repo/README.md": 1,
+   "D:\\MINECRAFT\\staging\\pg_dump.txt": 3,
+   "D:\\MINECRAFT\\staging\\make_pack.py": 4,
+   "D:\\MINECRAFT\\staging\\make_pack2.py": 1,
+   "D:\\MINECRAFT\\staging\\pack_zip.py": 1,
+   "D:\\MINECRAFT\\.minecraft\\versions\\1.21.1-NeoForge_21.1.236\\PCL\\Setup.ini": 1,
+   "D:\\MINECRAFT\\.minecraft\\versions\\1.21.1-NeoForge_21.1.236\\PCL\\Setup.ini.bak-20260816-162207": 1,
+   "D:\\MINECRAFT\\.minecraft\\versions\\1.21.1-NeoForge_21.1.236\\PCL": 1,
+   "D:\\MINECRAFT\\.minecraft\\versions\\1.21.1-NeoForge_21.1.236": 1,
+   "D:\\MINECRAFT\\.minecraft\\versions\\1.21.1-NeoForge_21.1.236\\config\\fml.toml": 1,
+   "D:\\MINECRAFT\\.minecraft\\versions\\1.21.1-NeoForge_21.1.236\\config\\sodium-options.json": 1,
+   "D:\\MINECRAFT\\PCL": 1,
+   "C:\\Users\\27063\\mcopt\\apply-tfmax.py": 1,
+   "C:\\Users\\27063\\mcopt\\run-tfmax.ps1": 1,
+   "C:\\Users\\27063\\mcopt\\PatchTfMax.java": 1,
+   "C:\\Users\\27063\\mcopt\\install-pgpatch.ps1": 1,
+   "C:\\Users\\27063\\mcopt\\remove-ipsable.ps1": 1,
+   "C:/Users/27063/mcopt/revert-pg.ps1": 1,
+   "C:\\Users\\27063\\mcopt\\logstat.py": 1,
+   "C:\\Users\\27063\\mcopt\\transmutation\\pack.mcmeta": 3,
+   "C:\\Users\\27063\\mcopt\\transmutation\\data\\tianque\\recipe\\mixing\\copper_from_iron_gold.json": 1,
+   "C:\\Users\\27063\\mcopt\\transmutation\\data\\tianque\\recipe\\mixing\\zinc_from_iron_gunpowder.json": 1,
+   "C:\\Users\\27063\\mcopt\\install-transmutation.ps1": 1,
+   "C:\\Users\\27063\\mcopt\\transmutation\\data\\element_refining\\recipe\\mixing\\copper_from_renewable.json": 1,
+   "C:\\Users\\27063\\mcopt\\transmutation\\data\\element_refining\\recipe\\mixing\\zinc_from_renewable.json": 1,
+   "C:\\Users\\27063\\mcopt\\transmutation\\data\\element_refining\\recipe\\mixing\\platinum_from_renewable.json": 1,
+   "C:\\Users\\27063\\mcopt\\install-transmutation2.ps1": 1,
+   "C:\\Users\\27063\\mcopt\\verify_jei.py": 1,
+   "C:\\Users\\27063\\mcopt\\station\\out": 1,
+   "C:\\Users\\27063\\.dsh\\storages\\tools\\wake-guard.ps1": 1,
+   "C:\\Users\\27063\\.dsh\\storages\\tools\\wake-guard-setup.ps1": 3,
+   "C:\\Users\\27063\\.dsh\\PLAN.md": 3
+  },
+  "sessions": [
+   {
+    "sid": "session-75f2cf4c-001d-4e4d-b67a-27bdd6eb1717",
+    "depth": 0,
+    "user_msgs": 0,
+    "tool_calls": 16
+   },
+   {
+    "sid": "session-e9ad2668-aaed-4e11-ae56-51971e6f96d4",
+    "depth": 0,
+    "user_msgs": 0,
+    "tool_calls": 25
+   },
+   {
+    "sid": "016a8a5f-b61d-439b-8978-f4e1520fb2eb",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 43
+   },
+   {
+    "sid": "01ef1720-f256-4666-b638-7d387f13dd32",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 59
+   },
+   {
+    "sid": "03f1482d-6512-411f-bafc-13758bbc4d8e",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 49
+   },
+   {
+    "sid": "04de9e5f-cc94-475c-97aa-d92a714a6af1",
+    "depth": 2,
+    "user_msgs": 0,
+    "tool_calls": 28
+   },
+   {
+    "sid": "0562b829-d9cd-42c6-8f89-dd9245f4ef6f",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 1
+   },
+   {
+    "sid": "08d010f7-13b3-4444-9c4c-43287f59b453",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 1
+   },
+   {
+    "sid": "09c4714a-5f7b-4c84-9f3f-979ade785759",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 69
+   },
+   {
+    "sid": "0c7969d4-3a32-4cd6-b893-c0a0b103a365",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "0ca6d712-372d-4fbd-93c6-28ce8fc4e289",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 14
+   },
+   {
+    "sid": "0fbc16f0-2498-4270-9946-7a5ff778660a",
+    "depth": 2,
+    "user_msgs": 0,
+    "tool_calls": 11
+   },
+   {
+    "sid": "0fdd19bd-e404-4d00-a1bf-707a97011ac4",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "10623062-6914-4c23-8f5f-e1af08eb8be7",
+    "depth": 2,
+    "user_msgs": 0,
+    "tool_calls": 43
+   },
+   {
+    "sid": "118d87e6-e708-4032-918a-a291315abbbc",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 23
+   },
+   {
+    "sid": "11edff49-1892-4783-a698-b1c58c7c4557",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 61
+   },
+   {
+    "sid": "124ab7f1-0827-49e3-a76d-813e14abbe34",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "14b0243a-6410-4fd8-824d-a6991ebddcbb",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 107
+   },
+   {
+    "sid": "15f94bad-1bbe-4d42-8653-7b46dba2243d",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 1
+   },
+   {
+    "sid": "171a59de-1421-4340-9867-e39ce0e6c5d9",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 48
+   },
+   {
+    "sid": "17f291b5-8daa-49ca-b6d1-442685b96ac1",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 76
+   },
+   {
+    "sid": "17f5f3c5-df50-4ca7-85df-534b48b1788a",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 50
+   },
+   {
+    "sid": "1813d16d-83aa-4d4d-95fb-f6565b3d978b",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 1
+   },
+   {
+    "sid": "18f90062-b66b-4509-9c5f-5f0a68c240fd",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 85
+   },
+   {
+    "sid": "1920247c-ba69-4108-8fe9-5046df398fd4",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 1
+   },
+   {
+    "sid": "193b5a71-8e32-4cda-b5f7-d9c1e8ea3960",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "19d8cd3c-e4af-4ed4-b9c6-8cde101d6a2f",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "1af3fcdb-0e27-493d-8cdc-23b4e29527d2",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "1dd55c64-c3df-4f3a-8f76-fc7c162911ff",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 62
+   },
+   {
+    "sid": "1f023dd0-0b41-4aee-b9fc-e0dd38dcd3c9",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 78
+   },
+   {
+    "sid": "1fa4dd49-536b-42c8-bc5f-b4b15961b1fe",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 110
+   },
+   {
+    "sid": "25e03216-b996-49aa-a30c-42140d025aad",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "268391fc-0d98-49d8-89ec-92cba75a8dd6",
+    "depth": 0,
+    "user_msgs": 0,
+    "tool_calls": 0
+   },
+   {
+    "sid": "26953bf9-4096-4787-9bb3-f0fbb1113edc",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 90
+   },
+   {
+    "sid": "27a02883-b5f2-4340-af54-becd6cb46e0b",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 0
+   },
+   {
+    "sid": "295c248d-4d56-49f2-b53a-64a9e82c69e1",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 47
+   },
+   {
+    "sid": "2a66539d-2137-4fd9-b38a-779196a8459c",
+    "depth": 2,
+    "user_msgs": 0,
+    "tool_calls": 84
+   },
+   {
+    "sid": "2a8af1a2-47f7-4ce3-b500-b12662b2d6b8",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 0
+   },
+   {
+    "sid": "2af41a66-d397-4ed1-9e11-084ffa48d986",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 65
+   },
+   {
+    "sid": "2c265691-8cb4-4c3f-bcbd-61fafa450843",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 51
+   },
+   {
+    "sid": "2cf074bd-6696-445b-90d8-1a2cbaa738d7",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 1
+   },
+   {
+    "sid": "2eed093d-194e-4713-98dd-c7d3d7a419d2",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 69
+   },
+   {
+    "sid": "32ab5d1a-d8df-498b-a278-5b3fbe92716c",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 1
+   },
+   {
+    "sid": "331c2ae3-6874-45f2-bde4-f0c96d58cd7f",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 54
+   },
+   {
+    "sid": "3479e3d2-49cc-416f-a5ca-1eb80999c388",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 48
+   },
+   {
+    "sid": "361ab61e-b61a-4b7e-a1a6-328d80214679",
+    "depth": 2,
+    "user_msgs": 0,
+    "tool_calls": 56
+   },
+   {
+    "sid": "36d5c0f5-4cd4-4616-81b0-7c05dc62449b",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "37741b20-1a31-4abf-9233-8a04163a3693",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 102
+   },
+   {
+    "sid": "383eb319-b8bc-4026-b987-3e702fed85ea",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 4
+   },
+   {
+    "sid": "39171eac-288d-4485-9058-2efd86cf772b",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 0
+   },
+   {
+    "sid": "3a804065-1caa-4c81-bbf1-938c3b9d5b5f",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 1
+   },
+   {
+    "sid": "3c57e552-cc50-4eba-aa00-f875911d953d",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 0
+   },
+   {
+    "sid": "3d4c563d-7922-46e4-911c-2f240135d21d",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 16
+   },
+   {
+    "sid": "3e3b9c11-8ed6-45a3-a2f3-98e613095855",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 74
+   },
+   {
+    "sid": "410f37ed-2202-4533-acdd-a1daca009096",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 51
+   },
+   {
+    "sid": "435cbd2e-0cfc-4e06-b51a-08f5d751fe9c",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "44470915-7f58-41f8-9803-2ff043d650c8",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 34
+   },
+   {
+    "sid": "45653da3-ab2e-4cb5-9d64-4a8a52c4b0db",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "46041b87-858a-4a8a-b845-9af1a356d0d7",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 75
+   },
+   {
+    "sid": "46053167-c8b5-484f-9f0c-a1e1640cec80",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 57
+   },
+   {
+    "sid": "4d6b4b88-3179-409d-a4e3-c1a3cd0723e6",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 76
+   },
+   {
+    "sid": "4e2b652e-2ab7-4fb2-865b-ff77e310aa4e",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 49
+   },
+   {
+    "sid": "4f0b8811-0f4d-40aa-934e-157388113771",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 67
+   },
+   {
+    "sid": "4fae8a64-daaf-46d5-8efb-047115958bba",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "4fc8a61d-3eb4-41c7-9402-dd120d01f323",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "4ff0920c-2961-46cb-8ef5-8137c2f3c079",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 80
+   },
+   {
+    "sid": "503c2c2a-470e-43ae-bb10-c981cea3cdb3",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "5240058e-5f89-4633-bd73-a6150695df59",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 1
+   },
+   {
+    "sid": "52e494ae-0e70-49d5-9a68-5ae2bb2aaf84",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 4
+   },
+   {
+    "sid": "53c93eaf-7c7e-4120-a24b-23b7b1745a83",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 1
+   },
+   {
+    "sid": "5412733a-c8e8-4dbd-b29b-4306b21b8c15",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 1
+   },
+   {
+    "sid": "54374ee9-9635-46ea-bdb7-6e781847df26",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 64
+   },
+   {
+    "sid": "5691ed0d-7845-4a6a-92cc-a0390e304830",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 57
+   },
+   {
+    "sid": "57e2a77b-42e9-4e30-b5c9-f371f5417568",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "58dc3755-d030-4aff-9aec-bdf0d5ad0113",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "59bc8f4f-f926-4c44-b062-3408a41be933",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 37
+   },
+   {
+    "sid": "5b139f79-162e-4ef2-bc61-15a24f4e3d77",
+    "depth": 2,
+    "user_msgs": 0,
+    "tool_calls": 15
+   },
+   {
+    "sid": "5dc5b630-8574-448b-9674-40c9b4677995",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 49
+   },
+   {
+    "sid": "5e498aa5-5af9-4b47-9223-923d5b56d648",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 0
+   },
+   {
+    "sid": "5e6b4e33-e1dd-4dad-8cfb-308a85a42993",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 58
+   },
+   {
+    "sid": "5e810ce4-d7c3-4638-a958-13d410ea4653",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 1
+   },
+   {
+    "sid": "5f2371df-396b-4ea0-85fd-edd4b429cd2e",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 64
+   },
+   {
+    "sid": "5f5ff724-0ba6-42db-8348-903cae054614",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 1
+   },
+   {
+    "sid": "607913dc-b849-4059-b2ee-9782658d6be9",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 23
+   },
+   {
+    "sid": "60db2510-7d79-4bc0-8dcb-4ad058a7fd02",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 69
+   },
+   {
+    "sid": "623d8e83-8de6-4b5c-a138-5386b3b5dbea",
+    "depth": 2,
+    "user_msgs": 0,
+    "tool_calls": 91
+   },
+   {
+    "sid": "64f5e0d6-09dc-4eae-961a-c0e7ffc87299",
+    "depth": 2,
+    "user_msgs": 0,
+    "tool_calls": 0
+   },
+   {
+    "sid": "65bcb469-31a4-4173-92f1-d6baf1837e69",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 29
+   },
+   {
+    "sid": "67e5cd89-d700-4ffe-b111-b905aaf7db5b",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "69232b6f-64af-4ab7-b6f7-77d372a4b398",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 18
+   },
+   {
+    "sid": "6b12dd3a-a2d5-48ec-a80c-e087f0735c9d",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 43
+   },
+   {
+    "sid": "6b4aa20a-fec9-4a61-9043-f3030b186ce2",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 47
+   },
+   {
+    "sid": "6b52e05c-f150-4054-89ca-c147cc0dbb03",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 74
+   },
+   {
+    "sid": "6b56b36b-7997-4ed9-8428-28688b0e38e8",
+    "depth": 0,
+    "user_msgs": 0,
+    "tool_calls": 0
+   },
+   {
+    "sid": "6d087bc3-02c3-4f05-a105-a7ecbef5e817",
+    "depth": 2,
+    "user_msgs": 0,
+    "tool_calls": 16
+   },
+   {
+    "sid": "6de8ebe5-efd8-4af5-98f1-bf9828fff7a7",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "6e1db04f-59a5-4ccd-b662-1173629cc960",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 79
+   },
+   {
+    "sid": "6e53aafc-e51b-462b-8196-7be5614bc466",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 2
+   },
+   {
+    "sid": "6f11fa49-5022-46e8-9293-1d45296cb6de",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 1
+   },
+   {
+    "sid": "707d656b-1ef2-4b1b-8c3f-cb03ee090c2b",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "714b694b-f509-4480-91d6-34415f125a24",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "742c31ac-96b5-45c6-ae95-57971efe2002",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 4
+   },
+   {
+    "sid": "76e033b6-f797-4bb0-8920-592d07529867",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 59
+   },
+   {
+    "sid": "77964147-534a-498f-94a4-940d305054e4",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 110
+   },
+   {
+    "sid": "77c05efe-db40-4011-819c-e67204ae9c21",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "7833cf9e-c794-42d6-b402-843df29dc280",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 0
+   },
+   {
+    "sid": "78981d94-4018-40d1-ad78-9e838aa754c0",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "792d6369-df38-4707-a338-f5ccbc5eb0de",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "79a759f4-7175-4d5e-a1bc-5ab6a9a5d66d",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 88
+   },
+   {
+    "sid": "79d1b550-736d-4f96-8c1d-91974e4c706d",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "7a55da69-0ea2-4092-a53f-46fa327fd5e4",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "7c0abd9a-b108-4142-a27e-d2eae1bf74b7",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 1
+   },
+   {
+    "sid": "7c825ffc-97fc-4dff-bb8f-54bfd03280d5",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 54
+   },
+   {
+    "sid": "7ca44f11-50ba-412a-97ad-209642fc30d2",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 93
+   },
+   {
+    "sid": "7cddd5e6-fb5b-43a7-8b7d-73fa7c53e383",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 1
+   },
+   {
+    "sid": "7fdd6642-5d21-4da0-abf0-b7d6829958df",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 1
+   },
+   {
+    "sid": "80044970-beef-4707-987d-26fba5f85c2d",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 41
+   },
+   {
+    "sid": "80225421-631f-4f91-bdaa-9269d098a287",
+    "depth": 2,
+    "user_msgs": 0,
+    "tool_calls": 68
+   },
+   {
+    "sid": "804437fb-b0e8-4e93-86b2-7f7ffbb5ea90",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 53
+   },
+   {
+    "sid": "810ecbc9-b14f-48f1-a582-34cc5cf605cb",
+    "depth": 2,
+    "user_msgs": 0,
+    "tool_calls": 33
+   },
+   {
+    "sid": "81bbe647-d8d4-46e9-85eb-1ad9fbd1dcfd",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 43
+   },
+   {
+    "sid": "82a97af4-8194-4216-9022-1854c928fab4",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 147
+   },
+   {
+    "sid": "8304856d-8515-4db5-945f-332ed9537590",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 81
+   },
+   {
+    "sid": "84f98ef0-c39b-4bc9-98b4-002d7d15300b",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 47
+   },
+   {
+    "sid": "8568c3c9-c4d3-4fbd-bdf6-bba2de10ddbe",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 1
+   },
+   {
+    "sid": "866b743d-b282-49c2-b9d7-794082f7560f",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "88709a5a-d8e6-47c8-88bc-1918646fdb8d",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 1
+   },
+   {
+    "sid": "88e6134d-a7e1-4526-a021-666c7fe45712",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 1
+   },
+   {
+    "sid": "8ae3882a-cc50-4641-8463-967073dbc1e3",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 35
+   },
+   {
+    "sid": "8cdfa775-33dc-465a-8cbd-e1e0b38654c1",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 60
+   },
+   {
+    "sid": "8da4a491-80bc-4977-b620-95d09db4170e",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 73
+   },
+   {
+    "sid": "8e1054e1-ed1b-445a-b2a8-501b8f6e449f",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "8e5fcb1c-408b-45cc-a219-bd5d11098770",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "8f2469b3-496b-47b4-aad1-9aa9f143c672",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 2
+   },
+   {
+    "sid": "9061abaf-da39-40f1-af5a-05e98dde4d0d",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 1
+   },
+   {
+    "sid": "94103c31-2711-4cc5-9d7a-a2498cf09309",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 70
+   },
+   {
+    "sid": "94cfd430-ac63-4829-bd01-dcdd343dcf17",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 1
+   },
+   {
+    "sid": "954aa213-fea7-4b2d-abf6-29726bc64201",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "9866b444-6788-49a8-ad02-5aa28345a10a",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 0
+   },
+   {
+    "sid": "99d826c6-e912-4b89-aff3-866f37f763bc",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "9bbc089c-4159-42c5-95cd-83419a620ac3",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "9bfd2c99-c54a-4277-a5cf-beca86c72cb4",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "9e25617f-1683-4e4b-b9f6-5a0acbf3cc5e",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 2
+   },
+   {
+    "sid": "9f00447d-2377-4821-84f4-f49ce14c5e4b",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "9f69928b-5f35-4d8e-bc0c-00626af55063",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 69
+   },
+   {
+    "sid": "a13b7a63-bf51-4c19-89da-0704ad359859",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 2
+   },
+   {
+    "sid": "a1d01d63-f95d-4a7c-99ad-555c1901125a",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 62
+   },
+   {
+    "sid": "a448672b-3a8a-421b-94e5-43a9c708c2e1",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 63
+   },
+   {
+    "sid": "a45d8cef-166d-4b63-8cd2-3504d5221013",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 0
+   },
+   {
+    "sid": "a533c907-4eab-4901-b832-9f0532771786",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 1
+   },
+   {
+    "sid": "a759f07b-a350-43f0-ba48-939105cf4e52",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 35
+   },
+   {
+    "sid": "a772cb2b-05ae-4c97-8529-30eeca99aa8d",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "a8afe885-c919-4199-b4f6-a2f8ba709097",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 1
+   },
+   {
+    "sid": "a8efbf55-8811-463b-8658-f73efda040d1",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 1
+   },
+   {
+    "sid": "a954451a-b790-4f3c-a404-090539ba9c62",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 2
+   },
+   {
+    "sid": "a956bc7e-27ae-4929-9a2d-231e901deaa8",
+    "depth": 2,
+    "user_msgs": 0,
+    "tool_calls": 82
+   },
+   {
+    "sid": "aad96e91-b4bb-442c-916d-52cb058acb09",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 2
+   },
+   {
+    "sid": "ab34da2e-e746-417c-aa26-8de8d65a5ecc",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 60
+   },
+   {
+    "sid": "abf5732a-c379-49d7-a5b4-a560d9462d06",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "af664c8c-036b-41d1-97c8-2703861da65f",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 74
+   },
+   {
+    "sid": "af9a2f7a-f507-41ab-a662-0cb42173a6e4",
+    "depth": 2,
+    "user_msgs": 0,
+    "tool_calls": 10
+   },
+   {
+    "sid": "b09111fe-6f14-4af8-bb3c-84c2039bbce4",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 76
+   },
+   {
+    "sid": "b0cc7bdb-4f69-4c9f-b595-581bd13ceb98",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 34
+   },
+   {
+    "sid": "b2881b6e-bdcc-419d-b7a9-4a06ef102e0c",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 40
+   },
+   {
+    "sid": "b3037b96-eb87-4e58-b725-be91cc9af416",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "b3b16eb2-73ea-4d62-bcbb-26b43d627d57",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "b480b809-d2d0-426c-a6e2-c28c5e69c46a",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 68
+   },
+   {
+    "sid": "b6bec68b-4c4e-4f8f-a15c-bd1a1202a520",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 0
+   },
+   {
+    "sid": "b70fb805-446e-4313-a4c9-d98bfb6e80c9",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 1
+   },
+   {
+    "sid": "b7b5f2be-0e31-4d28-b2e8-027540ede47b",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 1
+   },
+   {
+    "sid": "b86e10f7-9164-43c7-b2f4-ddc110edabb2",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 2
+   },
+   {
+    "sid": "b8e4ec4c-2282-4d32-8764-c1b96e30bbe0",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 45
+   },
+   {
+    "sid": "b9017a72-5045-4e8c-905a-79f885fbd117",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 1
+   },
+   {
+    "sid": "b922d108-2d3b-47fd-b1ce-8f9f7c84018f",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 54
+   },
+   {
+    "sid": "bea35c90-863b-451d-9dee-4b1835b6d895",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 41
+   },
+   {
+    "sid": "bf0dc038-cdd4-41e5-b102-90ab0118a64e",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 1
+   },
+   {
+    "sid": "c2c4c592-8bef-44b7-b2a6-926d44639ee6",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 4
+   },
+   {
+    "sid": "c46ad9bc-51bf-4ac3-925a-ec3dba132288",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "c836fe5c-3a80-4756-87c7-6a4084737a45",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "c8d9785e-3018-41da-99c2-f6fdab55428b",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 2
+   },
+   {
+    "sid": "cac52f10-164b-4f80-a309-588fcb2be0d0",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 4
+   },
+   {
+    "sid": "cc0b8e85-b6de-4bd6-a6a2-8cdce039702b",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 45
+   },
+   {
+    "sid": "cdcbc578-2da9-44b7-abe0-d21dfb3dce04",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 44
+   },
+   {
+    "sid": "d0073d5f-f7e8-4f1d-88a9-152b4b4cf5d2",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 116
+   },
+   {
+    "sid": "d12208ba-c1aa-43dd-a747-68e0f4a96c16",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 58
+   },
+   {
+    "sid": "d1ab4d48-c826-4981-b883-3f4c22e1e5cb",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "d1d0f58d-f690-4a38-b21d-5977ddd1bc9b",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 71
+   },
+   {
+    "sid": "d458588d-5c9d-4f91-bdc2-6acdb7770458",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "d463712e-4a51-4784-9003-3c1d283b01cc",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "d50a23d9-f732-40cf-bd8e-ab46d48d7c52",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "d6471a9c-0658-432e-94b2-4ea540a0450e",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 65
+   },
+   {
+    "sid": "d815ab6f-29f8-4ffe-a1cc-a7e520f470d2",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 1
+   },
+   {
+    "sid": "d9aeb9f4-ba1d-46ed-bc2a-9e9c13d6f3e1",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 1
+   },
+   {
+    "sid": "dc2b203b-1694-4106-b158-c7a62de7942a",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 33
+   },
+   {
+    "sid": "df86c99c-0f84-42c9-b9dd-0472e8bb032f",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 1
+   },
+   {
+    "sid": "dfc882b4-d6b9-4bed-bf76-206ac79ff303",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "e12f9181-53a6-4cf5-afe7-87239fa39be9",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "e218224c-d04b-49d3-bc12-dae90efaa192",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 40
+   },
+   {
+    "sid": "e21be01d-466f-4d95-891e-107cfe2daa9a",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 1
+   },
+   {
+    "sid": "e2442771-e876-43f9-970f-94f4729fff2e",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 1
+   },
+   {
+    "sid": "e3bc2982-db30-4c60-898d-286a310967b2",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 1
+   },
+   {
+    "sid": "e635da73-60ea-4789-af67-df635c9175c0",
+    "depth": 0,
+    "user_msgs": 0,
+    "tool_calls": 0
+   },
+   {
+    "sid": "e99e76cc-9260-4d2a-b6fc-ee48d0923100",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "e9a632d3-d8d1-437f-a1e6-b24bb511ea20",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 40
+   },
+   {
+    "sid": "eab86a9c-b667-4204-a296-3c0df9f0c16e",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 61
+   },
+   {
+    "sid": "eac26e40-768a-4b12-82a2-e7f80145d460",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 90
+   },
+   {
+    "sid": "eb4c36b9-123f-4849-9a71-bfbf39ea17b5",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "ecb097f4-ba83-4c17-b929-c76bfc32f3a7",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 4
+   },
+   {
+    "sid": "ed861b13-acf6-4f40-ad28-3acd058a9b8e",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 41
+   },
+   {
+    "sid": "f10f8d53-cb49-4b79-a3b8-195f7a7ba2f3",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 47
+   },
+   {
+    "sid": "f1f00493-bf5b-43b1-b4ff-b538978c369c",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 46
+   },
+   {
+    "sid": "f3273ce3-ffbb-488b-99b7-da08bc80eeed",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 41
+   },
+   {
+    "sid": "f4d5399a-f2e5-4fbb-847c-7f6d1621ba67",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 2
+   },
+   {
+    "sid": "f52681fc-b62c-44a0-890f-e0fdbb3f675d",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 57
+   },
+   {
+    "sid": "f7215824-2031-4eba-b216-eef17bf947f5",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 63
+   },
+   {
+    "sid": "f8314683-9950-4a21-a2eb-739e8b8a664e",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 49
+   },
+   {
+    "sid": "fc9117f4-3fd8-4c03-bfcd-79a471108842",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 1
+   },
+   {
+    "sid": "fcfea720-28b7-4182-8791-d2c7ed7191c2",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "fd52386d-f909-4d11-a810-152bbabecdab",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "ff87a3d9-00fe-4802-adfa-860b4130119f",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 60
+   },
+   {
+    "sid": "session-0a5fbd80-0574-4b1c-a14d-af6eb0948047",
+    "depth": 0,
+    "user_msgs": 0,
+    "tool_calls": 158
+   },
+   {
+    "sid": "session-3315a426-b9aa-40c1-827c-817e18914498",
+    "depth": 0,
+    "user_msgs": 0,
+    "tool_calls": 273
+   },
+   {
+    "sid": "session-4599e285-483d-449d-a0d5-fc806d10bff0",
+    "depth": 0,
+    "user_msgs": 4,
+    "tool_calls": 315
+   },
+   {
+    "sid": "session-54304a52-0140-471f-b7d0-908501961928",
+    "depth": 0,
+    "user_msgs": 0,
+    "tool_calls": 127
+   },
+   {
+    "sid": "session-5975e549-c31a-4745-835c-37a38a64b0cf",
+    "depth": 0,
+    "user_msgs": 5,
+    "tool_calls": 518
+   },
+   {
+    "sid": "session-5a725aef-2ff8-4bd7-9742-c1f540d111d4",
+    "depth": 0,
+    "user_msgs": 0,
+    "tool_calls": 0
+   },
+   {
+    "sid": "session-5f807f79-cf3f-4453-8f73-b1258448d70a",
+    "depth": 0,
+    "user_msgs": 0,
+    "tool_calls": 126
+   },
+   {
+    "sid": "session-7da4ba19-859f-4a5a-8b29-f38ba4d60f7d",
+    "depth": 0,
+    "user_msgs": 17,
+    "tool_calls": 1230
+   },
+   {
+    "sid": "session-7f3a9676-a985-4adb-88c6-c4788d7c008a",
+    "depth": 0,
+    "user_msgs": 0,
+    "tool_calls": 86
+   },
+   {
+    "sid": "session-89b6a21f-0533-4bde-aa8d-04fcb7d60554",
+    "depth": 0,
+    "user_msgs": 0,
+    "tool_calls": 195
+   },
+   {
+    "sid": "session-93527a4d-5f30-4b10-abe1-4522d0390e80",
+    "depth": 0,
+    "user_msgs": 0,
+    "tool_calls": 41
+   },
+   {
+    "sid": "session-992f3685-514d-4bf4-8b23-886e09c68aff",
+    "depth": 0,
+    "user_msgs": 0,
+    "tool_calls": 284
+   },
+   {
+    "sid": "session-9cf09938-2bd8-43d5-aa59-79513d3f17d4",
+    "depth": 0,
+    "user_msgs": 0,
+    "tool_calls": 953
+   },
+   {
+    "sid": "session-c7e4b87b-3046-4a5d-90dc-c19af9882e93",
+    "depth": 0,
+    "user_msgs": 0,
+    "tool_calls": 0
+   },
+   {
+    "sid": "session-c966c685-e786-446d-a668-f4522e7747e7",
+    "depth": 0,
+    "user_msgs": 0,
+    "tool_calls": 0
+   },
+   {
+    "sid": "session-c9cb113e-b8f7-4b16-b7be-72b2c3e581a6",
+    "depth": 0,
+    "user_msgs": 0,
+    "tool_calls": 33
+   },
+   {
+    "sid": "session-d7523965-42f8-4548-855d-99d4598eeb90",
+    "depth": 0,
+    "user_msgs": 0,
+    "tool_calls": 46
+   },
+   {
+    "sid": "session-fc035b79-fe50-4348-b2ee-892d4824c235",
+    "depth": 0,
+    "user_msgs": 0,
+    "tool_calls": 0
+   }
+  ]
+ },
+ "tools": {
+  "counts": {
+   "bash": 2588,
+   "write": 396,
+   "read": 169,
+   "send_message": 71,
+   "edit": 59,
+   "skill_load": 46,
+   "subagent": 43,
+   "read_image": 31,
+   "compress": 16,
+   "headroom_retrieve": 16,
+   "memory_remember": 14,
+   "todo_write": 13,
+   "mnemon_subagent_result": 11,
+   "acp_status": 10
+  },
+  "total": 3542,
+  "errors": 145
+ },
+ "build": {
+  "commits": 6,
+  "files": [
+   [
+    "profiles/desktop/cordis.patch.yml",
+    4
+   ],
+   [
+    "storages/mnemon-sync-state.json",
+    3
+   ],
+   [
+    "profiles/web/cordis.patch.yml",
+    3
+   ],
+   [
+    ".agent-presets/anchored-standard/idle-loop-guard.mjs",
+    2
+   ],
+   [
+    "profiles/headless/cordis.patch.yml",
+    2
+   ],
+   [
+    "tools/kb-gaps.py",
+    2
+   ],
+   [
+    "profiles/desktop/package.json",
+    1
+   ],
+   [
+    "profiles/desktop/pnpm-lock.yaml",
+    1
+   ],
+   [
+    "PLAN.md",
+    1
+   ],
+   [
+    "tools/kb-inventory.py",
+    1
+   ],
+   [
+    "storages/skill-usage.json",
+    1
+   ],
+   [
+    "profiles/web/package.json",
+    1
+   ],
+   [
+    "tools/_dedupe.py",
+    1
+   ],
+   [
+    "tools/_gap_merge.py",
+    1
+   ],
+   [
+    "tools/_gap_report.py",
+    1
+   ],
+   [
+    "tools/audit-bilingual.py",
+    1
+   ]
+  ]
+ },
+ "edge": {
+  "visits": [
+   {
+    "t": "00:01",
+    "host": "commandcode.ai",
+    "title": "用量 - Command Code",
+    "url": "https://commandcode.ai/zh/TianQue6916/settings/usage"
+   },
+   {
+    "t": "00:03",
+    "host": "localhost:47990",
+    "title": "Sunshine",
+    "url": "https://localhost:47990/"
+   },
+   {
+    "t": "16:11",
+    "host": "github.com",
+    "title": "TianQue6916 (TianQue)",
+    "url": "https://github.com/TianQue6916"
+   },
+   {
+    "t": "16:11",
+    "host": "platform.deepseek.com",
+    "title": "DeepSeek 开放平台",
+    "url": "https://platform.deepseek.com/usage"
+   },
+   {
+    "t": "16:11",
+    "host": "api-docs.deepseek.com",
+    "title": "网页搜索与抓取 | DeepSeek API Docs",
+    "url": "https://api-docs.deepseek.com/zh-cn/guides/search/"
+   },
+   {
+    "t": "16:22",
+    "host": "api-docs.deepseek.com",
+    "title": "网页搜索与抓取 | DeepSeek API Docs",
+    "url": "https://api-docs.deepseek.com/zh-cn/guides/search/"
+   },
+   {
+    "t": "16:22",
+    "host": "platform.deepseek.com",
+    "title": "DeepSeek 开放平台",
+    "url": "https://platform.deepseek.com/usage"
+   },
+   {
+    "t": "16:22",
+    "host": "github.com",
+    "title": "TianQue6916 (TianQue)",
+    "url": "https://github.com/TianQue6916"
+   },
+   {
+    "t": "16:22",
+    "host": "commandcode.ai",
+    "title": "用量 - Command Code",
+    "url": "https://commandcode.ai/zh/TianQue6916/settings/usage"
+   },
+   {
+    "t": "16:22",
+    "host": "localhost:47990",
+    "title": "localhost:47990/config#",
+    "url": "https://localhost:47990/config#"
+   },
+   {
+    "t": "16:22",
+    "host": "localhost:47990",
+    "title": "Sunshine",
+    "url": "https://localhost:47990/config"
+   },
+   {
+    "t": "16:22",
+    "host": "localhost:47990",
+    "title": "localhost:47990/config#",
+    "url": "https://localhost:47990/config#"
+   },
+   {
+    "t": "16:23",
+    "host": "localhost:47990",
+    "title": "localhost:47990/config#",
+    "url": "https://localhost:47990/config#"
+   },
+   {
+    "t": "16:23",
+    "host": "localhost:47990",
+    "title": "localhost:47990/config#",
+    "url": "https://localhost:47990/config#"
+   },
+   {
+    "t": "16:23",
+    "host": "localhost:47990",
+    "title": "localhost:47990/config#",
+    "url": "https://localhost:47990/config#"
+   },
+   {
+    "t": "16:23",
+    "host": "localhost:47990",
+    "title": "localhost:47990/config#",
+    "url": "https://localhost:47990/config#"
+   },
+   {
+    "t": "16:23",
+    "host": "localhost:47990",
+    "title": "localhost:47990/config#",
+    "url": "https://localhost:47990/config#"
+   },
+   {
+    "t": "16:24",
+    "host": "localhost:47990",
+    "title": "localhost:47990/config#",
+    "url": "https://localhost:47990/config#"
+   },
+   {
+    "t": "16:25",
+    "host": "github.com",
+    "title": "TianQue6916 (TianQue)",
+    "url": "https://github.com/TianQue6916"
+   },
+   {
+    "t": "16:25",
+    "host": "github.com",
+    "title": "TianQue6916/dsh-reasonix-agent: dsh agent harness + reasonix runtime: 配置备份与工程经验库 (Windows/",
+    "url": "https://github.com/TianQue6916/dsh-reasonix-agent"
+   },
+   {
+    "t": "16:25",
+    "host": "localhost:47990",
+    "title": "localhost:47990/config#",
+    "url": "https://localhost:47990/config#"
+   },
+   {
+    "t": "16:31",
+    "host": "api-docs.deepseek.com",
+    "title": "网页搜索与抓取 | DeepSeek API Docs",
+    "url": "https://api-docs.deepseek.com/zh-cn/guides/search/"
+   },
+   {
+    "t": "16:31",
+    "host": "platform.deepseek.com",
+    "title": "DeepSeek 开放平台",
+    "url": "https://platform.deepseek.com/usage"
+   },
+   {
+    "t": "16:31",
+    "host": "commandcode.ai",
+    "title": "用量 - Command Code",
+    "url": "https://commandcode.ai/zh/TianQue6916/settings/usage"
+   },
+   {
+    "t": "16:34",
+    "host": "api-docs.deepseek.com",
+    "title": "网页搜索与抓取 | DeepSeek API Docs",
+    "url": "https://api-docs.deepseek.com/zh-cn/guides/search/"
+   },
+   {
+    "t": "16:34",
+    "host": "platform.deepseek.com",
+    "title": "DeepSeek 开放平台",
+    "url": "https://platform.deepseek.com/usage"
+   },
+   {
+    "t": "16:34",
+    "host": "commandcode.ai",
+    "title": "用量 - Command Code",
+    "url": "https://commandcode.ai/zh/TianQue6916/settings/usage"
+   },
+   {
+    "t": "16:42",
+    "host": "github.com",
+    "title": "TianQue6916/dsh-reasonix-agent: dsh agent harness + reasonix runtime: 配置备份与工程经验库 (Windows/",
+    "url": "https://github.com/TianQue6916/dsh-reasonix-agent"
+   },
+   {
+    "t": "16:45",
+    "host": "api-docs.deepseek.com",
+    "title": "网页搜索与抓取 | DeepSeek API Docs",
+    "url": "https://api-docs.deepseek.com/zh-cn/guides/search/"
+   },
+   {
+    "t": "16:45",
+    "host": "platform.deepseek.com",
+    "title": "DeepSeek 开放平台",
+    "url": "https://platform.deepseek.com/usage"
+   },
+   {
+    "t": "16:45",
+    "host": "github.com",
+    "title": "TianQue6916/dsh-reasonix-agent: dsh agent harness + reasonix runtime: 配置备份与工程经验库 (Windows/",
+    "url": "https://github.com/TianQue6916/dsh-reasonix-agent"
+   },
+   {
+    "t": "16:45",
+    "host": "commandcode.ai",
+    "title": "用量 - Command Code",
+    "url": "https://commandcode.ai/zh/TianQue6916/settings/usage"
+   },
+   {
+    "t": "16:47",
+    "host": "platform.deepseek.com",
+    "title": "DeepSeek 开放平台",
+    "url": "https://platform.deepseek.com/usage"
+   },
+   {
+    "t": "17:04",
+    "host": "commandcode.ai",
+    "title": "用量 - Command Code",
+    "url": "https://commandcode.ai/zh/TianQue6916/settings/usage"
+   },
+   {
+    "t": "17:16",
+    "host": "github.com",
+    "title": "TianQue6916 (TianQue)",
+    "url": "https://github.com/TianQue6916"
+   },
+   {
+    "t": "02:14",
+    "host": "commandcode.ai",
+    "title": "用量 - Command Code",
+    "url": "https://commandcode.ai/zh/TianQue6916/settings/usage"
+   },
+   {
+    "t": "02:26",
+    "host": "local-dsh",
+    "title": "DeepSeek Harness",
+    "url": "http://127.0.0.1:3080/?token=qPsYBrXbo36AqRW2tj2o7G06tN6cb6z4cUXM981sKFw"
+   },
+   {
+    "t": "02:26",
+    "host": "local-dsh",
+    "title": "DeepSeek Harness",
+    "url": "http://127.0.0.1:3080/"
+   },
+   {
+    "t": "02:47",
+    "host": "github.com",
+    "title": "TianQue6916 (TianQue)",
+    "url": "https://github.com/TianQue6916"
+   },
+   {
+    "t": "02:47",
+    "host": "github.com",
+    "title": "TianQue6916 (TianQue)",
+    "url": "https://github.com/TianQue6916?tab=overview&from=2026-09-01&to=2026-09-30"
+   },
+   {
+    "t": "02:53",
+    "host": "platform.deepseek.com",
+    "title": "DeepSeek 开放平台",
+    "url": "https://platform.deepseek.com/api_keys"
+   },
+   {
+    "t": "02:54",
+    "host": "api-docs.deepseek.com",
+    "title": "模型 & 价格 | DeepSeek API Docs",
+    "url": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing/"
+   },
+   {
+    "t": "02:54",
+    "host": "docs.scriptcat.org",
+    "title": "开启浏览器 User Scripts 支持 | ScriptCat",
+    "url": "https://docs.scriptcat.org/docs/use/open-dev/?userscript_enabled=false&userscript_permission=true&userscript_guard=allowScript&browser=edge#allow-user-scripts"
+   },
+   {
+    "t": "02:54",
+    "host": "docs.scriptcat.org",
+    "title": "安装完成 | ScriptCat",
+    "url": "https://docs.scriptcat.org/docs/use/install_comple"
+   },
+   {
+    "t": "02:56",
+    "host": "www.msn.cn",
+    "title": "香烟要被洗白了？中科院颠覆性研究，尼古丁可能会降低40％死亡率？",
+    "url": "https://www.msn.cn/zh-cn/health/%E9%80%9A%E7%94%A8/%E9%A6%99%E7%83%9F%E8%A6%81%E8%A2%AB%E6%B4%97%E7%99%BD%E4%BA%86-%E4%B8%AD%E7%A7%91%E9%99%A2%E9%A2%A0%E8%A6%86"
+   },
+   {
+    "t": "02:56",
+    "host": "commandcode.ai",
+    "title": "用量 - Command Code",
+    "url": "https://commandcode.ai/zh/TianQue6916/settings/usage"
+   },
+   {
+    "t": "03:40",
+    "host": "commandcode.ai",
+    "title": "用量 - Command Code",
+    "url": "https://commandcode.ai/zh/TianQue6916/settings/usage"
+   },
+   {
+    "t": "04:42",
+    "host": "commandcode.ai",
+    "title": "用量 - Command Code",
+    "url": "https://commandcode.ai/zh/TianQue6916/settings/usage"
+   },
+   {
+    "t": "13:39",
+    "host": "commandcode.ai",
+    "title": "用量 - Command Code",
+    "url": "https://commandcode.ai/zh/TianQue6916/settings/usage"
+   },
+   {
+    "t": "13:39",
+    "host": "commandcode.ai",
+    "title": "登录 Command Code",
+    "url": "https://commandcode.ai/zh/signin?returnTo=%2Fzh%2FTianQue6916%2Fsettings%2Fusage"
+   },
+   {
+    "t": "16:00",
+    "host": "commandcode.ai",
+    "title": "登录 Command Code",
+    "url": "https://commandcode.ai/TianQue6916/settings/usage?limit=100"
+   },
+   {
+    "t": "16:00",
+    "host": "commandcode.ai",
+    "title": "用量 - Command Code",
+    "url": "https://commandcode.ai/zh/TianQue6916/settings/usage?limit=100"
+   },
+   {
+    "t": "16:00",
+    "host": "commandcode.ai",
+    "title": "登录 Command Code",
+    "url": "https://commandcode.ai/zh/signin?returnTo=%2Fzh%2FTianQue6916%2Fsettings%2Fusage%3Flimit%3D100"
+   },
+   {
+    "t": "16:00",
+    "host": "github.com",
+    "title": "用量 - Command Code",
+    "url": "https://github.com/login/oauth/authorize?response_type=code&client_id=Ov23liFBUFC1iT6j3UlV&state=NVBZt9w1ADBOkGOqEvPB9rPFSjSwfod1&scope=read%3Auser+user%3Aemail"
+   },
+   {
+    "t": "16:00",
+    "host": "api.commandcode.ai",
+    "title": "用量 - Command Code",
+    "url": "https://api.commandcode.ai/auth/callback/github?code=f0a869dc432ff0b10f8d&iss=https%3A%2F%2Fgithub.com%2Flogin%2Foauth&state=NVBZt9w1ADBOkGOqEvPB9rPFSjSwfod1"
+   },
+   {
+    "t": "16:00",
+    "host": "commandcode.ai",
+    "title": "用量 - Command Code",
+    "url": "https://commandcode.ai/zh/signup?returnTo=%2Fzh%2FTianQue6916%2Fsettings%2Fusage&otpSent=true"
+   },
+   {
+    "t": "16:00",
+    "host": "commandcode.ai",
+    "title": "用量 - Command Code",
+    "url": "https://commandcode.ai/zh/TianQue6916/settings/usage"
+   },
+   {
+    "t": "16:00",
+    "host": "commandcode.ai",
+    "title": "用量 - Command Code",
+    "url": "https://commandcode.ai/zh/TianQue6916/settings/usage"
+   },
+   {
+    "t": "16:00",
+    "host": "commandcode.ai",
+    "title": "用量 - Command Code",
+    "url": "https://commandcode.ai/zh/TianQue6916/settings/usage"
+   },
+   {
+    "t": "16:00",
+    "host": "platform.deepseek.com",
+    "title": "DeepSeek 开放平台",
+    "url": "https://platform.deepseek.com/api_keys"
+   },
+   {
+    "t": "16:00",
+    "host": "platform.deepseek.com",
+    "title": "DeepSeek 开放平台",
+    "url": "https://platform.deepseek.com/usage"
+   },
+   {
+    "t": "16:00",
+    "host": "github.com",
+    "title": "TianQue6916 (TianQue)",
+    "url": "https://github.com/TianQue6916?tab=overview&from=2026-09-01&to=2026-09-30"
+   },
+   {
+    "t": "16:11",
+    "host": "commandcode.ai",
+    "title": "用量 - Command Code",
+    "url": "https://commandcode.ai/zh/TianQue6916/settings/usage"
+   },
+   {
+    "t": "16:11",
+    "host": "commandcode.ai",
+    "title": "用量 - Command Code",
+    "url": "https://commandcode.ai/zh/TianQue6916/settings/usage?limit=100"
+   },
+   {
+    "t": "16:25",
+    "host": "commandcode.ai",
+    "title": "账单 - Command Code",
+    "url": "https://commandcode.ai/zh/TianQue6916/settings/billing"
+   },
+   {
+    "t": "16:26",
+    "host": "commandcode.ai",
+    "title": "用量 - Command Code",
+    "url": "https://commandcode.ai/zh/TianQue6916/settings/usage"
+   },
+   {
+    "t": "16:39",
+    "host": "commandcode.ai",
+    "title": "用量 - Command Code",
+    "url": "https://commandcode.ai/zh/TianQue6916/settings/usage"
+   },
+   {
+    "t": "16:59",
+    "host": "commandcode.ai",
+    "title": "用量 - Command Code",
+    "url": "https://commandcode.ai/zh/TianQue6916/settings/usage"
+   },
+   {
+    "t": "17:07",
+    "host": "commandcode.ai",
+    "title": "用量 - Command Code",
+    "url": "https://commandcode.ai/zh/TianQue6916/settings/usage"
+   }
+  ],
+  "domains": [
+   [
+    "commandcode.ai",
+    26
+   ],
+   [
+    "localhost:47990",
+    11
+   ],
+   [
+    "github.com",
+    11
+   ],
+   [
+    "platform.deepseek.com",
+    9
+   ],
+   [
+    "api-docs.deepseek.com",
+    6
+   ],
+   [
+    "local-dsh",
+    2
+   ],
+   [
+    "docs.scriptcat.org",
+    2
+   ],
+   [
+    "www.msn.cn",
+    1
+   ],
+   [
+    "api.commandcode.ai",
+    1
+   ]
+  ]
+ },
+ "course_minutes": {},
+ "course_clues": {
+  "EE364a 凸优化": {
+   "hits": 152,
+   "where": [
+    "路径"
+   ]
+  },
+  "信息论": {
+   "hits": 60,
+   "where": [
+    "路径"
+   ]
+  },
+  "6.006 算法导论": {
+   "hits": 34,
+   "where": [
+    "路径"
+   ]
+  },
+  "6.042J 离散数学": {
+   "hits": 6,
+   "where": [
+    "路径"
+   ]
+  }
+ }
+}

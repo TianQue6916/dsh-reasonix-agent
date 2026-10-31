@@ -1,0 +1,311 @@
+Errata for Convex Optimization / Boyd and
+Vandenberghe
+Errata for Convex
+Optimization.
+If you find an error in the book not listed here, please do let
+us know about it.
+Don't let the large number of typos listed below worry you.
+They are all quite minor and harmless.
+Stephen Boyd &
+Lieven
+Vandenberghe
+page 38, example 2.10. missing final period in first sentence.
+page 46, section 2.5.1. add "nonempty" to "C and D are two
+convex sets".
+page 62, exercise 2.16. "R^{m x n}" should be "R^{m + n}".
+page 88, line 1. changed "provided $g(x) -\infty$ for all $x$."
+page 114, exercise 3.9 (b).  On line 2 and in the hint, replace "if and only if" with "if".
+page 114, exercise 3.10. f_0 should be f.
+page 119, exercise 3.29. Add that $f$ is convex.
+page 121, exercise 3.44 (a).  On the first line, replace "if and only if" with "if".
+page 314, bottom paragraph. subscript "corr" should be "cor".
+pages 318--19.  Three occurrences of "statistical robust approximation"
+should be "stochastic robust approximation".
+page 319, norm squared should be 2-norm squared.
+page 385, section 7.5.1. "comparable to n" should be "comparable to p".
+page 394, exercise 7.6. "has mean b" should be "has mean b/a".
+page 439, equation (8.32). some i's and j's are wrong in the
+third and fourth inequalities.
+page 442, alignment constraints. $w_i$ and $w_j$ should be $h_i$ and $h_j$.
+page 448, exercise 8.8.  Remove mention of alternatives to lighten problem.
+page 595, below (11.36).  Missing section symbol in 11.5.4.
+page 598, middle. Missing cones in subscript in definition of domain of $\phi$.
+page 647, middle of page. remove "in" from "if $-A$ is in nonnegative definite".
+Errata corrected in seventh printing (July 2009).
+page 141, example 4.6. "where a_i^T,...,a_m^T" should be
+"where a_1^T,..,a_m^T".
+page 169, definition of "K_i". "R^{k_i+1}" should be "R^{n_i+1}".
+page 177, line 6. "||Fv||_2^2" should be "||F^Tv||_2^2".
+page 184, end of first paragraph.  Switch $F_i$ and $F_j$.
+page 208, exercise 4.58. "The variables are c_1,...,cT"
+should be "The variables are c_0,...,c_T", and the sum defining
+U should start at t=0.
+page 212, bottom equation: T+1 should be T.
+page 218, line 9.  "g_i(x)" should be "h_i(x)".
+page 249, line 4.  "dom f" should be "dom f_0".
+page 250, line 13.  "p^*:R^m x R^p" should be "p^*:R^m x R^p -> R".
+page 255, the expression of L following (5.66): "y0,y1,...,ym"
+should be included in the argument list.
+page 270, 6 lines above the example: "strict" should be "nonstrict".
+page 310, example 6.4.  Switch m and n in first three lines.
+page 314, line -4. "Figure 6.14 show" should be "Figure 6.14 shows".
+page 326, last equation. "S_n" should be "S_m".
+page 336, line -3. "in in" should be "in".
+page 353, first equation. "a_i^Tx-b_i" should be "b_i-a_i^Tx".
+page 376, bottom equation. replace "z" with "X".
+page 386, first line. should be "for which a_j=v_i".
+page 479-480, convergence analysis. Some gamma's should be gamma
+tilde's.
+page 522, equation (10.3).
+"(1/2)x^TPx+..." should be "f(x)=(1/2)x^TPx+..."
+page 530, middle. "nabla f(x)^2" should be "nabla^2 f(x)".
+page 530, line -16. switch x^0 and z^0.
+page 530, line 9. f(Fx+hat x) should be f(Fz+hat x).
+Errata corrected in sixth printing (May 2008).
+page 64, exercise 2.31d. last "K" should be "cl K".
+page 95, last sentence. "A function is quasilinear if its
+domain, and every level set {x|f(x)=alpha} is convex" should be "If
+f is quasilinear, then its domain, and every level set
+{x|f(x)=alpha} is convex"
+page 98, second displayed equation. "PV(x,r) >= 0 for 0  0 for 0 = 0" should be "PV(x,r) > 0" and "0 page 109, last bullet in example 3.46. "det X is increasing on
+S^n_+" should be "det X is increasing on S^n_++ and nondecreasing
+on S^n_+".
+page 114, exercise 3.5.  added short hint.
+page 120, exercise 3.34e. add "bounded" to assumptions on C.
+page 121, exercise 3.41.  replaced with new problem.
+page 123, exercise 3.54c. add "for xpage 124, end of exercise 3.55. Last inequality should be
+h'(x)<0.
+page 124, exercise 3.58. "viewed as function" should be "viewed
+as *a* function".
+page 130, line after equation (4.3). Should be "where
+alpha_i>0, i=0,...m".
+page 140, two lines below (4.22). "Suppose x is feasible"
+should be "Suppose x is optimal".
+page 144, equation (4.25). "for all y \in X" should be "for all
+y\in X\{x}".
+page 167, equation above section 4.6. "s_3v_3<=lambda v_3"
+should be "s_3v_3<=lambda v_4"; also, "1/2<=c_i<=2" should
+be "1/2<=c_i/c_i^nom<=2".
+page 191, exercise 4.6. Middle bullet at bottom of problem
+should be "f_1,...f_m are nondecreasing in x_r", not "f_1,...f_m
+are nonincreasing in x_r".
+page 199, exercise 4.29. Gave the required condition,
+instead of asking for it.
+page 199, exercise 4.31. Missing lower bound on aspect ratio,
+Smin <= h_i/w_i, which is in original problem (p165).
+page 201, exercise 4.39, last equation. Bottom left entry in
+matrix \tilde G should be b^T, not b.
+page 209, exercise 4.60, bottom equation, middle term.  "i=1" should be
+"t=1".
+page 256, line 6. "lambda_i f_i^*(nu_i/lambda_i)=-infty" should
+be "lambda_i f_i^*(nu_i/lambda_i)=infty".
+page 263, line below (5.87). change "inequalities" to "equalities and
+inequalities".
+page 267 (line -5), page 269 (equation (5.98) and line -6),
+page 270 (line 2, equation (5.102) and line -11): "K_i^\star"
+should be "K_i^*".
+page 267 (line 9).  "the both sums" should be "the two sums".
+page 269 (line -3).   "We now assume that the functions ...".
+page 277, exercise 5.14, second equation. "f(x)" should be "f_0(x)".
+page 287, line 7 of exercise 5.43. The constraint "||ui||_2
+<= vi" in the dual problem should be "||ui||_2 <= -vi".
+pages 314 and 317.  The order of the three plots in figure 6.14
+should be reversed to be consistent with figures 6.10 and 6.12.
+The references to 'top' and 'bottom' in the caption and at the end
+of page 314 must be changed accordingly.
+page 319, line 15.  "variance delta" should be "variance delta/m".
+page 346, line 2. "log(1-x^2)" should be "log(1-u^2)".
+page 362, line 11. "most unequivocal" should be "most equivocal".
+page 365, line 7. "we have mistaken $\theta$ for $\hat \theta$"
+should be "we have mistaken $\hat \theta$ for $\theta$".
+page 366, line 9 and -2. in both lines, "mistaking $\theta=j$
+for $\theta=i$" should be "mistaking $\theta=i$ for $\theta=j$".
+page 387 bottom. (not really a typo.)  explain that $e_k$ in bottom equation is unit vector, not $k$th component of $e$ (the estimation error
+vector)
+page 420, 3 lines below (8.19). "analytic center in unique" should be
+"analytic center is unique".
+page 426, first and third lines following (8.25). in both
+cases, "a^z+b$ should be $a^Tz-b$.
+page 427, first line of 2nd paragraph. remove "the" from "The first
+term is the proportional".
+page 429, caption of figure 8.12.
+"circles" should be "open circles" and "squares" should be "filled circles"
+(see previous figures).  also, last two words should be
+"dashed lines", not "solid lines".
+page 431, caption of figure 8.14. "x_1,...x_N" and "y_1,...y_M"
+should be "x_1,...,x_N" and "y_1,...,y_M" (missing second commas).
+page 434, equation above example 8.6. bottom choice righthand side
+should be $|z|>\gamma$.
+page 440, 3rd paragraph. "Similarly, there is ... path in H" should be
+"Similarly, there is ... path in V".
+page 442, end of paragraph on Similarity constraints.
+second occurence of "or height)" should be "(or height)" (missing left
+parenthesis).
+page 443, last equation has a few misplaced parentheses.
+$(x_j-(x_i+w_i)^2+d_v^2) \leq D^2_{ij}$ should be
+$(x_j-(x_i+w_i))^2+d_v^2 \leq D^2_{ij}$.
+page 449, problem 8.11, 2nd paragraph. "a_1,...,a_m in R"
+page 479, equation in step 1. pf example 9.2.  third term in
+denominator should be "gamma_i", not "gamma_k".
+page 479, bottom of first paragraph in section 9.4.3. "see \S
+A.1.2" should be "see \S A.1.4".
+page 481, line -10. "Figure 9.13 show" should be "Figure 9.13
+shows."
+page 488, line -3. "x^k" should be "x^{(k)}".
+page 504, second equation from bottom of page. \alpha \beta should be
+- \alpha \beta.
+page 511, example 9.9. "where \phi_i" should be "where
+\psi_i".
+page 515, exercise 9.7. "Let Delta_sd" should be "Let
+Delta_nsd".
+page 519, exercise 9.28, last line. "x^T Ai" should be "x^T Ai
+x".
+page 529, line -7. "equality constrained constrained problems"
+should be "equality constrained problems."
+page 559, last line. "... problem described in exercise 4.60,
+without the constraint x >= 0".
+page 597, equation in example 11.5. remove "diag".
+page 625, exercise 11.9. Modified to remove reference to exercise
+3.41.
+page 637, middle of page. "The dual of the l1 norm is the
+linfty norm" should be "The dual of the linfty
+norm is the l1 norm".
+page 640. re-arrange and re-phrase definition of derivative.
+page 671, first equation.  top right entry in right matrix, D^{-1/2}u^T,
+should be D^{-1/2}u.
+page 677, example C.3. "the product A_{11}^{-1}A_{21}" should be
+"the product A_{11}^{-1}A_{12}".
+Errata corrected in third printing (January 2006).
+page 7, line below equation (1.7). "The details will be given
+in chapter 4" should be "The details will be given in chapter
+6".
+page 43, example 2.14: 'than' should read 'that' in lines 3 and
+5.
+page 65, exercise 2.37b. Delete "known as the Markov-Lucacs
+theorem".
+page 88, line 15. This assumes that the infimum in (3.16) is
+attained.
+page 97, line -3 of example 3.33. Insert "is" before
+"equivalent".
+page 103, line -13: delete period after "otherwise".
+page 117, exercise 3.23 (a), last line: `is convex on {(x,t) |
+t>0}'.
+page 157, 4th line below (4.37), righthand side of eqtn `\sup
+\{u^T P_i x' should be `\sup \{u^T P_i^T x'.
+page 159,160 (1/K) in gradient expression should be K! in last
+eqn, differences should be multiplied by K. not divided. on p160,
+differences should be mult by K; also we should multiply obj by
+(1/K^2).
+page 199, line -10: `di' should be in the numerator:
+E*wi*hi^3*di/(6*F) <= 1.
+page 201, exercise 4.39 (b): second "minimize" should be
+"subject to".
+page 207, exercise 4.55, 2nd part of problem: add requirement
+that scalarized problem has unique solution.
+page 208, line 2. In the first sum the index i should run from
+1 to m; in the second sum, j should run from 1 to n.
+page 209, line 3. Replace `know' by `known'.
+page 228, third equation. remove "2" in term "2q_i^Tx".
+page 229, line 15. Added explicit assumption A\not\succeq
+0.
+page 232, equation (5.37). R^p should be {0}.
+page 243 last equation (5.49). lambda_i^\star\succeq 0 should
+be lambda_i^star \geq 0.
+page 245 middle. "implies that
+\nu=1/(\alpha_i+x^\star_i)".
+page 247, line 6 from the bottom. 'lambda2' should read
+'lambda3'.
+page 253 first equation: \partial p^\star(0,0) should be
+\partial p^\star(0) (since there are no equality constraints
+here).
+page 255 last line of example 5.6. "we use fact the conjugate"
+should be "we use the fact *that* the conjugate".
+page 255 last line (twice) and page 256 (lines 5, 6 and eq.
+5.67): f^\star should be f^*.
+page 260 bottom equation. subscript "x\in D, t" should be "x\in
+D, s".
+page 265, line 12. "weak duality," can be deleted.
+page 268 8th line from bottom. 'Since F(x^*)\succeq 0' should
+be 'Since F(x^*)\preceq 0'.
+page 269 8th line from bottom '\lambda_i \geqKst' missing RHS
+0.
+page 274, Exercise 5.6: bottom of 1st paragraph. "how much
+larger is ||.||_2 than ||.||_\inf?" should be "...is ||.||_\inf
+than ||.||\_inf?"
+page 287, Exercise 5.43, line below dual: "data are c \in
+\reals^n, ..." should be "data are f \in \reals^n..."
+page 316 Figure 6.12. Labels \hat{x}_i shoud not have a
+subscript; none of the similar figures in chapter 6 have that kind
+of subscript.
+page 327 middle: "piecewise-linear linear".
+page 375, equation 7.17: the sum in the second constraint runs
+from 0 (not "o") to n.
+page 388, sentence above (7.30). "be expressed is" should be
+"be expressed as".
+page 393 Exercise 7.2: l5: "\leq a" should be "\leq
+\alpha".
+page 483, first line of the caption of figure 9.15. P_1 should
+be P_2.
+page 520, problem 9.32, 10th line from the bottom. missing x in
+the search direction \Delta_gn.
+page 522, line -8. '... is unbounded below or infeasible'.
+page 523, second line above example 10.1. "=\tilde f(z^star)="
+should be "=\nabla \tilde f(z^star)=".
+page 525, equation above (10.9). "-diag(1/x_1,...1/x_n)" should
+be "-(1/x_1,...1/x_n)".
+page 526, second paragraph. "section symbol 10.2' should read
+'section symbol 10.1.1'
+page 537, line 18. Replace "do not hold" with "may not
+hold".
+page 537, line -3. ||r(y)||_2 should be ||r(y^(0))||_2.
+page 543. at the end of the caption for Figure 10.1 there is an
+extra sentence fragment.
+page 553. the (N-1,N) block be inv(Q_{N-1})*A_{N-1}^T and the
+same for the (N,N-1) block, i.e., index of Q should be N-1 instead
+of N.
+page 572, line 9. insert "(factor of)" before \mu.
+page 578, 2nd to last equation. A\nu_nt should be A\Delta x_nt
+= 0.
+page 600 line -6. righthand side should be
+tr((-F(x))^{-1}Fi).
+page 600 line -4, second term on the left should be
+tr((-F(x))^{-1}Fi).
+page 610, last line before subsection. A(x+s\Delta x_pd) = 0
+should be A(x+s\Delta x_pd) = b.
+page 614 second line of figure 11.21 caption. \eta should be
+\hat \eta
+page 620 4th equation and below. U is concave, so we need to
+minimize -tU+barrier, not tU+barrier. then, below, D_0 should be
+D_0=-diag().
+page 624 bottom of exercise 11.5 "point point".
+page 637, second last paragraph under Dual Norm, "q = p/(1-p)"
+should be "q=p/(p-1)".
+page 682, last line. "The factors Q and R are usually dense"
+should be "The factor Q is usually dense".
+pages 685-696. Miscellaneous minor corrections and updates to
+the references.
+Errata corrected in second printing (September 2004).
+page 47, figure 2.18. E2 is not minimal.
+page 63, exercise 2.20 requires the assumption that Ax=b is
+solvable.
+page 118, line -7: replace n by k in the upper limit of the
+product on the the right.
+page 118, last line: replace kxk by ixi.
+page 128, line 14: replace f(x) by f_0(x).
+page 316, figure 6.12: replace `smoothes' with `smooths'.
+page 352, line -9: replace (1/2)\log(2\pi\sigma) by
+(m/2)\log(2\pi\sigma^2).
+page 387, last equation: replace matrix inequality with [
+sum_i=1^p lambda_i v_i*v_i^T e_k; e_k^T u_k ] >= 0,
+k=1,...,n.
+page 396, line -2: replace "lower bound" by "upper bound".
+page 444 figure 8.20 in caption. "figure 8.18" should be
+"figure 8.19".
+page 518, line -8: delete last ")".
+page 541, line -14: replace `Dr = nabla f^{-1} is bounded' by
+`Dr = nabla f has bounded inverse'.
+page 555, line -8: replace `two matrices in S^n' by `two
+matrices in\reals^{n\times n}'. Replace (1/2)p^2n^2 by p^2n^2.
+page 555, line -3: replace (1/2)p^2n^2 by p^2n^2
+page 656, above second displayed equation: replace second Tr(AZ) with Tr(BZ).
+page 692 [MZ89]: replace Zafirou by Zafiriou.

@@ -40,6 +40,20 @@ import time
 
 REASONIX_SYNC = os.path.expanduser('~/.reasonix/global-workspace/sync')
 sys.path.insert(0, REASONIX_SYNC)
+
+# DEP_CHECK（2026-10-26 加）：paramiko 是 --user 装的，Python 小版本升级后
+# ~/.local/lib/python3.X/site-packages 会失效，同步就静默死掉（10-25 晚到 10-26 中午
+# 连续两次 cron 全失败、无人知道）。这里提前给出可执行的修复命令，而不是抛原始 Traceback。
+try:
+    import paramiko  # noqa: F401
+except ImportError:
+    sys.stderr.write(
+        "\n[sync_dsh] 缺少依赖 paramiko —— 同步无法运行。\n"
+        "  修复：/usr/bin/python3 -m pip install --user --break-system-packages paramiko\n"
+        "  （本机 2026-10-26 装的是 5.1.0；升级 Python 小版本后需要重装）\n\n"
+    )
+    raise SystemExit(2)
+
 import sync_reasonix as R  # noqa: E402  —— 复用 Syncer / HOST / USER / PASS
 
 LOCAL_ROOT = os.path.expanduser('~/.dsh')
@@ -59,12 +73,34 @@ EXTRA_PAIRS = [
      r'C:\Users\27063\AppData\Roaming\reasonix\memory'),
 ]
 
+# ── 对端只读镜像（方案 1，2026-10-26 用户拍板）────────────────────────
+# PLAN.md 各机各写各的（已在 EXCLUDE_FILES 里），但两边都要能「看到对方」。
+# 做法：不进双向比对，只在同步最后单向拉一份快照到 peers/<host>/PLAN.md。
+# 为什么不双向同步它：双向 = 两边同名同路径，必然互相覆盖/判冲突；
+# 社区同类问题的主流解法正是「本机私有 + 只读镜像」（Syncthing 的 receiveOnly、
+# .stignore 本机化）。镜像产物落在 peers/ 下，而 peers 整个目录已进 EXCLUDE_DIRS，
+# 所以不会被下一轮扫回去，天然无递归。
+PEER_MIRRORS = [
+    ('win', 'C:/Users/27063/.dsh/PLAN.md',
+     os.path.expanduser('~/.dsh/peers/win/PLAN.md')),
+]
+
+# 反向：把本机 PLAN 推到对端的 peers/linux/ 下，让 Windows 也能看到 Linux 的计划。
+# 这是「镜像」不是「同步」—— 单向 novation，对端那份是只读快照。
+PEER_PUSH = [
+    (os.path.expanduser('~/.dsh/PLAN.md'),
+     'C:/Users/27063/.dsh/peers/linux/PLAN.md'),
+]
+
 # ── 排除目录（相对任意层级，按名字匹配）─────────────────────────────────
 R.EXCLUDE_DIRS = {
     # 运行期 / 可重建
     'node_modules', '.git', '__pycache__', '.venv', 'venv',
+    # 2026-10-31 加：per-session 计划 / 本机日记 / 本机归档 —— 各机必然不同，同步只会制造冲突。
+    # 实测：一次同步 48 个冲突里 19 个来自 plans/、6 个 journal/、2 个 PLAN.d/。
+    'plans', 'journal', 'PLAN.d',
     'sessions', 'cache', 'attachments', 'gate', 'logs', 'scratch', 'tmp-probe',
-    'session_projcache', 'backups',
+    'session_projcache', 'backups', 'out', 'peers',
     # 插件市场与插件管理器的本机状态
     '.dsh-market', '.plugin-manager',
     # 微信桥：daemon 端口 / 账号 / context-token 全是本机凭据与运行态，绝不跨机
@@ -93,6 +129,22 @@ R.EXCLUDE_FILES = {
     # 规则判成一致，既没同步也没报冲突，于是 Linux 上带着一条 win-amd64 的 .exe 路径。
     # 各机自己维护，见 Linux 侧该文件里的说明。
     'cordis.patch.yml',
+    # ── 2026-10-26 补：机器特有的「运行时累积状态」 ──────────────────
+    # 这五个文件两台机器都在同时写（Linux 侧 bili/mnemon/context 面板，Windows 侧同样），
+    # 每次同步必然互相判冲突 → 各自留一份 .conflict.win.*.bak。
+    # 2026-10-26 实测：20 个冲突副本 / 1.5 MB，冲突数 14 → 16 → 27 逐次增长。
+    # 它们不是配置，是本机运行轨迹，跨机合并没有意义（合并了也不该被另一台照抄）。
+    'thread-edges.json',
+    'thread-edges.dot',
+    'skill-usage.json',
+    'dsh-context-price-overlay.json',
+    'mnemon-sync-state.json',
+    # ── 2026-10-26 方案 1：两台机器各写各的计划 ──────────────────────
+    # PLAN.md 是「本机的当前工作清单」，两边必然不同，双向同步只会互相覆盖。
+    # 对端内容改走 peers/<host>/PLAN.md 单向镜像（见文件尾 PEER_MIRRORS）。
+    'PLAN.md',
+    # 插件兼容性豁免表：每台机器装的插件版本不同，本来就该各自维护
+    'compatibility.json',
 }
 
 # ── 排除后缀 ──────────────────────────────────────────────────────────
@@ -188,6 +240,35 @@ def main():
                 R.log(f'  本地新建 {local_dir}')
             R.log(f'== 额外对 {os.path.basename(local_dir)}  ↔  {win_dir}')
             syncer.sync_dir_pair(local_dir, win_dir, skip_active=True)
+        # 对端 PLAN 只读镜像：单向拉，绝不回写，所以永远不产生冲突
+        for peer, remote_path, local_path in PEER_MIRRORS:
+            try:
+                os.makedirs(os.path.dirname(local_path), exist_ok=True)
+                if dry:
+                    R.log('  [dry] peer-mirror %s/PLAN.md' % peer)
+                else:
+                    syncer.sftp.get(remote_path, local_path)
+                    R.log('  peer-mirror %s/PLAN.md <- %d B' % (peer, os.path.getsize(local_path)))
+            except Exception as e:
+                R.log('  WARN peer-mirror %s/PLAN.md failed: %s' % (peer, e))
+
+
+        # 反向镜像：本机 PLAN 推到对端 peers/linux/（对端 peers/ 已排除，不会被扫回）
+        for local_src, remote_dst in PEER_PUSH:
+            try:
+                if dry:
+                    R.log('  [dry] peer-push  linux/PLAN.md')
+                else:
+                    rd = remote_dst.rsplit('/', 1)[0]
+                    try:
+                        syncer.sftp.stat(rd)
+                    except Exception:
+                        syncer.sftp.mkdir(rd)
+                    syncer.sftp.put(local_src, remote_dst)
+                    R.log('  peer-push  linux/PLAN.md -> %d B' % os.path.getsize(local_src))
+            except Exception as e:
+                R.log('  WARN peer-push linux/PLAN.md failed: %s' % e)
+
         st = syncer.stats
         R.log(f'完成: 上传 {st["up"]} / 下载 {st["down"]} / 冲突 {st["conflict"]} / 相同 {st["same"]}'
               f'  用时 {time.time() - t0:.1f}s')
@@ -195,6 +276,26 @@ def main():
         syncer.close()
     return 0
 
+
+# ── 本机覆盖（2026-10-26 加）──────────────────────────────────────────
+# 起因：排除规则写在 sync_dsh.py 里，而脚本本身在同步范围内 ⇒ 改一台等于改两台。
+# 社区里 Syncthing 的 .stignore 是「本机文件、永不参与同步」，这才是正确形态。
+# 做法：本机放一个 sync_dsh_local.py（已在 EXCLUDE_FILES 里），它能：
+#   import sync_dsh as S
+#   S.R.EXCLUDE_FILES.add('我的本机文件.json')
+#   S.R.EXCLUDE_DIRS.add('my-local-dir')
+# 主脚本在定义完之后、main() 之前 import 它；文件不存在就静默跳过。
+try:
+    import importlib.util as _ilu
+    _local_path = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                               'sync_dsh_local.py')
+    if os.path.isfile(_local_path):
+        _spec = _ilu.spec_from_file_location('sync_dsh_local', _local_path)
+        _mod = _ilu.module_from_spec(_spec)
+        _spec.loader.exec_module(_mod)
+        R.log('  [local] 已应用 sync_dsh_local.py 的本机覆盖')
+except Exception as _e:
+    R.log(f'  WARN sync_dsh_local.py 加载失败: {_e}')
 
 if __name__ == '__main__':
     sys.exit(main())

@@ -271,3 +271,36 @@ Theorem 2.28 (Monotone Convergence Theorem, 单调收敛定理)
 - [ ] 主代理只做回填与抽查，不整批另派修复批
 
 ---
+
+## 21 四个「KaTeX 不报错但渲染是错的」坑（2026-10-28 实测抓出）
+
+共同点：**katex-check 全绿，读者看到的是乱码或错结构**。只能主动 grep 抓。
+
+### 21.1 `\mbox` 在 KaTeX 未定义
+必须用 `\text{}`。Boyd p461-480 第一版 18 处 `\mbox` → 检查报 13 fails（这个会报，算幸运）。
+验收：`grep -c '\mbox'` 必须为 0。
+
+### 21.2 ★ `python -c "..."` 内联改含反斜杠的串 → bash 把 `\text` 折成 TAB + `ext`
+后果：`ext{minimize}` 被 KaTeX 解析成「3 个变量 × 一个分组」，**静默渲染成斜体乱码，零报错**。
+唯一抓法：`grep -cP '\t'`（TAB 计数）+ `cat -A` 目视。
+**铁律：改 LaTeX 一律写成 `.py` 脚本文件再 `python file.py` 执行，禁止 `python -c`。**
+修法：`s.replace(chr(9)+'ext{', chr(92)+'text{')`，然后 TAB 清零复验。
+
+### 21.3 `\[2pt]` / `\[4pt]` 被 markdown-it-katex 当成 `\[` display 起始符
+块级 math 里写行距命令会**提前结束公式并破坏后续渲染**。不要写；要间距用 `\quad` 或另起一行。
+
+### 21.4 `\middle` 前面必须有未闭合的 `\left`
+反例：`\left(...\right)^{1/2}\middle/\sqrt{2}` —— `\left` 已闭合，`\middle` 非法，KaTeX 报
+`\middle without preceding \left`。MacKay p281-300 真的撞过一次。
+
+### 21.5 heredoc 也会折反斜杠（连 quoted `<<'EOF'` 都不安全）
+把含 `\eta` 的 Python 源码经 heredoc 传给 `python -` 时，Python 收到 `"\e"`，报
+`SyntaxWarning: invalid escape sequence '\e'`，且断言会在**不报错的地方**失败。
+Boyd p501-520 的 worker 二次踩到这条。
+
+**唯一正确姿势**：用 write 工具落一个 `.py` 文件，再 `python file.py` 执行。
+- ❌ `python -c "..."` 
+- ❌ `python - <<'EOF' ... EOF`
+- ❌ 在 bash 里对含 `\` 的中文正文做 `sed`/`awk`
+- ✅ write `.py` → `python x.py`
+- ✅ 纯 markdown 正文（无反斜杠公式）可用 `cat >> f <<'MDEOF'`，这是安全的，因为不经过 Python

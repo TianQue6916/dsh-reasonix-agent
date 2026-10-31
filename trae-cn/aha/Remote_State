@@ -83,6 +83,11 @@
       },
       "state": true
    },
+   "MainProcessThirdPartyDllCrashPrompt": {
+      "params": {
+      },
+      "state": true
+   },
    "V8HeapTrackerConfig": {
       "params": {
          "LargeAllocCaptureThresholdMB": "2048",

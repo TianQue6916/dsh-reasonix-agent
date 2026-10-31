@@ -5,16 +5,17 @@
     "@lanbaolu/dsh-wechat-bridge": "0.9.1",
     "@local/dsh-plugin-goat-panel": "link:D:/Toolbox/goat-gateway/dsh-plugin-goat-panel",
     "@local/dsh-thinking-language": "file:D:/Toolbox/dsh-thinking-language",
-    "billion-context": "0.1.206",
-    "ds-harness-remote": "^0.5.17",
-    "dsh-better-sidebar": "0.28.0",
+    "@weibaohui/dsh-smart-title": "0.1.9",
+    "billion-context": "0.1.209",
+    "ds-harness-remote": "^0.5.22",
+    "dsh-better-sidebar": "0.28.2",
     "dsh-context": "0.74.0",
-    "dsh-deja": "^0.23.0",
+    "dsh-deja": "^0.23.1",
     "dsh-headroom": "git+https://github.com/giter00/dsh-headroom.git",
     "dsh-mnemon": "^0.5.34",
     "dsh-plugin-local-search": "link:D:/Toolbox/goat-gateway/dsh-plugin-local-search",
     "dsh-plugin-message-edit": "file:../../vendor/dsh-plugin-message-edit-1.2.0-pr7.tgz",
-    "dsh-quick-toc": "0.10.2",
+    "dsh-quick-toc": "0.10.3",
     "dshmarket": "^1.67.0"
   },
   "dsh": {
@@ -36,7 +37,8 @@
         "dsh-plugin-message-edit",
         "@ethanwong-hk/dsh-thinking-guard",
         "ds-harness-remote",
-        "@deepseek-ai/dsh-experimental-voice-input-bundle"
+        "@deepseek-ai/dsh-experimental-voice-input-bundle",
+        "@weibaohui/dsh-smart-title"
       ],
       "patchReload": "live"
     }

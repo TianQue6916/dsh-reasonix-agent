@@ -1,0 +1,11 @@
+{
+  "id": "mind-review",
+  "created_at": "2026-06-07T14:35:49.5330685Z",
+  "updated_at": "2026-06-07T14:35:49.5330685Z",
+  "scope": "global",
+  "topic_id": "legacy_mind-review_574a28ea87e0",
+  "topic_title": "Count items",
+  "schema_version": 1,
+  "turns": 1,
+  "preview": "Count items\nif count \u003e 5\n  print hello"
+}

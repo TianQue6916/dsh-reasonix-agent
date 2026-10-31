@@ -1,0 +1,10 @@
+# 全资源搜索扫描根（learn-translate 铁律 13）
+# 2026-10-28 补齐：首次只扫了前两个根，漏了 D:/gh-publish（14 个课程仓库镜像）
+C:/Users/27063/Desktop/课程文件      # Windows 工作副本（只读，产物别写这里）
+D:/gh-publish                        # 课程仓库主目录（14 仓，与 Linux ~/课程资料 同源）
+C:/Users/27063/Documents             # 新建翻译产出默认落点（可写）
+C:/Users/27063/Downloads             # 用户下载
+# Linux 侧（ssh tianque）
+/home/tianque/课程资料                # 12 门课主资产库（可写）
+/home/tianque/桌面/课程文件            # 与 Windows 同步副本
+/home/tianque/桌面/输出文件

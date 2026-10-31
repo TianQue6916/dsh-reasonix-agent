@@ -1,0 +1,337 @@
+{
+ "total": 22001,
+ "fails": 51,
+ "files_with_errors": 12,
+ "bad": {
+  "C:/Users/27063/Documents/翻译修复工作区\\006算法导论\\book\\clrs_chunk05_book163-202.bilingual.md": [
+   {
+    "line": 647,
+    "kind": "inline",
+    "tex": "X_q = I\\,\\{\\text{the ",
+    "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at end of input: …I\\,\\{\\text{the "
+   },
+   {
+    "line": 647,
+    "kind": "inline",
+    "tex": "th smallest element is chosen as the pivot}\\}",
+    "err": "KaTeX parse error: Expected 'EOF', got '}' at position 43: …en as the pivot}̲\\}"
+   }
+  ],
+  "C:/Users/27063/Documents/翻译修复工作区\\100b实分析\\01-讲义笔记  准备打印\\L10.bilingual.md": [
+   {
+    "line": 205,
+    "kind": "block",
+    "tex": "(x+y)^n = \\sum_{i=0}^{n} \\b\binom{n}{i} x^i y^{n-i} .\n",
+    "err": "KaTeX parse error: Undefined control sequence: \\b at position 26: …\\sum_{i=0}^{n} \\̲b̲\binom{n}{i} x^i…"
+   },
+   {
+    "line": 211,
+    "kind": "block",
+    "tex": "c_n = \\frac{1}{n!} \\sum_{i=0}^{n} \\b\binom{n}{i} x^i y^{n-i} .\n",
+    "err": "KaTeX parse error: Undefined control sequence: \\b at position 35: …\\sum_{i=0}^{n} \\̲b̲\binom{n}{i} x^i…"
+   },
+   {
+    "line": 217,
+    "kind": "block",
+    "tex": "\\b\binom{n}{i} = \\frac{n!}{i!\\,(n-i)!} ,\n",
+    "err": "KaTeX parse error: Undefined control sequence: \\b at position 1: \\̲b̲\binom{n}{i} = \\…"
+   },
+   {
+    "line": 181,
+    "kind": "inline",
+    "tex": "\\b\binom{n}{i}",
+    "err": "KaTeX parse error: Undefined control sequence: \\b at position 1: \\̲b̲\binom{n}{i}"
+   },
+   {
+    "line": 181,
+    "kind": "inline",
+    "tex": "\\b\binom{n}{i}=n!/(i!(n-i)!)",
+    "err": "KaTeX parse error: Undefined control sequence: \\b at position 1: \\̲b̲\binom{n}{i}=n!/…"
+   },
+   {
+    "line": 181,
+    "kind": "inline",
+    "tex": "\b\binom{n}{i}",
+    "err": "KaTeX parse error: Unexpected character: '\b' at position 1: \b̲\binom{n}{i}"
+   },
+   {
+    "line": 181,
+    "kind": "inline",
+    "tex": "\\b\binom{n}{i}",
+    "err": "KaTeX parse error: Undefined control sequence: \\b at position 1: \\̲b̲\binom{n}{i}"
+   }
+  ],
+  "C:/Users/27063/Documents/翻译修复工作区\\100b实分析\\split\\TBB-AllChapters-Portrait_part001_p001-050.bilingual.md": [
+   {
+    "line": 877,
+    "kind": "block",
+    "tex": "x_1 &= 1.00000000000000000000000000000000000000000000000000000000000 \nx_2 &= 1.50000000000000000000000000000000000000000000000000000000000 \nx_3 &= 1.41666666666",
+    "err": "KaTeX parse error: Expected 'EOF', got '&' at position 5: x_1 &̲= 1.00000000000…"
+   }
+  ],
+  "C:/Users/27063/Documents/翻译修复工作区\\data lerning\\Strang_LaLFD_part002_p051-100.bilingual.md": [
+   {
+    "line": 1416,
+    "kind": "inline",
+    "tex": "\\sum\\sigma_i^2\\le(\\sum\\sigma_i)^2=\\sum\\sigma_i^2+2\\sum_{i 用均值—方差把三者读清楚：设 ",
+    "err": "KaTeX parse error: Expected '}', got 'EOF' at end of input: …用均值—方差把三者读清楚：设 "
+   }
+  ],
+  "C:/Users/27063/Documents/翻译修复工作区\\data lerning\\Strang_LaLFD_part003_p101-150.bilingual.md": [
+   {
+    "line": 3265,
+    "kind": "inline",
+    "tex": "M = \\text{",
+    "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at end of input: M = \\text{"
+   }
+  ],
+  "C:/Users/27063/Documents/翻译修复工作区\\未学课程\\概率导论\\book\\prob_chunk04_p151-200.bilingual.md": [
+   {
+    "line": 57,
+    "kind": "inline",
+    "tex": "P(\\text{",
+    "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at end of input: P(\\text{"
+   },
+   {
+    "line": 63,
+    "kind": "inline",
+    "tex": "c_1 = P(\\text{",
+    "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at end of input: c_1 = P(\\text{"
+   },
+   {
+    "line": 989,
+    "kind": "inline",
+    "tex": "& A",
+    "err": "KaTeX parse error: Expected 'EOF', got '&' at position 1: &̲ A"
+   },
+   {
+    "line": 1716,
+    "kind": "inline",
+    "tex": "0 **[problem]** **Problem 9.&#42;** *Mixed random variables.* Probabilistic models sometimes involve random variables that can be viewed as a mixture of a discr",
+    "err": "KaTeX parse error: Expected 'EOF', got '&' at position 29: …** **Problem 9.&̲#42;** *Mixed r…"
+   }
+  ],
+  "C:/Users/27063/Documents/翻译修复工作区\\未学课程\\概率导论\\book\\prob_chunk06_p251-300.bilingual.md": [
+   {
+    "line": 2199,
+    "kind": "block",
+    "tex": "P(S_n \\le 21) = \\sum_{k=0}^{21} \\b\binom{36}{k}(0.5)^{36} = 0.8785.\n",
+    "err": "KaTeX parse error: Undefined control sequence: \\b at position 33: …sum_{k=0}^{21} \\̲b̲\binom{36}{k}(0.…"
+   },
+   {
+    "line": 2232,
+    "kind": "block",
+    "tex": "\\b\binom{36}{19}(0.5)^{36} = 0.1251.\n",
+    "err": "KaTeX parse error: Undefined control sequence: \\b at position 1: \\̲b̲\binom{36}{19}(0…"
+   },
+   {
+    "line": 1695,
+    "kind": "inline",
+    "tex": "\\sum_{k=0}^{21}\\b\binom{36}{k}(0.5)^{36}",
+    "err": "KaTeX parse error: Undefined control sequence: \\b at position 16: \\sum_{k=0}^{21}\\̲b̲\binom{36}{k}(0.…"
+   },
+   {
+    "line": 1754,
+    "kind": "inline",
+    "tex": "P\\left(X_i \\ge \\epsilon,\\; \\text{",
+    "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at end of input: …silon,\\; \\text{"
+   }
+  ],
+  "C:/Users/27063/Documents/翻译修复工作区\\未学课程\\概率导论\\book\\prob_chunk07_p301-350.bilingual.md": [
+   {
+    "line": 303,
+    "kind": "block",
+    "tex": "p_S(k) = \\b\binom{n}{k} p^k (1-p)^{n-k}, \\qquad k = 0, 1, \\ldots, n,\n",
+    "err": "KaTeX parse error: Undefined control sequence: \\b at position 10: p_S(k) = \\̲b̲\binom{n}{k} p^k…"
+   },
+   {
+    "line": 520,
+    "kind": "block",
+    "tex": "p_{Y_k}(t) = \\b\binom{t-1}{k-1} p^{k} (1-p)^{t-k}, \\qquad t = k, k+1, \\ldots,\n",
+    "err": "KaTeX parse error: Undefined control sequence: \\b at position 14: p_{Y_k}(t) = \\̲b̲\binom{t-1}{k-1}…"
+   },
+   {
+    "line": 555,
+    "kind": "block",
+    "tex": "P(B) = \\b\binom{t-1}{k-1}\\, p^{k-1} (1 - p)^{t - k}.\n",
+    "err": "KaTeX parse error: Undefined control sequence: \\b at position 8: P(B) = \\̲b̲\binom{t-1}{k-1}…"
+   },
+   {
+    "line": 561,
+    "kind": "block",
+    "tex": "p_{Y_k}(t) = P(Y_k = t) = P(A \\cap B) = P(A)\\,P(B) = \\b\binom{t-1}{k-1}\\, p^{k}\\, (1 - p)^{t - k},\n",
+    "err": "KaTeX parse error: Undefined control sequence: \\b at position 54: …= P(A)\\,P(B) = \\̲b̲\binom{t-1}{k-1}…"
+   },
+   {
+    "line": 573,
+    "kind": "block",
+    "tex": "p_{Y_6}(t) = \\b\binom{t - 1}{5}\\, p^{6} (1 - p)^{t - 6}, \\qquad t = 6, 7, \\ldots\n",
+    "err": "KaTeX parse error: Undefined control sequence: \\b at position 14: p_{Y_6}(t) = \\̲b̲\binom{t - 1}{5}…"
+   },
+   {
+    "line": 579,
+    "kind": "block",
+    "tex": "p_Z(z) = p_{Y_6}(z) = \\b\binom{z - 1}{5}\\, p^{6} (1 - p)^{z - 6}, \\qquad z = 6, 7, \\ldots, 29 .\n",
+    "err": "KaTeX parse error: Undefined control sequence: \\b at position 23: …= p_{Y_6}(z) = \\̲b̲\binom{z - 1}{5}…"
+   },
+   {
+    "line": 849,
+    "kind": "block",
+    "tex": "\\begin{aligned}\nP(0, \\tau) &= 1 - \\lambda\\tau + o(\\tau),\\\\\nP(1, \\tau) &= \\lambda\\tau + o(\\tau),\\\\\nP(k, \\tau) &= o_k(\\tau), \\qquad \\text{对 } k = 2, 3, \\ldots \\te",
+    "err": "KaTeX parse error: Expected & or \\\\ or \\cr or \\end at end of input: …s \\text{成立}.\n>\n"
+   },
+   {
+    "line": 1563,
+    "kind": "block",
+    "tex": "p_X(k) = \\b\binom{k+r-1}{r-1} p^{r} (1-p)^{k}, \\qquad k = 0, 1, \\ldots .\n",
+    "err": "KaTeX parse error: Undefined control sequence: \\b at position 10: p_X(k) = \\̲b̲\binom{k+r-1}{r-…"
+   },
+   {
+    "line": 1585,
+    "kind": "block",
+    "tex": "P(X \\ge i) = \\sum_{k = i}^{\\infty} p_X(k) = \\sum_{k = i}^{\\infty} \\b\binom{k+r-1}{r-1} p^{r} (1-p)^{k}, \\qquad i = 1, 2, \\ldots .\n",
+    "err": "KaTeX parse error: Undefined control sequence: \\b at position 67: … = i}^{\\infty} \\̲b̲\binom{k+r-1}{r-…"
+   },
+   {
+    "line": 1591,
+    "kind": "block",
+    "tex": "\\sum_{k = 0}^{r-1} \\b\binom{r+i-1}{k} p^{k} (1-p)^{r+i-1-k}, \\qquad i = 1, 2, \\ldots .\n",
+    "err": "KaTeX parse error: Undefined control sequence: \\b at position 20: …_{k = 0}^{r-1} \\̲b̲\binom{r+i-1}{k}…"
+   },
+   {
+    "line": 2051,
+    "kind": "block",
+    "tex": "P\\big(X_1(n) < X_2(m)\\big)\n= \\sum_{k=n}^{n+m-1} \\b\binom{n+m-1}{k}\n\\left( \\frac{\\lambda_1}{\\lambda_1 + \\lambda_2} \\right)^{k}\n\\left( \\frac{\\lambda_2}{\\lambda_1 +",
+    "err": "KaTeX parse error: Undefined control sequence: \\b at position 49: …_{k=n}^{n+m-1} \\̲b̲\binom{n+m-1}{k}…"
+   },
+   {
+    "line": 2081,
+    "kind": "block",
+    "tex": "P\\big(X_1(n) < X_2(m)\\big)\n= \\sum_{k = n}^{n + m - 1} \\b\binom{n + m - 1}{k}\n\\left( \\frac{\\lambda_1}{\\lambda_1 + \\lambda_2} \\right)^{k}\n\\left( \\frac{\\lambda_2}{\\",
+    "err": "KaTeX parse error: Undefined control sequence: \\b at position 55: …n}^{n + m - 1} \\̲b̲\binom{n + m - 1…"
+   },
+   {
+    "line": 99,
+    "kind": "inline",
+    "tex": "\\left\\{\\sum_{n=1}^{\\infty} X_n **[problem]** **Problem 18. * The strong law of large numbers.** Let ",
+    "err": "KaTeX parse error: Expected '\\right', got 'EOF' at end of input: …numbers.** Let "
+   },
+   {
+    "line": 214,
+    "kind": "inline",
+    "tex": "p_S(k)=\\b\binom{n}{k}p^k(1-p)^{n-k}",
+    "err": "KaTeX parse error: Undefined control sequence: \\b at position 8: p_S(k)=\\̲b̲\binom{n}{k}p^k(…"
+   },
+   {
+    "line": 293,
+    "kind": "inline",
+    "tex": "\\sum_n P(N=n)\\,P(\\text{",
+    "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at end of input: …(N=n)\\,P(\\text{"
+   },
+   {
+    "line": 369,
+    "kind": "inline",
+    "tex": "p_{Y_k}(t)=\\b\binom{t-1}{k-1}p^k(1-p)^{t-k}",
+    "err": "KaTeX parse error: Undefined control sequence: \\b at position 12: p_{Y_k}(t)=\\̲b̲\binom{t-1}{k-1}…"
+   },
+   {
+    "line": 369,
+    "kind": "inline",
+    "tex": "\\b\binom{t-1}{k-1}=(-1)^{t-k}\\b\binom{-k}{t-k}",
+    "err": "KaTeX parse error: Undefined control sequence: \\b at position 1: \\̲b̲\binom{t-1}{k-1}…"
+   },
+   {
+    "line": 387,
+    "kind": "inline",
+    "tex": "\\b\binom{t-1}{k-1}p^{k-1}(1-p)^{t-k}",
+    "err": "KaTeX parse error: Undefined control sequence: \\b at position 1: \\̲b̲\binom{t-1}{k-1}…"
+   },
+   {
+    "line": 387,
+    "kind": "inline",
+    "tex": "\\b\binom{t-1}{k-1}=\\b\binom{t-2}{k-2}+\\b\binom{t-2}{k-1}",
+    "err": "KaTeX parse error: Undefined control sequence: \\b at position 1: \\̲b̲\binom{t-1}{k-1}…"
+   },
+   {
+    "line": 417,
+    "kind": "inline",
+    "tex": "p_Z(z) = p_{Y_6}(z) = \\b\binom{z-1}{5}p^{6}(1-p)^{z-6}",
+    "err": "KaTeX parse error: Undefined control sequence: \\b at position 23: …= p_{Y_6}(z) = \\̲b̲\binom{z-1}{5}p^…"
+   },
+   {
+    "line": 1254,
+    "kind": "inline",
+    "tex": "p_Y(k) = \\b\binom{k-1}{r-1} p^{r}(1-p)^{k-r}",
+    "err": "KaTeX parse error: Undefined control sequence: \\b at position 10: p_Y(k) = \\̲b̲\binom{k-1}{r-1}…"
+   },
+   {
+    "line": 1304,
+    "kind": "inline",
+    "tex": "p_{L+1}(k) = \\b\binom{k-1}{1}p^{2}(1-p)^{k-2}",
+    "err": "KaTeX parse error: Undefined control sequence: \\b at position 14: p_{L+1}(k) = \\̲b̲\binom{k-1}{1}p^…"
+   }
+  ],
+  "C:/Users/27063/Documents/翻译修复工作区\\未学课程\\概率导论\\book\\prob_chunk09_p401-450.bilingual.md": [
+   {
+    "line": 442,
+    "kind": "inline",
+    "tex": "E_s[\\text{",
+    "err": "KaTeX parse error: Unexpected end of input in a macro argument, expected '}' at end of input: E_s[\\text{"
+   },
+   {
+    "line": 1021,
+    "kind": "inline",
+    "tex": "d = c\\,\\b\binom{n}{k}",
+    "err": "KaTeX parse error: Undefined control sequence: \\b at position 8: d = c\\,\\̲b̲\binom{n}{k}"
+   }
+  ],
+  "C:/Users/27063/Documents/翻译修复工作区\\未学课程\\概率导论\\book\\prob_chunk11_p501-539.bilingual.md": [
+   {
+    "line": 77,
+    "kind": "block",
+    "tex": "L(k) = \\frac{\\b\binom{n}{k}\\,\\theta_1^{\\,k} (1-\\theta_1)^{n-k}}{\\;\\b\binom{n}{k}\\,\\theta_0^{\\,k} (1-\\theta_0)^{n-k}\\;}\n     = \\Bigl(\\frac{\\theta_1}{\\theta_0}\\Bigr",
+    "err": "KaTeX parse error: Unexpected character: '\b' at position 16: L(k) = \\frac{\\b\b̲inom{n}{k}\\,\\th…"
+   },
+   {
+    "line": 2283,
+    "kind": "inline",
+    "tex": "p_X(k) = \\db\binom{n}{k} p^k (1-p)^{n-k}, \\quad k=0,1,\\ldots,n",
+    "err": "KaTeX parse error: Undefined control sequence: \\db at position 10: p_X(k) = \\̲d̲b̲\binom{n}{k} p^k…"
+   }
+  ],
+  "C:/Users/27063/Documents/翻译修复工作区\\未学课程\\算法进阶\\lecture\\alg046-lec15-linear-programming-lp-reductions-simplex.bilingual.md": [
+   {
+    "line": 204,
+    "kind": "inline",
+    "tex": "\\b\binom{n+m}{n}",
+    "err": "KaTeX parse error: Undefined control sequence: \\b at position 1: \\̲b̲\binom{n+m}{n}"
+   },
+   {
+    "line": 206,
+    "kind": "inline",
+    "tex": "\\b\binom{n+m}{n}",
+    "err": "KaTeX parse error: Undefined control sequence: \\b at position 1: \\̲b̲\binom{n+m}{n}"
+   },
+   {
+    "line": 206,
+    "kind": "inline",
+    "tex": "\\b\binom{n+m}{n}",
+    "err": "KaTeX parse error: Undefined control sequence: \\b at position 1: \\̲b̲\binom{n+m}{n}"
+   },
+   {
+    "line": 206,
+    "kind": "inline",
+    "tex": "\\b\binom{n+m}{n}",
+    "err": "KaTeX parse error: Undefined control sequence: \\b at position 1: \\̲b̲\binom{n+m}{n}"
+   }
+  ],
+  "C:/Users/27063/Documents/翻译修复工作区\\未学课程\\算法进阶\\lecture\\alg046-lec22-cryptography-encryption.bilingual.md": [
+   {
+    "line": 194,
+    "kind": "inline",
+    "tex": "w_j > \\sum_{i **[note] Note（译者注，M-H 原理与「美丽但已破」）:** **Merkle-Hellman（Merkle & Hellman, 1978）**是最早的公钥密码系统之一，也是「**用 NP 完全问题造密码**」的第一次大胆尝试（维基百科 Merkle–Hellman 词条）：加",
+    "err": "KaTeX parse error: Expected '}', got '&' at position 76: …Hellman（Merkle &̲ Hellman, 1978）…"
+   }
+  ]
+ }
+}

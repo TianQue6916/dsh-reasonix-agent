@@ -1,0 +1,11 @@
+{
+  "id": "subagent-sub-1-202607011502",
+  "created_at": "2026-07-31T11:07:57.3644582Z",
+  "updated_at": "2026-07-31T11:07:57.3644582Z",
+  "scope": "global",
+  "topic_id": "legacy_subagent-sub-1-202607011502_cc3cc99f43fd",
+  "topic_title": "Verify these speci…",
+  "schema_version": 1,
+  "turns": 1,
+  "preview": "Verify these specific claims against the CSAPP 3rd edition book text:\n\n1. How…"
+}

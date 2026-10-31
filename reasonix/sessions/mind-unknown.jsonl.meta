@@ -1,0 +1,11 @@
+{
+  "id": "mind-unknown",
+  "created_at": "2026-07-31T11:07:57.134342Z",
+  "updated_at": "2026-07-31T11:07:57.134342Z",
+  "scope": "global",
+  "topic_id": "legacy_mind-unknown_79127cf09feb",
+  "topic_title": "print(\"你好天阙",
+  "schema_version": 1,
+  "turns": 6,
+  "preview": "print(\"你好天阙\")"
+}

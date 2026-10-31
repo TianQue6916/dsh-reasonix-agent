@@ -1,0 +1,11 @@
+{
+  "id": "subagent-sub-2-202606101535",
+  "created_at": "2026-07-31T11:07:57.420558Z",
+  "updated_at": "2026-07-31T11:07:57.420558Z",
+  "scope": "global",
+  "topic_id": "legacy_subagent-sub-2-202606101535_10e412c2315d",
+  "topic_title": "搜索 \"machine learni…",
+  "schema_version": 1,
+  "turns": 1,
+  "preview": "搜索 \"machine learning\"，返回前3条结果的标题和简短摘要"
+}

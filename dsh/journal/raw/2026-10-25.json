@@ -1,0 +1,2229 @@
+{
+ "date": "2026-10-25",
+ "weekday": "周日",
+ "activity": {
+  "segments": [],
+  "total_active_min": 0,
+  "note": "sampler 未采集到该日数据"
+ },
+ "sessions": {
+  "prompts": [
+   {
+    "t": "00:07",
+    "sid": "session-9cf09938",
+    "text": "你直接装B我看看"
+   },
+   {
+    "t": "00:10",
+    "sid": "session-93527a4d",
+    "text": "我想知道现在linux端设置的电量阈值,到达上限后,会因为断电导致性能无法发挥最大吗"
+   },
+   {
+    "t": "00:15",
+    "sid": "session-93527a4d",
+    "text": "pl1这个东西,改就改吧,但是因为我整了个散热器,可能会好一点,能不能动态一些判断温度来调整功率呢"
+   },
+   {
+    "t": "00:18",
+    "sid": "session-93527a4d",
+    "text": "注意社区经验,还有密码TQJQ6916"
+   },
+   {
+    "t": "00:23",
+    "sid": "session-9cf09938",
+    "text": "太丑了,能不能找个好的社区3d建模,再建立nbt"
+   },
+   {
+    "t": "00:32",
+    "sid": "session-9cf09938",
+    "text": "大型吧,你直接找到好的社区成品,导入,缩放,转换就行,最好是从地面开始的高度不要大于800"
+   },
+   {
+    "t": "00:39",
+    "sid": "session-9cf09938",
+    "text": "我指的是找建模,不是nbt,是blender建模那个"
+   },
+   {
+    "t": "00:41",
+    "sid": "session-93527a4d",
+    "text": "可以,不过要注意社区方案"
+   },
+   {
+    "t": "00:42",
+    "sid": "session-93527a4d",
+    "text": "bios还是轻易不要改了,避免电脑损坏,这是个老电脑了"
+   },
+   {
+    "t": "00:46",
+    "sid": "session-0a5fbd80",
+    "text": "你这个文档真的跟随技能要求做的吗?问题有点多啊"
+   },
+   {
+    "t": "00:47",
+    "sid": "session-93527a4d",
+    "text": "均衡吧,别把电脑整坏就行"
+   },
+   {
+    "t": "00:50",
+    "sid": "session-0a5fbd80",
+    "text": "/learn-translate 仔细修改吧,按照里面的经验开始改,改完记得同步"
+   },
+   {
+    "t": "00:51",
+    "sid": "session-9cf09938",
+    "text": "你搜就行了"
+   },
+   {
+    "t": "00:56",
+    "sid": "session-93527a4d",
+    "text": "ky"
+   },
+   {
+    "t": "01:00",
+    "sid": "session-0a5fbd80",
+    "text": "我这看到有几个<无效数学公式>,比如七部分图片的上面这样,肯能有个四五处都这样"
+   },
+   {
+    "t": "01:04",
+    "sid": "session-0a5fbd80",
+    "text": "记得加入技能里面,这次教训,还有就是你的视觉我感觉没有很好的发挥,可以再调整一下权重"
+   },
+   {
+    "t": "01:19",
+    "sid": "session-9cf09938",
+    "text": "给个图片看看啥样"
+   },
+   {
+    "t": "01:27",
+    "sid": "session-9cf09938",
+    "text": "真的假的恁丑,你自己看呢"
+   },
+   {
+    "t": "13:46",
+    "sid": "session-0a5fbd80",
+    "text": "/compress"
+   },
+   {
+    "t": "13:47",
+    "sid": "session-0a5fbd80",
+    "text": "重启了,然后呢"
+   },
+   {
+    "t": "13:57",
+    "sid": "session-992f3685",
+    "text": "硬盘空间由满了"
+   },
+   {
+    "t": "14:09",
+    "sid": "session-9cf09938",
+    "text": "/compress"
+   },
+   {
+    "t": "14:10",
+    "sid": "session-992f3685",
+    "text": "我之前建立了你的searchtool,"
+   },
+   {
+    "t": "14:10",
+    "sid": "session-d7523965",
+    "text": "查一下最近的日志,我昨天晚上关机电脑,电脑又自己启动了是怎么回事,出现过好几次这样的了,我想知道怎么回事,注意社区经验"
+   },
+   {
+    "t": "14:17",
+    "sid": "session-d7523965",
+    "text": "额,我需要的是通电自启功能,网卡唤醒哦这个主板没这功能"
+   },
+   {
+    "t": "14:21",
+    "sid": "session-d7523965",
+    "text": "是我主动开的通电自启,但是关机的时候电源状态一直是开,没有切换"
+   },
+   {
+    "t": "14:25",
+    "sid": "session-d7523965",
+    "text": "我会远程开机,需要这个通电自启"
+   },
+   {
+    "t": "14:30",
+    "sid": "session-d7523965",
+    "text": "官方说明文档表示没有;呃呃,我好像就有这个hiberfile"
+   },
+   {
+    "t": "14:33",
+    "sid": "session-d7523965",
+    "text": "智能插座 APP 点断电→通电;意思是无法避免?"
+   },
+   {
+    "t": "14:40",
+    "sid": "session-d7523965",
+    "text": "小米的,没有功率检测功能"
+   },
+   {
+    "t": "14:41",
+    "sid": "session-d7523965",
+    "text": "小米的,最低只能是一分钟"
+   },
+   {
+    "t": "14:43",
+    "sid": "session-d7523965",
+    "text": "不在同一个局域网啊"
+   },
+   {
+    "t": "14:47",
+    "sid": "session-d7523965",
+    "text": "行,开始吧"
+   }
+  ],
+  "sub_prompts": [],
+  "files_touched": {
+   "C:/Users/27063/_rx-kb/kb/02-harness-config.md": 1,
+   "D:\\Desktop\\课程文件\\待处理文件夹\\计算机\\_write_probe.txt": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\learning\\assets\\逆推顺序-叶到根才得到正确值.png": 2,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\learning\\assets\\区间DP-填充顺序必须按区间长度递增.png": 3,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\learning\\assets\\值唯一不等于保证值-同一棵树三种收益.png": 2,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\dsh-diag\\ksm-shot.png": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\dsh-diag\\cdi-top.png": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\dsh-diag\\cdi-top2.png": 1,
+   "C:\\Users\\27063\\AppData\\Local\\Temp\\dsh-diag\\RESULT.md": 1,
+   "D:\\Toolbox\\smart-snapshot\\smart-snapshot.ps1": 4,
+   "C:\\Users\\27063\\.dsh\\PLAN.md": 5,
+   "C:/Users/27063/Desktop/工具箱/reasonix-ops/repo/README.md": 1,
+   "C:\\Users\\27063\\.dsh\\.agent-presets\\anchored-standard\\tool-probe.mjs": 5,
+   "C:\\Users\\27063\\.dsh\\scratch\\gen_timeline.py": 1,
+   "C:\\Users\\27063\\.dsh\\.agent-presets\\anchored-standard\\tool-probe-panel.html": 1,
+   "C:\\Users\\27063\\.dsh\\scratch\\probe-selftest.mjs": 1,
+   "C:\\Users\\27063\\.dsh\\skills\\compress\\SKILL.md": 1,
+   "D:\\MINECRAFT\\staging\\pg_dump.txt": 3,
+   "D:\\MINECRAFT\\staging\\make_pack.py": 4,
+   "D:\\MINECRAFT\\staging\\make_pack2.py": 1,
+   "D:\\MINECRAFT\\staging\\pack_zip.py": 1,
+   "D:\\MINECRAFT\\.minecraft\\versions\\1.21.1-NeoForge_21.1.236\\PCL\\Setup.ini": 1,
+   "D:\\MINECRAFT\\.minecraft\\versions\\1.21.1-NeoForge_21.1.236\\PCL\\Setup.ini.bak-20260816-162207": 1,
+   "D:\\MINECRAFT\\.minecraft\\versions\\1.21.1-NeoForge_21.1.236\\PCL": 1,
+   "D:\\MINECRAFT\\.minecraft\\versions\\1.21.1-NeoForge_21.1.236": 1,
+   "D:\\MINECRAFT\\.minecraft\\versions\\1.21.1-NeoForge_21.1.236\\config\\fml.toml": 1,
+   "D:\\MINECRAFT\\.minecraft\\versions\\1.21.1-NeoForge_21.1.236\\config\\sodium-options.json": 1,
+   "D:\\MINECRAFT\\PCL": 1,
+   "C:\\Users\\27063\\mcopt\\apply-tfmax.py": 1,
+   "C:\\Users\\27063\\mcopt\\run-tfmax.ps1": 1,
+   "C:\\Users\\27063\\mcopt\\PatchTfMax.java": 1,
+   "C:\\Users\\27063\\mcopt\\install-pgpatch.ps1": 1,
+   "C:\\Users\\27063\\mcopt\\remove-ipsable.ps1": 1,
+   "C:/Users/27063/mcopt/revert-pg.ps1": 1,
+   "C:\\Users\\27063\\mcopt\\logstat.py": 1,
+   "C:\\Users\\27063\\mcopt\\transmutation\\pack.mcmeta": 3,
+   "C:\\Users\\27063\\mcopt\\transmutation\\data\\tianque\\recipe\\mixing\\copper_from_iron_gold.json": 1,
+   "C:\\Users\\27063\\mcopt\\transmutation\\data\\tianque\\recipe\\mixing\\zinc_from_iron_gunpowder.json": 1,
+   "C:\\Users\\27063\\mcopt\\install-transmutation.ps1": 1,
+   "C:\\Users\\27063\\mcopt\\transmutation\\data\\element_refining\\recipe\\mixing\\copper_from_renewable.json": 1,
+   "C:\\Users\\27063\\mcopt\\transmutation\\data\\element_refining\\recipe\\mixing\\zinc_from_renewable.json": 1,
+   "C:\\Users\\27063\\mcopt\\transmutation\\data\\element_refining\\recipe\\mixing\\platinum_from_renewable.json": 1,
+   "C:\\Users\\27063\\mcopt\\install-transmutation2.ps1": 1,
+   "C:\\Users\\27063\\mcopt\\verify_jei.py": 1,
+   "C:\\Users\\27063\\mcopt\\station\\out": 1,
+   "C:\\Users\\27063\\.dsh\\out\\reply_letter.html": 2,
+   "C:\\Users\\27063\\.dsh\\tmp-probe\\userpdf\\p0.png": 1,
+   "C:\\Users\\27063\\.dsh\\tmp-probe\\userpdf\\p1.png": 1,
+   "C:\\Users\\27063\\.dsh\\tmp-probe\\userpdf\\p2.png": 1,
+   "C:\\Users\\27063\\.dsh\\tmp-probe\\userpdf\\p3.png": 1,
+   "C:\\Users\\27063\\.dsh\\tmp-probe\\userpdf\\p4.png": 1,
+   "C:\\Users\\27063\\.dsh\\storages\\tools\\wake-guard.ps1": 1,
+   "C:\\Users\\27063\\.dsh\\storages\\tools\\wake-guard-setup.ps1": 3
+  },
+  "sessions": [
+   {
+    "sid": "0c7969d4-3a32-4cd6-b893-c0a0b103a365",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "0ca6d712-372d-4fbd-93c6-28ce8fc4e289",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 14
+   },
+   {
+    "sid": "0fdd19bd-e404-4d00-a1bf-707a97011ac4",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "124ab7f1-0827-49e3-a76d-813e14abbe34",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "15be3ed5-5e6b-4c7e-90cc-d5af9e450555",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 2
+   },
+   {
+    "sid": "15f94bad-1bbe-4d42-8653-7b46dba2243d",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 1
+   },
+   {
+    "sid": "193b5a71-8e32-4cda-b5f7-d9c1e8ea3960",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "19d8cd3c-e4af-4ed4-b9c6-8cde101d6a2f",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "1af3fcdb-0e27-493d-8cdc-23b4e29527d2",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "1b6a8f42-f004-40d1-89c5-866043bf07b7",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "25977799-f5c5-460a-9b2e-a0a7c0f38b8b",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "25e03216-b996-49aa-a30c-42140d025aad",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "268391fc-0d98-49d8-89ec-92cba75a8dd6",
+    "depth": 0,
+    "user_msgs": 0,
+    "tool_calls": 0
+   },
+   {
+    "sid": "2cbd2065-fa43-420f-8fdf-2a08407752c8",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "32ab5d1a-d8df-498b-a278-5b3fbe92716c",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 1
+   },
+   {
+    "sid": "36d5c0f5-4cd4-4616-81b0-7c05dc62449b",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "383eb319-b8bc-4026-b987-3e702fed85ea",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 4
+   },
+   {
+    "sid": "42e645e5-a3da-48c8-b995-cea12974be36",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "435cbd2e-0cfc-4e06-b51a-08f5d751fe9c",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "44470915-7f58-41f8-9803-2ff043d650c8",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 34
+   },
+   {
+    "sid": "4503ad68-1af9-4828-9f2b-e6540fccfa46",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "4fae8a64-daaf-46d5-8efb-047115958bba",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "4fc8a61d-3eb4-41c7-9402-dd120d01f323",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "503c2c2a-470e-43ae-bb10-c981cea3cdb3",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "52e494ae-0e70-49d5-9a68-5ae2bb2aaf84",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 4
+   },
+   {
+    "sid": "58dc3755-d030-4aff-9aec-bdf0d5ad0113",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "6109247e-f93d-4511-a4c4-0abb4352f499",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "62543de2-c8b9-410d-83ee-62749c8a5f43",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "64817eab-0f6e-4ab1-8139-d6fb45ed210b",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 2
+   },
+   {
+    "sid": "64c30a2b-be0a-42bb-82c7-3f7f1eac0990",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "65bcb469-31a4-4173-92f1-d6baf1837e69",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 29
+   },
+   {
+    "sid": "67e5cd89-d700-4ffe-b111-b905aaf7db5b",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "6a42ce2c-12e6-468b-80a3-4484eeacab4b",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "6b56b36b-7997-4ed9-8428-28688b0e38e8",
+    "depth": 0,
+    "user_msgs": 0,
+    "tool_calls": 0
+   },
+   {
+    "sid": "6e53aafc-e51b-462b-8196-7be5614bc466",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 2
+   },
+   {
+    "sid": "714b694b-f509-4480-91d6-34415f125a24",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "742c31ac-96b5-45c6-ae95-57971efe2002",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 4
+   },
+   {
+    "sid": "77c05efe-db40-4011-819c-e67204ae9c21",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "78981d94-4018-40d1-ad78-9e838aa754c0",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "792d6369-df38-4707-a338-f5ccbc5eb0de",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "79d1b550-736d-4f96-8c1d-91974e4c706d",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "7cddd5e6-fb5b-43a7-8b7d-73fa7c53e383",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 1
+   },
+   {
+    "sid": "7d6727b0-ceb5-495f-b264-a2ac66f0741d",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 2
+   },
+   {
+    "sid": "7f6beecc-865c-4204-9f6d-87cf03ca68c0",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "866b743d-b282-49c2-b9d7-794082f7560f",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "88a83edd-6675-4fc1-afe2-7914c6faa2bb",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "8c2ff9cf-94e4-4aa6-ad3a-996358ae5e08",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 0
+   },
+   {
+    "sid": "8e5fcb1c-408b-45cc-a219-bd5d11098770",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "8f2469b3-496b-47b4-aad1-9aa9f143c672",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 2
+   },
+   {
+    "sid": "9061abaf-da39-40f1-af5a-05e98dde4d0d",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 1
+   },
+   {
+    "sid": "954aa213-fea7-4b2d-abf6-29726bc64201",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "96eadb47-5553-404b-bc23-d26784bf03e9",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "99d826c6-e912-4b89-aff3-866f37f763bc",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "9bbc089c-4159-42c5-95cd-83419a620ac3",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "9bfd2c99-c54a-4277-a5cf-beca86c72cb4",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "9e25617f-1683-4e4b-b9f6-5a0acbf3cc5e",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 2
+   },
+   {
+    "sid": "9f00447d-2377-4821-84f4-f49ce14c5e4b",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "a45d8cef-166d-4b63-8cd2-3504d5221013",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 0
+   },
+   {
+    "sid": "a759f07b-a350-43f0-ba48-939105cf4e52",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 35
+   },
+   {
+    "sid": "a772cb2b-05ae-4c97-8529-30eeca99aa8d",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "a89e4628-f641-4af9-bf20-7aed0708676d",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 1
+   },
+   {
+    "sid": "a954451a-b790-4f3c-a404-090539ba9c62",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 2
+   },
+   {
+    "sid": "aad96e91-b4bb-442c-916d-52cb058acb09",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 2
+   },
+   {
+    "sid": "abf5732a-c379-49d7-a5b4-a560d9462d06",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "afbdaffb-5f13-4f4b-9cde-c33d656a8b62",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 2
+   },
+   {
+    "sid": "b0cc7bdb-4f69-4c9f-b595-581bd13ceb98",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 34
+   },
+   {
+    "sid": "b3037b96-eb87-4e58-b725-be91cc9af416",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "b3b16eb2-73ea-4d62-bcbb-26b43d627d57",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "b86e10f7-9164-43c7-b2f4-ddc110edabb2",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 2
+   },
+   {
+    "sid": "bea35c90-863b-451d-9dee-4b1835b6d895",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 41
+   },
+   {
+    "sid": "c2c4c592-8bef-44b7-b2a6-926d44639ee6",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 4
+   },
+   {
+    "sid": "c46ad9bc-51bf-4ac3-925a-ec3dba132288",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "c6c658e8-af54-4ae1-a420-4d08e5911fc1",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "c836fe5c-3a80-4756-87c7-6a4084737a45",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "c8d9785e-3018-41da-99c2-f6fdab55428b",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 2
+   },
+   {
+    "sid": "cac52f10-164b-4f80-a309-588fcb2be0d0",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 4
+   },
+   {
+    "sid": "cdf09ea5-f4b3-488f-95ec-348666082309",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 2
+   },
+   {
+    "sid": "d1ab4d48-c826-4981-b883-3f4c22e1e5cb",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "d1b6b3d9-924b-41a3-aba9-24f27166475b",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 2
+   },
+   {
+    "sid": "d463712e-4a51-4784-9003-3c1d283b01cc",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "d47af623-e235-4489-9caf-b5a9ea2478e2",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "d50a23d9-f732-40cf-bd8e-ab46d48d7c52",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "dc2b203b-1694-4106-b158-c7a62de7942a",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 33
+   },
+   {
+    "sid": "dfc882b4-d6b9-4bed-bf76-206ac79ff303",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "e12f9181-53a6-4cf5-afe7-87239fa39be9",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "e15d852a-f4b6-4dcc-a438-9a06ad240287",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "e3bc2982-db30-4c60-898d-286a310967b2",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 1
+   },
+   {
+    "sid": "e635da73-60ea-4789-af67-df635c9175c0",
+    "depth": 0,
+    "user_msgs": 0,
+    "tool_calls": 0
+   },
+   {
+    "sid": "e99e76cc-9260-4d2a-b6fc-ee48d0923100",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "eb4c36b9-123f-4849-9a71-bfbf39ea17b5",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "ecb097f4-ba83-4c17-b929-c76bfc32f3a7",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 4
+   },
+   {
+    "sid": "ed861b13-acf6-4f40-ad28-3acd058a9b8e",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 41
+   },
+   {
+    "sid": "f10f8d53-cb49-4b79-a3b8-195f7a7ba2f3",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 47
+   },
+   {
+    "sid": "f4d5399a-f2e5-4fbb-847c-7f6d1621ba67",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 2
+   },
+   {
+    "sid": "faf585a7-f218-44ff-9439-f3928b70576e",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "fcfea720-28b7-4182-8791-d2c7ed7191c2",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "fd52386d-f909-4d11-a810-152bbabecdab",
+    "depth": 1,
+    "user_msgs": 0,
+    "tool_calls": 3
+   },
+   {
+    "sid": "session-0a5fbd80-0574-4b1c-a14d-af6eb0948047",
+    "depth": 0,
+    "user_msgs": 6,
+    "tool_calls": 158
+   },
+   {
+    "sid": "session-5a725aef-2ff8-4bd7-9742-c1f540d111d4",
+    "depth": 0,
+    "user_msgs": 0,
+    "tool_calls": 0
+   },
+   {
+    "sid": "session-6a2c1e70-b667-4ec5-9d06-2b5d5855442d",
+    "depth": 0,
+    "user_msgs": 0,
+    "tool_calls": 104
+   },
+   {
+    "sid": "session-79601dff-07fc-4df5-8121-4064feac6b79",
+    "depth": 0,
+    "user_msgs": 0,
+    "tool_calls": 105
+   },
+   {
+    "sid": "session-7f3a9676-a985-4adb-88c6-c4788d7c008a",
+    "depth": 0,
+    "user_msgs": 0,
+    "tool_calls": 86
+   },
+   {
+    "sid": "session-81076132-69dc-4447-869a-55abdb874958",
+    "depth": 0,
+    "user_msgs": 0,
+    "tool_calls": 549
+   },
+   {
+    "sid": "session-8336d629-70e7-4321-a200-896da34a0653",
+    "depth": 0,
+    "user_msgs": 0,
+    "tool_calls": 46
+   },
+   {
+    "sid": "session-89b6a21f-0533-4bde-aa8d-04fcb7d60554",
+    "depth": 0,
+    "user_msgs": 0,
+    "tool_calls": 195
+   },
+   {
+    "sid": "session-92418237-eebe-4807-b265-0cd9838c36e7",
+    "depth": 0,
+    "user_msgs": 0,
+    "tool_calls": 123
+   },
+   {
+    "sid": "session-93527a4d-5f30-4b10-abe1-4522d0390e80",
+    "depth": 0,
+    "user_msgs": 7,
+    "tool_calls": 41
+   },
+   {
+    "sid": "session-992f3685-514d-4bf4-8b23-886e09c68aff",
+    "depth": 0,
+    "user_msgs": 2,
+    "tool_calls": 284
+   },
+   {
+    "sid": "session-9cf09938-2bd8-43d5-aa59-79513d3f17d4",
+    "depth": 0,
+    "user_msgs": 8,
+    "tool_calls": 953
+   },
+   {
+    "sid": "session-9f2eb2b1-79db-4c4d-adfe-f0145065fc25",
+    "depth": 0,
+    "user_msgs": 0,
+    "tool_calls": 34
+   },
+   {
+    "sid": "session-a8d9f068-1ef2-42a7-bbdc-2d4508166655",
+    "depth": 0,
+    "user_msgs": 0,
+    "tool_calls": 2
+   },
+   {
+    "sid": "session-c28e3dda-928e-48e4-a5e7-415ddb91fc74",
+    "depth": 0,
+    "user_msgs": 0,
+    "tool_calls": 0
+   },
+   {
+    "sid": "session-c7e4b87b-3046-4a5d-90dc-c19af9882e93",
+    "depth": 0,
+    "user_msgs": 0,
+    "tool_calls": 0
+   },
+   {
+    "sid": "session-c9cb113e-b8f7-4b16-b7be-72b2c3e581a6",
+    "depth": 0,
+    "user_msgs": 0,
+    "tool_calls": 33
+   },
+   {
+    "sid": "session-cb03454a-4703-4718-884e-508a2fed10b0",
+    "depth": 0,
+    "user_msgs": 0,
+    "tool_calls": 177
+   },
+   {
+    "sid": "session-d030cf07-3d07-4dcb-8c8f-17d7d8a21821",
+    "depth": 0,
+    "user_msgs": 0,
+    "tool_calls": 63
+   },
+   {
+    "sid": "session-d7523965-42f8-4548-855d-99d4598eeb90",
+    "depth": 0,
+    "user_msgs": 10,
+    "tool_calls": 46
+   },
+   {
+    "sid": "session-dbb85a83-9dd3-47c7-855d-9244ea710608",
+    "depth": 0,
+    "user_msgs": 0,
+    "tool_calls": 0
+   },
+   {
+    "sid": "session-fc352a94-fb70-4922-b3bc-f4797b1f6940",
+    "depth": 0,
+    "user_msgs": 0,
+    "tool_calls": 43
+   }
+  ]
+ },
+ "tools": {
+  "counts": {
+   "bash": 1069,
+   "pwsh": 71,
+   "str_replace_editor": 32,
+   "mnemon_document_search": 29,
+   "mnemon_subagent_result": 29,
+   "mnemon_document_create": 27,
+   "web_search": 26,
+   "memory_remember": 23,
+   "dev_tool_search": 11,
+   "subagent": 10,
+   "todo_write": 8,
+   "send_message": 8,
+   "acp_status": 7,
+   "compress": 7
+  },
+  "total": 1379,
+  "errors": 66
+ },
+ "build": {
+  "commits": 11,
+  "files": [
+   [
+    "storages/mnemon-sync-state.json",
+    7
+   ],
+   [
+    "profiles/desktop/cordis.patch.yml",
+    5
+   ],
+   [
+    "profiles/headless/cordis.patch.yml",
+    4
+   ],
+   [
+    "profiles/web/cordis.patch.yml",
+    4
+   ],
+   [
+    "storages/tools/wake-guard-setup.ps1",
+    2
+   ],
+   [
+    "plugins/dsh-plugin-local-search/index.js",
+    2
+   ],
+   [
+    "skills/learn-translate/SKILL.md",
+    1
+   ],
+   [
+    "skills/learn-translate/references/figures.md",
+    1
+   ],
+   [
+    "skills/learn-translate/references/tools/check-dollar.js",
+    1
+   ],
+   [
+    "skills/learn-translate/references/tools/check-katex.js",
+    1
+   ],
+   [
+    "storages/tools/wake-guard.ps1",
+    1
+   ],
+   [
+    "PLAN.md",
+    1
+   ],
+   [
+    "plugins/dsh-plugin-local-search/README.md",
+    1
+   ],
+   [
+    "plugins/dsh-plugin-local-search/cordis.patch.yml",
+    1
+   ],
+   [
+    "plugins/dsh-plugin-local-search/package.json",
+    1
+   ],
+   [
+    "plugins/dsh-plugin-local-search/selftest.mjs",
+    1
+   ]
+  ]
+ },
+ "edge": {
+  "visits": [
+   {
+    "t": "00:00",
+    "host": "localhost:47990",
+    "title": "阳光",
+    "url": "https://localhost:47990/apps"
+   },
+   {
+    "t": "00:00",
+    "host": "localhost:47990",
+    "title": "Sunshine",
+    "url": "https://localhost:47990/config"
+   },
+   {
+    "t": "00:00",
+    "host": "localhost:47990",
+    "title": "localhost:47990/config#",
+    "url": "https://localhost:47990/config#"
+   },
+   {
+    "t": "00:00",
+    "host": "localhost:47990",
+    "title": "localhost:47990/config#",
+    "url": "https://localhost:47990/config#"
+   },
+   {
+    "t": "00:01",
+    "host": "localhost:47990",
+    "title": "localhost:47990/config#",
+    "url": "https://localhost:47990/config#"
+   },
+   {
+    "t": "00:01",
+    "host": "localhost:47990",
+    "title": "localhost:47990/config#",
+    "url": "https://localhost:47990/config#"
+   },
+   {
+    "t": "00:33",
+    "host": "localhost:47990",
+    "title": "Sunshine",
+    "url": "https://localhost:47990/"
+   },
+   {
+    "t": "00:33",
+    "host": "localhost:47990",
+    "title": "localhost:47990/pin",
+    "url": "https://localhost:47990/pin"
+   },
+   {
+    "t": "00:34",
+    "host": "localhost:47990",
+    "title": "localhost:47990/pin",
+    "url": "https://localhost:47990/pin"
+   },
+   {
+    "t": "00:34",
+    "host": "localhost:47990",
+    "title": "Sunshine",
+    "url": "https://localhost:47990/"
+   },
+   {
+    "t": "00:34",
+    "host": "localhost:47990",
+    "title": "localhost:47990/pin",
+    "url": "https://localhost:47990/pin"
+   },
+   {
+    "t": "00:42",
+    "host": "localhost:47990",
+    "title": "localhost:47990/pin",
+    "url": "https://localhost:47990/pin"
+   },
+   {
+    "t": "00:43",
+    "host": "chat.deepseek.com",
+    "title": "DeepSeek - 探索未至之境",
+    "url": "https://chat.deepseek.com/"
+   },
+   {
+    "t": "00:43",
+    "host": "chat.deepseek.com",
+    "title": "DeepSeek",
+    "url": "https://chat.deepseek.com/a/chat/s/0ec4c978-cc0a-4f06-908f-4362d893d648"
+   },
+   {
+    "t": "00:48",
+    "host": "localhost:47990",
+    "title": "localhost:47990/pin",
+    "url": "https://localhost:47990/pin"
+   },
+   {
+    "t": "02:09",
+    "host": "localhost:47990",
+    "title": "Sunshine",
+    "url": "https://localhost:47990/"
+   },
+   {
+    "t": "02:09",
+    "host": "localhost:47990",
+    "title": "Sunshine",
+    "url": "https://localhost:47990/config"
+   },
+   {
+    "t": "02:10",
+    "host": "localhost:47990",
+    "title": "localhost:47990/config#",
+    "url": "https://localhost:47990/config#"
+   },
+   {
+    "t": "02:10",
+    "host": "localhost:47990",
+    "title": "localhost:47990/config#",
+    "url": "https://localhost:47990/config#"
+   },
+   {
+    "t": "02:10",
+    "host": "localhost:47990",
+    "title": "localhost:47990/config#",
+    "url": "https://localhost:47990/config#"
+   },
+   {
+    "t": "02:10",
+    "host": "localhost:47990",
+    "title": "localhost:47990/config#",
+    "url": "https://localhost:47990/config#"
+   },
+   {
+    "t": "02:10",
+    "host": "localhost:47990",
+    "title": "localhost:47990/config#",
+    "url": "https://localhost:47990/config#"
+   },
+   {
+    "t": "02:10",
+    "host": "localhost:47990",
+    "title": "localhost:47990/config#",
+    "url": "https://localhost:47990/config#"
+   },
+   {
+    "t": "02:10",
+    "host": "localhost:47990",
+    "title": "localhost:47990/config#",
+    "url": "https://localhost:47990/config#"
+   },
+   {
+    "t": "02:11",
+    "host": "localhost:47990",
+    "title": "localhost:47990/config#",
+    "url": "https://localhost:47990/config#"
+   },
+   {
+    "t": "02:11",
+    "host": "localhost:47990",
+    "title": "localhost:47990/config#",
+    "url": "https://localhost:47990/config#"
+   },
+   {
+    "t": "02:11",
+    "host": "localhost:47990",
+    "title": "localhost:47990/config#",
+    "url": "https://localhost:47990/config#"
+   },
+   {
+    "t": "02:11",
+    "host": "localhost:47990",
+    "title": "localhost:47990/config#",
+    "url": "https://localhost:47990/config#"
+   },
+   {
+    "t": "02:11",
+    "host": "localhost:47990",
+    "title": "localhost:47990/config#",
+    "url": "https://localhost:47990/config#"
+   },
+   {
+    "t": "02:13",
+    "host": "localhost:47990",
+    "title": "localhost:47990/config#",
+    "url": "https://localhost:47990/config#"
+   },
+   {
+    "t": "13:43",
+    "host": "chat.deepseek.com",
+    "title": "DeepSeek",
+    "url": "https://chat.deepseek.com/a/chat/s/0ec4c978-cc0a-4f06-908f-4362d893d648"
+   },
+   {
+    "t": "13:44",
+    "host": "localhost:47990",
+    "title": "Sunshine",
+    "url": "https://localhost:47990/"
+   },
+   {
+    "t": "13:44",
+    "host": "localhost:47990",
+    "title": "localhost:47990/pin",
+    "url": "https://localhost:47990/pin"
+   },
+   {
+    "t": "13:44",
+    "host": "localhost:47990",
+    "title": "localhost:47990/config#",
+    "url": "https://localhost:47990/config#"
+   },
+   {
+    "t": "13:44",
+    "host": "localhost:47990",
+    "title": "Sunshine",
+    "url": "https://localhost:47990/config"
+   },
+   {
+    "t": "13:49",
+    "host": "commandcode.ai",
+    "title": "登录 Command Code",
+    "url": "https://commandcode.ai/TianQue6916/settings/usage?limit=100"
+   },
+   {
+    "t": "13:49",
+    "host": "commandcode.ai",
+    "title": "用量 - Command Code",
+    "url": "https://commandcode.ai/zh/TianQue6916/settings/usage?limit=100"
+   },
+   {
+    "t": "14:08",
+    "host": "commandcode.ai",
+    "title": "用量 - Command Code",
+    "url": "https://commandcode.ai/zh/TianQue6916/settings/usage?limit=100"
+   },
+   {
+    "t": "14:25",
+    "host": "commandcode.ai",
+    "title": "用量 - Command Code",
+    "url": "https://commandcode.ai/zh/TianQue6916/settings/usage?limit=100"
+   },
+   {
+    "t": "14:45",
+    "host": "commandcode.ai",
+    "title": "用量 - Command Code",
+    "url": "https://commandcode.ai/zh/TianQue6916/settings/usage?limit=100"
+   },
+   {
+    "t": "14:54",
+    "host": "commandcode.ai",
+    "title": "用量 - Command Code",
+    "url": "https://commandcode.ai/zh/TianQue6916/settings/usage?limit=100"
+   },
+   {
+    "t": "15:08",
+    "host": "platform.deepseek.com",
+    "title": "DeepSeek 开放平台",
+    "url": "https://platform.deepseek.com/"
+   },
+   {
+    "t": "15:08",
+    "host": "platform.deepseek.com",
+    "title": "DeepSeek 开放平台",
+    "url": "https://platform.deepseek.com/"
+   },
+   {
+    "t": "15:08",
+    "host": "platform.deepseek.com",
+    "title": "DeepSeek 开放平台",
+    "url": "https://platform.deepseek.com/"
+   },
+   {
+    "t": "15:08",
+    "host": "chat.deepseek.com",
+    "title": "DeepSeek - 探索未至之境",
+    "url": "https://chat.deepseek.com/"
+   },
+   {
+    "t": "15:08",
+    "host": "chat.deepseek.com",
+    "title": "DeepSeek - 探索未至之境",
+    "url": "https://chat.deepseek.com/"
+   },
+   {
+    "t": "15:08",
+    "host": "www.deepseek.com",
+    "title": "DeepSeek | 深度求索",
+    "url": "https://www.deepseek.com/"
+   },
+   {
+    "t": "15:08",
+    "host": "www.deepseek.com",
+    "title": "DeepSeek | 深度求索",
+    "url": "https://www.deepseek.com/"
+   },
+   {
+    "t": "15:11",
+    "host": "www.deepseek.com",
+    "title": "DeepSeek | 深度求索",
+    "url": "https://www.deepseek.com/"
+   },
+   {
+    "t": "15:11",
+    "host": "platform.deepseek.com",
+    "title": "DeepSeek 开放平台",
+    "url": "https://platform.deepseek.com/"
+   },
+   {
+    "t": "15:11",
+    "host": "platform.deepseek.com",
+    "title": "DeepSeek 开放平台",
+    "url": "https://platform.deepseek.com/usage"
+   },
+   {
+    "t": "15:12",
+    "host": "platform.deepseek.com",
+    "title": "DeepSeek 开放平台",
+    "url": "https://platform.deepseek.com/usage"
+   },
+   {
+    "t": "19:16",
+    "host": "platform.deepseek.com",
+    "title": "DeepSeek 开放平台",
+    "url": "https://platform.deepseek.com/usage"
+   },
+   {
+    "t": "23:32",
+    "host": "commandcode.ai",
+    "title": "用量 - Command Code",
+    "url": "https://commandcode.ai/zh/TianQue6916/settings/usage?limit=100"
+   },
+   {
+    "t": "23:32",
+    "host": "commandcode.ai",
+    "title": "用量 - Command Code",
+    "url": "https://commandcode.ai/zh/TianQue6916/settings/usage?limit=100"
+   },
+   {
+    "t": "23:42",
+    "host": "www.deepseek.com",
+    "title": "DeepSeek | 深度求索",
+    "url": "https://www.deepseek.com/"
+   },
+   {
+    "t": "23:42",
+    "host": "platform.deepseek.com",
+    "title": "DeepSeek 开放平台",
+    "url": "https://platform.deepseek.com/"
+   },
+   {
+    "t": "23:42",
+    "host": "platform.deepseek.com",
+    "title": "DeepSeek 开放平台",
+    "url": "https://platform.deepseek.com/usage"
+   },
+   {
+    "t": "23:42",
+    "host": "platform.deepseek.com",
+    "title": "DeepSeek 开放平台",
+    "url": "https://platform.deepseek.com/"
+   },
+   {
+    "t": "23:42",
+    "host": "platform.deepseek.com",
+    "title": "DeepSeek 开放平台",
+    "url": "https://platform.deepseek.com/usage"
+   },
+   {
+    "t": "23:43",
+    "host": "platform.deepseek.com",
+    "title": "DeepSeek 开放平台",
+    "url": "https://platform.deepseek.com/api_keys"
+   },
+   {
+    "t": "23:43",
+    "host": "platform.deepseek.com",
+    "title": "DeepSeek 开放平台",
+    "url": "https://platform.deepseek.com/usage"
+   },
+   {
+    "t": "23:44",
+    "host": "platform.deepseek.com",
+    "title": "DeepSeek 开放平台",
+    "url": "https://platform.deepseek.com/api_keys"
+   },
+   {
+    "t": "23:44",
+    "host": "commandcode.ai",
+    "title": "账单 - Command Code",
+    "url": "https://commandcode.ai/zh/TianQue6916/settings/billing"
+   },
+   {
+    "t": "23:44",
+    "host": "commandcode.ai",
+    "title": "GOAT Plan | Command Code - Command Code Docs",
+    "url": "https://commandcode.ai/docs/plans/goat"
+   },
+   {
+    "t": "23:44",
+    "host": "commandcode.ai",
+    "title": "GOAT Plan | Command Code - Command Code Docs",
+    "url": "https://commandcode.ai/docs/plans/goat"
+   },
+   {
+    "t": "23:45",
+    "host": "commandcode.ai",
+    "title": "GOAT Plan | Command Code - Command Code Docs",
+    "url": "https://commandcode.ai/docs/plans/goat"
+   },
+   {
+    "t": "01:05",
+    "host": "platform.deepseek.com",
+    "title": "DeepSeek 开放平台",
+    "url": "https://platform.deepseek.com/usage"
+   },
+   {
+    "t": "01:05",
+    "host": "platform.deepseek.com",
+    "title": "DeepSeek 开放平台",
+    "url": "https://platform.deepseek.com/usage"
+   },
+   {
+    "t": "01:06",
+    "host": "api-docs.deepseek.com",
+    "title": "网页搜索与抓取 | DeepSeek API Docs",
+    "url": "https://api-docs.deepseek.com/zh-cn/guides/search/"
+   },
+   {
+    "t": "01:09",
+    "host": "api-docs.deepseek.com",
+    "title": "网页搜索与抓取 | DeepSeek API Docs",
+    "url": "https://api-docs.deepseek.com/zh-cn/guides/search/"
+   },
+   {
+    "t": "01:09",
+    "host": "api-docs.deepseek.com",
+    "title": "模型 & 价格 | DeepSeek API Docs",
+    "url": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing/"
+   },
+   {
+    "t": "01:12",
+    "host": "commandcode.ai",
+    "title": "用量 - Command Code",
+    "url": "https://commandcode.ai/zh/TianQue6916/settings/usage"
+   },
+   {
+    "t": "01:26",
+    "host": "dsh.r2049.cn",
+    "title": "DSH Remote — 随时随地继续工作",
+    "url": "https://dsh.r2049.cn/api/v1/auth/q/itTc3mRS0nyBbCM-BoQbHGwb"
+   },
+   {
+    "t": "01:26",
+    "host": "github.com",
+    "title": "登录已完成",
+    "url": "https://github.com/login/oauth/authorize?client_id=Ov23liJ9BDdmuXo5RZMx&redirect_uri=https%3A%2F%2Fdsh.r2049.cn%2Fapi%2Fv1%2Fauth%2Foauth%2Fgithub%2Fcallback&st"
+   },
+   {
+    "t": "01:26",
+    "host": "dsh.r2049.cn",
+    "title": "登录已完成",
+    "url": "https://dsh.r2049.cn/api/v1/auth/oauth/github/callback?code=e54f614964e2ab2e07f5&iss=https%3A%2F%2Fgithub.com%2Flogin%2Foauth&state=eyJhbGciOiJIUzI1NiIsInR5cCI6"
+   },
+   {
+    "t": "01:26",
+    "host": "dsh.r2049.cn",
+    "title": "登录已完成",
+    "url": "https://dsh.r2049.cn/api/v1/auth/oauth/qr-complete"
+   },
+   {
+    "t": "01:26",
+    "host": "dsh.r2049.cn",
+    "title": "DS Harness Remote — 随时随地继续你的工作",
+    "url": "https://dsh.r2049.cn/"
+   },
+   {
+    "t": "01:28",
+    "host": "dsh.r2049.cn",
+    "title": "DSH Remote — 随时随地继续工作",
+    "url": "https://dsh.r2049.cn/api/v1/auth/q/itTc3mRS0nyBbCM-BoQbHGwb"
+   },
+   {
+    "t": "01:28",
+    "host": "dsh.r2049.cn",
+    "title": "DSH Remote — 随时随地继续工作",
+    "url": "https://dsh.r2049.cn/app/login?error=oauth_qr_expired"
+   },
+   {
+    "t": "01:28",
+    "host": "dsh.r2049.cn",
+    "title": "登录 · DS Harness Remote",
+    "url": "https://dsh.r2049.cn/app/login"
+   },
+   {
+    "t": "01:49",
+    "host": "commandcode.ai",
+    "title": "用量 - Command Code",
+    "url": "https://commandcode.ai/zh/TianQue6916/settings/usage"
+   },
+   {
+    "t": "02:05",
+    "host": "commandcode.ai",
+    "title": "用量 - Command Code",
+    "url": "https://commandcode.ai/zh/TianQue6916/settings/usage"
+   },
+   {
+    "t": "02:17",
+    "host": "commandcode.ai",
+    "title": "用量 - Command Code",
+    "url": "https://commandcode.ai/zh/TianQue6916/settings/usage"
+   },
+   {
+    "t": "02:28",
+    "host": "platform.deepseek.com",
+    "title": "DeepSeek 开放平台",
+    "url": "https://platform.deepseek.com/usage"
+   },
+   {
+    "t": "02:44",
+    "host": "platform.deepseek.com",
+    "title": "DeepSeek 开放平台",
+    "url": "https://platform.deepseek.com/usage"
+   },
+   {
+    "t": "02:49",
+    "host": "commandcode.ai",
+    "title": "用量 - Command Code",
+    "url": "https://commandcode.ai/zh/TianQue6916/settings/usage"
+   },
+   {
+    "t": "02:56",
+    "host": "github.com",
+    "title": "TianQue6916/Mathematics-for-Computer-Science: 专注于极致的数学证明逻辑",
+    "url": "https://github.com/TianQue6916/-"
+   },
+   {
+    "t": "02:56",
+    "host": "github.com",
+    "title": "TianQue6916/Mathematics-for-Computer-Science: 专注于极致的数学证明逻辑",
+    "url": "https://github.com/TianQue6916/Mathematics-for-Computer-Science"
+   },
+   {
+    "t": "02:58",
+    "host": "github.com",
+    "title": "TianQue6916/Mathematics-for-Computer-Science: 专注于极致的数学证明逻辑",
+    "url": "https://github.com/TianQue6916/Mathematics-for-Computer-Science"
+   },
+   {
+    "t": "02:58",
+    "host": "github.com",
+    "title": "TianQue6916/Mathematics-for-Computer-Science: 专注于极致的数学证明逻辑",
+    "url": "https://github.com/TianQue6916/Mathematics-for-Computer-Science"
+   },
+   {
+    "t": "02:59",
+    "host": "github.com",
+    "title": "TianQue6916 (TianQue)",
+    "url": "https://github.com/TianQue6916"
+   },
+   {
+    "t": "02:59",
+    "host": "github.com",
+    "title": "TianQue6916/dsh-reasonix-agent: dsh agent harness + reasonix runtime: 配置备份与工程经验库 (Windows/",
+    "url": "https://github.com/TianQue6916/dsh-reasonix-agent"
+   },
+   {
+    "t": "02:59",
+    "host": "github.com",
+    "title": "New File at / · TianQue6916/dsh-reasonix-agent",
+    "url": "https://github.com/TianQue6916/dsh-reasonix-agent/new/master?filename=README.md"
+   },
+   {
+    "t": "02:59",
+    "host": "github.com",
+    "title": "TianQue6916/dsh-reasonix-agent: dsh agent harness + reasonix runtime: 配置备份与工程经验库 (Windows/",
+    "url": "https://github.com/TianQue6916/dsh-reasonix-agent"
+   },
+   {
+    "t": "02:59",
+    "host": "github.com",
+    "title": "dsh-reasonix-agent/dsh at master · TianQue6916/dsh-reasonix-agent",
+    "url": "https://github.com/TianQue6916/dsh-reasonix-agent/tree/master/dsh"
+   },
+   {
+    "t": "02:59",
+    "host": "github.com",
+    "title": "dsh-reasonix-agent/dsh/profiles at master · TianQue6916/dsh-reasonix-agent",
+    "url": "https://github.com/TianQue6916/dsh-reasonix-agent/tree/master/dsh/profiles"
+   },
+   {
+    "t": "03:00",
+    "host": "github.com",
+    "title": "dsh-reasonix-agent/dsh at master · TianQue6916/dsh-reasonix-agent",
+    "url": "https://github.com/TianQue6916/dsh-reasonix-agent/tree/master/dsh"
+   },
+   {
+    "t": "03:00",
+    "host": "github.com",
+    "title": "TianQue6916/dsh-reasonix-agent: dsh agent harness + reasonix runtime: 配置备份与工程经验库 (Windows/",
+    "url": "https://github.com/TianQue6916/dsh-reasonix-agent"
+   },
+   {
+    "t": "03:00",
+    "host": "github.com",
+    "title": "TianQue6916 (TianQue)",
+    "url": "https://github.com/TianQue6916"
+   },
+   {
+    "t": "03:00",
+    "host": "github.com",
+    "title": "TianQue6916 (TianQue)",
+    "url": "https://github.com/TianQue6916?tab=overview&from=2026-09-01&to=2026-09-30"
+   },
+   {
+    "t": "03:12",
+    "host": "github.com",
+    "title": "TianQue6916 (TianQue)",
+    "url": "https://github.com/TianQue6916?tab=overview&from=2026-09-01&to=2026-09-30"
+   },
+   {
+    "t": "03:25",
+    "host": "github.com",
+    "title": "TianQue6916 (TianQue)",
+    "url": "https://github.com/TianQue6916?tab=overview&from=2026-09-01&to=2026-09-30"
+   },
+   {
+    "t": "03:32",
+    "host": "github.com",
+    "title": "TianQue6916 (TianQue)",
+    "url": "https://github.com/TianQue6916?tab=overview&from=2026-09-01&to=2026-09-30"
+   },
+   {
+    "t": "03:32",
+    "host": "github.com",
+    "title": "TianQue6916 (TianQue)",
+    "url": "https://github.com/TianQue6916?tab=overview&from=2026-09-01&to=2026-09-30"
+   },
+   {
+    "t": "03:33",
+    "host": "github.com",
+    "title": "TianQue6916/dsh-reasonix-agent: dsh agent harness + reasonix runtime: 配置备份与工程经验库 (Windows/",
+    "url": "https://github.com/TianQue6916/dsh-reasonix-agent"
+   },
+   {
+    "t": "03:33",
+    "host": "github.com",
+    "title": "Your Repositories",
+    "url": "https://github.com/TianQue6916?tab=repositories"
+   },
+   {
+    "t": "03:33",
+    "host": "github.com",
+    "title": "TianQue6916 (TianQue)",
+    "url": "https://github.com/TianQue6916"
+   },
+   {
+    "t": "03:33",
+    "host": "github.com",
+    "title": "TianQue6916 (TianQue)",
+    "url": "https://github.com/TianQue6916?tab=overview&from=2026-09-01&to=2026-09-30"
+   },
+   {
+    "t": "03:33",
+    "host": "github.com",
+    "title": "Commits · TianQue6916/dsh-reasonix-agent",
+    "url": "https://github.com/TianQue6916/dsh-reasonix-agent/commits?author=TianQue6916&since=2026-09-30&until=2026-10-26"
+   },
+   {
+    "t": "22:02",
+    "host": "github.com",
+    "title": "Commits · TianQue6916/dsh-reasonix-agent",
+    "url": "https://github.com/TianQue6916/dsh-reasonix-agent/commits?author=TianQue6916&since=2026-09-30&until=2026-10-26"
+   },
+   {
+    "t": "22:02",
+    "host": "github.com",
+    "title": "TianQue6916 (TianQue)",
+    "url": "https://github.com/TianQue6916"
+   },
+   {
+    "t": "22:16",
+    "host": "commandcode.ai",
+    "title": "用量 - Command Code",
+    "url": "https://commandcode.ai/zh/TianQue6916/settings/usage"
+   },
+   {
+    "t": "22:20",
+    "host": "platform.deepseek.com",
+    "title": "DeepSeek 开放平台",
+    "url": "https://platform.deepseek.com/usage"
+   },
+   {
+    "t": "23:25",
+    "host": "commandcode.ai",
+    "title": "用量 - Command Code",
+    "url": "https://commandcode.ai/zh/TianQue6916/settings/usage"
+   },
+   {
+    "t": "23:56",
+    "host": "localhost:47990",
+    "title": "Sunshine",
+    "url": "https://localhost:47990/config"
+   },
+   {
+    "t": "23:56",
+    "host": "localhost:47990",
+    "title": "Sunshine",
+    "url": "https://localhost:47990/welcome"
+   },
+   {
+    "t": "23:56",
+    "host": "localhost:47990",
+    "title": "Sunshine",
+    "url": "https://localhost:47990/"
+   },
+   {
+    "t": "23:57",
+    "host": "localhost:47990",
+    "title": "Sunshine",
+    "url": "https://localhost:47990/config"
+   },
+   {
+    "t": "23:57",
+    "host": "localhost:47990",
+    "title": "localhost:47990/config#",
+    "url": "https://localhost:47990/config#"
+   },
+   {
+    "t": "00:01",
+    "host": "commandcode.ai",
+    "title": "用量 - Command Code",
+    "url": "https://commandcode.ai/zh/TianQue6916/settings/usage"
+   },
+   {
+    "t": "00:03",
+    "host": "localhost:47990",
+    "title": "Sunshine",
+    "url": "https://localhost:47990/"
+   },
+   {
+    "t": "16:11",
+    "host": "github.com",
+    "title": "TianQue6916 (TianQue)",
+    "url": "https://github.com/TianQue6916"
+   },
+   {
+    "t": "16:11",
+    "host": "platform.deepseek.com",
+    "title": "DeepSeek 开放平台",
+    "url": "https://platform.deepseek.com/usage"
+   },
+   {
+    "t": "16:11",
+    "host": "api-docs.deepseek.com",
+    "title": "网页搜索与抓取 | DeepSeek API Docs",
+    "url": "https://api-docs.deepseek.com/zh-cn/guides/search/"
+   },
+   {
+    "t": "16:22",
+    "host": "api-docs.deepseek.com",
+    "title": "网页搜索与抓取 | DeepSeek API Docs",
+    "url": "https://api-docs.deepseek.com/zh-cn/guides/search/"
+   },
+   {
+    "t": "16:22",
+    "host": "platform.deepseek.com",
+    "title": "DeepSeek 开放平台",
+    "url": "https://platform.deepseek.com/usage"
+   },
+   {
+    "t": "16:22",
+    "host": "github.com",
+    "title": "TianQue6916 (TianQue)",
+    "url": "https://github.com/TianQue6916"
+   },
+   {
+    "t": "16:22",
+    "host": "commandcode.ai",
+    "title": "用量 - Command Code",
+    "url": "https://commandcode.ai/zh/TianQue6916/settings/usage"
+   },
+   {
+    "t": "16:22",
+    "host": "localhost:47990",
+    "title": "localhost:47990/config#",
+    "url": "https://localhost:47990/config#"
+   },
+   {
+    "t": "16:22",
+    "host": "localhost:47990",
+    "title": "Sunshine",
+    "url": "https://localhost:47990/config"
+   },
+   {
+    "t": "16:22",
+    "host": "localhost:47990",
+    "title": "localhost:47990/config#",
+    "url": "https://localhost:47990/config#"
+   },
+   {
+    "t": "16:23",
+    "host": "localhost:47990",
+    "title": "localhost:47990/config#",
+    "url": "https://localhost:47990/config#"
+   },
+   {
+    "t": "16:23",
+    "host": "localhost:47990",
+    "title": "localhost:47990/config#",
+    "url": "https://localhost:47990/config#"
+   },
+   {
+    "t": "16:23",
+    "host": "localhost:47990",
+    "title": "localhost:47990/config#",
+    "url": "https://localhost:47990/config#"
+   },
+   {
+    "t": "16:23",
+    "host": "localhost:47990",
+    "title": "localhost:47990/config#",
+    "url": "https://localhost:47990/config#"
+   },
+   {
+    "t": "16:23",
+    "host": "localhost:47990",
+    "title": "localhost:47990/config#",
+    "url": "https://localhost:47990/config#"
+   },
+   {
+    "t": "16:24",
+    "host": "localhost:47990",
+    "title": "localhost:47990/config#",
+    "url": "https://localhost:47990/config#"
+   },
+   {
+    "t": "16:25",
+    "host": "github.com",
+    "title": "TianQue6916 (TianQue)",
+    "url": "https://github.com/TianQue6916"
+   },
+   {
+    "t": "16:25",
+    "host": "github.com",
+    "title": "TianQue6916/dsh-reasonix-agent: dsh agent harness + reasonix runtime: 配置备份与工程经验库 (Windows/",
+    "url": "https://github.com/TianQue6916/dsh-reasonix-agent"
+   },
+   {
+    "t": "16:25",
+    "host": "localhost:47990",
+    "title": "localhost:47990/config#",
+    "url": "https://localhost:47990/config#"
+   },
+   {
+    "t": "16:31",
+    "host": "api-docs.deepseek.com",
+    "title": "网页搜索与抓取 | DeepSeek API Docs",
+    "url": "https://api-docs.deepseek.com/zh-cn/guides/search/"
+   },
+   {
+    "t": "16:31",
+    "host": "platform.deepseek.com",
+    "title": "DeepSeek 开放平台",
+    "url": "https://platform.deepseek.com/usage"
+   },
+   {
+    "t": "16:31",
+    "host": "commandcode.ai",
+    "title": "用量 - Command Code",
+    "url": "https://commandcode.ai/zh/TianQue6916/settings/usage"
+   },
+   {
+    "t": "16:34",
+    "host": "api-docs.deepseek.com",
+    "title": "网页搜索与抓取 | DeepSeek API Docs",
+    "url": "https://api-docs.deepseek.com/zh-cn/guides/search/"
+   },
+   {
+    "t": "16:34",
+    "host": "platform.deepseek.com",
+    "title": "DeepSeek 开放平台",
+    "url": "https://platform.deepseek.com/usage"
+   },
+   {
+    "t": "16:34",
+    "host": "commandcode.ai",
+    "title": "用量 - Command Code",
+    "url": "https://commandcode.ai/zh/TianQue6916/settings/usage"
+   },
+   {
+    "t": "16:42",
+    "host": "github.com",
+    "title": "TianQue6916/dsh-reasonix-agent: dsh agent harness + reasonix runtime: 配置备份与工程经验库 (Windows/",
+    "url": "https://github.com/TianQue6916/dsh-reasonix-agent"
+   },
+   {
+    "t": "16:45",
+    "host": "api-docs.deepseek.com",
+    "title": "网页搜索与抓取 | DeepSeek API Docs",
+    "url": "https://api-docs.deepseek.com/zh-cn/guides/search/"
+   },
+   {
+    "t": "16:45",
+    "host": "platform.deepseek.com",
+    "title": "DeepSeek 开放平台",
+    "url": "https://platform.deepseek.com/usage"
+   },
+   {
+    "t": "16:45",
+    "host": "github.com",
+    "title": "TianQue6916/dsh-reasonix-agent: dsh agent harness + reasonix runtime: 配置备份与工程经验库 (Windows/",
+    "url": "https://github.com/TianQue6916/dsh-reasonix-agent"
+   },
+   {
+    "t": "16:45",
+    "host": "commandcode.ai",
+    "title": "用量 - Command Code",
+    "url": "https://commandcode.ai/zh/TianQue6916/settings/usage"
+   },
+   {
+    "t": "16:47",
+    "host": "platform.deepseek.com",
+    "title": "DeepSeek 开放平台",
+    "url": "https://platform.deepseek.com/usage"
+   },
+   {
+    "t": "17:04",
+    "host": "commandcode.ai",
+    "title": "用量 - Command Code",
+    "url": "https://commandcode.ai/zh/TianQue6916/settings/usage"
+   },
+   {
+    "t": "17:16",
+    "host": "github.com",
+    "title": "TianQue6916 (TianQue)",
+    "url": "https://github.com/TianQue6916"
+   },
+   {
+    "t": "02:14",
+    "host": "commandcode.ai",
+    "title": "用量 - Command Code",
+    "url": "https://commandcode.ai/zh/TianQue6916/settings/usage"
+   },
+   {
+    "t": "02:26",
+    "host": "local-dsh",
+    "title": "DeepSeek Harness",
+    "url": "http://127.0.0.1:3080/?token=qPsYBrXbo36AqRW2tj2o7G06tN6cb6z4cUXM981sKFw"
+   },
+   {
+    "t": "02:26",
+    "host": "local-dsh",
+    "title": "DeepSeek Harness",
+    "url": "http://127.0.0.1:3080/"
+   },
+   {
+    "t": "02:47",
+    "host": "github.com",
+    "title": "TianQue6916 (TianQue)",
+    "url": "https://github.com/TianQue6916"
+   },
+   {
+    "t": "02:47",
+    "host": "github.com",
+    "title": "TianQue6916 (TianQue)",
+    "url": "https://github.com/TianQue6916?tab=overview&from=2026-09-01&to=2026-09-30"
+   },
+   {
+    "t": "02:53",
+    "host": "platform.deepseek.com",
+    "title": "DeepSeek 开放平台",
+    "url": "https://platform.deepseek.com/api_keys"
+   },
+   {
+    "t": "02:54",
+    "host": "api-docs.deepseek.com",
+    "title": "模型 & 价格 | DeepSeek API Docs",
+    "url": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing/"
+   },
+   {
+    "t": "02:54",
+    "host": "docs.scriptcat.org",
+    "title": "开启浏览器 User Scripts 支持 | ScriptCat",
+    "url": "https://docs.scriptcat.org/docs/use/open-dev/?userscript_enabled=false&userscript_permission=true&userscript_guard=allowScript&browser=edge#allow-user-scripts"
+   },
+   {
+    "t": "02:54",
+    "host": "docs.scriptcat.org",
+    "title": "安装完成 | ScriptCat",
+    "url": "https://docs.scriptcat.org/docs/use/install_comple"
+   },
+   {
+    "t": "02:56",
+    "host": "www.msn.cn",
+    "title": "香烟要被洗白了？中科院颠覆性研究，尼古丁可能会降低40％死亡率？",
+    "url": "https://www.msn.cn/zh-cn/health/%E9%80%9A%E7%94%A8/%E9%A6%99%E7%83%9F%E8%A6%81%E8%A2%AB%E6%B4%97%E7%99%BD%E4%BA%86-%E4%B8%AD%E7%A7%91%E9%99%A2%E9%A2%A0%E8%A6%86"
+   },
+   {
+    "t": "02:56",
+    "host": "commandcode.ai",
+    "title": "用量 - Command Code",
+    "url": "https://commandcode.ai/zh/TianQue6916/settings/usage"
+   },
+   {
+    "t": "03:40",
+    "host": "commandcode.ai",
+    "title": "用量 - Command Code",
+    "url": "https://commandcode.ai/zh/TianQue6916/settings/usage"
+   },
+   {
+    "t": "04:42",
+    "host": "commandcode.ai",
+    "title": "用量 - Command Code",
+    "url": "https://commandcode.ai/zh/TianQue6916/settings/usage"
+   },
+   {
+    "t": "13:39",
+    "host": "commandcode.ai",
+    "title": "用量 - Command Code",
+    "url": "https://commandcode.ai/zh/TianQue6916/settings/usage"
+   },
+   {
+    "t": "13:39",
+    "host": "commandcode.ai",
+    "title": "登录 Command Code",
+    "url": "https://commandcode.ai/zh/signin?returnTo=%2Fzh%2FTianQue6916%2Fsettings%2Fusage"
+   },
+   {
+    "t": "16:00",
+    "host": "commandcode.ai",
+    "title": "登录 Command Code",
+    "url": "https://commandcode.ai/TianQue6916/settings/usage?limit=100"
+   },
+   {
+    "t": "16:00",
+    "host": "commandcode.ai",
+    "title": "用量 - Command Code",
+    "url": "https://commandcode.ai/zh/TianQue6916/settings/usage?limit=100"
+   },
+   {
+    "t": "16:00",
+    "host": "commandcode.ai",
+    "title": "登录 Command Code",
+    "url": "https://commandcode.ai/zh/signin?returnTo=%2Fzh%2FTianQue6916%2Fsettings%2Fusage%3Flimit%3D100"
+   },
+   {
+    "t": "16:00",
+    "host": "github.com",
+    "title": "用量 - Command Code",
+    "url": "https://github.com/login/oauth/authorize?response_type=code&client_id=Ov23liFBUFC1iT6j3UlV&state=NVBZt9w1ADBOkGOqEvPB9rPFSjSwfod1&scope=read%3Auser+user%3Aemail"
+   },
+   {
+    "t": "16:00",
+    "host": "api.commandcode.ai",
+    "title": "用量 - Command Code",
+    "url": "https://api.commandcode.ai/auth/callback/github?code=f0a869dc432ff0b10f8d&iss=https%3A%2F%2Fgithub.com%2Flogin%2Foauth&state=NVBZt9w1ADBOkGOqEvPB9rPFSjSwfod1"
+   },
+   {
+    "t": "16:00",
+    "host": "commandcode.ai",
+    "title": "用量 - Command Code",
+    "url": "https://commandcode.ai/zh/signup?returnTo=%2Fzh%2FTianQue6916%2Fsettings%2Fusage&otpSent=true"
+   },
+   {
+    "t": "16:00",
+    "host": "commandcode.ai",
+    "title": "用量 - Command Code",
+    "url": "https://commandcode.ai/zh/TianQue6916/settings/usage"
+   },
+   {
+    "t": "16:00",
+    "host": "commandcode.ai",
+    "title": "用量 - Command Code",
+    "url": "https://commandcode.ai/zh/TianQue6916/settings/usage"
+   },
+   {
+    "t": "16:00",
+    "host": "commandcode.ai",
+    "title": "用量 - Command Code",
+    "url": "https://commandcode.ai/zh/TianQue6916/settings/usage"
+   },
+   {
+    "t": "16:00",
+    "host": "platform.deepseek.com",
+    "title": "DeepSeek 开放平台",
+    "url": "https://platform.deepseek.com/api_keys"
+   },
+   {
+    "t": "16:00",
+    "host": "platform.deepseek.com",
+    "title": "DeepSeek 开放平台",
+    "url": "https://platform.deepseek.com/usage"
+   },
+   {
+    "t": "16:00",
+    "host": "github.com",
+    "title": "TianQue6916 (TianQue)",
+    "url": "https://github.com/TianQue6916?tab=overview&from=2026-09-01&to=2026-09-30"
+   },
+   {
+    "t": "16:11",
+    "host": "commandcode.ai",
+    "title": "用量 - Command Code",
+    "url": "https://commandcode.ai/zh/TianQue6916/settings/usage"
+   },
+   {
+    "t": "16:11",
+    "host": "commandcode.ai",
+    "title": "用量 - Command Code",
+    "url": "https://commandcode.ai/zh/TianQue6916/settings/usage?limit=100"
+   },
+   {
+    "t": "16:25",
+    "host": "commandcode.ai",
+    "title": "账单 - Command Code",
+    "url": "https://commandcode.ai/zh/TianQue6916/settings/billing"
+   },
+   {
+    "t": "16:26",
+    "host": "commandcode.ai",
+    "title": "用量 - Command Code",
+    "url": "https://commandcode.ai/zh/TianQue6916/settings/usage"
+   },
+   {
+    "t": "16:39",
+    "host": "commandcode.ai",
+    "title": "用量 - Command Code",
+    "url": "https://commandcode.ai/zh/TianQue6916/settings/usage"
+   },
+   {
+    "t": "16:59",
+    "host": "commandcode.ai",
+    "title": "用量 - Command Code",
+    "url": "https://commandcode.ai/zh/TianQue6916/settings/usage"
+   },
+   {
+    "t": "17:07",
+    "host": "commandcode.ai",
+    "title": "用量 - Command Code",
+    "url": "https://commandcode.ai/zh/TianQue6916/settings/usage"
+   }
+  ],
+  "domains": [
+   [
+    "localhost:47990",
+    48
+   ],
+   [
+    "commandcode.ai",
+    45
+   ],
+   [
+    "github.com",
+    37
+   ],
+   [
+    "platform.deepseek.com",
+    28
+   ],
+   [
+    "api-docs.deepseek.com",
+    9
+   ],
+   [
+    "dsh.r2049.cn",
+    7
+   ],
+   [
+    "chat.deepseek.com",
+    5
+   ],
+   [
+    "www.deepseek.com",
+    4
+   ],
+   [
+    "local-dsh",
+    2
+   ],
+   [
+    "docs.scriptcat.org",
+    2
+   ],
+   [
+    "www.msn.cn",
+    1
+   ],
+   [
+    "api.commandcode.ai",
+    1
+   ]
+  ]
+ },
+ "course_minutes": {},
+ "course_clues": {}
+}

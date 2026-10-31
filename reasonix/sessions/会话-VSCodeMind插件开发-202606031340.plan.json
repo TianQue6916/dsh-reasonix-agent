@@ -1,0 +1,93 @@
+{
+  "version": 2,
+  "steps": [
+    {
+      "id": "step-1",
+      "title": "安装开发工具",
+      "action": "npm install -g yo generator-code vsce typescript",
+      "risk": "low"
+    },
+    {
+      "id": "step-2",
+      "title": "创建 mind-bridge",
+      "action": "初始化项目，安装 express+openai+dotenv+cors，写 HTTP 服务和 DeepSeek 客户端",
+      "risk": "low"
+    },
+    {
+      "id": "step-3",
+      "title": "编写分析引擎+提示词",
+      "action": "写 ≤80 token 的极简系统提示词 + mindAnalyzer 分析逻辑 + curl 测试",
+      "risk": "high"
+    },
+    {
+      "id": "step-4",
+      "title": "创建插件项目骨架",
+      "action": "手动创建 package.json（含contributes）/tsconfig.json/vscodeignore/launch.json",
+      "risk": "low"
+    },
+    {
+      "id": "step-5",
+      "title": "编写 TextMate 语法",
+      "action": "18 种分类的语法规则，支持 C/Python/自然语言混合",
+      "risk": "med"
+    },
+    {
+      "id": "step-6",
+      "title": "编写语言配置",
+      "action": "注释/括号/缩进规则",
+      "risk": "low"
+    },
+    {
+      "id": "step-7",
+      "title": "编写核心扩展代码",
+      "action": "extension/config/cache/bridgeClient 四个模块",
+      "risk": "med"
+    },
+    {
+      "id": "step-8",
+      "title": "编写缩进线装饰",
+      "action": "indentDecoration 层级彩色竖线",
+      "risk": "med"
+    },
+    {
+      "id": "step-9",
+      "title": "编写语义令牌",
+      "action": "semanticTokens provider",
+      "risk": "med"
+    },
+    {
+      "id": "step-10",
+      "title": "编写悬停+实体关联",
+      "action": "hoverFeature - DocumentHighlightProvider + HoverProvider",
+      "risk": "med"
+    },
+    {
+      "id": "step-11",
+      "title": "编写诊断管理",
+      "action": "红/绿波浪线 + 问题面板",
+      "risk": "med"
+    },
+    {
+      "id": "step-12",
+      "title": "配置设置项",
+      "action": "package.json contributes.configuration",
+      "risk": "low"
+    },
+    {
+      "id": "step-13",
+      "title": "编写文档教程",
+      "action": "README + 使用说明",
+      "risk": "low"
+    },
+    {
+      "id": "step-14",
+      "title": "编译打包验证",
+      "action": "tsc + vsce package 验证",
+      "risk": "low"
+    }
+  ],
+  "completedStepIds": [],
+  "updatedAt": "2026-06-03T13:59:49.024Z",
+  "body": "# Mind 语言 VS Code 插件 · 最终执行计划\n\n## 词汇分类（18种语义角色）\n\n| # | 分类 | 示例 | 颜色 |\n|---|------|------|------|\n| 1 | **控制流关键字** | if/else/while/for/switch/return/break/continue | 深蓝 #569CD6 |\n| 2 | **C函数调用** | `func()`, `process_data(arg)` | 亮蓝 #4EC9B0 |\n| 3 | **Python函数定义** | `def name():` | 黄色 #DCDCAA |\n| 4 | **C函数定义** | `int main()`, `void process()` | 金黄 #DCDCAA |\n| 5 | **变量声明** | `int count`, `float x`, `Node* ptr` | 浅蓝 #9CDCFE |\n| 6 | **变量引用** | 使用中的变量名 | 青蓝 #9CDCFE |\n| 7 | **类型关键字** | int/float/void/char/struct/union/enum/double/short/long/unsigned | 青色 #4FC1FF |\n| 8 | **自定义类型名** | typedef/struct 名 | 亮青 #4EC9B0 |\n| 9 | **自然语言动词/操作** | \"Count\", \"delete\", \"add\", \"increment\", \"print\" | 紫色 #C586C0 |\n| 10 | **自然语言名词/属性** | \"node num\", \"total\", \"minimum\", \"result\" | 暖橙 #CE9178 |\n| 11 | **运算符** | + - * / = ≥ ≤ > < != == | 白色 #D4D4D4 |\n| 12 | **指针/地址运算符** | → -> * & . | 白色 #D4D4D4 |\n| 13 | **数字常量** | 30, 0.5, 3.14, -1 | 浅绿 #B5CEA8 |\n| 14 | **特殊常量** | TRUE/FALSE/NULL/None/nullptr/EOF | 浅绿 #B5CEA8 |\n| 15 | **字符串** | \"text\", \"hello world\" | 橙 #CE9178 |\n| 16 | **字符** | 'c', 'A', '\\n' | 橙 #CE9178 |\n| 17 | **注释** | # // /* */ | 灰绿 #6A9955 |\n| 18 | **标点/分隔符** | ( ) { } [ ] , ; : | 白色 #D4D4D4 |\n\n## 实体关联（核心新功能）\n\nAI 分析结果中包含实体关系映射：\n\n```json\n{\n  \"entities\": [\n    {\n      \"id\": \"entity_1\",\n      \"name\": \"count\",\n      \"occurrences\": [\n        {\"line\": 1, \"character\": 0, \"length\": 5},\n        {\"line\": 3, \"character\": 10, \"length\": 5},\n        {\"line\": 5, \"character\": 4, \"length\": 5}\n      ],\n      \"description\": \"节点计数器\"\n    }\n  ]\n}\n```\n\n实现方案：VS Code `DocumentHighlightProvider` + `HoverProvider`，悬停时：\n1. 查找同实体所有出现位置 → 灰色半透明高亮（`DocumentHighlightKind.Read`）\n2. 弹窗显示实体信息和所有引用数\n\n## Token 优化策略\n- **系统提示词 ≤ 80 tokens**：只描述 JSON 响应格式，无示例\n- **每次都发完整文件**：最大化 DeepSeek 缓存命中\n- **响应 JSON 只包含分析结果**：无多余对话文本\n- **增量渲染**：插件只更新变化部分\n\n## 文件总览\n\n```\nAI   文件夹/\n├── mind-bridge/                          # HTTP 桥接服务\n│   ├── package.json\n│   ├── .env                              # DEEPSEEK_API_KEY\n│   └── src/\n│       ├── index.js                      # Express 服务 (POST /analyze)\n│       ├── deepseekClient.js             # DeepSeek API 调用\n│       └── mindAnalyzer.js               # 分析逻辑 + 精简提示词\n│\n├── mind-extension/                       # VS Code 插件\n│   ├── package.json                      # 扩展清单 + 配置项\n│   ├── tsconfig.json\n│   ├── .vscodeignore\n│   ├── syntaxes/\n│   │   └── mind.tmLanguage.json          # 18种 TextMate 语法规则\n│   ├── language-configuration.json\n│   ├── media/\n│   │   └── icon.png\n│   └── src/\n│       ├── extension.ts                  # 主入口\n│       ├── config.ts                     # 设置读取\n│       ├── cache.ts                      # 本地分析缓存\n│       ├── bridgeClient.ts               # HTTP 客户端\n│       ├── indentDecoration.ts           # 缩进关系线\n│       ├── semanticTokens.ts             # 语义令牌着色\n│       ├── hoverFeature.ts               # 悬停 + 实体高亮\n│       ├── diagnosticManager.ts          # 诊断管理\n│       └── sessionManager.ts             # 对话管理\n│\n└── resonix-agent/                        # 已有，保持不变\n```\n\n## 执行步骤\n\n| # | 步骤 | 风险 |\n|---|------|------|\n| 1 | 安装 VS Code 扩展开发工具（npm i -g yo vsce typescript） | 低 |\n| 2 | 创建 mind-bridge 项目并安装依赖 | 低 |\n| 3 | 编写 DeepSeek 集成 + 精简分析引擎 | **高** |\n| 4 | 创建 mind-extension 项目骨架 | 低 |\n| 5 | 编写 18 分类 TextMate 语法 | 中 |\n| 6 | 编写语言配置 | 低 |\n| 7 | 编写扩展核心（extension/config/cache/bridgeClient） | 中 |\n| 8 | 编写缩进关系线 | 中 |\n| 9 | 编写语义令牌着色 | 中 |\n| 10 | 编写悬停 + 实体关联高亮（核心功能） | 中 |\n| 11 | 编写诊断管理 | 中 |\n| 12 | 编写所有设置项 | 低 |\n| 13 | 编写文档 + 操作教程 | 低 |\n| 14 | 编译、打包验证 | 低 |",
+  "summary": "Mind 语言插件 — 18+词汇分类 + 实体关联悬停高亮 + 立即开工"
+}

@@ -150,6 +150,38 @@ const RESIDENT_DISCOVERY_TOOLS = ['dev_tool_search', 'skill_search', 'skill_load
  */
 const RESIDENT_MEMORY_TOOLS = ['memory_profile']
 
+/**
+ * 任务可见性工具（2026-10-28 加，用户明确要求）。
+ *
+ * WHY: 用户连着问了两次「怎么没有调用任务工具变成悬浮窗挂在我这边」「dsh 本身就有任务工具啊」。
+ * 根因不是没有这个工具（`@deepseek-ai/dsh-tool-todo` 早就挂上了），而是本文件把
+ * `todo` deliberately NOT resident —— 模型在 promoted 阶段看不到它，只能靠
+ * `dev_tool_search` 先解锁一轮，而那一轮是多一次往返、且模型不会无缘无故去搜「todo」。
+ * 结果就是：用户以为没有任务面板，其实是模型从来调不到。
+ *
+ * 代价：多一个很小的 schema（todo_write 的入参只有 todos 数组），远小于「每轮看不见任务」的错误成本。
+ * 注意 `ask_user_question` **不**进这里 —— 它是打断式交互，常驻会让模型倾向于多问而不是多做。
+ */
+const RESIDENT_TASK_TOOLS = ['todo_write']
+
+/**
+ * billion-context (ACP) 的 5 个静态工具（2026-10-29 加）。
+ *
+ * WHY: 用户报「`/compress` 作用越来越少，发过去也达不到设计时的效果」。查下来是**我们自己裁的**：
+ * bili 通过系统提示注入了 compress / decompress / search_context / acp_status 的完整说明，
+ * 工具也确实注册进了 assembled catalog，但本文件下面那道 keep-set 过滤把它们全丢掉了 ——
+ * keep 里只有 bootstrapTools + discovery + memory + task + 用户手动 unlocked 的，第三方的工具一律出局。
+ * 结果：模型看得到说明书、调不到工具，表现得就像"技能退化了"。
+ *
+ * 依据（bili 上游 issue #2082 原文）：handlePluginManifest 广告的静态工具集 = 5 个，
+ * 「compress / acp_cache / acp_status / decompress / search_context，无条件放行」。
+ * 条件工具（absorb / rules / ccr retrieve）依赖 base-config，不在这里硬编码。
+ *
+ * ⚠️ 只在装了 billion-context 的 profile 才有意义。没装时 keepTools 的 missing-name 路径
+ * 只会静默忽略这些名字（它按 assembled 里实际存在的名字过滤，不报错）。
+ */
+const RESIDENT_ACP_TOOLS = ['compress', 'decompress', 'search_context', 'acp_status', 'acp_cache']
+
 function stringList(value, field) {
   if (!Array.isArray(value) || value.length === 0 || value.some((item) => typeof item !== 'string' || item.length === 0)) {
     throw new TypeError(`${name}: ${field} must be a non-empty array of non-empty strings`)
@@ -292,7 +324,7 @@ export function apply(ctx, config) {
         // discovery tools + whatever the model explicitly unlocked via
         // dev_tool_search — instead of dumping the whole Standard catalog at
         // once (the post-promotion regression fix; see the header note).
-        const keep = new Set([...bootstrapTools, ...RESIDENT_DISCOVERY_TOOLS, ...RESIDENT_MEMORY_TOOLS, ...unlockedFor(context.agent?.session)])
+        const keep = new Set([...bootstrapTools, ...RESIDENT_DISCOVERY_TOOLS, ...RESIDENT_MEMORY_TOOLS, ...RESIDENT_TASK_TOOLS, ...RESIDENT_ACP_TOOLS, ...unlockedFor(context.agent?.session)])
         return keepTools(assembled, keep, false)
       }
       // Controlled phase: the bootstrap pair; after a compaction, plus the

@@ -18,6 +18,9 @@ local-search-token
 # --- 会话 / 缓存 / 派生物（约 600 MB，全部可重建）---
 sessions/
 cache/
+# per-session 规划文件（2026-10-28 起 plan-anchor 自动生成，一会话一文件）
+# 2026-10-28 用户拍板「全部都要 git」⇒ 已从 ignore 移除，会话级 plan 一并入库
+# （原行：plans/）
 attachments/
 gate/
 tmp-probe/

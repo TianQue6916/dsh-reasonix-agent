@@ -50,6 +50,9 @@ storages/*.out.csv
 *.conflict.*
 *.conflict.*.bak
 
+# --- 模型权重（2026-11-01 加）---
+# speech-to-text/sensevoice 的 ONNX 权重 228 MB，是二进制资产不是配置。
+# 它同时污染了 ~/.dsh 自己的 git（346 MB 里 228 MB 是它）和备份 repo（537 MB 里同样）。
 # --- 单文件大块头 / 历史导入 ---
 settings.yaml.imported
 settings.new.yaml
@@ -75,3 +78,4 @@ storages/thread-edges.json
 storages/thread-edges.dot
 wechat-bridge/daemon.pid
 wechat-bridge/daemon-port.json
+speech-to-text/

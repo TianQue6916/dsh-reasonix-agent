@@ -3,6 +3,29 @@
 > 本文件 = 铁律 + relay 状态 + 当前目标 + 分卷索引 + 已知未决。具体任务线在 `PLAN.d/`。
 > **不参与自动注入**：plan-anchor 已改为注入 `plans/<session-id>.md`（per-session），本文件只在会话内按需 read。
 
+## 🔴 新会话接手必读（2026-11-01 更新）
+
+上一会话（`session-3315a426`）修好了三处 dsh 基础设施，**有两件事要接着做**：
+
+**① 备份 repo 的历史瘦身还没做**
+`dsh-reasonix-agent` 的 push **已恢复**（`aa5e605` 本地=远端，工作区干净），但 `.git` 仍是 **537 MB**，
+其中 **228 MB 是历史里的 ONNX 权重**（`dsh/speech-to-text/.../model.int8.onnx`）。
+要压到几十 MB 需 `git filter-repo --strip-blobs-bigger-than 10M` + force push（重写全部 hash）。
+👉 **完整诊断、社区经验依据、待决策项全在 `PLAN.d/machine-env/backup-repo-20261101.md`。**
+安全网已就位：`D:/Desktop/工具箱/reasonix-ops/backup/pre-cleanup-20261101-0035.bundle`（537 MB，`git bundle verify` 通过，含全部 ref）。
+
+**② Linux 侧要开新会话**
+preset 的 `.mjs` 不参与 HMR。8 个 preset 文件已 scp 推过（md5 全一致），但
+Linux 的 `dsh web --port 3081`（pid 2544）仍是旧代码。开完验两件事：
+- bash schema 里有 `timeout` 参数
+- `~/.dsh/logs/bash-timeout.jsonl` 里出现 `apply:v2026-10-31-recordingTimeout`
+
+**上一会话已完成（不用重做）**：pre-commit 拦混提交 / DshConfigAutocommit 改 5 分钟+S4U /
+双机同步跳过率 98.3%→每小时 / 8 个 preset 推 Linux / relay 那条 p0 闭环 /
+web profile 插件升级 / custom-bash 分级超时（apply 标记 + `limitMs` 日志，已用 `dsh headless` 端到端验证）。
+
+---
+
 ## ⚠️ 铁律（2026-10-06 用户明确要求，最高优先级）
 
 **每条 shell 命令都必须设时限，超时就自己停。** 原话：「以后每次都给命令设下时限,超过就自己ting」。
@@ -45,6 +68,9 @@
 | [`dsh-roadmap/`](dsh-roadmap/PLAN.md) | 待办 | **dsh 升级路线图** — Windows 升级路线图 / headroom / thinking-guard / 三项定论 / 待办总账 | 28,182 B |
 
 ## 已知未决
+- **备份 repo 历史瘦身待决策**（2026-11-01）：详见 `PLAN.d/machine-env/backup-repo-20261101.md`。
+  另有一个未查清的瑕疵：备份时 `robocopy 失败 rc=11: dsh`（位标志 1+2+8），
+  后续 commit/push 都成功，但那个失败项没抓到 —— 下次备份用 `/LOG+` 与 `/V` 单独抓明细。
 - **Linux 侧 `~/goat-gateway/gateway.mjs` 未打 reasoning-echo-filter 补丁**（它还是 1642 行的另一个版本，tail 补丁已单独打在其行 1101）：
   Linux 的 dsh 出口同样走本机 `127.0.0.1:8788/v1` ⇒ 在打上之前，Linux 上的 dsh 会话仍会被 reasoning 回灌锁住语言。
   补法：`python ~/.dsh/storages/tools/patch-gateway-reasoning-filter.py --file ~/goat-gateway/gateway.mjs`（锚点是 `function forward(` 与 `// bodylog-end`，

@@ -21,3 +21,11 @@ dsh web_search 形态（2026-10-01 定稿）：provider = `local-wiki-github`（
 升级 dsh 后，"插件已安装"≠"插件已生效"。必须对每个插件验证它在真实调用链上产生的副作用（bili 看 nudge/usage 日志、hook 型插件看是否有拦截记录），不能只看版本号对齐、文件存在、dump-config 里有声明。2026-10-26 教训：Linux 升 0.2.1-rc.3 时只核对了装配清单，结果 bili 0 session / 0 nudge，用户发现压缩没工作；Windows 保持 rc.2 一直正常。行为型插件的失败方式是静默的——不报错、不崩溃、只是不干活。
 §
 dsh-reasonix-agent 仓库（2026-10-26 由 reasonix 改名；public / master）既是配置备份镜像，也承载经验库 `kb/`（13 篇，入口 `kb/00-index.md`）。本地检出 `D:\Desktop\工具箱\reasonix-ops\repo`，该目录已降 Low IL ⇒ agent 可在此直接 commit/push。维护纪律：① 改 repo 只用精确路径 `git add <file>`，**禁用 `git add -A`**（工作树不完整时它等于删除指令，曾误删远端 kb/）；② commit/push 后必须做内容断言 `git show origin/master:<path> | grep -c <记号>`，因为「push 成功」≠「内容还在」。动手前按域查 kb：备份/Git → `kb/08`，Windows 写不进文件与计划任务 → `kb/09`，配置与重启边界 → `kb/02`，方法论 → `kb/01`。
+§
+翻译/技能类任务：遇到 /learn-translate 未收录的情况先自行判断并补进技能，实在不行才最后询问用户；不要中途反复请示。
+§
+并行派 subagent 时必须主动巡检卡死，不能只 sleep 被动等：约 45 分钟无产出（无文件增长/无回执）就 send_message 探活，约 90 分钟仍无落盘就 interrupt_agent 后重新派发；每轮唤醒先 list_agents 核对 running 名单。用户原话：「你还要注意可能有子agent卡死啊」。
+§
+用户规定的 subagent 并发上限：复杂任务最多 3 个并行，简单任务最多 32 个并行；派发时按任务复杂度分配，不要一律用同一个并发数。
+§
+「用开源就记账」纪律（2026-10-29 用户拍板 C 方案）：agent 每用到一个新的 GitHub 仓库（装包 / clone / 采用 skill / 引用源码）都必须落账并回馈，不能只消费不反馈。审计入口 `python ~/.dsh/contrib/star-audit.py`（不 star 只报）与 `--star`（幂等补 star + 追加 `~/.dsh/contrib/star-ledger.jsonl`）。三条探针各答不同问题：package.json 的 repository（真加载了谁的代码）/ profile 的 plugin 声明（谁给了我能力）/ 本地 .git/config remote（读过改过谁的源码）。direct 与 transitive 分层，73 个 dsh 依赖树默认不 star，自己的仓库（TianQue6916/*）只记账不点。实测坑：仓库改名后旧名 PUT 返 307、用旧名复查永远 404（canon-cache.json 已处理）；GitHub full_name 大小写与 package.json 不一致，比对必须 lower；GitHub API 一律走 curl —— 本机 python urllib 因 CA 缺 AKI 扩展报 SSLCertVerificationError。

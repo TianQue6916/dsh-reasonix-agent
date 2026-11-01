@@ -43,7 +43,7 @@
       ],
       "createdAt": "2026-09-29T19:09:37.700Z",
       "updatedAt": "2026-09-29T19:09:37.700Z",
-      "lastAccessedAt": "2026-10-25T18:06:15.031Z",
+      "lastAccessedAt": "2026-10-28T17:57:13.421Z",
       "revision": 1,
       "contentHash": "6fe9d07b0024f2ee1803d9ff0dc0e24e16ee94f081081056fea441685506d018",
       "sizeBytes": 7649,
@@ -65,7 +65,7 @@
       ],
       "createdAt": "2026-09-30T01:51:36.578Z",
       "updatedAt": "2026-09-30T01:51:36.578Z",
-      "lastAccessedAt": "2026-10-16T04:27:14.100Z",
+      "lastAccessedAt": "2026-10-28T17:07:53.503Z",
       "revision": 1,
       "contentHash": "11be21e65a20ea3cfe87cac0b95d4e8183104aaaf9151c40b1d8d7b9f8054ec6",
       "sizeBytes": 5656,
@@ -93,7 +93,7 @@
       ],
       "createdAt": "2026-09-30T05:39:19.836Z",
       "updatedAt": "2026-09-30T05:39:19.836Z",
-      "lastAccessedAt": "2026-10-22T15:19:15.689Z",
+      "lastAccessedAt": "2026-10-28T08:49:01.903Z",
       "revision": 1,
       "contentHash": "c56258e62175872360801ca95a3c02616cb8eb63396fbbbc7f8839f30c5926c1",
       "sizeBytes": 6809,
@@ -118,7 +118,7 @@
       ],
       "createdAt": "2026-09-30T09:35:29.822Z",
       "updatedAt": "2026-09-30T09:35:29.822Z",
-      "lastAccessedAt": "2026-10-25T18:27:01.672Z",
+      "lastAccessedAt": "2026-10-28T18:10:50.555Z",
       "revision": 1,
       "contentHash": "26d5fc44dd154017f7dc7805cb15a4eb237a0948b7394fc37fcdd8281379bb05",
       "sizeBytes": 5899,
@@ -160,7 +160,7 @@
       ],
       "createdAt": "2026-09-30T10:57:51.862Z",
       "updatedAt": "2026-09-30T10:57:51.862Z",
-      "lastAccessedAt": "2026-10-24T16:58:53.894Z",
+      "lastAccessedAt": "2026-10-31T17:33:38.283Z",
       "revision": 1,
       "contentHash": "752c0555399c6abba9d31528ae2de82d41243b0835550d96e6a144df1dcf5c66",
       "sizeBytes": 7363,
@@ -185,7 +185,7 @@
       ],
       "createdAt": "2026-09-30T10:59:19.731Z",
       "updatedAt": "2026-09-30T10:59:19.731Z",
-      "lastAccessedAt": "2026-10-25T17:52:53.529Z",
+      "lastAccessedAt": "2026-10-28T17:57:13.421Z",
       "revision": 1,
       "contentHash": "31f45393a264fa851f5ab7c945d18307990053f2aedc573ba5adbe71dee0e546",
       "sizeBytes": 7037,
@@ -280,7 +280,7 @@
       ],
       "createdAt": "2026-09-30T13:32:43.646Z",
       "updatedAt": "2026-09-30T13:32:43.646Z",
-      "lastAccessedAt": "2026-10-28T09:21:32.871Z",
+      "lastAccessedAt": "2026-10-28T18:10:50.555Z",
       "revision": 1,
       "contentHash": "4b03a6c93d5df14c904b0a6ad9b5ac2715cfb8f45ff8e9b1f4ffa0bf73f90bf5",
       "sizeBytes": 8592,
@@ -304,7 +304,7 @@
       ],
       "createdAt": "2026-09-30T13:55:47.707Z",
       "updatedAt": "2026-09-30T13:55:47.707Z",
-      "lastAccessedAt": "2026-10-25T18:43:26.795Z",
+      "lastAccessedAt": "2026-10-27T19:16:48.247Z",
       "revision": 1,
       "contentHash": "3d3e2f3d7ca7263e910c862b2203fb0556c85b603e128a77610c709c402905ed",
       "sizeBytes": 7746,
@@ -347,7 +347,7 @@
       ],
       "createdAt": "2026-10-01T06:17:55.940Z",
       "updatedAt": "2026-10-01T06:17:55.940Z",
-      "lastAccessedAt": "2026-10-02T06:51:18.430Z",
+      "lastAccessedAt": "2026-10-29T05:57:53.944Z",
       "revision": 1,
       "contentHash": "2e3bf96bb3775587b1b73b39b6625de765e8d0cb19e51d8f26699750f3f38690",
       "sizeBytes": 7779,
@@ -375,7 +375,7 @@
       ],
       "createdAt": "2026-10-01T06:24:24.036Z",
       "updatedAt": "2026-10-01T06:24:24.036Z",
-      "lastAccessedAt": "2026-10-25T17:07:22.777Z",
+      "lastAccessedAt": "2026-10-27T20:57:43.364Z",
       "revision": 1,
       "contentHash": "fbefa979492357ad3df2f294bc5cfca3990bf0920583b666742499173505ff39",
       "sizeBytes": 7365,
@@ -418,7 +418,7 @@
       ],
       "createdAt": "2026-10-01T06:53:22.974Z",
       "updatedAt": "2026-10-01T06:53:22.974Z",
-      "lastAccessedAt": "2026-10-28T08:44:37.393Z",
+      "lastAccessedAt": "2026-10-31T17:40:50.961Z",
       "revision": 1,
       "contentHash": "982691f42d1deaa46669f0eac9d3646b0f5305032d96c6050d98dcd7a656215e",
       "sizeBytes": 7598,
@@ -437,7 +437,7 @@
       ],
       "createdAt": "2026-10-01T11:51:52.207Z",
       "updatedAt": "2026-10-01T11:51:52.207Z",
-      "lastAccessedAt": "2026-10-07T12:05:41.545Z",
+      "lastAccessedAt": "2026-11-01T08:18:23.731Z",
       "revision": 1,
       "contentHash": "ee5866dc39a995c9cd5c1b2d1ec5d9b0389a4f7cfc7ebf9a00d48a0a84b0737c",
       "sizeBytes": 7733,
@@ -507,7 +507,7 @@
       ],
       "createdAt": "2026-10-01T12:23:49.494Z",
       "updatedAt": "2026-10-01T12:23:49.494Z",
-      "lastAccessedAt": "2026-10-03T16:13:55.905Z",
+      "lastAccessedAt": "2026-10-28T17:57:13.421Z",
       "revision": 1,
       "contentHash": "19df998aa5a22bfe71046061e16985c86d4b60f918016971056362744c94a851",
       "sizeBytes": 8324,
@@ -575,7 +575,7 @@
       ],
       "createdAt": "2026-10-01T12:53:31.306Z",
       "updatedAt": "2026-10-01T12:53:31.306Z",
-      "lastAccessedAt": "2026-10-24T15:34:09.690Z",
+      "lastAccessedAt": "2026-11-01T12:25:56.357Z",
       "revision": 1,
       "contentHash": "980345da8cc65fc385a4fbeaa2ed1b63f5eacd96b61394897523f0e75d3ba713",
       "sizeBytes": 8341,
@@ -598,7 +598,7 @@
       ],
       "createdAt": "2026-10-01T12:56:45.311Z",
       "updatedAt": "2026-10-01T12:56:45.311Z",
-      "lastAccessedAt": "2026-10-23T04:31:46.797Z",
+      "lastAccessedAt": "2026-10-31T15:28:49.107Z",
       "revision": 1,
       "contentHash": "197cd4971884d895941af8d98215807f8e4b9c840cbeedbffe7fc51de1d66610",
       "sizeBytes": 7825,
@@ -623,7 +623,7 @@
       ],
       "createdAt": "2026-10-01T13:17:47.990Z",
       "updatedAt": "2026-10-01T13:17:47.990Z",
-      "lastAccessedAt": "2026-10-28T08:30:09.219Z",
+      "lastAccessedAt": "2026-10-28T11:45:52.769Z",
       "revision": 1,
       "contentHash": "beb387d83ff015fdac7b92f5263f926b80a4bce4a41fd20731add6b1f5d41e7c",
       "sizeBytes": 8319,
@@ -647,7 +647,7 @@
       ],
       "createdAt": "2026-10-01T13:46:55.889Z",
       "updatedAt": "2026-10-01T13:46:55.889Z",
-      "lastAccessedAt": "2026-10-04T19:37:33.127Z",
+      "lastAccessedAt": "2026-10-28T08:23:00.725Z",
       "revision": 1,
       "contentHash": "2835de8bddebc396c0288b1733c38e8e4c72d7dbb71a195c98994da79b9fc79d",
       "sizeBytes": 8428,
@@ -670,7 +670,7 @@
       ],
       "createdAt": "2026-10-01T14:04:29.447Z",
       "updatedAt": "2026-10-01T14:04:29.447Z",
-      "lastAccessedAt": "2026-10-22T15:19:15.689Z",
+      "lastAccessedAt": "2026-10-29T10:05:27.396Z",
       "revision": 1,
       "contentHash": "99a8f2460fdcca7bdb9ab050712386a9eab1c419d81ba64d925ac1ae6f0682cb",
       "sizeBytes": 6763,
@@ -716,7 +716,7 @@
       ],
       "createdAt": "2026-10-02T06:51:35.279Z",
       "updatedAt": "2026-10-02T06:51:35.279Z",
-      "lastAccessedAt": "2026-10-07T06:13:29.679Z",
+      "lastAccessedAt": "2026-10-29T05:04:01.191Z",
       "revision": 1,
       "contentHash": "4f25a4a08fa7f2c6cff71e01c799eb9fc61623710c55c09221f8a4d7111ab156",
       "sizeBytes": 6769,
@@ -742,7 +742,7 @@
       ],
       "createdAt": "2026-10-02T06:56:54.030Z",
       "updatedAt": "2026-10-02T06:56:54.030Z",
-      "lastAccessedAt": "2026-10-28T08:09:53.857Z",
+      "lastAccessedAt": "2026-10-13T09:21:39.916Z",
       "revision": 1,
       "contentHash": "7660f1fcd9986894a68e6652d78440fb0c6e9ea49e3eff7241d06f08a680ab9d",
       "sizeBytes": 5438,
@@ -790,7 +790,7 @@
       ],
       "createdAt": "2026-10-02T08:06:08.755Z",
       "updatedAt": "2026-10-02T08:06:08.755Z",
-      "lastAccessedAt": "2026-10-22T14:46:35.977Z",
+      "lastAccessedAt": "2026-10-28T17:16:25.946Z",
       "revision": 1,
       "contentHash": "6ea71fb3d10e8d9ef82129f0209b27516a433cf2a876688f7aa262d1a83347f0",
       "sizeBytes": 6091,
@@ -838,7 +838,7 @@
       ],
       "createdAt": "2026-10-02T08:13:19.182Z",
       "updatedAt": "2026-10-02T08:13:19.182Z",
-      "lastAccessedAt": "2026-10-22T15:19:15.689Z",
+      "lastAccessedAt": "2026-10-28T17:16:25.946Z",
       "revision": 1,
       "contentHash": "c26767380e03a6c35b6eca253e65e04e3ca8ae7dd61f58e0db20a115f384c864",
       "sizeBytes": 6258,
@@ -861,7 +861,7 @@
       ],
       "createdAt": "2026-10-02T08:29:12.176Z",
       "updatedAt": "2026-10-02T08:29:12.176Z",
-      "lastAccessedAt": "2026-10-03T06:20:29.475Z",
+      "lastAccessedAt": "2026-10-28T17:16:25.946Z",
       "revision": 1,
       "contentHash": "4bc85b036438344fe47d3bdba3510909e96f3479fa21994331637c5d7d3f8a52",
       "sizeBytes": 5071,
@@ -946,7 +946,7 @@
       ],
       "createdAt": "2026-10-03T05:49:35.008Z",
       "updatedAt": "2026-10-03T05:49:35.008Z",
-      "lastAccessedAt": "2026-10-04T02:41:37.807Z",
+      "lastAccessedAt": "2026-10-26T16:24:46.170Z",
       "revision": 1,
       "contentHash": "5dbdd949441c733336d961b2ad4b6a4ae66ac3c9d7ef15b9370583dde2a1250e",
       "sizeBytes": 7994,
@@ -972,7 +972,7 @@
       ],
       "createdAt": "2026-10-03T05:53:19.289Z",
       "updatedAt": "2026-10-03T05:53:19.289Z",
-      "lastAccessedAt": "2026-10-30T12:16:25.145Z",
+      "lastAccessedAt": "2026-11-01T08:16:36.201Z",
       "revision": 1,
       "contentHash": "53db4253dfdaee4297aef1029bbc149ceb4a12d5c7cc04be94e93680158b0e83",
       "sizeBytes": 7863,
@@ -1040,7 +1040,7 @@
       ],
       "createdAt": "2026-10-03T10:15:02.532Z",
       "updatedAt": "2026-10-03T10:15:02.532Z",
-      "lastAccessedAt": "2026-10-28T08:30:09.219Z",
+      "lastAccessedAt": "2026-10-27T20:57:43.364Z",
       "revision": 1,
       "contentHash": "aa52076e39092f7d5aad87488607d56f1006d212a5f52b7b5478f7db9a54ad0b",
       "sizeBytes": 5220,
@@ -1078,7 +1078,7 @@
       ],
       "createdAt": "2026-10-03T15:59:39.994Z",
       "updatedAt": "2026-10-03T15:59:39.994Z",
-      "lastAccessedAt": "2026-10-23T03:04:09.909Z",
+      "lastAccessedAt": "2026-10-31T16:48:24.791Z",
       "revision": 1,
       "contentHash": "da39f8eeba410cfa24c02351ab1dcf24dc0c9934ef06df50354da213662b9fd4",
       "sizeBytes": 6752,
@@ -1107,7 +1107,7 @@
       ],
       "createdAt": "2026-10-03T16:14:21.937Z",
       "updatedAt": "2026-10-03T16:14:21.937Z",
-      "lastAccessedAt": "2026-10-22T14:41:32.094Z",
+      "lastAccessedAt": "2026-11-01T16:04:56.276Z",
       "revision": 1,
       "contentHash": "5d01a377e4c9be036ab48a24df60b46778e77d6986ce6f9da92aef01dd6b9214",
       "sizeBytes": 10768,
@@ -1151,7 +1151,7 @@
       ],
       "createdAt": "2026-10-04T02:40:23.726Z",
       "updatedAt": "2026-10-04T02:40:23.726Z",
-      "lastAccessedAt": "2026-10-28T08:30:09.219Z",
+      "lastAccessedAt": "2026-10-28T11:41:47.918Z",
       "revision": 1,
       "contentHash": "d98bda234302716b15503c286944f3511419dca5cc3065638b3ccf88227978e0",
       "sizeBytes": 8804,
@@ -1177,7 +1177,7 @@
       ],
       "createdAt": "2026-10-04T02:41:58.381Z",
       "updatedAt": "2026-10-04T02:41:58.381Z",
-      "lastAccessedAt": "2026-10-28T08:09:53.857Z",
+      "lastAccessedAt": "2026-10-28T11:41:47.918Z",
       "revision": 1,
       "contentHash": "2d01c61d4720b3fdfe20e7a3b5cd3d06f7ba0ba5706c490e255187b9fe3cda72",
       "sizeBytes": 6695,
@@ -1222,7 +1222,7 @@
       ],
       "createdAt": "2026-10-04T03:32:36.128Z",
       "updatedAt": "2026-10-04T03:32:36.128Z",
-      "lastAccessedAt": "2026-10-28T08:30:09.219Z",
+      "lastAccessedAt": "2026-10-28T18:09:28.788Z",
       "revision": 1,
       "contentHash": "d68cb92fc871cc799e23279c109c61c5daad25594186ec21acc8da8903983720",
       "sizeBytes": 6933,
@@ -1266,7 +1266,7 @@
       ],
       "createdAt": "2026-10-04T07:35:50.913Z",
       "updatedAt": "2026-10-04T07:35:50.913Z",
-      "lastAccessedAt": "2026-10-28T08:09:53.857Z",
+      "lastAccessedAt": "2026-10-25T06:16:02.910Z",
       "revision": 1,
       "contentHash": "3a496427dc26f42341f7cec265e46e23a800fa817aa621c7fae64da47d4d21d3",
       "sizeBytes": 8731,
@@ -1285,7 +1285,7 @@
       ],
       "createdAt": "2026-10-04T07:52:12.569Z",
       "updatedAt": "2026-10-04T07:52:12.569Z",
-      "lastAccessedAt": "2026-10-17T15:27:06.306Z",
+      "lastAccessedAt": "2026-10-31T17:47:19.903Z",
       "revision": 1,
       "contentHash": "a5be8518006417fcbd70daeb9b5b81724dd8bc6f0ff7331b56e2f05627d12264",
       "sizeBytes": 5791,
@@ -1306,7 +1306,7 @@
       ],
       "createdAt": "2026-10-04T07:53:56.849Z",
       "updatedAt": "2026-10-04T07:53:56.849Z",
-      "lastAccessedAt": "2026-10-04T11:35:43.143Z",
+      "lastAccessedAt": "2026-10-28T08:49:01.903Z",
       "revision": 1,
       "contentHash": "c2a0272efe04af70b8f1a101355784b05de2c349c632e96504f43a3c6ee225da",
       "sizeBytes": 6963,
@@ -1374,7 +1374,7 @@
       ],
       "createdAt": "2026-10-04T11:36:11.518Z",
       "updatedAt": "2026-10-04T11:36:11.518Z",
-      "lastAccessedAt": "2026-10-23T04:29:49.677Z",
+      "lastAccessedAt": "2026-10-28T08:23:00.725Z",
       "revision": 1,
       "contentHash": "a783cc730e95cc0a6e65339e88c6c9e471c4ab3c583689464c95827578c91495",
       "sizeBytes": 8981,
@@ -1393,7 +1393,7 @@
       ],
       "createdAt": "2026-10-04T11:40:20.639Z",
       "updatedAt": "2026-10-04T11:40:20.639Z",
-      "lastAccessedAt": "2026-10-25T06:45:23.839Z",
+      "lastAccessedAt": "2026-10-28T17:07:53.503Z",
       "revision": 1,
       "contentHash": "d156f3563cb9f52288d1b37ce068ea70a3b424c7d469fa4d3dcdc4019b52281a",
       "sizeBytes": 10774,
@@ -1483,7 +1483,7 @@
       ],
       "createdAt": "2026-10-04T19:38:02.936Z",
       "updatedAt": "2026-10-04T19:38:02.936Z",
-      "lastAccessedAt": "2026-10-13T09:21:39.916Z",
+      "lastAccessedAt": "2026-10-28T19:41:34.066Z",
       "revision": 1,
       "contentHash": "79078bc11fe6176edfaf8763aa97f4966c6f71b3213b87f46ba095642fda6a93",
       "sizeBytes": 9130,
@@ -1544,7 +1544,7 @@
       ],
       "createdAt": "2026-10-05T05:56:32.550Z",
       "updatedAt": "2026-10-05T05:56:32.550Z",
-      "lastAccessedAt": "2026-10-10T12:22:25.485Z",
+      "lastAccessedAt": "2026-11-01T08:25:18.035Z",
       "revision": 1,
       "contentHash": "60ae0eabde32b23d282022d63a63799ffb221a637827a60ff1aad84c70c45edd",
       "sizeBytes": 9497,
@@ -1567,7 +1567,7 @@
       ],
       "createdAt": "2026-10-05T07:58:05.904Z",
       "updatedAt": "2026-10-05T07:58:05.904Z",
-      "lastAccessedAt": "2026-10-24T15:32:55.837Z",
+      "lastAccessedAt": "2026-10-27T15:20:11.497Z",
       "revision": 1,
       "contentHash": "801ae3bd5360bef985ceeaef5f2dec5b5ea8eb4ed408a8cf448e439765026143",
       "sizeBytes": 8469,
@@ -1589,7 +1589,7 @@
       ],
       "createdAt": "2026-10-05T09:26:20.759Z",
       "updatedAt": "2026-10-05T09:26:20.759Z",
-      "lastAccessedAt": "2026-10-28T08:44:37.393Z",
+      "lastAccessedAt": "2026-10-31T17:40:50.961Z",
       "revision": 1,
       "contentHash": "3c84fe12ccc4fdefc75bb30f8c5ab34a0ce29e3b3307c1ef1469bb80a2365464",
       "sizeBytes": 7031,
@@ -1650,7 +1650,7 @@
       ],
       "createdAt": "2026-10-05T23:51:17.081Z",
       "updatedAt": "2026-10-05T23:51:17.081Z",
-      "lastAccessedAt": "2026-10-24T15:34:09.690Z",
+      "lastAccessedAt": "2026-10-27T15:20:11.497Z",
       "revision": 1,
       "contentHash": "8b479632e1da297b1216b3c9b0157985e442645ab5c02a68e8ae6c08017ef163",
       "sizeBytes": 9761,
@@ -1713,7 +1713,7 @@
       ],
       "createdAt": "2026-10-06T05:03:47.475Z",
       "updatedAt": "2026-10-06T05:03:47.475Z",
-      "lastAccessedAt": "2026-10-25T06:16:02.910Z",
+      "lastAccessedAt": "2026-10-29T06:07:10.831Z",
       "revision": 1,
       "contentHash": "e43fc6676f2b6b6dad0829c173567e6d3c1c207e653ca952c27a81a0db14f5db",
       "sizeBytes": 9038,
@@ -1776,7 +1776,7 @@
       ],
       "createdAt": "2026-10-06T08:25:59.902Z",
       "updatedAt": "2026-10-06T08:25:59.902Z",
-      "lastAccessedAt": "2026-10-25T05:51:39.010Z",
+      "lastAccessedAt": "2026-10-28T20:05:32.127Z",
       "revision": 1,
       "contentHash": "03a03952ccc583548b3694b3f14e20c7761e03c79067c2e5ee583ff700c92cd4",
       "sizeBytes": 9240,
@@ -1795,7 +1795,7 @@
       ],
       "createdAt": "2026-10-06T14:04:32.186Z",
       "updatedAt": "2026-10-06T14:04:32.186Z",
-      "lastAccessedAt": "2026-10-25T06:45:23.839Z",
+      "lastAccessedAt": "2026-10-28T16:58:57.865Z",
       "revision": 1,
       "contentHash": "e68e54eff26ffa5db1287e000c45063274a96e47ac15b7d7e54c4a2aa30ff3e2",
       "sizeBytes": 7874,
@@ -1864,7 +1864,7 @@
       ],
       "createdAt": "2026-10-06T16:34:03.985Z",
       "updatedAt": "2026-10-06T16:34:03.985Z",
-      "lastAccessedAt": "2026-10-25T18:03:11.311Z",
+      "lastAccessedAt": "2026-10-28T19:41:34.066Z",
       "revision": 1,
       "contentHash": "d8eed5531c91a0600d546eeeef349c6945e00b02697814583f07320699d27e6d",
       "sizeBytes": 7372,
@@ -1926,7 +1926,7 @@
       ],
       "createdAt": "2026-10-07T04:01:49.252Z",
       "updatedAt": "2026-10-07T04:01:49.252Z",
-      "lastAccessedAt": "2026-10-22T15:13:17.538Z",
+      "lastAccessedAt": "2026-10-27T19:04:02.675Z",
       "revision": 1,
       "contentHash": "470c4000dbdb56afbc284061299f28b5b05dbe670280d952687a6647c6785159",
       "sizeBytes": 7093,
@@ -1987,7 +1987,7 @@
       ],
       "createdAt": "2026-10-07T06:13:54.453Z",
       "updatedAt": "2026-10-07T06:13:54.453Z",
-      "lastAccessedAt": "2026-10-25T07:21:03.210Z",
+      "lastAccessedAt": "2026-10-31T17:47:19.903Z",
       "revision": 1,
       "contentHash": "0c4862eb1e4fedb4a70b1d0e046512f61fd187c961edbd51bce2855d79f1839c",
       "sizeBytes": 6952,
@@ -2093,7 +2093,7 @@
       ],
       "createdAt": "2026-10-10T10:43:35.872Z",
       "updatedAt": "2026-10-10T10:43:35.872Z",
-      "lastAccessedAt": "2026-10-23T13:37:56.821Z",
+      "lastAccessedAt": "2026-10-27T19:04:02.675Z",
       "revision": 1,
       "contentHash": "f3ab7f5e6b20ed1dbafce6249851be2d71efcd0b7bd959c724bb91119b889d77",
       "sizeBytes": 9496,
@@ -2112,7 +2112,7 @@
       ],
       "createdAt": "2026-10-10T12:17:16.342Z",
       "updatedAt": "2026-10-10T12:17:16.342Z",
-      "lastAccessedAt": "2026-10-22T18:00:46.738Z",
+      "lastAccessedAt": "2026-11-01T08:23:42.998Z",
       "revision": 1,
       "contentHash": "7ac6edf22a827a3895915f3378eed42fb376008ff112c0db367586c0c39f525f",
       "sizeBytes": 6985,
@@ -2153,7 +2153,7 @@
       ],
       "createdAt": "2026-10-10T13:41:45.691Z",
       "updatedAt": "2026-10-10T13:41:45.691Z",
-      "lastAccessedAt": "2026-10-25T05:51:39.010Z",
+      "lastAccessedAt": "2026-10-28T20:05:32.127Z",
       "revision": 1,
       "contentHash": "b08285f87c7a3c7a140ff770dcacbed00b63efaee047e35021a9c804505ace44",
       "sizeBytes": 7347,
@@ -2265,7 +2265,7 @@
       ],
       "createdAt": "2026-10-13T09:22:33.007Z",
       "updatedAt": "2026-10-13T09:22:33.007Z",
-      "lastAccessedAt": "2026-10-28T08:09:53.857Z",
+      "lastAccessedAt": "2026-10-13T10:33:26.954Z",
       "revision": 1,
       "contentHash": "5cbb2d37a553f2dafb7b391f2a71b8800d03eb463dd3d3a989022cb139bc574b",
       "sizeBytes": 7072,
@@ -2308,7 +2308,7 @@
       ],
       "createdAt": "2026-10-13T13:51:42.008Z",
       "updatedAt": "2026-10-13T13:51:42.008Z",
-      "lastAccessedAt": "2026-10-23T04:25:13.854Z",
+      "lastAccessedAt": "2026-11-01T15:15:14.272Z",
       "revision": 1,
       "contentHash": "27a362940adebdc6fc08c1cb028419f87dfd71cc1f1663c4708138a7084139aa",
       "sizeBytes": 9681,
@@ -2331,7 +2331,7 @@
       ],
       "createdAt": "2026-10-16T03:45:03.865Z",
       "updatedAt": "2026-10-16T03:45:03.865Z",
-      "lastAccessedAt": "2026-10-25T07:21:03.210Z",
+      "lastAccessedAt": "2026-11-01T15:15:14.272Z",
       "revision": 1,
       "contentHash": "9b0571671bdca342fdaefb086f6e948e2f812190c9d81c60a58871d96a64b1c9",
       "sizeBytes": 6029,
@@ -2377,7 +2377,7 @@
       ],
       "createdAt": "2026-10-16T04:27:36.187Z",
       "updatedAt": "2026-10-16T04:27:36.187Z",
-      "lastAccessedAt": "2026-10-24T15:34:09.690Z",
+      "lastAccessedAt": "2026-10-28T18:09:28.788Z",
       "revision": 1,
       "contentHash": "a8ad96c7bb0046a068840e4d7a76770b7333c1bcebe5caff2abe730363bea155",
       "sizeBytes": 7958,
@@ -2422,7 +2422,7 @@
       ],
       "createdAt": "2026-10-16T08:51:51.469Z",
       "updatedAt": "2026-10-16T08:51:51.469Z",
-      "lastAccessedAt": "2026-10-25T17:20:33.421Z",
+      "lastAccessedAt": "2026-10-28T18:09:28.788Z",
       "revision": 1,
       "contentHash": "00ed6fc500a735bbe124686f6fc507b07139789e7ec8cd620faa84b3d1ad2204",
       "sizeBytes": 8099,
@@ -2446,7 +2446,7 @@
       ],
       "createdAt": "2026-10-17T14:42:06.424Z",
       "updatedAt": "2026-10-17T14:42:06.424Z",
-      "lastAccessedAt": "2026-10-23T04:14:40.804Z",
+      "lastAccessedAt": "2026-10-28T18:09:28.788Z",
       "revision": 1,
       "contentHash": "91b6c102513ebaa324b1bc564843ea1964e63d4de989639257b5294aac9d19dc",
       "sizeBytes": 7960,
@@ -2512,7 +2512,7 @@
       ],
       "createdAt": "2026-10-22T14:21:19.846Z",
       "updatedAt": "2026-10-22T14:21:19.846Z",
-      "lastAccessedAt": "2026-10-22T15:21:02.672Z",
+      "lastAccessedAt": "2026-10-31T17:44:29.592Z",
       "revision": 1,
       "contentHash": "d545457958cdcd3eae702f05a663864a6d17781092fed0a17bdac573884c2d5c",
       "sizeBytes": 5909,
@@ -2536,7 +2536,7 @@
       ],
       "createdAt": "2026-10-22T14:33:39.186Z",
       "updatedAt": "2026-10-22T14:33:39.186Z",
-      "lastAccessedAt": "2026-10-22T15:21:02.672Z",
+      "lastAccessedAt": "2026-10-30T06:08:52.780Z",
       "revision": 1,
       "contentHash": "70ab95e8a8d6d35f7574199af0ff7991c8c6151edea32b71a0a8b037b9a841db",
       "sizeBytes": 9088,
@@ -2584,7 +2584,7 @@
       ],
       "createdAt": "2026-10-22T14:44:35.722Z",
       "updatedAt": "2026-10-22T14:44:35.722Z",
-      "lastAccessedAt": "2026-10-22T15:21:02.672Z",
+      "lastAccessedAt": "2026-10-30T07:00:46.528Z",
       "revision": 1,
       "contentHash": "3d50984fd4d78f2744437a1b8eba7af67c595a6423b8773030e63d910c3fc468",
       "sizeBytes": 6889,
@@ -2607,7 +2607,7 @@
       ],
       "createdAt": "2026-10-22T14:46:56.436Z",
       "updatedAt": "2026-10-22T14:46:56.436Z",
-      "lastAccessedAt": "2026-10-25T19:44:14.471Z",
+      "lastAccessedAt": "2026-11-01T16:04:56.276Z",
       "revision": 1,
       "contentHash": "2f5eb6debdf49dcaeecf95cbab73a189df2482da84a8318816fe6bb56ac55e67",
       "sizeBytes": 9172,
@@ -2632,7 +2632,7 @@
       ],
       "createdAt": "2026-10-22T14:56:00.085Z",
       "updatedAt": "2026-10-22T14:56:00.085Z",
-      "lastAccessedAt": "2026-10-22T15:21:02.672Z",
+      "lastAccessedAt": "2026-10-30T07:00:46.528Z",
       "revision": 1,
       "contentHash": "58ba3d22c3187ce143a8e1445bbb86a8d82552a1fa19ec1b705f3803091ee40f",
       "sizeBytes": 7757,
@@ -2658,7 +2658,7 @@
       ],
       "createdAt": "2026-10-22T14:56:47.493Z",
       "updatedAt": "2026-10-22T14:56:47.493Z",
-      "lastAccessedAt": "2026-10-25T17:52:53.529Z",
+      "lastAccessedAt": "2026-10-28T18:02:49.426Z",
       "revision": 1,
       "contentHash": "06e2561ab76f4217a2bb48eccb9db2820912828db02807a95f5d9d14f6d1f906",
       "sizeBytes": 6195,
@@ -2687,7 +2687,7 @@
       ],
       "createdAt": "2026-10-22T15:19:34.990Z",
       "updatedAt": "2026-10-22T15:19:34.990Z",
-      "lastAccessedAt": "2026-10-25T19:21:02.430Z",
+      "lastAccessedAt": "2026-10-28T08:49:01.903Z",
       "revision": 1,
       "contentHash": "8917a7e3776f6d912e88531ee5822eef5e2307f26faa1c4df55e6d4c93d4cbe1",
       "sizeBytes": 7111,
@@ -2712,7 +2712,7 @@
       ],
       "createdAt": "2026-10-22T15:21:24.006Z",
       "updatedAt": "2026-10-22T15:21:24.006Z",
-      "lastAccessedAt": "2026-10-24T16:58:53.894Z",
+      "lastAccessedAt": "2026-10-28T16:31:20.666Z",
       "revision": 1,
       "contentHash": "cda1eb716b4d7e85fe606628f4a23fa1091daabb7c93c4f564297c0e9c420b87",
       "sizeBytes": 8179,
@@ -2764,7 +2764,7 @@
       ],
       "createdAt": "2026-10-23T02:36:18.603Z",
       "updatedAt": "2026-10-23T02:36:18.603Z",
-      "lastAccessedAt": "2026-10-23T15:23:13.682Z",
+      "lastAccessedAt": "2026-10-31T17:47:19.903Z",
       "revision": 1,
       "contentHash": "f58cb8007bb40ca8b65b2d02f0ee4c0ef3a169192b184a0da37640932e1b8496",
       "sizeBytes": 7337,
@@ -2791,7 +2791,7 @@
       ],
       "createdAt": "2026-10-23T02:44:08.137Z",
       "updatedAt": "2026-10-23T02:44:08.137Z",
-      "lastAccessedAt": "2026-10-23T15:23:13.682Z",
+      "lastAccessedAt": "2026-10-31T15:32:23.255Z",
       "revision": 1,
       "contentHash": "4ab41af01e221fecbc3fb073504e7942aa3be13cb9eb999e81242a9fe27973ac",
       "sizeBytes": 5908,
@@ -2816,7 +2816,7 @@
       ],
       "createdAt": "2026-10-23T03:04:28.151Z",
       "updatedAt": "2026-10-23T03:04:28.151Z",
-      "lastAccessedAt": "2026-10-23T15:23:13.682Z",
+      "lastAccessedAt": "2026-11-01T17:39:18.861Z",
       "revision": 1,
       "contentHash": "495cb1047c5c677484e39dbddd4013b7e4490b607691096a08b9f907a0093235",
       "sizeBytes": 8001,
@@ -2884,7 +2884,7 @@
       ],
       "createdAt": "2026-10-23T04:30:07.737Z",
       "updatedAt": "2026-10-23T04:30:07.737Z",
-      "lastAccessedAt": "2026-10-25T18:40:03.596Z",
+      "lastAccessedAt": "2026-10-28T16:50:31.752Z",
       "revision": 1,
       "contentHash": "5525f11b787c88442986de998aad33ca2aa1dc9a29a7d08135901a7e7f0df736",
       "sizeBytes": 7809,
@@ -2905,7 +2905,7 @@
       ],
       "createdAt": "2026-10-23T04:32:09.384Z",
       "updatedAt": "2026-10-23T04:32:09.384Z",
-      "lastAccessedAt": "2026-10-23T04:32:09.384Z",
+      "lastAccessedAt": "2026-11-01T12:25:56.357Z",
       "revision": 1,
       "contentHash": "dbd258aa1ee4dc37595f685b492f3388453dccb8958c1da7699fc3becf44ffcf",
       "sizeBytes": 8042,
@@ -2927,7 +2927,7 @@
       ],
       "createdAt": "2026-10-23T04:54:18.331Z",
       "updatedAt": "2026-10-23T04:54:18.331Z",
-      "lastAccessedAt": "2026-10-25T18:40:03.596Z",
+      "lastAccessedAt": "2026-10-28T09:22:54.933Z",
       "revision": 1,
       "contentHash": "96d0c34e0be8a91436390521f1bd1691128cef390abb024dd6b8f5a8bff7177c",
       "sizeBytes": 5058,
@@ -2974,7 +2974,7 @@
       ],
       "createdAt": "2026-10-23T13:38:17.499Z",
       "updatedAt": "2026-10-23T13:38:17.499Z",
-      "lastAccessedAt": "2026-10-23T13:38:17.499Z",
+      "lastAccessedAt": "2026-10-31T15:32:23.255Z",
       "revision": 1,
       "contentHash": "a0f8bffb03a3ea0e6b04482f9af77521907e639d2d7991c355c504dac2b70f60",
       "sizeBytes": 4890,
@@ -3085,7 +3085,7 @@
       ],
       "createdAt": "2026-10-24T15:57:42.554Z",
       "updatedAt": "2026-10-24T15:57:42.554Z",
-      "lastAccessedAt": "2026-10-30T12:16:25.145Z",
+      "lastAccessedAt": "2026-10-25T05:57:44.377Z",
       "revision": 1,
       "contentHash": "d6267f5cccab1f1c1c47bb2743a07107136fecb8208701fc4ed34ffd97c6ee80",
       "sizeBytes": 7269,
@@ -3109,7 +3109,7 @@
       ],
       "createdAt": "2026-10-24T16:15:53.835Z",
       "updatedAt": "2026-10-24T16:15:53.835Z",
-      "lastAccessedAt": "2026-10-24T17:35:44.209Z",
+      "lastAccessedAt": "2026-10-26T14:37:25.226Z",
       "revision": 1,
       "contentHash": "db94d0423fdc5ec9f525844ba2e6b4d00da92ea064c8847e69ae0ddd364311ce",
       "sizeBytes": 5429,
@@ -3133,7 +3133,7 @@
       ],
       "createdAt": "2026-10-24T16:29:28.287Z",
       "updatedAt": "2026-10-24T16:29:28.287Z",
-      "lastAccessedAt": "2026-10-25T06:36:05.747Z",
+      "lastAccessedAt": "2026-10-31T17:28:15.658Z",
       "revision": 1,
       "contentHash": "3a3bb3e9f947f570c9afee87de1e34e70fac139fb6adcc365146cbcc460e9f71",
       "sizeBytes": 7056,
@@ -3175,7 +3175,7 @@
       ],
       "createdAt": "2026-10-24T16:41:10.448Z",
       "updatedAt": "2026-10-24T16:41:10.448Z",
-      "lastAccessedAt": "2026-10-24T16:41:10.448Z",
+      "lastAccessedAt": "2026-10-31T17:40:50.961Z",
       "revision": 1,
       "contentHash": "0f60a6086ac13ecf50784b6ebf066ac8fd0681cc39de93282e515e6ac99cd43f",
       "sizeBytes": 5203,
@@ -3200,7 +3200,7 @@
       ],
       "createdAt": "2026-10-24T16:46:10.187Z",
       "updatedAt": "2026-10-24T16:46:10.187Z",
-      "lastAccessedAt": "2026-10-24T17:36:19.411Z",
+      "lastAccessedAt": "2026-11-01T19:13:09.194Z",
       "revision": 1,
       "contentHash": "3219f0072678179b332eec2a0030973dd4a34958e87203a9cc27324c54278c8c",
       "sizeBytes": 6732,
@@ -3268,7 +3268,7 @@
       ],
       "createdAt": "2026-10-24T17:11:11.729Z",
       "updatedAt": "2026-10-24T17:11:11.729Z",
-      "lastAccessedAt": "2026-10-25T06:36:05.747Z",
+      "lastAccessedAt": "2026-10-30T15:49:34.698Z",
       "revision": 1,
       "contentHash": "b8a93a9a0af9600f1d2b35633c67aaf00d477e37abee323a01c057bda86c998f",
       "sizeBytes": 7367,
@@ -3293,7 +3293,7 @@
       ],
       "createdAt": "2026-10-24T17:36:02.318Z",
       "updatedAt": "2026-10-24T17:36:02.318Z",
-      "lastAccessedAt": "2026-10-30T12:27:46.482Z",
+      "lastAccessedAt": "2026-10-27T08:51:58.494Z",
       "revision": 1,
       "contentHash": "e2eafff138764453047166d11d2f53a363b114d4c1c46ff4d6ff64d779029fb6",
       "sizeBytes": 6180,
@@ -3314,7 +3314,7 @@
       ],
       "createdAt": "2026-10-24T17:55:29.221Z",
       "updatedAt": "2026-10-24T17:55:29.221Z",
-      "lastAccessedAt": "2026-10-30T12:27:46.482Z",
+      "lastAccessedAt": "2026-10-26T13:04:42.556Z",
       "revision": 1,
       "contentHash": "7901e301abaa3212624977ecf26a2533c8cb1e5fe8d5bb598dcf72a7f9f0e448",
       "sizeBytes": 5909,
@@ -3338,7 +3338,7 @@
       ],
       "createdAt": "2026-10-25T05:58:06.898Z",
       "updatedAt": "2026-10-25T05:58:06.898Z",
-      "lastAccessedAt": "2026-10-25T06:36:05.747Z",
+      "lastAccessedAt": "2026-10-30T15:49:34.698Z",
       "revision": 1,
       "contentHash": "61c76a854049588c9b55263c779271610595d902a2f2bdc67ef76ebfc60f409d",
       "sizeBytes": 5887,
@@ -3359,7 +3359,7 @@
       ],
       "createdAt": "2026-10-25T06:16:23.960Z",
       "updatedAt": "2026-10-25T06:16:23.960Z",
-      "lastAccessedAt": "2026-10-25T18:03:11.311Z",
+      "lastAccessedAt": "2026-11-01T08:16:36.201Z",
       "revision": 1,
       "contentHash": "6b13e61ebe59cfca5f93f77a24e46df6201d4ebe8b5d3b58a2bec43683877d2f",
       "sizeBytes": 9648,
@@ -3381,7 +3381,7 @@
       ],
       "createdAt": "2026-10-25T06:27:17.076Z",
       "updatedAt": "2026-10-25T06:27:17.076Z",
-      "lastAccessedAt": "2026-10-25T10:46:30.660Z",
+      "lastAccessedAt": "2026-10-28T18:09:28.107Z",
       "revision": 1,
       "contentHash": "2426efe984dfe0137983f3753a0287071e62684883a3823e9902f3bddb35603a",
       "sizeBytes": 5923,
@@ -3402,7 +3402,7 @@
       ],
       "createdAt": "2026-10-25T06:33:33.775Z",
       "updatedAt": "2026-10-25T06:33:33.775Z",
-      "lastAccessedAt": "2026-10-25T06:45:23.839Z",
+      "lastAccessedAt": "2026-11-01T08:16:36.201Z",
       "revision": 1,
       "contentHash": "828a4b7499435c5302ac30f130c40d93373fe89c07bbcefc3bf1e1c8169a848f",
       "sizeBytes": 10319,
@@ -3426,7 +3426,7 @@
       ],
       "createdAt": "2026-10-25T06:36:22.144Z",
       "updatedAt": "2026-10-25T06:36:22.144Z",
-      "lastAccessedAt": "2026-10-25T06:36:22.144Z",
+      "lastAccessedAt": "2026-10-30T15:49:34.698Z",
       "revision": 1,
       "contentHash": "5bfcd422c07bae712b4b07d2c984d487bf447963fffecfcf9425b87f200628fb",
       "sizeBytes": 6863,
@@ -3447,7 +3447,7 @@
       ],
       "createdAt": "2026-10-25T06:45:43.423Z",
       "updatedAt": "2026-10-25T06:45:43.423Z",
-      "lastAccessedAt": "2026-10-25T06:45:43.423Z",
+      "lastAccessedAt": "2026-10-29T05:47:58.971Z",
       "revision": 1,
       "contentHash": "f1ff2597a179812a234fd5139c2a0a57d9755eb9b99fb6d4d8f1a9f17186c853",
       "sizeBytes": 5229,
@@ -3466,7 +3466,7 @@
       ],
       "createdAt": "2026-10-25T06:47:51.094Z",
       "updatedAt": "2026-10-25T06:47:51.094Z",
-      "lastAccessedAt": "2026-10-25T15:35:25.895Z",
+      "lastAccessedAt": "2026-10-28T18:09:28.107Z",
       "revision": 1,
       "contentHash": "783fd420298e838d67acb7a1306298f95189940d65c2c33d8f70ce4ef94fd289",
       "sizeBytes": 6197,
@@ -3490,7 +3490,7 @@
       ],
       "createdAt": "2026-10-25T07:21:21.703Z",
       "updatedAt": "2026-10-25T07:21:21.703Z",
-      "lastAccessedAt": "2026-10-25T11:03:02.760Z",
+      "lastAccessedAt": "2026-10-29T05:04:01.191Z",
       "revision": 1,
       "contentHash": "f21775fff064d8d0b57dded1d6494b4498880af5423c224fb1a35f3873472fda",
       "sizeBytes": 6518,
@@ -3514,7 +3514,7 @@
       ],
       "createdAt": "2026-10-25T09:36:58.723Z",
       "updatedAt": "2026-10-25T09:36:58.723Z",
-      "lastAccessedAt": "2026-10-25T10:46:30.660Z",
+      "lastAccessedAt": "2026-10-28T18:02:49.426Z",
       "revision": 1,
       "contentHash": "654fbb8ddfa48043d29e74083c655504d7f7fd2022fcfb0abd05e01c1198665f",
       "sizeBytes": 6713,
@@ -3538,7 +3538,7 @@
       ],
       "createdAt": "2026-10-25T10:46:47.542Z",
       "updatedAt": "2026-10-25T10:46:47.542Z",
-      "lastAccessedAt": "2026-10-28T09:21:32.871Z",
+      "lastAccessedAt": "2026-10-25T19:00:56.116Z",
       "revision": 1,
       "contentHash": "479c08fb69913516be796ef3b2f889ccabac5a64de37687f67a152349a41c312",
       "sizeBytes": 6294,
@@ -3588,7 +3588,7 @@
       ],
       "createdAt": "2026-10-25T11:33:27.787Z",
       "updatedAt": "2026-10-25T11:33:27.787Z",
-      "lastAccessedAt": "2026-10-28T09:21:32.871Z",
+      "lastAccessedAt": "2026-10-25T19:00:56.116Z",
       "revision": 1,
       "contentHash": "909e88cb17606e7027235e1c1790f91703d96b515b7eeb929a9c1fc5179323c4",
       "sizeBytes": 6395,
@@ -3607,7 +3607,7 @@
       ],
       "createdAt": "2026-10-25T17:21:06.946Z",
       "updatedAt": "2026-10-25T17:21:06.946Z",
-      "lastAccessedAt": "2026-10-30T12:27:46.482Z",
+      "lastAccessedAt": "2026-10-25T17:21:06.946Z",
       "revision": 1,
       "contentHash": "e29d00d223fe62e21195889229f655d485cf19bc582d3d3a0999392b7b85160c",
       "sizeBytes": 6347,
@@ -3632,7 +3632,7 @@
       ],
       "createdAt": "2026-10-25T17:53:27.894Z",
       "updatedAt": "2026-10-25T17:53:27.894Z",
-      "lastAccessedAt": "2026-10-25T18:03:11.311Z",
+      "lastAccessedAt": "2026-10-28T16:50:31.752Z",
       "revision": 1,
       "contentHash": "04d898fc47b3ca4ab1f417c75270fb5d8430729dc9ca35169e89acf23ca7e6da",
       "sizeBytes": 8162,
@@ -3676,7 +3676,7 @@
       ],
       "createdAt": "2026-10-25T18:06:32.138Z",
       "updatedAt": "2026-10-25T18:06:32.138Z",
-      "lastAccessedAt": "2026-10-25T19:21:02.430Z",
+      "lastAccessedAt": "2026-11-01T08:18:23.731Z",
       "revision": 1,
       "contentHash": "8a417487789d02d1b112acfb6d5a019f3e3d00fbdc6ce220862b66a2b919078e",
       "sizeBytes": 5164,
@@ -3699,7 +3699,7 @@
       ],
       "createdAt": "2026-10-25T18:13:22.901Z",
       "updatedAt": "2026-10-25T18:13:22.901Z",
-      "lastAccessedAt": "2026-10-28T08:44:37.393Z",
+      "lastAccessedAt": "2026-10-28T09:22:54.933Z",
       "revision": 1,
       "contentHash": "42d1d55eb344a4f93d05cbb8249dc5efcd87fb4de4a6ad7e9e4496ce734b8e87",
       "sizeBytes": 7875,
@@ -3746,7 +3746,7 @@
       ],
       "createdAt": "2026-10-25T18:40:24.249Z",
       "updatedAt": "2026-10-25T18:40:24.249Z",
-      "lastAccessedAt": "2026-10-25T18:40:24.249Z",
+      "lastAccessedAt": "2026-10-28T19:42:10.927Z",
       "revision": 1,
       "contentHash": "c9bcfb02315d6161004482a1edd16162692cf0b6581348cef46bc58fb3f013af",
       "sizeBytes": 6219,
@@ -3770,7 +3770,7 @@
       ],
       "createdAt": "2026-10-25T18:43:45.319Z",
       "updatedAt": "2026-10-25T18:43:45.319Z",
-      "lastAccessedAt": "2026-10-25T19:44:14.471Z",
+      "lastAccessedAt": "2026-11-01T19:13:09.194Z",
       "revision": 1,
       "contentHash": "256c13c830fb0dd5c6c3d1bd01d8454955e78f66f738847d2728ccc9a7c0b9b8",
       "sizeBytes": 6951,
@@ -3793,7 +3793,7 @@
       ],
       "createdAt": "2026-10-25T19:01:15.781Z",
       "updatedAt": "2026-10-25T19:01:15.781Z",
-      "lastAccessedAt": "2026-10-28T09:21:32.871Z",
+      "lastAccessedAt": "2026-10-28T18:09:28.107Z",
       "revision": 1,
       "contentHash": "ee8a6626f2a1981115a1c7d0c5efde57ad57fb65beebb7d521a2e78b7ae15989",
       "sizeBytes": 6421,
@@ -3817,7 +3817,7 @@
       ],
       "createdAt": "2026-10-25T19:12:49.849Z",
       "updatedAt": "2026-10-25T19:12:49.849Z",
-      "lastAccessedAt": "2026-10-25T19:12:49.849Z",
+      "lastAccessedAt": "2026-10-31T17:06:35.144Z",
       "revision": 1,
       "contentHash": "f6d82d9da5feb77def26689bb9a0c09550a3a52d6df15fd71d9cd47659305386",
       "sizeBytes": 6050,
@@ -3839,7 +3839,7 @@
       ],
       "createdAt": "2026-10-25T19:21:21.494Z",
       "updatedAt": "2026-10-25T19:21:21.494Z",
-      "lastAccessedAt": "2026-10-25T19:21:21.494Z",
+      "lastAccessedAt": "2026-10-28T17:20:23.022Z",
       "revision": 1,
       "contentHash": "e01ed4ecdcfa3c688910a93732f413b5da62b94a1d4341307533b0f10c139f74",
       "sizeBytes": 6775,
@@ -3863,7 +3863,7 @@
       ],
       "createdAt": "2026-10-25T19:44:29.737Z",
       "updatedAt": "2026-10-25T19:44:29.737Z",
-      "lastAccessedAt": "2026-10-25T19:44:29.737Z",
+      "lastAccessedAt": "2026-11-01T19:13:09.194Z",
       "revision": 1,
       "contentHash": "fcec48427535a4ff62d017d2e9a4eb9f3ba0c0604979dfc5a71ed3bc104049ad",
       "sizeBytes": 5370,
@@ -3886,7 +3886,7 @@
       ],
       "createdAt": "2026-10-26T04:54:40.966Z",
       "updatedAt": "2026-10-26T04:54:40.966Z",
-      "lastAccessedAt": "2026-10-26T14:08:14.272Z",
+      "lastAccessedAt": "2026-10-31T16:48:24.791Z",
       "revision": 1,
       "contentHash": "e6f319ecb8b97ca0bb3a49c18b252ee84d4039a371bbf24c1031e129d11eaa8d",
       "sizeBytes": 8046,
@@ -3910,7 +3910,7 @@
       ],
       "createdAt": "2026-10-26T05:34:14.688Z",
       "updatedAt": "2026-10-26T05:34:14.688Z",
-      "lastAccessedAt": "2026-10-28T08:44:37.393Z",
+      "lastAccessedAt": "2026-10-28T17:20:23.022Z",
       "revision": 1,
       "contentHash": "ecb5a652b653456a2f1e30a6b3eed57d19c9fc92135a60443f93afb272c27049",
       "sizeBytes": 6406,
@@ -3965,7 +3965,7 @@
       ],
       "createdAt": "2026-10-26T14:08:45.061Z",
       "updatedAt": "2026-10-26T14:08:45.061Z",
-      "lastAccessedAt": "2026-10-26T15:23:20.697Z",
+      "lastAccessedAt": "2026-10-28T09:26:40.718Z",
       "revision": 1,
       "contentHash": "9dd477961c457fa702cc3a3260eaeddb2018077f675785a65b27324df3e57370",
       "sizeBytes": 8742,
@@ -3987,7 +3987,7 @@
       ],
       "createdAt": "2026-10-26T14:37:47.505Z",
       "updatedAt": "2026-10-26T14:37:47.505Z",
-      "lastAccessedAt": "2026-10-26T14:37:47.505Z",
+      "lastAccessedAt": "2026-10-29T06:07:02.531Z",
       "revision": 1,
       "contentHash": "f6a274a73d0b011f7ee7ea9d1cf48660a5d93aa1b2d69419155f80c7695196c4",
       "sizeBytes": 6876,
@@ -4008,10 +4008,1750 @@
       ],
       "createdAt": "2026-10-26T15:23:37.161Z",
       "updatedAt": "2026-10-26T15:23:37.161Z",
-      "lastAccessedAt": "2026-10-26T15:23:37.161Z",
+      "lastAccessedAt": "2026-11-01T19:13:09.194Z",
       "revision": 1,
       "contentHash": "74863e83a5f41e836dc4a75abe929e435d25dc7cb180d1d43af188b0727e48db",
       "sizeBytes": 5380,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "9b946245-989a-40ea-ad41-9fc6aa953d0c",
+      "title": "删除文件不减 Git 历史 pack：cb70ace 瘦身实测与「为何放弃 filter-repo」判据（2026-10-26）",
+      "description": "dsh-reasonix-agent 仓库瘦身的实测记录：git rm --cached 剔除 1450 个文件（3178→1728，commit cb70ace，push 成功）但全量 clone 依旧 0 文件，根因是历史 blob 仍在且 --depth 1 只限 commit 数；含「必须 filter-repo + GitHub Support 做远端 GC 才可能真变小」的社区证据链、放弃重写历史转用 partial clone 的判据、以及可复现命令与存疑项。",
+      "status": "active",
+      "filename": "git-pack-cb70ace-filter-repo-2026-10-26-9b946245.md",
+      "relativePath": "documents/active/git-pack-cb70ace-filter-repo-2026-10-26-9b946245.md",
+      "sourcePaths": [
+        ".dsh/PLAN.md",
+        "_sp"
+      ],
+      "sessionIds": [
+        "19d8cd3c-e4af-4ed4-b9c6-8cde101d6a2f"
+      ],
+      "createdAt": "2026-10-26T15:48:24.399Z",
+      "updatedAt": "2026-10-26T15:48:24.399Z",
+      "lastAccessedAt": "2026-10-31T17:06:35.144Z",
+      "revision": 1,
+      "contentHash": "280d70b9e7ab3a9d1661f3f93ddfdd77bf58811138e4ae6655e7e6b8a20d3927",
+      "sizeBytes": 6383,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "c88550a9-d4d6-4dc1-b9e3-48f007b19709",
+      "title": "输出退化三层防线（2026-10-27）：goat-gateway loop-guard abort 落地、阈值双峰校准、dsh idle-loop-guard 跨 turn 判据",
+      "description": "2026-10-27 完成的输出退化/空转治理：gateway 侧 loop-guard 从 shadow 转 abort 的阈值依据（线上 8359 次请求 fast novelty 双峰分布，0.11/0.15 定法）、6-gram 判据对短英文周期的设计边界、selftest 四类零误报、以及新增 dsh 侧 idle-loop-guard.mjs（无 tool call 结构判据、214 行、三 profile 插入位置）。含未验证项与 RESTART 生效条件。",
+      "status": "active",
+      "filename": "2026-10-27-goat-gateway-loop-guard-abort-dsh-idl-c88550a9.md",
+      "relativePath": "documents/active/2026-10-27-goat-gateway-loop-guard-abort-dsh-idl-c88550a9.md",
+      "sourcePaths": [
+        "PLAN.md",
+        ".agent-presets/anchored-standard/idle-loop-guard.mjs",
+        ".agent-presets/anchored-standard/stall-guard.mjs",
+        "profiles/web/cordis.patch.yml"
+      ],
+      "sessionIds": [
+        "954aa213-fea7-4b2d-abf6-29726bc64201"
+      ],
+      "createdAt": "2026-10-26T16:25:04.853Z",
+      "updatedAt": "2026-10-26T16:25:04.853Z",
+      "lastAccessedAt": "2026-10-27T15:17:36.144Z",
+      "revision": 1,
+      "contentHash": "f8739eda3814c9482c9b91fd847d9b0b40e1baad2e7aca25d44aba03fc416b5c",
+      "sizeBytes": 6242,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "ddaf53a7-93f1-4636-8810-312bc877279f",
+      "title": "ParsecVDD 虚拟屏父 GPU 归属（核显 vs 独显）：PreferredRenderAdapterVendorId 与 Sunshine 抓屏验证（2026-10-27）",
+      "description": "接在 70b6a9ef / 8d326aca / a78ca4cd 之后的第三层排查：output_name 已用 device_id GUID 仍回退主屏时，用 dxgi-info.exe 判定虚拟屏挂在 Intel 核显而非 NVIDIA 独显，改 WUDF 注册表 PreferredRenderAdapterVendorId=0x10DE + DisablePreferredRenderAdapterChange=0 并重启；含 dxgi-info 读法、sunshine.log 取 device_id 与 refresh rate 对照验证法、output_name 反斜杠转义坑、host.ps1 单例保护。",
+      "status": "active",
+      "filename": "parsecvdd-gpu-vs-preferredrenderadaptervendorid--ddaf53a7.md",
+      "relativePath": "documents/active/parsecvdd-gpu-vs-preferredrenderadaptervendorid--ddaf53a7.md",
+      "sourcePaths": [],
+      "sessionIds": [
+        "503c2c2a-470e-43ae-bb10-c981cea3cdb3"
+      ],
+      "createdAt": "2026-10-27T08:52:15.293Z",
+      "updatedAt": "2026-10-27T08:52:15.293Z",
+      "lastAccessedAt": "2026-10-31T17:40:50.961Z",
+      "revision": 1,
+      "contentHash": "3b822115575764bd97f149b0168225454d08c905f75bb94bdb01d4f2eea8d698",
+      "sizeBytes": 6504,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "b3d6ec11-22d3-4927-b573-c994490638a2",
+      "title": "WakeGuard 连环关机根因：Kernel-Power 109 的 Action 语义判定（Reboot / Shutdown / Shutdown Off）",
+      "description": "接 94d97a1a / 8f426f8b / f7c9342c 的「109 时间戳 + 60 秒阈值」自愈方案 B：2026-10-27 查出该判据缺 Action 维度，脚本自己发出的 shutdown /s 会写一条 109(Shutdown)，导致重启被误判 PHANTOM 并连锁关机。含三种 Action 语义、Action 字段只能从 Message 正则提取（ToXml 无此字段、ShutdownActionType=4 歧义）、改进后的判定代码、11 条历史 CHECK 数据、有意保留的误杀边界、WakeGuard 计划任务真实作用域与「非提权查不到 ≠ 不存在」的教训，以及 idle-loop-guard 从注入警告升级到 agent.cancel() 的附带结论。",
+      "status": "active",
+      "filename": "wakeguard-kernel-power-109-action-reboot-shutdow-b3d6ec11.md",
+      "relativePath": "documents/active/wakeguard-kernel-power-109-action-reboot-shutdow-b3d6ec11.md",
+      "sourcePaths": [
+        ".dsh/storages/tools/wake-guard.ps1",
+        ".dsh/storages/tools/wake-guard-setup.ps1",
+        ".dsh/logs/wake-guard.log",
+        ".agent-presets/anchored-standard/idle-loop-guard.mjs",
+        ".dsh/logs/idle-loop-guard.log"
+      ],
+      "sessionIds": [
+        "435cbd2e-0cfc-4e06-b51a-08f5d751fe9c"
+      ],
+      "createdAt": "2026-10-27T08:52:44.605Z",
+      "updatedAt": "2026-10-27T08:52:44.605Z",
+      "lastAccessedAt": "2026-10-29T05:47:58.971Z",
+      "revision": 1,
+      "contentHash": "e55beb074505fce98ad62eece0987673e4ea3fb1875a9895d99e6073164461ac",
+      "sizeBytes": 9363,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "5ecd6d52-60e5-4e5b-8671-04a5b2e1911e",
+      "title": "dsh「频繁中断 + 会话渲染空白」归因与处置（2026-10-27）：stall-guard/loop-guard 排除、dsh-remote credential_refresh 失败、29 MB 会话体量上限",
+      "description": "2026-10-27 dsh 桌面会话频繁中断且主视图渲染不出内容的取证：逐个排除 stall-guard(18 次全在 10-07)、gateway loop-guard abort(0 次)、工具失败(0/2520)；定位 dsh-remote credential_refresh INVALID_MESSAGE 34 次并从 web profile 移除；确定 9529 行/29 MB 会话是渲染上限，且 idle-loop-guard 的 enabled:false 只对新会话生效。含各处日志路径、判读命令思路、未验证项。",
+      "status": "active",
+      "filename": "dsh-2026-10-27-stall-guard-loop-guard-dsh-remote-5ecd6d52.md",
+      "relativePath": "documents/active/dsh-2026-10-27-stall-guard-loop-guard-dsh-remote-5ecd6d52.md",
+      "sourcePaths": [
+        ".dsh/logs/stall-guard.log",
+        ".dsh/logs/idle-loop-guard.log",
+        ".dsh/logs/tool-calls.jsonl",
+        ".dsh/logs/host-stdio.log",
+        ".dsh/profiles/web/package.json",
+        ".dsh/profiles/desktop/cordis.patch.yml",
+        ".dsh/PLAN.md"
+      ],
+      "sessionIds": [
+        "124ab7f1-0827-49e3-a76d-813e14abbe34"
+      ],
+      "createdAt": "2026-10-27T15:17:57.311Z",
+      "updatedAt": "2026-10-27T15:17:57.311Z",
+      "lastAccessedAt": "2026-11-01T08:18:23.731Z",
+      "revision": 1,
+      "contentHash": "fa3c61fbce54d113ce2f17621dd05d0dda779014ed1c8ee96164fbcbb1305d70",
+      "sizeBytes": 5521,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "ae3c93cb-ce27-47f0-a37d-1bbc59d11299",
+      "title": "双机课程翻译资产盘点与 bilingual 成品静态审计方法（2026-10-27）",
+      "description": "2026-10-27 双机（Windows 桌面「课程文件」↔ Linux「课程资料」）学习资产翻译缺口盘点的可复跑工具链、跨机去重与 stem 规范化判据、bilingual.md 静态审计规则体系（R2/R6/R7/R8/R9/R11/R12/R13）及「格式可批修、内容基本合格」的结论与批次划分。",
+      "status": "active",
+      "filename": "bilingual-2026-10-27-ae3c93cb.md",
+      "relativePath": "documents/active/bilingual-2026-10-27-ae3c93cb.md",
+      "sourcePaths": [
+        ".dsh/tools/audit-bilingual.py",
+        ".dsh/tools/kb-inventory.py",
+        ".dsh/tools/kb-gaps.py",
+        ".dsh/tools/_gap_report.py",
+        ".dsh/tools/未翻译清单-20261027.md",
+        ".dsh/tools/资产总清单-20261027.md",
+        ".dsh/PLAN.md"
+      ],
+      "sessionIds": [
+        "193b5a71-8e32-4cda-b5f7-d9c1e8ea3960"
+      ],
+      "createdAt": "2026-10-27T15:20:30.840Z",
+      "updatedAt": "2026-10-27T15:20:30.840Z",
+      "lastAccessedAt": "2026-11-01T18:21:01.780Z",
+      "revision": 1,
+      "contentHash": "4d140e176e2ae5a7c691922414a0839a2fecf4ae11d20532ee4a961c063ace1a",
+      "sizeBytes": 7134,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "63b4b573-fc37-4f02-b0a7-dab235ce4e22",
+      "title": "thinking-guard 误熔断 → 渲染崩溃链条：session format v4 拒绝裸 kind:'plugin' 与 sparse-repeat 误报取证（2026-10-28）",
+      "description": "2026-10-28 桌面/网页渲染整片崩溃的根因链取证：证实后端存活（curl 3080 返 401）、定位到 @ethanwong-hk/dsh-thinking-guard 熔断后注入 source.kind:'plugin' 被 session format v4 admission 拒绝，Linux 落盘阻塞→会话永久写不进；附 sparse-repeat vs novelty 的作者 benchmark（误报 9.2% vs 0.6%）与三端 enabled:false 回滚决策、community 替代插件清单。",
+      "status": "active",
+      "filename": "thinking-guard-session-format-v4-kind-plugin-spa-63b4b573.md",
+      "relativePath": "documents/active/thinking-guard-session-format-v4-kind-plugin-spa-63b4b573.md",
+      "sourcePaths": [
+        ".dsh/profiles/desktop/cordis.patch.yml",
+        ".dsh/profiles/web/cordis.patch.yml",
+        ".dsh/profiles/node_modules/@ethanwong-hk/dsh-thinking-guard/lib/index.js",
+        ".dsh/logs/idle-loop-guard.log",
+        ".dsh/PLAN.md"
+      ],
+      "sessionIds": [
+        "57e2a77b-42e9-4e30-b5c9-f371f5417568"
+      ],
+      "createdAt": "2026-10-27T19:04:18.770Z",
+      "updatedAt": "2026-10-27T19:04:18.770Z",
+      "lastAccessedAt": "2026-11-01T08:18:23.731Z",
+      "revision": 1,
+      "contentHash": "8ef9fe3b8d3a38548f712bb8ec06a7a7182598136a3c8a78ffd70afc4fa93c7c",
+      "sizeBytes": 8311,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "b9d446e6-4495-43c0-85f5-3cf694aaac07",
+      "title": "翻译工程第二轮（2026-10-28）：内容层审计推翻\"旧译可用\"、机械翻转术语失败与 LNotes 全量交付",
+      "description": "2026-10-28 翻译工程第二轮的实质结论与可复用方法：内容层审计判级 A0/B7/C1 推翻 10-27「内容基本合格」；6.046J 术语括号方向系统性反向、自动翻转三轮全部破坏语义（正解：脚本产清单→LLM 判术语→精确 old→new 替换→diff 验证）；三源交叉核对（410 已翻 stem/100 仍缺）与「全资源搜索需含 D:/gh-publish」的教训；LNotes 1–20 全量交付 2253 公式 0 失败。",
+      "status": "active",
+      "filename": "2026-10-28-lnotes-b9d446e6.md",
+      "relativePath": "documents/active/2026-10-28-lnotes-b9d446e6.md",
+      "sourcePaths": [
+        ".dsh/tools/reports/旧译内容层审计-20261028.md",
+        ".dsh/tools/kb-gaps.py",
+        ".dsh/tools/_crosscheck.py",
+        ".dsh/tools/SCAN-ROOTS.txt",
+        ".dsh/PLAN.md",
+        ".dsh/tools/未翻译清单-20261027.md"
+      ],
+      "sessionIds": [
+        "707d656b-1ef2-4b1b-8c3f-cb03ee090c2b"
+      ],
+      "createdAt": "2026-10-27T19:17:02.940Z",
+      "updatedAt": "2026-10-27T19:17:02.940Z",
+      "lastAccessedAt": "2026-11-01T18:21:01.780Z",
+      "revision": 1,
+      "contentHash": "0e8ad35ca6a0af88ad620c3adc0b9c3aaf24ae28d581ae832377aefef37b3552",
+      "sizeBytes": 7510,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "16316c87-2d8b-46b8-842e-92e897a3ede8",
+      "title": "DSH 升级后的插件 skip / 假状态排查：compatibility.json 精确版本豁免 + 三例「日志撒谎」取证（2026-10-28 Linux rc.4）",
+      "description": "DSH runtime 升到 0.2.1-rc.4 后，插件被 skip 的真因是 profile 自己的 compatibility.json 缺少精确新版本号（dsh-headroom 不在 npm、上游 peer <0.2.0-0，拉最新无用）；含 allow-version 对 desktop 不可用、thinking-guard 旧构建与 enabled 假日志、mnemon profileContext stale-service 空跑、EADDRINUSE 放大 warn 的取证方法与结论。",
+      "status": "active",
+      "filename": "dsh-skip-compatibility-json-2026-10-28-linux-rc--16316c87.md",
+      "relativePath": "documents/active/dsh-skip-compatibility-json-2026-10-28-linux-rc--16316c87.md",
+      "sourcePaths": [
+        "profiles/desktop/compatibility.json",
+        "profiles/web/compatibility.json",
+        "profiles/web/node_modules/@ethanwong-hk/dsh-thinking-guard/lib/index.js",
+        "tools/reports/issue-thinking-guard-2.md",
+        "PLAN.md"
+      ],
+      "sessionIds": [
+        "45653da3-ab2e-4cb5-9d64-4a8a52c4b0db"
+      ],
+      "createdAt": "2026-10-27T20:58:01.046Z",
+      "updatedAt": "2026-10-27T20:58:01.046Z",
+      "lastAccessedAt": "2026-10-28T17:20:23.022Z",
+      "revision": 1,
+      "contentHash": "18b48d58cf3c69389c0efb0477007a6ae99926465eed1a207abc754906bdb684",
+      "sizeBytes": 8919,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "2b099eab-e563-4425-8e87-4d867fb32901",
+      "title": "本机「每日日记 / 学习痕迹」采集设计调研：可采数据源实测、04:00 日界 rationale 与 foreground window sampler 缺口（2026-10-28）",
+      "description": "2026-10-28 调研：为自动生成每日日记（学习/建造/查了）盘点本机可采集的痕迹源并实测数据量（dsh session 141 文件 63151 行 165 条真实指令、tool-calls 2555 条、Edge history 18 URL、git autocommit 每 20 min），给出结构性结论「现有日志答不了『打开某课程窗口多久』，唯一增量组件是 foreground window sampler」，以及 04:00 日界的 rationale、A/B/C 三档方案与推荐 B、验真（evidence 指针）设计与 5 项未决拍板。",
+      "status": "active",
+      "filename": "04-00-rationale-foreground-window-sampler-2026-1-2b099eab.md",
+      "relativePath": "documents/active/04-00-rationale-foreground-window-sampler-2026-1-2b099eab.md",
+      "sourcePaths": [
+        ".dsh/sessions",
+        ".dsh/logs/tool-calls.jsonl",
+        ".dsh/logs/dsh-autocommit.log",
+        ".dsh/PLAN.md"
+      ],
+      "sessionIds": [
+        "6de8ebe5-efd8-4af5-98f1-bf9828fff7a7"
+      ],
+      "createdAt": "2026-10-28T08:11:52.775Z",
+      "updatedAt": "2026-10-28T08:11:52.775Z",
+      "lastAccessedAt": "2026-10-31T17:33:38.283Z",
+      "revision": 1,
+      "contentHash": "bcd01a97a1a693abb8e8170ab4888131e196ebeb54daa3130afc3a8045c40579",
+      "sizeBytes": 8498,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "5e75d1d8-8be2-42ac-b68a-81d376563f0f",
+      "title": "thinking-guard 参数语义陷阱与三端配置同步：sparseWindow:0 必触发、apply() 只跑一次、dsh headless 验证法（2026-10-28）",
+      "description": "2026-10-28 重新启用 @ethanwong-hk/dsh-thinking-guard 后的调查闭环：sparseWindow:0 使 share 恒为 1.0 而必然熔断、正确「禁用」写法、apply() 只 mergeConfig 一次导致 patch 热重载不生效、dsh headless --patch 无需网页的真实验证法及 overlay name 必须指向 lib/index.js、YAML 列表 grep -A6 判据，以及三端（Win desktop / Win web / Linux）对齐现状与 rc.4 vs rc.2 唯一差异。补充文档 63b4b573 的启用侧后续。",
+      "status": "active",
+      "filename": "thinking-guard-sparsewindow-0-apply-dsh-headless-5e75d1d8.md",
+      "relativePath": "documents/active/thinking-guard-sparsewindow-0-apply-dsh-headless-5e75d1d8.md",
+      "sourcePaths": [
+        ".dsh/PLAN.md",
+        ".dsh/profiles/desktop/cordis.patch.yml",
+        ".dsh/profiles/web/cordis.patch.yml",
+        ".dsh/profiles/web/node_modules/@ethanwong-hk/dsh-thinking-guard/lib/index.js",
+        "tools/reports/linux-to-windows-sync-20261028.md"
+      ],
+      "sessionIds": [
+        "8e1054e1-ed1b-445a-b2a8-501b8f6e449f"
+      ],
+      "createdAt": "2026-10-28T08:23:25.103Z",
+      "updatedAt": "2026-10-28T08:23:25.103Z",
+      "lastAccessedAt": "2026-10-28T16:50:31.752Z",
+      "revision": 1,
+      "contentHash": "f3d0fef7b1f68c29d558fc819befb1c61edefa9c5a700062cf6718cce8fde3e4",
+      "sizeBytes": 7842,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "9086b121-ac1b-45a2-93c2-82277b02271b",
+      "title": "session-title 切换为 all-prompts bundle（0.2.1-rc.2）：坏默认值覆盖、冒烟方法与未验证项（2026-10-28）",
+      "description": "2026-10-28 在 ~/.dsh/profiles/web 安装 @deepseek-ai/dsh-experimental-session-titles-bundle@0.2.1-rc.2 的完整记录：dsh plugin add 自动双写 dependencies/bundles、bundle 自带 maxOutputTokens:64 / maxInputBytes:4096 坏默认值必须在 cordis.patch.yml 覆盖、首启冒烟验证法与 5 层分级结论、browser-trust fence 401 导致\"真实生成一次标题\"未验证、desktop 端 Electron 独占锁与 A/B 两条安装路径、三条回滚命令。",
+      "status": "active",
+      "filename": "session-title-all-prompts-bundle-0-2-1-rc-2-2026-9086b121.md",
+      "relativePath": "documents/active/session-title-all-prompts-bundle-0-2-1-rc-2-2026-9086b121.md",
+      "sourcePaths": [
+        "profiles/web/package.json",
+        "profiles/web/cordis.patch.yml",
+        "profiles/desktop/cordis.patch.yml",
+        "backups/title-a-20261028-163458",
+        ".dsh-lab/tmp/title-audit3.py"
+      ],
+      "sessionIds": [
+        "d458588d-5c9d-4f91-bdc2-6acdb7770458"
+      ],
+      "createdAt": "2026-10-28T08:49:20.021Z",
+      "updatedAt": "2026-10-28T08:49:20.021Z",
+      "lastAccessedAt": "2026-11-01T11:12:17.464Z",
+      "revision": 1,
+      "contentHash": "f74e246f8fc6f5e33b39b97e686584a8fad9a7af880a322eb299c48cc2476c80",
+      "sizeBytes": 7184,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "b4a7aa94-d8f4-4494-817e-407d1112e249",
+      "title": "DSH 注入链断裂根因（concurrency-discipline waterfall veto）与 per-session plan / todo_write 常驻改造：修复、证据与待重启验收",
+      "description": "2026-10-28 定位并修复 anchored-standard 注入链断裂：concurrency-discipline.mjs 的 async handler 从不调用 next()，以 prepend:true 否决内层全部 waterfall，导致 root session 的 plan-anchor/thinking-anchor/git-context/context-gate/runtime-context 注入全灭（分界 16:01:33，session-5f807f79 起）；附带形参错位使 skipSubagents 从未生效。同轮把 plan-anchor 改成 per-session（$DSH_HOME/plans/&lt;session-id&gt;.md）、给 tool-bootstrap 加 RESIDENT_TASK_TOOLS=['todo_write']，并查明 thinking-guard 的 cancel kind 被 abortedCancelCause() 的 assertNever 打死（未修）。含进程优先级实测表、双 profile patch 注册证据、重启后验收清单与并发写冲突风险。承接 7ffee013（plan-anchor 全局 head 注入）与 c7fb1eaf（resident tool set 常驻化）。",
+      "status": "active",
+      "filename": "dsh-concurrency-discipline-waterfall-veto-per-se-b4a7aa94.md",
+      "relativePath": "documents/active/dsh-concurrency-discipline-waterfall-veto-per-se-b4a7aa94.md",
+      "sourcePaths": [
+        ".agent-presets/anchored-standard/concurrency-discipline.mjs",
+        ".agent-presets/anchored-standard/plan-anchor.mjs",
+        ".agent-presets/anchored-standard/tool-bootstrap.mjs",
+        "profiles/desktop/cordis.patch.yml",
+        "profiles/web/cordis.patch.yml"
+      ],
+      "sessionIds": [
+        "8a55b1e8-64c0-46af-99a5-223f389dfa80"
+      ],
+      "createdAt": "2026-10-28T09:23:18.587Z",
+      "updatedAt": "2026-10-28T09:23:18.587Z",
+      "lastAccessedAt": "2026-10-31T15:28:49.107Z",
+      "revision": 1,
+      "contentHash": "2722edb618b4311837257cb506b3ff24a515c623da28a87c4b4c0b1ddd9c1291",
+      "sizeBytes": 7980,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "9a379d5a-e0a5-47b5-926f-f876f7a1b3e6",
+      "title": "每日日记流水线落地实现：sampler/aggregate/diarist/run_daily 四件套、三条判据 rationale 与 GitHub diary 仓库自动 push（2026-10-28）",
+      "description": "2026-10-28 实现记录：~/.dsh/storages/tools/journal 的采样-归并-生成-落盘流水线（sampler 边沿触发、session mtime 上下界放宽、单段窗口封顶、kind=user 不等于真人指令三条判据），23:59 定稿 + catchup 补跑调度，以及公开仓库 TianQue6916/diary 的自动 commit+push 与 raw/activity 不公开边界。",
+      "status": "active",
+      "filename": "sampler-aggregate-diarist-run-daily-rationale-gi-9a379d5a.md",
+      "relativePath": "documents/active/sampler-aggregate-diarist-run-daily-rationale-gi-9a379d5a.md",
+      "sourcePaths": [
+        ".dsh/storages/tools/journal/sampler.pyw",
+        ".dsh/storages/tools/journal/aggregate.py",
+        ".dsh/storages/tools/journal/diarist.py",
+        ".dsh/storages/tools/journal/run_daily.py",
+        ".dsh/storages/tools/journal/sync_git.py",
+        ".dsh/storages/tools/journal/README.md",
+        ".dsh/journal/README.md",
+        ".dsh/journal/.gitignore"
+      ],
+      "sessionIds": [
+        "20dfab92-a79c-4fe5-8145-0867c611ce29"
+      ],
+      "createdAt": "2026-10-28T09:26:59.658Z",
+      "updatedAt": "2026-10-28T09:26:59.658Z",
+      "lastAccessedAt": "2026-11-01T17:18:45.991Z",
+      "revision": 1,
+      "contentHash": "263c74a8c8e6e08e5360ba5cc2909507475f25a2d49abc4d492a6b98f3abf78e",
+      "sizeBytes": 7391,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "cab1ac23-02b0-4ab7-b36f-5b47612c7b71",
+      "title": "session-age-warn 插件（长会话水位提醒）实现交接：thinking-guard 选型否决、双 profile allowKinds 同步、CRLF patch 陷阱",
+      "description": "2026-10-28 新增 anchored-standard 插件 session-age-warn.mjs（agent/pre-step，softSteps 200 / reWarnEvery 80 / skipSubagents）：治 context rot 而非硬打断。含 thinking-guard 被社区证据否决的理由、allowKinds 不同步会被 context-gate 移除、cordis.patch.yml CRLF 混行导致字节替换失败的实操陷阱，以及待重启生效的 4 项改动清单。",
+      "status": "active",
+      "filename": "session-age-warn-thinking-guard-profile-allowkin-cab1ac23.md",
+      "relativePath": "documents/active/session-age-warn-thinking-guard-profile-allowkin-cab1ac23.md",
+      "sourcePaths": [
+        ".agent-presets/anchored-standard/session-age-warn.mjs",
+        "profiles/desktop/cordis.patch.yml",
+        "profiles/web/cordis.patch.yml",
+        ".agent-presets/anchored-standard/concurrency-discipline.mjs"
+      ],
+      "sessionIds": [
+        "5303d8fe-a151-4d1d-a016-3ab996b97251"
+      ],
+      "createdAt": "2026-10-28T11:42:02.856Z",
+      "updatedAt": "2026-10-28T11:42:02.856Z",
+      "lastAccessedAt": "2026-10-31T15:28:49.107Z",
+      "revision": 1,
+      "contentHash": "7a41ba1d26b8dfe64a64b2e2cf23c16608630c14fbfe2d0bcbe490bc90f62c17",
+      "sizeBytes": 5237,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "01f4132d-851d-4e51-9097-2db2e7583161",
+      "title": "plan-anchor 每会话独立计划文件落地（subagents=own、isSubagent 恒 undefined 坑）与 PLAN.md → PLAN.d 任务目录拆分",
+      "description": "2026-10-28：用户要求「每个会话窗口自动建一份不可覆盖的 plan.md」。核实 plan-anchor 已用 flag:'wx' 独占创建 per-session 文件，但 subagents:parent 从未生效（isSubagent 恒 undefined）；用户拍板 own 后改双 profile 与 .mjs 默认值并验证。另含 PLAN.md 325KB → 6KB 根 + 7 任务目录的无损拆分结构。",
+      "status": "active",
+      "filename": "plan-anchor-subagents-own-issubagent-undefined-p-01f4132d.md",
+      "relativePath": "documents/active/plan-anchor-subagents-own-issubagent-undefined-p-01f4132d.md",
+      "sourcePaths": [
+        ".agent-presets/anchored-standard/plan-anchor.mjs",
+        "profiles/desktop/cordis.patch.yml",
+        "profiles/web/cordis.patch.yml",
+        "PLAN.md",
+        "PLAN.d/INDEX.md"
+      ],
+      "sessionIds": [
+        "68356775-b34e-422a-8bd5-3e2e15d4eaeb"
+      ],
+      "createdAt": "2026-10-28T11:46:19.485Z",
+      "updatedAt": "2026-10-28T11:46:19.485Z",
+      "lastAccessedAt": "2026-10-28T11:46:19.485Z",
+      "revision": 1,
+      "contentHash": "79d9a1dc41034f1ce3d2575c5f987e5b9ed47dd01af78a5f7c6088e3519b9b0e",
+      "sizeBytes": 6148,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "196df70c-aca7-4ce5-a93e-6458f31e0b40",
+      "title": "dsh Windows 维护定案（2026-10-29）：Low IL 目录可写性只能修 mandatory label（DACL 无效 + 引号语法坑）；版本升级用逐字节 diff 判定\"零改动\"",
+      "description": "两条可复用结论：①workspace 外的持久目录（C:\\relay）要让 Low IL 子进程可写，必须 icacls /setintegritylevel \"(OI)(CI)Low\" /T（改 mandatory label，带引号），改 DACL 的 ACE 完全无效；验证标志为 Mandatory Label\\Low Mandatory Level:(OI)(CI)(NW)，附回滚与边界。②评估 dsh 版本升级收益用 npm pack + diff -rq 逐字节对比；rc.2 vs rc.4 四个内核包仅有 package.json 版本号差异，故判定不值得升级。引用 41ce8bea、741c915f。",
+      "status": "active",
+      "filename": "dsh-windows-2026-10-29-low-il-mandatory-label-da-196df70c.md",
+      "relativePath": "documents/active/dsh-windows-2026-10-29-low-il-mandatory-label-da-196df70c.md",
+      "sourcePaths": [
+        ".dsh/plans/9302c6d1-f90e-4f20-9278-faf937f3eacd.md"
+      ],
+      "sessionIds": [
+        "9302c6d1-f90e-4f20-9278-faf937f3eacd"
+      ],
+      "createdAt": "2026-10-28T16:20:10.918Z",
+      "updatedAt": "2026-10-28T16:20:10.918Z",
+      "lastAccessedAt": "2026-10-28T20:05:32.127Z",
+      "revision": 1,
+      "contentHash": "efbb674eec961efeb428852b55cbcb70f4e066a2638122dc50110752e16e25bc",
+      "sizeBytes": 5663,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "7a4954ae-28b2-4180-bdb3-5d3d5cbc672f",
+      "title": "「用开源就记账」纪律落地到 persona prefix 第 9 条：选层判断、三端注入点差异与验证链（2026-10-29）",
+      "description": "2026-10-29 把 star 记账/回馈纪律从热记忆提升到 persona prefix（system prompt）的落地记录：为何选 prompt 层而非 MEMORY.md（容量 9304/10240）、web/desktop 各 +12 行、headless 无 persona 段故跳过、--dump-config 与 Electron 独占锁的验证边界、YAML 块标量重复静默无报错的坑。",
+      "status": "active",
+      "filename": "persona-prefix-9-2026-10-29-7a4954ae.md",
+      "relativePath": "documents/active/persona-prefix-9-2026-10-29-7a4954ae.md",
+      "sourcePaths": [
+        "profiles/web/cordis.patch.yml",
+        "profiles/desktop/cordis.patch.yml",
+        "profiles/headless/cordis.patch.yml",
+        ".dsh/contrib/star-audit.py"
+      ],
+      "sessionIds": [
+        "659249a7-d62b-485a-8d52-ccc69d56e73b"
+      ],
+      "createdAt": "2026-10-28T16:50:47.839Z",
+      "updatedAt": "2026-10-28T16:50:47.839Z",
+      "lastAccessedAt": "2026-10-28T16:50:47.839Z",
+      "revision": 1,
+      "contentHash": "9644fa6d05c917d62453840fb2bf114c7a53ce04331a82a4ab9ac4c1f8e87d5a",
+      "sizeBytes": 5319,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "cda4736b-c1bd-438d-86e2-bc0d1ca68c3b",
+      "title": "Linux 端 dsh web 起不来定案：dsh-tunnel 抢 3080 端口（非插件不兼容）+ 修复到 3081 与验收判据（2026-10-29）",
+      "description": "2026-10-29 在 Ubuntu(TianQue) 上实测定位 dsh web 启动失败真因：dsh-tunnel.service 的 ssh -L 3080 先占本地端口，dsh-web.service 也要 3080 导致 required 插件 webserver EADDRINUSE 并级联 7 个 waiting 服务；含 --port 3099 判定性实验、改 3081 的修复与验收、回滚/反向方案，以及 dsh-linux-fix.sh 两个解析 bug（installAnchor 缺失、bundle 解析顺序反了）的根因与官方 resolveBundleDir 语义。",
+      "status": "active",
+      "filename": "linux-dsh-web-dsh-tunnel-3080-3081-2026-10-29-cda4736b.md",
+      "relativePath": "documents/active/linux-dsh-web-dsh-tunnel-3080-3081-2026-10-29-cda4736b.md",
+      "sourcePaths": [
+        ".dsh/_linux-dsh-fix/dsh-linux-fix.sh",
+        ".dsh/_linux-dsh-fix/REPORT.md",
+        ".dsh/profiles/web/package.json",
+        ".config/systemd/user/dsh-tunnel.service",
+        ".config/systemd/user/dsh-web.service"
+      ],
+      "sessionIds": [
+        "d88be505-811b-4c6c-b5e7-de7567c1db99"
+      ],
+      "createdAt": "2026-10-28T16:59:13.178Z",
+      "updatedAt": "2026-10-28T16:59:13.178Z",
+      "lastAccessedAt": "2026-11-01T11:12:17.464Z",
+      "revision": 1,
+      "contentHash": "b2bfe52db11847813a79fd75bd77c55872f1bc3b4150032b8c2fc5b13d13d5d1",
+      "sizeBytes": 6771,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "760543a7-6b4a-44d2-8d24-01dbf0020d70",
+      "title": "GOAT 面板 usage/节奏视图扩展 + popover 不透明化（dsh 主题 token 的半透明陷阱）",
+      "description": "2026-10-29 实施记录：给 goat-panel 的 /quota popover 增加用量与节奏两行（tokens 出入拆分、成功率、均 cr/次、日均消耗、可撑天数），以及把半透明背景改成「实色打底 + gradient 叠主题色」的根因与做法。含 /alpha/usage/summary 的 daily 字段恒空的探测结论、D 盘只读需 UAC 提权的 apply 流程与备份 stamp 教训。",
+      "status": "active",
+      "filename": "goat-usage-popover-dsh-token-760543a7.md",
+      "relativePath": "documents/active/goat-usage-popover-dsh-token-760543a7.md",
+      "sourcePaths": [
+        "goat-usage.ps1",
+        "dsh-plugin-goat-panel/lib/client.js",
+        ".dsh/scratch/goat-panel-usage/apply-usage-view.ps1",
+        ".dsh/scratch/goat-panel-usage/apply-client-only.ps1"
+      ],
+      "sessionIds": [
+        "f68c5a09-2c99-470c-84da-ecb57a11b806"
+      ],
+      "createdAt": "2026-10-28T17:16:41.725Z",
+      "updatedAt": "2026-10-28T17:16:41.725Z",
+      "lastAccessedAt": "2026-10-28T17:16:41.725Z",
+      "revision": 1,
+      "contentHash": "d4b4fb8a108c967a837e579936c2e5d0fa96075efb9a3cd7965ab6b6acc4511e",
+      "sizeBytes": 6447,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "5cdda134-a2ba-4976-880e-893c9c31dd5d",
+      "title": "Linux 终端里 dsh 仍炸的第二根因：PATH 命中 node22 旧安装（0.1.5-rc.3）—— 真实验证铁律与 3080/3081/3082 最终分工（2026-10-29）",
+      "description": "承接端口冲突定案后的第二轮排查：用户交互 shell 的 `dsh` 解析到 ~/.local/node22 的 0.1.5-rc.3（.bashrc 前置 + .profile 不读），导致 @deepseek-ai/dsh-agent-preset 找不到；给出 PATH 修复、bash -ic 验证铁律、3080 归手动实例的端口分工与 3082 隧道空响应诊断。",
+      "status": "active",
+      "filename": "linux-dsh-path-node22-0-1-5-rc-3-3080-3081-3082--5cdda134.md",
+      "relativePath": "documents/active/linux-dsh-path-node22-0-1-5-rc-3-3080-3081-3082--5cdda134.md",
+      "sourcePaths": [
+        ".dsh/_linux-dsh-fix/REPORT.md",
+        ".bashrc",
+        ".config/systemd/user/dsh-web.service",
+        ".config/systemd/user/dsh-tunnel.service"
+      ],
+      "sessionIds": [
+        "d353d17c-d5f3-412c-8e26-5ee0bc4765cd"
+      ],
+      "createdAt": "2026-10-28T17:20:38.385Z",
+      "updatedAt": "2026-10-28T17:20:38.385Z",
+      "lastAccessedAt": "2026-10-28T17:20:38.385Z",
+      "revision": 1,
+      "contentHash": "17ca333bdebf287387547dca32cf15ad258c6d14375c8125f9dda4cdc7e69b22",
+      "sizeBytes": 5605,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "fa6b195b-33a7-4222-aed0-f8f4cf4d559b",
+      "title": "dsh-sandbox-allowlist 在 Windows 的能力边界（2026-10-29）：只解 write/edit 应用层栅栏，不解 bash 子进程的内核 MAC —— 最终采用 icacls 打 Low label",
+      "description": "第三方插件 dsh-sandbox-allowlist@0.1.0 在 Windows 上只解决 write/edit 路径围栏（lib/fs.mjs 生效），provider.mjs 在 win32 被 disabled 因而管不到 bash 里 python/powershell 撞的内核 no-write-up；实测结论是给目标子目录 icacls /setintegritylevel \"(OI)(CI)Low\" /T 即可三路全通，无需装插件。含验证判据与回滚命令。",
+      "status": "active",
+      "filename": "dsh-sandbox-allowlist-windows-2026-10-29-write-e-fa6b195b.md",
+      "relativePath": "documents/active/dsh-sandbox-allowlist-windows-2026-10-29-write-e-fa6b195b.md",
+      "sourcePaths": [
+        "profiles/web/cordis.patch.yml",
+        "PLAN.md"
+      ],
+      "sessionIds": [
+        "a2a9edb0-83c8-4f1c-84e3-40a198aceb79"
+      ],
+      "createdAt": "2026-10-28T17:20:43.288Z",
+      "updatedAt": "2026-10-28T17:20:43.288Z",
+      "lastAccessedAt": "2026-10-28T19:41:34.066Z",
+      "revision": 1,
+      "contentHash": "8c03aff75eb54b56bb99387f542bb66887bec3ddd49d1b752cffd3b25c6bdef7",
+      "sizeBytes": 6199,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "8e8f5324-d034-44d8-b8f5-b14eeb5e7272",
+      "title": "i9-14900HX 异构核并发实测、P-core 绑核与 subagent route 继承（2026-10-29）",
+      "description": "2026-10-29 在本机 dsh 环境完成的并发实测与配置定案：subagent 只读并发 6 路验证、CPU 密集 4 路拐点与 E-core 溢出机制（含 makespan 模型与 P-core 绑核 -24% 实测）、subagent 墙钟 24.1% 本机/75.9% API 的瓶颈分解、社区并发插件只能限流不能加速、subagent agentOptions 逐字段继承/覆盖源码事实、persona 与 pre-step 注入的 prefix cache 权衡、Low IL 写权限与生效边界判据。",
+      "status": "active",
+      "filename": "i9-14900hx-p-core-subagent-route-2026-10-29-8e8f5324.md",
+      "relativePath": "documents/active/i9-14900hx-p-core-subagent-route-2026-10-29-8e8f5324.md",
+      "sourcePaths": [
+        ".dsh/profiles/web/cordis.patch.yml",
+        ".dsh/profiles/desktop/cordis.patch.yml",
+        ".dsh/tools/pin-pcore.ps1",
+        ".dsh/.agent-presets/anchored-standard/concurrency-discipline.mjs",
+        ".dsh/profiles/node_modules/@deepseek-ai/dsh-subagent/lib/index.js"
+      ],
+      "sessionIds": [
+        "19324eb5-0452-4a3f-9eb2-2bc4ffcb73f3"
+      ],
+      "createdAt": "2026-10-28T17:57:36.945Z",
+      "updatedAt": "2026-10-28T17:57:36.945Z",
+      "lastAccessedAt": "2026-10-28T17:57:36.945Z",
+      "revision": 1,
+      "contentHash": "b5988290554ada05551ac0f8cd071534736974fea089809bad1df1adaf3f1c66",
+      "sizeBytes": 9154,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "158104d4-6a2a-4027-91a6-f3778daba823",
+      "title": "dsh web_search 真身定位：官方 deepseek-official provider（dsh-web-search-deepseek）行为边界与 sources.md 更正（2026-10-29）",
+      "description": "2026-10-29 定位结论：web_search 不是自建三源聚合器，而是官方 @deepseek-ai/dsh-web-search-deepseek（注册名 deepseek-official，Server-side native search，content 恒空只给 URL/snippet，无 maxResults 旋钮，$DEEPSEEK_SEARCH_BASE_URL 独立于 chat 端点，失败码三件套）；含定位方法、未定论项（用户改过的\"来源\"层未找到）与技能 sources.md 三处更正。关联自建聚合器版本 c6920883。",
+      "status": "active",
+      "filename": "dsh-web-search-deepseek-official-provider-dsh-we-158104d4.md",
+      "relativePath": "documents/active/dsh-web-search-deepseek-official-provider-dsh-we-158104d4.md",
+      "sourcePaths": [
+        "AppData/Roaming/npm/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-web-search-deepseek/README.md",
+        "AppData/Roaming/npm/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-web-search-deepseek/package.json",
+        "AppData/Roaming/npm/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-web-search-deepseek/lib/index.js",
+        ".dsh/profiles/web/cordis.patch.yml",
+        ".dsh/profiles/desktop/cordis.patch.yml",
+        ".dsh/profiles/headless/cordis.patch.yml"
+      ],
+      "sessionIds": [
+        "4727c913-77b3-4018-b17b-9f92037769e5"
+      ],
+      "createdAt": "2026-10-28T18:03:10.819Z",
+      "updatedAt": "2026-10-28T18:03:10.819Z",
+      "lastAccessedAt": "2026-10-28T18:03:10.819Z",
+      "revision": 1,
+      "contentHash": "6582b8951e5de954aecb9f2c1336d47516e018ec5bafe124a55efbe11d26b439",
+      "sizeBytes": 7346,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "fc0a8a83-84ea-44c4-86a0-9ff1fe82d097",
+      "title": "dsh Windows sandbox Low IL 根治（2026-10-29）：session override 压过 defaultPreset 的代码级根因 + dsh-sandbox-nx 两行 patch",
+      "description": "本机（天阙九泉\\27063，非管理员）dsh Windows ACL sandbox 反复把 workspace 打成 Low Mandatory Level 的代码级唯一根因定位：`SandboxPolicyService.resolve()` 中 session 的 `sandbox/mode` 事件优先于部署 defaultPreset，导致 config 改 danger-full-access 无效。含两行 patch（workspace-write → danger-full-access）、`dsh-sandbox-nx.py --check/--apply/--revert` 工具、三条 executor 单 seam 覆盖面证据、生效需完全重启、升级后重打、以及本次先做的 App 目录/exe Low→Medium label 修复（8712 文件 39.7s）。关联 41ce8bea（机制层定案）与 fa6b195b（allowlist 边界）。",
+      "status": "active",
+      "filename": "dsh-windows-sandbox-low-il-2026-10-29-session-ov-fc0a8a83.md",
+      "relativePath": "documents/active/dsh-windows-sandbox-low-il-2026-10-29-session-ov-fc0a8a83.md",
+      "sourcePaths": [
+        "AppData/Roaming/npm/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-sandbox-policy/lib/index.js",
+        ".dsh-lab/tools/dsh-sandbox-nx.py"
+      ],
+      "sessionIds": [
+        "23f32f4c-17cd-4b75-bc4b-a9b5538d26d1"
+      ],
+      "createdAt": "2026-10-28T18:08:43.893Z",
+      "updatedAt": "2026-10-28T18:08:43.893Z",
+      "lastAccessedAt": "2026-10-28T18:10:50.555Z",
+      "revision": 1,
+      "contentHash": "7ff74726e51ee04333b1053b25c4f4d1117d0ef7131e2abd328c3905cf9215b8",
+      "sizeBytes": 6683,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "bf1e1849-d671-46dd-b9a4-ab9b17ab653c",
+      "title": "billion-context 作为 bundle 时的 compaction gate 覆盖机制：宿主 auto:true 为何在运行态无效，以及 disabled:true 解法（2026-10-29）",
+      "description": "2026-10-29 取证：billion-context@0.1.208 的 dsh-compaction-gate.js 通过 internal/config 全局 hook 把所有 preset 的 compaction-basic/command-compact row 改成 disabled:true（上游 #3354），导致只改 auto:true / thresholdRatio 在 dump-config 里可见但运行态无实例；patch 的 name mismatch 拒绝本地 shim 替换；最终用 disabled:true 关 gate entry。另记 authoredCompaction 需 session 持 active 折叠块否则 422。承接并反转 3912c06c 的 auto:false 修法。",
+      "status": "active",
+      "filename": "billion-context-bundle-compaction-gate-auto-true-bf1e1849.md",
+      "relativePath": "documents/active/billion-context-bundle-compaction-gate-auto-true-bf1e1849.md",
+      "sourcePaths": [
+        ".dsh/profiles/web/cordis.patch.yml",
+        ".dsh/profiles/node_modules/billion-context/dist/agent/dsh-compaction-gate.js",
+        ".dsh/profiles/node_modules/billion-context/dsh.bundle.patch.yml",
+        ".dsh/profiles/node_modules/billion-context/dist/agent/dsh-native.js",
+        ".dsh/plugins/bili-gate-passthrough.mjs"
+      ],
+      "sessionIds": [
+        "baae034f-a801-4dac-b4a0-8a1691304386"
+      ],
+      "createdAt": "2026-10-28T18:10:20.941Z",
+      "updatedAt": "2026-10-28T18:10:20.941Z",
+      "lastAccessedAt": "2026-10-28T18:10:20.941Z",
+      "revision": 1,
+      "contentHash": "c982bc05d42b68fe9e392cc2aa255131cf15633b10affa36501c90f0f83a52f9",
+      "sizeBytes": 6784,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "b6fd758d-c8d3-4d58-beef-37bf4185e9ba",
+      "title": "DeepSeek 搜索计费口径分路径与 platform 用量抓取受阻记录（2026-10-29）",
+      "description": "2026-10-29 排查「搜索每天约 ¥0.1 + 10-26/10-28 官网出现 deepseek-flash token」：给出计费口径分路径（直连 /v1/tools/search 自 10-17 收费 vs server-side tool 路径延至 11-01）、算式核对、本机已排除清单、用户级 env 的结构性缝，以及 Windows/Edge 下抓 platform.deepseek.com 的障碍与三条可行路径。修正既有文档 3e3eb62f 的「11-01 前免费」表述。",
+      "status": "active",
+      "filename": "deepseek-platform-2026-10-29-b6fd758d.md",
+      "relativePath": "documents/active/deepseek-platform-2026-10-29-b6fd758d.md",
+      "sourcePaths": [
+        ".dsh/profiles/web/cordis.patch.yml",
+        ".dsh/profiles/desktop/cordis.patch.yml",
+        ".dsh/profiles/headless/cordis.patch.yml",
+        ".continue/config.yaml"
+      ],
+      "sessionIds": [
+        "cd14b7c5-c0c6-467f-9f61-4d0baabe9f0a"
+      ],
+      "createdAt": "2026-10-28T18:10:39.799Z",
+      "updatedAt": "2026-10-28T18:10:39.799Z",
+      "lastAccessedAt": "2026-10-28T18:10:39.799Z",
+      "revision": 1,
+      "contentHash": "6deb0f8a6f88f0ed757891ab618adc6774eabfe26c124d6d6b53c17ae612a6ac",
+      "sizeBytes": 5458,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "c495f84f-f1d3-4172-b021-244be70b0002",
+      "title": "dsh Windows bash 工具无 timeout 参数（120s 硬默认）与 preset .mjs 的会话生效边界（2026-10-29 取证）",
+      "description": "Windows 上模型-facing bash（custom-bash.mjs）的 schema 只有 command/workdir、config 未设 timeoutMs 因而吃 DEFAULT_TIMEOUT_MS=120000、instruction 层零约束——三层证据链与修法成本对比；另附 preset 层 .mjs 改动对已存在会话不生效（需开新会话，\"需重启\"结论已被实测证伪）的判据。",
+      "status": "active",
+      "filename": "dsh-windows-bash-timeout-120s-preset-mjs-2026-10-c495f84f.md",
+      "relativePath": "documents/active/dsh-windows-bash-timeout-120s-preset-mjs-2026-10-c495f84f.md",
+      "sourcePaths": [
+        ".dsh/.agent-presets/anchored-standard/custom-bash.mjs",
+        ".dsh/.agent-presets/anchored-standard/concurrency-discipline.mjs",
+        ".dsh/.agent-presets/anchored-standard/tool-bootstrap.mjs",
+        ".dsh/profiles/desktop/cordis.patch.yml",
+        ".dsh/profiles/web/cordis.patch.yml"
+      ],
+      "sessionIds": [
+        "a3e7c1c5-624d-495b-ae10-d5c2302a8f13"
+      ],
+      "createdAt": "2026-10-28T18:11:08.646Z",
+      "updatedAt": "2026-10-28T18:11:08.646Z",
+      "lastAccessedAt": "2026-10-29T06:07:02.531Z",
+      "revision": 1,
+      "contentHash": "96169ee60f61cc340fa026237225e66a6c59ec9528a02511248d21637d739193",
+      "sizeBytes": 5540,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "9c6b76a2-b3a7-46e6-b5f0-2629fb708b2a",
+      "title": "2026-10-29 白纸图标再定案：home 根上的 Everyone:(DENY)(DC) 是 dsh-sandbox grantWrite() 指纹；icacls 必须先断继承再删，per-item 图标缓存与 iconcache_*.db 是两层",
+      "description": "白纸图标第 N 轮：C:\\Users\\27063 上三条显式 ACE（Everyone:(CI)(DENY)(DC) + capability SID + Low label）认出是 dsh-sandbox-windows-acl grantWrite() 的指纹，DENY 优先导致 explorer 无法删 iconcache 条目；含 icacls 假成功（继承 ACE 需先 /inheritance:d）、root /T 在 165k 文件上跑不完、per-item 缓存 vs .db 两层、SHChangeNotify 重通知程序与社区旁证、桌面已重定向 D:\\Desktop 的现状与残留项。",
+      "status": "active",
+      "filename": "2026-10-29-home-everyone-deny-dc-dsh-sandbox-gra-9c6b76a2.md",
+      "relativePath": "documents/active/2026-10-29-home-everyone-deny-dc-dsh-sandbox-gra-9c6b76a2.md",
+      "sourcePaths": [
+        ".dsh-lab/tools/renotify-lnk-icons.ps1"
+      ],
+      "sessionIds": [
+        "c91c4eba-7655-4015-8c6e-d1383d3daf71"
+      ],
+      "createdAt": "2026-10-28T19:42:08.568Z",
+      "updatedAt": "2026-10-28T19:42:08.568Z",
+      "lastAccessedAt": "2026-10-28T20:05:32.127Z",
+      "revision": 1,
+      "contentHash": "fc15ed487fbc12ec94ece0f37494e03c01d3a1b01efccd1aa805ad5db414ecf5",
+      "sizeBytes": 8229,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "85db2c49-dd80-4157-8e6c-160df380273e",
+      "title": "custom-bash 工具 timeout 参数落地：timeoutMs 只定义未使用的根因、AbortSignal.any 修法与 unref 陷阱（2026-10-29）",
+      "description": "实测取证 + 修复记录：`~/.dsh/.agent-presets/anchored-standard/custom-bash.mjs` 的 `timeoutMs` 仅被读入变量从未使用（等于历史上从未有超时），修法为 schema 增 `timeout`（秒）+ AbortController/AbortSignal.any 合并 exec signal 并夹紧到 config 上限，含 4 条 mock 单元测试结果与「不要 timer.unref()」陷阱；同时记录 cache 报告 95.9% hit 否决了 mnemon 分层改造的前提。修正文档 c495f84f 中「吃 120s 硬默认」的结论。",
+      "status": "active",
+      "filename": "custom-bash-timeout-timeoutms-abortsignal-any-un-85db2c49.md",
+      "relativePath": "documents/active/custom-bash-timeout-timeoutms-abortsignal-any-un-85db2c49.md",
+      "sourcePaths": [
+        ".dsh/.agent-presets/anchored-standard/custom-bash.mjs",
+        ".dsh/.agent-presets/anchored-standard/concurrency-discipline.mjs"
+      ],
+      "sessionIds": [
+        "25b64d04-9198-4386-b55f-9020a2200cb9"
+      ],
+      "createdAt": "2026-10-28T19:42:25.514Z",
+      "updatedAt": "2026-10-28T19:42:25.514Z",
+      "lastAccessedAt": "2026-10-29T06:07:02.531Z",
+      "revision": 1,
+      "contentHash": "73ca2a3d0ab8eb9bf6b2f981b8d23435b4402edfc0c4a01206d9c90e717d3f8b",
+      "sizeBytes": 5755,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "55ab0b45-9ea5-4dba-8985-b8d36ccedf41",
+      "title": "2026-10-29 定案：.lnk 图标全白 = 快捷方式文件自身 Low mandatory label；缓存/注册表/COM 全正常是假线索，icacls /setintegritylevel Medium 一行修好",
+      "description": "白纸图标根因定案：`.lnk` 文件自身 NTFS mandatory label 为 Low，Shell 在 lnkfile IconHandler 分支直接返回白纸；清 iconcache/重启 explorer/重注册/注册表全对均无效，`icacls /setintegritylevel \"(OI)(CI)Medium\" /T` 立即修复。含 hash 指纹客观判据（25/25 同 hash → 24 distinct）、按来源分离测试、7 步排查顺序、换盘因此前 junction 使 label 跨盘传播而失效、附带坑与工具清单。引用 9c6b76a2/41ce8bea/196df70c。",
+      "status": "active",
+      "filename": "2026-10-29-lnk-low-mandatory-label-com-icacls-se-55ab0b45.md",
+      "relativePath": "documents/active/2026-10-29-lnk-low-mandatory-label-com-icacls-se-55ab0b45.md",
+      "sourcePaths": [
+        ".dsh-lab/tools/probe-lnk-icons.ps1",
+        ".dsh-lab/tools/probe-icon-sources.ps1",
+        ".dsh-lab/tools/fix-desktop-label2.ps1",
+        ".dsh-lab/tools/renotify-lnk-icons.ps1"
+      ],
+      "sessionIds": [
+        "ca182609-e4c9-4dbc-9324-a4445170e3cd"
+      ],
+      "createdAt": "2026-10-28T20:05:55.935Z",
+      "updatedAt": "2026-10-28T20:05:55.935Z",
+      "lastAccessedAt": "2026-10-28T20:05:55.935Z",
+      "revision": 1,
+      "contentHash": "52a7297442859d223c06243880468bc72858ddccc248f111ac815daef8354062",
+      "sizeBytes": 6350,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "584495bb-785a-4ab3-9a15-50367bd1fe64",
+      "title": "commandcode API key 频繁失效真因（官方整批吊销）与 key 健康探活 / 换 key 工具落地（2026-10-29）",
+      "description": "2026-10-29 排查「key 自己消失 / 经常过期」：真因是 Command Code 官方因 distillation 安全事件整批吊销全部 API key，而非「每次登录顶掉上一个 token」；实测无 refresh 端点、额度按账号不按 key；落地 key-health-watch.mjs（探活 + 告警）与 key-set.mjs（探测后原子写入），并记录 process.exit() 与 undici 的 UV assertion 崩溃坑。",
+      "status": "active",
+      "filename": "commandcode-api-key-key-key-2026-10-29-584495bb.md",
+      "relativePath": "documents/active/commandcode-api-key-key-key-2026-10-29-584495bb.md",
+      "sourcePaths": [
+        "key-health-watch.mjs",
+        "key-set.mjs",
+        "keys.json",
+        "gateway.mjs",
+        "quota-http.mjs"
+      ],
+      "sessionIds": [
+        "73259eec-2c12-4c8c-925f-c6aa7759a0fe"
+      ],
+      "createdAt": "2026-10-29T05:04:23.892Z",
+      "updatedAt": "2026-10-29T05:04:23.892Z",
+      "lastAccessedAt": "2026-10-29T06:07:02.531Z",
+      "revision": 1,
+      "contentHash": "f25d6cca6d01efe0940aa99e424bce1708186446769d24575c774db0a6e9ed9b",
+      "sizeBytes": 7223,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "f91c9420-d7e9-41c0-b7c9-9b14f514abf7",
+      "title": "ParsecVDD 扩展屏「自启失效」真因：三个 IDD 驱动争抢 IddCx 导致 add 恒 NotInstalled（2026-10-29）",
+      "description": "接 8d326aca / a78ca4cd 之后的续查：重启后「自启失效」实为 add 被驱动拒绝并报 status NotInstalled；定位到 ExtensoDesk / GameViewer / ParsecVDD 三块 IDD 同时存活争抢 IddCx，以及 remove 会毁状态机。含已验证无效的手段清单、A/B/C 三条处置路线与用户选择（a，不行就 c）、host.ps1 单例守护与 toggle.ps1 去 remove 的改造、遗留项（分辨率 / Web UI 密码 / 脚本清理）。",
+      "status": "active",
+      "filename": "parsecvdd-idd-iddcx-add-notinstalled-2026-10-29-f91c9420.md",
+      "relativePath": "documents/active/parsecvdd-idd-iddcx-add-notinstalled-2026-10-29-f91c9420.md",
+      "sourcePaths": [],
+      "sessionIds": [
+        "7fa55017-13fa-4579-adf5-5da58589f7df"
+      ],
+      "createdAt": "2026-10-29T05:14:08.385Z",
+      "updatedAt": "2026-10-29T05:14:08.385Z",
+      "lastAccessedAt": "2026-10-29T05:14:08.385Z",
+      "revision": 1,
+      "contentHash": "d8ffd5890892c0d718e8b1c4ffa815454bfc4d763945b3a5bfe58cbfe225bd58",
+      "sizeBytes": 7260,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "67873213-f563-4655-b614-91628a801db5",
+      "title": "AcRecoverySwitch 机理定案（EC 充电状态边沿，BiosSupport=0）与 wake-guard 2026-10-29 修复：Reboot 第一顺位隔离、连发拦截、-match 大小写踩坑",
+      "description": "接 b3d6ec11 之后的机理修正与脚本实现：OEM\\GamingCenter2 注册表证据显示 AcRecoverySwitch 为同方 EC 固件逻辑（BiosSupport=0），判据是「未充电→充电」状态翻转而非 AC 电平或 BIOS Power On after AC Loss；含时刻插电用户的选项收敛（A 关开关 / B guard 兜底）、wake-guard.ps1 六分支干跑验收、PowerShell -match 忽略大小写导致 -34.5s 负数间隔的隐蔽 bug，以及 USB S5 给电为何触动不了该判据。",
+      "status": "active",
+      "filename": "acrecoveryswitch-ec-biossupport-0-wake-guard-202-67873213.md",
+      "relativePath": "documents/active/acrecoveryswitch-ec-biossupport-0-wake-guard-202-67873213.md",
+      "sourcePaths": [
+        ".dsh/storages/tools/wake-guard.ps1",
+        ".dsh/logs/wake-guard.log",
+        ".dsh/plans/session-d7523965-42f8-4548-855d-99d4598eeb90.md"
+      ],
+      "sessionIds": [
+        "c366b024-6d7e-488d-91e0-285f4b3828f6"
+      ],
+      "createdAt": "2026-10-29T05:48:22.989Z",
+      "updatedAt": "2026-10-29T05:48:22.989Z",
+      "lastAccessedAt": "2026-11-01T08:16:36.201Z",
+      "revision": 1,
+      "contentHash": "0bccc5f8b0851eda2c82b7ea4349a5c1779f2cb9f28d6b7c06ffe02bb5906ac2",
+      "sizeBytes": 9869,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "15cf275f-838c-466f-899f-8004e4827df7",
+      "title": "goat-gateway /cache 三层缓存改造：TTL → SWR + single-flight + ETag（含社区经验对照与踩坑）",
+      "description": "2026-10-29 goat-gateway /cache 缓存率端点的三层缓存改造记录：L1 文件级 + L2 结果 TTL(1h)、SWR 非阻塞过期、single-flight 合并并发、ETag 稳定 body 与 no-store 架空 ETag 的修复、execFileSync 阻塞 event loop 的移除；含实测数字、TTL/WARM 解耦教训与回滚点。",
+      "status": "active",
+      "filename": "goat-gateway-cache-ttl-swr-single-flight-etag-15cf275f.md",
+      "relativePath": "documents/active/goat-gateway-cache-ttl-swr-single-flight-etag-15cf275f.md",
+      "sourcePaths": [],
+      "sessionIds": [
+        "82c83bfa-6d5d-48c7-aa9f-ee7eac69a0d7"
+      ],
+      "createdAt": "2026-10-29T05:58:29.851Z",
+      "updatedAt": "2026-10-29T05:58:29.851Z",
+      "lastAccessedAt": "2026-11-01T15:15:14.272Z",
+      "revision": 1,
+      "contentHash": "e48fa042c72d7f76b089e4f37b088e0b29524ee4dde1e7ad7f6c3cb5298c27c1",
+      "sizeBytes": 7333,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "39cd6686-7e84-40a4-a971-cfd2995f8353",
+      "title": "custom-bash 分级超时（TIMEOUT_RULES）：为什么「schema 有可选参数」治不了根 + heredoc 吞 \\b 的坑（2026-10-29）",
+      "description": "承接 85db2c49 / c495f84f：在 custom-bash.mjs 里把超时从「模型可选传参」改为「按命令类型自动分级」，含完整 TIMEOUT_RULES 规则表、优先级（显式 > 规则 > 120s 默认）、17/17 单测与端到端取证，以及正则经 heredoc 写入被吞成退格符 \\x08 导致 17 条规则静默全失效的排查教训与验收方法。",
+      "status": "active",
+      "filename": "custom-bash-timeout-rules-schema-heredoc-b-2026--39cd6686.md",
+      "relativePath": "documents/active/custom-bash-timeout-rules-schema-heredoc-b-2026--39cd6686.md",
+      "sourcePaths": [
+        ".dsh/.agent-presets/anchored-standard/custom-bash.mjs",
+        ".dsh/.agent-presets/anchored-standard/concurrency-discipline.mjs"
+      ],
+      "sessionIds": [
+        "c1cffae8-b3db-4dc8-8160-61fff1837e63"
+      ],
+      "createdAt": "2026-10-29T06:07:19.148Z",
+      "updatedAt": "2026-10-29T06:07:19.148Z",
+      "lastAccessedAt": "2026-10-29T06:07:19.148Z",
+      "revision": 1,
+      "contentHash": "368134f2214b82fea0a6ed05de6b66f5b211ed0ba98ede5a803a324d31eba161",
+      "sizeBytes": 5605,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "7a971eb1-de58-4c9b-9fdf-227bb70da831",
+      "title": "Minecraft 存档备份去重清理（2026-10-29）：两处备份目录辨析、DistantHorizons LOD 缓存剔除、释放 64.4 GB 与安全删除规程",
+      "description": "本机 Minecraft 备份实际存在两处（D:\\MINECRAFT\\_backup\\ 与 D:\\MCBackup\\），加上当前存档共三份约 114 GB；本记录给出各自的来源/新旧/内容差异、DH 的 DistantHorizons.sqlite 是约 10 GB 可重建 LOD 缓存因此备份应排除、两次删减的执行与独立复核结果（累计释放 64.4 GB，当前仅剩一份 17.3 GB 备份），以及「路径断言 + KEEP-VERIFY + 不复用脚本自报」的删除防呆规程。关联 backup-mc.ps1 设计文档 6b3159c7。",
+      "status": "active",
+      "filename": "minecraft-2026-10-29-distanthorizons-lod-64-4-gb-7a971eb1.md",
+      "relativePath": "documents/active/minecraft-2026-10-29-distanthorizons-lod-64-4-gb-7a971eb1.md",
+      "sourcePaths": [],
+      "sessionIds": [
+        "1499e3d8-bc73-47a2-a0a1-2466917d2d44"
+      ],
+      "createdAt": "2026-10-29T06:07:40.808Z",
+      "updatedAt": "2026-10-29T06:07:40.808Z",
+      "lastAccessedAt": "2026-10-31T16:48:24.791Z",
+      "revision": 1,
+      "contentHash": "f4c85d00c9db004e97172f34f7c8117470f6d7707eb72824dbc70a4141aeae8c",
+      "sizeBytes": 6851,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "f651fb17-4464-4764-9a19-a38066b95e01",
+      "title": "fluxscope：canvas 弧带舞台实现要点（命中反解、指针锚点缩放、实时流光）(2026-10-29)",
+      "description": "2026-10-29 fluxscope 实现 handoff：极坐标 arc-band 舞台的 O(1) 命中反解、world/device 两空间与指针锚点缩放公式、拖拽 5px 阈值、SSE 事件流光方向语义、三档交互（hover/click/filter）与已知边界（高倍缩放露白）。",
+      "status": "active",
+      "filename": "fluxscope-canvas-2026-10-29-f651fb17.md",
+      "relativePath": "documents/active/fluxscope-canvas-2026-10-29-f651fb17.md",
+      "sourcePaths": [
+        "fluxscope"
+      ],
+      "sessionIds": [
+        "7792154d-1369-49ba-8b15-63d0dd40d5cf"
+      ],
+      "createdAt": "2026-10-29T06:09:52.693Z",
+      "updatedAt": "2026-10-29T06:09:52.693Z",
+      "lastAccessedAt": "2026-11-01T08:25:18.035Z",
+      "revision": 1,
+      "contentHash": "170d4a09a7d3e3f44b33b684de0d110d75cb2c5ea291a8b7b76b9a3cef9185e4",
+      "sizeBytes": 4859,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "ab3fa8e7-881a-4ca2-b7d1-2568e27e61d7",
+      "title": "会话标题降频选型与落地：拒用 interval provider，改 @weibaohui/dsh-smart-title + 本地放宽节流上限（2026-10-29）",
+      "description": "2026-10-29 为把会话标题 LLM 刷新从「每条 human message（实测约 203 次/天）」降到「每天一次」：否决 npm 上的 session-title-interval-llm（宿主只允许 first-prompt/all-prompts cadence），手工安装 @weibaohui/dsh-smart-title@0.1.9 并接管内建 session-title-llm 行，本地把 refreshMinIntervalMs 上限 1h→24h（三处 + 行内注释导致 SyntaxError 的教训）、绕开 pnpm gitFetcher 的手工装法、web/desktop 两 profile 状态、验证与回滚步骤。",
+      "status": "active",
+      "filename": "interval-provider-weibaohui-dsh-smart-title-2026-ab3fa8e7.md",
+      "relativePath": "documents/active/interval-provider-weibaohui-dsh-smart-title-2026-ab3fa8e7.md",
+      "sourcePaths": [
+        "profiles/web/node_modules/@weibaohui/dsh-smart-title/src/index.js",
+        "profiles/web/cordis.patch.yml",
+        "profiles/desktop/cordis.patch.yml",
+        "profiles/desktop/package.json"
+      ],
+      "sessionIds": [
+        "ffe62147-34a3-41c7-a0c3-74069d297b1e"
+      ],
+      "createdAt": "2026-10-29T10:05:44.236Z",
+      "updatedAt": "2026-10-29T10:05:44.236Z",
+      "lastAccessedAt": "2026-10-29T10:05:44.236Z",
+      "revision": 1,
+      "contentHash": "1a84973fef708d406ca0eaead2f57c78971d8e4e28863ce032ea4a0523231c04",
+      "sizeBytes": 6972,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "72959942-68c1-4910-8712-e23e43c43b62",
+      "title": "backward induction 与 SPNE 的四条件分离：讲义 v2、反例与学习文档审计流程（2026-10-24 ~ 10-30）",
+      "description": "把「逆推一定对吗」从 DP 最优子结构推到 Kuhn 定理，并拆出值/存在/唯一/tie 四个独立条件；附硬币行递推的基例与填充顺序修正、可运行的 SPNE 暴力枚举脚本、以及本轮暴露出的「图内文字必须与正文同等审计」规程与 heredoc 转义坑。",
+      "status": "active",
+      "filename": "backward-induction-spne-v2-2026-10-24-10-30-72959942.md",
+      "relativePath": "documents/active/backward-induction-spne-v2-2026-10-24-10-30-72959942.md",
+      "sourcePaths": [],
+      "sessionIds": [
+        "c6a6e21b-60e9-477d-8f35-b3c4df27154b"
+      ],
+      "createdAt": "2026-10-29T16:26:36.200Z",
+      "updatedAt": "2026-10-29T16:26:36.200Z",
+      "lastAccessedAt": "2026-11-01T18:21:01.780Z",
+      "revision": 1,
+      "contentHash": "30e251808e321c0f97a1b755d2baa144d3e186c7944a174ee045e2fdd213e3ba",
+      "sizeBytes": 6763,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "0ad9820e-1e70-4292-9b63-439a21fb3e5c",
+      "title": "100b 实分析笔记工程：learn-translate 四问落地与「度量只依赖三公理」专题重做（2026-10-30）",
+      "description": "100b 实分析课程的笔记写作约定与一次主题漂移返工记录：四问锚点框架、[未定位] 纪律、KaTeX 交付校验流水、五问重做结论与四条定理账本的事实坐标（Wilson/Kurepa/Lawvere/Padoa/Simpson-Hirst）。含废弃稿留底命名与待核引用。",
+      "status": "active",
+      "filename": "100b-learn-translate-2026-10-30-0ad9820e.md",
+      "relativePath": "documents/active/100b-learn-translate-2026-10-30-0ad9820e.md",
+      "sourcePaths": [
+        "Desktop/课程文件/100b实分析/度量三公理-只依赖-疑问与解答.md",
+        "Desktop/课程文件/100b实分析/_废弃-度量三公理-疑问与解答-v0九问版.md",
+        "Desktop/课程文件/100b实分析/01-讲义笔记",
+        "Desktop/课程文件/100b实分析/04-复习资料"
+      ],
+      "sessionIds": [
+        "b3765b19-d841-40c3-a66b-e6dcfdce3f9d"
+      ],
+      "createdAt": "2026-10-30T06:09:19.063Z",
+      "updatedAt": "2026-10-30T06:09:19.063Z",
+      "lastAccessedAt": "2026-10-30T07:00:46.528Z",
+      "revision": 1,
+      "contentHash": "ee1c6e2dfe92532a9f0d913a69b0e981f17a0dd2fcb40f3e3017cd4933dd32ba",
+      "sizeBytes": 5819,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "9f74826b-ef7c-4784-8723-bce5de6cb4bf",
+      "title": "「度量只依赖三公理」专题：TBB 引用核实、mathlib 层级证据与 DTW 反向承重（2026-10-30 收尾）",
+      "description": "100b 实分析「度量三公理」专题的收尾证据档：旧稿 TBB §2.9–2.10 引用确认错误并以真 pdf 目录改为 Ch.13/§1.10/§11.2；mathlib Pseudo/Defs.lean 与 Defs.lean 行号证明 M1–M3 即 typeclass 字段、非负性可导出；DTW 缺 M3 被迫自造 LB_Keogh 下界的反向承重（两处 A 级文献 + DOI），以及为何仍保留一格 [未定位]。前序 0ad9820e。",
+      "status": "active",
+      "filename": "tbb-mathlib-dtw-2026-10-30-9f74826b.md",
+      "relativePath": "documents/active/tbb-mathlib-dtw-2026-10-30-9f74826b.md",
+      "sourcePaths": [
+        "Desktop/课程文件/100b实分析/度量三公理-只依赖-疑问与解答.md",
+        "Desktop/课程文件/100b实分析/_废弃-度量三公理-疑问与解答-v0九问版.md"
+      ],
+      "sessionIds": [
+        "80230af6-0e9f-41af-86b6-403b8492f60c"
+      ],
+      "createdAt": "2026-10-30T07:01:06.336Z",
+      "updatedAt": "2026-10-30T07:01:06.336Z",
+      "lastAccessedAt": "2026-10-30T07:01:06.336Z",
+      "revision": 1,
+      "contentHash": "a3a9b009b89224dfdd27df6bb4e0bd094322b1ef6d6bdceb3b665ccb4704a81f",
+      "sizeBytes": 6559,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "e4cc6b3f-b290-482f-a2b8-fa383a82cae9",
+      "title": "虚拟扩展屏换轨 usbmmidd：pnputil 补装驱动、enableidd 开关、Sunshine output_name 改绑（2026-10-30）",
+      "description": "ParsecVDD 走不通后改用 usbmmidd 的落地结论与操作脚本：deviceinstaller64 install 只建设备节点、必须再 pnputil /add-driver usbmmidd.inf /install 才注册 WUDF usbmmIdd 服务；开关为 enableidd 1/0 无 remove 死锁；Sunshine output_name 需指向 usbmmidd 屏的 device_id GUID；C:\\Users\\27063\\扩展屏 下 5 个 .cmd 一键脚本。状态：虚拟屏与 service 已就位，Moonlight 端到端未最终确认。前置 a78ca4cd / 8d326aca / 12e010fd。",
+      "status": "active",
+      "filename": "usbmmidd-pnputil-enableidd-sunshine-output-name--e4cc6b3f.md",
+      "relativePath": "documents/active/usbmmidd-pnputil-enableidd-sunshine-output-name--e4cc6b3f.md",
+      "sourcePaths": [
+        "扩展屏/0-一次配置.cmd",
+        "扩展屏/1-开扩展屏.cmd",
+        "扩展屏/2-关扩展屏.cmd",
+        "扩展屏/3-状态.cmd",
+        "扩展屏/4-自启.cmd"
+      ],
+      "sessionIds": [
+        "64c5bb1e-9e0a-44a1-8aee-5e321c726cce"
+      ],
+      "createdAt": "2026-10-30T15:49:48.088Z",
+      "updatedAt": "2026-10-30T15:49:48.088Z",
+      "lastAccessedAt": "2026-10-30T15:49:48.088Z",
+      "revision": 1,
+      "contentHash": "7fac95c48bd242bf7b86b70e1970fa5688ab4dcb353c62acda33d1e6434ae6fd",
+      "sizeBytes": 5981,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "1d765fe9-814b-4608-b7a8-cf3c47123eff",
+      "title": "plan-anchor 的 todo 投影与「陈旧提醒」实现：两个设计错误的实测证据、去重窗口的 turn/start 边界、社区依据与外部回滚教训（2026-10-31）",
+      "description": "2026-10-31 plan-anchor.mjs 第二轮迭代：todosOf 只抽「下一步」导致 UI completed 恒为 0 的设计错误及其解压 session log 得到的 done 0→5 硬证据；todo/write 去重因只看 log 末条而每步触发（10–25s 一条），改为从尾部向前扫到 turn/start 修复；新增 staleHint/WRITE_TOOLS/staleLead 的「本轮干了写活却没更新 plan」注入式提醒（判据、once-per-turn、社区三处依据 planning-with-files v3 / issue #239 systemMessage 通道坑 / Kimi Code todo 机制），以及外部进程回滚未提交改动 ⇒「改完立刻 commit、不跨步骤」的实操教训。提交 40ddcc8 / e938144 / b279ea3。前序见 b4a7aa94。",
+      "status": "active",
+      "filename": "plan-anchor-todo-turn-start-2026-10-31-1d765fe9.md",
+      "relativePath": "documents/active/plan-anchor-todo-turn-start-2026-10-31-1d765fe9.md",
+      "sourcePaths": [
+        ".agent-presets/anchored-standard/plan-anchor.mjs"
+      ],
+      "sessionIds": [
+        "a0adbf30-e390-4f66-aeb9-892e55403c4f"
+      ],
+      "createdAt": "2026-10-31T15:29:11.368Z",
+      "updatedAt": "2026-10-31T15:29:11.368Z",
+      "lastAccessedAt": "2026-10-31T15:29:11.368Z",
+      "revision": 1,
+      "contentHash": "ef4e51a4a00e5bfdeb1d0d1229a61e71a9e02bc632fc03f7d53936515a8dd861",
+      "sizeBytes": 7694,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "a9c01787-a189-4994-a5ae-72cf674c3128",
+      "title": "Minecraft 故宫蓝图：模型源调查、故宫尺寸硬数据与体素化可行性账（2026-10-31）",
+      "description": "为把故宫做成 Minecraft 蓝图（.nbt）所做的取源调查与规模核算：Sketchfab 三个 CC-BY 故宫模型（UID/面数/许可）但自动下载被 binz 私有格式与登录墙挡住；中国官方渠道（dpm.org.cn / digicol / vr.dpm）只有全景与 VR、无 3D mesh；附故宫各段真实尺寸、15% 填充率体素量、Litematica 粘贴耗时/内存估算，以及「故宫适合参数化生成」的结构论据。延续 dc5438d0 的模型→.nbt 链路。",
+      "status": "active",
+      "filename": "minecraft-2026-10-31-a9c01787.md",
+      "relativePath": "documents/active/minecraft-2026-10-31-a9c01787.md",
+      "sourcePaths": [
+        "mcopt/mesh2nbt.py"
+      ],
+      "sessionIds": [
+        "9cc7381a-ddc6-4374-bd55-fba0820eb5c8"
+      ],
+      "createdAt": "2026-10-31T15:32:43.015Z",
+      "updatedAt": "2026-10-31T15:32:43.015Z",
+      "lastAccessedAt": "2026-11-01T16:58:22.789Z",
+      "revision": 1,
+      "contentHash": "f55a29df45a753c1665b619c0c1e895b802b81733d94d82c1609ad7e026a2121",
+      "sizeBytes": 6235,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "85170571-414b-4b3c-bc68-f2be7ff00363",
+      "title": "备份 repo「push 每天失败」根因：robocopy 源端污染闭环 + 228MB ONNX 双仓库污染（2026-11-01 修复）",
+      "description": "dsh-reasonix-agent 备份仓库自 2026-10-26 起每天 non-fast-forward 的完整根因与修复：robocopy /MIR 忠实镜像源端运行期文件（plans/tmp*/journal/skills/memory）导致本地永远比远端多几千文件；修法是改 backup-to-github.ps1 的源端排除规则而非 robocopy 开关。含排除项清单与计数依据、bundle 安全网 + reflog expire/gc（762→537MB）、228MB sensevoice ONNX 同时污染 ~/.dsh 自身 .git 并已 gitignore + rm --cached、剩余 filter-repo 瘦身决策、未查清的 rc=11。关联 9b946245（cb70ace 瘦身与放弃 filter-repo 判据）。",
+      "status": "active",
+      "filename": "repo-push-robocopy-228mb-onnx-2026-11-01-85170571.md",
+      "relativePath": "documents/active/repo-push-robocopy-228mb-onnx-2026-11-01-85170571.md",
+      "sourcePaths": [
+        ".dsh/PLAN.md",
+        ".dsh/PLAN.d/machine-env/backup-repo-20261101.md",
+        ".dsh/.gitignore",
+        ".dsh/plans/session-3315a426-b9aa-40c1-827c-817e18914498.md"
+      ],
+      "sessionIds": [
+        "96ab9180-98e4-4c89-a0a1-a868204ad6c0"
+      ],
+      "createdAt": "2026-10-31T16:49:03.317Z",
+      "updatedAt": "2026-10-31T16:49:03.317Z",
+      "lastAccessedAt": "2026-11-01T18:21:01.780Z",
+      "revision": 1,
+      "contentHash": "be392fcd20f10badf289c7a0806e2c61da09517ad01625111fd71ac6f6253d94",
+      "sizeBytes": 6451,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "5e1fbb1f-1c36-4c15-aca7-9c0c3fa9ac6c",
+      "title": "备份 repo 缩容四路径实测（535.82→325.03/258.15/26.91 MiB）与保留策略 A/B/C 候选（2026-11-01）",
+      "description": "备份 repo 全历史 535.82 MiB 的实测缩容数据（strip>10M 325.03 / strip>1M 258.15 / 单快照 26.91 MiB）、blob 与 commit 体积归因、git object model 判据（commit 便宜、blob 永久、无 prune）、保留策略 A/B/C 三档候选与推荐 B、mnemon-sync 分支与 ~/.dsh 双仓库 228MB ONNX 的待修项。",
+      "status": "active",
+      "filename": "repo-535-82-325-03-258-15-26-91-mib-a-b-c-2026-1-5e1fbb1f.md",
+      "relativePath": "documents/active/repo-535-82-325-03-258-15-26-91-mib-a-b-c-2026-1-5e1fbb1f.md",
+      "sourcePaths": [],
+      "sessionIds": [
+        "0136fb09-0e11-48cc-83ed-8644f2409d1c"
+      ],
+      "createdAt": "2026-10-31T17:07:01.251Z",
+      "updatedAt": "2026-10-31T17:07:01.251Z",
+      "lastAccessedAt": "2026-10-31T17:07:01.251Z",
+      "revision": 1,
+      "contentHash": "4c2c17ddf8f6d7f4919f7d5d8e09f3e2d8d8a43930804a619332b38411bb2bf5",
+      "sizeBytes": 6738,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "9996766a-350e-47fe-b820-c142820d52f8",
+      "title": "fluxscope v10–v11：WebGL2 环形拓扑的「文件名关联」抽取与近期优先选样（2026-11-01）",
+      "description": "2026-11-01 实现记录：fluxscope 从 canvas 弧带转向 WebGL2 圆环拓扑后，文件环大面积不亮的两个独立根因与修复——文件选样按全历史次数取 top-72 与近期活动脱节（近期 124 条调用命中 0）、bash 命令中的相对路径因缺 cd 上下文被丢弃（带文件调用 3654→6586）；含 extract_agents.py→agents.json→/topology→buildRing 数据链、__gldbg 自检口径与遗留项。承接 doc f651fb17（canvas 弧带舞台）。",
+      "status": "active",
+      "filename": "fluxscope-v10-v11-webgl2-2026-11-01-9996766a.md",
+      "relativePath": "documents/active/fluxscope-v10-v11-webgl2-2026-11-01-9996766a.md",
+      "sourcePaths": [
+        "fluxscope"
+      ],
+      "sessionIds": [
+        "ae4d9c5c-df75-498c-a32c-729db01d4ddb"
+      ],
+      "createdAt": "2026-10-31T17:28:39.019Z",
+      "updatedAt": "2026-10-31T17:28:39.019Z",
+      "lastAccessedAt": "2026-11-01T14:01:23.266Z",
+      "revision": 1,
+      "contentHash": "641da5ae5493ddcd2c3a0ce9ef1116635bd7bc817c625d33c6ee2cff9fbe1ad7",
+      "sizeBytes": 7011,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "ad6df72a-866f-4126-83f0-47947d005b98",
+      "title": "教材 bilingual 补图流水线：PyMuPDF 锚定法、裁剪判据与 Windows 远端派发踩坑（2026-11-01）",
+      "description": "MacKay/Boyd 等教材 bilingual 产物「占位图→真图裁剪嵌入」的可复跑流程：get_text('blocks') 图注 bbox 锚定 + get_drawings() 并集定位、每张必须 read_image 目视核边、占位描述不可信的实证清单、Python raw string 静默损坏与 read_image 二次降采样等实测陷阱，以及 Windows 上跨 session 派发 worker 的 Scheduled Task 配置。",
+      "status": "active",
+      "filename": "bilingual-pymupdf-windows-2026-11-01-ad6df72a.md",
+      "relativePath": "documents/active/bilingual-pymupdf-windows-2026-11-01-ad6df72a.md",
+      "sourcePaths": [
+        ".dsh/plans/session-5975e549-c31a-4745-835c-37a38a64b0cf.md",
+        ".dsh/contrib/star-audit.py"
+      ],
+      "sessionIds": [
+        "87b54857-a812-4c9b-9b6d-44c96a84f585"
+      ],
+      "createdAt": "2026-10-31T17:33:55.853Z",
+      "updatedAt": "2026-10-31T17:33:55.853Z",
+      "lastAccessedAt": "2026-11-01T17:18:45.991Z",
+      "revision": 1,
+      "contentHash": "9333bf0fac12c6d8a7b04bddcf4af38504876a1bfa4075862dece8af0410f3db",
+      "sizeBytes": 6144,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "52651dba-0f75-4ef1-8640-ba5aaae1debd",
+      "title": "Windows per-exe GPU 绑定（GpuPreference）落地与 WebGL A/B 验证：可靠判据与踩坑（2026-11-01）",
+      "description": "给单个 exe 绑独显/核显的注册表做法与因果验证法：UserGpuPreferences 写入与回滚、独立 Edge 实例 + WebGL probe 页的 A/B 对照、LUID 与 UNMASKED_RENDERER 两条硬判据、dedicated 显存不可信的实测反例、rAF 节流与低完整性级别关不掉 Edge 两个坑、本机 LUID 映射与刻意未动的对象。与 ddaf53a7（ParsecVDD 虚拟屏父 GPU 归属）互补。",
+      "status": "active",
+      "filename": "windows-per-exe-gpu-gpupreference-webgl-a-b-2026-52651dba.md",
+      "relativePath": "documents/active/windows-per-exe-gpu-gpupreference-webgl-a-b-2026-52651dba.md",
+      "sourcePaths": [
+        ".dsh/tmp/gpu-who.ps1",
+        ".dsh/tmp/gpu-probe.html",
+        ".dsh/tmp/UserGpuPreferences.backup-20261101.json"
+      ],
+      "sessionIds": [
+        "eacdcbc6-af65-44ca-a283-b38af9f45e2f"
+      ],
+      "createdAt": "2026-10-31T17:41:11.707Z",
+      "updatedAt": "2026-10-31T17:41:11.707Z",
+      "lastAccessedAt": "2026-10-31T17:41:11.707Z",
+      "revision": 1,
+      "contentHash": "07d5340ba8b28bbfd3d966b95a52642802c553606c9ad1188c926732798085ff",
+      "sizeBytes": 5923,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "025dd74e-844c-44ad-a1af-176538fe77f1",
+      "title": "MacKay 补图进度口径修正与 WorkBuddy CLI 认证诊断（2026-11-01）",
+      "description": "两个可复用结论：①`grep -c '\\[Figure'` 统计残留占位会把「已嵌图 `![Figure`」和分片头「术语约定示例行」一起数进去，正确口径与跨切片合法保留判据；②WorkBuddy(codebuddy-lite-wb) CLI「Authentication required」报错的真实出处、/login 必须真 tty、keyblob 是 safeStorage 密钥而非 token、local_storage 被重置、wbipc 引擎端口替代线索。配套 PyMuPDF 裁剪流程见 ad6df72a。",
+      "status": "active",
+      "filename": "mackay-workbuddy-cli-2026-11-01-025dd74e.md",
+      "relativePath": "documents/active/mackay-workbuddy-cli-2026-11-01-025dd74e.md",
+      "sourcePaths": [
+        "Documents/翻译产出/教材/MacKay信息论",
+        ".dsh/plans/session-d05928da-0b21-418f-aa5c-3ccfa9492fdd.md"
+      ],
+      "sessionIds": [
+        "6b1a00d0-1d5f-4e64-b7e3-95f095ea50a4"
+      ],
+      "createdAt": "2026-10-31T17:44:54.447Z",
+      "updatedAt": "2026-10-31T17:44:54.447Z",
+      "lastAccessedAt": "2026-10-31T17:44:54.447Z",
+      "revision": 1,
+      "contentHash": "e6462cca8def2568dfaaf795db21140113feb57a14c3ffb67051e0d7e9780d52",
+      "sizeBytes": 4530,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "06b2165d-4459-4fc5-808b-8e5e84b69d37",
+      "title": "fluxscope：extract 增量缓存 15.1s→0.3s、git 安全网与 tunnel 按 delegation depth 分环（2026-11-01）",
+      "description": "fluxscope 一次提交的三项落地记录：extract_agents.py 由全量重解改为 (size,mtime) 缓存的纯函数 parse_file 且合并算子可交换可结合、等价性验证口径；首次 git 入库与 .gitignore 边界；隧道环按 depth 分 bucket（主会话外环 / subagent 内环）以及 bucket 成员资格该按语义而非流量的反面教训。承接 doc 9996766a。",
+      "status": "active",
+      "filename": "fluxscope-extract-15-1s-0-3s-git-tunnel-delegati-06b2165d.md",
+      "relativePath": "documents/active/fluxscope-extract-15-1s-0-3s-git-tunnel-delegati-06b2165d.md",
+      "sourcePaths": [
+        "fluxscope/index.html",
+        "fluxscope/server.mjs",
+        "fluxscope/extract_agents.py",
+        "fluxscope/watch_flow.py",
+        "fluxscope/convo.py",
+        "fluxscope/sysprobe.ps1"
+      ],
+      "sessionIds": [
+        "5d88d85d-7433-4a59-888d-bc47cc6c178d"
+      ],
+      "createdAt": "2026-10-31T17:47:40.177Z",
+      "updatedAt": "2026-10-31T17:47:40.177Z",
+      "lastAccessedAt": "2026-11-01T08:25:18.035Z",
+      "revision": 1,
+      "contentHash": "b26a4964c617f691aca00570d8099d25567c5951b6306bc4d0bfcb5cc6a8f54c",
+      "sizeBytes": 6260,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "4f6ab4e1-08f7-416a-9565-beb19fc79ff0",
+      "title": "故宫参数化建模（gugong）：四形制屋顶同构、举架/推山反解与自写软件光栅化管线（2026-11-01）",
+      "description": "零 3D 库、纯 numpy 自写光栅化生成紫禁城中轴全城（1534 行 Python）。核心结论：庑殿/歇山/悬山/攒尖是同一屋顶生成器的参数选择；举架递推给出凹面凸剖面；推山等比可二分反解命中目标脊长（p=0.8996）。含校验偏差表、交付物清单、五条实战踩坑（阴影正交/bias 方向/屋顶未随建筑平移致 OOM 静默退出/参数归一化混用/SSM 掠射失效）与未建模项。承接 a9c01787 的取源调查。",
+      "status": "active",
+      "filename": "gugong-2026-11-01-4f6ab4e1.md",
+      "relativePath": "documents/active/gugong-2026-11-01-4f6ab4e1.md",
+      "sourcePaths": [
+        "projects/gugong/build_scene.py",
+        "projects/gugong/core/roof.py",
+        "projects/gugong/core/building.py",
+        "projects/gugong/core/mesh.py",
+        "projects/gugong/data/site.py",
+        "projects/gugong/render/raster.py",
+        "projects/gugong/shoot_final.py",
+        "projects/gugong/make_figure.py",
+        "projects/gugong/README.md"
+      ],
+      "sessionIds": [
+        "a6b37cf0-6667-41b9-a1cc-51f365a790f6"
+      ],
+      "createdAt": "2026-10-31T17:49:33.146Z",
+      "updatedAt": "2026-10-31T17:49:33.146Z",
+      "lastAccessedAt": "2026-11-01T16:31:59.464Z",
+      "revision": 1,
+      "contentHash": "5a51e499f469e453a32e5ad852c399d765b54bde51611da6a42365dfe8760db2",
+      "sizeBytes": 7374,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "bbc11c5c-6593-4286-b670-6243f1b2b904",
+      "title": "重檐通高反解：gugong 故宫建模三处结构错误的诊断与修复（2026-11-01）",
+      "description": "故宫参数化建模（gugong）第二次迭代：太和殿通高 +19.2% 的真实成因是三处重檐结构错误（下檐内圈悬空露出水平屋面 / 上檐出檐 e2 过大 / 腰檐缺爬升项），含通高举高公式、修复参数区间、+4.5% 收敛结果、补建文华武英殿与庑房分段做法、以及未完成项（正交 shadow map、体仁/弘义阁、角楼铺作）。",
+      "status": "active",
+      "filename": "gugong-2026-11-01-bbc11c5c.md",
+      "relativePath": "documents/active/gugong-2026-11-01-bbc11c5c.md",
+      "sourcePaths": [
+        "projects/gugong/core/building.py",
+        "projects/gugong/build_scene.py",
+        "projects/gugong/core/roof.py",
+        "projects/gugong/data/site.py",
+        "projects/gugong/README.md"
+      ],
+      "sessionIds": [
+        "dd1245c2-68cc-4f7d-8495-1fa489647a00"
+      ],
+      "createdAt": "2026-11-01T06:49:18.146Z",
+      "updatedAt": "2026-11-01T06:49:18.146Z",
+      "lastAccessedAt": "2026-11-01T15:48:57.825Z",
+      "revision": 1,
+      "contentHash": "1cc1809911372f5e7b321228cb684bd3ff9553f1f1deecfc3b3b6f27c7c830dc",
+      "sizeBytes": 4868,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "a28d8642-0791-43da-aa84-739b642b6dc4",
+      "title": "旷世 X6xx55xW 关机自启续查（2026-11-01）：硬件指纹、id=109 48% 概率画像、飞智 BS3 定为散热底座、驱动包识别与社区五层解法",
+      "description": "接 f7c9342c / 8f426f8b / 67873213 的续查：本机 BIOS/序列号/板号指纹、88 次 id=109 关机中 42 次 10 分钟内回 boot（48%，中位 18s）、首次 2026-08-17；用户自报近期更新过 BIOS 并高度怀疑；纠正飞智 BS3 为 USB 散热底座（非手柄）且同时占 USB HID + BLE 双通道；KSX_X6RP_BZ_HB_260604.zip 实为 4.86GB 驱动合集（非 BIOS，直链防盗链）；社区五层解法与「来电自启+插座物理断电」共存方案。",
+      "status": "active",
+      "filename": "x6xx55xw-2026-11-01-id-109-48-bs3-a28d8642.md",
+      "relativePath": "documents/active/x6xx55xw-2026-11-01-id-109-48-bs3-a28d8642.md",
+      "sourcePaths": [
+        ".dsh/plans/afecf301-8e87-401e-bd11-67d72056b59e.md"
+      ],
+      "sessionIds": [
+        "afecf301-8e87-401e-bd11-67d72056b59e"
+      ],
+      "createdAt": "2026-11-01T08:17:01.608Z",
+      "updatedAt": "2026-11-01T08:17:01.608Z",
+      "lastAccessedAt": "2026-11-01T08:17:01.608Z",
+      "revision": 1,
+      "contentHash": "aa391942f9eec114775717ee48693e4df613eb1e05f991a75f525e3543f6bae2",
+      "sizeBytes": 9700,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "accd989a-8bb5-4e6e-8798-10ab52568373",
+      "title": "四旋翼控制算法仿真路线选型与 drone_sim 自建调参台（MIL 层，2026-11-01）",
+      "description": "MIL/SIL/PIL/HIL 四级坐标系与 Renode/QEMU/Simulink/PX4 社区结论；结论是「学控制算法直觉不需要固件级仿真」；落地为 C:\\Users\\27063\\drone_sim 的 numpy 6-DOF + 级联 PID + DearPyGui 调参台，含实测判据、ZOH 相位滞后推导与三个 DearPyGui 无效判据陷阱。",
+      "status": "active",
+      "filename": "drone-sim-mil-2026-11-01-accd989a.md",
+      "relativePath": "documents/active/drone-sim-mil-2026-11-01-accd989a.md",
+      "sourcePaths": [
+        "drone_sim/quad_core.py",
+        "drone_sim/drone_tuner.py"
+      ],
+      "sessionIds": [
+        "ef2baec8-8be9-42d6-ace7-8921cfad4605"
+      ],
+      "createdAt": "2026-11-01T08:17:36.190Z",
+      "updatedAt": "2026-11-01T08:17:36.190Z",
+      "lastAccessedAt": "2026-11-01T08:17:36.190Z",
+      "revision": 1,
+      "contentHash": "ae642463662369d7572b514bfb392c2489a48d928a0ff4f77e7527d1e1039452",
+      "sizeBytes": 8761,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "3fbdd19f-ed63-4bca-bc23-5b23b022ac7d",
+      "title": "quota-http 新增 /connectivity 失败率端点 + zstd 多帧解压静默截断陷阱（2026-11-01）",
+      "description": "2026-11-01 给 goat-gateway 的 quota-http.mjs 加 GET /connectivity（扫 session.v4.jsonl.zstd 统计每小时失败率/retry/TTFT，带 mtime 缓存）并在 dsh-plugin-goat-panel 面板加「连通」色带行。含关键陷阱：Node/Python zstd 流式解压只解第一帧且不报错，必须按魔数 28 B5 2F FD 分帧；以及集成现状（待用户重启 quota-http）、性能数据、备份与回滚路径。",
+      "status": "active",
+      "filename": "quota-http-connectivity-zstd-2026-11-01-3fbdd19f.md",
+      "relativePath": "documents/active/quota-http-connectivity-zstd-2026-11-01-3fbdd19f.md",
+      "sourcePaths": [],
+      "sessionIds": [
+        "12d7c111-6658-4a6b-99cc-a82394a32553"
+      ],
+      "createdAt": "2026-11-01T08:18:51.029Z",
+      "updatedAt": "2026-11-01T08:18:51.029Z",
+      "lastAccessedAt": "2026-11-01T15:15:14.272Z",
+      "revision": 1,
+      "contentHash": "3a22c43fc390cbf1a4a7a40b44202cce6187a871723513dc96d7ebefa7a527a1",
+      "sizeBytes": 5736,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "6d64fa2c-343c-4624-9f8e-ea485b7eb03d",
+      "title": "真阴影修复 + 室内/铺作/隔扇：gugong 故宫建模第三轮（2026-11-01）",
+      "description": "gugong 第三轮迭代：推翻前两轮\"SSM 掠射面天然失效\"的结论，定位 shadow map 的两处叠加 bug（写入正交/查询透视不一致；深度轴 basis[2]=L 反向导致 min 取到离光源最远面），4 点脚本验证修复；新增 core/interior.py（金砖地/柱网/梁架/天花/藻井/宝座，藻井与屋顶共用 loft 同构）、隔扇四件套立面前提做通透门洞、铺作层重写（每攒 20 box、太和殿约 120 攒）、低太阳角 26° 参数化光照。含 39 万 tri 产出与三项未完成项。",
+      "status": "active",
+      "filename": "gugong-2026-11-01-6d64fa2c.md",
+      "relativePath": "documents/active/gugong-2026-11-01-6d64fa2c.md",
+      "sourcePaths": [
+        "projects/gugong/core/interior.py",
+        "projects/gugong/core/building.py",
+        "projects/gugong/core/mesh.py",
+        "projects/gugong/render/raster.py",
+        "projects/gugong/shoot_final.py",
+        "projects/gugong/out/01_axis_aerial.png"
+      ],
+      "sessionIds": [
+        "3aced698-63b7-47ab-b998-a22d77de8ee0"
+      ],
+      "createdAt": "2026-11-01T08:23:59.961Z",
+      "updatedAt": "2026-11-01T08:23:59.961Z",
+      "lastAccessedAt": "2026-11-01T15:48:57.825Z",
+      "revision": 1,
+      "contentHash": "f78eac6034c3b2fd5cc6f53f066ec3b6258ee0dcaf70c6ff2c8f9d8c5a4786b8",
+      "sizeBytes": 5981,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "194a4709-c969-4f00-9589-2e52d70dd5cb",
+      "title": "fluxscope 空间站化与真实网络对端接入（2026-11-01，commits abf77c6 / 56ce165 / 2d3d3de）",
+      "description": "2026-11-01 实现记录：fluxscope 环视观从「雷达图」升级为「空间站」的三处结构性病因与修法（舱窗 shader、三态亮度、结构骨架）、instanced 单 draw 加舱壁 iMode、link 记录 fp/aid 后数据流按文件聚焦、以及 sysprobe.ps1 真实 Established 对端进场景与 loadSys 只在失败时重试的 bug。承接 doc 9996766a / 06b2165d。",
+      "status": "active",
+      "filename": "fluxscope-2026-11-01-commits-abf77c6-56ce165-2d3-194a4709.md",
+      "relativePath": "documents/active/fluxscope-2026-11-01-commits-abf77c6-56ce165-2d3-194a4709.md",
+      "sourcePaths": [
+        "fluxscope/index.html",
+        "fluxscope/server.mjs",
+        "fluxscope/sysprobe.ps1",
+        "fluxscope/agents.json"
+      ],
+      "sessionIds": [
+        "6e74fe89-ab52-42ad-8bed-0366fdf999cc"
+      ],
+      "createdAt": "2026-11-01T08:25:35.426Z",
+      "updatedAt": "2026-11-01T08:25:35.426Z",
+      "lastAccessedAt": "2026-11-01T14:01:23.266Z",
+      "revision": 1,
+      "contentHash": "53392a019f2b92de7362eb02bb16885f64cc7301b6083d710f835c36bdac31ca",
+      "sizeBytes": 6378,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "c2a922db-ebdf-4763-82f7-c921674ae78e",
+      "title": "LOD 分级与内景/外景同轮推进：gugong 故宫建模第四轮（60.4 万→71.4 万 tri）",
+      "description": "gugong 故宫建模第四轮：按建筑宽度三档 LOD（width>40/>22 判 subdiv 11/7/4 与斗拱档位）省 12% tri；檐口两环瓦垄 0.36 m；御花园复用角楼 poly_rings 做圆攒尖亭、堆秀山棱柱+御景亭；庑房每 3 m 开门窗摆脱\"一道堤\"；补阙左/阙右门与内金水河五桥；室内龙纹屏风/烛台/落地罩用色块结构暗示做不出的纹样；04 机位 shadow=False+环境光 1.2 修前景发蓝；含 Mesh.box 参数个数踩坑与四项遗留。",
+      "status": "active",
+      "filename": "lod-gugong-60-4-71-4-tri-c2a922db.md",
+      "relativePath": "documents/active/lod-gugong-60-4-71-4-tri-c2a922db.md",
+      "sourcePaths": [
+        "projects/gugong/build_scene.py",
+        "projects/gugong/core/building.py",
+        "projects/gugong/core/interior.py",
+        "projects/gugong/core/roof.py",
+        "projects/gugong/core/mesh.py",
+        "projects/gugong/render/raster.py",
+        "projects/gugong/data/site.py",
+        "projects/gugong/out/01_axis_aerial.png",
+        "projects/gugong/out/04_yangong.png"
+      ],
+      "sessionIds": [
+        "6fa844e0-53a1-4bf4-821e-32cfa47d090d"
+      ],
+      "createdAt": "2026-11-01T12:20:13.207Z",
+      "updatedAt": "2026-11-01T12:20:13.207Z",
+      "lastAccessedAt": "2026-11-01T15:48:57.825Z",
+      "revision": 1,
+      "contentHash": "2a69d7f3be00643c749291caafb65cab60a38b7b84700e597c19431c43705ee5",
+      "sizeBytes": 7115,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "ee693b88-6590-4a85-9237-bb5246755a63",
+      "title": "fluxscope v12：FOLLOW 运镜（推轨/压暗/甩镜/巡检）+ 实时管线 8s→2.5s 的两个根因",
+      "description": "2026-11-01 实现记录：fluxscope 的 FOLLOW 从「只转身」升级为带推轨与径向压暗的运镜，并把「镜头锁死一格」与「数据最多滞后 28s」两个根因定位修复，含 patrol 参数、屏幕方位踩坑、可判定的实测口径。承接 doc 9996766a（v10–v11 WebGL2 环形拓扑）。",
+      "status": "active",
+      "filename": "fluxscope-v12-follow-8s-2-5s-ee693b88.md",
+      "relativePath": "documents/active/fluxscope-v12-follow-8s-2-5s-ee693b88.md",
+      "sourcePaths": [
+        "fluxscope/server.mjs",
+        "fluxscope"
+      ],
+      "sessionIds": [
+        "7f13f0c8-0cf8-4c7a-a3ab-e7ae92deecf7"
+      ],
+      "createdAt": "2026-11-01T12:26:15.975Z",
+      "updatedAt": "2026-11-01T12:26:15.975Z",
+      "lastAccessedAt": "2026-11-01T14:01:23.266Z",
+      "revision": 1,
+      "contentHash": "fa72253bf25ad0863c4283fb6531092eb792ddb1485dcf3be8276e8b4e84d260",
+      "sizeBytes": 6589,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "b66ae6a4-4b33-47ae-8b28-49e31e4b2d95",
+      "title": "后期链与色调映射反调曝光：gugong 故宫渲染（71.4 万 tri，2026-11-01）",
+      "description": "gugong 故宫建模第五轮：社区调研（gugong-voxel 后期链 / threejs-towers 屋顶函数式表述 / BIM Bezier 瓦 / CGA Shape）后新增纯 numpy render/post.py（五级金字塔 bloom + ACES tonemap + vignette），以及由此带来的 sun_k 2.60 / amb_k 1.30 曝光重调与「按亮度放大 vs 截取亮部」踩坑。",
+      "status": "active",
+      "filename": "gugong-71-4-tri-2026-11-01-b66ae6a4.md",
+      "relativePath": "documents/active/gugong-71-4-tri-2026-11-01-b66ae6a4.md",
+      "sourcePaths": [
+        "projects/gugong/render/post.py",
+        "projects/gugong/render/raster.py",
+        "projects/gugong/shoot_final.py",
+        "projects/gugong/out/01_axis_aerial.png"
+      ],
+      "sessionIds": [
+        "5cdc5e8a-0942-4064-958d-e2f275def000"
+      ],
+      "createdAt": "2026-11-01T12:37:39.751Z",
+      "updatedAt": "2026-11-01T12:37:39.751Z",
+      "lastAccessedAt": "2026-11-01T16:37:28.890Z",
+      "revision": 1,
+      "contentHash": "14df464ccb163217dfda09a20f2149351544f829893892197b2ee1fc93a70c41",
+      "sizeBytes": 4940,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "6c941db8-93c9-4d2d-b0a0-ab1d6ba2f96c",
+      "title": "fluxscope v13：随机巡检节奏、渲染 CPU 剖析（30fps 上限）与「角度单一入口」的隐藏 bug 判据（2026-11-01）",
+      "description": "2026-11-01 实现记录：fluxscope 巡检 dwell 从固定 2s 改为 0.5–2s 偏短随机（平方采样）、按 dwell 缩放甩镜窗口；用进程级 CPU 差值定位到浏览器合成（GPU 进程 120% / renderer 83%）而非自身 JS（7.4ms/帧），据此限绘 30fps、缓存每帧渐变、DPR 1.5→1.35；以及 fileAng() 差速引入后文件标签不随格子转动（仅 ROT.cur≠0 才暴露）的根因与数值比对判据。承接 doc ee693b88（v12 FOLLOW 与 8s→2.5s）。",
+      "status": "active",
+      "filename": "fluxscope-v13-cpu-30fps-bug-2026-11-01-6c941db8.md",
+      "relativePath": "documents/active/fluxscope-v13-cpu-30fps-bug-2026-11-01-6c941db8.md",
+      "sourcePaths": [
+        "fluxscope/index.html",
+        "fluxscope/server.mjs",
+        "fluxscope/extract_agents.py",
+        "fluxscope/README.md"
+      ],
+      "sessionIds": [
+        "c81862ee-8bd4-4606-9e25-1bd016e9714f"
+      ],
+      "createdAt": "2026-11-01T14:01:43.863Z",
+      "updatedAt": "2026-11-01T14:01:43.863Z",
+      "lastAccessedAt": "2026-11-01T14:01:43.863Z",
+      "revision": 1,
+      "contentHash": "f4f727fa42c661776f60a886404c823e977433c2c57faa1ba894607126fc5cc5",
+      "sizeBytes": 7465,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "4f403d42-29c8-44f6-8fa1-42df3d06ae9c",
+      "title": "gugong 第十四轮：AABB 布局审计判据、瓦垄半圆截面与瓦件则例尺寸、黄瓦粘连的高度成因（2026-11-01）",
+      "description": "gugong 故宫第十四轮（commit 70b2598）：用 Mesh.grp 世界坐标 AABB + audit_layout.py 把「屋顶穿插」从肉眼排查变成可判定判据（174 对重叠 → 修 3 类实质穿模后 114 对设计使然）；瓦垄改半圆截面并按清工部《工程做法则例》瓦件表取径；gable_roof 补壳体、铺作层去大盒、斗欹斗耳、砖缝着色；反直觉结论「中景黄瓦横带是高度接近导致颜色粘连而非碰撞」；附带 curl -m 20 截断 GitHub 分页响应的 bug 与修法。承接 4f6ab4e1 / bbc11c5c / b66ae6a4。",
+      "status": "active",
+      "filename": "gugong-aabb-2026-11-01-4f403d42.md",
+      "relativePath": "documents/active/gugong-aabb-2026-11-01-4f403d42.md",
+      "sourcePaths": [
+        "projects/gugong/audit_layout.py",
+        "projects/gugong/core/mesh.py",
+        "projects/gugong/core/roof.py",
+        "projects/gugong/core/building.py",
+        "projects/gugong/shoot_final.py",
+        "projects/gugong/out/forbidden_city.obj"
+      ],
+      "sessionIds": [
+        "e491531b-8df1-4a63-bf94-0ee99df9b2b0"
+      ],
+      "createdAt": "2026-11-01T14:14:35.481Z",
+      "updatedAt": "2026-11-01T14:14:35.481Z",
+      "lastAccessedAt": "2026-11-01T16:31:59.464Z",
+      "revision": 1,
+      "contentHash": "4e549e4ffa650a45fc41084c0308e73b9d2b9236c9c11ab80c2fd73d16b561c7",
+      "sizeBytes": 6150,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "3e5f71b8-8052-4f84-860b-2e8f0f99f5f6",
+      "title": "bili prompt_cache_key 路由开关判定（2026-11-01）：promptCache.routing 机制、本机单号暂不启用、上游 miss 归因",
+      "description": "billion-context #5079 提示「prompt_cache_key 自注入默认关闭」后的判定记录：key 是路由键而非缓存开关、auto/enabled 两档差异、本机配置无 promptCache 字段、goat-gateway 拓扑与源码无消费点、acp_cache 实测 88% 命中与 #114 单号 2 分钟全 miss 的异常候选、日后开 auto 的验证指标。结论：用户单号暂不启用。",
+      "status": "active",
+      "filename": "bili-prompt-cache-key-2026-11-01-promptcache-rou-3e5f71b8.md",
+      "relativePath": "documents/active/bili-prompt-cache-key-2026-11-01-promptcache-rou-3e5f71b8.md",
+      "sourcePaths": [
+        ".config/billion-context/billion-context.json"
+      ],
+      "sessionIds": [
+        "06428b03-203f-471a-af2a-73300449d733"
+      ],
+      "createdAt": "2026-11-01T15:15:39.036Z",
+      "updatedAt": "2026-11-01T15:15:39.036Z",
+      "lastAccessedAt": "2026-11-01T15:15:39.036Z",
+      "revision": 1,
+      "contentHash": "77084d59b6ffa74b204ccf5ed2c04d1ced8e21384279c0b97da7e7b1e494c59a",
+      "sizeBytes": 4717,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "73123185-af2f-4b1f-94be-600fe7267520",
+      "title": "一手文献驱动的尺度校准：gugong 紫禁城建模第四轮（2026-11-01）",
+      "description": "gugong 第四轮：放弃调系数、改为查一手记载反推几何。收录太和殿《太和殿纪事》逐间尺寸与三条设计规则（通檐柱高=明间开间、金柱高=1.5×、总举高=挑檐檩间距/3）、Hall 新增 bay_w/bay_d 逐间表、保和殿/乾清宫/坤宁宫/午门/太和门/神武门实测尺寸来源与改动、7 项判据全进 2%、col_h=0.0 静默缩高 bug，以及\"错的平面会伪装成错的高度\"这一方法论结论。",
+      "status": "active",
+      "filename": "gugong-2026-11-01-73123185.md",
+      "relativePath": "documents/active/gugong-2026-11-01-73123185.md",
+      "sourcePaths": [
+        "projects/gugong/core/building.py",
+        "projects/gugong/core/roof.py",
+        "projects/gugong/data/site.py",
+        "projects/gugong/build_scene.py",
+        "projects/gugong/out/forbidden_city.obj"
+      ],
+      "sessionIds": [
+        "67c2263e-7edc-421c-a800-157847c5cb59"
+      ],
+      "createdAt": "2026-11-01T15:49:19.542Z",
+      "updatedAt": "2026-11-01T15:49:19.542Z",
+      "lastAccessedAt": "2026-11-01T16:31:59.464Z",
+      "revision": 1,
+      "contentHash": "8e1ff44e60e550b39e31caa4df39e0170dbcd7a42d0f698cab53e828bbf219e2",
+      "sizeBytes": 9394,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "40e85439-8d36-4514-a3e1-58044e241b25",
+      "title": "Windows 计划任务静默化（run-hidden.vbs）与三套 git repo 分工诊断：daily-kit 23:45 弹窗根因、inbox 空跑 35 天（2026-11-01）",
+      "description": "2026-11-01 调查：每天 23:45 弹出窗口的根因是 daily-close 计划任务直接调 bash.exe；给出 wscript + VBS 隐藏窗口 + 日志重定向的改法、XML 回滚路径，以及 ~/.dsh / dsh-reasonix-agent / inbox 三套 repo 的职责与活动量对照（inbox 自 09-27 起无提交）。含沙箱对 D 盘无写权限的落地位置选择。",
+      "status": "active",
+      "filename": "windows-run-hidden-vbs-git-repo-daily-kit-23-45--40e85439.md",
+      "relativePath": "documents/active/windows-run-hidden-vbs-git-repo-daily-kit-23-45--40e85439.md",
+      "sourcePaths": [
+        "daily-kit/daily.sh",
+        "daily-kit/config.sh",
+        "daily-kit/pushall.sh",
+        "daily-kit/daily.log",
+        ".dsh/storages/tools/run-hidden.vbs"
+      ],
+      "sessionIds": [
+        "fc43a50a-945f-4f46-af8d-1f5dcd6a10f3"
+      ],
+      "createdAt": "2026-11-01T16:05:19.275Z",
+      "updatedAt": "2026-11-01T16:05:19.275Z",
+      "lastAccessedAt": "2026-11-01T16:05:19.275Z",
+      "revision": 1,
+      "contentHash": "63ebe47270a8e42ef41c722d5c808301bb98ef1b7bac2ed6d8e0e648b9689e66",
+      "sizeBytes": 6424,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "31acd294-eca6-4388-9f6d-1694c1d5e0de",
+      "title": "gugong 交付轮：斗拱攒当由明间宽反解、铺作层不外扩与板瓦压六露四（2026-11-02）",
+      "description": "gugong 故宫参数化建模的交付轮：斗拱攒当 = 明间宽/(明间攒数+1) 的反解规则、铺作层改为贴墙暗底才让斗拱凸出、檐椽与连檐补构造、板瓦压六露四的坡向分级叠压面，以及最终 6 图 + 172.4 万 tri OBJ 的产物规格。承接 4f6ab4e1 / 73123185 / 4f403d42。",
+      "status": "active",
+      "filename": "gugong-2026-11-02-31acd294.md",
+      "relativePath": "documents/active/gugong-2026-11-02-31acd294.md",
+      "sourcePaths": [
+        "projects/gugong/core/building.py",
+        "projects/gugong/data/wa.py",
+        "projects/gugong/data/site.py",
+        "projects/gugong/shoot_final.py",
+        "projects/gugong/audit_layout.py",
+        "projects/gugong/README.md"
+      ],
+      "sessionIds": [
+        "38f94062-8715-407d-920c-0d21961f3861"
+      ],
+      "createdAt": "2026-11-01T16:32:17.739Z",
+      "updatedAt": "2026-11-01T16:32:17.739Z",
+      "lastAccessedAt": "2026-11-01T16:32:17.739Z",
+      "revision": 1,
+      "contentHash": "83da6c7a389277cf614b061b503ba81c10ac263dd4c93c87d4a8ea80caec6eeb",
+      "sizeBytes": 4496,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "fbde9b19-42d2-49c4-bc80-e4b31ec218b7",
+      "title": "gugong 自产 OBJ → Minecraft 体素化：结构实测、材质映射与分步策略（2026-11-02）",
+      "description": "gugong 项目自产 forbidden_city.obj（203 MB / 172.4 万 tri）转 Minecraft 蓝图的可行性实测：OBJ 行类型统计（每面带 usemtl、20 种材质）、1 单位 = 1 m 与 Z-up 的坐标标定、离群 bbox 判据、材质 id 与 Z 范围互证、材质→MC 方块映射表、体素化规模/耗时估算，以及「先切太和殿一段再全量」的分步策略。承接 dc5438d0 的 mesh2nbt 链路与 a9c01787 的故宫体素化可行性账。",
+      "status": "active",
+      "filename": "gugong-obj-minecraft-2026-11-02-fbde9b19.md",
+      "relativePath": "documents/active/gugong-obj-minecraft-2026-11-02-fbde9b19.md",
+      "sourcePaths": [
+        "projects/gugong/out/forbidden_city.obj",
+        "projects/gugong/core/mesh.py",
+        "projects/gugong/core/building.py",
+        "projects/gugong/data/site.py",
+        "projects/gugong/README.md"
+      ],
+      "sessionIds": [
+        "5a6511a8-6326-4ff2-bc63-9689ac452421"
+      ],
+      "createdAt": "2026-11-01T16:37:49.535Z",
+      "updatedAt": "2026-11-01T16:37:49.535Z",
+      "lastAccessedAt": "2026-11-01T17:39:18.861Z",
+      "revision": 1,
+      "contentHash": "920a240d89eedf5eed3e8e470c7e6d7567dadf14a579763e20662a5de53320f4",
+      "sizeBytes": 8113,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "1df86ecc-bc46-4f8e-8798-4527a571275b",
+      "title": "故宫 OBJ → Minecraft：scale/方块数预算、min-area 过滤实测与体素化超时根因（2026-11-02 交接版）",
+      "description": "gugong forbidden_city.obj（2.5 s 解析 / 172.4 万 tri / 7.41 M m²）转 MC 蓝图的量化预算：scale 1–5 的高度·平面·方块数·.nbt 大小·Litematica 内存表，min-area 过滤实测（0.5 m² → 14.9 万 tri 保留 98.5% 面积），体素化速度 24470 tri/s，全量超时根因判定（大三角 meshgrid 内存爆，非解析/非算法），以及 A/B/C 方案与用户拍板 C（scale=3）。补充 fbde9b19 的可行性文档。",
+      "status": "active",
+      "filename": "obj-minecraft-scale-min-area-2026-11-02-1df86ecc.md",
+      "relativePath": "documents/active/obj-minecraft-scale-min-area-2026-11-02-1df86ecc.md",
+      "sourcePaths": [
+        "projects/gugong/out/forbidden_city.obj",
+        "projects/gugong/core/mesh.py",
+        "projects/gugong/data/site.py",
+        "mcopt/obj2vox.py",
+        "mcopt/nbt2png_mat.py",
+        "mcopt/taidian.py"
+      ],
+      "sessionIds": [
+        "aef42fa7-dc1a-4a8d-b5f2-f007c9e09b72"
+      ],
+      "createdAt": "2026-11-01T16:58:40.720Z",
+      "updatedAt": "2026-11-01T16:58:40.720Z",
+      "lastAccessedAt": "2026-11-01T17:39:18.861Z",
+      "revision": 1,
+      "contentHash": "b1856f61feded4a5aba87feb337420f4d8c5a16f79b21e22cebc5285875e758b",
+      "sizeBytes": 5952,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "f5dd5f7f-4b08-46c5-bd08-587b01272387",
+      "title": "WorkBuddy GUI 队列派发：6 路并发 LaTeX 讲义翻译的操作程序与 Windows 踩坑（2026-11-02）",
+      "description": "在 Windows 弟弟机上用 WorkBuddy GUI（剪贴板注入式 UI 自动化）+ schtasks 做 6 路并发派发批量翻译/生成 LaTeX 讲义的可复跑架构：queue 目录 + File.Move 认领 + 串行 run × 6，以及 heredoc 折反斜杠、schtasks 不可并行、ExecutionPolicy 禁脚本、GUI 13KB 截断等实测坑。",
+      "status": "active",
+      "filename": "workbuddy-gui-6-latex-windows-2026-11-02-f5dd5f7f.md",
+      "relativePath": "documents/active/workbuddy-gui-6-latex-windows-2026-11-02-f5dd5f7f.md",
+      "sourcePaths": [
+        ".dsh/plans/handoff-20261102-0113.md"
+      ],
+      "sessionIds": [
+        "7ac4a336-b7b8-4e34-8103-600b8fc997c2"
+      ],
+      "createdAt": "2026-11-01T17:19:08.697Z",
+      "updatedAt": "2026-11-01T17:19:08.697Z",
+      "lastAccessedAt": "2026-11-01T17:19:08.697Z",
+      "revision": 1,
+      "contentHash": "a74264ebf4985ab9219ccda3a7a4abe33e42104bff1364e624989e5db066938e",
+      "sizeBytes": 5346,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "750772c2-c433-440c-b9a4-79183b73429f",
+      "title": "故宫 OBJ → Litematica .nbt 全量产出：S=5 / S=6 分块成果、坐标口径与四个实现陷阱（2026-11-02）",
+      "description": "gugong forbidden_city.obj 体素化跑通全量交付：S=5（4596 万 blocks）与 S=6（6620 万 blocks）各切 2×2 tile 的 .nbt、world grid 与耗时；分块拼接 offset 口径与坐标映射公式；四个必踩 bug（mat11 背景 billboard 幕布、palette index 0 必须 air、uint8&bool 退化整数索引、pos 的 TAG_List 头写错）；渲染 depth 排序与 litematica /fill tick 预算社区经验。承接 1df86ecc 的 scale 预算与 min-area 实测。",
+      "status": "active",
+      "filename": "obj-litematica-nbt-s-5-s-6-2026-11-02-750772c2.md",
+      "relativePath": "documents/active/obj-litematica-nbt-s-5-s-6-2026-11-02-750772c2.md",
+      "sourcePaths": [
+        "mcopt/obj2vox3.py",
+        "mcopt/render_npz.py",
+        "mcopt/fg/out/README.md"
+      ],
+      "sessionIds": [
+        "7ccd49c4-7b13-4d0e-b2f5-ea19f6d00187"
+      ],
+      "createdAt": "2026-11-01T17:39:36.487Z",
+      "updatedAt": "2026-11-01T17:39:36.487Z",
+      "lastAccessedAt": "2026-11-01T17:39:36.487Z",
+      "revision": 1,
+      "contentHash": "cccd2a78dc179711599aae0a9d4a0113cfd5d53fd28d2202c8414ffcca5861ee",
+      "sizeBytes": 5223,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "7d0177fb-0299-4407-ba48-2a93f8f319c8",
+      "title": "KaTeX/bilingual 转换的公式质量门禁与修复手册：静默丢 tag、反斜杠被吃、验证器假警报（2026-11-02）",
+      "description": "本轮 bilingual 教材（Convex / LALD / Real Analysis / 6.006 lecture notes）KaTeX 清理中沉淀的可复用规程：`failed`/`issue` 门禁口径、四类 fail 的修法、KaTeX `align` 多 tag 静默丢弃判据、反斜杠在传递链路被吃的三次实例与规避、两个「验证器自身有 bug」的假警报坑、术语方向契约与分片模型编造缺页的验收项。",
+      "status": "active",
+      "filename": "katex-bilingual-tag-2026-11-02-7d0177fb.md",
+      "relativePath": "documents/active/katex-bilingual-tag-2026-11-02-7d0177fb.md",
+      "sourcePaths": [
+        ".dsh/plans/session-7e40582b-dd6b-44d2-8f07-d52d7a6cb36e.md",
+        "Introduction-to-Algorithms/02-lecture-notes"
+      ],
+      "sessionIds": [
+        "4ec4d214-8cf4-46f3-ae9a-1d4f4655f0b9"
+      ],
+      "createdAt": "2026-11-01T18:21:43.111Z",
+      "updatedAt": "2026-11-01T18:21:43.111Z",
+      "lastAccessedAt": "2026-11-01T18:21:43.111Z",
+      "revision": 1,
+      "contentHash": "c504d6a8c5312b310a1665898f974d4932180f71335fa0e76ad5324e2a75add1",
+      "sizeBytes": 9010,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "b6aace94-6724-44e9-a1de-953fe32246d9",
+      "title": "insteadOf 收窄为只读 owner 白名单 + 镜像凭据硬保险：两条旧结论被实测推翻（2026-11-02）",
+      "description": "2026-11-02 在既有 insteadOf 劫持根因之上落地的方案：全站 gitproxy 改写收窄为 6 条只读 owner → gh-proxy.com 白名单，镜像 host 置空 credential helper；含证伪（GCM 不会把 PAT 给镜像 host、git -c url.insteadOf= 无法临时取消改写）、镜像可用性 200/429 清单、gh.sh mirror 子命令与未决项。",
+      "status": "active",
+      "filename": "insteadof-owner-2026-11-02-b6aace94.md",
+      "relativePath": "documents/active/insteadof-owner-2026-11-02-b6aace94.md",
+      "sourcePaths": [
+        ".gitconfig",
+        ".dsh/skills/github/SKILL.md",
+        ".dsh/skills/github/scripts/gh.sh",
+        ".dsh/skills/github/reference/workflows.md"
+      ],
+      "sessionIds": [
+        "b4a6eb6e-2fdf-460c-8499-d7a2673515f0"
+      ],
+      "createdAt": "2026-11-01T19:13:23.751Z",
+      "updatedAt": "2026-11-01T19:13:23.751Z",
+      "lastAccessedAt": "2026-11-01T19:13:23.751Z",
+      "revision": 1,
+      "contentHash": "50a19305fffca49fd04e9bc3f64291693b1864f05d6e9dfeb26021aeeaa3cd22",
+      "sizeBytes": 5001,
       "memoryBodyIds": []
     },
     {

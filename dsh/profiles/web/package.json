@@ -11,6 +11,7 @@
     "ds-harness-remote": "^0.5.22",
     "dsh-deja": "^0.23.1",
     "dsh-headroom": "git+https://github.com/giter00/dsh-headroom.git",
+    "dsh-llm-latency": "github:shengbinxu/dsh-llm-latency",
     "dsh-mnemon": "^0.5.34",
     "dsh-scroll-boost": "^0.6.0",
     "dshmarket": "^1.67.0"
@@ -30,7 +31,8 @@
         "@ethanwong-hk/dsh-thinking-guard",
         "dsh-pilot",
         "billion-context",
-        "@weibaohui/dsh-smart-title"
+        "@weibaohui/dsh-smart-title",
+        "dsh-llm-latency"
       ],
       "patchReload": "live"
     }

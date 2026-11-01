@@ -38,6 +38,9 @@ importers:
       dsh-headroom:
         specifier: git+https://github.com/giter00/dsh-headroom.git
         version: git+ssh://git@github.com/giter00/dsh-headroom.git#ca5de630fd9a4be1b0e0f900cc3260f52052019d
+      dsh-llm-latency:
+        specifier: github:shengbinxu/dsh-llm-latency
+        version: git+ssh://git@github.com/shengbinxu/dsh-llm-latency.git#ba2f10be1506532a19bd83ea8974217e544254fe
       dsh-mnemon:
         specifier: ^0.5.34
         version: 0.5.34
@@ -404,6 +407,11 @@ packages:
       '@deepseek-ai/dsh-llm': '>=0.0.1-rc.5 <0.1.0 || >=0.1.0-rc.1 <0.2.0-0'
       '@deepseek-ai/dsh-session': '>=0.0.1-rc.5 <0.1.0 || >=0.1.0-rc.1 <0.2.0-0'
       '@deepseek-ai/dsh-tools': '>=0.0.1-rc.5 <0.1.0 || >=0.1.0-rc.1 <0.2.0-0'
+
+  dsh-llm-latency@git+ssh://git@github.com/shengbinxu/dsh-llm-latency.git#ba2f10be1506532a19bd83ea8974217e544254fe:
+    resolution: {commit: ba2f10be1506532a19bd83ea8974217e544254fe, repo: git@github.com:shengbinxu/dsh-llm-latency.git, type: git}
+    version: 0.2.0
+    engines: {node: '>=18.0.0'}
 
   dsh-mnemon-provider-byterover@0.5.5:
     resolution: {integrity: sha512-7JOmLOuL+fys+soebYmb6GYtvD9Xj4RL0xf1l8svUL2LKlNpTz68YikdJJBU+EUD292mGcxjX1VLbHGC/FDwiw==}
@@ -1266,6 +1274,8 @@ snapshots:
       '@vshulcz/deja-vu': 0.23.3
 
   dsh-headroom@git+ssh://git@github.com/giter00/dsh-headroom.git#ca5de630fd9a4be1b0e0f900cc3260f52052019d: {}
+
+  dsh-llm-latency@git+ssh://git@github.com/shengbinxu/dsh-llm-latency.git#ba2f10be1506532a19bd83ea8974217e544254fe: {}
 
   dsh-mnemon-provider-byterover@0.5.5(dsh-mnemon-source-memory-spaces@0.5.22(dsh-mnemon@0.5.34)):
     dependencies:

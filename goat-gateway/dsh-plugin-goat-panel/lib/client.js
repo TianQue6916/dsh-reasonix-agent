@@ -39,6 +39,10 @@ window.__ModuleLoader__.load({
     // 缓存命中率的独立端点（2026-10-29）：数字来自扫 gateway 日志，与 /quota 的账单周期无关，
     // 所以不挂在 15s 轮询上 —— 只在面板打开时拉一次（服务端冷扫 0.2s / 增量 4ms）。
     const CACHE_ENDPOINT = "http://127.0.0.1:8790/cache";
+    // 连通性历史（2026-11-01）：数据来自 dsh 自己的 session 事件日志（llm/retry 的
+    // failure.code + step 起止时间戳），**不发起任何模型请求、不花 token**。
+    // 服务端首扫 946 个 session 文件约 8 秒，之后走文件级 mtime 缓存 + 60s TTL。
+    const CONN_ENDPOINT = "http://127.0.0.1:8790/connectivity";
     const REFRESH_MS = 15000;
     const LAYER_W = 470;
     const DAY_MS = 86400000;
@@ -178,6 +182,27 @@ window.__ModuleLoader__.load({
     }
 
 
+    // 连通性只在面板打开时拉一次（跟 useCache 同理）：它是 60s TTL 的聚合量，
+    // 挂在 15s 轮询上没有任何收益，只会让服务端反复走一遍 stat。
+    function useConnectivity(enabled, days, nonce) {
+      const [state, setState] = React.useState(null);
+      const seen = React.useRef(nonce);
+      React.useEffect(() => {
+        if (!enabled) return;
+        const force = nonce !== seen.current;
+        seen.current = nonce;
+        let alive = true;
+        const q = ["days=" + (days || 7)];
+        if (force) q.push("force=1");
+        fetch(CONN_ENDPOINT + "?" + q.join("&"), { cache: force ? "reload" : "default" })
+          .then((r) => r.json())
+          .then((j) => { if (alive) setState(j && j.ok ? j : null); })
+          .catch(() => { if (alive) setState(null); });
+        return () => { alive = false; };
+      }, [enabled, days, nonce]);
+      return state;
+    }
+
     function QuotaPanel() {
       const [state, load] = useQuota();
       const [open, setOpen] = React.useState(false);
@@ -243,6 +268,7 @@ window.__ModuleLoader__.load({
       // 缓存口径要跟账单周期对齐：periodStart 由 /quota 的 row 给出（goat-usage.ps1 的 periodStart）
       const periodStart = goatRows.length && isNum(goatRows[0].periodStart) ? goatRows[0].periodStart : null;
       const cache = useCache(open, periodStart, cacheTick);
+      const conn = useConnectivity(open, 7, cacheTick);
       const badgeText = state.status === "loading" ? "GOAT 额度 …"
         : state.status === "error" ? "GOAT 额度 —"
         : "GOAT 5h " + hourly + "% · 周 " + weekly + "% · 月 " + monthly + "%"
@@ -265,6 +291,73 @@ window.__ModuleLoader__.load({
       const cacheHit = (h) => (h == null ? "—" : h.toFixed(1) + "%");
       const cacheInk = (h) => (h == null ? undefined : h >= 90 ? "#34d399" : h >= 75 ? "#fbbf24" : "#f87171");
       const worstSess = cache && cache.detail && cache.detail.worstSessions && cache.detail.worstSessions[0];
+      // ── 连通性历史行 ──────────────────────────────────────────────────────
+      // 一条 56 格色带 = 最近 56 小时，每格 1 小时，颜色按「该小时有多少 step 触发过 retry」分档。
+      // 为什么用 retry 率而不是 TTFT：assistant/attempt 事件实测只有 3.4% 的 step 落盘，
+      // 拿它当主指标会把「没采样」误读成「很快」；llm/retry 覆盖 100%。
+      const connInk = (r) => (r >= 5 ? "#f87171" : r >= 2 ? "#fbbf24" : r > 0 ? "#a3e635" : "#34d399");
+      const connPct = (v) => (isNum(v) ? (Math.round(Number(v) * 10) / 10) + "%" : "—");
+      const connHm = (h) => {
+        const d = new Date(Number(h));
+        return (d.getMonth() + 1) + "-" + String(d.getDate()).padStart(2, "0") + " " + String(d.getHours()).padStart(2, "0") + "时";
+      };
+      const connHours = conn && Array.isArray(conn.hours) ? conn.hours.slice(-56) : [];
+      const connT = (conn && conn.totals) || {};
+      const connCodes = connT.byCode || {};
+      const connWorst = (conn && conn.worst) || [];
+      const connRow = conn
+        ? jsx.jsxs("div", {
+            style: Object.assign({}, dim, {
+              borderTop: "1px solid var(--dsw-alias-border-l1, rgba(255,255,255,.08))",
+              paddingTop: "6px"
+            }),
+            title: connWorst.length
+              ? ("最差的几个小时（样本 ≥ 20 次）："
+                  + connWorst.map((w) => connHm(w.h) + " 失败率 " + connPct(w.rate)
+                      + "（" + w.n + " 次请求 / " + w.retries + " 次 retry）").join(" · ")
+                  + "　|　数据源：dsh session 事件日志（llm/retry 的 failure.code），不发起任何模型请求。")
+              : "连通性日志：7 天内无失败样本",
+            children: [
+              jsx.jsx("span", { style: { opacity: 0.75 }, children: "连通 " }),
+              conn.warming
+                ? jsx.jsx("span", { style: { opacity: 0.6 }, children: "首次扫描中…（约 8s）" })
+                : jsx.jsxs(React.Fragment, { children: [
+                    jsx.jsx("span", {
+                      style: { color: connInk(Number(connT.rate) || 0) },
+                      children: connPct(connT.rate) + " 失败"
+                    }),
+                    jsx.jsx("span", { children: " · " + nInt(connT.steps) + " 步" }),
+                    isNum(connCodes.SERVER) || isNum(connCodes.TRANSPORT)
+                      ? jsx.jsx("span", { style: { opacity: 0.8 }, children: " · 5xx " + nInt(connCodes.SERVER || 0) + " / 断流 " + nInt(connCodes.TRANSPORT || 0) })
+                      : null,
+                    connWorst[0]
+                      ? jsx.jsx("span", { style: { color: connInk(Number(connWorst[0].rate) || 0) }, children: " · 最差 " + connHm(connWorst[0].h) + " " + connPct(connWorst[0].rate) })
+                      : null,
+                    conn.ts
+                      ? jsx.jsx("span", { style: { marginLeft: "6px", opacity: 0.55 }, children: "· " + hmText(conn.ts) })
+                      : null
+                  ]}),
+              connHours.length
+                ? jsx.jsx("div", {
+                    style: { display: "flex", gap: "1px", marginTop: "4px", height: "12px", alignItems: "flex-end" },
+                    children: connHours.map((h) => {
+                      const rate = Number(h.rate) || 0;
+                      const hgt = Math.min(12, 4 + Math.round(Math.log2((h.n || 1) + 1) * 1.6));
+                      return jsx.jsx("div", {
+                        title: connHm(h.h) + "  " + (h.n || 0) + " 次 / 失败率 " + connPct(rate) + (h.medMs ? " / 中位 " + (Math.round(h.medMs / 100) / 10) + "s" : ""),
+                        style: {
+                          flex: "1 1 0", height: hgt + "px", borderRadius: "1px",
+                          background: rate >= 5 ? "#f87171" : rate >= 2 ? "#fbbf24" : rate > 0 ? "#a3e635" : "#34d39966",
+                          opacity: h.n ? 1 : 0.25
+                        }
+                      }, h.h);
+                    })
+                  })
+                : null
+            ]
+          })
+        : null;
+
       const cacheRow = cache && cache.cycle && cache.cycle.requests > 0
         ? jsx.jsxs("div", {
             style: Object.assign({}, dim, {
@@ -404,6 +497,7 @@ window.__ModuleLoader__.load({
                 ] });
               })
           ,
+          connRow,
           cacheRow
         ]
       });

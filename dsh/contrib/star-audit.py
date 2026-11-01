@@ -20,6 +20,7 @@ import json
 import os
 import re
 import subprocess
+import time
 import sys
 from pathlib import Path
 
@@ -49,7 +50,10 @@ def token() -> str:
 
 
 def gh(url: str, method: str = "GET", tok: str = "") -> tuple[int, str]:
-    cmd = ["curl", "-sS", "-L", "-m", "20", "-X", method,
+    # -m 20 是本机踩过的坑：/user/starred?per_page=100 的响应约 200 KB，
+    # 20 s 常常只传一半就被 curl 掐断，json.loads 报
+    # `Unterminated string starting at char 214155`。超时放长 + 只在截断时重试。
+    cmd = ["curl", "-sS", "-L", "-m", "90", "--compressed", "-X", method,
            "-H", f"Authorization: Bearer {tok}", "-H", "User-Agent: dsh-star-audit",
            "-w", "\n%{http_code}", url]
     if method == "PUT":
@@ -137,10 +141,17 @@ def probe_clones() -> dict[str, set[str]]:
 def starred(tok: str) -> set[str]:
     got: set[str] = set()
     for page in range(1, 4):
-        code, body = gh(f"https://api.github.com/user/starred?per_page=100&page={page}", "GET", tok)
-        if code != 200:
-            sys.exit(f"取 starred 失败: http={code}")
-        rows = json.loads(body)
+        for attempt in range(3):
+            code, body = gh(f"https://api.github.com/user/starred?per_page=100&page={page}", "GET", tok)
+            if code != 200:
+                sys.exit(f"取 starred 失败: http={code}")
+            try:
+                rows = json.loads(body)
+                break
+            except json.JSONDecodeError as e:
+                if attempt == 2:
+                    sys.exit(f"starred 第 {page} 页解析失败（{len(body)} B）: {e}")
+                time.sleep(2)
         got |= {r["full_name"] for r in rows}
         if len(rows) < 100:
             break

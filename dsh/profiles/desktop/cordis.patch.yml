@@ -362,6 +362,11 @@
                         `cordis.patch.yml` 是 live，开新会话生效；**preset row 在会话创建后不追补**（新加的工具要新会话才可见）。
                       - **`--dump-config` 的边界**：它证明不了运行态；而且 **desktop profile 根本不能用它** ——
                         `error: profile "desktop" is managed exclusively by the Electron application`。desktop 只能**源码级 grep** + 看**实际注入**。
+                      - **PowerShell 版本**：本机**只准用 PowerShell 7**。`pwsh` 解析到 `C:\Program Files\PowerShell\7\pwsh.exe`（7.6.9，`where pwsh` 第一位就是它）。
+                        绝不许写 `powershell` / `powershell.exe` —— 那落到 **Windows PowerShell 5.1**（`C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe`，.NET Framework 4.x 旧引擎）。
+                        2026-11-01 实测缺 `??` 与三元、`&&` / `||` 管道链、`ConvertFrom-Json -AsHashtable`、`Get-Content -AsByteStream`、`$PSStyle` —— 脚本到执行期才炸，不是解析期就拦住。
+                        更要命的是编码：5.1 的 `Out-File` 默认 **UTF-16LE(BOM)**，`-Encoding utf8` 写出来是 **UTF-8 with BOM**（7 两者都是 UTF-8 no BOM）⇒ 下游 `JSON.parse` / Python `json.load` 直接抛异常。
+                        调 PowerShell 一律 `pwsh -NoProfile -Command '...'`；.ps1、文档、计划任务、`execFile` / `spawn` 的 argv 里同样不许出现 `powershell`。
                    11. **派发 subagent 的模型策略**（2026-10-29 用户定）：
                       默认 provider `commandcode-goat` + model `deepseek/deepseek-v4.1-flash`。
                       `agentOptions` 可**逐字段覆盖** provider / model / reasoningEffort / maxTokens；**不传就继承父 route**（`dsh-subagent/lib/index.js:315-331`）。

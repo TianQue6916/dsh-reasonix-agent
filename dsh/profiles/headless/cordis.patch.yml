@@ -37,6 +37,10 @@
             102 MB 数关键字：`bytes.count` 12 ms ≪ 手写 C(memchr) exe 端到端 53 ms（启动 5.9 + fread 35 吃掉收益）≪ 逐行 for 325 ms ≪ pwsh Select-String 2754 ms（**大文件禁用**）。
             提效优先级（成本递增）：① 合并工具调用、别反复 cold-spawn pwsh ② 消灭 O(N) 解释器循环（NumPy / bytes.count / 系统批处理）③ 长驻 worker 复用进程 ④ 才 native。稳定靠进程边界（独立 exe + stdin/stdout JSON），不靠换语言。
             要 native 就选 Rust+PyO3（abi3）或 C+独立 exe，不手写 CPython C API。上 native 门槛：N > 10^7 且高频**且常驻**，或需 < 10 ms 的确定性延迟。会被 agent 反复改的代码一律 Python。
+      8. **PowerShell 版本**：本机**只准用 PowerShell 7**（`pwsh` = `C:\Program Files\PowerShell\7\pwsh.exe`，7.6.9，`where pwsh` 第一位）。
+         绝不许写 `powershell` / `powershell.exe` —— 那是 **Windows PowerShell 5.1**（`C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe`），
+         2026-11-01 实测缺 `??` / 三元 / `&&` 链 / `ConvertFrom-Json -AsHashtable` / `-AsByteStream` / `$PSStyle`（执行期才炸），
+         且 `Out-File` 默认 UTF-16LE、`-Encoding utf8` 带 BOM（7 两者都是 UTF-8 no BOM）⇒ 下游 JSON 解析直接炸。一律 `pwsh -NoProfile -Command`。
     # 关掉出厂开场白，让语言契约成为系统提示词的第一段
     # （与 web 侧 preset-anchored-standard 的 `complete: true` 语义对齐）
     includeHarnessIdentity: false

@@ -15,6 +15,7 @@ import path from 'node:path';
 import { execFile } from 'node:child_process';
 import crypto from 'node:crypto';
 import fs from 'node:fs';
+import zlib from 'node:zlib';
 
 const PORT = Number(process.env.QUOTA_HTTP_PORT || 8790);
 const SCRIPT = process.env.GOAT_USAGE_SCRIPT || 'D:\\Toolbox\\goat-gateway\\goat-usage.ps1';
@@ -292,6 +293,214 @@ function sendJson(req, res, body, corsHeaders, statusCode) {
   res.end(JSON.stringify(body));
 }
 
+
+// ────────────────────────── 连通性历史（2026-11-01）──────────────────────────
+// 数据源：dsh 自己的 session 事件日志，**不发起任何模型请求、不花一个 token**。
+// 为什么这么做：真实调用已经发生了，延迟与失败就写在地上（llm/retry 带 failure.code），
+// 再探测一遍既费钱又测不准 —— 探测时刻 ≠ 你真正难受的时刻。
+// 社区同路线：shengbinxu/dsh-llm-latency（passive，拦截 llm/stream）。
+//
+// 事件字段（每条都带 seq + time=epoch ms）：
+//   step/start                    一轮请求起点
+//   request/header.header.config  provider / model 归属
+//   assistant/attempt.stream[0]   首包时刻 -> TTFT（注意：不是每 step 都落盘，实测覆盖仅 3.4%）
+//   llm/retry.failure.code        SERVER / TRANSPORT / RATE_LIMIT / TIMEOUT / EMPTY_RESPONSE
+//   step/end                      终点
+// 主指标因此选 llm/retry 命中率（100% 覆盖），TTFT 只作参考。
+const SESS_ROOT = process.env.DSH_SESSIONS_DIR || 'C:/Users/27063/.dsh/sessions';
+const CONN_TTL_MS = Number(process.env.CONN_TTL_MS || 60000);
+const connFiles = new Map();          // file -> { mtimeMs, steps }
+const connCache = { at: 0, body: null };
+let connBusy = false;
+let connPending = false;
+
+/**
+ * dsh 的 session.v4.jsonl.zstd 是**多帧追加**的（每次 flush 一个独立 zstd 帧）。
+ * 坑（2026-11-01 实测）：Node 的 zlib.zstdDecompressSync / createZstdDecompress(int) 只解
+ * **第一帧**就停 —— 357606 字节的文件只解出 205 字节，等于把 99.9% 的事件丢掉，且不报错。
+ * （Python 的 zstandard 库必须用 `stream_reader().read()` 循环读，一次 read() 同样会截断 ——
+ *  本会话早先的 Python 统计也因此漏了大量事件。）
+ * 解法：按帧魔数 0x28B52FFD 切分，逐帧解压再拼接。实测该 session：83 帧全部解出，1245456 字节。
+ */
+const ZSTD_MAGIC = Buffer.from([0x28, 0xb5, 0x2f, 0xfd]);
+function zstdDecompressFrames(buf) {
+  const starts = [];
+  let i = 0;
+  for (;;) { const j = buf.indexOf(ZSTD_MAGIC, i); if (j < 0) break; starts.push(j); i = j + 4; }
+  if (starts.length === 0) return Buffer.alloc(0);
+  const out = [];
+  for (let k = 0; k < starts.length; k++) {
+    const seg = buf.subarray(starts[k], k + 1 < starts.length ? starts[k + 1] : buf.length);
+    try { out.push(zlib.zstdDecompressSync(seg)); }
+    catch { /* 伪魔数（压缩流内部偶然出现）：丢弃这一段，代价是这一帧的事件 */ }
+  }
+  return Buffer.concat(out);
+}
+
+function foldSessionFile(file) {
+  let text;
+  try { text = zstdDecompressFrames(fs.readFileSync(file)).toString('utf8'); }
+  catch { return []; }
+  const steps = [];
+  let cfg = { provider: null, model: null };
+  let cur = null;
+  for (const line of text.split('\n')) {
+    if (!line) continue;
+    let e; try { e = JSON.parse(line); } catch { continue; }
+    const d = e.data || {};
+    switch (e.type) {
+      case 'request/header': {
+        const c = ((d.header || {}).config) || {};
+        if (c.provider) cfg = { provider: c.provider, model: c.model || null };
+        break;
+      }
+      case 'step/start':
+        if (cur) steps.push(cur);
+        cur = { t: e.time, p: cfg.provider, m: cfg.model, ttft: null, retries: 0, codes: null };
+        break;
+      case 'assistant/attempt':
+        if (cur && cur.ttft === null) {
+          const st = d.stream || [];
+          for (let i = 0; i < st.length; i++) {
+            const ct = st[i].time || st[i].time0;
+            if (ct) { cur.ttft = ct - cur.t; break; }
+          }
+        }
+        break;
+      case 'llm/retry':
+        if (cur) {
+          cur.retries += 1;
+          const code = (d.failure || {}).code;
+          if (code) (cur.codes || (cur.codes = [])).push(code);
+        }
+        break;
+      case 'step/end':
+        if (cur) { cur.dur = e.time - cur.t; steps.push(cur); cur = null; }
+        break;
+    }
+  }
+  if (cur) steps.push(cur);
+  return steps;
+}
+
+function listSessionFiles(cutoff) {
+  const out = [];
+  let ws;
+  try { ws = fs.readdirSync(SESS_ROOT, { withFileTypes: true }); } catch (e) { return out; }
+  for (const a of ws) {
+    if (!a.isDirectory()) continue;
+    const dir = path.join(SESS_ROOT, a.name);
+    let subs; try { subs = fs.readdirSync(dir, { withFileTypes: true }); } catch { continue; }
+    for (const b of subs) {
+      if (!b.isDirectory()) continue;
+      const f = path.join(dir, b.name, 'session.v4.jsonl.zstd');
+      try { const st = fs.statSync(f); if (st.mtimeMs >= cutoff) out.push([f, st.mtimeMs]); } catch {}
+    }
+  }
+  return out;
+}
+
+function median(arr) {
+  if (!arr.length) return null;
+  const a = arr.slice().sort((x, y) => x - y);
+  const h = a.length >> 1;
+  return a.length % 2 ? a[h] : Math.round((a[h - 1] + a[h]) / 2);
+}
+
+async function buildConnectivity(days) {
+  const t0 = Date.now();
+  const cutoff = t0 - days * 86400000;
+  const files = listSessionFiles(cutoff);
+  const seen = new Set();
+  const perHour = new Map();
+  const totals = { steps: 0, failSteps: 0, retries: 0, byCode: {}, ttftN: 0 };
+  const ttftAll = [];
+
+  let tick = 0;
+  for (const [f, mtimeMs] of files) {
+    // 每 64 个文件让出一次 event loop：首扫 946 文件实测 7.9s，同步跑会把 /quota /health 全饿死。
+    if (((++tick) & 63) === 0) await new Promise((r) => setImmediate(r));
+    seen.add(f);
+    let entry = connFiles.get(f);
+    if (!entry || entry.mtimeMs !== mtimeMs) {
+      entry = { mtimeMs, steps: foldSessionFile(f) };
+      connFiles.set(f, entry);
+    }
+    for (const s of entry.steps) {
+      if (!s.t || s.t < cutoff) continue;
+      const h = Math.floor(s.t / 3600000) * 3600000;
+      let b = perHour.get(h);
+      if (!b) { b = { h, n: 0, fail: 0, retries: 0, durs: [], codes: {} }; perHour.set(h, b); }
+      b.n += 1;
+      totals.steps += 1;
+      if (s.retries) { b.fail += 1; totals.failSteps += 1; b.retries += s.retries; totals.retries += s.retries; }
+      if (s.codes) for (const c of s.codes) { b.codes[c] = (b.codes[c] || 0) + 1; totals.byCode[c] = (totals.byCode[c] || 0) + 1; }
+      if (s.dur && s.dur > 0 && s.dur < 1800000) b.durs.push(s.dur);
+      if (s.ttft && s.ttft > 0 && s.ttft < 600000) { totals.ttftN += 1; ttftAll.push(s.ttft); }
+    }
+  }
+  // 掉出窗口的文件从缓存里清掉，防内存慢慢涨
+  for (const k of Array.from(connFiles.keys())) if (!seen.has(k)) connFiles.delete(k);
+
+  const hours = Array.from(perHour.values()).sort((a, b) => a.h - b.h).map((b) => ({
+    h: b.h, n: b.n, fail: b.fail, retries: b.retries,
+    rate: b.n ? Math.round((1000 * b.fail) / b.n) / 10 : 0,
+    medMs: median(b.durs), codes: b.codes
+  }));
+  const worst = hours.filter((b) => b.n >= 20).slice().sort((a, b) => b.rate - a.rate).slice(0, 5)
+    .map((b) => ({ h: b.h, rate: b.rate, n: b.n, retries: b.retries }));
+
+  return {
+    ok: true,
+    ts: Date.now(),
+    days,
+    files: files.length,
+    computeMs: Date.now() - t0,
+    totals: {
+      steps: totals.steps,
+      failSteps: totals.failSteps,
+      retries: totals.retries,
+      rate: totals.steps ? Math.round((1000 * totals.failSteps) / totals.steps) / 10 : 0,
+      byCode: totals.byCode,
+      ttftN: totals.ttftN,
+      ttftP50: median(ttftAll)
+    },
+    hours,
+    worst
+  };
+}
+
+function refreshConnectivity(days) {
+  if (connBusy) { connPending = true; return; }
+  connBusy = true;
+  const d = days || 7;
+  (async () => {
+    try {
+      const body = await buildConnectivity(d);
+      connCache.at = Date.now();
+      connCache.body = body;
+    } catch (e) {
+      connCache.at = Date.now();
+      connCache.body = { ok: false, ts: Date.now(), days: d, error: String((e && e.message) || e), hours: [], totals: {} };
+    } finally {
+      connBusy = false;
+      if (connPending) { connPending = false; refreshConnectivity(d); }
+    }
+  })();
+}
+
+function connectivityCached(days, force) {
+  const now = Date.now();
+  if (connCache.body && connCache.body.days !== days) connCache.body = null;
+  const fresh = connCache.body && (now - connCache.at) < CONN_TTL_MS && !force;
+  if (!fresh) refreshConnectivity(days);           // stale-while-revalidate：立刻回旧值，后台补
+  if (!connCache.body) return { ok: true, ts: now, warming: true, days, hours: [], totals: { steps: 0 } };
+  return Object.assign({}, connCache.body, { stale: !fresh, ageMs: now - connCache.at, busy: connBusy });
+}
+
+setTimeout(() => { try { refreshConnectivity(); } catch {} }, 3000);
+// ────────────────────────── /连通性历史 ──────────────────────────
+
 const server = http.createServer(async (req, res) => {
   const url = new URL(req.url, 'http://127.0.0.1:' + PORT);
   const cors = {
@@ -302,6 +511,16 @@ const server = http.createServer(async (req, res) => {
     // ETag 都不保存，条件请求根本不会发出，304 路径等于不存在。统一交给 sendJson。
   };
   if (req.method === 'OPTIONS') { res.writeHead(204, cors); res.end(); return; }
+  if (url.pathname === '/connectivity') {
+    try {
+      const days = Math.min(60, Math.max(1, Number(url.searchParams.get('days') || 7) || 7));
+      sendJson(req, res, connectivityCached(days, url.searchParams.get('force') === '1'), cors);
+    } catch (e) {
+      res.writeHead(500, Object.assign({ 'Content-Type': 'application/json; charset=utf-8' }, cors));
+      res.end(JSON.stringify({ ok: false, error: String((e && e.message) || e) }));
+    }
+    return;
+  }
   if (url.pathname === '/health') {
     res.writeHead(200, Object.assign({ 'Content-Type': 'application/json' }, cors, { 'Cache-Control': 'no-store' }));
     res.end(JSON.stringify({ ok: true }));

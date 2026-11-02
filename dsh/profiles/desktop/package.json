@@ -6,7 +6,7 @@
     "@local/dsh-plugin-goat-panel": "link:D:/Toolbox/goat-gateway/dsh-plugin-goat-panel",
     "@local/dsh-thinking-language": "file:D:/Toolbox/dsh-thinking-language",
     "@weibaohui/dsh-smart-title": "0.1.9",
-    "billion-context": "0.1.210",
+    "billion-context": "0.1.211",
     "ds-harness-remote": "^0.5.22",
     "dsh-better-sidebar": "0.28.2",
     "dsh-context": "0.74.0",

@@ -874,6 +874,11 @@
 "m": 1790530353105636500,
 "s": 5483
 },
+"global/gh-publish-数学内裸lt修复-20261102.md": {
+"h": "7c03a7b5104d96b68f66c988d1d2bc13eddd381ca8423e90893cbd3e95786ca6",
+"m": 1793555675381171600,
+"s": 2833
+},
 "global/git-add-all-deletes-when-worktree-incomplete.md": {
 "h": "45d8653563cbb1de3722a3964ddf008b5c745fb5611719a2a12e1a72959e3860",
 "m": 1792957034840515900,
@@ -1069,6 +1074,16 @@
 "m": 1793210577461640800,
 "s": 5215
 },
+"global/katex-multitag-align-trap.md": {
+"h": "635297e34510d5cce60ae155c41f4cf19001e0d9c8927d08091e5e65386704fc",
+"m": 1793556665266898600,
+"s": 2069
+},
+"global/lald-bilingual-pdf-source-of-truth.md": {
+"h": "4124a64ce0c049bbe78565e3d2cec00e5822d93fb438883904f0dde246546625",
+"m": 1793554463640434600,
+"s": 1732
+},
 "global/learn-translate-补注-worker-纪律.md": {
 "h": "e178889c0b43587be9977fc2eead4eae6ac98deb691d8ad843d0b9c9219244ef",
 "m": 1793133089330042300,
@@ -1098,6 +1113,11 @@
 "h": "d06775a5571184d06d62f2745f22ff6e623446217ece5c4ea2949786a2f646c6",
 "m": 1790428127261057100,
 "s": 4940
+},
+"global/ln-fig-extract-image-jpx.md": {
+"h": "34376ff644994f922e4c090ceea4167d00fb0565871c9c4747975559aee10ef7",
+"m": 1793559674854710700,
+"s": 2131
 },
 "global/lnk-icon-blank-low-mandatory-label.md": {
 "h": "9a8649b784d098dff29be23fdf15e19b22f6474938622faceab7053dfb5cbe53",
@@ -1153,6 +1173,11 @@
 "h": "df419020c2ddc39119a82fec900f0d4f194f2e9a496681e212f9074b3e6c8d08",
 "m": 1789869161903555300,
 "s": 2240
+},
+"global/mit6006-lnotes-figs-lec08-11.md": {
+"h": "254e97fa651383bb85f3680fdc53b64bc6b1814945b30f8e9cb7157ac0f532eb",
+"m": 1793559508807464900,
+"s": 2369
 },
 "global/mnemon-acceptance-evidence-20260928.md": {
 "h": "c21a0561b424a1800ff5c8887dcb17e0c69dd9523029c8e8d08519478be4f4b3",

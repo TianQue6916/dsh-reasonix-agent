@@ -404,6 +404,11 @@
 - [本机使用模式-linux常驻不切系统](本机使用模式-linux常驻不切系统.md) — 本机常驻 Linux 不切系统 + 真正的 Windows 是天阙九泉另一台常开机器 —— 决定了双系统/分区/休眠类判断的前提
 
 - [学习文档审计-图内文字必须与正文同等核对](学习文档审计-图内文字必须与正文同等核对.md) — backward-induction 文档 v3 审查：11 处修正 + 2 张图重画；核心教训是图内文字也要按数学核对，且 heredoc 折反斜杠会让整批修改静默丢失
+- [lald-bilingual-pdf-source-of-truth](lald-bilingual-pdf-source-of-truth.md) — LaLFD 双语教材：原书扫描 pdf 在 split_pages，项目目录下的同名 pdf 是译注版不能当原文依据
+- [gh-publish-数学内裸lt修复-20261102](gh-publish-数学内裸lt修复-20261102.md) — D:\gh-publish 行内数学裸 `<` 渲染缺陷已全修；HIGH/MED/S4 归 0，KaTeX 门 failed 14 是既有基线
+- [katex-multitag-align-trap](katex-multitag-align-trap.md) — KaTeX align 环境多 tag 静默丢内容；D:/gh-publish 基线口径是 98 份文件
+- [mit6006-lnotes-figs-lec08-11](mit6006-lnotes-figs-lec08-11.md) — MIT 6.006 LNotes 8/9/10/11 的插图分布与裁切方法（2026-11-02 实测）
+- [ln-fig-extract-image-jpx](ln-fig-extract-image-jpx.md) — PyMuPDF extract_image 返回 jpx 坑 + D:/gh-publish 写入只能走 shell cp
 ## 归档说明
 - 原文全量备份：`~/.reasonix/memory-backup-20260816/`（59 份）与 `~/.reasonix/memory-backup-20260816-consolidate/`
 - 合并/蒸馏原始件：`~/.reasonix/memory-archive-20260816/`

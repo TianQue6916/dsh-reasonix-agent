@@ -12,9 +12,14 @@
    "lastUsedAt": 1792729448367
   },
   "learn-translate": {
-   "loads": 130,
+   "loads": 131,
    "firstUsedAt": 1793093559968,
-   "lastUsedAt": 1793549226750
+   "lastUsedAt": 1793558388058
+  },
+  "github": {
+   "loads": 1,
+   "firstUsedAt": 1793560437548,
+   "lastUsedAt": 1793560437548
   }
  }
 }

@@ -3,19 +3,19 @@
   "bodies": [
     {
       "id": "075ef288-191a-4ac6-beee-b7ba1bc258c8",
-      "name": "DSH harness 与 learn-translate 经验库",
-      "description": "收录 DSH harness 环境排查、git 操作铁律、实现语言分层选型与 learn-translate 学习文档交付规范；在改环境、跑 git、写脚本或交付文档前回忆。",
+      "name": "default",
+      "description": "Existing Mnemon Store discovered on disk.",
       "active": true,
       "createdAt": "2026-09-27T15:20:10.688Z",
-      "updatedAt": "2026-10-28T19:29:19.721Z"
+      "updatedAt": "2026-10-25T21:45:38.420Z"
     },
     {
       "id": "3a42565d-e42c-48ce-a12c-54fa52f6c151",
-      "name": "本地技术笔记与操作规范集",
-      "description": "收录 git 操作教训、实现语言分层选型、学习文档交付流程与自动记忆规则等个人技术笔记；在设定编码、发布、归档或记忆规范前召回参考。",
+      "name": "default",
+      "description": "Existing Mnemon Store discovered on disk.",
       "active": true,
       "createdAt": "2026-09-27T15:20:10.688Z",
-      "updatedAt": "2026-10-28T19:29:19.630Z"
+      "updatedAt": "2026-10-25T22:17:50.918Z"
     },
     {
       "id": "6b85637e-c16b-4bc0-a858-9a58e0e88a6a",
@@ -26,12 +26,20 @@
       "updatedAt": "2026-10-28T19:29:19.812Z"
     },
     {
-      "id": "default",
+      "id": "8a7f9b33-d637-4201-a240-59b3048bbbb3",
       "name": "Agent 工程铁律与踩坑定论库",
       "description": "收录 Agent 工程实践的踩坑定论与工作流铁律：git 与工作树安全、脚本及 heredoc 转义校验、并发写入纪律、实现语言分层、学习文档自检与双端落盘约定。动手改仓库、写检查脚本或交付文档前回忆。",
       "active": true,
       "createdAt": "2026-09-27T15:20:10.688Z",
-      "updatedAt": "2026-10-28T19:29:18.853Z"
+      "updatedAt": "2026-11-02T09:21:13.924Z"
+    },
+    {
+      "id": "default",
+      "name": "default",
+      "description": "Existing Mnemon Store discovered on disk.",
+      "active": true,
+      "createdAt": "2026-10-01T07:56:33.296Z",
+      "updatedAt": "2026-10-01T07:56:33.296Z"
     }
   ]
 }

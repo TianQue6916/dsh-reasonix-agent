@@ -2,7 +2,7 @@
   "format": "mnemonpack",
   "version": 1,
   "scope": "full",
-  "exportedAt": "2026-11-01T19:18:05.270Z",
+  "exportedAt": "2026-11-02T09:21:14.068Z",
   "source": {
     "plugin": "dsh-mnemon",
     "pluginVersion": "0.5.34"
@@ -21,39 +21,39 @@
     },
     {
       "component": "documents",
-      "files": 258,
-      "bytes": 2201747,
-      "items": 257
+      "files": 260,
+      "bytes": 2216921,
+      "items": 259
     },
     {
       "component": "memory-spaces",
-      "files": 5,
-      "bytes": 54790035,
-      "items": 4
+      "files": 6,
+      "bytes": 71726912,
+      "items": 5
     }
   ],
   "sync": {
     "channel": "git",
     "branch": "mnemon-sync",
     "subdir": "mnemon/",
-    "pushedAt": "2026-11-01T19:18:05.270Z",
+    "pushedAt": "2026-11-02T09:21:14.068Z",
     "machine": {
-      "id": "12436911-9001-44ad-a259-047c9ba7c8eb",
-      "label": "天阙九泉",
-      "createdAt": "2026-10-25T18:12:58.343Z"
+      "id": "428198a5-1f7d-4041-b26a-c66b6cd3139e",
+      "label": "TianQue",
+      "createdAt": "2026-10-25T18:10:41.290Z"
     },
     "tombstones": [
       {
         "target": "user",
         "contentHash": "ad929b995cd192bbade57105452b7a17738d7324432d384348903838de97344f",
-        "deletedAt": "2026-11-01T19:18:02.445Z",
-        "machine": "12436911-9001-44ad-a259-047c9ba7c8eb"
+        "deletedAt": "2026-11-02T09:21:14.068Z",
+        "machine": "428198a5-1f7d-4041-b26a-c66b6cd3139e"
       },
       {
         "target": "user",
         "contentHash": "46e6f92e48439526851e8cd91417ef2d83666fe50e2c280090a1173df921c69b",
-        "deletedAt": "2026-11-01T19:18:02.445Z",
-        "machine": "12436911-9001-44ad-a259-047c9ba7c8eb"
+        "deletedAt": "2026-11-02T09:21:14.068Z",
+        "machine": "428198a5-1f7d-4041-b26a-c66b6cd3139e"
       }
     ]
   }

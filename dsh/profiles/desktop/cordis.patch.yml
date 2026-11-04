@@ -27,22 +27,6 @@
         port: 8770 # 实时面板 http://127.0.0.1:8770/
         backlog: 200 # 新连接重放的历史条数
 
-# fluxscope 大屏（3D 运行时观测）的 server 随 dsh 起落。
-# 用户 2026-11-02：「让这个工作流随着 dsh 一起启动」。
-# 插件本身幂等：先探 GET /health，已经在 3921 上服务就不重复 spawn。
-# 停机走 `taskkill /T /F`，因为 server.mjs 还会 spawn powershell(sysprobe) 与 python(extract)，
-# 只 kill 直接子进程会留下孤儿采样进程。
-- insert:
-    - id: fluxscope-launcher
-      name: ../../.agent-presets/anchored-standard/fluxscope-launcher.mjs
-      config:
-        enabled: true
-        dir: C:/Users/27063/fluxscope
-        port: 3921
-        host: 127.0.0.1
-        retries: 3
-        retryMs: 5000
-
 - id: agent-preset-registry
   config:
     default: anchored-standard

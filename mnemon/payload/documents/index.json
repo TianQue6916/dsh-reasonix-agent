@@ -4162,7 +4162,7 @@
       ],
       "createdAt": "2026-11-02T08:34:33.237Z",
       "updatedAt": "2026-11-02T08:34:33.237Z",
-      "lastAccessedAt": "2026-11-02T08:39:09.799Z",
+      "lastAccessedAt": "2026-11-07T17:33:17.505Z",
       "revision": 1,
       "contentHash": "5b2673679ff37a8ea15be81e5c58d6aef0e53a45273892e4e8bc5c5b1019fbd9",
       "sizeBytes": 6106,
@@ -4181,7 +4181,7 @@
       ],
       "createdAt": "2026-11-02T08:39:40.001Z",
       "updatedAt": "2026-11-02T08:39:40.001Z",
-      "lastAccessedAt": "2026-11-02T08:39:40.001Z",
+      "lastAccessedAt": "2026-11-07T17:33:17.505Z",
       "revision": 1,
       "contentHash": "86e6651e9eb5e7184de3a80b8092f288ba38db91a97103aaf92eadff429a4eb6",
       "sizeBytes": 6858,
@@ -4376,7 +4376,7 @@
       ],
       "createdAt": "2026-10-27T19:17:02.940Z",
       "updatedAt": "2026-10-27T19:17:02.940Z",
-      "lastAccessedAt": "2026-11-01T18:21:01.780Z",
+      "lastAccessedAt": "2026-11-07T17:33:17.505Z",
       "revision": 1,
       "contentHash": "0e8ad35ca6a0af88ad620c3adc0b9c3aaf24ae28d581ae832377aefef37b3552",
       "sizeBytes": 7510,
@@ -5168,7 +5168,7 @@
       ],
       "createdAt": "2026-10-30T07:01:06.336Z",
       "updatedAt": "2026-10-30T07:01:06.336Z",
-      "lastAccessedAt": "2026-10-30T07:01:06.336Z",
+      "lastAccessedAt": "2026-11-07T17:33:17.505Z",
       "revision": 1,
       "contentHash": "a3a9b009b89224dfdd27df6bb4e0bd094322b1ef6d6bdceb3b665ccb4704a81f",
       "sizeBytes": 6559,
@@ -5925,6 +5925,25 @@
       "revision": 1,
       "contentHash": "50a19305fffca49fd04e9bc3f64291693b1864f05d6e9dfeb26021aeeaa3cd22",
       "sizeBytes": 5001,
+      "memoryBodyIds": []
+    },
+    {
+      "id": "6699c972-ac4f-4c2c-9f59-8752a9edbbeb",
+      "title": "md2pdf 公式块导出失败：根因（导出与预览两条解析路径）、规范化临时副本与版本守卫",
+      "description": "md2pdf 把 LaTeX 公式原样吐成代码块的根因定位：MarkText 编辑器预览走 muya 宽松 Block 解析、导出走严格的 exportStyledHTML；同目录临时副本规范化 $$ 边界、EXPORTER_VERSION 强制重建、XAUTHORITY 会话重启后 cookie 改名修复、Type3 字体体积与兼容性权衡。含四组对照实验数字与未决项。",
+      "status": "active",
+      "filename": "md2pdf-6699c972.md",
+      "relativePath": "documents/active/md2pdf-6699c972.md",
+      "sourcePaths": [],
+      "sessionIds": [
+        "2942ae83-dca7-4425-9cf2-c346a9b84afa"
+      ],
+      "createdAt": "2026-11-07T17:34:03.805Z",
+      "updatedAt": "2026-11-07T17:34:03.805Z",
+      "lastAccessedAt": "2026-11-07T17:34:03.805Z",
+      "revision": 1,
+      "contentHash": "faac34a80327d38f001c24d267804bc5af2a6443c854569563f44257d3287e89",
+      "sizeBytes": 5546,
       "memoryBodyIds": []
     }
   ]

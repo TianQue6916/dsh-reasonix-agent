@@ -407,9 +407,10 @@ function median(arr) {
   return a.length % 2 ? a[h] : Math.round((a[h - 1] + a[h]) / 2);
 }
 
-async function buildConnectivity(days) {
+async function buildConnectivity(hours, bucketMin) {
   const t0 = Date.now();
-  const cutoff = t0 - days * 86400000;
+  const bucketMs = bucketMin * 60000;
+  const cutoff = t0 - hours * 3600000;
   const files = listSessionFiles(cutoff);
   const seen = new Set();
   const perHour = new Map();
@@ -428,7 +429,7 @@ async function buildConnectivity(days) {
     }
     for (const s of entry.steps) {
       if (!s.t || s.t < cutoff) continue;
-      const h = Math.floor(s.t / 3600000) * 3600000;
+      const h = Math.floor(s.t / bucketMs) * bucketMs;
       let b = perHour.get(h);
       if (!b) { b = { h, n: 0, fail: 0, retries: 0, durs: [], codes: {} }; perHour.set(h, b); }
       b.n += 1;
@@ -437,23 +438,36 @@ async function buildConnectivity(days) {
       if (s.codes) for (const c of s.codes) { b.codes[c] = (b.codes[c] || 0) + 1; totals.byCode[c] = (totals.byCode[c] || 0) + 1; }
       if (s.dur && s.dur > 0 && s.dur < 1800000) b.durs.push(s.dur);
       if (s.ttft && s.ttft > 0 && s.ttft < 600000) { totals.ttftN += 1; ttftAll.push(s.ttft); }
+      if (!totals.lastStepAt || s.t > totals.lastStepAt) totals.lastStepAt = s.t;
     }
   }
   // 掉出窗口的文件从缓存里清掉，防内存慢慢涨
   for (const k of Array.from(connFiles.keys())) if (!seen.has(k)) connFiles.delete(k);
 
-  const hours = Array.from(perHour.values()).sort((a, b) => a.h - b.h).map((b) => ({
-    h: b.h, n: b.n, fail: b.fail, retries: b.retries,
-    rate: b.n ? Math.round((1000 * b.fail) / b.n) / 10 : 0,
-    medMs: median(b.durs), codes: b.codes
-  }));
-  const worst = hours.filter((b) => b.n >= 20).slice().sort((a, b) => b.rate - a.rate).slice(0, 5)
+  // 桶数组改名 buckets：外层参数 hours 是「窗口宽度」，两者同名会 SyntaxError
+  // 补全时间轴：只回「有数据的桶」会让色带被压缩到右边，看不出「哪段时间整段空着」。
+  // 从 cutoff 到现在按 bucketMs 步进铺满，没样本的桶 n=0（客户端画成灰格）。
+  const firstIdx = Math.floor(cutoff / bucketMs);
+  const lastIdx = Math.floor(t0 / bucketMs);
+  const buckets = [];
+  for (let i = firstIdx; i <= lastIdx; i++) {
+    const h = i * bucketMs;
+    const b = perHour.get(h);
+    buckets.push(b ? {
+      h, n: b.n, fail: b.fail, retries: b.retries,
+      rate: b.n ? Math.round((1000 * b.fail) / b.n) / 10 : 0,
+      medMs: median(b.durs), codes: b.codes
+    } : { h, n: 0, fail: 0, retries: 0, rate: 0, medMs: null, codes: {} });
+  }
+  const worst = buckets.filter((b) => b.n >= 20).slice().sort((a, b) => b.rate - a.rate).slice(0, 5)
     .map((b) => ({ h: b.h, rate: b.rate, n: b.n, retries: b.retries }));
 
   return {
     ok: true,
     ts: Date.now(),
-    days,
+    hours,
+    bucketMin,
+    since: cutoff,
     files: files.length,
     computeMs: Date.now() - t0,
     totals: {
@@ -463,42 +477,45 @@ async function buildConnectivity(days) {
       rate: totals.steps ? Math.round((1000 * totals.failSteps) / totals.steps) / 10 : 0,
       byCode: totals.byCode,
       ttftN: totals.ttftN,
-      ttftP50: median(ttftAll)
+      ttftP50: median(ttftAll),
+      lastStepAt: totals.lastStepAt || null
     },
-    hours,
+    buckets,
     worst
   };
 }
 
-function refreshConnectivity(days) {
+function refreshConnectivity(hours, bucketMin) {
   if (connBusy) { connPending = true; return; }
   connBusy = true;
-  const d = days || 7;
+  const H = hours || 12;
+  const B = bucketMin || 15;
   (async () => {
     try {
-      const body = await buildConnectivity(d);
+      const body = await buildConnectivity(H, B);
       connCache.at = Date.now();
       connCache.body = body;
     } catch (e) {
       connCache.at = Date.now();
-      connCache.body = { ok: false, ts: Date.now(), days: d, error: String((e && e.message) || e), hours: [], totals: {} };
+      connCache.body = { ok: false, ts: Date.now(), hours: H, bucketMin: B, error: String((e && e.message) || e), hours_list: [], totals: {} };
     } finally {
       connBusy = false;
-      if (connPending) { connPending = false; refreshConnectivity(d); }
+      if (connPending) { connPending = false; refreshConnectivity(H, B); }
     }
   })();
 }
 
-function connectivityCached(days, force) {
+function connectivityCached(hours, bucketMin, force) {
   const now = Date.now();
-  if (connCache.body && connCache.body.days !== days) connCache.body = null;
+  const sameShape = connCache.body && connCache.body.hours === hours && connCache.body.bucketMin === bucketMin;
+  if (connCache.body && !sameShape) connCache.body = null;   // 窗口形状变了才丢缓存
   const fresh = connCache.body && (now - connCache.at) < CONN_TTL_MS && !force;
-  if (!fresh) refreshConnectivity(days);           // stale-while-revalidate：立刻回旧值，后台补
-  if (!connCache.body) return { ok: true, ts: now, warming: true, days, hours: [], totals: { steps: 0 } };
+  if (!fresh) refreshConnectivity(hours, bucketMin);         // stale-while-revalidate：立刻回旧值，后台补
+  if (!connCache.body) return { ok: true, ts: now, warming: true, hours, bucketMin, buckets: [], totals: { steps: 0 } };
   return Object.assign({}, connCache.body, { stale: !fresh, ageMs: now - connCache.at, busy: connBusy });
 }
 
-setTimeout(() => { try { refreshConnectivity(); } catch {} }, 3000);
+setTimeout(() => { try { refreshConnectivity(12, 15); } catch {} }, 3000);
 // ────────────────────────── /连通性历史 ──────────────────────────
 
 const server = http.createServer(async (req, res) => {
@@ -513,8 +530,14 @@ const server = http.createServer(async (req, res) => {
   if (req.method === 'OPTIONS') { res.writeHead(204, cors); res.end(); return; }
   if (url.pathname === '/connectivity') {
     try {
-      const days = Math.min(60, Math.max(1, Number(url.searchParams.get('days') || 7) || 7));
-      sendJson(req, res, connectivityCached(days, url.searchParams.get('force') === '1'), cors);
+      const rawHours = url.searchParams.get('hours');
+      const rawDays = url.searchParams.get('days');
+      // hours 优先；只给 days 时当成 days*24 小时（老调用方仍然可用）
+      const hours = rawHours !== null
+        ? Math.min(24 * 60, Math.max(1, Number(rawHours) || 12))
+        : Math.min(24 * 60, Math.max(1, (Number(rawDays) || 7) * 24));
+      const bucketMin = Math.min(1440, Math.max(1, Number(url.searchParams.get('bucket') || (hours <= 12 ? 15 : 60)) || 15));
+      sendJson(req, res, connectivityCached(hours, bucketMin, url.searchParams.get('force') === '1'), cors);
     } catch (e) {
       res.writeHead(500, Object.assign({ 'Content-Type': 'application/json; charset=utf-8' }, cors));
       res.end(JSON.stringify({ ok: false, error: String((e && e.message) || e) }));

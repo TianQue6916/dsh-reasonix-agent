@@ -1,0 +1,53 @@
+{
+ "subject": "physics",
+ "generated_at": "2026-11-07T20:30:00+08:00",
+ "sources": [
+  "C:/Users/27063/.reasonix/global-workspace/pages/DS_物理.md",
+  "C:/Users/27063/.reasonix/global-workspace/pages/DS_线性代数.md"
+ ],
+ "insights": [
+  {
+   "type": "层次",
+   "content": "能识别「条件不足」这类 model 假设：仅给 R 与 g 时 mg = F万有 - F向心，反推不出 GM；必须另给自转周期 T，精确式 GM = gR^2 + omega^2 R^3，近似式才是 GM = gR^2。",
+   "tags": [
+    "物理",
+    "近似",
+    "模型假设"
+   ],
+   "importance": 3,
+   "evidence": "DS_物理.md 第 2 条消息（🤖）给出两张判别表：给 R,g 用 GM=gR^2；给 R,g,T 用 GM=gR^2+omega^2*R^3"
+  },
+  {
+   "type": "层次",
+   "content": "大学物理C 期末的复盘结论是「考试的核心内容完全偏离了方向」：一道选择题三分，备考方向与实考考点错位；补救方案定为回归课本例题与课后习题。",
+   "tags": [
+    "物理",
+    "考试",
+    "大学物理C"
+   ],
+   "importance": 2,
+   "evidence": "DS_物理.md 第 1 条消息（🧑，整段粘贴的复盘文本）：「三分，就是一道选择题的分值……复习的偏差到底出在哪里」"
+  },
+  {
+   "type": "待验证",
+   "content": "他拒的是物理隐喻而非物理本身：要求把 quadratic form 的「能量」当纯数学量处理（DS_线性代数 L2865），但大学物理C 实际在修。两种态度在先有语料里未分辨。",
+   "tags": [
+    "物理",
+    "隐喻",
+    "待验证"
+   ],
+   "importance": 3,
+   "evidence": "DS_线性代数.md L2865「没学过物理，解释的详细一点」 vs DS_物理.md 记录的大学物理C 期末复盘"
+  },
+  {
+   "type": "指针",
+   "content": "该科目在对话语料中几乎无投入：pages 目录 413 个文件里物理相关仅 DS_物理.md 一个，2 条消息 / 2.8 KB，无后续会话；且其中 user 侧是粘贴来的复盘文本，不是本人提问。",
+   "tags": [
+    "物理",
+    "指针"
+   ],
+   "importance": 4,
+   "evidence": "C:/Users/27063/.reasonix/global-workspace/pages 下 ls | grep -v conflict.bak | wc -l = 413（不含 .bak）；DS_物理.md 2844 字节 / 2 条消息；第 1 条消息为助手口吻的整段粘贴"
+  }
+ ]
+}

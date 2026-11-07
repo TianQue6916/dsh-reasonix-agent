@@ -409,6 +409,9 @@
 - [katex-multitag-align-trap](katex-multitag-align-trap.md) — KaTeX align 环境多 tag 静默丢内容；D:/gh-publish 基线口径是 98 份文件
 - [mit6006-lnotes-figs-lec08-11](mit6006-lnotes-figs-lec08-11.md) — MIT 6.006 LNotes 8/9/10/11 的插图分布与裁切方法（2026-11-02 实测）
 - [ln-fig-extract-image-jpx](ln-fig-extract-image-jpx.md) — PyMuPDF extract_image 返回 jpx 坑 + D:/gh-publish 写入只能走 shell cp
+- [deepseek-wiki-round4-20261107](deepseek-wiki-round4-20261107.md) — DeepSeek 网页版第 4 轮重抓（2026-11-07）：63 会话/404 页/relay 投递 + bulk_fetch 跨轮误判 bug 修复
+- [mnemon-记忆插件整理-20261107](mnemon-记忆插件整理-20261107.md) — 记忆插件三层现状与整理工具：vault 393 fact、mnemon 396 条、hot memory 91% 满；对账/修复脚本与三个坑（--full 造重复、改名不改 tag、/tmp 不互通）
+- [机器硬件与双系统路径档案-20261107](机器硬件与双系统路径档案-20261107.md) — 小电脑/主力机磁盘型号与双系统课程资料路径（/media/OS 课程文件、linux-home/课程资料 20 repo）；从 hot memory 下沉的落点
 ## 归档说明
 - 原文全量备份：`~/.reasonix/memory-backup-20260816/`（59 份）与 `~/.reasonix/memory-backup-20260816-consolidate/`
 - 合并/蒸馏原始件：`~/.reasonix/memory-archive-20260816/`

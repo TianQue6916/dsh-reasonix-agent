@@ -1,0 +1,327 @@
+{
+ "subject": "python-toolchain",
+ "generated_at": "2026-11-07T20:17:38+08:00",
+ "sources": [
+  "C:\\Users\\27063\\.reasonix\\global-workspace\\pages\\DS_计算机技术问题.md",
+  "C:\\Users\\27063\\.reasonix\\global-workspace\\pages\\DS_Python文件打印疑问.md",
+  "C:\\Users\\27063\\.reasonix\\global-workspace\\pages\\DS_Python奇数列表实验代码.md",
+  "C:\\Users\\27063\\.reasonix\\global-workspace\\pages\\DS_dsh端口占用与预设包修复.md",
+  "C:\\Users\\27063\\.reasonix\\global-workspace\\pages\\DS_Miniconda简介.md",
+  "C:\\Users\\27063\\.reasonix\\global-workspace\\pages\\DS_GitHub连接加速方法.md",
+  "C:\\Users\\27063\\.reasonix\\global-workspace\\pages\\DS_GitHub快速访问方法.md",
+  "C:\\Users\\27063\\.reasonix\\global-workspace\\pages\\DS_dsh支持系统.md"
+ ],
+ "insights": [
+  {
+   "type": "解法",
+   "content": "PEP 668：pip 报 externally-managed-environment。解法 python3 -m venv <env> + source bin/activate；CLI 工具用 pipx install。",
+   "tags": [
+    "Python",
+    "pip",
+    "venv",
+    "pipx",
+    "PEP668"
+   ],
+   "importance": 5,
+   "evidence": "DS_计算机技术问题.md §L19707、§L19743"
+  },
+  {
+   "type": "解法",
+   "content": "绕过 PEP 668 的 --break-system-packages 是破坏性开关（报错 note 已标风险）；他一次都没用，全程改走 venv / pipx。这条取舍该固化成规矩。",
+   "tags": [
+    "Python",
+    "pip",
+    "PEP668",
+    "安全边界"
+   ],
+   "importance": 4,
+   "evidence": "DS_计算机技术问题.md §L19707、§L20175"
+  },
+  {
+   "type": "层次",
+   "content": "L1：externally-managed-environment 在 L6849、L19707、L20175 三次撞墙，每次整段重贴。记住的是命令，不是「为何系统 pip 禁装」这条判据。",
+   "tags": [
+    "Python",
+    "pip",
+    "学习层次",
+    "PEP668"
+   ],
+   "importance": 4,
+   "evidence": "DS_计算机技术问题.md §L6849、§L19707、§L20175"
+  },
+  {
+   "type": "解法",
+   "content": "from versions: none：--index-url 指向 pytorch/whl/cpu 时该源无 pillow。加 --extra-index-url https://pypi.org/simple，依赖回 PyPI。",
+   "tags": [
+    "Python",
+    "pip",
+    "index-url",
+    "torchvision",
+    "Pillow"
+   ],
+   "importance": 5,
+   "evidence": "DS_计算机技术问题.md §L6525、§L6186"
+  },
+  {
+   "type": "解法",
+   "content": "torch 526.6 MB / 185.6 kB/s → Operation cancelled by user。切清华源能提速，但不解除 externally-managed-environment：换源 ≠ 换环境。",
+   "tags": [
+    "Python",
+    "pip",
+    "torch",
+    "镜像源"
+   ],
+   "importance": 4,
+   "evidence": "DS_计算机技术问题.md §L4801"
+  },
+  {
+   "type": "困惑",
+   "content": "原话「woxianzaixiazaipytorchhaishizhiyou100kbzuoyou」（我现在下载 pytorch 还是只有 100kb 左右）：拼音直出、只讲现象，环境信息全靠 AI 反推。",
+   "tags": [
+    "Python",
+    "提问模式",
+    "torch"
+   ],
+   "importance": 3,
+   "evidence": "DS_计算机技术问题.md §L4695"
+  },
+  {
+   "type": "解法",
+   "content": "pipx runpip 报 venv for 'pdf2zh' was not found（卸载未重装）。改 venv：python3 -m venv + pip install pdf2zh==1.9.11，绕开 pipx 路径与缓存。",
+   "tags": [
+    "Python",
+    "pipx",
+    "venv",
+    "依赖"
+   ],
+   "importance": 4,
+   "evidence": "DS_计算机技术问题.md §L20421、§L20429"
+  },
+  {
+   "type": "解法",
+   "content": "ImportError: cannot import name 'TextTranslateRequest'（上游 SDK 改 API）→ 降版本 pipx install pdf2zh==1.9.10，而非升级 SDK。",
+   "tags": [
+    "Python",
+    "ImportError",
+    "版本回退",
+    "pipx"
+   ],
+   "importance": 4,
+   "evidence": "DS_计算机技术问题.md §L20001、§L20009"
+  },
+  {
+   "type": "解法",
+   "content": "永久换源写 ~/.config/pip/pip.conf（回显 Writing to .../pip.conf），不必每次加 -i：从「每次手打」升级到「配置一次」。",
+   "tags": [
+    "Python",
+    "pip",
+    "pip.conf",
+    "镜像源"
+   ],
+   "importance": 4,
+   "evidence": "DS_计算机技术问题.md §L4289"
+  },
+  {
+   "type": "解法",
+   "content": "uv 报 Failed to fetch: uv.agentsmirror.com/... → 镜像挂。加 --index-url 换清华源；uv/pipx/pip 都认这个参数。",
+   "tags": [
+    "Python",
+    "uv",
+    "镜像源",
+    "网络"
+   ],
+   "importance": 4,
+   "evidence": "DS_计算机技术问题.md §L19707、§L19743"
+  },
+  {
+   "type": "解法",
+   "content": "babeldoc: command not found → uv tool install --python 3.12 BabelDOC 自动建隔离环境并挂 PATH；用 babeldoc --help 验证。",
+   "tags": [
+    "Python",
+    "uv",
+    "PATH",
+    "babeldoc"
+   ],
+   "importance": 4,
+   "evidence": "DS_计算机技术问题.md §L18702、§L18677"
+  },
+  {
+   "type": "解法",
+   "content": "「无法将“reasonix”项识别为 cmdlet」= 目录不在 PATH。临时 & \"...\reasonix.exe\"；本会话 $env:Path += \";...\"；永久改系统 PATH。",
+   "tags": [
+    "Python",
+    "PATH",
+    "PowerShell",
+    "环境变量"
+   ],
+   "importance": 5,
+   "evidence": "DS_计算机技术问题.md §L8628、§L8648"
+  },
+  {
+   "type": "困惑",
+   "content": "把交互式 setup 的提示行整行（DEEPSEEK_API_KEY: sk-...）连同 ANSI 残留 [0m 当命令粘贴 → ParserError「\"[\" 后面缺少类型名称」。核心是「提示符 ≠ 命令」。",
+   "tags": [
+    "Python",
+    "PowerShell",
+    "复制粘贴",
+    "ANSI"
+   ],
+   "importance": 4,
+   "evidence": "DS_计算机技术问题.md §L8961、§L9036"
+  },
+  {
+   "type": "提问模式",
+   "content": "整段复制终端输出（提示符、进度条、Writing 字节数）不加解释，AI 靠 227,554,768 字节推出下到 217 MB。信息全，但报错行要 AI 自己切。",
+   "tags": [
+    "Python",
+    "提问模式",
+    "终端日志"
+   ],
+   "importance": 3,
+   "evidence": "DS_计算机技术问题.md §L8050、§L8056"
+  },
+  {
+   "type": "提问模式",
+   "content": "prompt 行被一起复制 → tianque@TianQue:~$：未找到命令 / bash:「bash」命令来自 Debian 软件包 bash。他已能识别这是复制问题而非命令错。",
+   "tags": [
+    "Python",
+    "提问模式",
+    "shell",
+    "复制粘贴"
+   ],
+   "importance": 3,
+   "evidence": "DS_计算机技术问题.md §L16791、§L16889"
+  },
+  {
+   "type": "提问模式",
+   "content": "会一句话重申约束把跑偏的 AI 拉回：「我指的是我要下载一个应用，安装一个应用。」；L8113 更完整：不要 pytorch、要 windows、按我的计划分平台。",
+   "tags": [
+    "Python",
+    "提问模式",
+    "跨平台",
+    "约束重述"
+   ],
+   "importance": 4,
+   "evidence": "DS_计算机技术问题.md §L8113、§L35167"
+  },
+  {
+   "type": "层次",
+   "content": "L2：L8113 主动区分「哪些在 linux 运行、哪些在 windows、哪些两个系统都有」—— 已理解工具与依赖绑平台，不再默认一条命令通吃。",
+   "tags": [
+    "Python",
+    "层次",
+    "跨平台",
+    "环境隔离"
+   ],
+   "importance": 4,
+   "evidence": "DS_计算机技术问题.md §L8113"
+  },
+  {
+   "type": "已掌握",
+   "content": "(ark_env) 提示符下 pip install torchvision==0.18.0 --index-url .../whl/cpu：会建 venv、会激活、能判断当前在哪个环境，依赖也按源分开装。",
+   "tags": [
+    "Python",
+    "venv",
+    "conda",
+    "torch"
+   ],
+   "importance": 5,
+   "evidence": "DS_计算机技术问题.md §L6166"
+  },
+  {
+   "type": "已掌握",
+   "content": "能复盘交付：PyTorch 在 ark_env、CPU 版 2.13 就位、R-SWA correctness gate 三项全通过 —— 从照着做变为能说清装在哪、什么版本。",
+   "tags": [
+    "Python",
+    "venv",
+    "torch",
+    "复盘"
+   ],
+   "importance": 4,
+   "evidence": "DS_计算机技术问题.md §L23440"
+  },
+  {
+   "type": "困惑",
+   "content": "原话「我直接把点py文件发过去，他能打印吗？」：不区分源文件与可打印内容。结论是用记事本/右键打印，或另存 .txt 再发。",
+   "tags": [
+    "Python",
+    "文件",
+    "输出格式"
+   ],
+   "importance": 2,
+   "evidence": "DS_Python文件打印疑问.md §L11、§L42-56"
+  },
+  {
+   "type": "提问模式",
+   "content": "作业截图 +「生产代码」两字 = 直接要完整可跑答案，不要思路。list(range(1,n+1,2)) + tuple() + sum()/len() 全由 AI 给，本人未复述，停在 L1。",
+   "tags": [
+    "Python",
+    "提问模式",
+    "内置函数",
+    "学习层次"
+   ],
+   "importance": 3,
+   "evidence": "DS_Python奇数列表实验代码.md §L13-45"
+  },
+  {
+   "type": "困惑",
+   "content": "原话「为什么全是乱码，公式也没有正常显示」：其实是 PDF 公式提取（babeldoc 把 \\iff E = -0.1L = 打碎），不是 Python 字符串编码。两类要区分。",
+   "tags": [
+    "Python",
+    "编码",
+    "PDF",
+    "误解"
+   ],
+   "importance": 3,
+   "evidence": "DS_计算机技术问题.md §L18785、§L18793"
+  },
+  {
+   "type": "解法",
+   "content": "依赖树不完整：npm i -g @deepseek-ai/dsh --prefer-dedupe 修 Cannot find package '@deepseek-ai/dsh-agent-preset'（presets→preset）。",
+   "tags": [
+    "Python",
+    "npm",
+    "依赖",
+    "工具链"
+   ],
+   "importance": 3,
+   "evidence": "DS_dsh端口占用与预设包修复.md §L59-70"
+  },
+  {
+   "type": "解法",
+   "content": "EADDRINUSE 127.0.0.1:3080 → dsh web --port 0（OS 自动分配），--port 须在 web 子命令之后；要留原端口则 ss -ltnp | grep 3080 找 PID 再 kill -9。",
+   "tags": [
+    "Python",
+    "端口",
+    "进程",
+    "排障"
+   ],
+   "importance": 3,
+   "evidence": "DS_dsh端口占用与预设包修复.md §L23-55"
+  },
+  {
+   "type": "待验证",
+   "content": "Anaconda 4-5 GB / Miniconda ~400 MB 的取舍只来自问答，未见实际 conda create/activate；L8050 那套 Anaconda 是 AI 一键 PowerShell 脚本，无完成回执。",
+   "tags": [
+    "Python",
+    "conda",
+    "Anaconda",
+    "待验证"
+   ],
+   "importance": 2,
+   "evidence": "DS_Miniconda简介.md §L21-38；DS_计算机技术问题.md §L8050"
+  },
+  {
+   "type": "待验证",
+   "content": "hosts 改 IP、bgithub.xyz / gh-proxy.com 镜像、DevSidecar、CNFast、SSH 走 443 全是清单式接受：镜像不能登录、IP 会失效，无一条有实测数据。",
+   "tags": [
+    "Python",
+    "GitHub",
+    "网络",
+    "镜像"
+   ],
+   "importance": 2,
+   "evidence": "DS_GitHub连接加速方法.md §L27；DS_GitHub快速访问方法.md §L9"
+  }
+ ]
+}

@@ -1,0 +1,178 @@
+{
+ "generated_at": "2026-11-07T20:14:43",
+ "subjects": {
+  "academic-planning": {
+   "name": "学科档案 · 学业规划与元认知",
+   "body_id": "7e7f23b3-9b95-4f8b-a939-62eadddd10a5",
+   "newest_mtime": 1794051237.621721,
+   "files": [
+    ".reasonix/global-workspace/pages/DS_十年后最好专业.md",
+    ".reasonix/global-workspace/pages/DS_宁夏大学定位研究型.md",
+    ".reasonix/global-workspace/pages/DS_未来规划.md",
+    ".reasonix/global-workspace/pages/DS_未来规划_20260927.md"
+   ],
+   "materials": "另读 `方舟架构方案-*.md`、`第二个天阙-*.md`、`张宇程暑期*-最终版.md`"
+  },
+  "algorithms": {
+   "name": "学科档案 · 算法与数据结构",
+   "body_id": "19022172-954f-4d8b-9109-06868dc84f68",
+   "newest_mtime": 1794051237.0282593,
+   "files": [
+    ".reasonix/global-workspace/pages/DS_O(V+E)复杂度算法.md",
+    ".reasonix/global-workspace/pages/DS_算法导论.md"
+   ],
+   "materials": "另读 `Desktop/课程文件/006算法导论`、`D:/算法导论学习文件`"
+  },
+  "calculus": {
+   "name": "学科档案 · 高等数学与微积分",
+   "body_id": "f5d72dc4-b11f-4a33-a6f6-85e6e3ffa538",
+   "newest_mtime": 1794051237.6464467,
+   "files": [
+    ".reasonix/global-workspace/pages/DS_求极限题解法.md",
+    ".reasonix/global-workspace/pages/DS_高数期末复习.md",
+    ".reasonix/global-workspace/pages/DS_高等数学.md"
+   ],
+   "materials": ""
+  },
+  "circuits": {
+   "name": "学科档案 · 数字电路与逻辑设计",
+   "body_id": "e92be240-f363-4a2e-88de-a885b51a37da",
+   "newest_mtime": 1790775687.3870516,
+   "files": [
+    ".reasonix/global-workspace/pages/DS_Logisim搭建CMOS门.md",
+    ".reasonix/global-workspace/pages/DS_十四进制计数器解析.md",
+    ".reasonix/global-workspace/pages/DS_数电.md",
+    ".reasonix/global-workspace/pages/DS_次态卡诺图推导.md",
+    ".reasonix/global-workspace/pages/DS_第三题计数器解析.md",
+    ".reasonix/global-workspace/pages/DS_进制计数器状态矛盾.md"
+   ],
+   "materials": ""
+  },
+  "discrete-math": {
+   "name": "学科档案 · 离散数学与组合",
+   "body_id": "a14c6b9f-344f-4ca3-9206-76972cd6f049",
+   "newest_mtime": 1790775695.8961096,
+   "files": [
+    ".reasonix/global-workspace/pages/DS_O(V+E)复杂度算法.md",
+    ".reasonix/global-workspace/pages/DS_六度分隔理论.md",
+    ".reasonix/global-workspace/pages/DS_最优子结构理论证明.md"
+   ],
+   "materials": "补充素材：6.042J 讲义与题解"
+  },
+  "english-academic": {
+   "name": "学科档案 · 学术英语与双语翻译",
+   "body_id": "dfc4423f-e242-44af-9515-ec655fda1cf3",
+   "newest_mtime": 1794051237.637447,
+   "files": [
+    ".reasonix/global-workspace/pages/DS_Admin含义解释.md",
+    ".reasonix/global-workspace/pages/DS_Plugin含义解释.md",
+    ".reasonix/global-workspace/pages/DS_vanilla含义解释.md",
+    ".reasonix/global-workspace/pages/DS_仓库英语翻译.md",
+    ".reasonix/global-workspace/pages/DS_压缩上下文英语表达.md",
+    ".reasonix/global-workspace/pages/DS_反例英语表达.md",
+    ".reasonix/global-workspace/pages/DS_反证法英语表达.md",
+    ".reasonix/global-workspace/pages/DS_周六英语.md",
+    ".reasonix/global-workspace/pages/DS_存在英语翻译.md",
+    ".reasonix/global-workspace/pages/DS_导航对接英语.md",
+    ".reasonix/global-workspace/pages/DS_已定义英语表达.md",
+    ".reasonix/global-workspace/pages/DS_帮狗cat含义解释.md",
+    ".reasonix/global-workspace/pages/DS_数学建模大赛英语.md",
+    ".reasonix/global-workspace/pages/DS_数学极值最值英语.md",
+    ".reasonix/global-workspace/pages/DS_无穷英语表达.md",
+    ".reasonix/global-workspace/pages/DS_核心思考英语表达.md",
+    ".reasonix/global-workspace/pages/DS_梦情含义解释.md",
+    ".reasonix/global-workspace/pages/DS_概率导论翻译质量差.md",
+    ".reasonix/global-workspace/pages/DS_第三世界含义解释.md",
+    ".reasonix/global-workspace/pages/DS_英语填空in的用法.md",
+    ".reasonix/global-workspace/pages/DS_英语学习.md",
+    ".reasonix/global-workspace/pages/DS_英语语法错误纠正.md",
+    ".reasonix/global-workspace/pages/DS_计算机科学资料英语.md"
+   ],
+   "materials": "另读 `translator_notes.md`"
+  },
+  "linear-algebra": {
+   "name": "学科档案 · 线性代数",
+   "body_id": "346a7cab-e28b-4ec1-8049-4284a8905576",
+   "newest_mtime": 1794051237.4198313,
+   "files": [
+    ".reasonix/global-workspace/pages/DS_线性代数.md",
+    ".reasonix/global-workspace/pages/DS_雅可比猜想反例探讨.md",
+    ".reasonix/global-workspace/pages/DS_雅可比猜想证伪讨论.md"
+   ],
+   "materials": "另读 `strang_part001_translation.md`、`strang_section_*.md`、`TBB-AllChapters-*.bilingual.md`"
+  },
+  "math-analysis": {
+   "name": "学科档案 · 实分析与数学分析",
+   "body_id": "dff27046-4c69-4680-a26a-3e8968a34526",
+   "newest_mtime": 1794051237.3627365,
+   "files": [
+    ".reasonix/global-workspace/pages/DS_三角不等式解释.md",
+    ".reasonix/global-workspace/pages/DS_实分析.md",
+    ".reasonix/global-workspace/pages/DS_实分析符号存疑.md",
+    ".reasonix/global-workspace/pages/DS_计算机副教授未学实分析.md",
+    ".reasonix/global-workspace/pages/DS_证明1大于0.md"
+   ],
+   "materials": "另读 `.reasonix/global-workspace/18.100B-PS1-*.md`、`PS1-无穷大关系定义-*.md`、`L01 - Introduction to Real Numbers (双语).md`、`Desktop/课程文件/100b实分析`"
+  },
+  "physics": {
+   "name": "学科档案 · 物理",
+   "body_id": "61c2edfb-0cb3-4075-a6dc-3878f5b92ad8",
+   "newest_mtime": 1785493849.9048233,
+   "files": [
+    ".reasonix/global-workspace/pages/DS_物理.md"
+   ],
+   "materials": ""
+  },
+  "probability": {
+   "name": "学科档案 · 概率论与统计",
+   "body_id": "c0212d7a-4d69-4585-854f-58399ae345b4",
+   "newest_mtime": 1790775697.3692536,
+   "files": [
+    ".reasonix/global-workspace/pages/DS_六门非前十总分前十概率.md",
+    ".reasonix/global-workspace/pages/DS_患癌概率统计.md",
+    ".reasonix/global-workspace/pages/DS_月均消费统计.md",
+    ".reasonix/global-workspace/pages/DS_概率导论翻译质量差.md"
+   ],
+   "materials": "补充素材：`Desktop/课程文件` 下与 6.431/概率导论相关的讲义"
+  },
+  "python-toolchain": {
+   "name": "学科档案 · Python 与工程工具链",
+   "body_id": "b7de1e15-0a64-49bb-ab1a-846eab0712b9",
+   "newest_mtime": 1794051237.6207142,
+   "files": [
+    ".reasonix/global-workspace/pages/DS_GitHub密钥泄露提醒.md",
+    ".reasonix/global-workspace/pages/DS_GitHub快速访问方法.md",
+    ".reasonix/global-workspace/pages/DS_GitHub手机版介绍.md",
+    ".reasonix/global-workspace/pages/DS_GitHub连接加速方法.md",
+    ".reasonix/global-workspace/pages/DS_Miniconda简介.md",
+    ".reasonix/global-workspace/pages/DS_Python奇数列表实验代码.md",
+    ".reasonix/global-workspace/pages/DS_Python文件打印疑问.md",
+    ".reasonix/global-workspace/pages/DS_dsh支持系统.md",
+    ".reasonix/global-workspace/pages/DS_dsh端口占用与预设包修复.md"
+   ],
+   "materials": "只取 `计算机技术问题` 中 Python/环境/依赖相关段落"
+  },
+  "signals": {
+   "name": "学科档案 · 信号与系统",
+   "body_id": "80ba2d8b-da77-4ef1-951c-c901baf8dfb7",
+   "newest_mtime": 1794051237.6186998,
+   "files": [
+    ".reasonix/global-workspace/pages/DS_信号与系统.md",
+    ".reasonix/global-workspace/pages/DS_卷积运算四题解答.md"
+   ],
+   "materials": ""
+  },
+  "systems": {
+   "name": "学科档案 · 计算机系统（CSAPP）",
+   "body_id": "ac3a0d13-7899-43b4-acb4-f00637e47a5c",
+   "newest_mtime": 1794051237.58357,
+   "files": [
+    ".reasonix/global-workspace/pages/DS_csapp.md",
+    ".reasonix/global-workspace/pages/DS_浮点数位数分配题解.md",
+    ".reasonix/global-workspace/pages/DS_补码计算方法.md",
+    ".reasonix/global-workspace/pages/DS_计算机技术问题.md"
+   ],
+   "materials": "只取 `计算机技术问题` 中与系统底层相关的段落"
+  }
+ }
+}

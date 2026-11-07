@@ -1,0 +1,481 @@
+{
+ "subject": "systems",
+ "generated_at": "2026-11-07T20:20:00+08:00",
+ "sources": [
+  "C:/Users/27063/.reasonix/global-workspace/pages/DS_csapp.md",
+  "C:/Users/27063/.reasonix/global-workspace/pages/DS_计算机技术问题.md",
+  "C:/Users/27063/.reasonix/global-workspace/pages/DS_浮点数位数分配题解.md",
+  "C:/Users/27063/.reasonix/global-workspace/pages/DS_8位整数真值范围.md",
+  "C:/Users/27063/.reasonix/global-workspace/pages/DS_补码计算方法.md"
+ ],
+ "insights": [
+  {
+   "type": "提问模式",
+   "content": "以字幕/教材原文为锚点提问：先贴一句英文讲稿再问「根据上下文这是啥意思」，并多次用「我给你发过字幕」逼模型回到原始材料，不接受脱离上下文的抽象解释。",
+   "tags": [
+    "CSAPP",
+    "学习方法"
+   ],
+   "importance": 4,
+   "evidence": "DS_csapp.md L23195（U141，Ch9 malloc 对齐）；同类字幕粘贴 L8865（U104）、L31171（U224）"
+  },
+  {
+   "type": "提问模式",
+   "content": "用边界数值反推规则而非记结论：连问「为什么加128」「为什么64位少了十二位 干啥去了」「至少有三位或者四位总是0」，拿数字卡边界。",
+   "tags": [
+    "CSAPP",
+    "整型表示"
+   ],
+   "importance": 4,
+   "evidence": "DS_csapp.md L2806（U031）、L6626（U076）、L23725（U148）"
+  },
+  {
+   "type": "提问模式",
+   "content": "爱构造反例击穿模型的解释，并当场指认论证漏洞：「这种情况下你给我举的这个用来筛查…条件根本就不成立」「你傻逼？不要在这循环论证」。",
+   "tags": [
+    "CSAPP",
+    "引用计数",
+    "GC"
+   ],
+   "importance": 5,
+   "evidence": "DS_csapp.md L54413（U305）、L54470（U306）"
+  },
+  {
+   "type": "提问模式",
+   "content": "术语洁癖：逐个追问全称（VPN/PPO/PPN/MMU/TLB/AF_INET），要求「英文原文是什么」，拒收「泄露」这类译法。",
+   "tags": [
+    "CSAPP",
+    "术语"
+   ],
+   "importance": 4,
+   "evidence": "DS_csapp.md L5236（U050）、L57786（U339）、L57824（U340）"
+  },
+  {
+   "type": "提问模式",
+   "content": "把「消除机械重复」当独立课题：为不重复写信号恢复那几行，连追 5 轮要 goto / inline / __attribute__((cleanup)) 三种方案的通用教程，拒绝针对单个函数。",
+   "tags": [
+    "CSAPP",
+    "信号",
+    "C"
+   ],
+   "importance": 4,
+   "evidence": "DS_csapp.md L4384（U045）、L4789（U048）、L8005（U091）"
+  },
+  {
+   "type": "提问模式",
+   "content": "给一段代码只问「这是什么意义」，要意图与失配后果（WIFEXITED / 128+WTERMSIG / EINTR），不问语法。",
+   "tags": [
+    "CSAPP",
+    "信号"
+   ],
+   "importance": 3,
+   "evidence": "DS_csapp.md L1854（U021）、L2294（U026）、L2806（U031）"
+  },
+  {
+   "type": "提问模式",
+   "content": "对信息源本身设疑：「你现在回答我完全是自己推理，还是说你有自己的知识库？你现在不能联网吧」，再追问「预训练知识是否可靠」。",
+   "tags": [
+    "CSAPP",
+    "元认知"
+   ],
+   "importance": 4,
+   "evidence": "DS_csapp.md L8556（U096）、L8639（U099）"
+  },
+  {
+   "type": "提问模式",
+   "content": "先要结构再要代码：「先写mind吧，可以先对问题写出problem mind，再写process mind」，且不满足模型的分层：「你这个mind主次不清，应该从问题引出」。",
+   "tags": [
+    "CSAPP",
+    "学习方法"
+   ],
+   "importance": 4,
+   "evidence": "DS_csapp.md L26781（U185）、L26954（U186）、L27140（U187）"
+  },
+  {
+   "type": "困惑",
+   "content": "不接受模型给的阻塞粒度：「为什么要把quit和int这俩阻塞在全局而不是子进程，sigchld为什么不阻塞在父进程而不是全局？为什么不能对症下药？」",
+   "tags": [
+    "CSAPP",
+    "信号",
+    "SIGCHLD"
+   ],
+   "importance": 5,
+   "evidence": "DS_csapp.md L1549（U016）、L1359（U014）"
+  },
+  {
+   "type": "困惑",
+   "content": "认定「屏蔽了 SIGCHLD 就收不到子进程结束」：「sigchild被阻塞，信号没法处理，fgpid根本没有改变，你告诉我对着呢？？？」",
+   "tags": [
+    "CSAPP",
+    "信号",
+    "SIGCHLD"
+   ],
+   "importance": 5,
+   "evidence": "DS_csapp.md L29302（U209）、L29533（U213）"
+  },
+  {
+   "type": "解法",
+   "content": "打通：waitfg 不收尸、只轮询 fg_pid；sigsuspend 原子地「解阻塞＋休眠」消灭判断与休眠之间的窗口；do_fg 外层那次多余阻塞被删。来源：对话对抗后重写代码。",
+   "tags": [
+    "CSAPP",
+    "信号",
+    "sigsuspend"
+   ],
+   "importance": 5,
+   "evidence": "DS_csapp.md L29628-29750（U215-U216 及其回复）"
+  },
+  {
+   "type": "困惑",
+   "content": "把 errno 当普通错误码：「为什么不是einter就说明是致命错误」——未建立「系统调用可被信号中断」的模型。",
+   "tags": [
+    "CSAPP",
+    "信号",
+    "EINTR"
+   ],
+   "importance": 4,
+   "evidence": "DS_csapp.md L1940（U022）、L2019（U023）"
+  },
+  {
+   "type": "困惑",
+   "content": "「没懂为什么用这个_exit」——不清楚 fork 后子进程该用 _exit，以免刷新父进程继承来的 stdio 缓冲、跑 atexit。",
+   "tags": [
+    "CSAPP",
+    "fork",
+    "stdio"
+   ],
+   "importance": 3,
+   "evidence": "DS_csapp.md L800（U008）、L846（U009）"
+  },
+  {
+   "type": "困惑",
+   "content": "「你说触发异常函数之后会快照跳回去，那不就跳到了if那一行吗？这不就死循环？」——担心 siglongjmp 回 sigsetjmp 造成无限重入。",
+   "tags": [
+    "CSAPP",
+    "非局部跳转",
+    "信号"
+   ],
+   "importance": 4,
+   "evidence": "DS_csapp.md L25942（U178）、L26039（U180）、L26091（U181）"
+  },
+  {
+   "type": "层次",
+   "content": "L3：能自问「在你给的这个例子里面被优化了会怎么样，怎么想到的需要避免被优化」，把 volatile 与「编译器把 while(!flag) 提升成死循环」这条动机链接上。",
+   "tags": [
+    "CSAPP",
+    "volatile",
+    "编译器"
+   ],
+   "importance": 4,
+   "evidence": "DS_csapp.md L25262（U167）、L25303（U168）、L25406（U169）"
+  },
+  {
+   "type": "困惑",
+   "content": "「页表没有内容，tlb有，然后虚拟内存只是管理物理内存地址，不能加快速度？」——分不清 page table（索引/权限）与 TLB（cache）的分工。",
+   "tags": [
+    "CSAPP",
+    "虚拟内存",
+    "TLB"
+   ],
+   "importance": 5,
+   "evidence": "DS_csapp.md L5584（U057）、L5344（U053）"
+  },
+  {
+   "type": "层次",
+   "content": "L4：用「框子里有汉堡…tlb存储常用的框子或者汉堡，多级页表存储框子信息方便索引」自建模型，并推出「整个虚拟内存优化的是查找的时间而非读取的时间」。",
+   "tags": [
+    "CSAPP",
+    "虚拟内存",
+    "TLB"
+   ],
+   "importance": 5,
+   "evidence": "DS_csapp.md L5666（U058）、L5694（U059）、L5469（U055）"
+  },
+  {
+   "type": "困惑",
+   "content": "「那既然都直接知道真实地址了，还寻址干啥？」——把 VPO（虚拟地址低 12 位）当成物理地址，卡在「已知偏移为何还要翻译」。",
+   "tags": [
+    "CSAPP",
+    "虚拟内存",
+    "cache"
+   ],
+   "importance": 4,
+   "evidence": "DS_csapp.md L6984（U083）；回复自 L6990 起"
+  },
+  {
+   "type": "困惑",
+   "content": "「为什么64位少了十二位 干啥去了」——追问 64 位机实际只用 48 位虚拟地址的来由（页大小 4KB ⇒ 低 12 位不必存）。",
+   "tags": [
+    "CSAPP",
+    "虚拟内存",
+    "地址翻译"
+   ],
+   "importance": 3,
+   "evidence": "DS_csapp.md L6578（U075）、L6626（U076）"
+  },
+  {
+   "type": "困惑",
+   "content": "「到底内存映射这个什么共享对象意义是什么？…这不就是共享内存吗？为什么特意分出来共享对象？有什么区别？」——卡在 mmap 与显式共享内存的语义差别。",
+   "tags": [
+    "CSAPP",
+    "mmap",
+    "COW"
+   ],
+   "importance": 4,
+   "evidence": "DS_csapp.md L14531（U108）、L14625（U109）"
+  },
+  {
+   "type": "困惑",
+   "content": "「这不是函数吗？命令行是什么」+「argv是自动的吗」——把 main 的命令行参数与 C 函数形参混为一谈，卡在 argv / fd 的来源。",
+   "tags": [
+    "CSAPP",
+    "进程启动",
+    "mmap"
+   ],
+   "importance": 3,
+   "evidence": "DS_csapp.md L15269（U121）、L15317（U122）、L15411（U125）"
+  },
+  {
+   "type": "困惑",
+   "content": "「你不是给我说，堆是程序员操控吗？？？」——发现「堆归程序员」与「堆由 malloc 分配器管」两条说法冲突，转而追问堆到底是什么。",
+   "tags": [
+    "CSAPP",
+    "堆",
+    "malloc"
+   ],
+   "importance": 4,
+   "evidence": "DS_csapp.md L15543（U127）、L7192（U086）、L7299（U087）"
+  },
+  {
+   "type": "困惑",
+   "content": "「它在8字节边界上对齐…为什么是这对齐？」——要求给出 8 字节对齐的机器层理由，而不是记住「对齐了就行」。",
+   "tags": [
+    "CSAPP",
+    "malloc",
+    "对齐"
+   ],
+   "importance": 4,
+   "evidence": "DS_csapp.md L23195（U141）、L23725（U148）"
+  },
+  {
+   "type": "层次",
+   "content": "L3：能预判策略后果并要求机理——「解释为什么nextfit会导致更加糟糕的碎片」，而不是只背 first-fit / best-fit 的名字。",
+   "tags": [
+    "CSAPP",
+    "malloc",
+    "fragmentation"
+   ],
+   "importance": 4,
+   "evidence": "DS_csapp.md L23267（U142）、L23885（U150）"
+  },
+  {
+   "type": "困惑",
+   "content": "「那为什么不能给堆像mmu那样写一个软件版的地址翻译？这样就不用查找了」——直觉上想用 page table 式直接索引消灭 malloc 的搜索。",
+   "tags": [
+    "CSAPP",
+    "malloc",
+    "虚拟内存"
+   ],
+   "importance": 5,
+   "evidence": "DS_csapp.md L23363（U143）；回复 L23370-23450"
+  },
+  {
+   "type": "困惑",
+   "content": "不接受「多 arena 就并发」：「还是没说清楚为什么能减少多个线程同时改堆的冲突啊？」并追问代价：「那这样不就增加碎片了吗」。",
+   "tags": [
+    "CSAPP",
+    "malloc",
+    "并发"
+   ],
+   "importance": 4,
+   "evidence": "DS_csapp.md L39721（U253）、L39823（U254）"
+  },
+  {
+   "type": "层次",
+   "content": "L3：判定「线程和进程这个翻译准确吗」为否，索要「新的学术翻译」，并自证「资源域＝小世界、执行束＝世界里的工人」。",
+   "tags": [
+    "CSAPP",
+    "并发",
+    "术语"
+   ],
+   "importance": 5,
+   "evidence": "DS_csapp.md L59065（U360）、L59160（U362）、L59222（U363）"
+  },
+  {
+   "type": "层次",
+   "content": "L2：贴出 movq cnt(%rip),%rdx / addq $1,%rdx / movq %rdx,cnt(%rip) 后自己归纳「不以一次为最小单元」，把 data race 落到 read-modify-write 三步。",
+   "tags": [
+    "CSAPP",
+    "并发",
+    "data race"
+   ],
+   "importance": 5,
+   "evidence": "DS_csapp.md L68423（U418）、L68555（U420）"
+  },
+  {
+   "type": "困惑",
+   "content": "「那么如何判断临界区」+「这个原子性就是绝对原子，也不会被信号打断那种？」——想要临界区的可操作判定规则，不满足于举例。",
+   "tags": [
+    "CSAPP",
+    "并发",
+    "临界区"
+   ],
+   "importance": 4,
+   "evidence": "DS_csapp.md L68585（U421）、L68640（U422）"
+  },
+  {
+   "type": "困惑",
+   "content": "坚持单一计数（带上限）实现生产者-消费者：「但是我还是没有明白你信号量整一个不就行了呗，为什么要整两个呢？」",
+   "tags": [
+    "CSAPP",
+    "并发",
+    "semaphore"
+   ],
+   "importance": 5,
+   "evidence": "DS_csapp.md L89998（U507）、L90068（U508）、L90383（U511）"
+  },
+  {
+   "type": "解法",
+   "content": "打通：sem_post(V) 本身不阻塞，上限检查无法内建在任何同步原语里；单变量+mutex+condvar 才是工业解，semaphore 只是「预制件」。来源：对话被逼承认＋代码对照。",
+   "tags": [
+    "CSAPP",
+    "并发",
+    "semaphore",
+    "condvar"
+   ],
+   "importance": 5,
+   "evidence": "DS_csapp.md L90383-90600（U511-U513 及回复）"
+  },
+  {
+   "type": "困惑",
+   "content": "「我知道strcpy对于原来的是读，但是对于新空间是写啊，不保护，另外一个也往里写，怎么办？」——混淆共享源与私有目标，认为 strcpy 内部必须自带锁。",
+   "tags": [
+    "CSAPP",
+    "并发",
+    "线程安全"
+   ],
+   "importance": 4,
+   "evidence": "DS_csapp.md L77279（U466）、L77323（U467）"
+  },
+  {
+   "type": "待验证",
+   "content": "复述了「给定所有互斥操作的一个全序…以相反的顺序释放」来避免死锁，但这是粘贴教材原文，没有自己构造两锁反例的记录。",
+   "tags": [
+    "CSAPP",
+    "并发",
+    "deadlock"
+   ],
+   "importance": 3,
+   "evidence": "DS_csapp.md L78236（U481）、L78269（U482）"
+  },
+  {
+   "type": "层次",
+   "content": "L3：主动划定教材有效期——「和2015年相比，26年现在的网络编程有什么更新吗，这本书这一章节的内容」，把 CSAPP 当历史文档而不是真理。",
+   "tags": [
+    "CSAPP",
+    "网络编程",
+    "socket"
+   ],
+   "importance": 4,
+   "evidence": "DS_csapp.md L56658（U317）；同类引用核对 L23700（U147）"
+  },
+  {
+   "type": "层次",
+   "content": "L1：two's complement 只会用「取反加 1」与 2^n+x 公式，动机停在「让减法变加法」；没追问 -128 为何多一位、符号位为何可直接参与运算。",
+   "tags": [
+    "CSAPP",
+    "two's complement",
+    "整型表示"
+   ],
+   "importance": 3,
+   "evidence": "DS_补码计算方法.md L11、L96（共 4 条消息，2026-09-21）"
+  },
+  {
+   "type": "层次",
+   "content": "L1：上传计组作业图片后直接说「给我答案」，无推导追问；与 CSAPP 会话里逐层逼问形成反差——作业场景只要结果。",
+   "tags": [
+    "CSAPP",
+    "two's complement",
+    "应试"
+   ],
+   "importance": 3,
+   "evidence": "DS_8位整数真值范围.md L11、L120-122（2026-09-21）"
+  },
+  {
+   "type": "层次",
+   "content": "L3：一眼识别「这个怎么做？和我在csapp学的不一样」，并断言国内教材的自定义格式题「不就是左右移位吗…背什么公式啊」，能指认教材简化与脱节。",
+   "tags": [
+    "CSAPP",
+    "float",
+    "IEEE 754"
+   ],
+   "importance": 5,
+   "evidence": "DS_浮点数位数分配题解.md L11（U000）、L1139（U008）、L1495（U011）"
+  },
+  {
+   "type": "待验证",
+   "content": "Ch3/5/6/7 与 Attack Lab 全部 Phase 只有会话开头的自述清单，无一手追问记录；「25字节填充」「buf_hi 的 gather 模式」等自纠错也无法复核。",
+   "tags": [
+    "CSAPP",
+    "档案缺口",
+    "验证"
+   ],
+   "importance": 5,
+   "evidence": "DS_csapp.md L13-50（U000 自述汇总）"
+  },
+  {
+   "type": "已掌握",
+   "content": "自建 Ubuntu 24.04 VM，逐个 --version 验证 gcc 13.3.0 / gdb 15.1 / qemu-riscv64 8.2.2 / wireshark 4.2.2，为 CSAPP 与 6.S081 备环境。",
+   "tags": [
+    "CSAPP",
+    "工具链",
+    "Linux"
+   ],
+   "importance": 3,
+   "evidence": "DS_计算机技术问题.md L3800（U0048）；安装清单 L2447-2538"
+  },
+  {
+   "type": "解法",
+   "content": "浮点冲突的打通方式：把 IEEE 754 当固定标准、把计组题当「自己画图纸」，考试只做规格化位移＋补码阶码＋补零的位拼接。来源：对话。",
+   "tags": [
+    "CSAPP",
+    "float",
+    "IEEE 754"
+   ],
+   "importance": 4,
+   "evidence": "DS_浮点数位数分配题解.md L17-40（U000 回复）；打包流程 L1145-1210"
+  },
+  {
+   "type": "解法",
+   "content": "fd 循环引用：模型先承认「把两种触发条件揉在一个比喻里」，最终拆成「路上 fd 数与引用计数不一致」与「引用全部来自 socket 而无活跃进程」两条独立触发。来源：对抗式对话。",
+   "tags": [
+    "CSAPP",
+    "引用计数",
+    "GC"
+   ],
+   "importance": 4,
+   "evidence": "DS_csapp.md L54470-54530（U306 及回复）"
+  },
+  {
+   "type": "层次",
+   "content": "L2：作业控制 shell 能先自己定 problem mind / process mind 再逐层审错，并把手写实现拆成解析、作业表、信号三块分别验证。",
+   "tags": [
+    "CSAPP",
+    "shell",
+    "作业控制"
+   ],
+   "importance": 4,
+   "evidence": "DS_csapp.md L26781（U185）、L27140（U187）、L54521（U307）"
+  },
+  {
+   "type": "已掌握",
+   "content": "自建「方舟学习法」：构建第一、第一性原理、逻辑一致性偏执、低延迟反馈；配套动作是闭卷自推 15 分钟后再问、读英文原版加中文批注、术语不翻译。",
+   "tags": [
+    "CSAPP",
+    "学习方法",
+    "元认知"
+   ],
+   "importance": 5,
+   "evidence": "DS_csapp.md L8678（U100）；执行协议 L8730-8800"
+  }
+ ]
+}

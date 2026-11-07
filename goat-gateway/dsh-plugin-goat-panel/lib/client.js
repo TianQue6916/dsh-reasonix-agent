@@ -187,19 +187,28 @@ window.__ModuleLoader__.load({
     function useConnectivity(enabled, days, nonce) {
       const [state, setState] = React.useState(null);
       const seen = React.useRef(nonce);
+      // 第 2 步（2026-11-07）：60s 心跳。原来只在打开面板那一刻 fetch 一次，
+      // 面板开着不动就永远停在打开时的快照 —— 这就是用户看到的「不更新」。
+      // 单独一步是因为它动了 hooks 结构，必须单独验证一次。
+      const [beat, setBeat] = React.useState(0);
+      React.useEffect(() => {
+        if (!enabled) return;
+        const t = setInterval(() => setBeat((v) => v + 1), 60000);
+        return () => clearInterval(t);
+      }, [enabled]);
       React.useEffect(() => {
         if (!enabled) return;
         const force = nonce !== seen.current;
         seen.current = nonce;
         let alive = true;
-        const q = ["days=" + (days || 7)];
+        const q = ["hours=12", "bucket=15"];   // 服务端窗口 12h / 15 分钟一格
         if (force) q.push("force=1");
         fetch(CONN_ENDPOINT + "?" + q.join("&"), { cache: force ? "reload" : "default" })
           .then((r) => r.json())
           .then((j) => { if (alive) setState(j && j.ok ? j : null); })
           .catch(() => { if (alive) setState(null); });
         return () => { alive = false; };
-      }, [enabled, days, nonce]);
+      }, [enabled, days, nonce, beat]);
       return state;
     }
 
@@ -301,7 +310,7 @@ window.__ModuleLoader__.load({
         const d = new Date(Number(h));
         return (d.getMonth() + 1) + "-" + String(d.getDate()).padStart(2, "0") + " " + String(d.getHours()).padStart(2, "0") + "时";
       };
-      const connHours = conn && Array.isArray(conn.hours) ? conn.hours.slice(-56) : [];
+      const connHours = conn && Array.isArray(conn.buckets) ? conn.buckets.slice(-48) : [];
       const connT = (conn && conn.totals) || {};
       const connCodes = connT.byCode || {};
       const connWorst = (conn && conn.worst) || [];
@@ -316,9 +325,9 @@ window.__ModuleLoader__.load({
                   + connWorst.map((w) => connHm(w.h) + " 失败率 " + connPct(w.rate)
                       + "（" + w.n + " 次请求 / " + w.retries + " 次 retry）").join(" · ")
                   + "　|　数据源：dsh session 事件日志（llm/retry 的 failure.code），不发起任何模型请求。")
-              : "连通性日志：7 天内无失败样本",
+              : "连通性日志：12 小时内无失败样本",
             children: [
-              jsx.jsx("span", { style: { opacity: 0.75 }, children: "连通 " }),
+              jsx.jsx("span", { style: { opacity: 0.75 }, children: "连通 12h " }),
               conn.warming
                 ? jsx.jsx("span", { style: { opacity: 0.6 }, children: "首次扫描中…（约 8s）" })
                 : jsx.jsxs(React.Fragment, { children: [
@@ -347,8 +356,11 @@ window.__ModuleLoader__.load({
                         title: connHm(h.h) + "  " + (h.n || 0) + " 次 / 失败率 " + connPct(rate) + (h.medMs ? " / 中位 " + (Math.round(h.medMs / 100) / 10) + "s" : ""),
                         style: {
                           flex: "1 1 0", height: hgt + "px", borderRadius: "1px",
-                          background: rate >= 5 ? "#f87171" : rate >= 2 ? "#fbbf24" : rate > 0 ? "#a3e635" : "#34d39966",
-                          opacity: h.n ? 1 : 0.25
+                          // 无样本的 15 分钟画灰：必须和「有请求且全绿」区分开，
+                          // 否则「那段时间根本没用」会被误读成「那段时间很好」。
+                          background: !h.n ? "#6b7280"
+                            : rate >= 5 ? "#f87171" : rate >= 2 ? "#fbbf24" : rate > 0 ? "#a3e635" : "#34d399",
+                          opacity: h.n ? 1 : 0.35
                         }
                       }, h.h);
                     })

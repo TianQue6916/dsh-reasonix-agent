@@ -1,0 +1,547 @@
+[U000 L13] 📋 学习习惯与认知模式总结 · 深度追问，直击本质：不接受表面解释，必须追问到底层的物理实现或数学原理（如“为什么高位索引会压缩到同一组”、“sigsuspend的原子性到底怎么保证的”）。 · 先推后验，主动构建：在得到答案前，会自己先推导逻辑（如多项式求值的奇偶分裂方案），卡住后再要求验证或补全。即使得到官方答案，也会反复推演直到逻辑闭环。 · 要求绝对精确：拒绝模糊术语（“一个整数”、“一个指针”），要求所有参数和变量都给出全称和严格定义。 · 反复验证，揪出错误：对回答中的数学错误、逻辑矛盾或前后不一致极其敏感（如“25字节填充”计算错误、buf_hi 的 gather 模式错误）。 
+[U001 L112] 编写Unix system函数的你自己的版本 int ayayatem(char *command); mysystem 函数通过调用"/bin/sh -c command"来执行command，然后在command完成后返回。如果 command（通过调用exit函数或者执行一条return语句）正常退出，那么 mysystem 返回command退出状态，例如，如果command通过调用exit(8）终止，那么mysystem返回值8，百则，如果command是异常终止的，那么mysystem就返回shell返回的状态。 ---
+[U002 L299] 为什么要阻塞？这是信号函数？哪里看出来的 ---
+[U003 L392] 那为什么要自己写wait？ ---
+[U004 L446] 那为什么不直接安装一个自己的child收割返回信号 ---
+[U005 L550] 解释一下什么叫做保持调动着信号环境不变，避免资源泄漏。 ---
+[U006 L652] 解释一下execl是什么，他的错误为什么这么做 ---
+[U007 L753] 全称 ---
+[U008 L800] 没懂为什么用这个_exit ---
+[U009 L846] 那不碰stdio缓冲，子进程结束他的缓冲消失还是被父进程怎么样？ ---
+[U010 L886] 状态提取 用 WIFEXITED/WIFSIGNALED 分离正常/异常 异常终止时 WTERMSIG 返回杀死子进程的信号编号，与命令信号终止语义一致 这是啥意思 ---
+[U011 L970] 我仔细审查了你的实现。整体结构扎实，但有三处需要修正。 --- #### 审查报告 ##### ✅ 正确的部分 | 要点 | 判决 | |------|------| | `fork` 前阻塞 `SIGCHLD` | **正确** — 消除了信号处理函数与 `waitpid` 的竞争 | | 子进程恢复 `oldmask` 再 `exec` | **正确** — 子进程不应继承被阻塞的 `SIGCHLD` | | `_exit(127)` 而非 `exit` | **正确** — 不刷新 stdio、不调 atexit | | `while (waitpid(...) < 0)` 处理 `EI
+[U012 L1181] 既然没问题，输出最终版本和对应详细的意图解释 ---
+[U013 L1291] 既然说防止信号泄露至调用者，那为啥错误码保留？ ---
+[U014 L1359] 为什么你要先全局阻塞，然后再单独解开附近程的阻塞呢？为什么不直接在紫禁城理论阻塞？ ---
+[U015 L1451] 对啊，但是在紫禁城没有结束的瞬间怎么会结束呢？你说的这个静态窗口只是一瞬间，而且基本不可能造成任何问题了。 ---
+[U016 L1549] 没看懂，我是说为什么要把quit和int这俩阻塞在全局而不是子进程，sigchld为什么不阻塞在父进程而不是全局？为什么不能对症下药？ ---
+[U017 L1672] 收割之后子进程如果有和父进程一样的变量，父进程之后的变量值是谁的 ---
+[U018 L1730] 收割之后子进程变量没了？ ---
+[U019 L1765] 那这个pid呢 ---
+[U020 L1821] 哦，多进程pid有0和非零值两个同时存储，结束之后只保留父进程的？ ---
+[U021 L1854] int status: while (waitpid(pid, &status, 0) <0){ if (errno != EINTR){ sigaction(SIGINT, &old_int, NULL); sigaction(SIGQUIT, &old_quit, NULL); sigprocmask(SIG_SETMASK, &oldmask, NULL); return-1; 这个是什么意义 ---
+[U022 L1940] 解释eintr ---
+[U023 L2019] 为什么不是einter就说明是致命错误 ---
+[U024 L2061] 这个解除忽略的代码用的这么多，能不能封装成函数？这样会不会导致什么问题？ ---
+[U025 L2190] 解释一下为什么代价是线程安全 ---
+[U026 L2294] if (WIFEXITED(status)) return WEXITSTATUS(status); else if (WIFSIGNALED(status)) return 128 + WTERMSIG(status); else return -1; } 解释这个意图和语法 ---
+[U027 L2356] 呃goto这个标签用什么表示这个标签的作用域 ---
+[U028 L2445] 标签用什么表示这个标签的作用域 ---
+[U029 L2512] 我是说他的部分，如何识别哪些是他的部分 ---
+[U030 L2600] atexit方法详细说说，再说说牺牲了什么,怎么牺牲的代码安全 ---
+[U031 L2806] 为什么加128 ---
+[U032 L2862] 意思是这个方法只能处理信号回复？我是想知道什么方法能不用重复写代码，封装起来让他变成方法还安全这种 ---
+[U033 L2880] 意思是这个方法只能处理信号恢复？我是想知道什么方法能不用重复写代码，封装起来让他变成方法还安全这种 ---
+[U034 L3079] 你说得对。`return 1` 是偷懒，POSIX 语义要求**运行时动态检测**，不是编译期硬编码假定。 但有一个微妙之处需要讨论。 --- #### 直接改成 `return system(NULL)` 的问题 如果我们是在**重新实现** `system` 函数本身： ```c int ayayatem(char *command) { if (command == NULL) return system(NULL);   // ← 调用了"真正的" system // ... } ``` 这里 `system(NULL)` 会调用**系统 libc 的 `system`**，这本身没问
+[U035 L3209] xok是什么 ---
+[U036 L3272] 为什么要检查这个？command等于null怎么了？ ---
+[U037 L3331] ？简洁一点，我是不知道为什么要检查 ---
+[U038 L3343] 为了避免shell错误？ ---
+[U039 L3359] 好。把两个方案拆开讲透，从最简单的内联辅助函数到最接近 RAII 的编译器扩展。 --- #### 方案 2 深入：内联辅助函数 ##### 核心思想 把恢复操作包装成函数，通过**栈变量的指针**来操作调用者的状态。每个调用者传入自己的栈变量，线程安全自动成立。 ##### 基础用法 ```c /* 声明为 static inline：编译期展开，零调用开销 */ static inline void restore_sig(sigset_t *mask, struct sigaction *old_int, struct sigaction *old_quit) { sigaction(S
+[U040 L3844] 输出最终结果 ---
+[U041 L3939] 全部通过。 ``` system(NULL) → 1      (shell 可用) exit 0       → 0      ✓ exit 42      → 42     ✓ exit 255     → 255    ✓ SIGTERM      → 143    (128+15) SIGKILL      → 137    (128+9) 不存在命令    → 127    (shell 约定) exit 9       → 9      (与 SIGKILL=137 不冲突) 空命令       → 0      ✓ ``` --- #### 最终版状态机 ``` command=
+[U042 L4004] 输出最终教学版本 ---
+[U043 L4054] 我指的是封装的三个方法的教程 ---
+[U044 L4149] 我说的两个方法，是内联方法和用c模拟cpp自动函数的方法，回顾全部对话历史，仔细看 ---
+[U045 L4384] 可是我不只是要清理，我是想把部分函数做出操作避免机械重复，是不是只剩下goto和内联了 ---
+[U046 L4464] cleanup不是只能清理吗？？ ---
+[U047 L4534] 行，我给你的资料里面应该也有这种方法吧，把内联和这个cleanup方法都仔细写出教程，纵览相关的对话历史 ---
+[U048 L4789] 注意，你的重心错了，我现在的需求不是解题，而是解决机械重复的问题，重新生成 ---
+[U049 L5019] goto方法去掉，这个太简单，剩下的再详细，从方法和如何解决开始说起 ---
+[U050 L5236] VPN是什么，全名是什么 ---
+[U051 L5281] bpo和pfn呢 ---
+[U052 L5314] ppn ---
+[U053 L5344] ppo ---
+[U054 L5377] 所以回到课堂，教授怎么说的为什么多级页表能帮助节省空间 ---
+[U055 L5469] 类似于多层缓存，但是是软的 ---
+[U056 L5533] 页表只存地址？ ---
+[U057 L5584] 页表没有内容，tlb有，然后虚拟内存只是管理物理内存地址，不能加快速度？ ---
+[U058 L5666] 例如框子里有汉堡（数据），有很多框子，tlb存储常用的框子或者汉堡，多级页表存储框子信息方便索引，tlb加快速度，多级页表不行，只是索引和信息，是吧 ---
+[U059 L5694] 所以整个虚拟内存优化的是查找的时间而非读取的时间？ ---
+[U060 L5751] 分段机制如何融入分页机制？分段机制是什么？ ---
+[U061 L5887] 分段简洁一点说明 ---
+[U062 L5927] 书上没有这个啊 ---
+[U063 L5982] 无需了解是吧，好 ---
+[U064 L5994] 那这样的页表索引本身也要占比很多空间？ ---
+[U065 L6063] 也就是说开机的时候会不断生长页表，最后稳定在一个可控范围？ ---
+[U066 L6107] 内存是什么？那个什么十六三十二那个？ ---
+[U067 L6160] 我是说16g什么的 ---
+[U068 L6178] 我是说这是不是你说的内存？以后把内存和闪存分开 ---
+[U069 L6197] 原来如此，内存就只是在跑页表啊？ ---
+[U070 L6216] 那内存里面还有按摩 ---
+[U071 L6249] 那为什么ai模型要那么多内存 ---
+[U072 L6297] 我的显存只有8G ---
+[U073 L6341] tlb完全是物理的？ ---
+[U074 L6380] 05 0 OF 16 OD OD 2D 06 0 0E 11 - 07 b）页表：只展示了前16个PTE →←CO→ - CT 7 6 -CI- 11 10 9 8 -PPO 5 4 3 210 -PPN 索引 标记位 有效位块0 块1 块2 块3 11 - 08 99 - 11 23 02 - 04 - - 09 00 - 6D - 8F - 36 43 72 I0 这是啥意思 ---
+[U075 L6578] 为什么由ppo和ppn组成 ---
+[U076 L6626] 为什么64位少了十二位 干啥去了 ---
+[U077 L6677] 那为什么还能在闪存里面开辟空间去做虚拟内存？ ---
+[U078 L6728] mmu是什么 ---
+[U079 L6771] Main memory 指令TLB比较大的原因可能是对指令TLB"缓存不命中的惩罚要比数据 TLB 缓存不命中大卡They would make the instruction TLB bigger is that the penalty for missing on instructions would be much larger 这句话正确吗 ---
+[U080 L6825] tlb全称 ---
+[U081 L6851] A是什么 ---
+[U082 L6891] 考注价 优化地址翻译 在对地址翻译的讨论中，我们描述了一个顺序的两个步骤的过程，1)MMU将虚拟地址翻译成物理地址，2）将物理地址传送到 L1 高速缓存。然而，实际的硬件实现使用了一个灵活的技巧，允许这些步骤部分重叠，因此也就加速了对L1高速缓存的访问。例如，页面大小为 4KB 的 Core i7 系统上的一个虚拟地址有 12 位的 VPO，并且这些位和相应物理地址中的ppo的12位是相同的。因为八路组相联的、物理寻址的 L1 高速缓存有64个组和大小为64字节的缓存块，每个物理地址有6个（log264）缓存偏移位和6个（log264）索引位。这12位恰好符合虚拟地址的VPO部分，这绝不是偶然
+[U083 L6984] 那既然都直接知道真实地址了，还寻址干啥？ ---
+[U084 L7068] 那要是三层缓存里面没有这个低十二位，仍旧是串行？ ---
+[U085 L7124] 我是说，在磁盘不在三层缓存 ---
+[U086 L7192] 堆究竟是什么 ---
+[U087 L7299] 栈是物理虚拟内存双重连续，堆是碎片拼接？ ---
+[U088 L7348] 栈存储局部的东西，堆存储全局？那函数声明是不是在堆 ---
+[U089 L7386] 修正后的最终版 删除 saved ，统一清理函数。 ### include < sys / types . h > ### include < sys / wait . h > ### include < signal . h ># include < unistd . h > ### include < errno . h > ·数据结构：一个函数调用期间的信号环境快照 struct . sigset _ toldmask ;/＊进入临界区前的信号掩码／ structsigaction oldint ;／进入临界区前的 SIGINT 处置 struct sigaction old _ qui
+[U090 L7799] 修改一下，把函数实现部分变成通用的“this is function”，而不是具体函数，我要解决的是机械重复，而非针对单独的某个功能 ---
+[U091 L8005] 不是针对临时修改最后恢复，我要的是把一个功能复用 ---
+[U092 L8188] 使用事例：用这两种方法写出调用say这个函数就能打印你好世界 ---
+[U093 L8357] /* 封装打印逻辑：一行调用代替原有的多行代码 */ static inline void say(struct greeter *g) { printf("你好，世界！%s\n", g->name ? g->name : ""); } 这个为啥还有什么百分之s？ ---
+[U094 L8394] 所以inline到底啥原理 ---
+[U095 L8494] 讲解一下内核代码和数据为什么是连续的一一对应的 ---
+[U096 L8556] 你现在回答我完全是自己推理，还是说你有自己的知识库？你现在不能联网吧 ---
+[U097 L8588] 那你能开启联网吗 ---
+[U098 L8611] 没有这个按钮 ---
+[U099 L8639] 预训练知识是否可靠 ---
+[U100 L8678] 方舟学习习惯 · 最终总结 基于你的完整对话历史，你的学习习惯已经形成一套自洽、高效、可复制的“方舟学习法”。以下是精确归纳： --- 一、核心学习原则 原则 内涵 构建第一 知识的目的是构建自己的理解体系，不是考试、分数、证书 第一性原理 每一步推理都从公理/定义出发，不接受未经证明的结论 逻辑一致性偏执 拒绝运行未经自己审查的“代码”（教材、老师、AI 的输出） 低延迟反馈 用 OJ、Lab、AI 验证，快速获得对/错判断 --- 二、学习流程闭环 ``` 问题驱动 → 先攻自证 → 对照权威 → 模板内化 → 输出存档 → 回到问题驱动 ``` 阶段 动作 工具/载体 问题驱动 从“为什
+[U101 L8806] 教授52：35的时候在讲什么 ---
+[U102 L8835] 我给你发了字幕文件 ---
+[U103 L8849] 我之前给你发过 ---
+[U104 L8865] 1 00:00:00,056 --> 00:00:11,086 所以今天我们将继续我们对虚拟记忆的研究，通过更详细地研究地址转换是如何工作的 2 00:00:13,020 --> 00:00:17,098 然后我们将了解虚拟内存是如何在真实系统中工作的 3 00:00:17,098 --> 00:00:20,066 在 linux和 x86 64系统上 4 00:00:20,076 --> 00:00:26,068 这样做的好处是你能真正理解 fork和 exec是如何工作的 5 00:00:26,068 --> 00:00:34,018 以及虚拟内存系统是多么重要 因为整个系统的工作 6 0
+[U105 L14361] 五十二分三十秒附近在讲什么 ---
+[U106 L14420] 匿名文件是什么 ---
+[U107 L14480] 呃，那有什么用 ---
+[U108 L14531] 写时复制是什么 ---
+[U109 L14625] 这个老师说了半天，到底内存映射这个什么共享对象意义是什么？进程1把他的映射到物理内存，这不就是共享内存吗？为什么特意分出来共享对象？有什么区别？ ---
+[U110 L14701] 意思是，只要加上这是共享对象的标签，他们这俩进程就会被内核连到同一个物理内存？ ---
+[U111 L14723] 意思是，只要虚拟内存区块加上这是共享对象的标签，他们这俩进程就会被内核连到同一个物理内存？ ---
+[U112 L14781] 内核是corn吧 ---
+[U113 L14808] 那这种方法优化了什么呢 ---
+[U114 L14869] execve像是重定位 ---
+[U115 L14913] 这就要求你在加载的时候拷贝整个数组到内存 That would require you to copy that entire array in at load time 更具这一句话的上下文，这是什么意思 ---
+[U116 L14953] 解析mmap ---
+[U117 L15061] 那这和execve有什么区别？这不一样的嘛 ---
+[U118 L15123] 演示一下mmap ---
+[U119 L15207] 抱歉，文件名的传递是通过命令行来传递 Or we I'm sorry we open a file that was passed in on the command line ？？ ---
+[U120 L15241] 文件名不是可以用open吗 ---
+[U121 L15269] 这不是函数吗？命令行是什么 ---
+[U122 L15317] 那fd到底是谁返回的？ ---
+[U123 L15351] 那这个老师为什么这么说？ ---
+[U124 L15385] 我给你发过字幕 ---
+[U125 L15411] argv是自动的吗 ---
+[U126 L15465] Dynamic Memory Allocation ■Programmers use dynamic memory allocators (such as malloc) to acquire VM at run time. ■For data structures whose size is only known at runtime. ■Dynamic memory allocators manage an area of process virtual memory known as the heap. 而且这个存储器在称为堆的虚拟存储器区域中被维护 bryantandowlaronth
+[U127 L15543] 你不是给我说，堆是程序员操控吗？？？ ---
+[U128 L15589] 堆的意义是什么 ---
+[U129 L15644] 瘦包装函数是什么 ---
+[U130 L15737] 1 00:00:01,088 --> 00:00:02,036 好吧 2 00:00:02,036 --> 00:00:02,092 下午好 3 00:00:02,092 --> 00:00:05,096 欢迎各位很高兴见到你们 4 00:00:05,096 --> 00:00:09,046 同时也欢迎我们的观众 5 00:00:10,042 --> 00:00:12,084 上周我们看了这个 6 00:00:12,084 --> 00:00:15,024 这种虚拟内存机制 7 00:00:16,034 --> 00:00:21,026 以及它是如何为系统提供这么多有用的功能的 8 00:00
+[U131 L20895] 瘦包装函数是什么，为什么说calloc是这个 ---
+[U132 L20978] 返回：若成功则为已分配块的指针，若出错则为NULL, malloc函数返回一个指针，指向大小为至少size字节的内存块，这个块会为可能包含在这个块内的任何数据对象类型做对齐。实际中，对齐依赖于编译代码在32位模式(gcc -m32）还是64位模式（默认的）中运行。在32位模式中，malloc返回的块的地址总是8的倍数。在64位模式中，该地址总是16的倍数。 旁注 一个字有多大 回想一下在第3章中我们对机器代码的讨论，Intel将4字节对象称为双字。然而，在本节中，我们会假设字是4字节的对象，而双字是8字节的对象，这和传统术语是一致的。 如果malloc遇到问题（例如，程序要求的内存块比可用的虚
+[U133 L21067] 返回：若成功则为旧的brk 指针，若出错则为一1. sbrk函数通过将内核的brk指针增加 incr来扩展和收缩堆。如果成功，它就返回brk的旧值，否则，它就返回一1，并将errno设置为 ENOMEM。如果incr为零，那么sbrk就返回brk的当前值。用一个为负的incr来调用sbrk是合法的，而且很巧妙，因为返回值（brk的旧值）指向距新堆顶向上abs(incr）字节处。 程序是通过调用free函数来释放已分配的堆块。 #include <stdlib.h> void free(void *ptr); sbrk这个什么很巧妙是什么意思 ---
+[U134 L21147] 这样对减少有帮助，对增加没帮助啊，不过增加也用不到这个旧的 ---
+[U135 L21202] 这个信息有啥用 ---
+[U136 L21265] 所以说这个最大化内存利用率的判断，以及如何最大化，我没看懂 ---
+[U137 L21338] 有点像之前讲的变量排列对齐 ---
+[U138 L21410] 结论：最大化内存利用率的本质，就是用最少的堆空间，满足最多的内存请求，也就是把因分配器自身管理开销和策略失误造成的浪费降到最低。核心方法是：牺牲时间（搜索更合适的块）或空间（用更多数据结构管理自由块）来换取利用率，也就是“最佳适配”策略及其各种近似实现。 --- 1. 先搞清楚：利用率在衡量什么 我们定义 内存利用率 = 程序请求的有效载荷总和 / 堆的总大小。 理想情况下，利用率是 100%，即堆里全是程序要用的数据，零浪费。但现实中，浪费来自两方面，也就是两种碎片： 碎片类型 成因 举例 如何提升利用率 内部碎片 1. 对齐：块大小必须是8或16的倍数，导致给你的比你要的多。 2. 头部/
+[U139 L21892] Keeping Track of Free Blocks ■Method 1: Implicit list using length-links all blocks 5 ■ Method 2: Explicit list among the free blocks using pointers 6 4 ■ Method 3: Segregated free list · Different free lists for different size classes ■ Method 4: Blocks sorted by size Can use a balanced tree (e．学生提
+[U140 L22277] 资料搜集完成。现在输出融合了 glibc ptmalloc / jemalloc 生产级细节的最终版教程。 --- ### 动态内存分配器：跟踪空闲块的四种方法 —— 详尽教程（终版） #### 问题核心 分配器响应 `malloc` 请求时，必须从堆中的空闲块选出一块来分配。如何高效找到并管理空闲块，是分配器设计的核心。四种方法按复杂度递增，在时间与空间之间做不同权衡。 --- #### 前置知识：块结构与边界标记 所有方法共享同一个块布局。以 64 位系统为例，对齐要求 16 字节： ``` 已分配块: ┌──────────────┬────────────────────────┬──
+[U141 L23195] 它在8字节边界上对齐 JHallaron, Computer Systems: A Programmerspallgned on this 8byteboundary 为什么是这对齐？我给你发过字幕 ---
+[U142 L23267] 解释为什么nextfit会导致更加糟糕的碎片 ---
+[U143 L23363] 那为什么不能给堆像mmu那样写一个软件版的地址翻译？这样就不用查找了 ---
+[U144 L23452] 可变大小每一次都被记录，扩展相对应的多级页表不行吗？为什么现代系统不采用？ ---
+[U145 L23577] 哦哦，就是不够动态是吧 ---
+[U146 L23603] Implicit List: Bidirectional Coalescing ■ Boundary tags [Knuth73] ■ Replicate size/allocated word at "bottom" (end) of free blocks ■Allows us to traverse the "list" backwards, but requires extra space ·Important and general technique! 简述这个解法 ---
+[U147 L23700] Bryant and O'Hallaron, Computer Systems: AProgrammer s Perspective, Third Edition 这句话的意思是什么 ---
+[U148 L23725] 至少有三位或者四位总是0 We've got multiple at least three bits in three or four bits that are always zero 这句话的意思是什么 ---
+[U149 L23786] Summary of Key Allocator Policies ■Placement policy: ■ First-fit, next-fit, best-fit, etc. ■ Trades off lower throughput for less fragmentation ■ Interesting observation: segregated free lists (next lecture)approximate a best fit placement policy without having to search entire free list ■Splitting 
+[U150 L23885] 简述lnux如何抉择，简述 ---
+[U151 L23930] 你这个inline加上了，和普通的函数调用没啥区别啊，优化在哪 ---
+[U152 L24052] 那这个cleanup要点是什么？你写了半天我不知道要点是什么，不知道哪些是可以自己写的名字，哪些是规定的函数 ---
+[U153 L24118] 对于syJ/wait.h＞的会工具举出解断 WIFEXITED→Wait Int Flag3EXITED：以建间M:1/0 WEXITSTATUS Wai~int:enit(n）中Rampull退出． →是否而来从exie #include "csapp.h" 1 #define N 2 →边回退出状底码 2 int status,i; 3 int main() WI F SIGNALED→Wai In: Hag SICNALED →Diint10 6 pid_t pid; WTERMSIG-Wai TERMinasion SIGnal→ine 佳号码 判济是否微信号录死 5 7 8 /* P
+[U154 L24261] 对于syJ/wait.h＞的会工具举出解断 WIFEXITED→Wait Int Flag3EXITED：以建间M:1/0 WEXITSTATUS Wai~int:enit(n）中Rampull退出． →是否而来从exie #include "csapp.h" 1 #define N 2 →边回退出状底码 2 int status,i; 3 int main() WI F SIGNALED→Wai In: Hag SICNALED →Diint10 6 pid_t pid; WTERMSIG-Wai TERMinasion SIGnal→ine 佳号码 判济是否微信号录死 5 7 8 /* P
+[U155 L24381] 您说得对，我刚才的自相矛盾确实有问题： 如果一块内存是“只读”的，那么任何写入（包括初始的 strcpy）都应该被禁止。我的代码中先往 readonly_buffer 里写入了数据，然后又声称它是“只读”的，这在逻辑上是不成立的。 根本矛盾 在不依赖内核（即不使用 mprotect、不借助 MMU 页表权限）的情况下，用户态程序完全无法实现真正的“只读”内存区域。原因是： · 进程的所有内存都是自己可读写的（除非操作系统强制加了保护）。 · 没有硬件/内核的介入，任何“只读”标记都只是约定，无法阻止代码直接写入。 您要求的“能检测只读区域被写入然后终止并且报错的函数” —— 在纯用户态下不可能
+[U156 L24477] 图8-45（续） 8.24 修改图8-18中的程序，以满足下面两个条件： 1）每个子进程在试图写一个只读文本段中的位置时会异常终止。2）父进程打印和下面所示相同（除了PID）的输出： child 12255 terminated by signal 11: Segmentation fault child 12254 terminated by signal 11: Segmentation fault 提示：请参考psignal(3）的man页。 78.25 编写fgets 函数的一个版本，叫做tfgets，它5秒钟后会超时。tfgets函数接收和fgets相同的输入。如果用户在5秒内不键入
+[U157 L24574] 核心定位 伪代码＋C 风格 + Python 骨架的混合描述语言，直观 表达算法逻辑。 基础语法 · 变量赋值：A=[] · 函数定义：def 函数名（参数）= 参数解释 ● 类与继承：class 类名：、class 子类 extends 父类： · 控制流：if 条件、while 条件、for x in A（无冒号，依 赖缩进） ● 比较与逻辑：==、>、<、and、or、not 从属关系（'s格式） ·i's parent index ·i's left child index ·A's last element 常用操作 ·swap A[i] with A[j] ·append x to
+[U158 L24756] ？？？我让你重现你写个这个fgets ---
+[U159 L24801] 你没解释参数 ---
+[U160 L24875] 参数简短解释和函数解释一样放在等号后面用逗号隔开 ---
+[U161 L24924] 除了参数解释最好不用中文 ---
+[U162 L24965] 参数解释和注释用中文 ---
+[U163 L25002] 你这什么设置什么的，这不是代码吗？为什么是中文？你傻逼？ ---
+[U164 L25053] 伪代码英文，遵循我给你的语法，注释必须有注释标记，用中文，参数解释也用中文，你弱智？ ---
+[U165 L25112] 什么是跨跳转的全局缓冲区 ---
+[U166 L25162] #include <stdio.h> #include <stdlib.h> #include <signal.h> #include <setjmp.h> #include <unistd.h> static jmp_buf env; static volatile sig_atomic_t timed_out; static void sigalrm_handler(int sig) { timed_out = 1; siglongjmp(env, 1);          /* 直接跳回 tfgets 的 setjmp 点 */ } char *tfgets(char *s, int s
+[U167 L25262] volatile是啥来着那里 ---
+[U168 L25303] 在你给的这个例子里面被优化了会怎么样，怎么想到的需要避免被优化 ---
+[U169 L25406] 没看懂为什么会都取出来0，一下子想不起来了， ---
+[U170 L25495] 信号处理函数为什么改的是内存 ---
+[U171 L25553] 解释一下为什么要创建oldact这样的结构体里面的变量，而不是自己创建一个新的int什么的 ---
+[U172 L25623] 这是定义了俩结构体啊 ---
+[U173 L25687] 我就问你，这俩是不是俩结构体，俩变量怎么可能能用. ---
+[U174 L25738] 我认为可以称呼他们变量结构体 ---
+[U175 L25801] 为什么最后那里恢复原始信号函数的时候写了个sigalrm ---
+[U176 L25854] 哦哦这是posix规定好的啊 ---
+[U177 L25885] 总结一下这个函数的重要想法和非常高级的核心手法 ---
+[U178 L25942] 还有一个问题，你说触发异常函数之后会快照跳回去，那不就跳到了if那一行吗？这不就死循环？ ---
+[U179 L25990] 为啥跳回就是1 ---
+[U180 L26039] 没有第三次跳回吗 ---
+[U181 L26091] 我的意思是这个函数不支持多次跳回？ ---
+[U182 L26137] 那为什么不用goto呢 ---
+[U183 L26195] 用 sigsetjmp/siglongjmp 把异步信号变成同步分岔，用 volatile 保证分岔方向被正确看到，用保存／恢级示例。复保证不污染环境。三招合一，把一个看似简单的超时需求，写成了信号处理技术的教科书 这一句没看懂 ---
+[U184 L26287] 行的指针。 8.26 以图8-23中的示例作为开始点，编写一个支持作业控制的shell程序。shell必须具有以下特性： ●用户输入的命令行由一个name、零个或者多个参数组成，它们都由一个或者多个空格分隔开。如果 name是一个内置命令，那么shell就立即处理它，并等待下一个命令行。否则，shell就假设name是一个可执行文件，在一个初始的子进程（作业）的上下文中加载并运行它。作业的进程组ID与子进程的PID相同。 ●每个作业是由一个进程ID(PID）或者一个作业ID(JID）来标识的，它是由一个shell分配的任意的小正整数。JID在命令行上用前缀""来表示。比如，"85"表示JID5
+[U185 L26781] 先写mind吧，可以先对问题写出problem mind，再写process mind ---
+[U186 L26954] 不不，你这个mind主次不清，应该从问题引出 ---
+[U187 L27140] 就是说，按照功能写mind，一个功能一个mind ---
+[U188 L27313] def eval(cmdline=用户输入) = 解析并分派 bg = call parseline(cmdline, argv) if argv[0]为空 return if call builtin_command(argv) return  // 内置命令直接执行 // 外部程序：fork-exec 阻塞SIGCHLD防竞争 pid = fork() if pid == 0 解除阻塞 setpgid(0,0)      // 新进程组，PGID=自己 execve(argv[0], argv, environ) 打印错误并exit 阻塞所有信号保护作业表 call addjob(pid,
+[U189 L27680] 为什么模块1要阻塞防竞争？这是哪个规则 ---
+[U190 L27762] 我是说在mind里面，怎么可能想得到阻塞？你确定这个功能mind应该在模块1？ ---
+[U191 L27867] getpgid那里没懂 ---
+[U192 L27912] 那怎么做到的把子进程放到这个进程组 ---
+[U193 L27959] 那其他子进程呢 ---
+[U194 L28023] 那他们没有组员？ ---
+[U195 L28064] 注册作业那一行没看懂 ---
+[U196 L28172] 为什么fgpid等于pid？记得不是组吗？ ---
+[U197 L28228] 对啊，那管道的时候不就一堆子进程把自己当做组长了吗，你这有问题 ---
+[U198 L28295] 可是你用的统一的setpgid啊 ---
+[U199 L28364] ？那你符合题目吗？ ---
+[U200 L28408] 那个按照空格逐个切出参数那里 你写的什么玩意乱七八糟 ---
+[U201 L28490] 加上注释 ---
+[U202 L28536] ？那你这个end这里，只能执行一次啊，你什么意思 ---
+[U203 L28585] 结尾那个budfrom什么什么干啥的 ---
+[U204 L28636] waitfg是什么 ---
+[U205 L28668] 一般程序编译如何看哪里出问题啊，比如这个shell问题 ---
+[U206 L28772] 好了可以把这个问题编译成严谨的c了，同时复述题目 ---
+[U207 L29224] 这个waitfg，阻塞了sigchid还能运行吗？？你这是什么意思 ---
+[U208 L29283] kill(job's pid, SIGCONT) /／发继续信号 job's state = RUNNING fg_pid = job's pid /／设为前台作业 sigprocmask(SIG_BLOCK,&mask_chld,&prev) // 阻塞SIGCHLD call waitfg(job's pid) // 等待前台作业停止或终止 sigprocmask(SIG_SETMASK, &prev, NULL) 这里，你把waitfg阻塞了吧？ ---
+[U209 L29302] 那我问你，waitfg没有子进程结束的信号，怎么判断结束了？？ ---
+[U210 L29350] 对啊，信号处理函数这不是被屏蔽了么？？ ---
+[U211 L29393] 我给你发的这一段，你给我发的什么东西？？ ---
+[U212 L29435] 我质疑的是阻塞了这个信号怎么检测结束 ---
+[U213 L29533] 那我问你，sigchild被阻塞，信号没法处理，fgpid根本没有改变，你告诉我对着呢？？？ ---
+[U214 L29597] 那就不用waitfg，自己设计 ---
+[U215 L29628] 重写这个逻辑 ---
+[U216 L29699] 为什么要在判断等待前台的时候阻塞？ ---
+[U217 L29742] 语法检查失败仅因沙箱没有 `csapp.h`——代码本身正确。下面是修正总结和最终版。 --- #### 三处修正对照 | # | 严重性 | 位置 | 原代码 | 修正 | 后果 | |---|--------|------|--------|------|------| | 1 | **致命** | `sigchld_handler` / `WIFEXITED` | `deletejob(pid)` 后未清 `fg_pid` | 加 `if (pid == fg_pid) fg_pid = 0` | 前台作业正常退出后 `waitfg` 死循环 | | 2 | **致命** | `do_f
+[U218 L30608] aet sigchitL_Junder(aig＝信号编号）＝于进程状态变化时自动调 保存ermo/／防止信号处理器破军errno while waitpet-1,&stata, WNHNG|WUNTRACED) > 01/1-11等待任意于进程 //WNOHANG：非阻塞，没有已终止于进程则返100//WUNTRACED：电报告已停止的于进程pid … walpid的返回值／／状态变化的于进程EPD sigpricmask(SIG_BLOCK,&mask_ul,&orev)/／加锁保护作业表 ifWFEXITED(statun)/／子连程正常exit cal @eletejobipid)/／从
+[U219 L30702] 你还是调用了具体的函数。。还记得要求吗 ---
+[U220 L30766] 代码里让用中文？只有注释能用 ---
+[U221 L30941] ？我说的是我发给你的那一部分 ---
+[U222 L31019] 解释一下为什么进入临界区需要组织所有信号一部分。 ---
+[U223 L31086] 那为什么只有每个前台进程会让他们打印信息？后台警察就不打印。 ---
+[U224 L31171] 1 00:00:00,016 --> 00:00:00,096 下午好 2 00:00:00,096 --> 00:00:03,074 欢迎大家很高兴见到你 3 00:00:03,074 --> 00:00:07,084 欢迎收看录像带的观众 4 00:00:10,022 --> 00:00:11,022 我想澄清一下 5 00:00:11,022 --> 00:00:17,057 上节课之后我意识到我没有很好地解释记忆利用峰值的概念 6 00:00:17,057 --> 00:00:21,011 所以我想解释一下 这是一个重要的想法 7 00:00:21,011 --> 00:00:24,0
+[U225 L37844] 开头这是再说什么 ---
+[U226 L37875] 所以到底啥意思 ---
+[U227 L37942] 所以呢？ ---
+[U228 L37998] 所以如何计算衡量 ---
+[U229 L38086] explicit  free   lists这是什么 ---
+[U230 L38171] 这个教授所说的过早优化是什么意思 ---
+[U231 L38233] lifo是什么 ---
+[U232 L38287] 书上这个在哪 ---
+[U233 L38314] 对啊，lifo在哪 ---
+[U234 L38332] 这个老师列举了几种lifo情况，你看一下 ---
+[U235 L38376] 我给你发了讲稿 ---
+[U236 L38420] 明明有多个case，你瞎了 ---
+[U237 L38493] 情况一为什么这么做 ---
+[U238 L38533] 情况二这个图为啥是二维的，上面也有并排的内存双向链接，然后还有个root指向一开始的空闲 ---
+[U239 L38589] 为什么下一个一开始没有祖先指针 ---
+[U240 L38625] 我是说下一个空闲 ---
+[U241 L38665] ？情况2是前空后满 ---
+[U242 L38712] 现在世界上分离列表最优？ ---
+[U243 L38804] 那么世界上的最优解如何做的 ---
+[U244 L38881] Linux如何做 ---
+[U245 L39006] 所以这是一个权衡，这是另一个空间选择 So it's a trade-off,it's another one of these space-time trade-offs 这句话的时候，教授在说什么 ---
+[U246 L39036] foo是什么意思 ---
+[U247 L39064] Linux内核的“垃圾收集”并非一个统一的组件，而是根据不同的资源管理场景，采用了多种专用策略。它的最新发展主要是现有机制的迭代和优化，而非出现一个全新的通用“垃圾收集器”。 🧠 内存资源回收：页面回收与Slab分配器 · 页面回收：当内存紧张时，内核通过守护进程kswapd或直接回收，基于LRU算法释放页缓存等。但这也带来了僵尸内存控制组（zombie memory cgroup）问题，即内存页释放后仍残留内核元数据。2025年的一个解决方案正在推向前进，通过在销毁时将残留页“重新父化”到其父控制组来清理。 · Slab分配器：它专门管理内核对象的频繁分配，是现代系统默认的SLUB分配器。S
+[U248 L39251] Assumptions For a Simple Implementation Application "new(n):returns pointer to new block with all locations cleared "read (b, i): read location i of block b into register "write(b,i,v): write v into location i of block b ■Each block will have a header word .addressed as b[-1], for a block b .Used fo
+[U249 L39356] 然后我们对图表进行深度优先遍历 Okay then we do a depth-first traversal of the of the graph 根据字幕上下文，这是啥意思是？怎么就深度优先了？为什么不是广度优先 ---
+[U250 L39450] Associativity right to left left to right left to right left to right left to right left to right left to right left to right left to right left to right left to right left to right right to left right to left ■ ->,(), and [] have high precedence, with * and & just below ■Unary +, -, and * left to r
+[U251 L39579] 写到超出A数组结尾的地方。因为这些字中的一个很可能是已分配块的边界标记脚部，所以我们可能不会发现这个错误，直到在这个程序的后面很久释放这个块时，此时，分配器中的合并代码会戏剧性地失败，而没有任何明显的原因。这是"在远处起作用（action at dis-tance)"的一个阴险的示例，这类"在远处起作用"是与内存有关的编程错误的典型情况。 9.11.50造成错位错误 错位（off-by-one）错误是另一种很常见的造成覆盖错误的来源： 1  /* Create an nxm array */ 2 int **makeArray2(int n, int m) 这里没懂，为什么会脚部没了 ---
+[U252 L39660] Referencing Nonexistent Variables ■Forgetting that local variables disappear when a function returns int *foo (){ int val; return &val; 这是在说什么 ---
+[U253 L39721] 你说多arena并发，还是没说清楚为什么能减少多个线程同时改堆的冲突啊？ ---
+[U254 L39823] 那这样不就增加碎片了吗 ---
+[U255 L39919] lifo和fifo ---
+[U256 L39994] malloc(size) - - tcache 命中→直接返回（无锁，最快） I - size >128KB→mmap 分配 ﹣获取 arena 锁 I -fastbin命中 一 返回，并填充 tcache - smallbin 命中 → 返回，并填充 tcache ﹣合并fastbins → 放入unsorted bin 遍历unsorted bin II ﹣精确匹配→返回 -﹣不匹配→归类到small/large bin（同时填充 tcache) - largebin 中搜索 - 从 top chunk（堆顶剩余空间）切一块 -sbrk扩展堆 你确定这个流程对？ ---
+[U257 L40125] 命中是什么东西 ---
+[U258 L40163] 匿名页是什么 ---
+[U259 L40198] 与用户态 GC 的区别：Slab的对象生命周期由使用者显式管理（分配／释放），回收是确定性的， 不存在"标记﹣清除"或"停止世界"的过程 这句话啥意思 ---
+[U260 L40259] 教授说的什么释放已经释放的空间这个错误，啥意思 ---
+[U261 L40357] 那引用空闲块的数据呢，就是接下来讲的那个 ---
+[U262 L40459] 那引用空闲块的数据呢，就是接下来讲的那个 ---
+[U263 L40575] Dealing With Memory Bugs ■Debugger: gdb ■Good for finding bad pointer dereferences ■Hard to detect the other memory bugs ■Data structure consistency checker ■ Runs silently, prints message only on error ■ Use as a probe to zero in on error ■Binary translator: valgrind ■Powerful debugging and analysi
+[U264 L40654] 更具教授说的这些，包括字幕结尾，总结出如何追踪，破除，等等 ---
+[U265 L40750] 段错误是什么 ---
+[U266 L40800] 1 00:00:03,098 --> 00:00:09,037 所以今天我们要过渡到一个主题，对我来说是 2 00:00:09,037 --> 00:00:17,038 到目前为止，你辛苦地完成了所有低级别的事情，这是对你的奖励 3 00:00:17,038 --> 00:00:21,054 才能真正理解并熟练掌握 4 00:00:24,032 --> 00:00:27,020 不是有很多网络我们不打算涵盖 5 00:00:27,020 --> 00:00:30,032 但至少对它有一些熟悉 6 00:00:30,032 --> 00:00:36,012 我知道你们很多人都在想办法让马洛克 7
+[U267 L46160] 现在是ipv6了是吧哈哈哈哈，时间真快 ---
+[U268 L46188] 教授说的什么大端序在网络编程的好处，什么意思 ---
+[U269 L46257] 再解释一下大小端序 ---
+[U270 L46338] dianfenshijzhi是什么意思 ---
+[U271 L46395] 解释套接字，还有这个什么选择服务的意思 ---
+[U272 L46553] 定义一下这个服务啥意思 ---
+[U273 L46662] socket ---
+[U274 L46739] 一般这个什么什么_t是什么意思 ---
+[U275 L46784] 宏是什么 ---
+[U276 L46851] AF INET sa_family 你不必担心任何字节顺序的问题，非常人性化 sin_family Without you having to worry about byte order so it's kind of a nice thing BryantandOHallaron 这一溜是什么意思 ---
+[U277 L46921] sinport和sinsddr呢 ---
+[U278 L47015] 1 00:00:00,066 --> 00:00:06,075 所以今天的第二堂课,是关于网络编程的,我们上次讲的 2 00:00:06,075 --> 00:00:09,081 就像你上次看到的那样 3 00:00:09,081 --> 00:00:14,015 这个的应用程序接口真的很大，毛茸茸的，乱七八糟的 4 00:00:14,015 --> 00:00:20,085 在我自己重读的经历中，这需要很多时间 5 00:00:20,085 --> 00:00:22,001 查看代码 6 00:00:22,001 --> 00:00:23,007 看例子 7 00:00:23,007 -->
+[U279 L52680] int open_clientfd(char *hostname, char *port){ int clientfd; struct addrinfo hints, *listp, *p; /* Get a list of potential server addresses */ memset (&hints, 0, sizeof(struct addrinfo)); hints.ai_socktype =SOCK_STREAM; /* Open a connection */ hints.ai_flags = AINUMERICSERV; /* ..using a numeric por
+[U280 L52845] 这个for循环啥意思 ---
+[U281 L52919] 那为什么p是null就失败了 ---
+[U282 L52966] 万一是最后一个链接break的呢？？ ---
+[U283 L53008] btrfs什么意思 ---
+[U284 L53030] Btrfs. 采用写时复制和元数据日志，需要后台线程处理"残留数据    解释一下 ---
+[U285 L53075] 写时复制和元数据日志啥意思 ---
+[U286 L53142] extent和inode又是些什么 ---
+[U287 L53189] 你说的这个xfs支持什么分区存储设备，有啥用吗？没看出来 ---
+[U288 L53255] 解释可重入与协议无关 ---
+[U289 L53323] 定义监听描述符 ---
+[U290 L53359] int open_listenfd(char*port) ( struct addrinfo hints, *listp,*p; int listenfd, optval=1; 1· Get a list of potential server addresses */ 被汤等 memset(&hints, 0, sizeof(struct addrinfo)); hints.ai_socktype =SOCK_STREAM; /*Accept connections +/ hints.ai_flags =AI_PASSIVE|AI_ADDRCONFIG;/on any IP address 
+[U291 L53564] ssdftl好眼熟 ---
+[U292 L53602] 为什么说xfs是系统层面的ssdftl的gc ---
+[U293 L53648] 为什么单纯的引用计数无法回收此类对象？ ---
+[U294 L53736] 为什么会形成循环引用 ---
+[U295 L53775] 如果内存足够大，比如中国发明的只能写入的玻璃光盘，是不是就不需要垃圾收集？ ---
+[U296 L53835] 还是没看懂为什么会产生循环 ---
+[U297 L53952] 到底什么样的需求需要两个文件互相引用 ---
+[U298 L54018] 那你这个根套接字的判定，才是最有水平的啊 ---
+[U299 L54095] 我还以为是遍历所有套接字 ---
+[U300 L54152] 遍历就是dfs的算法，意思是不行？每个点有且只有遍历一次，没啥缺点啊？那是怎么判断根的 ---
+[U301 L54196] 解释一下这个检测到循环引用这个方法为啥对 ---
+[U302 L54248] 我是说，你为什么能通过引用技术和实际传递的fd数量不一致时就知道有循环引用产生。 ---
+[U303 L54277] ？？为什么会在路上？按之前的房子钥匙比喻来讲，这不应该是在路上，不是他们已经接受了吗 ---
+[U304 L54342] ？你仔细思考，用钥匙比喻为什么会出现fd数量和引用计数的差别 ---
+[U305 L54413] ？那还有一种循环引用，AB接收了对方的钥匙，但是钥匙被没有被销毁，他们只是把自己关闭了，这样循环技术不也没有清理吗？这不是你给我举的例子吗？这种情况下你给我举的这个用来筛查什么时候出现了循环引用的这个条件根本就不成立你是不是傻逼 ---
+[U306 L54470] 那你怎么触发全局可达性分析？你傻逼？不要在这循环论证 ---
+[U307 L54521] def waitfg(pid=前台作业PID) = 阻塞等待前台作业停止或终止 // 临时阻塞 SIGCHLD，防止在检查 fg_pid 和 sigsuspend 之间发生竞争 sigprocmask(SIG_BLOCK, &mask_chld, &prev_mask) while fg_pid == pid  // 前台作业仍在运行 // sigsuspend 原子性地恢复 prev_mask 并休眠 // 此时 SIGCHLD 解除阻塞，可以递送并唤醒进程 sigsuspend(&prev_mask) // 被唤醒后，SIGCHLD 自动被重新阻塞 // 恢复原始的调用者信号掩码 sigp
+[U308 L54574] 所以你的意思是six spend这个函数只会在他被唤醒的期间回复他填入的参数的那个密码，然后当唤醒运行完之后整个函数的阻塞又变成一开始组的那个内容是吗？ ---
+[U309 L54652] 功能模块一：命令行解析与程序执行 Problem Mind ``` // 问题：如何解析用户输入并执行程序？ Command's problem 输入格式：name + 零或多个参数，空格分隔 解析后需判断：内置命令还是外部程序 外部程序：需创建子进程来执行 后台标识：若末尾有 &，则为后台作业 参数拆分：空格可能不止一个，需正确处理多个空格 ``` Process Mind ``` def eval(cmdline=用户输入行字符串) = 解析并分派执行 bg = call parseline(cmdline, argv)  // 拆分参数，判断是否后台 if argv[0]为空 retur
+[U310 L55424] ```c /* * CS:APP 习题 8.26 — 作业控制 Shell（最终审计版） * * 编译: gcc -o shell shell.c csapp.c -lpthread * 运行: ./shell * * 修正清单: *   1. [POSIX] 信号处理器中 printf/psignal → write 系统调用 *   2. [死循环] WIFEXITED 后清除 fg_pid *   3. [死锁]   do_fg 不提前阻塞 SIGCHLD *   4. [边界]   parseline 仅当末尾为 \n 时才替换 *   5. [安全]   execve 失败用 _ex
+[U311 L56398] maxars这个全称是什么 ---
+[U312 L56410] client什么意思 ---
+[U313 L56430] 定义URL ---
+[U314 L56494] 定义URL ---
+[U315 L56535] 教授说我们已经知道了dns使用技巧这句话，什么意思？我不知道什么技巧 ---
+[U316 L56595] 响应报头是什么 ---
+[U317 L56658] 和2015年相比，26年现在的网络编程有什么更新吗，这本书这一章节的内容 ---
+[U318 L56705] 定义一下cgi ---
+[U319 L56767] 说的是百分号是转译码还是百分之二十是？ ---
+[U320 L56805] 这边教授说的这个环境是什么意思 ---
+[U321 L56859] 没看懂环境什么意思 ---
+[U322 L56915] 回写是什么意思 ---
+[U323 L56965] 为什么一个while（NULL）就能让父进程等待子进程 ---
+[U324 L57020] telnet是什么 ---
+[U325 L57042] 因此我非常赞赏，这是向前迈出的一大步，即使从技术角度来看实际上相 So it was a huge step forward I give them full credit even if from atechnical point of view is actually fairly straightforward 这说的是哪一部 ---
+[U326 L57081] 万维网是什么东西 ---
+[U327 L57114] Process-BasedConcurrentEchoServer intmain(int argcchar**argy) intlistenfd,connfd; struct sockaddr_storage clientaddr; socklentclientlen; SignaL(SIGCHLD,sigchld_handler); Listenfd=Open_Listenfd(argv[I]); while(1)( connfd=Accept(Listenfd,(SA*)&clientaddr,&clientlen);if(Fork()=0){ clientlen=sizeof(stru
+[U328 L57163] 哪里体现了与协议无关，协议无关什么意思来着 ---
+[U329 L57235] 你还要把变量意思给我翻译 ---
+[U330 L57350] 你这个5我没看懂 ---
+[U331 L57398] Accept：内核会把客户端的真实地址填进 clientaddr，并把实际的地址长度写进 clientlen。服务器不关心这地址到底是 v4 还是 v6，反正后面可以用 getnameinfo 这类通用函数处理。 这个，什么类型转换什么的，没看懂 ---
+[U332 L57480] 那为什么要加星号 ---
+[U333 L57532] 这个教授说的关闭操作很重要，为什么 ---
+[U334 L57591] 可是不是关闭了子进程吗，为什么还要关闭这个链接符 ---
+[U335 L57629] 为什么还说能避免内存泄漏 ---
+[U336 L57657] 这个泄露怎么会这么解释呢，这不是泄露这个词的意思 ---
+[U337 L57707] 能不能重新翻译这个词汇 ---
+[U338 L57742] 泄露这个描述不好 ---
+[U339 L57786] 英文原文是什么 ---
+[U340 L57824] 难道英文也用的泄露吗 ---
+[U341 L57889] Pros and Cons of Process-based Servers ■+Handle multiple connections concurrently ■+Clean sharing model ■ descriptors (no) ■ file tables (yes) " global variables (no) ■+ Simple and straightforward ■-Additional overhead for process control ■-Nontrivial to share data between processes ■Requires IPC (i
+[U342 L57984] 你之前讲过说systemv共享内存和posix共享，这个只适用于父子？这里是不是讲了什么管道什么东西？ ---
+[U343 L58048] 我是说，这个教授给出的共享方法是什么 ---
+[U344 L58102] 那posix呢，IPc又是什么 ---
+[U345 L58164] 所以这个ipc方式，除了你之前说的posix方法和这个系统v方法，这个教授还有什么 ---
+[U346 L58190] 详解 ---
+[U347 L58288] 是的，它们依然存在，而且在 Linux 内核中一直保持着支持——但严格来说，它们已经是“老派”的 IPC 了。 现状是这样的： · System V IPC（共享内存、信号量、消息队列） 仍在所有 Linux 发行版中可用，大量遗留系统和中间件（如 Oracle、PostgreSQL 早期版本）还在用。但它们的 API 比较晦涩（shmget、semop 等），而且存在一些缺陷（如资源泄漏风险、没有文件描述符、难以与 epoll 配合）。 · FIFO（命名管道） 是 POSIX 标准的一部分，至今仍是简单进程间字节流传递的常用方式，不算过时。 现代 Linux 更推荐的是 POSIX IPC
+[U348 L58364] 管道也需要信号量吗 ---
+[U349 L58392] 所以输入到描述符的到来被称为事件，因为它改变了描述符的状态 Then this and so the arrival of input at a descriptors is called an event because it changes the state of the descriptor 这句话什么意思 ---
+[U350 L58448] 总结一下这个思想 ---
+[U351 L58481] 这张PPT出自著名的计算机系统教材《深入理解计算机系统》（CSAPP），讲的是I/O多路复用（I/O Multiplexing）的事件处理模型，通常用于实现单线程（或单进程）同时处理多个网络连接的高并发服务器（比如使用 select 或 epoll 模型）。 为了让你更容易理解，我们可以把它拆解成三部分来看： 1. 左侧的 clientfd 数组（活跃描述符 Active Descriptors）： 服务器用一个数组来记录所有当前连接的客户端套接字（文件描述符）。其中值为 -1 的位置表示没有连接（Inactive），而其他的数字（如 10, 7, 4, 12, 5）代表当前活跃的客户端连接。
+[U352 L58578] 那这样不就是单线程没有并发吗 ---
+[U353 L58635] Pros and Cons of Event-based Servers ■+ One logical control flow and address space. ■+Can single-step with a debugger. ■+No process or thread control overhead. ■ Design of choice for high-performance Web servers and search engines. e.g., Node.js, nginx, Tornado ■-Significantly more complex to code t
+[U354 L58742] 所以就是没有并发啊，只是一个进程不断的完成每一个请求，快速的可以用，慢的不行 ---
+[U355 L58808] 进程和线程的区别 ---
+[U356 L58891] 简洁一点说 ---
+[U357 L58920] 那为什么要分开 ---
+[U358 L58951] 线程和进程一样啊感觉 ---
+[U359 L59003] ■ Single thread of control 那是你必须弄清楚你将要做多少工作来回应一个事件 Is that you have to figure out how much work you're going to do in response to an event 为什么说这是最难的一个方面 ---
+[U360 L59065] 线程和进程这个翻译准确吗 ---
+[U361 L59104] 那重新定义或者翻译吧 ---
+[U362 L59160] 我要新的学术翻译 ---
+[U363 L59222] 资源域就是一个小世界，各个世界不是联通的；束是每个世界的不同人在做的事，用的同一片地方同一些工具，是真正并发的来源，是吗 ---
+[U364 L59256] 那同一个域的束，能干不同的事吗？教授怎么说运行的代码相同 ---
+[U365 L59354] 所以如果我想做不同的流程还得重开域？ ---
+[U366 L59399] 线程任然是单一逻辑流吗 ---
+[U367 L59439] Posix Threads (Pthreads) Interface ■ Pthreads: Standard interface for ~60 functions that manipulate threads from C programs ■Creating and reaping threads ·pthread_create () · pthread_join() ■ Determining your thread ID ·pthread_self() ■ Terminating threads ·pthread_cancel() · pthread_exit() · exit (
+[U368 L59547] 执行束历程是什么 ---
+[U369 L59613] 说的是线程例程 ---
+[U370 L59695] 它会干那一个函数，还是都会干？ ---
+[U371 L59713] 所以说就是一个独立的main函数？ ---
+[U372 L59727] 那他们的结果怎么办 ---
+[U373 L59821] 那这个线程可以调动指针做到不返回吗 ---
+[U374 L59876] 呃既然如此，看起来也只是并发的执行一些函数，这就是优势吗 ---
+[U375 L59936] 就是说，cpu调用函数的时候其实已经有了如何调度答案，这种线程调动涉及到大量的图论冲突？ ---
+[U376 L59999] 解释一下对等线程概念 ---
+[U377 L60043] 啥意思，所有线程都是对等的？ ---
+[U378 L60159] 呃我怎么知道是主仆还是对等？这是规定的还是只是一种设计思维？ ---
+[U379 L60220] 能详细说说这两种思维吗 ---
+[U380 L60383] 那岂不是说，我要封装一些函数打包起来让线程调用，不然一次只能一个函数？ ---
+[U381 L60440] Issues With Thread-Based Servers ■Must run "detached" to avoid memory leak ·At any point in time, a thread is either joinable or detached ■Joinable thread can be reaped and killed by other threads ·must be reaped (with pthread_join) to free memory resources ■Detached thread cannot be reaped or kille
+[U382 L60522] 啥意思啊没看懂，这个教授怎么突然开始说这个什么创建线程之后竞争什么的，你讲 ---
+[U383 L60615] 不需要进程安全函数，只有线程安全函数是吧 ---
+[U384 L60629] ### 并发服务器线程模型：主仆 vs 对等 > **知识定位**：CSAPP 第 12 章 · 并发编程 · 基于线程的并发服务器 > **前置要求**：Ch 8 异常控制流（进程/上下文切换）、Ch 11 网络编程（socket/listen/accept） > **构建日期**：2026-06-22 --- #### §0 问题定义：并发服务器的本质需求 一个 TCP 并发服务器必须同时满足两个正交的要求： 1. **接客**（Accept）：从监听 socket 上取出已完成的连接请求，获得新的 `connfd` 2. **干活**（Serve）：在 `connfd` 上与客户端通信（
+[U385 L61731] 你这个程序我有问题，那个jobt里面，传入了一个jobs数组，这咋传进去的定义的？ ---
+[U386 L61767] jobt结构体里面没这个啊 ---
+[U387 L61811] 那为什么要这么用jobt？为什么不普通声明 ---
+[U388 L61850] sigsett没有啊 ---
+[U389 L61870] 为什么这三个使用静态全局变量，还有最后一个为什么用volatile ---
+[U390 L61938] 我是说为什么要限制只有本文件能访问 ---
+[U391 L61979] 能写出这种等级的程序的程序员是什么水平 ---
+[U392 L62048] 我是说，像这种的年薪多少 ---
+[U393 L62111] 可是这道题是DeepSeekv4写的，这岂不是全部都没工作了 ---
+[U394 L62209] 那岂不是ai现在可以替代他们，他们一个人家能写出来十个人的量，但是维护也变得更加艰难？不过ai似乎已经学习完了世界上所有知识，如果只是到这个水平，我觉得符号模型要起来了 ---
+[U395 L62284] 我一下子反应不过来char*a这个a是什么意思，指针变量名是吧 ---
+[U396 L62320] jibstatet也是posix规定吗 ---
+[U397 L62364] 为什么作业表管理那里，两个jobt那里要用指针 ---
+[U398 L62433] 为什么安全输出函数那里全部都封装了 ---
+[U399 L62536] 我是说为什么用static ---
+[U400 L62590] 解析一下stdoutfileno这个宏 ---
+[U401 L62657] 还有strlen这个函数安全吗？你就在这调用了 ---
+[U402 L62697] strlen调用的函数难道就都是安全的吗 ---
+[U403 L62758] p减s什么意思 ---
+[U404 L62798] ／安全输出长坚型（仅非负教）。/static void safe_pun(ngs)( if (n--0)(sato_urite("O", i): retura} char buf[S2]: int i = sizoof(tuf); buf[-1]='\o'; while (n >0){buf[-1]='0'+(8% 10); n/=10;} safe_write(&buf[], sizeof(buf)-1-i); 这个函数这么精妙，解析一下 ---
+[U405 L62927] 那为什么要用i，而不是直接写呢？ ---
+[U406 L63002] 1 00:00:01,679 --> 00:00:02,200 所有的权利 2 00:00:02,200 --> 00:00:02,279 嗯 3 00:00:02,279 --> 00:00:02,819 下午好 4 00:00:02,819 --> 00:00:04,099 大家都很高兴见到你 5 00:00:04,099 --> 00:00:05,239 欢迎 6 00:00:06,400 --> 00:00:09,239 欢迎所有在视频中观看的学生 7 00:00:09,239 --> 00:00:17,319 所以在我们开始之前，我们讨论了可接合和分离的线程 8 00:00:17,3
+[U407 L67548] fotkjoin模型，重要吗，值得我单独开一个笔记写吗，书上详细说过吗 ---
+[U408 L67642] 3.2 递归分治形式 Fork-Join 最自然的表达是递归分治。经典例子：并行归并排序。 void parallel_mergesort(int *A, int lo, int hi) { if (hi - lo <= THRESHOLD) { sequential_mergesort(A,lo,hi); return; int mid = lo + (hi - lo) / 2; pthread_t tid; Pthread_create(&tid,NULL,merge_sort_thread, &(Args){A,lo,mid}); // Fork:m parallel_mergesort
+[U409 L67774] 4.2 OpenMP：编译器级 Fork-Join OpenMP 是科学计算领域标准的 Fork-Join 框架 4 ： 1 #pragma omp parallel for reduction(+:sum) 2 for (int i = 0; i < N; i++) 3 sum += f(i); 4 // 编 译 器 自 动 生 成 Fork、 分 派 迭 代、 Join、 归 约 什么意思 ---
+[U410 L67832] 那个，我之前学习矩阵乘法了解到向量化，那向量化和这个线程相比，异同是什么，能叠加优化吗 ---
+[U411 L67922] 7 工作窃取（Work-Stealing） Doug Lea 的 Java Fork/Join 框架 5 和 Cilk 6 引入了工作窃取调度器。 核心机制：每个 worker 维护双端队列（deque），push/pop 从队尾（LIFO），steal 从队头（FIFO）。 空闲时随机偷其他 worker 最老的任务。 为什么需要？ POSIX 每任务创建一个线程成本太高（栈 8 MiB + 内核态），工作窃取用固定 线程池 + 轻量任务调度解耦了 Fork-Join 逻辑与 OS 线程。 为什么是偷最老的已经完成了的，而不是最新的正在完成的或者等待完成的？ ---
+[U412 L67989] 可是老任务不是干完了吗 ---
+[U413 L68039] 双端队列是什么可是比如递归，老任务已经被分析拆开开始计算了，它又抢过去，这不是重复拆分计算，浪费时间吗 ---
+[U414 L68134] Example Program to lllustrate Sharing char **ptr; /* global var */ long myid = (long)vargp; void *thread(void *vargp) int main() printf("[%ld]: %s(cnt=%d)\n", static int cnt = 0; long i; myid, ptr[myid], ++cnt); pthread_t tid; return NULL: char *msgs[2]={ "Hello from foo", "Hello from bar" }; ptr = 
+[U415 L68226] 定义实例，还有共享变量到底是什么 ---
+[U416 L68274] 如何识别什么时候变量要加volatile ---
+[U417 L68339] 27 28 29 30 31 32 33 34 35 /*Thread routine */ 36 void *thread(void *vargp) 37 long i, niters =*((long *)vargp); 38 39 for (i = 0; i < niters; i++) 40 cnt++; 41 42 return NULL; 43 44 这什么意思？longi， ---
+[U418 L68423] 线程i的汇编代码 movq (%rdi),%rcx testq %rcx,%rcx jle .L2 movl $0,%eax JC代码 .L3: niters; i++) movq cnt (%rip),%rdx → addq $1,%rdx movq %rdx, cnt(%rip) addq $1,%rax cmpq %rcx,%rax jne .L3 .L2: 17 badcnt.c中计数器循环（第40~41行）的汇编代码 一般而言，你没有办法预测操作系统是否将为你的线程选择一个正-18a展示了一个正确的指令顺序的分步操作。在每个线程更新了 所以线程只是在不断的并行逻辑流，但实际上只是把任
+[U419 L68480] 图12-17 badcnt.c中计数器循环（第40~41行）的汇编代码 这里有个关键点：一般而言，你没有办法预测操作系统是否将为你的线程选择一个正确的顺序。例如，图12-18a展示了一个正确的指令顺序的分步操作。在每个线程更新了共享变量cnt之后，它在内存中的值就是2，这正是期望的值。 另一方面，图12-18b的顺序产生一个不正确的cnt的值。会发生这样的问题是因为，线程2在第5步加载cnt，是在第2步线程1加载cnt之后，而在第6步线程1存储它的更新值之前。因此，每个线程最终都会存储一个值为1的更新后的计数器值。我们能够借助于一种叫做进度图（progress graph）的方法来阐明这些正确
+[U420 L68555] 应该是规定两三次在寄存器里面一写回这样？不以一次为最小单元 ---
+[U421 L68585] 那么如何判断临界区 ---
+[U422 L68640] 这个原子性就是绝对原子，也不会被信号打断那种？ ---
+[U423 L68682] 解释pv，简洁 ---
+[U424 L68710] 所以这是两个监听程序？ ---
+[U425 L68744] 为什么初始化1就是互斥锁？其他值呢 ---
+[U426 L68790] ■ Terminology: ■ Binary semaphore: semaphore whose value is always 0 or 1 ■ Mutex: binary semaphore used for mutual xclusion · P operation: "locking" the mutex · V operation: "unlocking" or "releasing" the mutex .Holding" a mutex: locked and not yet unlocked.■ Counting semaphre: used as a counter fo
+[U427 L68850] 进度图的核心思想，即我想知道它用了什么核心思维，什么不变量 ---
+[U428 L68883] 那多个线程怎么绘图？只能扩展维度，或者用逻辑状态表达点状态吗 ---
+[U429 L68925] ```c /* * CS:APP 习题 8.26 — 作业控制 Shell（最终审计版） * * 编译: gcc -o shell shell.c csapp.c -lpthread * 运行: ./shell * * 修正清单: *   1. [POSIX] 信号处理器中 printf/psignal → write 系统调用 *   2. [死循环] WIFEXITED 后清除 fg_pid *   3. [死锁]   do_fg 不提前阻塞 SIGCHLD *   4. [边界]   parseline 仅当末尾为 \n 时才替换 *   5. [安全]   execve 失败用 _ex
+[U430 L69359] 为什么有些用static有些不用 ---
+[U431 L69404] verb是什么 ---
+[U432 L69444] 为什么shell的实现要这么多安全函数？ ---
+[U433 L69486] 为什么main一开始就屏蔽chipd信号 ---
+[U434 L69521] initjobs(; while (1){ printf("> "); fflush(stdout); if (Fgets(cmdline, MAXLINE, stdin) == NULL) break; /*EOF*/ if (cmdline[0]== '\n') continue;eval(cmdline); return 0; 这里为什么直接冲刷？为什么不最后冲刷？ ---
+[U435 L69565] 嗯那为什么要检测到回车就退出？那第一个if怎么办？这两个if是不是有点冲突 ---
+[U436 L69604] cmdline既然是全局，为什么eval不直接传，而是用指针？ ---
+[U437 L69662] 依赖参数我知道，但是为什么不直接传，而是传了一个值？这不是容易误篡改吗 ---
+[U438 L69704] sigsett是什么类型 ---
+[U439 L69736] 还有必要整个argv0等于null检测吗这个eval ---
+[U440 L69774] builtin这个是我自己写的还是系统自带的？ ---
+[U441 L69800] fork前阻塞是哪个规则来着 ---
+[U442 L69858] 那setpgid这个函数呢 ---
+[U443 L69886] 这是谁写的 ---
+[U444 L69919] execve这个函数，这几个参数的含义 ---
+[U445 L69985] /＊父进程＊/ /*-﹣第2层：阻塞所有信号，保护作业表和fg_pid sigprocmask(SIG_BLOCK, &mask_all, NULL); addjob(pid, RUNNING, cmdline); if(!bg){ /＊前台作业＊/ fg_pid=pid; sigprocmask(SIG_SETMASK,&prev_mask,NULL);/＊第3层＊/ waitfg(pid); /＊阻塞直到作业停止或终止＊/ }else{ /＊后台作业：getjobpid必须在mask_all内执行， ＊以防SIGCHLD抢先删除作业导致空指针解引用＊/ job_t *job = getjo
+[U446 L70042] 为什么parseline参数是指针的指针？ ---
+[U447 L70083] 可是你传入的是argv啊，这只是一个指针吧，我觉得你是想表达这个参数是一个指针数组吧？ ---
+[U448 L70119] argv里面的都是指针吗？ ---
+[U449 L70155] delim是啥 ---
+[U450 L70199] 嗯我之前的mind没有这个，我那个mind意思是有问题吗 ---
+[U451 L70229] char *delim; int argc, bg; size_t len=strien(buf); if (len>0&& buf[len-1]=='\n') buf[len-1]=''; /＊仅替换换行符＊/ while (*buf && (*buf ==''))buf++;/＊跳过前导空格＊/ 这个while没看懂，给一个解引用干啥着呢这是 ---
+[U452 L70269] buf不是一个数组吗？ ---
+[U453 L70307] buf[len-1]=''; /＊仅替换换行符＊/ while (*buf &&(*buf ==''))buf++;/＊跳过前导空格＊/ argc=0; while ((delim = strchr(buf,''))!=NULL){ argv[argc++]=buf; *delim='\0'; buf=delim+1; while (*buf &&(*buf=='')) buf++; argv[argc]=NULL; if (argc==0) return 0; /＊检查最后一个参数是否独立'&'*/ if((bg=(*argv[argc-1]=='&'))!=0) argv[-argc]=N
+[U454 L70368] 根据你的提问，我推测你大概率是想在我们之前反复讨论的图算法（比如你提出的那个“步数限制遍历法”和经典的 Bellman-Ford）之间跑个对比测试。 你需要的是一个测试框架，它可以接收两个算法，喂给它们相同的随机图数据，然后比较输出结果和运行时间。下面这份代码模板可以直接用。 --- 算法性能对比框架（Python 模板） ```python import time import random # ========================================== # 1. 定义需要测试的算法 # =======================================
+[U455 L70716] 1 00:00:00,400 --> 00:00:01,179 下午好 2 00:00:01,179 --> 00:00:08,159 大家好很高兴见到你们欢迎收看我们的视频 3 00:00:09,319 --> 00:00:09,720 好的 4 00:00:09,720 --> 00:00:17,899 因此，今天我们将首先讨论一些关于同步线程程序问题的附加问题 5 00:00:17,899 --> 00:00:19,819 让我们回顾一下上次的内容 6 00:00:19,819 --> 00:00:27,520 一些概念，让人想起信号量是一个非负全局 7 00:00:27,899 -->
+[U456 L76595] 解释一下这个同步的意思 ---
+[U457 L76646] 每个后续线程的每个其他线程都不会调用它，它像是透明的一样 Every other thread every subsequent thread will not call it it'll be like a no op 这句话这里是什么意思 ---
+[U458 L76690] 为什么B ---
+[U459 L76755] 为什么？ ---
+[U460 L76789] 的问题，该函数对一个未受保护的全局计数器变量加1。将这类线程不安全函数变成线程安全的，相对而言比较容易：利用像P和V操作这样的同步操作来保护共享的变量。这个方法的优点是在调用程序中不需要做任何修改。缺点是同步操作将减慢程序的执行时间。第2类：保持跨越多个调用的状态的函数。一个伪随机数生成器是这类线程不安全面数的简单例子。请参考图12-37中的伪随机数生成器程序包。rand函数是线程不安全钠。因为当前调用的结果依赖于前次调用的中间结果。当调用srand为rand设置了一个种子后，我们从一个单线程中反复地调用rand，能够预期得到一个可重复的随机数字序弹然而，如果多线程调用rand函数，这种假设就
+[U461 L76902] 你真的懂了吗？ ---
+[U462 L76948] 这个第二类问题到底在哪 ---
+[U463 L77052] 就是说，有一个变量的正确性依赖于他的上一次，所以顺序很重要？？ ---
+[U464 L77100] 改调用程序中的代码。在一个大的程序中，可能有成百上千个不同的调用位置，做这样的修改将是非常麻烦的，而且容易出错。第3类：返回指向静态变量的指针的函数。某些函数，例如ctime和 gethost-byname，将计算结果放在一个static变量中，然后返回一个指向这个变量的指针。如果我们从并发线程中调用这些函数，那么将可能发生灾难，因为正在被一个线程使用的结果会被另一个线程悄悄地覆盖了。 有两种方法来处理这类线程不安全函数。一种选择是重写函数，使得调用者传递存放结果的变量的地址。这就消除了所有共享数据，但是它要求程序员能够修改函数的源代码。 如果线程不安全函数是难以修改或不可能修改的（例如，代码
+[U465 L77243] 呃，strcpy本身难道不不要pv吗？为什么能在pv里面用 ---
+[U466 L77279] strcpy本身需要访问两个空间吧？其本身就应该自带一个锁子！ ---
+[U467 L77323] 我知道strcpy对于原来的是读，但是对于新空间是写啊，不保护，另外一个也往里写，怎么办？ ---
+[U468 L77359] 图12-38 C标准库函数 ctime的线程安全的包装函数。使用加锁﹣复制技术 调用一个第3类线程不安全函数 第4类：调用线程不安全函数的函数。如果函数／调用线程不安全函数g，那么f就是线程不安全的吗？不一定。如果g是第2类函数，即依赖于跨越多次调用的状态，那么f也是线程不安全的，而且除了重写g以外，没有什么办法。然而，如果g是第1类或者第3类函数，那么只要你用一个互斥锁保护调用位置和任何得到的共享数据，f仍然可能是线程安全的。在图12-38中我们看到了一个这种情况很好的示例，其中我们使用加锁﹣复制编写了一个线程安全函数，它调用了一个线程不安全的函数。 所有的函数 12.7.2可重入性 线程安
+[U469 L77411] 解析可重入这个名字 ---
+[U470 L77486] 类似于进程呗，那啥都不共享怎么用啊？ ---
+[U471 L77542] 什么意思？状态？ ---
+[U472 L77612] 没看懂，大概有点理解 ---
+[U473 L77662] 所以可重入函数需要一个数据分配器配套？ ---
+[U474 L77715] 不是吧？以你那个抽奖的例子，不就是把各个任务下发下去，结果再汇总上来，这不就是一个管理器吗？ ---
+[U475 L77772] Linux线程安全版本 rand_r strtok_r asctime_r gethostbyaddr_r ctime_r 3 gethostbyname_r （无） 3 3 localtime_r 图12-41 常见的线程不安全的库函数 此，Linux系统提供大多数线程不安全函数的可重入版本。可重人版本的名字总是e"后缀结尾。例如，asctime的可重入版本就叫做asctime_r。我们建议尽可能地些函数。 4 竞争 一个程序的正确性依赖于一个线程要在另一个线程到达y点之前到达它的控制流中的x点 可行的轨迹线都正确工作。 通音出乐音垒县因为程序员假定线程将按照某种特殊的轨迹线穿过执行 这几个
+[U476 L77882] Race Illustration for(i= 0; i < N; i++) Pthread_create(&tid[i],NULL,thread, &i); Main thread i=0 这里究竟哪竞争了 ---
+[U477 L77976] 这不就是刚刚那个不断覆盖的问题吗？难道不一样吗？ ---
+[U478 L78052] 所以竞争本质是什么 ---
+[U479 L78111] 还是没理解为什么它单独列出来，感觉和那个线程安全四类函数差不多 ---
+[U480 L78155] 这个教授为什么说多核服务器错误更多 ---
+[U481 L78236] 实现互斥时，如图12-44所示，你可以应用下面的简单而有效的规则来避免死锁： 互斥锁加锁顺序规则：给定所有互斥操作的一个全序，如果每个线程都是以一种顺序获得互斥锁并以相反的顺序释放，那么这个程序就是无死锁的。 例如，我们可以通过这样的方法来解决图12-44中的死锁问题：在每个线程中先对：加锁，然后再对加锁。图12-45展示了得到的进度图。 线程2 V(s) 为什么横坐标线程1是psptvsvt，纵坐标是psptvtvs？只有第二个线程符合要求，为什么书上说这个图无死锁 ---
+[U482 L78269] ●死锁是一个相当困难的问题，因为它不总是可预测的。一些幸运的执行轨迹线将绕开死锁区域，而其他的将会陷入这个区域。图12-44展示了每种情况的一个示例。对于程序员来说，这其中隐含的着实令人惊慌。你可以运行一个程序1000次不出任何问题，但是下一次它就死锁了。或者程序在一台机器上可能运行得很好，但是在另外的机器上就会死锁。最糟糕的是，错误常常是不可重复的，因为不同的执行有不同的轨迹线。程序死锁有很多原因，要避免死锁一般而言是很困难的。然而，当使用二元信号量来实现互斥时，如图12-44所示，你可以应用下面的简单而有效的规则来避免死锁： 互斥锁加锁顺序规则：给定所有互斥操作的一个全序，如果每个线程都是
+[U483 L78342] 1 00:00:05,679 --> 00:00:08,239 坐满的座位比课程开始时少得多 2 00:00:09,800 --> 00:00:14,789 所以我们在这一课程的最后阶段 3 00:00:14,789 --> 00:00:20,638 你在研究最后一个实验室和我们正在研究的材料 4 00:00:20,638 --> 00:00:23,458 这堂课和下堂课都不在考试范围内 5 00:00:23,458 --> 00:00:24,919 你的网络不需要它们 6 00:00:24,919 --> 00:00:28,329 所以在某种程度上，你可以抛开一切，跳过这一切 7 00:00
+[U484 L83397] 这节课讲的什么，重要吗 ---
+[U485 L83435] 1 00:00:05,679 --> 00:00:08,239 坐满的座位比课程开始时少得多 2 00:00:09,800 --> 00:00:14,789 所以我们在这一课程的最后阶段 3 00:00:14,789 --> 00:00:20,638 你在研究最后一个实验室和我们正在研究的材料 4 00:00:20,638 --> 00:00:23,458 这堂课和下堂课都不在考试范围内 5 00:00:23,458 --> 00:00:24,919 你的网络不需要它们 6 00:00:24,919 --> 00:00:28,329 所以在某种程度上，你可以抛开一切，跳过这一切 7 00:00
+[U486 L88494] 这个不在书里吗 ---
+[U487 L88520] int connfd = Accept(my_listenfd, ...); /**/ echo(connfd); Close(connfd); 3.4一句话总结 对等模型"架构上没有单点瓶颈"是对的没有哪个线程是唯一的dispatcher。但"实现上存在竞争瓶颈"-﹣共享的 listenfd 导致内核层面的不公平调度。这不是设计理念的缺陷，是操作系统实现的历史遗留。 SO_REUSEPORT 在保持对等模型的架构优势的同时，消除了竞争瓶颈。 §4 合题：预线程化模型（Prethreaded) CSAPP S12.5.4 介绍了第三种模型﹣﹣它综合了主仆和对等的优点。 核心思想 像对等模型：预
+[U488 L88611] 为什么lifo不公平？为什么fifo就好了？？ ---
+[U489 L88673] 详细分析可重入性，定义，评估翻译 ---
+[U490 L88796] 怎么将一个随便的函数变成🉑冲入的？只要不碰共享数据就行？ ---
+[U491 L88880] §3同步原语选择：什么时候用什么 这是一个在许多教材中被跳过的决策框架。 决策树 你要保护共享数据 只是单个整数／标志／指针的读﹣改﹣写？ → 原子操作（C11 _Atomic / stdatomic.h) 例：引用计数、完成标志、无锁计数器 是"生产者﹣消费者"模式（线程A生产，线程B消费）? →信号量（semaphore) 例：sbuf（有界缓冲区）、连接池、限流器 等待条件复杂、不止"count > 0"? → 互斥锁 ＋条件变量（pthread_mutex_t + pthread_cond_t)例："当 buffer 不为空且至少一个 reader 空闲时唤醒" 多读者少写者（读远多于
+[U492 L89049] 简练一点 ---
+[U493 L89113] 原语是什么 ---
+[U494 L89143] 解释一下你说的这个决策节点r为什么一个原子操作也能做到类似于互斥锁的性质。 ---
+[U495 L89217] 定义一下什么叫做生产者消费者模式 ---
+[U496 L89254] https://www.zhdus.com/upload_files/jibenshu.rar ---
+[U497 L89294] 回答好的 ---
+[U498 L89306] 所以说如果想将这两个部分分开只需要加一个缓冲区就可以了是吗？ ---
+[U499 L89349] 陷阱： P 顺序错误（先 mutex 后 sem) → 死锁。这是你之前反复追问过的经典问题。生产者﹣消费者中通常需要两把锁量计数。如果获取顺序不对（比如在持有互斥锁时去 sem_wait)，就可能导致死锁。正确的顺序是： 先 sem_wait 等待资源可用，再 P(mutex) 进入临界区。 一一个互斥锁保护缓冲区，两个信号 解释一下，你这句话说的什么意思？ ---
+[U500 L89412] 所以说你这里的信号计数量本身也需要使用方法，一也就是那个原子操作来加固是吗？ ---
+[U501 L89468] 信号技术量本身不就是一个变量吗？你说啥着呢？ ---
+[U502 L89514] 而且你这里解决的根本就不对，为什么要用两个技术信号量这样有可能造成异部更新！你应该只使用一个信号量，然后在内部自己做算术运算，而且这个信号量本身只是一个概念，应该是用一个原子保护的单个变量来表示。 ---
+[U503 L89607] 我的意思是说，如果你使用了两个信号量，他们之间是一部的有可能会造成生产者刚刚生产的一个，但是它本身，获取的信息是没有空造位的，但是消费者那边还没有更新就开始去用，这样会造成各种各样的问题吧？ ---
+[U504 L89733] 我觉得你这个设计不是很正确呀，你竟然说先查看自己需要的剩余量再持有这个锁，那你为什么不直接使用单一变量来做到这一点，把单一变量使用原子保护而将判断还有没有余量这件事交给两个程序本身的？为什么一定要使用这个信号量本身的阻塞机制？ ---
+[U505 L89861] 我的方案和你的方案相比不就是说我的方案一定要不断的监听吗？但是监听本身似乎消不了多少资源，而且现成模型本身不也是有一个不断坚挺的主模型吗？就像你说的预先成模型。 ---
+[U506 L89942] 所以说如果我想阻塞线程本身也是多写了一个功能线程或者说功能函数，那是不是意味着我越优化越类似于信号量？ ---
+[U507 L89998] 但是我还是没有明白你信号量整一个不就行了呗，为什么要整两个呢？比如说我就这一个当这一个不为某一个设置好的上线宏定义的时候，消费者可以工作，当这一个为零的时候生产者不可以工作，这样限制一个条件不可以吗？两个的话总觉得会出某种问题，就是说会造成某种不同步或者说信号打断不可充入的问题。 ---
+[U508 L90068] ？？你没有理解我所说的话，我请你查一查所有的目前现代系统使用的是两个还是一个，注意，我的想法是只使用单一的变量，同时具有上限，这个变量叫做你占有量，然后我的意思就是当这个变量为零的时候，代表生产者可以运行消费者不可以运行当这个变量达到设定好的上限也就是一个宏定义的时候，生产者不可以运行消费者可以运行，这就是两个截止条件，我认为这样是非常好的，只使用单一变量，避免了某种或者说即使你觉得不可能出现，但是实际应用中可能由于卡顿或者是其他问题出现的不同步问题。 ---
+[U509 L90178] 你理解错了我的方案，使用的是信号量而非计数器，我们之前才刚讨论过信号量优于计数器的点，也就是由函数本身唤醒，而非持续监听占用资源。 ---
+[U510 L90293] 那你为什么说单一变量的而非信号量的方式受到工业界的广泛接受呢？ ---
+[U511 L90383] 但是你说这种工艺界的方式会持续的监听这个问题你没有解决。 ---
+[U512 L90471] 那你所说的这个工业界本身的方式相当于重写了一下信号量给信号量的增加和减少本身增加了上限检查而已？ ---
+[U513 L90515] 别光说，写一下c的代码 ---
+[U514 L90714] 别光说，写一下c的代码 ---
+[U515 L90827] 如此复杂？ ---
+[U516 L90871] 你之前说的决策节点四，正好承接，详细说说吧 ---
+[U517 L91034] 解释这个被while包裹的函数 ---
+[U518 L91141] 详细说明整个过程 ---
+[U519 L91287] 不是说先获取里面的信息再获取锁怎么不然会导致死锁？？ ---
+[U520 L91381] 我想知道，如果信号量本身，他是先检测再获取锁子的话，那他会不会在获取数字和检测中间被某种信号插入导致终端或者说在两步中间发生更改呢？ ---
+[U521 L91492] 那为什么？既然是同一步，为什么还要分一个顺序？ ---
+[U522 L91571] 好了，我明白为什么现在告诉我这个你说的这个自定义的方法的话需要用到哪些函数？ ---
+[U523 L91644] 决策节点5：多读者少写者？ →读写锁（pthread_rwlock_t) 适用场景：共享数据的访问模式是"读远多于写"。多个读者可以同时读取（不互相阻塞），但写者必须独占访问。 为什么不用互斥锁：互斥锁过于保守﹣﹣即使所有线程都只是在读，也会被串升并发度。行化。读写锁允许多个读者同时进入临界区，在"读多写少"的场景下大幅提 经典例子： 缓存查找：大量线程在缓存中查找数据（读），偶尔更新缓存（写）。 ．配置读取：程序运行时频繁读取配置，只在收到 SIGHUP信号时重新加载配置。 要有读者在，写者就无法独占）。这是你之前学过的读者﹣写者问题中"优先陷阱：写者饥饿。 如果读者源源不断地进来，写者可能
+[U524 L91772] 老样子写一写你的决策点六 ---
+[U525 L91916] 辨析一下，我认为前面几种方式都只能保护单个变量或者说是一段连续的内存，当维护一个复杂的数据时，我们可能没有那么多精力分析或者说复杂的数据结构还有可能面临更多我们无法预测的危险时，我们将使用这种方法是吗？ ---
+[U526 L92004] 所以也就是说我可以把一个复杂的数据结构的某个函数，或者说API，当做一个巨大的。变量，这时我再用以上方法维护我认为是可以的，比如说原子的，还有信号量，还有自定义的条件变量和互斥锁相加，但是这些本身在面临巨大的数据结构的面前，摊销和互斥锁本身差不多，而且我认为面对这种大型的数据结构的调动使用其他的方法，例如说原子函数反而可能会产生某种大的性能瓶颈，因为cpu只执行着一个10分之长的函数是不可能的，这会导致许多其他信号或者说其他线程的延误，所以我认为如果我使用互斥锁单纯的只是保持了这一块内存的问题，而这样的东西是可重入的，可以被信号打断的，互斥锁就是最优解 ---
+[U527 L92069] 解释一下逻辑原子 ---
+[U528 L92144] 如果配置需要更新，用发布﹣订阅模式：创建新副本→原子地替换指针→旧版本延迟释放（RCU 思想）。优雅关闭：先关 listenfd，等缓冲区清空，再通知工作线程退出 模式 4: 不可变共享（Immutable Sharing) 不想加锁？那就不要写。 /／不好：多个线程读写同一个结构体 struct config { int max_connections; char log_path[256]; }; struct config global_config; // 需要锁保护 /／好：初始化后只读 const struct config *global_config;/／初始化后永不修改，无需
+[U529 L92233] 5.1 ThreadSanitizer-﹣首选武器 TSan是Google开发的运行时数据竞争检测器，已集成到GCC和Clang中。 gcc -fsanitize=thread -g -01 -o my_program my_program.c -1pthread ＃编译时加上 -fsanitize=thread ＃直接运行即可 ./my_program ### 典型输出： ### WARNING: ThreadSanitizer: data race (pid=12345) # #0 counter_read() counter.c:10 Read of size 4 at 0x7fff12
+[U530 L92293] 终端的英语 ---
+[U531 L92315] 这个编译是在终端吗 ---
+[U532 L92349] 那个是lpthread吗 ---
+[U533 L92374] ＃典型输出◇ # #WARNING: ThreadSanitizer: data race (pid=12345) Read of size 4 at 0x7fff1234 by thread T2: #0 counter_read() counter.c:10 #1 worker() counter.c:25 Previous write of size 4 at 0x7fff1234 by thread T1: #0 counter_inc() counter.c:15 #1 worker() counter.c:26 # Location is global 'counter' of s
+[U534 L92451] count，conter，哪个对 ---
+[U535 L92465] conter是什么 ---
+[U536 L92485] 没有u呢 ---
+[U537 L92501] 这三条信息足以让你定位90％的数据竞争。 环境变量调优： ### 增加历史记录长度（提高检测率，增加内存开销） export TSAN_OPTIONS="history_size=7" ### 对于顽固的罕见竞争，启用自适应延迟（破坏性调度）: export TSAN_OPTIONS="enable_adaptive_delay=1:adaptive_delay_intensity=200" 这俩啥意思 ---
+[U538 L92560] 这三条信息足以让你定位90％的数据竞争。 环境变量调优： ### 增加历史记录长度（提高检测率，增加内存开销） export TSAN_OPTIONS="history_size=7" ### 对于顽固的罕见竞争，启用自适应延迟（破坏性调度）: export TSAN_OPTIONS="enable_adaptive_delay=1:adaptive_delay_intensity=200" 这俩啥意思 ---
+[U539 L92640] 环境变量调优是什么意思 ---
+[U540 L92686] 环境变量可以理解为配置吗 ---
+[U541 L92702] heilgrind啥意思 ---
+[U542 L92773] 直译 ---
+[U543 L92787] cl什么意思 ---
+[U544 L92806] CI或重大发布前跑一次 ---
+[U545 L92850] Step 1 — 复现 ├─ 增加并发度（更多线程、更紧的循环） ├─ 用 TSan 的 adaptive_delay 注入调度扰动 └─ 在不同 CPU（x86/ARM）上测试（内存模型不同！） Step 2 — 定位 ├─ 跑 TSan → 得到竞争的变量和代码位置 ├─ 死锁？→ GDB thread apply all bt └─ 性能问题？→ perf record + 分析锁竞争热点 Step 3 — 理解 ├─ 画出两个线程的访问交错图（CSAPP 进度图） ├─ 标记 unsafe region（两个线程同时访问共享变量的区域） └─ 确认：是缺少同步，还是同步顺序错误？ St
+[U546 L92923] 修复4:trylock＋回退（防死锁，备选方案） 当无法建立全局锁顺序时（如动态数据结构）: while (1){ pthread_mutex_lock(&lock_a); if (pthread_mutex_trylock(&lock_b) == 0) { // 成功获取两把锁 break; /／拿不到 lock_b→释放 lock_a，稍后重试 pthread_mutex_unlock(&lock_a); usleep(random() % 100);/／随机退避，避免活锁 临界区… // pthread_mutex_unlock(&lock_a); pthread_mutex_unloc

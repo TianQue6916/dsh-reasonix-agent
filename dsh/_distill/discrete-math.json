@@ -1,0 +1,99 @@
+{
+ "subject": "discrete-math",
+ "generated_at": "2026-11-07T20:27:07+08:00",
+ "sources": [
+  "C:/Users/27063/.reasonix/global-workspace/pages/DS_六度分隔理论.md",
+  "C:/Users/27063/.reasonix/global-workspace/pages/DS_最优子结构理论证明.md",
+  "C:/Users/27063/.reasonix/global-workspace/pages/DS_O(V+E)复杂度算法.md"
+ ],
+ "insights": [
+  {
+   "type": "层次",
+   "content": "离散数学本体零素材：三段对话全在图论 / 算法的应用侧（六度分隔、最优子结构、O(V+E)），集合论、命题逻辑、组合计数、关系、布尔代数一题未涉。只能判 L0（见过名字），且属「没学过」而非「学过忘了」。",
+   "tags": [
+    "离散数学",
+    "素材稀少",
+    "层次"
+   ],
+   "importance": 5,
+   "evidence": "DS_六度分隔理论.md / DS_最优子结构理论证明.md / DS_O(V+E)复杂度算法.md（合计 16 条消息）"
+  },
+  {
+   "type": "困惑",
+   "content": "把建模原理当成待证定理：「查找人类文明如何证明最优子结构理论」。它实为 Bellman 1957 的 Principle of Optimality，只是 DP 的建模前提，不是定理；不满足它的题（最长简单路径）就不能用。",
+   "tags": [
+    "离散数学",
+    "动态规划",
+    "最优子结构"
+   ],
+   "importance": 5,
+   "evidence": "DS_最优子结构理论证明.md §我（首问）/ §理论起源 / §核心定义"
+  },
+  {
+   "type": "解法",
+   "content": "最优子结构的标准证法是反证 + 剪切粘贴（cut-and-paste）：设子问题解非最优，替换为更优解会让原问题更优，矛盾。落到 LCS 即末尾字符相同则必在 LCS 内，不同则取两分支的较优者。这是他接住的最小证明骨架。",
+   "tags": [
+    "离散数学",
+    "最优子结构",
+    "反证法"
+   ],
+   "importance": 4,
+   "evidence": "DS_最优子结构理论证明.md §证明方法 / §经典案例"
+  },
+  {
+   "type": "提问模式",
+   "content": "以复杂度为索引反查算法，不按章节学：「v加e复杂度的算法都有哪些」——先钉住 O(V+E) 这条价签，再让算法往里填。同型提问还有「lcs有什么用呢？」，要的是落地锚点而不是定义。",
+   "tags": [
+    "离散数学",
+    "复杂度",
+    "提问模式"
+   ],
+   "importance": 4,
+   "evidence": "DS_O(V+E)复杂度算法.md §我（首问）；DS_最优子结构理论证明.md §lcs有什么用呢？"
+  },
+  {
+   "type": "困惑",
+   "content": "把 DAG Relaxation 记成单个词「dagrelaxing」——知道「DAG + 松弛」这个组合，但不知它是两步：拓扑排序后按序每条边松弛一次，故严格 O(V+E)，省掉 priority queue，比 Dijkstra 更紧。",
+   "tags": [
+    "离散数学",
+    "图论",
+    "最短路径"
+   ],
+   "importance": 4,
+   "evidence": "DS_O(V+E)复杂度算法.md §dagrelaxing是吗"
+  },
+  {
+   "type": "层次",
+   "content": "六度分隔只到 L1（会套用）：能当工具问「我和王虹怎么算」，接受 1 步 / 2 步 / 2–3 步 / ≤6 步的路径分类。但他记的名字是「六人定律」，说明没接触 Milgram 原始实验与小世界网络的图论表述。",
+   "tags": [
+    "离散数学",
+    "六度分隔",
+    "层次"
+   ],
+   "importance": 3,
+   "evidence": "DS_六度分隔理论.md §我（六人定律？）/ §我和王虹怎么算"
+  },
+  {
+   "type": "待验证",
+   "content": "六度分隔的具体数字全部是二手中文检索（Twitter/X 4.7 步、Facebook 3.5 人、微信 3–4 步），他没追问抽样口径、是否取中位数、是否条件于活跃用户。这些数字按「社区结论」记，未经一手论文核对。",
+   "tags": [
+    "离散数学",
+    "六度分隔",
+    "待验证"
+   ],
+   "importance": 3,
+   "evidence": "DS_六度分隔理论.md §现实中的「缩水」版本"
+  },
+  {
+   "type": "待验证",
+   "content": "把术语拼写当知识点问：「supper还是super」——判据是含义而非用法，说明此时关注点是词形记忆。这类追问与数学本体无关，但在他的提问流里占相当比例。",
+   "tags": [
+    "离散数学",
+    "术语",
+    "提问模式"
+   ],
+   "importance": 2,
+   "evidence": "DS_O(V+E)复杂度算法.md §supper还是super"
+  }
+ ]
+}

@@ -7,8 +7,9 @@
 <!-- RELAY:BEGIN —— 由 Linux 侧自动维护（`relay plansync`），手改会被覆盖 -->
 ## relay 待办 · `C:\relay`（每 turn 必查）
 
-- 待我处理 **1** 条，在 `C:\relay\win2lin\0-inbox\`（`relay ls --to lin`）
+- 待我处理 **2** 条，在 `C:\relay\win2lin\0-inbox\`（`relay ls --to lin`）
   - `20261031T174700Z-0001-repo-history-rewritten`
+  - `20261107T113504Z-0001-deepseek-round4-wiki`
 - 流程：读 → `1-wip\` → 完成 `2-done\`（放弃 `3-dead\` + 理由）
 - 协议 `C:\relay\README.md`｜状态板 `C:\relay\STATE.md`（只改 `## LIN` 段）
 - 发嘱托：`relay send --to win --slug <slug> [-f body.md]`；未读刷新：`relay plansync`（cron 每 20 min 已自动）

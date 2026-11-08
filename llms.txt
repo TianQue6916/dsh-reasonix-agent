@@ -1,0 +1,17 @@
+# dsh-reasonix-agent
+
+> Config backup mirror plus engineering knowledge base for a Windows-first dsh LLM agent harness and the reasonix runtime (2026-06 to 2026-10). For people who want real agent-harness config, patches and field-tested lessons, not a library.
+
+## Backup mirror
+- [dsh/](dsh/): settings.yaml, agent presets, cordis.patch.yml, launch-dsh.ps1 and other PowerShell tooling, backups/, plugins/, profiles/, peers/
+- [agents/](agents/): skill bundles under [agents/skills/](agents/skills/) plus agents/.skill-lock.json
+- [reasonix/](reasonix/) and [reasonix-home/](reasonix-home/): runtime home and memory corpus
+- [goat-gateway/](goat-gateway/): local model gateway config; client profiles in [trae-cn/](trae-cn/), [trae-solo/](trae-solo/), [zcode-home/](zcode-home/), [zcode-appdata/](zcode-appdata/)
+
+## Engineering notes
+- [kb/](kb/): distilled conclusions, decision criteria and counter-examples from 300+ sessions and memory facts
+- [README.md](README.md): repo layout, rename history, GH001 (file too large) incident and recovery
+
+## Notes
+- 2229 files, mixed PowerShell / Python / JavaScript / Markdown; daily 23:30 robocopy -> desensitize -> commit -> push.
+- Credentials and server paths are stripped before commit; historical records keep their original wording.

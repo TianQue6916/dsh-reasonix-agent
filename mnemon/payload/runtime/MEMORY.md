@@ -29,3 +29,5 @@ dsh-reasonix-agent 仓库（2026-10-26 由 reasonix 改名；public / master）�
 用户规定的 subagent 并发上限：复杂任务最多 3 个并行，简单任务最多 32 个并行；派发时按任务复杂度分配，不要一律用同一个并发数。
 §
 「用开源就记账」纪律（2026-10-29 用户拍板 C 方案）：agent 每用到一个新的 GitHub 仓库（装包 / clone / 采用 skill / 引用源码）都必须落账并回馈，不能只消费不反馈。审计入口 `python ~/.dsh/contrib/star-audit.py`（不 star 只报）与 `--star`（幂等补 star + 追加 `~/.dsh/contrib/star-ledger.jsonl`）。三条探针各答不同问题：package.json 的 repository（真加载了谁的代码）/ profile 的 plugin 声明（谁给了我能力）/ 本地 .git/config remote（读过改过谁的源码）。direct 与 transitive 分层，73 个 dsh 依赖树默认不 star，自己的仓库（TianQue6916/*）只记账不点。实测坑：仓库改名后旧名 PUT 返 307、用旧名复查永远 404（canon-cache.json 已处理）；GitHub full_name 大小写与 package.json 不一致，比对必须 lower；GitHub API 一律走 curl —— 本机 python urllib 因 CA 缺 AKI 扩展报 SSLCertVerificationError。
+§
+用户日常操作的这台机器是 Linux 桌面，浏览器为 snap 版 Firefox（profile 在 /home/tianque/snap/firefox/common/.mozilla/firefox/85595rbo.default）；/media/OS 上的 Windows 分区只是双系统挂载，不是当前操作环境——浏览器/桌面配置一律先按 Linux 处置。

@@ -1,10 +1,10 @@
 {
   "algorithm": "sha256",
   "files": {
-    "payload/runtime/memories.json": "448cdea807b482dac239a207260a00cc2b3bb710325cbaddab7632fe298d9633",
+    "payload/runtime/memories.json": "4288d749cb16bce6eda4d14dc0451bf670ec0ca2933aed5c22c0e78a93c6432f",
     "payload/runtime/USER.md": "1fd5deb6fe9300356a4a2fd95f182c01014f976e3c2e69d9cf2935570b0bc483",
-    "payload/runtime/MEMORY.md": "d05f963e6f55cf2ce585f9660c8c723e83bb7d5ddf3c9c17dfe903c5844cfb4a",
-    "payload/documents/index.json": "3f3d5b21c2867f3328926c2df508aba4d281471677cb262ef519e3ba70ec521b",
+    "payload/runtime/MEMORY.md": "101084e849bdc55ce78aed5e57dc198f1e4ca06bb58ea24736f3d5b772f9fc0f",
+    "payload/documents/index.json": "3788be79ae833723f88b7ac671f55090b792fae2c6b92e0a32fe6839af447baa",
     "payload/documents/archived/fixture-subagent-catalog-verification-ec8de1b8.md": "f75a9d741f7923a015a91131b904385e86c10fea71f4152ff5440d9dafd4a47b",
     "payload/documents/active/dsh-mnemon-subagent-catalog-persona-goat-gateway-fa611c46.md": "1dabe7a267360de79dbb2f5c977c201bbb7ba7621999cdc46c5e5f2d41daf5aa",
     "payload/documents/active/wechat-bot-reasonix-dsh-wechat-bridge-autostart-c680d4e6.md": "8479c16f4a39082d66a278bda1a8f36c427fae92f9ac413afc81ec9ab8f3d95b",
@@ -265,6 +265,7 @@
     "payload/documents/active/katex-bilingual-tag-2026-11-02-7d0177fb.md": "073b792698ec1fc5d07bd9e2673a3d7d8941a7b5d5cd78efd6880013a79dd349",
     "payload/documents/active/insteadof-owner-2026-11-02-b6aace94.md": "5db9a788a43f6a975d9bd5cc9430c67d3ad69505494f5438a56fec3d01bfd9bd",
     "payload/documents/active/md2pdf-6699c972.md": "96b5847f55006fa3c8d0e73256489f2a1b3ba1c4fc62b8f8ef0d83e2fd8225b7",
+    "payload/documents/active/chat-deepseek-com-840px-css-token-marionette-fir-fbd37d7a.md": "3030a2807206181b8ee43127aabd9b487626dbb6650ccb7040e7a2c9141b09d9",
     "payload/data/.dsh-memory-bodies.json": "0bc65a92f70e4313cb27ded842b97eeff4ecd4054ba47c4b8adee72c0962e05e",
     "payload/data/075ef288-191a-4ac6-beee-b7ba1bc258c8/mnemon.db": "87e8469381bd7a2035c0c55c758189d25d7d0c491bd2b3ed9e203dd70be5ce63",
     "payload/data/3a42565d-e42c-48ce-a12c-54fa52f6c151/mnemon.db": "44fb5d3851033b5555fc7ae8f752f0d4fadc132782cf9bf3da9a2b45f0b483bf",

@@ -264,6 +264,18 @@
         "label": "天阙九泉",
         "at": "2026-10-28T16:41:51.318Z"
       }
+    },
+    {
+      "content": "用户日常操作的这台机器是 Linux 桌面，浏览器为 snap 版 Firefox（profile 在 /home/tianque/snap/firefox/common/.mozilla/firefox/85595rbo.default）；/media/OS 上的 Windows 分区只是双系统挂载，不是当前操作环境——浏览器/桌面配置一律先按 Linux 处置。",
+      "target": "memory",
+      "importance": "normal",
+      "created_at": "2026-11-08T15:36:44.695Z",
+      "updated_at": "2026-11-08T15:36:44.695Z",
+      "origin": {
+        "machine": "428198a5-1f7d-4041-b26a-c66b6cd3139e",
+        "label": "Linux",
+        "at": "2026-11-08T15:36:44.695Z"
+      }
     }
   ]
 }

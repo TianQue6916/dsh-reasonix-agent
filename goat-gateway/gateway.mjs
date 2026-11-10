@@ -183,12 +183,26 @@ function makeAgent(u) {
   return new lib.Agent({ keepAlive, maxSockets: 128, maxFreeSockets: keepAlive ? 32 : 0, timeout: 60000 });
 }
 
+// 判活：agent.sockets 是**正在使用**的连接，freeSockets 才是空闲池。
+// destroy() 两者都销 —— 2026-11-11 实测会把 in-flight SSE 斩断（见 repro-agent-destroy-truncation.mjs）。
+function activeSocketCount(agent) {
+  let n = 0;
+  for (const list of Object.values(agent.sockets || {})) n += list.length;
+  return n;
+}
+
 function resetAgents(reason) {
-  for (const e of agents.values()) {
+  for (const [key, e] of [...agents]) {
+    const active = activeSocketCount(e.agent);
+    if (active > 0) {
+      e.pendingRecycle = true;
+      log(`AGENT-RECYCLE-DEFER origin=${key} activeSockets=${active} reason=${reason || '-'}`);
+      continue;
+    }
     try { e.agent.destroy(); } catch {}
+    agents.delete(key);
+    if (reason) log(`AGENT-RECYCLE origin=${key} ${reason}`);
   }
-  agents.clear();
-  if (reason) log(`AGENT-RECYCLE ${reason}`);
 }
 
 function getAgent(u) {
@@ -196,9 +210,18 @@ function getAgent(u) {
   const maxAge = Number(CFG.upstream?.agentMaxAgeMs ?? 300000);
   let e = agents.get(key);
   if (e && maxAge > 0 && Date.now() - e.bornAt > maxAge) {
-    try { e.agent.destroy(); } catch {}
-    log(`AGENT-RECYCLE origin=${key} age=${Date.now() - e.bornAt}ms > ${maxAge}ms`);
-    e = null;
+    const active = activeSocketCount(e.agent);
+    if (active > 0) {
+      // 有流在飞：这次不回收，标记待回收 —— 否则 destroy() 会把这条长流腰斩。
+      if (!e.pendingRecycle) {
+        e.pendingRecycle = true;
+        log(`AGENT-RECYCLE-DEFER origin=${key} age=${Date.now() - e.bornAt}ms activeSockets=${active}`);
+      }
+    } else {
+      try { e.agent.destroy(); } catch {}
+      log(`AGENT-RECYCLE origin=${key} age=${Date.now() - e.bornAt}ms > ${maxAge}ms`);
+      e = null;
+    }
   }
   if (!e) {
     e = { agent: makeAgent(u), bornAt: Date.now() };

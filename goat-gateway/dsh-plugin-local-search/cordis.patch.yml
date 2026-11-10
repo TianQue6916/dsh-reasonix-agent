@@ -24,9 +24,10 @@
         # ── DeepSeek Search API（2026-10 上线，直连 /v1/tools/search）──────
         # ¥5 / 1000 次成功请求（仅 200 且 results 非空才计费），count 不影响单价；
         # 2026-11-01 00:00 前免费；QPS 100（账号级）；不吃 token，与模型解耦。
-        # 需要 DEEPSEEK_API_KEY（写在 ~/.dsh/.env，或在 launch env 里）。
+        # 需要 DEEPSEEK_SEARCH_API_KEY（写在 ~/.dsh/.env；专用变量，只给本源，不复用给 model provider）。
         # 是「直连 JSON 检索」，与上面 enableDeepseek（让模型跑一轮搜索）不是一回事。
         enableDeepseekSearch: true
+        deepseekSearchApiKeyEnv: "DEEPSEEK_SEARCH_API_KEY"   # 2026-11-08 换 key，专用隔离
         goatBaseUrl: "http://127.0.0.1:8788/v1"
         goatModel: "claude-sonnet-5-5"
         goatApiKeyEnv: "COMMANDCODE_API_KEY"
@@ -55,7 +56,7 @@
         maxResults: 8
         # false = 按 rank 分块（github 块 → goat 块 → deepseek 块 → wiki 块）
         # true  = round-robin 交错（github1, goat1, deepseek1, wiki1, github2, …）
-        interleaveSources: false
+        interleaveSources: true
         # true 时把来源名写进 title（[github] xxx），方便肉眼区分四源
         tagTitles: true
         # ── 兜底（四源全空才触发）─────────────────────────────────

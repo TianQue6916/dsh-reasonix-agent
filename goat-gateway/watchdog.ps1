@@ -24,6 +24,48 @@ function Test-Gateway {
   catch { return $false }
 }
 
+# ── quota-http (8790) 自愈 ────────────────────────────────────────────────
+# 2026-11-09：该进程曾在 00:35–00:50 的**空闲期静默消失**（探针断档、/health 无响应、
+# 零日志 —— 因为 start-quota-http.vbs 当时把 stdout/stderr 全丢了）。它一死，GOAT 面板
+# 的额度与连通性色带会整块空白，表现像「插件没了」。这里顺带看住它。
+$quotaPort = 8790
+function Test-Quota {
+  try {
+    $r = Invoke-RestMethod "http://127.0.0.1:$quotaPort/health" -TimeoutSec 3
+    return [bool]$r.ok
+  }
+  catch { return $false }
+}
+# 本机 Get-NetTCPConnection 的 OwningProcess 对 8788 恒返回 0（dev-sidecar 的 WFP 过滤器
+# 破坏了 PID 反查），所以这里不走端口反查，直接按命令行匹配 node 进程。
+function Get-QuotaPids {
+  @(Get-CimInstance Win32_Process -Filter "Name='node.exe'" -ErrorAction SilentlyContinue |
+    Where-Object { $_.CommandLine -like '*quota-http.mjs*' } |
+    Select-Object -ExpandProperty ProcessId)
+}
+function Restart-Quota {
+  foreach ($qp in Get-QuotaPids) {
+    Write-Log "quota-http: killing stale pid=$qp"
+    Stop-Process -Id $qp -Force -ErrorAction SilentlyContinue
+  }
+  Start-Sleep -Seconds 1
+  & cscript //nologo (Join-Path $root 'start-quota-http.vbs') | Out-Null
+  for ($j = 0; $j -lt 6; $j++) {
+    Start-Sleep -Seconds 2
+    if (Test-Quota) { return $true }
+  }
+  return $false
+}
+
+if (-not (Test-Quota)) {
+  Start-Sleep -Seconds 4
+  if (-not (Test-Quota)) {
+    Write-Log 'quota-http DOWN -> restarting'
+    if (Restart-Quota) { Write-Log 'quota-http RECOVERED' }
+    else { Write-Log 'quota-http RESTART FAILED — 手动：cscript //nologo D:\Toolbox\goat-gateway\start-quota-http.vbs' }
+  }
+}
+
 if (Test-Gateway) {
   # 顺带刷新 GOAT 额度缓存（≥4 分钟才刷一次）——供 reasonix statusline 秒读，避免状态栏卡在联网查询上
   try {

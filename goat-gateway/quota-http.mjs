@@ -31,6 +31,18 @@ const HITLOG = 'D:\\Toolbox\\goat-gateway\\logs\\balance-hits.log';
 // 路径用正斜杠：Node 在 Windows 上同样接受，且省掉一整类反斜杠转义事故。
 const LOG_DIR = process.env.GOAT_LOG_DIR || 'D:/Toolbox/goat-gateway/logs';
 
+// 2026-11-09：进程曾在 00:35 之后**静默消失**（探针断档、8790 无响应、零日志）——
+// 因为 start-quota-http.vbs 用 sh.Run(..., 0, False) 把 stdout/stderr 全吞了。
+// 这里把致命异常落盘并**不退出**：本地服务静默消失比带病活着更难查。
+const FATAL_LOG = path.join(LOG_DIR, 'quota-http.fatal.log');
+function logFatal(kind, err) {
+  const line = new Date().toISOString() + ' [' + kind + '] ' + ((err && err.stack) || String(err)) + String.fromCharCode(10);
+  try { fs.appendFileSync(FATAL_LOG, line); } catch (e) { /* 连日志都写不了就算了 */ }
+  try { console.error(line); } catch (e) { /* 无控制台时 console 可能 EPIPE */ }
+}
+process.on('uncaughtException', (e) => logFatal('uncaughtException', e));
+process.on('unhandledRejection', (e) => logFatal('unhandledRejection', e));
+
 let last = { at: 0, body: null };
 
 // 2026-10-29：execFileSync -> execFile。node 官方明确警告 execSync 会阻塞 event loop，
@@ -309,6 +321,28 @@ function sendJson(req, res, body, corsHeaders, statusCode) {
 // 主指标因此选 llm/retry 命中率（100% 覆盖），TTFT 只作参考。
 const SESS_ROOT = process.env.DSH_SESSIONS_DIR || 'C:/Users/27063/.dsh/sessions';
 const CONN_TTL_MS = Number(process.env.CONN_TTL_MS || 60000);
+// ── 主动探针（2026-11-09）────────────────────────────────────────────────
+// 为什么需要它：被动观测只看得到「你在用的时候」，你不用 dsh 的 10 小时会是一整片灰格。
+// 探针每 15 分钟打一次 `GET /v1/models` —— 这是本机唯一「真实打到上游、又不产生
+// completion」的端点（2026-11-01 实测：/user/balance 与 /health 都 404，/ 是 CF 403）。
+// 成本实测：冷 2.0s / 热 0.42s / 15934 B，**零 token**。
+// 边界：它证明「gateway→上游 /models 通 + 耗时」，**证明不了「模型能推理」**（那要烧 token）。
+const PROBE_URL = process.env.CONN_PROBE_URL || 'http://127.0.0.1:8788/v1/models';
+const PROBE_MS = Number(process.env.CONN_PROBE_MS || 900000);   // 15 分钟，与色带桶宽对齐
+const PROBE_KEEP_MS = 3 * 86400000;                              // 只保留 3 天
+const PROBE_LOG = process.env.CONN_PROBE_LOG || path.join(LOG_DIR, 'conn-probe.jsonl');
+const probeRing = [];                                            // { t, ok, status, ms, bytes?, err? }
+// 输出速度（2026-11-11）：数据来自 gateway 自己的请求日志，**不发任何请求**。
+// 每条记录带 durMs + usage.completion_tokens + reasoning_tokens + cached_tokens，
+// 所以「有会话使用就顺手收集」是这个功能的默认行为 —— 你不用额外做什么。
+// 口径：completion_tokens / durMs = **端到端有效吞吐**（含 TTFT 与排队），
+// 不是纯解码速度（gateway 日志没有 TTFT，算不出后者）。
+const SPEED_LOG = process.env.GOAT_REQLOG || path.join(LOG_DIR, 'loop-guard.jsonl');
+// 基准线 2026-11-11 由用户定为 100：commandcode 上游以前轻松 200+，近期被降速，
+// 用 200 当基准会让读数长期停在 35% 而失去区分度。100 = 「应当达到」的及格线。
+const SPEED_BASELINE = Number(process.env.SPEED_BASELINE || 100);
+const SPEED_TAIL_BYTES = Number(process.env.SPEED_TAIL_BYTES || 12 * 1024 * 1024);
+let speedCache = { mtime: 0, at: 0, rows: [] };
 const connFiles = new Map();          // file -> { mtimeMs, steps }
 const connCache = { at: 0, body: null };
 let connBusy = false;
@@ -407,6 +441,153 @@ function median(arr) {
   return a.length % 2 ? a[h] : Math.round((a[h - 1] + a[h]) / 2);
 }
 
+function loadProbeRing() {
+  try {
+    const cutoff = Date.now() - PROBE_KEEP_MS;
+    for (const line of fs.readFileSync(PROBE_LOG, 'utf8').split('\n')) {
+      if (!line) continue;
+      try { const r = JSON.parse(line); if (r && r.t >= cutoff) probeRing.push(r); } catch { /* 半行/损坏：跳过 */ }
+    }
+    // 文件可能长期增长，读进来后只留窗口内的，写回时自然截断
+    console.log('[probe] loaded ' + probeRing.length + ' records from ' + PROBE_LOG);
+  } catch { /* 首次运行没有文件 */ }
+}
+
+async function runProbe() {
+  const t0 = Date.now();
+  let rec;
+  try {
+    const r = await fetch(PROBE_URL, { signal: AbortSignal.timeout(20000) });
+    const buf = await r.arrayBuffer();
+    rec = { t: t0, ok: r.ok, status: r.status, ms: Date.now() - t0, bytes: buf.byteLength };
+  } catch (e) {
+    rec = { t: t0, ok: false, status: 0, ms: Date.now() - t0,
+            err: String((e && e.name) || 'ERR') + ': ' + String((e && e.message) || e).slice(0, 100) };
+  }
+  probeRing.push(rec);
+  const cutoff = Date.now() - PROBE_KEEP_MS;
+  while (probeRing.length && probeRing[0].t < cutoff) probeRing.shift();
+  // 异步追加，不阻塞请求路径（同 /balance 的做法）
+  fs.appendFile(PROBE_LOG, JSON.stringify(rec) + '\n', () => {});
+  return rec;
+}
+
+/**
+ * 从 gateway 请求日志里抽速度样本。只读文件尾部（12 MB 足够覆盖 12 小时，
+ * 实测 73 条 usage 记录约 124 KB），按 mtime 缓存 60 秒。
+ */
+function readSpeedRows() {
+  let st;
+  try { st = fs.statSync(SPEED_LOG); } catch { return []; }
+  if (speedCache.mtime === st.mtimeMs && Date.now() - speedCache.at < 60000) return speedCache.rows;
+  const start = Math.max(0, st.size - SPEED_TAIL_BYTES);
+  let text = '';
+  try {
+    const fd = fs.openSync(SPEED_LOG, 'r');
+    const buf = Buffer.alloc(st.size - start);
+    fs.readSync(fd, buf, 0, buf.length, start);
+    fs.closeSync(fd);
+    text = buf.toString('utf8');
+  } catch { return speedCache.rows; }
+  const rows = [];
+  for (const line of text.split(String.fromCharCode(10))) {
+    // 尾部截断会把第一行切成半截，解析失败就跳过（不影响后面的完整行）
+    if (line.indexOf('{"ts"') !== 0) continue;
+    let e; try { e = JSON.parse(line); } catch { continue; }
+    const u = ((e.outcome || {}).usage);
+    let usage = u;
+    if (typeof u === 'string') { try { usage = JSON.parse(u); } catch { usage = null; } }
+    if (!usage || typeof usage !== 'object') continue;
+    const ct = Number(usage.completion_tokens) || 0;
+    const d = Number(e.durMs) || 0;
+    if (!(ct > 0) || !(d > 0)) continue;
+    let t = 0;
+    try { t = Date.parse(e.ts); } catch { t = 0; }
+    if (!t) continue;
+    rows.push({
+      t,
+      model: e.model || '?',
+      ct,
+      durMs: d,
+      tps: ct / (d / 1000),
+      rt: Number(((usage.completion_tokens_details || {}).reasoning_tokens)) || 0,
+      cached: Number(((usage.prompt_tokens_details || {}).cached_tokens)) || 0,
+      pt: Number(usage.prompt_tokens) || 0,
+    });
+  }
+  speedCache = { mtime: st.mtimeMs, at: Date.now(), rows };
+  return rows;
+}
+
+function buildSpeed(t0, hours) {
+  const all = readSpeedRows();
+  const cut12 = t0 - hours * 3600000;
+  const rows = all.filter((r) => r.t >= cut12);
+  const base = { baseline: SPEED_BASELINE };
+
+  // ── 最近 7 天：按天取 p50，再取最好/最差的一天 ────────────────
+  // 「一周巅峰/低谷」用**每天的中位数**做比较，而不是用单条请求的 max/min ——
+  // 单条请求的极值只反映运气（一次短输出撞上 cache 全中就冲到 150），
+  // 每天的中位数才反映那一天的真实水平。
+  const cut7 = t0 - 7 * 86400000;
+  const rows7 = all.filter((r) => r.t >= cut7);
+  const byDay = new Map();
+  for (const r of rows7) {
+    const d = new Date(r.t);
+    const key = (d.getMonth() + 1) + "-" + String(d.getDate()).padStart(2, "0");
+    let arr = byDay.get(key);
+    if (!arr) { arr = []; byDay.set(key, arr); }
+    arr.push(r.tps);
+  }
+  const days = [];
+  for (const [day, arr] of byDay) {
+    if (arr.length < 5) continue;                       // 样本太少的那天不参与峰谷
+    arr.sort((a, b) => a - b);
+    days.push({ day, n: arr.length, p50: Math.round(arr[Math.floor(arr.length / 2)] * 10) / 10 });
+  }
+  days.sort((a, b) => (a.day < b.day ? -1 : 1));
+  let week = null;
+  if (rows7.length) {
+    const all7 = rows7.map((r) => r.tps).sort((a, b) => a - b);
+    const sortedDays = days.slice().sort((a, b) => a.p50 - b.p50);
+    week = {
+      n: rows7.length,
+      days: days.length,
+      mean: Math.round(all7.reduce((x, y) => x + y, 0) / all7.length * 10) / 10,
+      p50: Math.round(all7[Math.floor(all7.length / 2)] * 10) / 10,
+      peak: sortedDays.length ? sortedDays[sortedDays.length - 1] : null,
+      low: sortedDays.length ? sortedDays[0] : null,
+      byDay: days,
+    };
+  }
+
+  if (!rows.length) return Object.assign(base, { n: 0, week, note: '窗口内没有带 usage 的请求' });
+
+  const tps = rows.map((r) => r.tps).sort((a, b) => a - b);
+  const at = (q) => Math.round(tps[Math.min(tps.length - 1, Math.floor(tps.length * q))] * 10) / 10;
+  let ct = 0, rt = 0, cached = 0, pt = 0;
+  const byModel = new Map();
+  for (const r of rows) {
+    ct += r.ct; rt += r.rt; cached += r.cached; pt += r.pt;
+    let m = byModel.get(r.model); if (!m) { m = []; byModel.set(r.model, m); }
+    m.push(r.tps);
+  }
+  const p50 = at(0.5);
+  const models = Array.from(byModel.entries()).map(([model, v]) => {
+    v.sort((a, b) => a - b);
+    return { model, n: v.length, p50: Math.round(v[Math.floor(v.length / 2)] * 10) / 10 };
+  }).sort((a, b) => b.n - a.n).slice(0, 5);
+  return Object.assign(base, {
+    n: rows.length,
+    p10: at(0.1), p50, p90: at(0.9), max: Math.round(tps[tps.length - 1] * 10) / 10,
+    ratio: Math.round((1000 * p50) / SPEED_BASELINE) / 10,
+    reasoningShare: ct ? Math.round((1000 * rt) / ct) / 10 : null,
+    cacheHit: pt ? Math.round((1000 * cached) / pt) / 10 : null,
+    models,
+    week,
+  });
+}
+
 async function buildConnectivity(hours, bucketMin) {
   const t0 = Date.now();
   const bucketMs = bucketMin * 60000;
@@ -459,6 +640,24 @@ async function buildConnectivity(hours, bucketMin) {
       medMs: median(b.durs), codes: b.codes
     } : { h, n: 0, fail: 0, retries: 0, rate: 0, medMs: null, codes: {} });
   }
+  // 无真实请求的桶，用落在该时间窗内的探针记录填充（客户端按「描边/半透明」渲染区分）
+  let probeN = 0, probeFail = 0;
+  for (const b of buckets) {
+    if (b.n > 0) continue;
+    const end = b.h + bucketMs;
+    const ps = [];
+    for (const pr of probeRing) if (pr.t >= b.h && pr.t < end) ps.push(pr);
+    if (!ps.length) continue;
+    let ok = 0; const lat = [];
+    for (const pr of ps) { if (pr.ok) ok += 1; lat.push(pr.ms); }
+    b.probe = true;
+    b.pn = ps.length;
+    b.pok = ok;
+    b.prate = Math.round((1000 * (ps.length - ok)) / ps.length) / 10;
+    b.pmedMs = median(lat);
+    probeN += ps.length; probeFail += ps.length - ok;
+  }
+
   const worst = buckets.filter((b) => b.n >= 20).slice().sort((a, b) => b.rate - a.rate).slice(0, 5)
     .map((b) => ({ h: b.h, rate: b.rate, n: b.n, retries: b.retries }));
 
@@ -478,7 +677,11 @@ async function buildConnectivity(hours, bucketMin) {
       byCode: totals.byCode,
       ttftN: totals.ttftN,
       ttftP50: median(ttftAll),
-      lastStepAt: totals.lastStepAt || null
+      lastStepAt: totals.lastStepAt || null,
+      probeN,
+      probeFail,
+      probeEveryMin: Math.round(PROBE_MS / 60000),
+      speed: buildSpeed(t0, hours)
     },
     buckets,
     worst
@@ -515,6 +718,9 @@ function connectivityCached(hours, bucketMin, force) {
   return Object.assign({}, connCache.body, { stale: !fresh, ageMs: now - connCache.at, busy: connBusy });
 }
 
+loadProbeRing();
+setTimeout(() => { runProbe().catch(() => {}); }, 6000);
+setInterval(() => { runProbe().catch(() => {}); }, PROBE_MS);
 setTimeout(() => { try { refreshConnectivity(12, 15); } catch {} }, 3000);
 // ────────────────────────── /连通性历史 ──────────────────────────
 

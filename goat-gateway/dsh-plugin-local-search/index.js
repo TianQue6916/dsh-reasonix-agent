@@ -93,7 +93,9 @@ const DEFAULT_CONFIG = {
 
   // ── DeepSeek Search API（POST /v1/tools/search）────────────────────
   deepseekSearchBaseUrl: process.env.DEEPSEEK_SEARCH_BASE_URL || 'https://api.deepseek.com',
-  deepseekSearchApiKeyEnv: 'DEEPSEEK_API_KEY',
+  // 2026-11-08：默认值改成专用变量名 —— 即使 profile patch 的覆盖没进来，也不会
+  // 回落到 DEEPSEEK_API_KEY（Windows User 环境里残留着旧 key，会导致 401）。
+  deepseekSearchApiKeyEnv: 'DEEPSEEK_SEARCH_API_KEY',
   // key 只写在 .env 里，dsh 的 launch env 不一定继承到插件进程
   deepseekSearchEnvFile: `${HOME}/.dsh/.env`,
   // count 只影响返回条数（1~50），不影响计费
@@ -105,6 +107,22 @@ const DEFAULT_CONFIG = {
   deepseekSearchTimeoutMs: 30000,
   deepseekSearchCacheTtlMs: 120000,
   deepseekSearchFailureCooldownMs: 600000,
+  // 中文 query 的英译兜底（2026-11-08）：离线 ZIM 只有英文版（wikipedia_en_all_nopic），
+  // 纯中文 query 在 ZIM 上近零命中，PocketWiki 又是多词 AND。含 CJK 的 query 额外补一条
+  // 英译变体，长 TTL 缓存，失败静默降级。
+  // ⚠ 走的是 **goat gateway**（127.0.0.1:8788 + COMMANDCODE_API_KEY），**不用** DeepSeek 官方 API：
+  //   用户 2026-11-08 约束「除 search 外，其他功能不许用 DeepSeek 官方 API」。
+  //   wikiTranslateBaseUrl / wikiTranslateApiKeyEnv 留空 = 复用 goatBaseUrl / goatApiKeyEnv。
+  enableWikiTranslate: true,
+  wikiTranslateModel: 'deepseek/deepseek-v4.1-flash',
+  wikiTranslateBaseUrl: '',
+  wikiTranslateApiKeyEnv: '',
+  // goat 上的 deepseek 模型默认开 reasoning，会把 max_tokens 全吃进 reasoning_content（content 为空）
+  // ⇒ 必须显式 off。模型用 `deepseek-v4.1-flash`（与 dsh 默认模型一致，不用 -fast 变体）：
+  //   实测 flash + off ≈ 2.1-2.4s 正常；v4-flash-fast 在 off 下返回空（finish_reason 缺失），别用。
+  wikiTranslateReasoningEffort: 'off',
+  wikiTranslateTimeoutMs: 12000,
+  wikiTranslateCacheTtlMs: 600000,
 
   // ── Bing HTML（免 key 兜底源）────────────────────────────────────
   bingBaseUrl: process.env.BING_SEARCH_BASE_URL || 'https://cn.bing.com',
@@ -412,6 +430,7 @@ class LocalSearchProvider {
     this.deepseekSearchDisabledUntil = 0;
     this.deepseekSearchCooldownWarned = false;
     this.deepseekSearchKeyCache = undefined;
+    this.wikiTranslateCache = new Map();
     this.bingCache = new Map();
     this.bingDisabledUntil = 0;
     this.bingCooldownWarned = false;
@@ -581,12 +600,79 @@ class LocalSearchProvider {
     return process.env.LOCAL_SEARCH_TOKEN || readTextFile(cfg.tokenFile);
   }
 
+  // ── wiki：中文 query → 英文检索词的兜底翻译（2026-11-08）────────────────────
+  // 背景：aggregator 只挂了英文 ZIM（python libzim 全文搜索），中文 query 基本 0 命中；
+  // PocketWiki 是「整串子串」匹配，中文长句同样苛刻。所以对含 CJK 的 query 额外补一条
+  // 英译变体。用 deepseekSearch 的同一把 key 打 /chat/completions（工具内部使用），
+  // 结果按 query 缓存 10 分钟；任何失败都返回 '' 并静默降级，不影响原有变体。
+  async translateWikiQuery(query, signal) {
+    const cfg = this.getConfig();
+    if (cfg.enableWikiTranslate === false) return '';
+    // 走 goat gateway（COMMANDCODE_API_KEY），**不用** DeepSeek 官方 API
+    // （用户 2026-11-08 约束：除 search 外其他功能不许用官方 API）。
+    const key = this.goatApiKey();
+    if (!key) return '';
+    const q = String(query || '').trim();
+    if (!q) return '';
+    const cache = this.wikiTranslateCache || (this.wikiTranslateCache = new Map());
+    const ttl = Number(cfg.wikiTranslateCacheTtlMs ?? 600000);
+    const hit = cache.get(q);
+    if (hit && hit.exp > Date.now()) return hit.value;
+    try {
+      const base = String(cfg.wikiTranslateBaseUrl || cfg.goatBaseUrl || 'http://127.0.0.1:8788/v1').replace(/\/+$/, '');
+      const response = await fetch(`${base}/chat/completions`, {
+        method: 'POST',
+        headers: { 'content-type': 'application/json', authorization: `Bearer ${key}` },
+        body: JSON.stringify({
+          model: String(cfg.wikiTranslateModel || 'deepseek/deepseek-v4.1-flash'),
+          messages: [
+            {
+              role: 'system',
+              content:
+                'Translate the user query into 1-6 concise English Wikipedia search keywords. Output the translation only: no quotes, no explanation, no punctuation at the ends.',
+            },
+            { role: 'user', content: q.slice(0, 200) },
+          ],
+          max_tokens: 64,
+          temperature: 0,
+          reasoning_effort: String(cfg.wikiTranslateReasoningEffort || 'off'),
+          stream: false,
+        }),
+        signal: timedSignal(signal, Number(cfg.wikiTranslateTimeoutMs || 12000)),
+      });
+      if (!response.ok) return '';
+      const data = await response.json();
+      const text = String(data?.choices?.[0]?.message?.content || '')
+        .replace(/\s+/g, ' ')
+        .replace(/^["'\s]+|["'\s]+$/g, '')
+        .trim()
+        .slice(0, 120);
+      if (!text) return '';
+      cache.set(q, { value: text, exp: Date.now() + ttl });
+      return text;
+    } catch {
+      return '';
+    }
+  }
+
+  /** 原变体 + （含 CJK 时）英译变体。翻译不可用就退回原变体。 */
+  async buildWikiQueries(query, signal) {
+    const variants = buildWikiQueryVariants(query);
+    const q = String(query || '');
+    if (!/[぀-ヿ㐀-䶿一-鿿가-힯]/.test(q)) return variants;
+    const translated = await this.translateWikiQuery(q, signal);
+    if (translated && !variants.some((v) => v.toLowerCase() === translated.toLowerCase())) {
+      variants.push(translated);
+    }
+    return variants;
+  }
+
   async searchAggregator(query, maxResults, signal) {
     const cfg = this.getConfig();
     const token = this.localSearchToken();
     if (!token) throw new Error(`missing local-search token (${cfg.tokenFile})`);
 
-    const variants = buildWikiQueryVariants(query);
+    const variants = await this.buildWikiQueries(query, signal);
     if (variants.length === 0) return [];
 
     // 每个变体各查一次（内网免费，成本只在延迟），按 URL 去重后合并

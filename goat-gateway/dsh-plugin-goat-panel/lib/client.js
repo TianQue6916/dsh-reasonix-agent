@@ -314,6 +314,42 @@ window.__ModuleLoader__.load({
       const connT = (conn && conn.totals) || {};
       const connCodes = connT.byCode || {};
       const connWorst = (conn && conn.worst) || [];
+      const connSpeed = connT.speed || null;
+      // 输出速度：口径是 completion_tokens / durMs（端到端有效吞吐，含 TTFT 与排队），
+      // 不是纯解码速度 —— gateway 日志没有 TTFT，算不出后者。基准线 200 tok/s（用户指定官方值）。
+      const speedInk = (r) => (r >= 90 ? "#34d399" : r >= 60 ? "#fbbf24" : "#f59e0b");
+      const connSpeedRow = connSpeed && connSpeed.n
+        ? (() => {
+            const wk = connSpeed.week || null;
+            const trend = wk && wk.byDay && wk.byDay.length
+              ? "一周逐日（中位 tok/s）：" + wk.byDay.map((x) => x.day + " " + x.p50 + "(" + x.n + ")").join(" · ")
+              : "";
+            return jsx.jsxs("div", {
+              style: Object.assign({}, dim, { marginTop: "3px", opacity: 0.9 }),
+              title: "输出速度 = completion_tokens / durMs（端到端有效吞吐，含首 token 等待与排队）。"
+                + "当前值取最近 12 小时窗口；一周均/峰/谷取最近 7 天，峰与谷按**每天的中位数**比较"
+                + "（单条请求的极值只反映运气）。"
+                + " p10 " + connSpeed.p10 + " / p90 " + connSpeed.p90 + " / max " + connSpeed.max
+                + "，样本 " + connSpeed.n + " 个请求。"
+                + "reasoning 占 completion " + connSpeed.reasoningShare + "%，prompt cache 命中 "
+                + connSpeed.cacheHit + "%。"
+                + "基准 " + connSpeed.baseline + " tok/s（commandcode 上游 2026-09-27 前后实测 ~200，"
+                + "9-28 起断崖回落）。数据全部来自本地日志，没有额外发请求。 "
+                + trend,
+              children: [
+                jsx.jsx("span", { style: { opacity: 0.75 }, children: "速度 " }),
+                jsx.jsx("span", { style: { color: speedInk(connSpeed.ratio) }, children: connSpeed.p50 + " tok/s" }),
+                wk && wk.peak && wk.low
+                  ? jsx.jsx("span", { children: " · 一周 均 " + wk.mean + " / 峰 " + wk.peak.p50
+                      + " / 谷 " + wk.low.p50 })
+                  : null,
+                jsx.jsx("span", { style: { opacity: 0.7 }, children: " · 基准 " + connSpeed.baseline
+                  + " 的 " + connSpeed.ratio + "%" })
+              ]
+            });
+          })()
+        : null;
+
       const connRow = conn
         ? jsx.jsxs("div", {
             style: Object.assign({}, dim, {
@@ -352,20 +388,33 @@ window.__ModuleLoader__.load({
                     children: connHours.map((h) => {
                       const rate = Number(h.rate) || 0;
                       const hgt = Math.min(12, 4 + Math.round(Math.log2((h.n || 1) + 1) * 1.6));
+                      // 探针桶中位往返实测 634ms-3693ms（波动 6 倍）；以前恒绿把这个信息全吞了。
+                      // 现在按延迟分档，全成功也能看出上游何时变慢。
+                      const pms = Number(h.pmedMs) || 0;
                       return jsx.jsx("div", {
-                        title: connHm(h.h) + "  " + (h.n || 0) + " 次 / 失败率 " + connPct(rate) + (h.medMs ? " / 中位 " + (Math.round(h.medMs / 100) / 10) + "s" : ""),
+                        title: h.probe
+                          ? connHm(h.h) + "  探针 " + (h.pn || 0) + " 次 / 失败 " + connPct(h.prate || 0) + (h.pmedMs ? " / 中位 " + (Math.round(h.pmedMs / 100) / 10) + "s" : "") + "（该时段没有真实请求，用 15 分钟一次的 GET /models 探针填充；零 token）"
+                          : connHm(h.h) + "  " + (h.n || 0) + " 次 / 失败率 " + connPct(rate) + (h.medMs ? " / 中位 " + (Math.round(h.medMs / 100) / 10) + "s" : ""),
                         style: {
                           flex: "1 1 0", height: hgt + "px", borderRadius: "1px",
                           // 无样本的 15 分钟画灰：必须和「有请求且全绿」区分开，
                           // 否则「那段时间根本没用」会被误读成「那段时间很好」。
-                          background: !h.n ? "#6b7280"
+                          // 三态：实心 = 你真实用过的；半透明 = 后台探针填的；灰 = 两者都没有
+                          background: h.probe
+                              ? ((h.prate || 0) >= 50 ? "#ef4444"
+                                : pms >= 3000 ? "#f59e0b"
+                                : pms >= 2000 ? "#eab308"
+                                : pms >= 1000 ? "#84cc16"
+                                : "#22c55e")
+                            : !h.n ? "#6b7280"
                             : rate >= 5 ? "#f87171" : rate >= 2 ? "#fbbf24" : rate > 0 ? "#a3e635" : "#34d399",
-                          opacity: h.n ? 1 : 0.35
+                          opacity: h.probe ? ((h.prate || 0) >= 50 ? 0.85 : 0.18) : (h.n ? 1 : 0.35)
                         }
                       }, h.h);
                     })
                   })
-                : null
+                : null,
+              connSpeedRow
             ]
           })
         : null;

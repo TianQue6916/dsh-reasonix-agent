@@ -81,7 +81,9 @@ const server = http.createServer((req, res) => {
 });
 await new Promise((r) => server.listen(0, '127.0.0.1', r));
 // T5–T9 聚焦三源语义：显式关掉 goat 源，避免它们去真打 8788
-const config = { ...DEFAULT_CONFIG, aggregatorUrl: `http://127.0.0.1:${server.address().port}`, tokenFile: '', enableGoat: false };
+// 2026-11-08：enableBing 补关（DEFAULT_CONFIG 后来加了 bing 源，本测试只覆盖三源且不碰真实网络）；
+// deepseekSearch / wikiTranslate 关掉，避免读真实 .env 的 key 去打外网。
+const config = { ...DEFAULT_CONFIG, aggregatorUrl: `http://127.0.0.1:${server.address().port}`, tokenFile: '', enableGoat: false, enableBing: false, enableDeepseekSearch: false, enableWikiTranslate: false };
 
 const calls = { github: 0, deepseek: 0, fallback: 0 };
 const fakeDeepseek = {
@@ -314,7 +316,7 @@ console.log('T14 search()：deepseek 报 402 Insufficient Balance → 熔断（�
       search: async () => { calls.deepseek += 1; throw new Error('402 Insufficient Balance'); },
     }]]),
   };
-  const cfg = { ...DEFAULT_CONFIG, aggregatorUrl: `http://127.0.0.1:${server.address().port}`, tokenFile: '', enableGoat: false, deepseekFailureCooldownMs: 600000 };
+  const cfg = { ...DEFAULT_CONFIG, aggregatorUrl: `http://127.0.0.1:${server.address().port}`, tokenFile: '', enableGoat: false, enableBing: false, enableDeepseekSearch: false, enableWikiTranslate: false, deepseekFailureCooldownMs: 600000 };
   const provider = new LocalSearchProvider(() => cfg, balanceWeb);
   provider.searchGithub = async () => [src(1, 'gh')];
   provider.searchAggregator = async () => [src(1, 'wiki')];   // 照 T12 的写法：stub 成 1 条，避开 mock server 本身的 2 条

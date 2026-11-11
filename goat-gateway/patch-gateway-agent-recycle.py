@@ -17,13 +17,19 @@ import hashlib
 import json
 import os
 import re
+import time
+import platform
 import shutil
 import subprocess
 import sys
 
-GW = os.path.join("D:/Toolbox/goat-gateway", "gateway.mjs")
-STATE = os.path.expanduser("~/.dsh/storages/gateway-agent-recycle-patch.json")
-BAK = GW + ".bak-20261111-pre-agent-recycle-guard"
+# 两机通用：Windows 默认 D:/Toolbox/goat-gateway，Linux 用 GATEWAY_MJS 覆盖
+#   GATEWAY_MJS=~/goat-gateway/gateway.mjs python3 patch-gateway-agent-recycle.py --apply
+GW = os.path.expanduser(os.environ.get("GATEWAY_MJS") or "D:/Toolbox/goat-gateway/gateway.mjs")
+# state 必须按机器分开：~/.dsh/storages 在两机之间同步，共用一份会让另一台
+# 误判「already applied」（2026-11-11 踩过 —— Linux 读到的是 Windows 的 bak 路径）。
+_H = re.sub(r"[^0-9A-Za-z一-鿿_-]", "_", platform.node() or "host")
+STATE = os.path.expanduser(f"~/.dsh/storages/gateway-agent-recycle-patch.{_H}.json")
 
 OLD_RESET = '''function resetAgents(reason) {
   for (const e of agents.values()) {
@@ -104,7 +110,8 @@ def apply():
         print("anchor 不唯一，拒绝打补丁")
         return 2
     s = read(GW)
-    shutil.copy2(GW, BAK)
+    bak = GW + ".bak-" + time.strftime("%Y%m%d-%H%M%S") + "-pre-agent-recycle-guard"
+    shutil.copy2(GW, bak)
     new = s.replace(OLD_RESET, NEW_RESET, 1).replace(OLD_GET, NEW_GET, 1)
     with open(GW, "w", encoding="utf-8", newline="") as f:
         f.write(new)
@@ -113,9 +120,9 @@ def apply():
         shutil.copy2(BAK, GW)
         print("node --check FAILED, 已回滚:\n" + (r.stderr or "")[:800])
         return 3
-    json.dump({"before": sha(s), "after": sha(new), "bak": BAK, "bytes": len(new.encode())},
+    json.dump({"before": sha(s), "after": sha(new), "bak": bak, "bytes": len(new.encode())},
               open(STATE, "w"), indent=1)
-    print(f"applied: {len(s.encode())} -> {len(new.encode())} B, node --check OK, bak={os.path.basename(BAK)}")
+    print(f"applied: {len(s.encode())} -> {len(new.encode())} B, node --check OK, bak={os.path.basename(bak)}")
     return 0
 
 def verify():
@@ -140,13 +147,14 @@ def verify():
     return 0 if ok and r.returncode == 0 else 4
 
 def restore():
-    if not os.path.exists(BAK):
-        print("no backup")
+    bak = json.load(open(STATE))["bak"] if os.path.exists(STATE) else ""
+    if not bak or not os.path.exists(bak):
+        print("no backup (state 里没有 bak 路径)")
         return 1
-    shutil.copy2(BAK, GW)
+    shutil.copy2(bak, GW)
     if os.path.exists(STATE):
         os.remove(STATE)
-    print(f"restored from {os.path.basename(BAK)} ({len(read(GW).encode())} B)")
+    print(f"restored from {os.path.basename(bak)} ({len(read(GW).encode())} B)")
     return 0
 
 if __name__ == "__main__":

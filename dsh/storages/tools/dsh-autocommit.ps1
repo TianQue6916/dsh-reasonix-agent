@@ -136,7 +136,10 @@ try {
 
     if ($after -and ($after.Trim() -ne "$before".Trim())) {
       $committed++
-      Write-Log ('commit {0}  head={1}' -f $msg, $after.Trim().Substring(0, 7))
+      # 日志行保留 v1 的 ":: file1, file2" 尾巴 —— storages/tools/journal/aggregate.py
+      # 的 load_autocommit() 靠它统计「落盘产物」里出现最多的文件名。
+      $sample = ($files | Select-Object -First 6) -join ', '
+      Write-Log ('commit {0}  head={1}  :: {2}' -f $msg, $after.Trim().Substring(0, 7), $sample)
     } else {
       # v1 就是死在这里却假装成功：commit 返回非 0、HEAD 没动，日志照写 commit。
       $exitCode = 1

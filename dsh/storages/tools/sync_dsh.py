@@ -100,6 +100,12 @@ PEER_PUSH = [
 R.EXCLUDE_DIRS = {
     # 运行期 / 可重建
     'node_modules', '.git', '__pycache__', '.venv', 'venv',
+    # 2026-11-16 加：这些是「本机运行时 / 大块头」，跨机同步只会搬垃圾。
+    # 实测 14:18 那一轮 62 个冲突里 98 条路径属于 edge-aigc（Edge 用户数据目录，
+    # 746 MB 的 Cache/Code Cache/DIPS/DawnGraphiteCache —— 两边都在写，永远冲突），
+    # 其余还有 certs（本地 CA 私钥）、dsh-runtimes（273 MB 依赖树）、
+    # ds-harness-remote（server-credentials.json 是凭据）。
+    'edge-aigc', 'certs', 'dsh-runtimes', 'ds-harness-remote', 'llm-latency',
     # 2026-10-31 加：per-session 计划 / 本机日记 / 本机归档 —— 各机必然不同，同步只会制造冲突。
     # 实测：一次同步 48 个冲突里 19 个来自 plans/、6 个 journal/、2 个 PLAN.d/。
     'plans', 'journal', 'PLAN.d',

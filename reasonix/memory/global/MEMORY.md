@@ -430,6 +430,7 @@
 - [课程视频超分盘点-小电脑2026-11](课程视频超分盘点-小电脑2026-11.md) — X1C7 小电脑（tianque-lan, 192.168.243.2）课程视频超分进度：待 212 集、已 117 集，含三个异常与判定方法
 - [dsh-自动git三链路断裂与修复-20261116](dsh-自动git三链路断裂与修复-20261116.md) — 2026-11-16 排障定论：~/.dsh 自动提交 + 双机同步 + GitHub 备份三条链路静默失效的根因与修法，含 A/B/C 收尾（.gitignore 统一、旧 skill 退役、public 仓保持）
 - [dsh-desktop-插件消失-根因是bundles被重置](dsh-desktop-插件消失-根因是bundles被重置.md) — dsh 桌面版插件全部消失的真因：package.json 的 dsh.profile.bundles 被 auto-reset 砍成 2 个，与 dependencies / node_modules 无关
+- [dsh-skills-根目录拓扑与裁剪-20261116](dsh-skills-根目录拓扑与裁剪-20261116.md) — dsh skills 的三处根目录拓扑、技能被同步「复活」的机制、2026-11-16 裁剪 83→33 的结果，以及中文路径必须关 quotepath 的坑
 ## 归档说明
 - 原文全量备份：`~/.reasonix/memory-backup-20260816/`（59 份）与 `~/.reasonix/memory-backup-20260816-consolidate/`
 - 合并/蒸馏原始件：`~/.reasonix/memory-archive-20260816/`

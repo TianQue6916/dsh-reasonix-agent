@@ -98,3 +98,20 @@ skill-search 按 SKILL.md frontmatter 的 `name:` 字段索引，**不看目录�
 `EXTRA_PAIRS` 到 11-16 还指着它 ⇒ 那半个月双机同步搬的一直是旧副本。
 2026-11-16 已把两处旧家改名留档（Windows `%APPDATA%\reasonix\skills.legacy-20261116`、
 Linux `~/ai-skills.legacy-20261116`），现役双机各 99 项且内容一致。
+
+## 中文路径 + git = 两个必须加的开关（2026-11-16 实测，血泪）
+
+`.git/hooks/pre-commit` 与两个 autocommit 脚本里，凡是读 `git status` / `git diff --cached`
+的地方都必须带 `-c core.quotepath=false`：
+
+- 默认 `core.quotepath=true`，git 把非 ASCII 路径输出成 `"skills/\345\205\203..."` ——
+  **带双引号 + 八进制转义**。拿它去 `git add` 一个都匹配不上；拿它做域分类，
+  首字符是 `"` 就落不进 `skills/*` 分支，全归 `misc`。
+- 实测症状一：退役 50 个技能后，157 个改动只提交了 3 个（其余路径全部匹配失败）。
+- 实测症状二：一个纯 `toolkit` 的 80 文件批次，被 hook 判成「toolkit misc 混域」拒绝。
+- 两处都已修：`storages/tools/dsh-autocommit.ps1`（status + add）、
+  `storages/tools/dsh_autocommit.sh`（status + add）、`.git/hooks/pre-commit`（diff --cached）。
+
+另一个坑（同一天）：`dsh-autocommit.ps1` 的失败分支原来用 `2>$null` 吞掉 commit 的错误，
+日志只写「head 未前进」。现在把 git 的原文前 12 行写进日志（`git| ` 前缀）——
+**没有错误原文的「失败」等于没记录**。

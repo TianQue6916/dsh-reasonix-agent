@@ -94,7 +94,10 @@ try {
     if (Test-Path (Join-Path $gitdir $f)) { Write-Status 'SKIP' 'merge-in-progress'; exit 0 }
   }
 
-  $raw = @(& git -C $DshHome status --porcelain -uall 2>$null)
+  # core.quotepath=false 必须加：默认情况下 git 把非 ASCII 路径输出成
+  # "å" 这样的八进制转义，脚本拿去 add 一个都匹配不上 ——
+  # 于是 157 个改动只提交了 3 个（2026-11-16 退役 50 个技能时实测）。
+  $raw = @(& git -c core.quotepath=false -C $DshHome status --porcelain -uall 2>$null)
   if ($raw.Count -eq 0) { Write-Status 'OK' 'clean'; exit 0 }
 
   # ---- 分类 ----
@@ -122,7 +125,7 @@ try {
     # git 把 BOM 当成第一个路径的首字符，于是 add 一个文件都匹配不上（实测踩过）。
     $enc = New-Object System.Text.UTF8Encoding($false)
     [IO.File]::WriteAllText($PathSpec, ($files -join "`n"), $enc)
-    & git -C $DshHome add --pathspec-from-file=$PathSpec 2>$null | Out-Null
+    & git -c core.quotepath=false -C $DshHome add --pathspec-from-file=$PathSpec 2>$null | Out-Null
     Remove-Item $PathSpec -Force -ErrorAction SilentlyContinue
 
     $n = @(& git -C $DshHome diff --cached --name-only 2>$null).Count
@@ -130,8 +133,11 @@ try {
 
     $before = (& git -C $DshHome rev-parse HEAD 2>$null)
     $msg = 'auto({0}): {1}  ({2} files)' -f $d, (Get-Date -Format 'yyyy-MM-dd HH:mm'), $n
-    & git -c "user.name=$AuthorName" -c "user.email=$AuthorEmail" `
-           -C $DshHome commit -q -m $msg 2>$null | Out-Null
+    # 失败时把 git 的原话落进日志：v1 就是靠 `2>$null` 把 hook 的拒绝说明全吞掉，
+    # 才让「五天零提交」看不出来（2026-11-16 复盘）。
+    $cout = (& git -c "user.name=$AuthorName" -c "user.email=$AuthorEmail" `
+                   -C $DshHome commit -q -m $msg 2>&1 | Out-String)
+    $rc = $LASTEXITCODE
     $after = (& git -C $DshHome rev-parse HEAD 2>$null)
 
     if ($after -and ($after.Trim() -ne "$before".Trim())) {
@@ -143,7 +149,10 @@ try {
     } else {
       # v1 就是死在这里却假装成功：commit 返回非 0、HEAD 没动，日志照写 commit。
       $exitCode = 1
-      Write-Log ('!! FAIL {0}  head 未前进（hook 拒绝 / 身份缺失），暂存区已回滚' -f $msg)
+      Write-Log ('!! FAIL {0}  head 未前进（rc={1}），暂存区已回滚' -f $msg, $rc)
+      foreach ($ln in ($cout -split "`r?`n" | Where-Object { $_.Trim() } | Select-Object -First 12)) {
+        Write-Log ('    git| ' + $ln)
+      }
       & git -C $DshHome reset -q 2>$null | Out-Null
     }
   }

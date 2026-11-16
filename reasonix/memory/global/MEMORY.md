@@ -433,6 +433,7 @@
 - [dsh-skills-根目录拓扑与裁剪-20261116](dsh-skills-根目录拓扑与裁剪-20261116.md) — dsh skills 的三处根目录拓扑、技能被同步「复活」的机制、2026-11-16 裁剪 83→33 的结果，以及中文路径必须关 quotepath 的坑
 - [dsh-local插件声明改仓库内相对路径-2026-11](dsh-local插件声明改仓库内相对路径-2026-11.md) — 四个 dsh 本地插件从 D: 绝对路径迁到 ~/.dsh/plugins/ + link: 相对声明，D 盘改 junction；含"依赖声明静默丢失"坑
 - [dsh双端同步机制与排除规则-2026-11](dsh双端同步机制与排除规则-2026-11.md) — dsh 双端同步的真实机制（sync_dsh.py/SSH 非 git）与三条排除规则；额度面板后端隧道方案；3080/3081/3082 三实例
+- [github-备份提交作者必须匹配账号noreply-20261116](github-备份提交作者必须匹配账号noreply-20261116.md) — GitHub 自动备份「推成功了但主页看不到记录」的根因：提交作者用 backup@reasonix.local 导致 API author=null、贡献图不计入；改用账号 noreply 邮箱修复
 ## 归档说明
 - 原文全量备份：`~/.reasonix/memory-backup-20260816/`（59 份）与 `~/.reasonix/memory-backup-20260816-consolidate/`
 - 合并/蒸馏原始件：`~/.reasonix/memory-archive-20260816/`

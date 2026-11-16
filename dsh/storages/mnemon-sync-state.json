@@ -550,9 +550,9 @@
 "s": 2867
 },
 "global/dsh-local插件声明改仓库内相对路径-2026-11.md": {
-"h": "5da4c4c80c64238703d196db3c867cbad2533a0a86c72e0894308084590edd20",
-"m": 1794819339562285300,
-"s": 3114
+"h": "148ff4ef378012723ef373022ef25a2c8ae47533b00246ae254c75ff3ef3d07d",
+"m": 1794820170824249800,
+"s": 3994
 },
 "global/dsh-market-installed-20260928.md": {
 "h": "6d39c7a85cd8872e4deb041ddd9a347488026c4012889765b870ecde09eab6af",
@@ -878,6 +878,11 @@
 "h": "fa814ae06c59296bfe71fb2332ab253478c833b05a7c986cb54918b32c3200d8",
 "m": 1793179039000000000,
 "s": 2024
+},
+"global/dsh双端同步机制与排除规则-2026-11.md": {
+"h": "90ab36124f07560a5eda997e459ded28ad5342564902e006a6dbbdd37905fd4d",
+"m": 1794821560326815900,
+"s": 3496
 },
 "global/dual-machine-memory-sync-conflict-copies-and-restores-20260927.md": {
 "h": "19858700b173fbda5eb5b0bf49f4414e4847db4a425e66b30178806f39faef07",

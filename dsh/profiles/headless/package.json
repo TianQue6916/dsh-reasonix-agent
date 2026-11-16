@@ -2,7 +2,8 @@
   "name": "dsh-profile-headless",
   "private": true,
   "dependencies": {
-    "@local/dsh-plugin-fetch-file": "link:../../plugins/dsh-plugin-fetch-file"
+    "@local/dsh-plugin-fetch-file": "link:../../plugins/dsh-plugin-fetch-file",
+    "dsh-plugin-local-search": "link:../../plugins/dsh-plugin-local-search"
   },
   "dsh": {
     "profile": {

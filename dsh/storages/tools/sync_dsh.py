@@ -142,7 +142,10 @@ R.EXCLUDE_FILES = {
     # 2026-09-30 实测过这个坑：两边都是 522 B 且内容相同 → 被「size 相同即视为相同」
     # 规则判成一致，既没同步也没报冲突，于是 Linux 上带着一条 win-amd64 的 .exe 路径。
     # 各机自己维护，见 Linux 侧该文件里的说明。
-    'cordis.patch.yml',
+    # ★ 2026-11-16 改为**按路径**排除（原来是 basename，见下方 _MACHINE_LOCAL_RE 的加项）：
+    #   basename 匹配会把 plugins/*/cordis.patch.yml —— 每个本地插件 bundle 的 overlay ——
+    #   一起排掉，后果是源码同步过去了、bundle 却全部 "skipping profile bundle: ENOENT"。
+    #   保留这条注释作为那次故障的记录，规则本体在 _MACHINE_LOCAL_RE。
     # ── 2026-10-26 补：机器特有的「运行时累积状态」 ──────────────────
     # 这五个文件两台机器都在同时写（Linux 侧 bili/mnemon/context 面板，Windows 侧同样），
     # 每次同步必然互相判冲突 → 各自留一份 .conflict.win.*.bak。
@@ -206,7 +209,7 @@ _BACKUP_MARKERS = ('.bak', '.old-')
 # 属于**结构性差异**而非偶发分歧，所以归为机器本地。
 # 注意必须按路径匹配：EXCLUDE_FILES 是 basename 匹配，写成 'package.json' 会连
 # plugins/**/package.json（真正的源码）一起排掉。
-_MACHINE_LOCAL_RE = re.compile(r'^profiles/[^/]+/(package\.json|pnpm-workspace\.yaml|pnpm-lock\.yaml)$')
+_MACHINE_LOCAL_RE = re.compile(r'^(cordis\.patch\.yml|profiles/[^/]+/(package\.json|pnpm-workspace\.yaml|pnpm-lock\.yaml|cordis\.patch\.yml))$')
 
 
 def _is_machine_local(rel):

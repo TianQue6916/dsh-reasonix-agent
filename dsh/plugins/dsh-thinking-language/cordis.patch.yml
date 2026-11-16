@@ -1,0 +1,6 @@
+# thinking-language bundle -- inserts the host half (state + /api/thinking-language
+# route + the system-prompt/assemble directive). The client half ships through
+# exports["./client"] and is discovered via the package.json dsh.client declaration.
+- insert:
+    - id: thinking-language
+      name: '@local/dsh-thinking-language'

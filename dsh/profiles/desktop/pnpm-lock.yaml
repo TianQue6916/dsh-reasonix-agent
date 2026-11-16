@@ -12,17 +12,14 @@ importers:
         specifier: 0.9.1
         version: 0.9.1(@deepseek-ai/schemastery@3.18.4)
       '@local/dsh-plugin-fetch-file':
-        specifier: file:D:/Toolbox/dsh-plugin-fetch-file
-        version: file:D:/Toolbox/dsh-plugin-fetch-file
+        specifier: link:../../plugins/dsh-plugin-fetch-file
+        version: link:../../plugins/dsh-plugin-fetch-file
       '@local/dsh-plugin-goat-panel':
-        specifier: link:D:/Toolbox/goat-gateway/dsh-plugin-goat-panel
-        version: link:D:/Toolbox/goat-gateway/dsh-plugin-goat-panel
+        specifier: link:../../plugins/dsh-plugin-goat-panel
+        version: link:../../plugins/dsh-plugin-goat-panel
       '@local/dsh-thinking-language':
-        specifier: file:D:/Toolbox/dsh-thinking-language
-        version: file:D:/Toolbox/dsh-thinking-language
-      '@weibaohui/dsh-smart-title':
-        specifier: 0.1.9
-        version: 0.1.9
+        specifier: link:../../plugins/dsh-thinking-language
+        version: link:../../plugins/dsh-thinking-language
       billion-context:
         specifier: 0.1.214
         version: 0.1.214(@types/node@16.9.1)
@@ -47,9 +44,6 @@ importers:
       dsh-mnemon:
         specifier: ^0.5.34
         version: 0.5.34
-      dsh-plugin-local-search:
-        specifier: link:D:/Toolbox/goat-gateway/dsh-plugin-local-search
-        version: link:D:/Toolbox/goat-gateway/dsh-plugin-local-search
       dsh-plugin-message-edit:
         specifier: file:../../vendor/dsh-plugin-message-edit-1.2.0-pr7.tgz
         version: file:../../vendor/dsh-plugin-message-edit-1.2.0-pr7.tgz
@@ -340,12 +334,6 @@ packages:
   '@lezer/yaml@1.0.4':
     resolution: {integrity: sha512-2lrrHqxalACEbxIbsjhqGpSW8kWpUKuY6RHgnSAFZa6qK62wvnPxA8hGOwOoDbwHcOFs5M4o27mjGu+P7TvBmw==}
 
-  '@local/dsh-plugin-fetch-file@file:D:/Toolbox/dsh-plugin-fetch-file':
-    resolution: {directory: D:/Toolbox/dsh-plugin-fetch-file, type: directory}
-
-  '@local/dsh-thinking-language@file:D:/Toolbox/dsh-thinking-language':
-    resolution: {directory: D:/Toolbox/dsh-thinking-language, type: directory}
-
   '@marijn/find-cluster-break@1.0.4':
     resolution: {integrity: sha512-Wy0V7+SGUjnF9/TkiM1hKVDPj7jKXduPNboMVtHTA8dySMURWqfg/JZ9E2Sq8JgSJmkl7k7Qe9FLeMSrSraWmQ==}
 
@@ -529,10 +517,6 @@ packages:
     resolution: {integrity: sha512-8LHmCX1eLleslz11bc1p3m9QaNGAH2wuOMPCsESs93E3sYvUFYk+oaHThR+Ephf+frNIBQsH4LHVRigJzMDyFw==}
     engines: {node: '>=18'}
     hasBin: true
-
-  '@weibaohui/dsh-smart-title@0.1.9':
-    resolution: {integrity: sha512-IZfLKqtg6uLauqRoWrSuUtlOyMQ2ZjBV0wVc2ybNPUEfmJYF81yv+eqak5UKbT8RSvqZyMZAgD92aDV5KhQUlg==}
-    engines: {dsh: '>=0.1.7-rc.2', node: '>=22.5'}
 
   '@xterm/addon-fit@0.11.0':
     resolution: {integrity: sha512-jYcgT6xtVYhnhgxh3QgYDnnNMYTcf8ElbxxFzX0IZo+vabQqSPAjC3c1wJrKB5E19VwQei89QCiZZP86DCPF7g==}
@@ -2011,10 +1995,6 @@ snapshots:
       '@lezer/highlight': 1.2.5
       '@lezer/lr': 1.4.10
 
-  '@local/dsh-plugin-fetch-file@file:D:/Toolbox/dsh-plugin-fetch-file': {}
-
-  '@local/dsh-thinking-language@file:D:/Toolbox/dsh-thinking-language': {}
-
   '@marijn/find-cluster-break@1.0.4': {}
 
   '@mermaid-js/parser@1.2.1':
@@ -2214,8 +2194,6 @@ snapshots:
       '@vshulcz/deja-vu-linux-arm64': 0.23.1
       '@vshulcz/deja-vu-windows-amd64': 0.23.1
       '@vshulcz/deja-vu-windows-arm64': 0.23.1
-
-  '@weibaohui/dsh-smart-title@0.1.9': {}
 
   '@xterm/addon-fit@0.11.0': {}
 

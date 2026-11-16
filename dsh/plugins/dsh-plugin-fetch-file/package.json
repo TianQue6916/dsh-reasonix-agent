@@ -1,0 +1,17 @@
+{
+  "name": "@local/dsh-plugin-fetch-file",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "fetch_file tool: adaptive multi-connection HTTP(S) download for dsh (delegates to ~/.dsh/storages/tools/ariafetch.py)",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./package.json": "./package.json"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}

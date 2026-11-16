@@ -1,0 +1,13 @@
+# fetch-file bundle -- inserts the host half, which registers the model-facing
+# `fetch_file` tool.  No client half: the tool is pure host-side I/O.
+#
+# Why a tool and not a rule: dsh has no download manager.  `dsh plugin add`
+# forwards to pnpm, agent downloads use curl/fetch, models come from ollama or
+# transformers.js -- none of them ever reach a multi-connection downloader.
+# Measured 2026-11-12: domestic CDNs are already saturated by one stream
+# (3.05 -> 3.79 MB/s at 4x), but cross-border sources are BDP-limited
+# (registry.ollama.ai: 0.10 MB/s on 1 stream, 1.89 MB/s on 16).  So the fan-out
+# must be a runtime decision, which only a tool can make per URL.
+- insert:
+    - id: tool-fetch-file
+      name: '@local/dsh-plugin-fetch-file'

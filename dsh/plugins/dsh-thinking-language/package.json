@@ -1,0 +1,22 @@
+{
+  "name": "@local/dsh-thinking-language",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Thinking-chain language switch (中文 / English) for the dsh UI: a settings-page radio that retargets the reasoning language per request, no restart required",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "inject": ["slots"],
+      "platform": "web"
+    }
+  }
+}

@@ -3,10 +3,9 @@
   "private": true,
   "dependencies": {
     "@lanbaolu/dsh-wechat-bridge": "0.9.1",
-    "@local/dsh-plugin-fetch-file": "file:D:/Toolbox/dsh-plugin-fetch-file",
-    "@local/dsh-plugin-goat-panel": "link:D:/Toolbox/goat-gateway/dsh-plugin-goat-panel",
-    "@local/dsh-thinking-language": "file:D:/Toolbox/dsh-thinking-language",
-    "@weibaohui/dsh-smart-title": "0.1.9",
+    "@local/dsh-plugin-fetch-file": "link:../../plugins/dsh-plugin-fetch-file",
+    "@local/dsh-plugin-goat-panel": "link:../../plugins/dsh-plugin-goat-panel",
+    "@local/dsh-thinking-language": "link:../../plugins/dsh-thinking-language",
     "billion-context": "0.1.214",
     "ds-harness-remote": "^0.6.5",
     "dsh-better-sidebar": "0.28.2",
@@ -15,7 +14,6 @@
     "dsh-deja": "^0.23.1",
     "dsh-headroom": "git+https://github.com/giter00/dsh-headroom.git",
     "dsh-mnemon": "^0.5.34",
-    "dsh-plugin-local-search": "link:D:/Toolbox/goat-gateway/dsh-plugin-local-search",
     "dsh-plugin-message-edit": "file:../../vendor/dsh-plugin-message-edit-1.2.0-pr7.tgz",
     "dsh-quick-toc": "0.10.3",
     "dshmarket": "^1.67.0"

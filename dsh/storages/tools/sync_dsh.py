@@ -166,6 +166,9 @@ R.EXCLUDE_SUFFIXES = (
     '.log', '.lock', '.zstd', '.sqlite', '.sqlite3', '.db',
     '.pyc', '.ps1',                      # .ps1 是 Windows-only 工具，Linux 不需要
     '.bak',                              # 本机回滚产物；git（Windows 侧）已有历史
+    # 2026-11-16 加：手机端安装包（50+ MB 二进制）。实测 15:16 那轮里
+    # dsh-remote-android-v0.6.4.apk 被判成冲突双份，每轮搬一次纯浪费带宽。
+    '.apk', '.part',
 )
 
 # 最近 30 秒内动过的文件视为「正在被写」，跳过（本机 autocommit / 会话抖动）

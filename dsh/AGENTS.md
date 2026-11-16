@@ -81,3 +81,20 @@ skill-search 按 SKILL.md frontmatter 的 `name:` 字段索引，**不看目录�
 
 正确停用法：把整个目录移出 `~/.dsh/skills/`，例如 `mv ~/.dsh/skills/X ~/.dsh/.retired/`。
 校验：`grep -rl '<旧铁律关键词>' ~/.dsh/skills/ | head` 必须为空。
+
+## 删技能必须双机同时做，否则同步会复活它（2026-11-16 实测）
+
+`sync_dsh.py`（以及它复用的 `sync_reasonix.py`）的语义是**纯并集**：
+`all_rel = set(lfiles) | set(wfiles)`，一方独有 ⇒ 复制到另一方。**删除永远不传播**，
+而且 `size 相同` 直接判 same（连内容都不比）。所以：
+
+- 只在一台机器上删/合并技能 ⇒ 下一轮同步用对端那份补回来（「明明整理掉了怎么又出现了」）。
+- 结论：**删技能 = 双机各删一次**；或者先把两侧的同名目录都改名留档再同步。
+- 同理适用于任何「结构性删除」：目录改名、根目录搬家，旧家必须清，否则它就是复活的种子。
+
+历史证据：10-01 的整理（`ai-skills-pruned-20261001-1431` / `skills.mirror-legacy-20261001-1430`）
+做的是**改名留档不是删除**；11 月初真身从 `%APPDATA%\reasonix\skills` 搬到 `~\ai-skills`，
+旧家（101 项，含已退役的 `bilingual-ocw-translator`）一直留着，而 `sync_dsh.py` 的
+`EXTRA_PAIRS` 到 11-16 还指着它 ⇒ 那半个月双机同步搬的一直是旧副本。
+2026-11-16 已把两处旧家改名留档（Windows `%APPDATA%\reasonix\skills.legacy-20261116`、
+Linux `~/ai-skills.legacy-20261116`），现役双机各 99 项且内容一致。

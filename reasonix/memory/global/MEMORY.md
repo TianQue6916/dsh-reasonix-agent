@@ -429,6 +429,7 @@
 - [wps-版本地狱-双版本并存与更新链断裂-2026-11-16](wps-版本地狱-双版本并存与更新链断裂-2026-11-16.md) — 本机 WPS 已从 4 版本并存修复为单一 29161；含安装手法、验证证据、体积变化、遗留 18MB 残留与教训
 - [课程视频超分盘点-小电脑2026-11](课程视频超分盘点-小电脑2026-11.md) — X1C7 小电脑（tianque-lan, 192.168.243.2）课程视频超分进度：待 212 集、已 117 集，含三个异常与判定方法
 - [dsh-自动git三链路断裂与修复-20261116](dsh-自动git三链路断裂与修复-20261116.md) — 2026-11-16 排障定论：~/.dsh 自动提交、双机同步、GitHub 备份三条链路同时静默失效的根因与修法
+- [dsh-desktop-插件消失-根因是bundles被重置](dsh-desktop-插件消失-根因是bundles被重置.md) — dsh 桌面版插件全部消失的真因：package.json 的 dsh.profile.bundles 被 auto-reset 砍成 2 个，与 dependencies / node_modules 无关
 ## 归档说明
 - 原文全量备份：`~/.reasonix/memory-backup-20260816/`（59 份）与 `~/.reasonix/memory-backup-20260816-consolidate/`
 - 合并/蒸馏原始件：`~/.reasonix/memory-archive-20260816/`

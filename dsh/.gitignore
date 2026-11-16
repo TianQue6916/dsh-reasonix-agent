@@ -118,3 +118,27 @@ ds-harness-remote/
 
 # 延迟与贡献者统计是运行期累积数据
 llm-latency/
+
+# ============================================================
+# 2026-11-16 统一口径：以下四类原是 Linux 侧 .gitignore 独有的条目。
+# 两边各写一份不同的 .gitignore 会让双机同步器每小时产出一对
+# .gitignore.conflict.win/linux.*.bak（实测 3 个冲突里就有它），
+# 所以从这里起两侧共用同一份文件：内容以本文件为准，Linux 侧整份覆盖。
+# ============================================================
+
+# 旧冲突副本归档目录（skill-root-consolidate.py 的历史产物）
+_conflict-archive-*/
+
+# 工具产物区（reply_letter 之类，不是 source of truth）
+out/
+
+# peers/ 是 PLAN.md 的单向镜像（对端快照），不是 source of truth
+peers/
+
+# 备份归档（整目录；Windows 侧只排了 backups/*.tar.zst）
+backups/
+
+# 2026-10-01 的 junction 遗留快照（125 个文件，全是指向 .reasonix/skills 的 POSIX symlink）。
+# Windows 上 git 解析不了 `/c/Users/...` 形式的链接目标，每条 git 命令都打
+# "could not open directory ...: No such file or directory"。真身在 ai-skills，这里只是历史痕迹。
+skills.junctions-legacy-20261001/

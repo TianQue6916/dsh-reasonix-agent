@@ -40,10 +40,8 @@
         "dsh-plugin-message-edit",
         "@ethanwong-hk/dsh-thinking-guard",
         "ds-harness-remote",
-        "@deepseek-ai/dsh-experimental-voice-input-bundle",
         "@weibaohui/dsh-smart-title",
-        "dsh-computer-use-win",
-        "@deepseek-ai/dsh-experimental-session-search"
+        "dsh-computer-use-win"
       ],
       "patchReload": "live"
     }

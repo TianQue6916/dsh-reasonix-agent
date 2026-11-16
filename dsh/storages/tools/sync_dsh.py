@@ -129,6 +129,10 @@ R.EXCLUDE_FILES = {
     # 凭据：绝不跨机
     '.credentials.yaml', '.credentials.yml', '.env', '.env.example',
     'local-search-token', '.anonymous-user-id',
+    # 平台专用入口脚本：两边各管一边，跨机同步只会互相判冲突。
+    # EXCLUDE_SUFFIXES 已整类排掉 .ps1（Windows-only），这里补上对称的那一半
+    # （2026-11-16 实测：dsh_autocommit.sh 因为两侧内容不同，每小时产一对 conflict.bak）。
+    'dsh_autocommit.sh',
     # 运行期状态
     'dsh-headroom-ccr.json', 'git-anchors.json', 'mnemon-draft.json',
     'plugins.json', 'workspace.json', 'session_projcache.json',

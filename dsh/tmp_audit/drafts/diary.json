@@ -1,0 +1,13 @@
+{
+  "name": "diary",
+  "description": "diary — auto-generated daily journal notes in Markdown, 18 files: index.md plus days-public/YYYY-MM-DD.md dailies written by an LLM from dsh sessions, tool-call logs, window activity and Edge history",
+  "topics": [
+    "journal",
+    "daily-log",
+    "llm-generated",
+    "activity-tracking",
+    "automation"
+  ],
+  "llms_txt": "# diary\n\n> 每晚 23:59 自动生成的中文日记（daily journal）。素材来自 dsh session 全文、tool-call 日志、前台窗口 activity 与 Edge history，归并后交给 LLM 写成 Markdown。给想复刻「被动记录 -> 自动日记」管线的人看。\n\n## Contents\n- [days-public/](days-public/): one YYYY-MM-DD.md per day, 2026-10-25 through 2026-11-08 (15 files)\n- [index.md](index.md): index table, including how each entry was generated\n- [README.md](README.md): 8.5 KB of data flow, three hard-won filtering rules, course detection, LLM fallbacks and rollback\n\n## Notes\n- 18 files, all Markdown; prose in Chinese, code and commands kept verbatim.\n- Private material is filtered before publishing; the public copy is only days-public/.",
+  "evidence": "README.md (8566 B) 写明 sampler.pyw -> aggregate.py -> diarist.py 的 23:59 流水线、三条判据与 COURSE_MAP；repo_meta 只有 18 files，lvl2 全部是 days-public/2026-10-25.md..2026-11-08.md（15 个）+ index.md + README.md。"
+}

@@ -1,0 +1,14 @@
+{
+  "name": "dsh-reasonix-agent",
+  "description": "dsh-reasonix-agent — LLM agent harness config backup mirror + engineering notes, 2229 files: dsh presets & cordis.patch.yml, reasonix memory, agents/skills, PowerShell scripts, kb/ lessons",
+  "topics": [
+    "agent-harness",
+    "dsh",
+    "llm-agent",
+    "engineering-notes",
+    "powershell",
+    "reasonix"
+  ],
+  "llms_txt": "# dsh-reasonix-agent\n\n> Config backup mirror plus engineering knowledge base for a Windows-first dsh LLM agent harness and the reasonix runtime (2026-06 to 2026-10). For people who want real agent-harness config, patches and field-tested lessons, not a library.\n\n## Backup mirror\n- [dsh/](dsh/): settings.yaml, agent presets, cordis.patch.yml, launch-dsh.ps1 and other PowerShell tooling, backups/, plugins/, profiles/, peers/\n- [agents/](agents/): skill bundles under [agents/skills/](agents/skills/) plus agents/.skill-lock.json\n- [reasonix/](reasonix/) and [reasonix-home/](reasonix-home/): runtime home and memory corpus\n- [goat-gateway/](goat-gateway/): local model gateway config; client profiles in [trae-cn/](trae-cn/), [trae-solo/](trae-solo/), [zcode-home/](zcode-home/), [zcode-appdata/](zcode-appdata/)\n\n## Engineering notes\n- [kb/](kb/): distilled conclusions, decision criteria and counter-examples from 300+ sessions and memory facts\n- [README.md](README.md): repo layout, rename history, GH001 (file too large) incident and recovery\n\n## Notes\n- 2229 files, mixed PowerShell / Python / JavaScript / Markdown; daily 23:30 robocopy -> desensitize -> commit -> push.\n- Credentials and server paths are stripped before commit; historical records keep their original wording.",
+  "evidence": "README.md (3524 B) 的表把仓库分成备份镜像（dsh/ reasonix/ reasonix-home/ goat-gateway/ agents/ zcode-*/ trae-*/）与 kb/ 经验库，repo_meta 显示 2229 files、12 个顶层目录，dsh/ 下实有 cordis.patch.yml、launch-dsh.ps1、_diag.ps1 等 PowerShell 文件与 agents/skills/*/SKILL.md。"
+}

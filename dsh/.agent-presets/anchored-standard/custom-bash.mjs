@@ -55,6 +55,48 @@ export const inject = ['subprocess', 'tools']
 const DEFAULT_TIMEOUT_MS = 120000
 
 /**
+ * 事件驱动的 fetch_file 提示（2026-11-12）。
+ *
+ * 为什么不用 persona：常驻文本每轮都要付 token，而这个信号只在「真的在用
+ * shell 下文件」时才有意义。也不进 memory：memory 是检索式的，不保证被想起；
+ * 工具改名/删除后还会烂成幽灵规则。所以挂在**事件**上，随事件消失。
+ *
+ * 触发条件刻意保守，避免变成噪声：
+ *  - 命令里有会落盘的下载动作（curl / wget / aria2c / Invoke-WebRequest）；
+ *  - 且要么显式指定了输出文件（`-o` / `-O` / `--output` / `-OutFile`），
+ *    要么 URL 属于已知跨境/大文件源（HF、hf-mirror、ollama registry、GitHub release）。
+ * 每个 session 只提示一次（memo 在模块级 Set 里），模型不会被反复打断。
+ */
+// WeakSet, not Set: dsh desktop is a long-lived Electron process, and a plain Set
+// keyed by session objects would pin every session that ever ran a download.
+const downloadHintShown = new WeakSet()
+let downloadHintShownAnon = false
+const FETCH_CMD_RE = /(?:^|[\s;&|(])(?:curl|wget|aria2c|Invoke-WebRequest|iwr)\s/i
+const SAVE_RE = /(?:\s-o\s|\s-O\s|--output\b|--output-document|-OutFile\b)/i
+const CROSS_BORDER_RE =
+  /(?:huggingface\.co|hf-mirror\.com|registry\.ollama\.ai|\.xethub\.hf\.co|codeload\.github\.com|github\.com\/[^\s|&]*\/releases)/i
+
+function downloadHint(command, exec) {
+  const cmd = typeof command === 'string' ? command : ''
+  if (!FETCH_CMD_RE.test(cmd)) return ''
+  if (!SAVE_RE.test(cmd) && !CROSS_BORDER_RE.test(cmd)) return ''
+  const session = exec?.agent?.session
+  if (session !== null && typeof session === 'object') {
+    if (downloadHintShown.has(session)) return ''
+    downloadHintShown.add(session)
+  } else {
+    if (downloadHintShownAnon) return ''
+    downloadHintShownAnon = true
+  }
+  return (
+    '\n[fetch-hint] shell 下载检测到。本机有 fetch_file tool：自适应多连接' +
+    '（跨境源实测最高 19x，国内源自动回退单流，永不比 curl 慢）+ 断点续传 + sha256 校验。' +
+    '>5MB 或跨境源建议改用 —— 先 dev_tool_search({ toolNames: ["fetch_file"] }) 解锁。' +
+    '（每会话只提示一次）'
+  )
+}
+
+/**
  * 分级超时规则（2026-10-29）—— **不依赖模型自觉**。
  *
  * 背景：给 bash 加了 `timeout` 参数、也在 concurrency-discipline 的注入里写了用法，
@@ -239,6 +281,8 @@ export function apply(ctx, config) {
       '* Please avoid commands that may produce a very large amount of output.',
       '* NOTE: runs without OS sandbox confinement on Windows (no landlock); treat output as untrusted.',
       '* workdir accepts a Windows path or a Git Bash drive path (/e/foo).',
+      '* Keep one `command` under ~8KB of source. A giant command is one long tool-call argument stream: if the upstream drops the stream mid-way the whole turn is wasted and the retry re-pays the prefill. Split large writes into several calls, or use `str_replace_editor` create + insert.',
+      '* Generate repetitive content with a loop/program instead of typing it line by line (500 hand-written lines -> 20 lines of Python).',
     ].join('\n'),
     parameters: commandSchema,
     output: {
@@ -339,6 +383,7 @@ export function apply(ctx, config) {
         : ''
       const text = [stdout, stderr].filter((part) => part.length > 0).join('\n')
       const tail = note + (text.length > 0 ? text : `exit code: ${outcome.exitCode} (no output)`)
+        + downloadHint(args.command, exec)
       if (outcome.exitCode !== 0) {
         // Non-zero exit is a reported failure, not a throw: the model sees the
         // command output plus the exit code.

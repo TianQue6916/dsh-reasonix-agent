@@ -7,19 +7,24 @@
    "lastUsedAt": 1790495618536
   },
   "compress": {
-   "loads": 1,
+   "loads": 2,
    "firstUsedAt": 1792729448367,
-   "lastUsedAt": 1792729448367
+   "lastUsedAt": 1794764703428
   },
   "learn-translate": {
-   "loads": 131,
+   "loads": 133,
    "firstUsedAt": 1793093559968,
-   "lastUsedAt": 1793558388058
+   "lastUsedAt": 1794686749176
   },
   "github": {
    "loads": 1,
    "firstUsedAt": 1793560437548,
    "lastUsedAt": 1793560437548
+  },
+  "study-coach": {
+   "loads": 5,
+   "firstUsedAt": 1794683428108,
+   "lastUsedAt": 1794687210347
   }
  }
 }

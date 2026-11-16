@@ -1,0 +1,5 @@
+[
+ "tA",
+ "-Command",
+ "Set-Location 'C:\\Users\\27063'; & 'x.exe' 1> 'a.log'"
+]

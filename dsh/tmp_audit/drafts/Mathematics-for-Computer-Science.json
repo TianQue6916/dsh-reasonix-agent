@@ -1,0 +1,13 @@
+{
+  "name": "Mathematics-for-Computer-Science",
+  "description": "MIT 6.042J Mathematics for Computer Science — textbook PDF (920pp), chapter structure index, scanned Ch.18 random variables, TOC docx",
+  "topics": [
+    "discrete-math",
+    "mit-6-042j",
+    "computer-science",
+    "textbook",
+    "study-notes"
+  ],
+  "llms_txt": "# Mathematics for Computer Science (MIT 6.042J)\n\n> Personal study archive for MIT 6.042J: the official English textbook PDF, a chapter/section hierarchy index, and a re-ordered scan of Chapter 18.\n\n## Materials\n- 教材/MIT-6.042J-官方教材-Mathematics-for-Computer-Science-2015(英文原书,920页).pdf: official textbook, 920 pages, English\n- 扫描件/第18章 随机变量（扫描·按页码重排33页）.pdf: deduplicated and page-ordered scan of Ch.18 Random Variables, p.739-765\n- 目录/目录.docx: book table of contents\n\n## Index\n- 章节结构索引.md: chapter -> section -> subsection outline exported from the notes tree, for quick lookup\n\n## 备注\n- Textbook (c) Lehman / Leighton / Meyer, MIT. Personal study archive only, no affiliation.\n- README, filenames and the index are in Chinese; the textbook is in English.",
+  "evidence": "repo_meta 的 sample/lvl2 列出 README.md、教材/…920页.pdf、扫描件/…33页.pdf、目录/目录.docx、章节结构索引.md 共 5 个文件，README 自述「MIT 6.042J 课程资料」与「53 页 → 33 页，覆盖 p.739–765」。"
+}

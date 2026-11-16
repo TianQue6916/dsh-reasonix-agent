@@ -1,0 +1,5 @@
+[
+ "tC",
+ "-Command",
+ "Set-Location 'C:\\Users\\27063'; & 'x.exe' 'y.py' 1> 'a.log' 2> 'b.err'"
+]

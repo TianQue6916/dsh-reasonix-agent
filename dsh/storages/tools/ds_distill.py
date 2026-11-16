@@ -69,7 +69,7 @@ SUBJECTS = {
                  ["数电", "计数器", "卡诺", "Logisim", "CMOS", "进制"],
                  ""),
     "english-academic": ("学科档案 · 学术英语与双语翻译", "dfc4423f-e242-44af-9515-ec655fda1cf3",
-                         ["英语", "翻译", "语法", "表达", "含义解释"],
+                         ["英语", "翻译", "语法", "英语填空", "双语", "术语对照"],
                          "另读 `translator_notes.md`"),
     "python-toolchain": ("学科档案 · Python 与工程工具链", "b7de1e15-0a64-49bb-ab1a-846eab0712b9",
                          ["Python", "Miniconda", "conda", "GitHub", "dsh支持系统", "端口占用"],
@@ -145,6 +145,23 @@ def cmd_plan(a):
         if not stale:
             continue
         made += 1
+        # 已有条目清单：供 subagent 去重 + 显式标注 conflict
+        # （2026-11-08 复盘：4 处对第一轮的推翻全靠扩充轮偶然撞见，把判据写进 prompt 而非靠运气）
+        titles = []
+        _pj = os.path.join(OUT, slug + ".json")
+        if os.path.exists(_pj):
+            try:
+                for _it in json.load(open(_pj, encoding="utf-8")).get("insights", []):
+                    _c = (_it.get("content") or "").strip().split(chr(10))[0][:44]
+                    if _c:
+                        titles.append(_c)
+            except Exception:
+                pass
+        existing_block = ""
+        if titles:
+            existing_block = (chr(10) + "## 已有条目（共 %d 条，**不要重复**；矛盾时必须标 conflict）" % len(titles)
+                              + chr(10) + chr(10)
+                              + chr(10).join("- " + t for t in titles[:80]) + chr(10))
         rel = "\n".join("%d. `%s`" % (i + 1, f) for i, f in enumerate(files))
         prompt = f"""你在为一位中文用户（宁夏大学智能科学与技术本科生，构建主义研究式学习者，要求「术语不翻译」）提炼「{name}」方向的**学习者档案**。
 这不是知识库，而是关于「这个人如何学这门学科」的结构化证据。
@@ -153,6 +170,7 @@ def cmd_plan(a):
 
 {rel}
 {("- 补充：" + extra) if extra else ""}
+{existing_block}
 
 ## 提炼维度（每条 insight 必须归入其中一类）
 
@@ -168,6 +186,10 @@ def cmd_plan(a):
 
 1. 不准调用 `subagent` / `subagent_fork` / `workflow`；2. 不准加载任何 skill；
 3. 只读上面列出的文件，不写不改既有文件；4. 无证据不写，不要复述教材；5. 大文件按 `### ` 分段读。
+6. **冲突必须显式标注**：若素材里的事实与上面「已有条目」矛盾（层次不同 / 结论相反 / 前后期说法不一），
+   **不要静默选一边**，也不要只写新的那条 —— 写一条带 `"conflict": true` 的 insight，
+   `content` 写成「旧：<原判断> → 新：<新证据>（依据 …）」，`evidence` 给出两处位置。
+7. 与已有条目**重复**的不要重写；同主题但更深的证据才写，并注明「深化 #<原条目前缀>」。
 
 ## 输出
 
@@ -191,7 +213,7 @@ def cmd_plan(a):
 
 
 def cmd_import(a):
-    p = os.path.join(OUT, a.slug + ".json")
+    p = a.src or os.path.join(OUT, a.slug + ".json")
     if not os.path.exists(p):
         sys.exit("找不到 %s（先跑 plan 并派 subagent）" % p)
     data = json.load(open(p, encoding="utf-8"))
@@ -226,6 +248,25 @@ def cmd_import(a):
     print(out[-1500:])
 
 
+def cmd_postfetch(a):
+    """抓取 → 渲染增量 → 重建索引 → 生成各学科提炼 prompt。一条命令完成收尾。"""
+    steps = [
+        ("render delta", [sys.executable, os.path.join(WS, "render_ds_pages.py"), "--apply", "--adopt-legacy"]),
+        ("rebuild index", [sys.executable, os.path.join(WS, "build_ds_index_v3.py"),
+                           "--latest-iso", a.latest_iso]),
+    ]
+    for name, cmd in steps:
+        print("== %s" % name)
+        r = subprocess.run(cmd, cwd=WS, capture_output=True, text=True)
+        out = ((r.stdout or "") + (r.stderr or "")).strip().splitlines()
+        for ln in out[-4:]:
+            print("   " + ln)
+        if r.returncode != 0:
+            print("   !! rc=%d，后续步骤继续" % r.returncode)
+    print("== distill prompts")
+    cmd_plan(argparse.Namespace(all=False))
+
+
 def main():
     ap = argparse.ArgumentParser()
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -233,12 +274,18 @@ def main():
     p1.add_argument("--all", action="store_true")
     p2 = sub.add_parser("import")
     p2.add_argument("slug", choices=sorted(SUBJECTS))
+    p2.add_argument("--from", dest="src", default=None,
+                    help="指定输入 JSON（默认 _distill/<slug>.json；扩充轮用 <slug>.ext.json）")
     p2.add_argument("--dry-run", action="store_true")
+    p3 = sub.add_parser("postfetch", help="抓取后收尾：render delta → 重建索引 → 生成提炼 prompt")
+    p3.add_argument("--latest-iso", default=datetime.date.today().isoformat())
     a = ap.parse_args()
     if a.cmd == "plan":
         cmd_plan(a)
-    else:
+    elif a.cmd == "import":
         cmd_import(a)
+    else:
+        cmd_postfetch(a)
 
 
 if __name__ == "__main__":

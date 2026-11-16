@@ -1,0 +1,14 @@
+{
+  "name": "tool-box",
+  "description": "tool-box — Python scripts for PDF/TOC extraction, docx summary generation and image rendering; PowerShell ops (autocommit, doctor, backup); Windows .bat push",
+  "topics": [
+    "python",
+    "powershell",
+    "pdf-extraction",
+    "docx",
+    "windows",
+    "tooling"
+  ],
+  "llms_txt": "# tool-box\n\n> Loose toolbox of one-off Python and PowerShell scripts used to turn textbook PDFs into structured notes, summaries and figures.\n\n## Python scripts\n- extract_pdf.py, extract_toc.py, extract_toc2.py: pull body text and table of contents out of source PDFs\n- extract_problems.py, extract_detailed.py, extract_full.py, save_chapters.py: split extracted text into chapter/problem files\n- generate_summary.py, generate_summary_v2.py, generate_final.py, create_book_summary.py: build summary documents\n- fix_quotes.py, fix_all_quotes.py, fix_multiline.py, scan_quotes.py, check_syntax.py, verify_doc.py: clean-up and sanity checks for generated Markdown/docx\n- gen_images.py: render summary figures\n\n## PowerShell ops\n- reasonix-ops/reasonix-autocommit.ps1: scheduled auto-commit\n- reasonix-ops/reasonix-doctor.ps1: environment health check\n- reasonix-ops/backup-to-github.ps1: push backups to GitHub\n- 工具箱推送.bat: Windows entry point for pushing the toolbox\n\n## 备注\n- summary_images/ holds 8 generated PNG figures (bayes, concentration, euler, induction, master, pagerank, rsa, well_ordering).\n- Scripts are experimental, mostly one-off; no license file is present.",
+  "evidence": "readmes.json 无 tool-box 条目，内容完全由 repo_meta 的 42 个真实路径推断：extract_*.py / generate_summary*.py / fix_*.py 系列、reasonix-ops/ 下 3 个 .ps1、summary_images/ 下 8 个 png、工具箱推送.bat。"
+}

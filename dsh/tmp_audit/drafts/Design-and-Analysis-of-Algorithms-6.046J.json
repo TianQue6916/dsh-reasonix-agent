@@ -1,0 +1,13 @@
+{
+  "name": "Design-and-Analysis-of-Algorithms-6.046J",
+  "description": "MIT 6.046J Algorithms — bilingual lecture notes, recitation notes, problem sets with solutions, quizzes, final, review, code",
+  "topics": [
+    "algorithms",
+    "mit-6-046j",
+    "problem-sets",
+    "study-notes",
+    "bilingual"
+  ],
+  "llms_txt": "# Design and Analysis of Algorithms · MIT 6.046J\n\n> Bilingual (EN/中文) pack for MIT 6.046J: lecture notes Lec01-Lec24, recitation notes, problem sets with solutions, quizzes and final, review material, code printouts.\n\n## Lectures\n- [01-讲义](01-讲义): lec01-lec24 bilingual notes, figures stored per lecture under lecNN/fig/\n- [00-课程计划.pdf](00-课程计划.pdf): syllabus and schedule\n\n## Practice\n- [02-习题课](02-习题课): recitation notes 01-11\n- [03-习题集](03-习题集): problem sets 01-10, problems plus solutions\n- [04-考试](04-考试): Quiz 1, Quiz 2 and Final with solutions\n- [05-复习资料](05-复习资料): review handouts\n- [06-代码](06-代码): code exercise solutions as line-numbered PDFs\n\n## 备注\n- Course material copyright MIT and the original authors; Chinese notes are mixed with English originals.",
+  "evidence": "repo_meta top lists 00-课程计划.pdf/01-讲义/02-习题课/03-习题集/04-考试/05-复习资料/06-代码, lvl2 shows alg046-lec01-introduction-interval-scheduling.bilingual.md up to lec24 and alg046-rec01/rec02 .bilingual.md, README.md documents Quiz 1/Quiz 2/Final and PS01-PS10."
+}

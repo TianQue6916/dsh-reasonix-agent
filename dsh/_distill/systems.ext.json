@@ -1,0 +1,233 @@
+{
+ "subject": "systems",
+ "round": "ext",
+ "generated_at": "2026-11-08T00:24:19+08:00",
+ "sources": [
+  "C:\\Users\\27063\\.reasonix\\global-workspace\\pages\\DS_csapp.md",
+  "C:\\Users\\27063\\.reasonix\\global-workspace\\pages\\DS_csapp_20260526.md",
+  "C:\\Users\\27063\\.reasonix\\global-workspace\\pages\\DS_csappppt.md",
+  "C:\\Users\\27063\\.reasonix\\global-workspace\\pages\\DS_数字补码代码问题解答.md",
+  "C:\\Users\\27063\\.reasonix\\global-workspace\\pages\\DS_浮点数位数分配题解.md",
+  "C:\\Users\\27063\\.reasonix\\global-workspace\\pages\\DS_补码正负数区分.md",
+  "C:\\Users\\27063\\.reasonix\\global-workspace\\pages\\DS_补码计算方法.md",
+  "C:\\Users\\27063\\.reasonix\\global-workspace\\pages\\DS_计算机技术问题.md",
+  "C:\\Users\\27063\\.reasonix\\global-workspace\\pages\\DS_计算机技术问题_20260705.md"
+ ],
+ "insights": [
+  {
+   "type": "层次",
+   "content": "Ch3 从「一个一个解释」（寻址模式、q/l/w/b 后缀、test/cmp 的 CF/ZF）到能对照字幕指出 PPT 版本差异：cond-jump 的初始测试在 PPT 上被打叉去掉，与教材 3.6.5 不同。L2→L3。",
+   "tags": [
+    "CSAPP",
+    "machine-level",
+    "汇编",
+    "版本差异"
+   ],
+   "importance": 4,
+   "evidence": "DS_csappppt.md L50337-52149（寻址）、L57631-57817（q 后缀/进位改称）、L60605-61286（cond-jump 初始测试被划掉）"
+  },
+  {
+   "type": "已掌握",
+   "content": "buffer overflow 能用自己的话完整重建：「一直堆数据，刚刚好覆盖到栈顶点返回地址位置，恶意攻击调整到栈上某个刚刚写入的恶意函数」；并追问能否只改返回地址而不摧毁栈上其他数据。L2，动手前先建模型。",
+   "tags": [
+    "CSAPP",
+    "缓冲区溢出",
+    "栈帧"
+   ],
+   "importance": 4,
+   "evidence": "DS_csappppt.md L94692-95239 §3.10"
+  },
+  {
+   "type": "困惑",
+   "content": "卡点：栈向下生长与 shellcode 位置的矛盾——「坏代码开始运行之后，栈是不是向下生长，完全不会覆盖坏的代码？」紧接着要「从缓冲到栈顶都有哪些，我没有太多实体概念」，缺的是可指认的布局图而非公式。",
+   "tags": [
+    "CSAPP",
+    "栈帧",
+    "缓冲区溢出",
+    "空间推理"
+   ],
+   "importance": 4,
+   "evidence": "DS_csappppt.md L95319-95890 §3.10"
+  },
+  {
+   "type": "层次",
+   "content": "Ch5 主动深挖 memory aliasing：自写 3538 字 prompt 要求解释「消除内存引用」为何编译器发现不了、strlen 这类无法优化的情形、如何敏锐觉察这种消耗。问法已从「怎么做」升到「编译器为什么做不到」。L2。",
+   "tags": [
+    "CSAPP",
+    "优化",
+    "memory aliasing",
+    "编译器"
+   ],
+   "importance": 4,
+   "evidence": "DS_csappppt.md L117877；DS_csapp_20260526.md L1620"
+  },
+  {
+   "type": "已掌握",
+   "content": "5.18 多项式求值：先自己给「俩链 + 四个累加器 + i+=7」的方案再要代码，随后逐条验算 AI 输出——「完全一样幂次啊」「你的 a（i-4）不见了」「你的展开又没了」。能独立查展开正确性，L2。",
+   "tags": [
+    "CSAPP",
+    "优化",
+    "循环展开",
+    "多项式"
+   ],
+   "importance": 4,
+   "evidence": "DS_csapp_20260526.md L42144-43555 §5.18"
+  },
+  {
+   "type": "困惑",
+   "content": "CPE/延迟分析时抓到 AI 关键错：「xy 每一次都不一样，怎么可能提前准备好，在这说瞎话」；同时发现「多累加器书上好像没有」「重新结合变换，是编译器做到的？」，在区分教材模型与真实编译器行为，L1→L2。",
+   "tags": [
+    "CSAPP",
+    "优化",
+    "CPE",
+    "多累加器"
+   ],
+   "importance": 3,
+   "evidence": "DS_csapp_20260526.md L8542-8681、L17552-17676"
+  },
+  {
+   "type": "层次",
+   "content": "Ch6 追问 cache 寻址语义：「块号没有意义啊」「快号那玩意本身就是感觉是虚拟的」；到 6.11 能用「中间位变化不快也不慢，高位太慢」解释 set index 取中间位。从记号升到映射直觉，L2。",
+   "tags": [
+    "CSAPP",
+    "cache",
+    "set index",
+    "6.11"
+   ],
+   "importance": 4,
+   "evidence": "DS_csapp_20260526.md L24446-24765（块号）、L40879-40969（中间位）"
+  },
+  {
+   "type": "已掌握",
+   "content": "6.46 对称闭包：自己发现 AI 分块只遍历下三角是错的——「你只缓存了下三角，但是或运算需要上三角的对称块」，逼 AI 承认并给出 2×BLOCK²×4 ≤ L1 约束、BLOCK=48。L4，能审算法而非审代码。",
+   "tags": [
+    "CSAPP",
+    "cache",
+    "blocking",
+    "6.46"
+   ],
+   "importance": 5,
+   "evidence": "DS_csapp_20260526.md L94161-94240、L94714"
+  },
+  {
+   "type": "层次",
+   "content": "把矩阵 blocking 与线性代数分块矩阵显式连线（「这是不是线性代数分块矩阵的引用点」），并要通用 miss rate 公式、追问「为什么不用递归」「再大是不是九层嵌套，把矩阵当压缩包」。L4 迁移尝试，通用公式未落地。",
+   "tags": [
+    "CSAPP",
+    "cache",
+    "blocking",
+    "线性代数"
+   ],
+   "importance": 4,
+   "evidence": "DS_csapp_20260526.md L25277-26954 §6.5"
+  },
+  {
+   "type": "待验证",
+   "content": "「两个对称块 2×BLOCK²×4 小于 L1 就能安全共存」是 AI 给出的判据，用户接受但未在本机核 L1 大小与相联度；BLOCK=48 也只是第三方实测值，自己机器未复测。回看时应用计时或 cachegrind 复核。",
+   "tags": [
+    "CSAPP",
+    "cache",
+    "待验证",
+    "L1"
+   ],
+   "importance": 3,
+   "evidence": "DS_csapp_20260526.md L94239-94714"
+  },
+  {
+   "type": "层次",
+   "content": "Ch7 链接图景靠自述重建：「把多个文件按照调用顺序给出先后，再用地址链接多文件」，混入「执行时间」后被纠正、自己改口「我这个时间的意思就是顺序」。符号表/强弱符号只到 L1，靠查题解。",
+   "tags": [
+    "CSAPP",
+    "链接",
+    "符号表",
+    "重定位"
+   ],
+   "importance": 3,
+   "evidence": "DS_csapp_20260526.md L39392-39651、L38901-39320、L101917-103378（习题 7.1-7.5）"
+  },
+  {
+   "type": "已掌握",
+   "content": "动态链接：先问「解决了静态的什么问题」，再自己推出「库函数就是一堆 01，可以随便读，写雀食不能并行」，独立得出共享库代码段只读才可共享。L3，本章最干净的一次自主推导。",
+   "tags": [
+    "CSAPP",
+    "链接",
+    "动态链接",
+    "共享库"
+   ],
+   "importance": 4,
+   "evidence": "DS_csapp_20260526.md L40333-40517 §7.10"
+  },
+  {
+   "type": "困惑",
+   "content": "库打桩只能用「补丁」类比：「就是替换其中一个库呗，像是零时补丁？那为什么要叫打桩」「这意思是加进去一个库，不是替换？」——interposition 的插入与覆盖区别未澄清，停在 L1。",
+   "tags": [
+    "CSAPP",
+    "链接",
+    "库打桩",
+    "interposition"
+   ],
+   "importance": 3,
+   "evidence": "DS_csapp_20260526.md L40556-40818 §7.13"
+  },
+  {
+   "type": "层次",
+   "content": "3.45 不满足于「结构体成员按对齐降序排最优」的常识，要求证明；AI 给错后转问别处，得到「只是常用启发式，不是总是最优」。教科书式简化被自己捅破，L3。",
+   "tags": [
+    "CSAPP",
+    "结构体",
+    "对齐",
+    "3.45"
+   ],
+   "importance": 4,
+   "evidence": "DS_csappppt.md L118265-118783"
+  },
+  {
+   "type": "困惑",
+   "content": "Ch10 文件描述符三层结构混乱：「这三个东西也是文件描述符，文件编号也是文件描述符？」；需把 descriptor table / open file table / v-node 分开才通，dup2 与流仍未成体系。",
+   "tags": [
+    "CSAPP",
+    "I/O",
+    "文件描述符",
+    "dup2"
+   ],
+   "importance": 3,
+   "evidence": "DS_csapp_20260526.md L93503-95727 §10.1-10.4"
+  },
+  {
+   "type": "提问模式",
+   "content": "拒绝 AI 代劳：attacklab 中 AI 给的 gdb/objdump 命令反复失败（x/8gx 被当 shell 命令、'bomb' is a directory），他直接接管——「我自己手输，你这全是bug」。",
+   "tags": [
+    "CSAPP",
+    "attacklab",
+    "工作方式",
+    "AI 信任"
+   ],
+   "importance": 4,
+   "evidence": "DS_csapp_20260526.md L56492-56581、L71068、L74439-74897"
+  },
+  {
+   "type": "层次",
+   "content": "Lab 进度：L3 attacklab phase1 打通（40 字节 + touch1 0x4017c0），phase2 卡 ASLR，phase3 数十轮后放弃；L1 datalab 只下载未做；malloclab 因第九章没学跳过。",
+   "tags": [
+    "CSAPP",
+    "lab 进度",
+    "attacklab",
+    "datalab"
+   ],
+   "importance": 5,
+   "evidence": "DS_csapp_20260526.md L54493-76973、L101873-101887；DS_csappppt.md L93006-93017"
+  },
+  {
+   "type": "待验证",
+   "content": "ASLR 未闭环：实测 randomize_va_space=2，gdb 下 rsp=0x5561d668 与直接运行 0x5561dca0 不同，就判定「整个缓存和新栈都随机化了」；gdb 关随机化这层未分辨。",
+   "tags": [
+    "CSAPP",
+    "ASLR",
+    "attacklab",
+    "待验证"
+   ],
+   "importance": 4,
+   "evidence": "DS_csapp_20260526.md L55961、L56733、L70728"
+  }
+ ]
+}

@@ -1,0 +1,165 @@
+{
+ "source": "local-materials",
+ "area": "18.065",
+ "round": "local",
+ "generated_at": "2026-11-08T00:47:19+08:00",
+ "coverage": {
+  "lectures": [
+   "I.1",
+   "I.2",
+   "I.5",
+   "I.6",
+   "I.7",
+   "I.8"
+  ],
+  "missing": [
+   "I.3",
+   "I.4"
+  ],
+  "strang_book": "part001 p1-50 ... part005 p201-250（书页 p1-248，§I.1–§IV.7），共 5 片"
+ },
+ "insights": [
+  {
+   "type": "覆盖面",
+   "content": "6 份 18.065 详解覆盖 Lecture 1–6 连续六讲，内部标「第 N 课」；文件名 PS 编号为 I.1/I.2/I.5/I.6/I.7/I.8，与 lecture 不同序列，缺 I.3/I.4 两套 problem set。",
+   "tags": [
+    "线性代数",
+    "本地素材",
+    "18.065",
+    "problem set"
+   ],
+   "importance": 4,
+   "evidence": "18.065_PS_I.5_Lecture3_双语详解.md:3（标注「第三课⋯Problem Set I.5」）；18.065_PS_I.8_Lecture6_双语详解.md:3"
+  },
+  {
+   "type": "覆盖面",
+   "content": "每讲只精讲 2–4 题，题号跳跃：I.1→P1,4,9,18；I.2→P2,6；I.5→P2,4,6；I.6→P2,11,15；I.7→P3,14,15；I.8→P1,6。是挑题纵深，不是整套 problem set 全做。",
+   "tags": [
+    "线性代数",
+    "本地素材",
+    "选题策略"
+   ],
+   "importance": 4,
+   "evidence": "18.065_PS_I.1_Lecture1_双语详解.md:27,131,237,319；18.065_PS_I.8_Lecture6_双语详解.md:102,360"
+  },
+  {
+   "type": "体例",
+   "content": "固定骨架：来源引用块（原始 pdf 名/教材节页/Manual 题号）→ 本讲「读成一个设计问题」三层导语 → 术语口径五词 + 🚨必须挡住的混淆 → 每题 → 附「N 题合观」。",
+   "tags": [
+    "线性代数",
+    "本地素材",
+    "体例",
+    "prompt 模板"
+   ],
+   "importance": 4,
+   "evidence": "18.065_PS_I.1_Lecture1_双语详解.md:3-23；18.065_PS_I.2_Lecture2_双语详解.md:15-25"
+  },
+  {
+   "type": "体例",
+   "content": "每题三段标签：[problem] 中文题干 + Original 英文原题 → [solution] 分节「一、结论…六/七、Manual 独立核验…常见错误…自检」→ [note] 译者注/学习建议。单题 100–230 行。",
+   "tags": [
+    "线性代数",
+    "本地素材",
+    "体例",
+    "solution 结构"
+   ],
+   "importance": 4,
+   "evidence": "18.065_PS_I.7_Lecture5_双语详解.md:603-620（六、对 Manual 标准答案的独立核验与补足）"
+  },
+  {
+   "type": "体例",
+   "content": "每份末尾「附：N 题合观——把 N 道题折叠成一个设计问题」，把各题压成一条工作顺序（先正交记账、再排序、最后谈舍弃），非原书内容，是他要的综合层。",
+   "tags": [
+    "线性代数",
+    "本地素材",
+    "综合",
+    "设计问题"
+   ],
+   "importance": 4,
+   "evidence": "18.065_PS_I.8_Lecture6_双语详解.md:632-643；18.065_PS_I.1_Lecture1_双语详解.md:423"
+  },
+  {
+   "type": "粒度",
+   "content": "18.065 不是整讲逐句翻译，而是单题纵深（每讲 450–765 行 / 2–4 题）；逐句翻译的路子留给 Strang 全书分片，两者是不同粒度档位。",
+   "tags": [
+    "线性代数",
+    "本地素材",
+    "粒度"
+   ],
+   "importance": 3,
+   "evidence": "18.065_PS_I.1_Lecture1_双语详解.md（450 行 4 题）；18.065_PS_I.6_Lecture4_双语详解.md（765 行 3 题）"
+  },
+  {
+   "type": "双语策略",
+   "content": "严格执行 English term（中文）行内括号 + 题干保留 Original 英文原文，无整句英译残留；与语言契约「术语保留英文、解释用中文」一致，且比契约更严：连 normal/space 这类普通词也加括号。",
+   "tags": [
+    "线性代数",
+    "本地素材",
+    "双语",
+    "语言契约"
+   ],
+   "importance": 3,
+   "evidence": "18.065_PS_I.1_Lecture1_双语详解.md:31-33；Strang_LaLFD_part001_p001-050.bilingual.md:11"
+  },
+  {
+   "type": "体例",
+   "content": "讲解强制挂靠他的课程表：6.042J 出现 138 次、6.006 83 次、Boyd 70 次、6.431 4 次；每讲都写「与你已学内容的连接」，含「只是计数层面类比」这类边界限定。",
+   "tags": [
+    "线性代数",
+    "本地素材",
+    "跨课程连接",
+    "构建主义"
+   ],
+   "importance": 5,
+   "evidence": "18.065_PS_I.1_Lecture1_双语详解.md:118（6.042J 自由变量 ↔ 秩—零化度）；Strang_LaLFD_part005_p201-250.bilingual.md:14（Boyd 凸松弛 / 6.006 NP-hard）"
+  },
+  {
+   "type": "待验证",
+   "content": "核验纪律：I.1 末尾「来源与核验记录」写明比对官方 Instructor's Manual，并点出 GitHub 仓库 prairie-guy/Linear_Algebra_18.065 两处错误（nullity 当 rank、m≥3）。",
+   "tags": [
+    "线性代数",
+    "本地素材",
+    "交叉核验",
+    "社区答案"
+   ],
+   "importance": 4,
+   "evidence": "18.065_PS_I.1_Lecture1_双语详解.md:450"
+  },
+  {
+   "type": "待验证",
+   "content": "残留未核项：I.2 头部标「⚠ 待核：Instructor's Manual 为付费手册，本稿未逐页核对 Problem Set I.2 页码」；I.7 称三种独立算法复现 2,6,30 但未留代码。",
+   "tags": [
+    "线性代数",
+    "本地素材",
+    "待核",
+    "缺口"
+   ],
+   "importance": 3,
+   "evidence": "18.065_PS_I.2_Lecture2_双语详解.md:5；18.065_PS_I.7_Lecture5_双语详解.md:610"
+  },
+  {
+   "type": "体例",
+   "content": "Strang 分片是另一条流水线：每 50 页一片（part001–005 = p1–250），每页以 <!-- page NNN --> 起始、页间 --- 分隔，由 50 个分页文件拼合，配 assets/ 抽图与 OCR 译者注。",
+   "tags": [
+    "线性代数",
+    "本地素材",
+    "Strang",
+    "流水线"
+   ],
+   "importance": 4,
+   "evidence": "Strang_LaLFD_part003_p101-150.bilingual.md:3-7；Strang_LaLFD_part004_p151-200.bilingual.md:3-7"
+  },
+  {
+   "type": "体例",
+   "content": "分片体例有演进：part001 无 page 注释、无译者注（早期粗译，括号机械地加在 normal/space 上）；part002 起转为行内双语 + 页锚 + 译者注（76→298 条），并明写「不可复原者不作臆造」。",
+   "tags": [
+    "线性代数",
+    "本地素材",
+    "版本演进",
+    "OCR"
+   ],
+   "importance": 4,
+   "evidence": "Strang_LaLFD_part001_p001-050.bilingual.md:402,598（§ 收尾标记）；Strang_LaLFD_part005_p201-250.bilingual.md:12"
+  }
+ ]
+}

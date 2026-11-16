@@ -1,0 +1,47 @@
+{
+ "name": "diary",
+ "files": 18,
+ "top": [
+  ".gitignore",
+  "README.md",
+  "days-public",
+  "index.md"
+ ],
+ "lvl2": [
+  "days-public/2026-10-25.md",
+  "days-public/2026-10-26.md",
+  "days-public/2026-10-27.md",
+  "days-public/2026-10-28.md",
+  "days-public/2026-10-29.md",
+  "days-public/2026-10-30.md",
+  "days-public/2026-10-31.md",
+  "days-public/2026-11-01.md",
+  "days-public/2026-11-02.md",
+  "days-public/2026-11-03.md",
+  "days-public/2026-11-04.md",
+  "days-public/2026-11-05.md",
+  "days-public/2026-11-06.md",
+  "days-public/2026-11-07.md",
+  "days-public/2026-11-08.md"
+ ],
+ "sample": [
+  ".gitignore",
+  "README.md",
+  "days-public/2026-10-25.md",
+  "days-public/2026-10-26.md",
+  "days-public/2026-10-27.md",
+  "days-public/2026-10-28.md",
+  "days-public/2026-10-29.md",
+  "days-public/2026-10-30.md",
+  "days-public/2026-10-31.md",
+  "days-public/2026-11-01.md",
+  "days-public/2026-11-02.md",
+  "days-public/2026-11-03.md",
+  "days-public/2026-11-04.md",
+  "days-public/2026-11-05.md",
+  "days-public/2026-11-06.md",
+  "days-public/2026-11-07.md",
+  "days-public/2026-11-08.md",
+  "index.md"
+ ]
+}

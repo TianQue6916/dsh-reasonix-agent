@@ -1,0 +1,13 @@
+{
+  "name": "Introduction-to-Linear-Algebra",
+  "description": "Introduction to Linear Algebra (Strang, MIT 18.06) — scanned Chinese-edition PDF merged into 2 volumes by page order (p000-055, p056-105), with chapter/page index.",
+  "topics": [
+    "linear-algebra",
+    "strang",
+    "18-06",
+    "textbook-scans",
+    "chinese-edition"
+  ],
+  "llms_txt": "# Introduction to Linear Algebra (MIT 18.06)\n\n> Strang《Introduction to Linear Algebra》中译本扫描件，原始单页 PDF 已按页码正序重排并合并为两册，附章节页码索引。\n\n## 教材扫描\n- [01-教材扫描](01-教材扫描): 两册合并后的扫描 PDF\n- [线性代数导论-第1册-目录至p055.pdf](01-教材扫描/线性代数导论-第1册-目录至p055.pdf): 目录与第 1 章起（页码 0-55）\n- [线性代数导论-第2册-p056-105.pdf](01-教材扫描/线性代数导论-第2册-p056-105.pdf): 第 2 章续（页码 56-105）\n\n## 备注\n- 原始扫描为倒序单页 PDF（0-55_1.pdf ~ 0-55_58.pdf 对应页码 55 → 0），已重排为正序。\n- 扫描件含原书手写批注；教材版权归原作者与出版方，仓库仅作个人学习存档。\n- 本仓库只有扫描 PDF（共 3 个文件），不含习题解答或讲义。",
+  "evidence": "依据 top 仅有 01-教材扫描 与 README.md，files=3，lvl2 为 线性代数导论-第1册-目录至p055.pdf 与 线性代数导论-第2册-p056-105.pdf，README 说明扫描件倒序已重排、索引到第 5 章。"
+}

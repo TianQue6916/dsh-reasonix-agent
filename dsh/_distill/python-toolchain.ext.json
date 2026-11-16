@@ -1,0 +1,236 @@
+{
+ "subject": "python-toolchain",
+ "round": "ext",
+ "generated_at": "2026-11-08T00:23:24",
+ "sources": [
+  "DS_Python_TypeError_实例方法调用错误.md",
+  "DS_Python_`socketserver`模块使用错误及解决方案.md",
+  "DS_Python编程任务代码实现.md",
+  "DS_Python链表方法中的self解释.md",
+  "DS_利用Python算算十个骰子抛十次数字和为一百的概率.md",
+  "DS_如何在SSMS中使用Python操作数据库.md",
+  "DS_Python安装管理器配置助手提示.md",
+  "DS_计算机技术问题.md",
+  "DS_Miniconda简介.md",
+  "DS_Python文件打印疑问.md",
+  "DS_Python奇数列表实验代码.md",
+  "DS_dsh端口占用与预设包修复.md",
+  "DS_GitHub密钥泄露提醒.md",
+  "DS_GitHub快速访问方法.md",
+  "DS_GitHub手机版介绍.md",
+  "DS_GitHub技能仓库咨询解答.md",
+  "DS_GitHub连接加速方法.md"
+ ],
+ "insights": [
+  {
+   "type": "困惑",
+   "content": "用类名直接调方法（`red_line.control()`）报 `TypeError: ... missing 1 required positional argument: 'self'`；连撞两次才问到「self 由谁填」。",
+   "tags": [
+    "Python",
+    "self",
+    "实例方法"
+   ],
+   "importance": 4,
+   "evidence": "DS_Python_TypeError_实例方法调用错误.md §我-1、我-4"
+  },
+  {
+   "type": "困惑",
+   "content": "`phone.tryto.control()` 报 `'function' object has no attribute 'control'`——bound method 被当成对象；漏括号的方法名不会执行。",
+   "tags": [
+    "Python",
+    "方法调用",
+    "AttributeError"
+   ],
+   "importance": 3,
+   "evidence": "DS_Python_TypeError_实例方法调用错误.md §我-3、我-6"
+  },
+  {
+   "type": "解法",
+   "content": "类体里的裸语句在类创建时就执行：他在 `class phone_2022` 里写 `print(\"IMEI\")`，一跑就打印；方法体里的 `phone.call_by_4g` 要等调用。他把两层混成一层。",
+   "tags": [
+    "Python",
+    "class",
+    "执行时机"
+   ],
+   "importance": 3,
+   "evidence": "DS_Python_TypeError_实例方法调用错误.md §我-2"
+  },
+  {
+   "type": "提问模式",
+   "content": "对 super() 连追五轮：只能回溯一层吗 → 已能任意调祖先还要它做什么 → 多层嵌套 → 「小刚那不就听不到小明的话吗」→ 自答「原来是递归思想」。他要 MRO 的传话链叙事。",
+   "tags": [
+    "Python",
+    "super",
+    "MRO"
+   ],
+   "importance": 4,
+   "evidence": "DS_Python_TypeError_实例方法调用错误.md §我-7～我-16"
+  },
+  {
+   "type": "解法",
+   "content": "`SyntaxError: (unicode error) 'utf-8' codec can't decode byte 0xb9` 是源文件存成 GBK/ANSI，Python 3 按 UTF-8 解析源码；另存 UTF-8 即解。",
+   "tags": [
+    "Python",
+    "编码",
+    "SyntaxError"
+   ],
+   "importance": 4,
+   "evidence": "DS_Python_`socketserver`模块使用错误及解决方案.md §L814-960"
+  },
+  {
+   "type": "解法",
+   "content": "`UnicodeDecodeError ... byte 0xb0` = 读文件没给 encoding（Windows 默认 cp936）；读时 `encoding='gbk'`，写时 `encoding='utf-8'`。",
+   "tags": [
+    "Python",
+    "文件IO",
+    "编码"
+   ],
+   "importance": 3,
+   "evidence": "DS_Python_`socketserver`模块使用错误及解决方案.md §L600-735"
+  },
+  {
+   "type": "待验证",
+   "content": "同一线程里 AI 前后互斥：先要求「保存为 UTF-8」，后段又写「确保编码选 ANSI」。他两条都没验就照抄——互斥建议得回源码或实测断，不能全信。",
+   "tags": [
+    "Python",
+    "编码",
+    "待验证"
+   ],
+   "importance": 3,
+   "evidence": "DS_Python_`socketserver`模块使用错误及解决方案.md §L615 与 §L1162"
+  },
+  {
+   "type": "排障",
+   "content": "`module 'socketserver' has no attribute 'UnixStreamServer'` = `Unix*Server` 只在 Unix 平台定义；Windows 上由 `import pyspark` 触发。",
+   "tags": [
+    "Python",
+    "排障",
+    "平台差异"
+   ],
+   "importance": 4,
+   "evidence": "DS_Python_`socketserver`模块使用错误及解决方案.md §我-8（L21）"
+  },
+  {
+   "type": "待验证",
+   "content": "收尾方案是 `pip install pyspark==3.3.0` 降级，但 traceback 里是 `Python313`：3.3 是否支持 3.13 未验，末段又变成 `typing.py` 撞标准库，没定论。",
+   "tags": [
+    "Python",
+    "pyspark",
+    "待验证"
+   ],
+   "importance": 4,
+   "evidence": "DS_Python_`socketserver`模块使用错误及解决方案.md §我-9、§L980-1160"
+  },
+  {
+   "type": "排障",
+   "content": "收尾是 `pip install pyspark==3.3.0` 降级，但 traceback 是 `Python313`：3.3 支持 3.13 未验，末段又变 `typing.py` 撞标准库，没定论。",
+   "tags": [
+    "Python",
+    "pyodbc",
+    "SQL Server"
+   ],
+   "importance": 4,
+   "evidence": "DS_如何在SSMS中使用Python操作数据库.md §我-15、我-22"
+  },
+  {
+   "type": "解法",
+   "content": "`No module named 'pymysql_sqlserver'`：他把兼容层源码贴在同一个 .py 末尾就 import 它。模块名 = 文件名，类不是模块。",
+   "tags": [
+    "Python",
+    "模块",
+    "ModuleNotFoundError"
+   ],
+   "importance": 3,
+   "evidence": "DS_如何在SSMS中使用Python操作数据库.md §我-17、我-20"
+  },
+  {
+   "type": "提问模式",
+   "content": "他给「不可改动区」锁 scope：`from pyodbc import Connection` 加 host/port/user/password 六行，「这一部分我是不会动的」——冻结接口、逼实现适配签名。",
+   "tags": [
+    "Python",
+    "约束",
+    "接口冻结"
+   ],
+   "importance": 3,
+   "evidence": "DS_如何在SSMS中使用Python操作数据库.md §我-18"
+  },
+  {
+   "type": "解法",
+   "content": "判断脚本成败靠运行时自检横幅（`1️⃣ 测试ODBC驱动... ✅ 连接状态：成功！`），不看源码；结尾必须有 `Press any key` 才不闪退——双击/VS 直跑，不是终端。",
+   "tags": [
+    "Python",
+    "脚本工程",
+    "日志"
+   ],
+   "importance": 3,
+   "evidence": "DS_如何在SSMS中使用Python操作数据库.md §我-11～我-13"
+  },
+  {
+   "type": "困惑",
+   "content": "把 list 的「个数」和「下标」当同一件事，问「为什么是size减1」：0-based，最后 index = n-1；`while i < size` 与 `a[size]` 差一个就 IndexError。",
+   "tags": [
+    "Python",
+    "下标",
+    "list"
+   ],
+   "importance": 3,
+   "evidence": "DS_Python链表方法中的self解释.md §我-11"
+  },
+  {
+   "type": "已掌握",
+   "content": "骰子两条路都跑通并互校：`itertools.product(range(1,7), repeat=3)` 枚举 4096 种 + `Counter`，对照 `random.randint` 蒙特卡洛 1e6 次，锚点均值 31.5。",
+   "tags": [
+    "Python",
+    "Counter",
+    "itertools",
+    "模拟"
+   ],
+   "importance": 4,
+   "evidence": "DS_利用Python算算十个骰子抛十次数字和为一百的概率.md §我-5、我-6"
+  },
+  {
+   "type": "提问模式",
+   "content": "OJ 作业（HIT SSE 作业系统）是 C 课，他会在 Python 话题里直接贴题面，只补两个字「c语言」纠偏；不说明语言时 AI 默认按 Python 给，白跑一轮。",
+   "tags": [
+    "Python",
+    "语言边界",
+    "提问"
+   ],
+   "importance": 3,
+   "evidence": "DS_Python编程任务代码实现.md §我-1、我-2"
+  },
+  {
+   "type": "困惑",
+   "content": "OJ 判分只认字节：他连发 `shuchubuyaohanzi`、`biehuanhang`、`不要注释`、`没有满分`（「满分十五，缺一分」）——拿不到 diff 就靠试格式猜扣分点。",
+   "tags": [
+    "Python",
+    "OJ",
+    "输出格式"
+   ],
+   "importance": 3,
+   "evidence": "DS_Python编程任务代码实现.md §我-16、我-17、我-60～我-62"
+  },
+  {
+   "type": "待验证",
+   "content": "VS 里 Python 报错是英文（解释器 locale 与 IDE 界面语言无关）；`os.environ['LANG']='zh_CN.UTF-8'` 在 Windows 大概率无效，他没验。",
+   "tags": [
+    "Python",
+    "locale",
+    "待验证"
+   ],
+   "importance": 2,
+   "evidence": "DS_Python安装管理器配置助手提示.md §我-19"
+  },
+  {
+   "type": "待验证",
+   "content": "`pipx runpip pdf2zh ...` 回报 `venv for 'pdf2zh' was not found. Was 'pdf2zh' installed with pipx?`——先用 `pipx list` 确认装法。",
+   "tags": [
+    "Python",
+    "pipx",
+    "待验证"
+   ],
+   "importance": 3,
+   "evidence": "DS_计算机技术问题.md §L20001-20421"
+  }
+ ]
+}

@@ -1,0 +1,14 @@
+{
+  "name": "Convex-Optimization-EE364a",
+  "description": "Stanford EE364a Convex Optimization solutions & notes — 13 lecture decks, homework problem sets with official solutions, Boyd textbook + answer manual, extra exercises, EN/中文",
+  "topics": [
+    "convex-optimization",
+    "ee364a",
+    "boyd",
+    "stanford",
+    "problem-sets",
+    "bilingual"
+  ],
+  "llms_txt": "# Convex Optimization (Stanford EE364a)\n\n> Bilingual (EN/中文) study pack for Stanford EE364a Convex Optimization: Boyd textbook and answer manual, 13 lecture decks, homework with official solutions, extra exercises.\n\n## 讲义 Lecture slides\n- [02-讲义](02-讲义): 13 讲官方讲义 PDF，每讲配 `*.bilingual.md` 双语译稿\n- [02-讲义/CVX Tutorial.bilingual.md](02-讲义/CVX Tutorial.bilingual.md): CVX 建模教程双语版\n\n## 教材与习题 Textbook & exercises\n- [01-教材](01-教材): Boyd & Vandenberghe 原书 PDF + 官方习题答案手册\n- [01-教材/deliver](01-教材/deliver): `boyd_ch01`–`ch05` 逐句双语翻译\n- [03-作业与解答](03-作业与解答): 作业题与官方解答\n- [05-补充习题](05-补充习题): 课程补充习题与数据文件\n\n## 备注\n- 课程视频未收录（体积过大）；00-课程大纲Syllabus.pdf 与 00-课程计划.pdf 为大纲与进度。\n- 教材与讲义版权归原作者与出版方所有。\n",
+  "evidence": "README.md「01-教材/ 原书+答案手册+部分章节双语翻译，03-作业与解答/ 作业与官方解答」与 tree 中 02-讲义/01Introduction.pdf…13Conclusions.pdf、01-教材/Convex Optimization 答案手册.pdf、03-作业与解答/、05-补充习题/ 互相印证。"
+}

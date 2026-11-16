@@ -1,46 +1,83 @@
 {
- "generated_at": "2026-11-07T20:14:43",
+ "generated_at": "2026-11-08T01:04:22",
  "subjects": {
   "academic-planning": {
    "name": "学科档案 · 学业规划与元认知",
    "body_id": "7e7f23b3-9b95-4f8b-a939-62eadddd10a5",
-   "newest_mtime": 1794051237.621721,
+   "newest_mtime": 1794069177.6336005,
    "files": [
+    ".reasonix/global-workspace/pages/DS_人工智能起源与达特茅斯计划.md",
     ".reasonix/global-workspace/pages/DS_十年后最好专业.md",
     ".reasonix/global-workspace/pages/DS_宁夏大学定位研究型.md",
+    ".reasonix/global-workspace/pages/DS_张宇程学习计划.md",
     ".reasonix/global-workspace/pages/DS_未来规划.md",
-    ".reasonix/global-workspace/pages/DS_未来规划_20260927.md"
+    ".reasonix/global-workspace/pages/DS_未来规划_20260707.md",
+    ".reasonix/global-workspace/pages/DS_未来规划_20260927.md",
+    ".reasonix/global-workspace/pages/DS_计划讨论.md"
    ],
    "materials": "另读 `方舟架构方案-*.md`、`第二个天阙-*.md`、`张宇程暑期*-最终版.md`"
   },
   "algorithms": {
    "name": "学科档案 · 算法与数据结构",
    "body_id": "19022172-954f-4d8b-9109-06868dc84f68",
-   "newest_mtime": 1794051237.0282593,
+   "newest_mtime": 1794069060.6214292,
    "files": [
+    ".reasonix/global-workspace/pages/DS_C++实现简单搜索算法框架.md",
+    ".reasonix/global-workspace/pages/DS_MIT6_006排序算法体系详解.md",
     ".reasonix/global-workspace/pages/DS_O(V+E)复杂度算法.md",
-    ".reasonix/global-workspace/pages/DS_算法导论.md"
+    ".reasonix/global-workspace/pages/DS_优先搜索算法与PyTorch学习路径.md",
+    ".reasonix/global-workspace/pages/DS_分治算法与牛顿法比较讨论.md",
+    ".reasonix/global-workspace/pages/DS_叠砖问题图论证明可行性探讨.md",
+    ".reasonix/global-workspace/pages/DS_多项式系数与重排序问题解析.md",
+    ".reasonix/global-workspace/pages/DS_查找特定算法位置未找到.md",
+    ".reasonix/global-workspace/pages/DS_查询算法与数据结构教材信息.md",
+    ".reasonix/global-workspace/pages/DS_比较排序下界证明.md",
+    ".reasonix/global-workspace/pages/DS_深度学习算法书籍推荐.md",
+    ".reasonix/global-workspace/pages/DS_砖块吹倒问题算法解析与实现.md",
+    ".reasonix/global-workspace/pages/DS_神经网络实现最大值提取与排序.md",
+    ".reasonix/global-workspace/pages/DS_算法导论.md",
+    ".reasonix/global-workspace/pages/DS_算法导论_20251208.md",
+    ".reasonix/global-workspace/pages/DS_算法导论_20260724.md",
+    ".reasonix/global-workspace/pages/DS_算法导论与MIT6_006课程内容对应.md",
+    ".reasonix/global-workspace/pages/DS_算法导论习题课1解析高级优化方案学习.md",
+    ".reasonix/global-workspace/pages/DS_算法导论问题集第四题分析.md"
    ],
    "materials": "另读 `Desktop/课程文件/006算法导论`、`D:/算法导论学习文件`"
   },
   "calculus": {
    "name": "学科档案 · 高等数学与微积分",
    "body_id": "f5d72dc4-b11f-4a33-a6f6-85e6e3ffa538",
-   "newest_mtime": 1794051237.6464467,
+   "newest_mtime": 1794069061.175711,
    "files": [
+    ".reasonix/global-workspace/pages/DS_万能代换在微积分中的应用.md",
+    ".reasonix/global-workspace/pages/DS_大一高数期末试卷解答总结.md",
+    ".reasonix/global-workspace/pages/DS_微积分基本定理.md",
     ".reasonix/global-workspace/pages/DS_求极限题解法.md",
+    ".reasonix/global-workspace/pages/DS_深入学习微积分的教材推荐.md",
+    ".reasonix/global-workspace/pages/DS_简述微积分的本质.md",
     ".reasonix/global-workspace/pages/DS_高数期末复习.md",
-    ".reasonix/global-workspace/pages/DS_高等数学.md"
+    ".reasonix/global-workspace/pages/DS_高数满分对绩点影响分析.md",
+    ".reasonix/global-workspace/pages/DS_高斯创编高等数学时间推测.md",
+    ".reasonix/global-workspace/pages/DS_高等数学.md",
+    ".reasonix/global-workspace/pages/DS_高等数学I选择题详解.md",
+    ".reasonix/global-workspace/pages/DS_高等数学_20260415.md",
+    ".reasonix/global-workspace/pages/DS_高等数学中数列的角色转变.md",
+    ".reasonix/global-workspace/pages/DS_高等数学习题查找方法.md",
+    ".reasonix/global-workspace/pages/DS_高等数学同济八版二手价格指南.md",
+    ".reasonix/global-workspace/pages/DS_高等数学有几何吗，就是圆锥曲线这种.md",
+    ".reasonix/global-workspace/pages/DS_高等数学模拟卷详细解答.md",
+    ".reasonix/global-workspace/pages/DS_高等数学积分计算详解.md"
    ],
    "materials": ""
   },
   "circuits": {
    "name": "学科档案 · 数字电路与逻辑设计",
    "body_id": "e92be240-f363-4a2e-88de-a885b51a37da",
-   "newest_mtime": 1790775687.3870516,
+   "newest_mtime": 1794069177.6903863,
    "files": [
     ".reasonix/global-workspace/pages/DS_Logisim搭建CMOS门.md",
     ".reasonix/global-workspace/pages/DS_十四进制计数器解析.md",
+    ".reasonix/global-workspace/pages/DS_卡诺图用途简介.md",
     ".reasonix/global-workspace/pages/DS_数电.md",
     ".reasonix/global-workspace/pages/DS_次态卡诺图推导.md",
     ".reasonix/global-workspace/pages/DS_第三题计数器解析.md",
@@ -51,51 +88,83 @@
   "discrete-math": {
    "name": "学科档案 · 离散数学与组合",
    "body_id": "a14c6b9f-344f-4ca3-9206-76972cd6f049",
-   "newest_mtime": 1790775695.8961096,
+   "newest_mtime": 1794069060.9246457,
    "files": [
     ".reasonix/global-workspace/pages/DS_O(V+E)复杂度算法.md",
     ".reasonix/global-workspace/pages/DS_六度分隔理论.md",
-    ".reasonix/global-workspace/pages/DS_最优子结构理论证明.md"
+    ".reasonix/global-workspace/pages/DS_宁夏大学离散数学挂科率分析.md",
+    ".reasonix/global-workspace/pages/DS_最优子结构理论证明.md",
+    ".reasonix/global-workspace/pages/DS_查找反证法在离散数学中的位置1-100.md",
+    ".reasonix/global-workspace/pages/DS_离散数学.md",
+    ".reasonix/global-workspace/pages/DS_离散数学_20260409.md",
+    ".reasonix/global-workspace/pages/DS_离散逻辑学.md",
+    ".reasonix/global-workspace/pages/DS_计算机离散数学.md",
+    ".reasonix/global-workspace/pages/DS_计算机离散数学_20260330.md",
+    ".reasonix/global-workspace/pages/DS_计算机离散数学_20260421.md",
+    ".reasonix/global-workspace/pages/DS_计算机离散数学_20260424.md",
+    ".reasonix/global-workspace/pages/DS_计算机离散数学与术语200-300.md",
+    ".reasonix/global-workspace/pages/DS_计算机离散数学基础概念解析.md"
    ],
    "materials": "补充素材：6.042J 讲义与题解"
   },
   "english-academic": {
    "name": "学科档案 · 学术英语与双语翻译",
    "body_id": "dfc4423f-e242-44af-9515-ec655fda1cf3",
-   "newest_mtime": 1794051237.637447,
+   "newest_mtime": 1794069177.6316013,
    "files": [
-    ".reasonix/global-workspace/pages/DS_Admin含义解释.md",
-    ".reasonix/global-workspace/pages/DS_Plugin含义解释.md",
-    ".reasonix/global-workspace/pages/DS_vanilla含义解释.md",
+    ".reasonix/global-workspace/pages/DS_AI与出版社翻译教材对比分析.md",
+    ".reasonix/global-workspace/pages/DS_MIT概率论课程中文翻译版介绍.md",
     ".reasonix/global-workspace/pages/DS_仓库英语翻译.md",
+    ".reasonix/global-workspace/pages/DS_刘晓艳英语四级单词笔记方法.md",
     ".reasonix/global-workspace/pages/DS_压缩上下文英语表达.md",
     ".reasonix/global-workspace/pages/DS_反例英语表达.md",
     ".reasonix/global-workspace/pages/DS_反证法英语表达.md",
     ".reasonix/global-workspace/pages/DS_周六英语.md",
+    ".reasonix/global-workspace/pages/DS_四级英语备考策略与资源推荐.md",
+    ".reasonix/global-workspace/pages/DS_大一英语B班期末备考建议.md",
+    ".reasonix/global-workspace/pages/DS_大学英语四级考试的重要性分析.md",
+    ".reasonix/global-workspace/pages/DS_大学英语期中考试填空题答案解析.md",
     ".reasonix/global-workspace/pages/DS_存在英语翻译.md",
     ".reasonix/global-workspace/pages/DS_导航对接英语.md",
+    ".reasonix/global-workspace/pages/DS_小升初英语备考建议.md",
+    ".reasonix/global-workspace/pages/DS_小学五年级英语期末模拟卷设计.md",
     ".reasonix/global-workspace/pages/DS_已定义英语表达.md",
-    ".reasonix/global-workspace/pages/DS_帮狗cat含义解释.md",
+    ".reasonix/global-workspace/pages/DS_我需要在电脑上整一个翻译软件，最好是免费并且实时字幕那种.md",
+    ".reasonix/global-workspace/pages/DS_技术文档翻译软件推荐方案.md",
+    ".reasonix/global-workspace/pages/DS_把英语翻译成汉语，汉语翻译成英语.md",
     ".reasonix/global-workspace/pages/DS_数学建模大赛英语.md",
     ".reasonix/global-workspace/pages/DS_数学极值最值英语.md",
     ".reasonix/global-workspace/pages/DS_无穷英语表达.md",
+    ".reasonix/global-workspace/pages/DS_李华分享英语社团获市级荣誉.md",
     ".reasonix/global-workspace/pages/DS_核心思考英语表达.md",
-    ".reasonix/global-workspace/pages/DS_梦情含义解释.md",
     ".reasonix/global-workspace/pages/DS_概率导论翻译质量差.md",
-    ".reasonix/global-workspace/pages/DS_第三世界含义解释.md",
+    ".reasonix/global-workspace/pages/DS_纪念品商店英语翻译.md",
+    ".reasonix/global-workspace/pages/DS_翻译风格总结与文档300-400.md",
+    ".reasonix/global-workspace/pages/DS_英语四级备考低价资料推荐.md",
     ".reasonix/global-workspace/pages/DS_英语填空in的用法.md",
     ".reasonix/global-workspace/pages/DS_英语学习.md",
+    ".reasonix/global-workspace/pages/DS_英语语法与逻辑分析讲解.md",
     ".reasonix/global-workspace/pages/DS_英语语法错误纠正.md",
-    ".reasonix/global-workspace/pages/DS_计算机科学资料英语.md"
+    ".reasonix/global-workspace/pages/DS_英语音标测试卷设计与评分标准.md",
+    ".reasonix/global-workspace/pages/DS_计算机科学资料英语.md",
+    ".reasonix/global-workspace/pages/DS_银川二中英语复习核心词汇与写作训练.md",
+    ".reasonix/global-workspace/pages/DS_银川二中高三英语复习专题.md",
+    ".reasonix/global-workspace/pages/DS_银川二中高三英语复习词汇与短语.md",
+    ".reasonix/global-workspace/pages/DS_银川二中高三英语复习资料.md",
+    ".reasonix/global-workspace/pages/DS_高考英语词汇背诵建议与策略.md"
    ],
    "materials": "另读 `translator_notes.md`"
   },
   "linear-algebra": {
    "name": "学科档案 · 线性代数",
    "body_id": "346a7cab-e28b-4ec1-8049-4284a8905576",
-   "newest_mtime": 1794051237.4198313,
+   "newest_mtime": 1794069177.6389327,
    "files": [
+    ".reasonix/global-workspace/pages/DS_生成同济版线性代数思维导图指令.md",
     ".reasonix/global-workspace/pages/DS_线性代数.md",
+    ".reasonix/global-workspace/pages/DS_线性代数_20260415.md",
+    ".reasonix/global-workspace/pages/DS_线性代数习题解析与验证.md",
+    ".reasonix/global-workspace/pages/DS_线性代数应该这样学的习题.md",
     ".reasonix/global-workspace/pages/DS_雅可比猜想反例探讨.md",
     ".reasonix/global-workspace/pages/DS_雅可比猜想证伪讨论.md"
    ],
@@ -104,58 +173,100 @@
   "math-analysis": {
    "name": "学科档案 · 实分析与数学分析",
    "body_id": "dff27046-4c69-4680-a26a-3e8968a34526",
-   "newest_mtime": 1794051237.3627365,
+   "newest_mtime": 1794069177.6422255,
    "files": [
     ".reasonix/global-workspace/pages/DS_三角不等式解释.md",
     ".reasonix/global-workspace/pages/DS_实分析.md",
     ".reasonix/global-workspace/pages/DS_实分析符号存疑.md",
+    ".reasonix/global-workspace/pages/DS_数学分析中极限与有界条件解析.md",
+    ".reasonix/global-workspace/pages/DS_数学分析教材及对应课程推荐.md",
     ".reasonix/global-workspace/pages/DS_计算机副教授未学实分析.md",
     ".reasonix/global-workspace/pages/DS_证明1大于0.md"
    ],
    "materials": "另读 `.reasonix/global-workspace/18.100B-PS1-*.md`、`PS1-无穷大关系定义-*.md`、`L01 - Introduction to Real Numbers (双语).md`、`Desktop/课程文件/100b实分析`"
   },
+  "ml-foundations": {
+   "name": "学科档案 · 机器学习与 AI 基础",
+   "body_id": "95206baa-7034-46ce-a1b3-e6e684adc361",
+   "newest_mtime": 1794069060.460217,
+   "files": [
+    ".reasonix/global-workspace/pages/DS_博弈论与强化学习深度学习关系解析.md",
+    ".reasonix/global-workspace/pages/DS_深度学习书中博弈论章节解析.md",
+    ".reasonix/global-workspace/pages/DS_深度学习学习路径与PyTorch简介.md",
+    ".reasonix/global-workspace/pages/DS_深度学习算法书籍推荐.md",
+    ".reasonix/global-workspace/pages/DS_神经网络实现最大值提取与排序.md"
+   ],
+   "materials": "补充素材：`Desktop/课程文件/data lerning`"
+  },
   "physics": {
    "name": "学科档案 · 物理",
    "body_id": "61c2edfb-0cb3-4075-a6dc-3878f5b92ad8",
-   "newest_mtime": 1785493849.9048233,
+   "newest_mtime": 1794069060.3307457,
    "files": [
-    ".reasonix/global-workspace/pages/DS_物理.md"
+    ".reasonix/global-workspace/pages/DS_------_缺页（Ch9）_从磁盘加载页_访问时触发缺页异常_COW_fork（Ch9）_复制物理页_写入时触发缺页异.md",
+    ".reasonix/global-workspace/pages/DS_2026-07-05,银川,物理,等体加热内能减少压强升高判断.md",
+    ".reasonix/global-workspace/pages/DS_人工智能专业只学物理c够吗.md",
+    ".reasonix/global-workspace/pages/DS_大学物理实验考试答案.md",
+    ".reasonix/global-workspace/pages/DS_大学物理实验课程安排整理.md",
+    ".reasonix/global-workspace/pages/DS_宁夏大学物理实验报告提交方式.md",
+    ".reasonix/global-workspace/pages/DS_物理.md",
+    ".reasonix/global-workspace/pages/DS_物理试题解答与计算过程详解.md"
    ],
    "materials": ""
   },
   "probability": {
    "name": "学科档案 · 概率论与统计",
    "body_id": "c0212d7a-4d69-4585-854f-58399ae345b4",
-   "newest_mtime": 1790775697.3692536,
+   "newest_mtime": 1794069177.624539,
    "files": [
+    ".reasonix/global-workspace/pages/DS_C语言计算sin(x)并统计项数.md",
+    ".reasonix/global-workspace/pages/DS_MIT概率论课程中文翻译版介绍.md",
+    ".reasonix/global-workspace/pages/DS_σ代数在概率论中的定义与作用.md",
     ".reasonix/global-workspace/pages/DS_六门非前十总分前十概率.md",
+    ".reasonix/global-workspace/pages/DS_利用Python算算十个骰子抛十次数字和为一百的概率.md",
+    ".reasonix/global-workspace/pages/DS_喷泉码概率补全编码.md",
     ".reasonix/global-workspace/pages/DS_患癌概率统计.md",
+    ".reasonix/global-workspace/pages/DS_扑克牌顺子与全黑概率比较.md",
+    ".reasonix/global-workspace/pages/DS_普林斯顿概率论无MSTD内容.md",
+    ".reasonix/global-workspace/pages/DS_普林斯顿概率论读本例题定位.md",
     ".reasonix/global-workspace/pages/DS_月均消费统计.md",
-    ".reasonix/global-workspace/pages/DS_概率导论翻译质量差.md"
+    ".reasonix/global-workspace/pages/DS_条件概率pr(A_B)解释.md",
+    ".reasonix/global-workspace/pages/DS_条件概率中AC与BC的独立性分析.md",
+    ".reasonix/global-workspace/pages/DS_概率导论翻译质量差.md",
+    ".reasonix/global-workspace/pages/DS_概率论看了一半的题.md",
+    ".reasonix/global-workspace/pages/DS_轮盘赌连续黑色概率计算.md"
    ],
    "materials": "补充素材：`Desktop/课程文件` 下与 6.431/概率导论相关的讲义"
   },
   "python-toolchain": {
    "name": "学科档案 · Python 与工程工具链",
    "body_id": "b7de1e15-0a64-49bb-ab1a-846eab0712b9",
-   "newest_mtime": 1794051237.6207142,
+   "newest_mtime": 1794069177.7075818,
    "files": [
     ".reasonix/global-workspace/pages/DS_GitHub密钥泄露提醒.md",
     ".reasonix/global-workspace/pages/DS_GitHub快速访问方法.md",
     ".reasonix/global-workspace/pages/DS_GitHub手机版介绍.md",
+    ".reasonix/global-workspace/pages/DS_GitHub技能仓库咨询解答.md",
     ".reasonix/global-workspace/pages/DS_GitHub连接加速方法.md",
     ".reasonix/global-workspace/pages/DS_Miniconda简介.md",
+    ".reasonix/global-workspace/pages/DS_Python_TypeError_实例方法调用错误.md",
+    ".reasonix/global-workspace/pages/DS_Python_`socketserver`模块使用错误及解决方案.md",
     ".reasonix/global-workspace/pages/DS_Python奇数列表实验代码.md",
+    ".reasonix/global-workspace/pages/DS_Python安装管理器配置助手提示.md",
     ".reasonix/global-workspace/pages/DS_Python文件打印疑问.md",
+    ".reasonix/global-workspace/pages/DS_Python编程任务代码实现.md",
+    ".reasonix/global-workspace/pages/DS_Python链表方法中的self解释.md",
     ".reasonix/global-workspace/pages/DS_dsh支持系统.md",
-    ".reasonix/global-workspace/pages/DS_dsh端口占用与预设包修复.md"
+    ".reasonix/global-workspace/pages/DS_dsh端口占用与预设包修复.md",
+    ".reasonix/global-workspace/pages/DS_利用Python算算十个骰子抛十次数字和为一百的概率.md",
+    ".reasonix/global-workspace/pages/DS_如何在SSMS中使用Python操作数据库.md"
    ],
    "materials": "只取 `计算机技术问题` 中 Python/环境/依赖相关段落"
   },
   "signals": {
    "name": "学科档案 · 信号与系统",
    "body_id": "80ba2d8b-da77-4ef1-951c-c901baf8dfb7",
-   "newest_mtime": 1794051237.6186998,
+   "newest_mtime": 1794069059.4220605,
    "files": [
     ".reasonix/global-workspace/pages/DS_信号与系统.md",
     ".reasonix/global-workspace/pages/DS_卷积运算四题解答.md"
@@ -165,12 +276,17 @@
   "systems": {
    "name": "学科档案 · 计算机系统（CSAPP）",
    "body_id": "ac3a0d13-7899-43b4-acb4-f00637e47a5c",
-   "newest_mtime": 1794051237.58357,
+   "newest_mtime": 1794069060.8690195,
    "files": [
     ".reasonix/global-workspace/pages/DS_csapp.md",
+    ".reasonix/global-workspace/pages/DS_csapp_20260526.md",
+    ".reasonix/global-workspace/pages/DS_csappppt.md",
+    ".reasonix/global-workspace/pages/DS_数字补码代码问题解答.md",
     ".reasonix/global-workspace/pages/DS_浮点数位数分配题解.md",
+    ".reasonix/global-workspace/pages/DS_补码正负数区分.md",
     ".reasonix/global-workspace/pages/DS_补码计算方法.md",
-    ".reasonix/global-workspace/pages/DS_计算机技术问题.md"
+    ".reasonix/global-workspace/pages/DS_计算机技术问题.md",
+    ".reasonix/global-workspace/pages/DS_计算机技术问题_20260705.md"
    ],
    "materials": "只取 `计算机技术问题` 中与系统底层相关的段落"
   }

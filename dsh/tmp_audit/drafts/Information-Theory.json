@@ -1,0 +1,14 @@
+{
+  "name": "Information-Theory",
+  "description": "MacKay ITILA Information Theory lecture notes & slides — 16 bilingual lecture notes, official l1-l16 MagicPoint slides, textbook PDF/EPUB with bilingual chapters, board snapshots, EN/中文",
+  "topics": [
+    "information-theory",
+    "mackay",
+    "itila",
+    "lecture-notes",
+    "cambridge",
+    "bilingual"
+  ],
+  "llms_txt": "# Information Theory · MacKay ITILA\n\n> Bilingual (EN/中文) study pack for MacKay's Information Theory, Pattern Recognition and Neural Networks lectures, built on the ITILA textbook.\n\n## 讲义与幻灯片\n- [01-lecture-notes](01-lecture-notes): `Lec01`–`Lec16` 加 `prufer` 的逐句双语翻译\n- [02-slides](02-slides): 官方 MagicPoint 讲义 `l1`–`l16`（HTML + PNG 逐页）\n\n## 教材 Textbook\n- [03-textbook](03-textbook): `book.pdf` 与 `book.epub`\n- [03-textbook/deliver](03-textbook/deliver): 教材章节双语翻译\n- [03-textbook/PROGRESS.md](03-textbook/PROGRESS.md): 翻译进度记录\n\n## 板书快照\n- [04-snapshots/00_mackay.pdf](04-snapshots/00_mackay.pdf): 各讲板书快照 PDF\n\n## 备注\n- 课程为剑桥 16 讲 + 1 Bonus（inference.org.uk/itprnn_lectures）；视频本体 11.26 GB 未入库。\n- 正文中文为主，英文术语以 `English term（中文）` 行内嵌入，公式与 LaTeX 保留原样。\n- 版权归 MacKay 遗产与原作者所有。\n",
+  "evidence": "README.md 声明「16 讲 + 1 Bonus、01-lecture-notes 逐句双语翻译 Lec01–Lec16 + prufer、02-slides 官方 MagicPoint l1–l16」；tree 中 01-lecture-notes/Lec01…Lec16.bilingual.md、02-slides/l1…l16、03-textbook/book.pdf、04-snapshots/00_mackay.pdf 全部对应。"
+}

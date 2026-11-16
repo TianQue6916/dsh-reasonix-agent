@@ -1,0 +1,13 @@
+{
+  "name": "Introduction-to-Real-Analysis-18.100B",
+  "description": "MIT 18.100B Real Analysis — bilingual lecture notes, textbook translation, problem sets with solutions, exams, proof notes, subtitles",
+  "topics": [
+    "real-analysis",
+    "mit-18-100b",
+    "problem-sets",
+    "study-notes",
+    "bilingual"
+  ],
+  "llms_txt": "# Introduction to Real Analysis · MIT 18.100B\n\n> Bilingual (EN/中文) real analysis study repo: lecture notes L01-L23, TBB textbook translation in parts, problem sets with solutions, exams, subtitles and proof notes.\n\n## Lecture material\n- [01-lecture-notes](01-lecture-notes): L01-L23 bilingual notes plus typeset PDFs and a progress table\n- [02-textbook-TBB](02-textbook-TBB): Elementary Real Analysis (TBB) translated in 50-page parts\n- [05-subtitles](05-subtitles): English .srt and .zho-hans.srt tracks for all lectures\n\n## Practice & proofs\n- [03-problem-sets](03-problem-sets): PS01-PS10 problem PDFs plus bilingual solutions\n- [04-exams](04-exams): midterm and final review material\n- [06-notes](06-notes): derivations on metric spaces, completeness, Archimedean property\n\n## 备注\n- Lecture videos are not included, only subtitles. Textbook copyright stays with the TBB authors and Rudin's publisher.",
+  "evidence": "repo_meta top lists 01-lecture-notes/02-textbook-TBB/03-problem-sets/04-exams/05-subtitles/06-notes, lvl2 shows 'L01 - Introduction to Real Numbers.bilingual.md' through L23 and 18-100B_progress_table.pdf, README.md names TBB, Rudin, PS01-PS10 and subtitles."
+}

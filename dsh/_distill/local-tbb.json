@@ -1,0 +1,234 @@
+{
+ "source": "local-materials",
+ "area": "TBB翻译工程",
+ "round": "local",
+ "generated_at": "2026-11-08T00:48:23+08:00",
+ "pipeline": {
+  "batches": [
+   {
+    "name": "tbb007",
+    "files": 101,
+    "note": "书页285–334（§7.3后半–§7.12 + 第8章开头）；25 worker×2页；2026-08-27 19:01→21:03；含 subtitles/（MIT V15–V17 课程字幕）与 research-done 快照"
+   },
+   {
+    "name": "tbb010",
+    "files": 251,
+    "note": "书页437–484（第11章+§12.1–12.4）；24 worker；2026-08-19 00:22→05:03；唯一走完 finalize.py 出 final.bilingual.md 的完整交付链"
+   },
+   {
+    "name": "tbb010_nodsh",
+    "files": 421,
+    "note": "同 437–484 的「无 dsh 重译版」；四代译文 translations→_clean→_v2→_notes；2026-08-27 02:31→13:25"
+   },
+   {
+    "name": "tbb012",
+    "files": 217,
+    "note": "书页535–584（第13章 §13.1–13.9 度量空间）；2026-08-27 13:30→15:53"
+   },
+   {
+    "name": "tbb013",
+    "files": 167,
+    "note": "书页585–634（§13.9–13.15 紧致/Arzelà-Ascoli/Baire/Cantor 集）；2026-08-27 16:14→18:49"
+   }
+  ],
+  "stages": [
+   "分片（PDF 按 50 书页切 part，抽 pages/bpNNN.txt）",
+   "立规（worker_spec.md + glossary.md，范围/跳过区/格式/密度全部硬编码）",
+   "翻译（W1–W25 并行，每 worker 2 相邻书页全量输出）",
+   "audit（checklist 8–10 项，🔴🟡🟢 分级）",
+   "返修/重译（_clean → _v2 → _notes 多代目录）",
+   "合并（merge.py 按 W 序拼 draft.bilingual.md，分 half1/half2 再终审）",
+   "写注（insert_notes.py 按锚点关键词插入译者注，失败则 _fix/_fix2 补插）",
+   "终审+格式统一（finalize.py：命名中文化、结束符统一、交叉引用）"
+  ]
+ },
+ "insights": [
+  {
+   "type": "工程方法",
+   "content": "全书按固定 50 书页/part 切块，每 part 独立成一个项目目录；24–25 个 worker 各领 2 页相邻书页写 translations/W{n}.md，页码用「书页 = 分片内页序 + 偏移」换算。",
+   "tags": [
+    "实分析",
+    "本地素材",
+    "翻译工程",
+    "分片"
+   ],
+   "importance": 4,
+   "evidence": "tbb007/worker_spec.md"
+  },
+  {
+   "type": "工程方法",
+   "content": "worker_spec.md 是唯一真源：写死本 part 书页范围、逐节结构清单、跳过区（习题/Challenging Problems/NOTES）、格式与密度标准，末尾附 25 行 W→书页→内容分配表。",
+   "tags": [
+    "实分析",
+    "本地素材",
+    "翻译工程",
+    "spec"
+   ],
+   "importance": 4,
+   "evidence": "tbb007/worker_spec.md:1-104"
+  },
+  {
+   "type": "工程方法",
+   "content": "波次快照名即流程日志：wave1-done → audit-fixes → wave3-before-fix → wave3-fixed → wave4-before → final → DELIVER，每波前打 tar.gz，回滚点齐全。",
+   "tags": [
+    "实分析",
+    "本地素材",
+    "翻译工程",
+    "快照"
+   ],
+   "importance": 3,
+   "evidence": "tbb010/backup/"
+  },
+  {
+   "type": "术语策略",
+   "content": "glossary.md 逐 part 维护（tbb007 80 条术语、tbb010 53 条），表列 English|中文|备注，如 limit point 标注「需统一（如用『聚点』）」；备注列承担消歧，不只是对照表。",
+   "tags": [
+    "实分析",
+    "本地素材",
+    "术语策略"
+   ],
+   "importance": 4,
+   "evidence": "tbb007/glossary.md"
+  },
+  {
+   "type": "术语策略",
+   "content": "tbb010_nodsh / tbb012 / tbb013 三份 glossary 与 tbb010 的 md5 完全相同（289271…）⇒ 术语表未随章节演进，第 13 章实际靠 worker_spec 内嵌的度量空间术语表兜底。",
+   "tags": [
+    "实分析",
+    "本地素材",
+    "术语策略",
+    "债"
+   ],
+   "importance": 3,
+   "evidence": "tbb012/glossary.md"
+  },
+  {
+   "type": "术语策略",
+   "content": "格式铁律自相矛盾：一处要「English term（中文翻译）」，另一处要「中文主体、English 行内嵌入」。结果 tbb010 写「分析学（analysis）」、nodsh 写「analysis（分析）」。",
+   "tags": [
+    "实分析",
+    "本地素材",
+    "术语策略",
+    "返工"
+   ],
+   "importance": 4,
+   "evidence": "tbb010/translations/W1.md:5 vs tbb010_nodsh/translations/W1.md:4"
+  },
+  {
+   "type": "工程方法",
+   "content": "audit 是固定 checklist 而非自由评审：英中对照/定理定义例是否跳过/顺序/过渡段/证明压缩/习题误译/编号/数学排版八项逐条判 🔴🟡🟢，A1–A10 对应 worker 分块，可数与原文结构单元一一对表。",
+   "tags": [
+    "实分析",
+    "本地素材",
+    "audit"
+   ],
+   "importance": 4,
+   "evidence": "tbb007/audit/A1.md"
+  },
+  {
+   "type": "工程方法",
+   "content": "格式审计靠正则统计而非人眼：grep $$、Unicode 上下标、<div>、kxk 残留、fenced math 配对计数。tbb010 一次列出 31 项，含标题层级混用、页标记六种风格、定理名裸英文、例子结束符 □/■ 不统一。",
+   "tags": [
+    "实分析",
+    "本地素材",
+    "audit",
+    "正则"
+   ],
+   "importance": 4,
+   "evidence": "tbb010/audit/audit_format.md:1-60"
+  },
+  {
+   "type": "迭代",
+   "content": "终审含「事实核对+上网核实」：Banach 1922 Fundamenta、Brouwer 1881–1966、Cantor 1872 均判准确；同时抓住译注里 Bessel 不等式常数 2/π 可疑，要求回原文核归一化约定。",
+   "tags": [
+    "实分析",
+    "本地素材",
+    "audit",
+    "事实核对"
+   ],
+   "importance": 4,
+   "evidence": "tbb012/halfs/audit_final_half2.md:10-18"
+  },
+  {
+   "type": "迭代",
+   "content": "tbb010_nodsh 是同一 437–484 的「无 dsh 重译版」（worker_spec 首行自述）：tbb010 在 dsh 里 4h40m 出 final；nodsh 换路径重跑 11h，留四代译文目录。",
+   "tags": [
+    "实分析",
+    "本地素材",
+    "迭代",
+    "对照实验"
+   ],
+   "importance": 5,
+   "evidence": "tbb010_nodsh/worker_spec.md:1"
+  },
+  {
+   "type": "迭代",
+   "content": "重译不必然更好：nodsh 版 draft 2899 行、66 条译注（多于 tbb010 的 34），但格式审计发现书页 471–478（W18–W22）退化为「- 」列表、标签纯英文，交付前仍需二次修。",
+   "tags": [
+    "实分析",
+    "本地素材",
+    "迭代",
+    "质量"
+   ],
+   "importance": 4,
+   "evidence": "tbb010_nodsh/halfs/format_audit.md:18-30"
+  },
+  {
+   "type": "工程方法",
+   "content": "译者注由脚本按锚点关键词插入：insert_notes.py 正插 → insert_notes_fix.py「手动补插 12 条失败注」（附 W→锚点关键词表）→ fix2，锚点匹配失败是主要故障源。",
+   "tags": [
+    "实分析",
+    "本地素材",
+    "翻译工程",
+    "脚本"
+   ],
+   "importance": 3,
+   "evidence": "tbb010_nodsh/insert_notes_fix.py:1-20"
+  },
+  {
+   "type": "覆盖面",
+   "content": "5 part 合 250 书页：285–334/435–484/535–584/585–634，覆盖第 7 章后半、第 8 章头、第 11–12 章、第 13 章全章；每 part 的 pages/ 恒为 50 个 bp*.txt。",
+   "tags": [
+    "实分析",
+    "本地素材",
+    "覆盖面"
+   ],
+   "importance": 3,
+   "evidence": "tbb012/pages/"
+  },
+  {
+   "type": "工程方法",
+   "content": "译注是最高工艺点：每条约 400–600 字，固定结构「第一性原理 → 跨课程连接（6.042J/CSAPP/CLRS/Strang）→ 命名模板或卡点诊断 → 费曼检验」，tbb012 一章 57 条、tbb013 36 条。",
+   "tags": [
+    "实分析",
+    "本地素材",
+    "译者注"
+   ],
+   "importance": 4,
+   "evidence": "tbb013/notes/note_part1.md:1-20"
+  },
+  {
+   "type": "迭代",
+   "content": "踩坑清单随批次沉淀：tbb010（8/19）犯了页眉当标题、kx−yk 当范数、H1/H2 标题漂移；到 tbb007（8/27）这四条已写进 worker_spec 的「避坑清单」与 OCR 乱码修正清单。",
+   "tags": [
+    "实分析",
+    "本地素材",
+    "迭代",
+    "教训"
+   ],
+   "importance": 4,
+   "evidence": "tbb007/worker_spec.md:70-84"
+  },
+  {
+   "type": "待验证",
+   "content": "tbb010/final.bilingual.md:10 把 dsh 写成模型角色（flashauto 审计 / dsh pro 写注 / dsh pro+max 超强审计）；nodsh 是换 provider 还是弃用工具，无自述，未确认",
+   "tags": [
+    "实分析",
+    "本地素材",
+    "待验证"
+   ],
+   "importance": 3,
+   "evidence": "tbb010/final.bilingual.md:10"
+  }
+ ]
+}

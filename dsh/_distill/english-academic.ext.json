@@ -1,0 +1,213 @@
+{
+ "subject": "english-academic",
+ "round": "ext",
+ "generated_at": "2026-11-08T00:22:03+08:00",
+ "sources": [
+  "C:/Users/27063/.reasonix/global-workspace/pages/DS_英语语法错误纠正.md",
+  "C:/Users/27063/.reasonix/global-workspace/pages/DS_纪念品商店英语翻译.md",
+  "C:/Users/27063/.reasonix/global-workspace/pages/DS_英语语法与逻辑分析讲解.md",
+  "C:/Users/27063/.reasonix/global-workspace/pages/DS_翻译风格总结与文档300-400.md",
+  "C:/Users/27063/.reasonix/global-workspace/pages/DS_李华分享英语社团获市级荣誉.md",
+  "C:/Users/27063/.reasonix/global-workspace/pages/DS_小学五年级英语期末模拟卷设计.md",
+  "C:/Users/27063/.reasonix/global-workspace/pages/DS_英语音标测试卷设计与评分标准.md",
+  "C:/Users/27063/.reasonix/global-workspace/pages/DS_银川二中高三英语复习资料.md",
+  "C:/Users/27063/.reasonix/global-workspace/pages/DS_银川二中英语复习核心词汇与写作训练.md",
+  "C:/Users/27063/.reasonix/global-workspace/pages/DS_English_Grammar_Practice_Questions_and_Answers.md",
+  "C:/Users/27063/.reasonix/global-workspace/pages/DS_AI与出版社翻译教材对比分析.md",
+  "C:/Users/27063/.reasonix/global-workspace/pages/DS_概率导论翻译质量差.md",
+  "C:/Users/27063/.reasonix/global-workspace/pages/DS_我需要在电脑上整一个翻译软件，最好是免费并且实时字幕那种.md",
+  "C:/Users/27063/.reasonix/global-workspace/pages/DS_技术文档翻译软件推荐方案.md",
+  "C:/Users/27063/.reasonix/global-workspace/pages/DS_英语四级备考低价资料推荐.md",
+  "C:/Users/27063/.reasonix/global-workspace/pages/DS_大一英语B班期末备考建议.md",
+  "C:/Users/27063/.reasonix/global-workspace/pages/DS_周六英语.md",
+  "C:/Users/27063/.reasonix/global-workspace/pages/DS_计算机科学资料英语.md",
+  "C:/Users/27063/.reasonix/global-workspace/pages/DS_大学英语期中考试填空题答案解析.md",
+  "C:/Users/27063/.reasonix/global-workspace/pages/DS_把英语翻译成汉语，汉语翻译成英语.md",
+  "C:/Users/27063/.reasonix/global-workspace/pages/DS_MIT概率论课程中文翻译版介绍.md",
+  "C:/Users/27063/.reasonix/global-workspace/pages/DS_小升初英语备考建议.md",
+  "C:/Users/27063/.reasonix/global-workspace/pages/DS_大学英语四级考试的重要性分析.md",
+  "C:/Users/27063/.reasonix/global-workspace/pages/DS_刘晓艳英语四级单词笔记方法.md",
+  "C:/Users/27063/.reasonix/global-workspace/pages/DS_四级英语备考策略与资源推荐.md",
+  "C:/Users/27063/.reasonix/global-workspace/pages/DS_高考英语词汇背诵建议与策略.md",
+  "C:/Users/27063/.reasonix/global-workspace/pages/DS_银川二中高三英语复习专题.md",
+  "C:/Users/27063/.reasonix/global-workspace/pages/DS_银川二中高三英语复习词汇与短语.md"
+ ],
+ "insights": [
+  {
+   "type": "反复错误",
+   "content": "时态混用：「Did your brother usually go to school...」过去时 Did 撞现在时频度词 usually；问现在习惯用 Does，问过去须改 Did... use to 并删 usually。",
+   "tags": [
+    "学术英语",
+    "反复错误",
+    "时态"
+   ],
+   "importance": 4,
+   "evidence": "C:/Users/27063/.reasonix/global-workspace/pages/DS_英语语法错误纠正.md §我（第 1 句）"
+  },
+  {
+   "type": "反复错误",
+   "content": "助动词缺失 + 词尾冗余：「Peter seen the film already alreadyly」——seen 不能单独作谓语，须 has seen；alreadyly 是给 already 硬加 -ly 的自造词。",
+   "tags": [
+    "学术英语",
+    "反复错误",
+    "助动词"
+   ],
+   "importance": 3,
+   "evidence": "C:/Users/27063/.reasonix/global-workspace/pages/DS_英语语法错误纠正.md §我（第 3 句）"
+  },
+  {
+   "type": "反复错误",
+   "content": "句子边界不分：「Look the children are playing football」两个完整句直接相连，缺感叹号或逗号+连词；应为 Look! The children are playing football.",
+   "tags": [
+    "学术英语",
+    "反复错误",
+    "句子结构"
+   ],
+   "importance": 3,
+   "evidence": "C:/Users/27063/.reasonix/global-workspace/pages/DS_英语语法错误纠正.md §我（第 2 句）"
+  },
+  {
+   "type": "反复错误",
+   "content": "拼写按音记第二批：alreadyly、indicent（indecent）、loitaround（loiter / lounge around）、erititet、poiswith、多充边（多重边）——先敲音串让 AI 反推，不查词典。",
+   "tags": [
+    "学术英语",
+    "反复错误",
+    "拼写"
+   ],
+   "importance": 4,
+   "evidence": "C:/Users/27063/.reasonix/global-workspace/pages/DS_纪念品商店英语翻译.md §loitaround/erititet/poiswith；DS_英语语法与逻辑分析讲解.md §indicent"
+  },
+  {
+   "type": "反复错误",
+   "content": "术语中文名错译：把 NP-complete 说成「NP不完全问题」（应为 NP 完全 / NP-完全），把 multiple edges 写成「多充边」（应为多重边 / parallel edges）。",
+   "tags": [
+    "学术英语",
+    "反复错误",
+    "术语"
+   ],
+   "importance": 3,
+   "evidence": "C:/Users/27063/.reasonix/global-workspace/pages/DS_翻译风格总结与文档300-400.md §np不完全问题是什么 / §自环和多充边的定义"
+  },
+  {
+   "type": "术语核定",
+   "content": "图论术语按书中英文核定：degree、simple graph、self-loop、parallel edges / multiple edges；并要「给我一个标准的符合书中风格的定义」，以教材黑体词为准。",
+   "tags": [
+    "学术英语",
+    "术语核定",
+    "图论"
+   ],
+   "importance": 3,
+   "evidence": "C:/Users/27063/.reasonix/global-workspace/pages/DS_翻译风格总结与文档300-400.md §degree / §简单图 / §自环"
+  },
+  {
+   "type": "术语核定",
+   "content": "术语嵌入规则精确化：「翻译是中文，只有关键术语需要变成英文插入后面追上一个中文括号」——正文全中文、仅术语留英文并附中文注，方向与第一轮「英文后标汉语」相反。",
+   "tags": [
+    "学术英语",
+    "术语核定",
+    "格式规范"
+   ],
+   "importance": 5,
+   "evidence": "C:/Users/27063/.reasonix/global-workspace/pages/DS_翻译风格总结与文档300-400.md §第 19 条「我的意思是翻译是中文…」"
+  },
+  {
+   "type": "体裁",
+   "content": "新体裁：高考应用文（李华给英国笔友 Peter 的邮件，80 词、三段式）+ 读后续写（continuation writing 续两段），时间在 2025-05，高考前一个月。",
+   "tags": [
+    "学术英语",
+    "体裁",
+    "写作"
+   ],
+   "importance": 3,
+   "evidence": "C:/Users/27063/.reasonix/global-workspace/pages/DS_李华分享英语社团获市级荣誉.md §首条题目 / §阅读下面材料，根据其内容…续写两段"
+  },
+  {
+   "type": "体裁",
+   "content": "写作产出策略：主动把词汇压到最低——「词汇简单一点，有一两个句型」「三段式」，靠 1–2 个固定句型加模板结构换稳定，不用已认得的难词。",
+   "tags": [
+    "学术英语",
+    "体裁",
+    "产出策略"
+   ],
+   "importance": 4,
+   "evidence": "C:/Users/27063/.reasonix/global-workspace/pages/DS_李华分享英语社团获市级荣誉.md §词汇简单一点，有一两个句型 / §三段式"
+  },
+  {
+   "type": "体裁",
+   "content": "新身份是出题人：给五年级/小升初英语要「数学语文英语都要你自己出，不要从网上找」「答案统一放卷子最后」「针对这些错误的地方再出一张卷子」，形成错题→再测闭环。",
+   "tags": [
+    "学术英语",
+    "体裁",
+    "命题"
+   ],
+   "importance": 4,
+   "evidence": "C:/Users/27063/.reasonix/global-workspace/pages/DS_小学五年级英语期末模拟卷设计.md §数学，语文英语都要你自己出；DS_英语音标测试卷设计与评分标准.md §第 3 条"
+  },
+  {
+   "type": "提问模式",
+   "content": "用编号连续性校验 AI 输出：「76到108没有」「缺31到42」「51-60没有」「核心短语去哪了」——把清单当索引查漏，而不是换个问法重问一遍。",
+   "tags": [
+    "学术英语",
+    "提问模式",
+    "完整性校验"
+   ],
+   "importance": 4,
+   "evidence": "C:/Users/27063/.reasonix/global-workspace/pages/DS_银川二中高三英语复习资料.md §缺31到42；DS_银川二中英语复习核心词汇与写作训练.md §51-60没有"
+  },
+  {
+   "type": "提问模式",
+   "content": "要求按考试用途过筛：「把所有和考研和四六级翻译有关的具有语境意义的东西挑出来详解」——不要全篇讲解，只挑会考且依赖语境的部分。",
+   "tags": [
+    "学术英语",
+    "提问模式",
+    "考试筛选"
+   ],
+   "importance": 3,
+   "evidence": "C:/Users/27063/.reasonix/global-workspace/pages/DS_English_Grammar_Practice_Questions_and_Answers.md §末条"
+  },
+  {
+   "type": "待验证",
+   "content": "反复索要出处未落实：「原文句子依据呢」「这个知识点在普林斯顿概率论读本的哪里」「仔细查查」——AI 答案多为生成而非引用，page-level 定位始终没给出。",
+   "tags": [
+    "学术英语",
+    "待验证",
+    "溯源"
+   ],
+   "importance": 4,
+   "evidence": "C:/Users/27063/.reasonix/global-workspace/pages/DS_英语语法与逻辑分析讲解.md §原文句子依据呢；DS_AI与出版社翻译教材对比分析.md §这个知识点在普林斯顿概率论读本的哪里"
+  },
+  {
+   "type": "待验证",
+   "content": "让 AI 自评「是你翻译的教材片段好还是国内出版社的好」——AI 评自己译文，结论不可信；同期查到《概率导论》中译「毁原著」也只来自联网检索，未对照原书。",
+   "tags": [
+    "学术英语",
+    "待验证",
+    "译评"
+   ],
+   "importance": 3,
+   "evidence": "C:/Users/27063/.reasonix/global-workspace/pages/DS_AI与出版社翻译教材对比分析.md §第 1 条；DS_概率导论翻译质量差.md"
+  },
+  {
+   "type": "待验证",
+   "content": "工具规格要求：免费 + 实时字幕 + 「翻译完有 ai 会对其中的东西做出注解」——要的是带术语注解的双语流而非逐句译文；所荐方案能否真做实时字幕，未验证。",
+   "tags": [
+    "学术英语",
+    "待验证",
+    "工具"
+   ],
+   "importance": 3,
+   "evidence": "C:/Users/27063/.reasonix/global-workspace/pages/DS_我需要在电脑上整一个翻译软件，最好是免费并且实时字幕那种.md §首条；DS_技术文档翻译软件推荐方案.md §有ai会对其中的东西做出注解"
+  },
+  {
+   "type": "层次",
+   "content": "新水位硬数据：高考英语 90/150（自称高三最高分）、阅读词汇量测试 3255、大英 B 班用《新目标》第 1 册 U1/2/5/7；与四级 398 互证——认读够用，产出稀薄。",
+   "tags": [
+    "学术英语",
+    "层次",
+    "水位"
+   ],
+   "importance": 4,
+   "evidence": "C:/Users/27063/.reasonix/global-workspace/pages/DS_英语四级备考低价资料推荐.md §我高考英语只有90分；DS_大一英语B班期末备考建议.md §3255"
+  }
+ ]
+}

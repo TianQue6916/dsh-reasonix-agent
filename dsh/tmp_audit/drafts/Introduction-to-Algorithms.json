@@ -1,0 +1,13 @@
+{
+  "name": "Introduction-to-Algorithms",
+  "description": "CLRS Introduction to Algorithms — bilingual EN/中文 book translation chunks (p005-242), MIT 6.006 lecture notes, problem set solutions, exams 1-14, subtitles.",
+  "topics": [
+    "algorithms",
+    "clrs",
+    "mit-6-006",
+    "lecture-notes",
+    "problem-set-solutions"
+  ],
+  "llms_txt": "# Introduction to Algorithms · MIT 6.006\n\n> CLRS 教材双语分块翻译 + MIT 6.006（Spring 2020）课堂讲义、problem set 解答、考试原卷与中英字幕，用于系统自学算法。\n\n## 教材与讲义\n- [01-clrs-book](01-clrs-book): CLRS 正文逐段双语翻译，chunk01-chunk06 覆盖 book p005-p242\n- [02-lecture-notes](02-lecture-notes): 课堂讲义双语译本（lec01-introduction 至 lec20-course-review）与 `LNotes/` 官方讲义 1-20\n\n## 作业与考试\n- [03-problem-sets](03-problem-sets): 官方原卷与解答（prob7sol、prob8sol、ps6_sol）及双语译本、6.006 PS6 中文版\n- [04-exams](04-exams): Exams 1-14 原卷 + 课程进度表\n- [06-notes](06-notes): 个人推导笔记（DP 判定、LCS 最优子结构、编辑距离贪心反例、Bellman-Ford/Johnson）\n\n## 备注\n- 视频本体因体积未收录，全部讲次字幕见 [05-subtitles](05-subtitles)（英文 .srt + .zho-hans.srt）。\n- 公式保留 LaTeX 英文原样；早期 C/C++ 入门练习已迁至 Introduction-to-Algorithms-codetry。",
+  "evidence": "依据 top 八个目录 01-clrs-book…06-notes、README.md 的分节目录表，以及 lvl2/sample 中 clrs_chunk01_book005-042.bilingual.md、02-lecture-notes/lec13-dijkstra.bilingual.md、03-problem-sets/prob7sol.bilingual.md 等真实路径。"
+}

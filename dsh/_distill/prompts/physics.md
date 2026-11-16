@@ -3,7 +3,22 @@
 
 ## 素材（只读，不要修改任何原文件）
 
-1. `C:\Users\27063\.reasonix\global-workspace\pages\DS_物理.md`
+1. `C:\Users\27063\.reasonix\global-workspace\pages\DS_------_缺页（Ch9）_从磁盘加载页_访问时触发缺页异常_COW_fork（Ch9）_复制物理页_写入时触发缺页异.md`
+2. `C:\Users\27063\.reasonix\global-workspace\pages\DS_2026-07-05,银川,物理,等体加热内能减少压强升高判断.md`
+3. `C:\Users\27063\.reasonix\global-workspace\pages\DS_人工智能专业只学物理c够吗.md`
+4. `C:\Users\27063\.reasonix\global-workspace\pages\DS_大学物理实验考试答案.md`
+5. `C:\Users\27063\.reasonix\global-workspace\pages\DS_大学物理实验课程安排整理.md`
+6. `C:\Users\27063\.reasonix\global-workspace\pages\DS_宁夏大学物理实验报告提交方式.md`
+7. `C:\Users\27063\.reasonix\global-workspace\pages\DS_物理.md`
+8. `C:\Users\27063\.reasonix\global-workspace\pages\DS_物理试题解答与计算过程详解.md`
+
+
+## 已有条目（共 4 条，**不要重复**；矛盾时必须标 conflict）
+
+- 能识别「条件不足」这类 model 假设：仅给 R 与 g 时 mg = F万有 - F
+- 大学物理C 期末的复盘结论是「考试的核心内容完全偏离了方向」：一道选择题三分，备考方向与
+- 他拒的是物理隐喻而非物理本身：要求把 quadratic form 的「能量」当纯数学量
+- 该科目在对话语料中几乎无投入：pages 目录 413 个文件里物理相关仅 DS_物理.
 
 
 ## 提炼维度（每条 insight 必须归入其中一类）
@@ -20,6 +35,10 @@
 
 1. 不准调用 `subagent` / `subagent_fork` / `workflow`；2. 不准加载任何 skill；
 3. 只读上面列出的文件，不写不改既有文件；4. 无证据不写，不要复述教材；5. 大文件按 `### ` 分段读。
+6. **冲突必须显式标注**：若素材里的事实与上面「已有条目」矛盾（层次不同 / 结论相反 / 前后期说法不一），
+   **不要静默选一边**，也不要只写新的那条 —— 写一条带 `"conflict": true` 的 insight，
+   `content` 写成「旧：<原判断> → 新：<新证据>（依据 …）」，`evidence` 给出两处位置。
+7. 与已有条目**重复**的不要重写；同主题但更深的证据才写，并注明「深化 #<原条目前缀>」。
 
 ## 输出
 

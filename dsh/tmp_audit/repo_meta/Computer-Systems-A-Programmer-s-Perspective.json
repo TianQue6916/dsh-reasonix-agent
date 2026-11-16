@@ -1,0 +1,21 @@
+{
+ "name": "Computer-Systems-A-Programmer-s-Perspective",
+ "files": 5,
+ "top": [
+  "CSAPP-章节结构索引.md",
+  "README.md",
+  "扫描件"
+ ],
+ "lvl2": [
+  "扫描件/01-目录（扫描）.pdf",
+  "扫描件/02-第2章 信息的表示和处理（扫描）.pdf",
+  "扫描件/03-第8章 异常控制流（扫描）.pdf"
+ ],
+ "sample": [
+  "CSAPP-章节结构索引.md",
+  "README.md",
+  "扫描件/01-目录（扫描）.pdf",
+  "扫描件/02-第2章 信息的表示和处理（扫描）.pdf",
+  "扫描件/03-第8章 异常控制流（扫描）.pdf"
+ ]
+}

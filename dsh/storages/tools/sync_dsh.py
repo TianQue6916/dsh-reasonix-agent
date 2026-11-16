@@ -61,14 +61,18 @@ WIN_ROOT = r'C:\Users\27063\.dsh'
 
 # ── 额外目录对：Windows 侧的真身不在 ~/.dsh 里 ────────────────────────────
 # 2026-10-01 实测的链接拓扑。**必须显式列出**，因为 os.walk 不跟随 junction：
-#   ~/.dsh/skills       → Junction → %APPDATA%\reasonix\skills   （真身在 APPDATA）
-#   ~/.reasonix/memory  → Junction → %APPDATA%\reasonix\memory   （真身在 APPDATA）
-#   ~/.reasonix/skills  → 真实目录（APPDATA 那份的冗余副本）
+#   ~/.dsh/skills       → Junction → C:\Users\27063\ai-skills      （2026-11 初改的，见下）
+#   ~/.reasonix/memory  → Junction → %APPDATA%\reasonix\memory
 # 漏掉它们的后果是**静默的**：Linux 的 ~/.dsh/skills 长期为 0，memory 也只有旧的 225 条。
+#
+# 2026-11-16 修：skills 真身已从 %APPDATA%\reasonix\skills 搬到 ~\ai-skills
+# （APPDATA 那份保留成 Nov 2 的旧副本，缺 aigc、带一个 .bak）。这里没跟着改，
+# 于是同步一直在搬旧副本，Linux 侧 skills 停更三周且 --verify 报「0 差异」
+# —— 因为两边比的是同一份过时数据。
 EXTRA_PAIRS = [
     # (Linux 侧路径, Windows 侧真实路径)
     (os.path.expanduser('~/.dsh/skills'),
-     r'C:\Users\27063\AppData\Roaming\reasonix\skills'),
+     r'C:\Users\27063\ai-skills'),
     (os.path.expanduser('~/.reasonix/memory'),
      r'C:\Users\27063\AppData\Roaming\reasonix\memory'),
 ]

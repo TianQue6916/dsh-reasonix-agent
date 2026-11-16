@@ -709,12 +709,14 @@
   config:
     enableGithub: true
     enableDeepseekSearch: true
+    deepseekSearchApiKeyEnv: "DEEPSEEK_SEARCH_API_KEY"
     enableBing: true
     enableWiki: true
     enableGoat: false
     enableDeepseek: false
     maxResults: 74
     deepseekSearchCount: 50
+    interleaveSources: true
     tagTitles: true
 # === 子 agent 并发上限：8 → 32（2026-10-28） ===
 # 源码 @deepseek-ai/dsh-subagent static Config:
@@ -737,3 +739,11 @@
       config:
         enabled: true
         throttleMs: 3600000
+
+# === DeepSeek 官方 API 只给 web_search 用（2026-11-08 用户约束）===
+# base 自带的两个 DeepSeek 搜索 provider 默认 apiKeyEnv: DEEPSEEK_API_KEY；
+# 除 web_search（local-search 的 deepseekSearch 源，走 /v1/tools/search）外一律禁用。
+- id: web-search-deepseek
+  disabled: true
+- id: web-deepseek-api
+  disabled: true

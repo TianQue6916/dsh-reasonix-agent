@@ -1,0 +1,206 @@
+{
+ "source": "local-materials",
+ "area": "素材库存",
+ "round": "local",
+ "generated_at": "2026-11-08T00:47:00+08:00",
+ "inventory": [
+  {
+   "course": "概率导论 (MIT 6.041/6.431 · Bertsekas)",
+   "files": 94,
+   "structure": "book(11 chunk, p1-539) / lecture最终版(25) / problemset(11) / recitation(24) / tutorials(11) / exams(9) / review(2)",
+   "usage_traces": "none",
+   "note": "全书 1-539 页已双语化，四类配套齐全；纯素材，无自写批注，全部产出集中在 2026-08-27~29"
+  },
+  {
+   "course": "算法进阶 (MIT 6.046 S15)",
+   "files": 183,
+   "structure": "lecture(24 讲 + 13 个 lecNN/ 副本配 fig) / problemset(10) / recitationnotes(11) / exams(3)",
+   "usage_traces": "none",
+   "note": "24 讲全覆盖（含 14a/14b/19/20 分布式与 cache-oblivious）；121 张 fig png；13 个副本目录只是配图抽取，不是学习痕迹"
+  },
+  {
+   "course": "计算机网络 (Stanford CS144 Fall 2019)",
+   "files": 120,
+   "structure": "慕课(8 Unit, ~90 篇) / 课堂讲义(17) / 实验讲义(10, Lab 0-6 + 抓包题答 + 大纲) / 模拟考试(4)",
+   "usage_traces": "none",
+   "note": "1.9 MB，全部 2026-08-29 一天产出；讲义覆盖面广但无 Lab 代码/抓包实测文件"
+  },
+  {
+   "course": "006算法导论 (MIT 6.006 S20)",
+   "files": 80,
+   "structure": "主机文件(LNotes 1-20 + Exams 1-14 pdf) / lec(5 篇双语 md + 散落 pdf) / 作业(9 篇双语 md) / book(CLRS p5-242, 6 chunk) / 思维文件归档(1)",
+   "usage_traces": "some",
+   "note": "唯一带使用痕迹的目录：progress_table.pdf + 自写 DP 判别长文，md mtime 跨 07-29→09-05；双语只覆盖 lec15-19"
+  },
+  {
+   "course": "归档文件 / 线性代数导论",
+   "files": 59,
+   "structure": "0-55/ 下 58 个切片 pdf（各约 1 MB）+ 55-105.pdf（42 MB 整段）",
+   "usage_traces": "none",
+   "note": "命名与大小符合「按页切片」的 pipeline 中间产物，非按章/讲切分；具体书目未确认"
+  },
+  {
+   "course": "待处理文件夹",
+   "files": 20,
+   "structure": "数学/(6 md + assets 3 svg + 3 png + tools 2 js + 1 py + .bak-v2) ; 计算机/(1 md + 1 pdf)",
+   "usage_traces": "some",
+   "note": "7 篇 md 共 2770 行，全是深度解释/证明长文；含校验脚本与 v2 修订痕迹，说明是本人产出待归档"
+  }
+ ],
+ "insights": [
+  {
+   "type": "素材库存",
+   "content": "未学课程 397 文件三层同构（book/lecture/problemset/exam），全部是 *.bilingual.md 中英对照+译者注，无一份原始英文档、无一份自写笔记 —— 纯素材。",
+   "tags": [
+    "素材库",
+    "本地素材",
+    "未学课程"
+   ],
+   "importance": 4,
+   "evidence": "未学课程/概率导论/lecture最终版/Lec01.bilingual.md"
+  },
+  {
+   "type": "素材库存",
+   "content": "概率导论是四目录里最完整的一套：Bertsekas《Introduction to Probability》2nd ed 全书 p1-539 分 11 chunk，加 25 讲 + 11 PS + 24 recitation + 11 tutorial + 9 套 exam + 2 份 quiz review，可独立支撑自学闭环。",
+   "tags": [
+    "素材库",
+    "本地素材",
+    "概率导论"
+   ],
+   "importance": 4,
+   "evidence": "未学课程/概率导论/book/prob_chunk11_p501-539.bilingual.md"
+  },
+  {
+   "type": "素材库存",
+   "content": "算法进阶 = MIT 6.046 S15 全 24 讲（含 14a/14b 网络流应用、19/20 分布式、23/24 cache-oblivious）+ 10 PS + 11 recitation + 3 exam，配 121 张 fig；13 个 lecture/lecNN/ 子目录只是配图抽取，不是学习痕迹。",
+   "tags": [
+    "素材库",
+    "本地素材",
+    "算法进阶"
+   ],
+   "importance": 3,
+   "evidence": "未学课程/算法进阶/lecture/alg046-lec10-dynamic-programming.bilingual.md"
+  },
+  {
+   "type": "素材库存",
+   "content": "计算机网络 = Stanford CS144 Fall 2019：8 个 Unit 慕课约 90 篇 + 17 篇课堂讲义 + 10 篇实验讲义（Lab 0-6 与抓包题答）+ 4 份模拟考；但缺 Lab 实际代码与抓包结果，只能读不能做。",
+   "tags": [
+    "素材库",
+    "本地素材",
+    "计算机网络"
+   ],
+   "importance": 3,
+   "evidence": "未学课程/计算机网络/实验讲义/Lab 2 - TCP接收端.bilingual.md"
+  },
+  {
+   "type": "素材库存",
+   "content": "006算法导论 21 篇 md 里 20 篇双语：只覆盖 lec15-19（递归/DP/复杂度）+ 9 套 problem session，另有 LNotes 1-20 与 Exams 1-14 的原始 pdf —— 加工的是后半段。",
+   "tags": [
+    "素材库",
+    "本地素材",
+    "006算法导论"
+   ],
+   "importance": 3,
+   "evidence": "006算法导论/主机文件/LNotes 19.pdf; 006算法导论/lec/lec19-complexity.bilingual.md"
+  },
+  {
+   "type": "素材库存",
+   "content": "006 的 CLRS 双语只到 book p242（6 chunk），CLRS 全本未覆盖；若后续走 CLRS 全书（图论/高级数据结构/字符串）需补料。",
+   "tags": [
+    "素材库",
+    "本地素材",
+    "006算法导论"
+   ],
+   "importance": 3,
+   "evidence": "006算法导论/book/clrs_chunk06_book203-242.bilingual.md"
+  },
+  {
+   "type": "使用痕迹",
+   "content": "006 是唯一含真实使用痕迹的目录：主机文件/6-006_progress_table.pdf（自制进度表）、思维文件归档/006-r16-dp-树与链判别.md（针对自己追问写的 DP 判别长文）、双语 md mtime 跨 07-29→09-05 共 6 周逐讲推进。",
+   "tags": [
+    "素材库",
+    "本地素材",
+    "006算法导论"
+   ],
+   "importance": 5,
+   "evidence": "006算法导论/思维文件归档/006-r16-dp-树与链判别.md"
+  },
+  {
+   "type": "使用痕迹",
+   "content": "未学课程零使用痕迹：397 文件里 364 个 mtime 落在 2026-08-29 同一天（批量产出），命名全部规整为 *.bilingual.md，无批注、无 todo、无进度表、无手改副本。",
+   "tags": [
+    "素材库",
+    "本地素材",
+    "未学课程"
+   ],
+   "importance": 5,
+   "evidence": "未学课程/ 全目录 find -printf '%TY-%Tm-%Td' 统计：08-27(4) 08-28(3) 08-29(364) 08-30(26)"
+  },
+  {
+   "type": "学习意图",
+   "content": "翻译顺序透露优先级：概率导论 book 先在 8/27-28 单独译完，其余讲义与另两门课 8/29 一天批量译 —— 概率是「即将开动」的那门，算法进阶/计算机网络是备料。",
+   "tags": [
+    "素材库",
+    "本地素材",
+    "概率导论"
+   ],
+   "importance": 4,
+   "evidence": "未学课程/概率导论/book/*.md 与 未学课程/算法进阶/*.md 的 mtime 对比"
+  },
+  {
+   "type": "学习意图",
+   "content": "两本概率教材是「同一 subject 的两层」：Miller《普林斯顿概率论读本》(The Probability Lifesaver) 走直觉+计算训练，Bertsekas 是 6.041/6.431 官方教材、更紧致并接随机过程（Bernoulli/Poisson/Markov）——后者做对照与升级，不当替代。",
+   "tags": [
+    "素材库",
+    "本地素材",
+    "概率导论"
+   ],
+   "importance": 4,
+   "evidence": "未学课程/概率导论/book/prob_chunk01_p1-50.bilingual.md（教材缩写 BT = Bertsekas & Tsitsiklis, 2nd ed.）"
+  },
+  {
+   "type": "素材库存",
+   "content": "归档文件 59 个 pdf 全是单一主题「线性代数导论」：0-55/ 拆成 58 个约 1 MB 切片 + 55-105.pdf 42 MB 整段，是 pipeline 中间产物而非教学单元切分；书目（未确认，疑 Strang）需开一页核对。",
+   "tags": [
+    "素材库",
+    "本地素材",
+    "归档文件"
+   ],
+   "importance": 3,
+   "evidence": "归档文件/线性代数导论/0-55/0-55_1.pdf; 归档文件/线性代数导论/55-105.pdf"
+  },
+  {
+   "type": "素材库存",
+   "content": "待处理文件夹 7 篇 md（2770 行）全是「深度解释/证明」型长文，不是知识点卡片：18.100B PS1 三篇（完备性/无穷大元素/定义自洽性）、度量三公理账本、backward induction、DP 数学正确性。",
+   "tags": [
+    "素材库",
+    "本地素材",
+    "待处理文件夹"
+   ],
+   "importance": 3,
+   "evidence": "待处理文件夹/数学/18.100B-PS1-P7-完备性与三次方根-深度解释.md"
+  },
+  {
+   "type": "待验证",
+   "content": "度量三公理可迁移性深度解析.md（626 行）与 metric-final.md（632 行）标题、导语、结尾全同，是同一篇的两版 —— 归档时择一，避免入库重复条目。",
+   "tags": [
+    "素材库",
+    "本地素材",
+    "待处理文件夹"
+   ],
+   "importance": 2,
+   "evidence": "待处理文件夹/数学/度量三公理可迁移性深度解析.md vs metric-final.md"
+  },
+  {
+   "type": "待验证",
+   "content": "算法进阶/lecture 下同讲存在两份（顶层 24 个 md + 13 个 lecNN/ 副本），后续引用必须指定其一，否则重复计入 lecture 数会造成「25 讲」的错觉。",
+   "tags": [
+    "素材库",
+    "本地素材",
+    "算法进阶"
+   ],
+   "importance": 2,
+   "evidence": "未学课程/算法进阶/lecture/lec16/alg046-lec16-complexity-p-np-np-completeness-reductions.bilingual.md"
+  }
+ ]
+}

@@ -8,27 +8,33 @@ importers:
 
   .:
     dependencies:
-      '@deepseek-ai/dsh-experimental-session-titles-bundle':
-        specifier: 0.2.1-rc.2
-        version: 0.2.1-rc.2
       '@lanbaolu/dsh-wechat-bridge':
         specifier: 0.9.1
         version: 0.9.1(@deepseek-ai/schemastery@3.18.4)
+      '@local/dsh-plugin-fetch-file':
+        specifier: file:D:/Toolbox/dsh-plugin-fetch-file
+        version: file:D:/Toolbox/dsh-plugin-fetch-file
       '@local/dsh-plugin-goat-panel':
         specifier: link:D:/Toolbox/goat-gateway/dsh-plugin-goat-panel
         version: link:D:/Toolbox/goat-gateway/dsh-plugin-goat-panel
       '@local/dsh-thinking-language':
         specifier: file:D:/Toolbox/dsh-thinking-language
         version: file:D:/Toolbox/dsh-thinking-language
+      '@weibaohui/dsh-smart-title':
+        specifier: 0.1.9
+        version: 0.1.9
       billion-context:
-        specifier: 0.1.212
-        version: 0.1.212
+        specifier: 0.1.214
+        version: 0.1.214(@types/node@16.9.1)
       ds-harness-remote:
-        specifier: ^0.5.22
-        version: 0.5.22
+        specifier: ^0.6.5
+        version: 0.6.5
       dsh-better-sidebar:
         specifier: 0.28.2
         version: 0.28.2
+      dsh-computer-use-win:
+        specifier: 0.5.7
+        version: 0.5.7(@deepseek-ai/schemastery@3.18.5)
       dsh-context:
         specifier: 0.74.0
         version: 0.74.0(@deepseek-ai/schemastery@3.18.5)
@@ -142,25 +148,6 @@ packages:
 
   '@deepseek-ai/cosmokit@1.8.6':
     resolution: {integrity: sha512-ZSD/fN52L498LBIOYwjIOlaLv5veY6ZEwI2yzvZUKQtctn0QAPqu8tKdJ+OF5+Tv6NBq1U+wJWH+QI6OGy5EvQ==}
-
-  '@deepseek-ai/dsh-experimental-session-titles-bundle@0.2.1-rc.2':
-    resolution: {integrity: sha512-tiX3tyD8/4ds5L4TRHG+ozPxxkqteCoV9fXGu1N/mNG5VNVsSc53MXmKFMFjgFBAweu0cBfrM4kzCJ2K/cu41w==}
-    peerDependencies:
-      '@deepseek-ai/cordis': ~4.0.5
-
-  '@deepseek-ai/dsh-session-title-all-prompts-llm@0.2.1-rc.2':
-    resolution: {integrity: sha512-rv5joq8y568Ecwc5q9un4/FFuGBvpqM/OkK1rc7CeNWMtSfi63SD7mw4Wuc8Ns/g3kBbR7vPJzwfvMniEWbJJg==}
-    peerDependencies:
-      '@deepseek-ai/cordis': ~4.0.5
-      '@deepseek-ai/dsh-llm': 0.2.1-rc.2
-      '@deepseek-ai/dsh-session': 0.2.1-rc.2
-      '@deepseek-ai/dsh-session-title': 0.2.1-rc.2
-      '@deepseek-ai/dsh-session-title-llm': 0.2.1-rc.2
-
-  '@deepseek-ai/dsh-util-values@0.2.1-rc.2':
-    resolution: {integrity: sha512-mgnByPadOgZtoBxbwMI184li494O6sNn66/NvdqN0RIrzAJmFGpFxpjFkQtQN/yetwWhlx7Ic17+6p7eKl8DNg==}
-    peerDependencies:
-      '@deepseek-ai/cordis': ~4.0.5
 
   '@deepseek-ai/schemastery@3.18.4':
     resolution: {integrity: sha512-SSXO6tYuyrIqKVbmOnIq0s+riUywYzouFMcnBluHF9n4KMo2G8HvEzhCYj6pj2617/glOjbJuVInJ9hfONsjkg==}
@@ -353,6 +340,9 @@ packages:
   '@lezer/yaml@1.0.4':
     resolution: {integrity: sha512-2lrrHqxalACEbxIbsjhqGpSW8kWpUKuY6RHgnSAFZa6qK62wvnPxA8hGOwOoDbwHcOFs5M4o27mjGu+P7TvBmw==}
 
+  '@local/dsh-plugin-fetch-file@file:D:/Toolbox/dsh-plugin-fetch-file':
+    resolution: {directory: D:/Toolbox/dsh-plugin-fetch-file, type: directory}
+
   '@local/dsh-thinking-language@file:D:/Toolbox/dsh-thinking-language':
     resolution: {directory: D:/Toolbox/dsh-thinking-language, type: directory}
 
@@ -540,6 +530,10 @@ packages:
     engines: {node: '>=18'}
     hasBin: true
 
+  '@weibaohui/dsh-smart-title@0.1.9':
+    resolution: {integrity: sha512-IZfLKqtg6uLauqRoWrSuUtlOyMQ2ZjBV0wVc2ybNPUEfmJYF81yv+eqak5UKbT8RSvqZyMZAgD92aDV5KhQUlg==}
+    engines: {dsh: '>=0.1.7-rc.2', node: '>=22.5'}
+
   '@xterm/addon-fit@0.11.0':
     resolution: {integrity: sha512-jYcgT6xtVYhnhgxh3QgYDnnNMYTcf8ElbxxFzX0IZo+vabQqSPAjC3c1wJrKB5E19VwQei89QCiZZP86DCPF7g==}
 
@@ -574,8 +568,8 @@ packages:
     resolution: {integrity: sha512-NZKeq9AfyQvEeNlN0zSYAaWrmBffJh3IELMZfRpJVWgrpEbtEpnjvzqBPf+mxoI287JohRDoa+/nsfqqiZmF6g==}
     engines: {node: '>= 6.0.0'}
 
-  billion-context@0.1.209:
-    resolution: {integrity: sha512-Lz43W6+WXlR/FkdWAvYVXrxsK8IqXx4sPjru/cYaxm8/DtO5na9HBFR9Ab46kYuC0Wx5vfKeO6X9rR9W/qs4lw==}
+  billion-context@0.1.214:
+    resolution: {integrity: sha512-09sddz0mfNo9tmgHxZya3f77UEvnj2fwDusTU5q/xVs47Tao2MYlGlvujMiVzj+Q/EQ/gNsYyV3xlPn8IIqfnA==}
     engines: {node: '>=20'}
     hasBin: true
 
@@ -803,8 +797,8 @@ packages:
   dompurify@3.4.16:
     resolution: {integrity: sha512-sqo+pNp3qRhCIpbgRi1y8Tgk27Bo2Ry7w0dC1NBeNTdZChWjz9Xb/KOoZbRP/R6pQZ80Qw8YhXw13hWWBbMRnQ==}
 
-  ds-harness-remote@0.5.22:
-    resolution: {integrity: sha512-u9OOA6pRucc33MtgyXMHWm74dyhkQ+1IhA4TMqZdjY+UBp3iyIVXqbsr6I/Z/VOIcCkvIDTKVypMchI+3sdS5Q==}
+  ds-harness-remote@0.6.5:
+    resolution: {integrity: sha512-FTKgpQY1NRdG18cuII/XcVHQmmVLx4QEXQh9j1AbQHiL0Bf0yuXdRuJSHGAPnwH880rzZl99/iXzVpS9m6if3g==}
     hasBin: true
     peerDependencies:
       '@deepseek-ai/cordis': '>=4.0.1 <5 || >=4.0.5-alpha.1 <4.0.6-0'
@@ -865,6 +859,20 @@ packages:
       '@deepseek-ai/dsh-client-ui-sidebar-right':
         optional: true
       '@huanlin/dsh-plugin-better-locale':
+        optional: true
+
+  dsh-computer-use-win@0.5.7:
+    resolution: {integrity: sha512-ASpBz1sefrX3ZwBDIgdMrJcclpVXsjmanGKSrIbbD2R+sHoxL9lKVwvDFsZaGiI/SIjhiCN6Lmfl6rVHZIyDug==}
+    engines: {node: '>=22'}
+    os: [win32]
+    hasBin: true
+    peerDependencies:
+      '@deepseek-ai/dsh-mcp-client': '>=0.1.0-rc.2 || >=0.2.0-rc.2'
+      '@deepseek-ai/schemastery': '>=3.18.1'
+    peerDependenciesMeta:
+      '@deepseek-ai/dsh-mcp-client':
+        optional: true
+      '@deepseek-ai/schemastery':
         optional: true
 
   dsh-context@0.74.0:
@@ -1444,11 +1452,11 @@ packages:
   zod@3.24.1:
     resolution: {integrity: sha512-muH7gBL9sI1nciMZV67X5fTKKBLtwpZ5VBp1vsOQzj1MhrBZ4wlVCm3gedKZWLp0Oyel8sIGfeiz54Su+OVT+A==}
 
-  zod@4.1.8:
-    resolution: {integrity: sha512-5R1P+WwQqmmMIEACyzSvo4JXHY5WiAFHRMg+zBZKgKS+Q1viRa0C1hmUKtHltoIFKtIdki3pRxkmpP74jnNYHQ==}
-
   zod@4.6.5:
     resolution: {integrity: sha512-v5l/aFXZQeai4awLbOpSoHecE9UiMrnfx75tEXLjNonXVARxQ5mOeipTjROUchszUNCqnE+hqAMujRsRHsut2Q==}
+
+  zod@4.6.7:
+    resolution: {integrity: sha512-g8W2D2kU6a8untc053fX1uVBKzM7yqAxW/3zwk83+6RyF2+SKOuV+c0wBDhUwzV1PaGapmZH+rmcUzPf+3CGwg==}
 
 snapshots:
 
@@ -1638,22 +1646,6 @@ snapshots:
   '@deepseek-ai/cosmokit@1.8.5': {}
 
   '@deepseek-ai/cosmokit@1.8.6': {}
-
-  '@deepseek-ai/dsh-experimental-session-titles-bundle@0.2.1-rc.2':
-    dependencies:
-      '@deepseek-ai/dsh-session-title-all-prompts-llm': 0.2.1-rc.2
-    transitivePeerDependencies:
-      - '@deepseek-ai/dsh-llm'
-      - '@deepseek-ai/dsh-session'
-      - '@deepseek-ai/dsh-session-title'
-      - '@deepseek-ai/dsh-session-title-llm'
-
-  '@deepseek-ai/dsh-session-title-all-prompts-llm@0.2.1-rc.2':
-    dependencies:
-      '@deepseek-ai/dsh-util-values': 0.2.1-rc.2
-      '@deepseek-ai/schemastery': 3.18.5
-
-  '@deepseek-ai/dsh-util-values@0.2.1-rc.2': {}
 
   '@deepseek-ai/schemastery@3.18.4':
     dependencies:
@@ -2019,6 +2011,8 @@ snapshots:
       '@lezer/highlight': 1.2.5
       '@lezer/lr': 1.4.10
 
+  '@local/dsh-plugin-fetch-file@file:D:/Toolbox/dsh-plugin-fetch-file': {}
+
   '@local/dsh-thinking-language@file:D:/Toolbox/dsh-thinking-language': {}
 
   '@marijn/find-cluster-break@1.0.4': {}
@@ -2221,6 +2215,8 @@ snapshots:
       '@vshulcz/deja-vu-windows-amd64': 0.23.1
       '@vshulcz/deja-vu-windows-arm64': 0.23.1
 
+  '@weibaohui/dsh-smart-title@0.1.9': {}
+
   '@xterm/addon-fit@0.11.0': {}
 
   '@xterm/addon-serialize@0.14.0': {}
@@ -2245,10 +2241,10 @@ snapshots:
 
   aws-ssl-profiles@1.1.2: {}
 
-  billion-context@0.1.209(@types/node@16.9.1):
+  billion-context@0.1.214(@types/node@16.9.1):
     dependencies:
       mysql2: 3.24.6(@types/node@16.9.1)
-      zod: 4.1.8
+      zod: 4.6.7
     optionalDependencies:
       jimp: 1.6.1
     transitivePeerDependencies:
@@ -2496,14 +2492,14 @@ snapshots:
     optionalDependencies:
       '@types/trusted-types': 2.0.7
 
-  ds-harness-remote@0.5.22:
+  ds-harness-remote@0.6.5:
     dependencies:
       '@deepseek-ai/schemastery': 3.18.5
       '@xterm/addon-serialize': 0.14.0
       '@xterm/headless': 6.0.0
       qrcode: 1.5.4
       ws: 8.22.0
-      zod: 3.24.1
+      zod: 4.6.7
     optionalDependencies:
       '@roamhq/wrtc': 0.10.0
     transitivePeerDependencies:
@@ -2548,6 +2544,10 @@ snapshots:
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
+
+  dsh-computer-use-win@0.5.7(@deepseek-ai/schemastery@3.18.5):
+    optionalDependencies:
+      '@deepseek-ai/schemastery': 3.18.5
 
   dsh-context@0.74.0(@deepseek-ai/schemastery@3.18.5):
     dependencies:
@@ -3049,8 +3049,9 @@ snapshots:
       y18n: 4.0.3
       yargs-parser: 18.1.3
 
-  zod@3.24.1: {}
-
-  zod@4.1.8: {}
+  zod@3.24.1:
+    optional: true
 
   zod@4.6.5: {}
+
+  zod@4.6.7: {}

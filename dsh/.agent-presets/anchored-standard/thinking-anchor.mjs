@@ -148,6 +148,7 @@ const isOwnAnchor = (message) =>
 
 export function apply(ctx, config) {
   const cfg = config && typeof config === 'object' ? config : {}
+  console.error(`[thinking-anchor] loaded lang=${readLanguage()} text=${resolveText(cfg, readLanguage()) === ANCHOR_TEXT.zh ? 'zh' : (resolveText(cfg, readLanguage()) === ANCHOR_TEXT.en ? 'en' : 'custom')}`)
   if (cfg.enabled === false) return
 
   // { prepend: true }：见头注释「注册位置」—— 与 dsh-mnemon 抢最外层，后 unshift 者胜。

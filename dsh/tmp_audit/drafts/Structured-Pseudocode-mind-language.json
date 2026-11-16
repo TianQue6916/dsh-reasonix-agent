@@ -1,0 +1,14 @@
+{
+  "name": "Structured-Pseudocode-mind-language",
+  "description": "Structured-Pseudocode-mind-language — VS Code ext + bridge: .mind structured pseudocode semantic highlighting, LLM code-generation to Python 3 / C11, DeepSeek API, 35 files",
+  "topics": [
+    "vscode-extension",
+    "pseudocode",
+    "code-generation",
+    "llm",
+    "deepseek",
+    "textmate-grammar"
+  ],
+  "llms_txt": "# Structured-Pseudocode-mind-language\n\n> A VS Code extension plus Node.js bridge for .mind structured pseudocode: live semantic highlighting, indent-level guides, two-color diagnostics, analyze-on-Enter, and `# @d` driven generation of Python 3 and C11 implementations.\n\n## Layout\n- [extension/](extension/): TypeScript client - extension.ts, semanticTokens.ts, indentDecoration.ts, diagnosticManager.ts, [extension/syntaxes/mind.tmLanguage.json](extension/syntaxes/mind.tmLanguage.json)\n- [bridge/](bridge/): Express service on :3456 - mindAnalyzer.js, codeGenerator.js, deepseekClient.js, reasonixSession.js\n- [package/](package/): distributable kit - start.bat, 使用教程.txt, 示例.mind\n\n## Notes\n- 35 files; TypeScript + JavaScript + JSON + Markdown, docs in Chinese.\n- Requires a DeepSeek API key on the bridge side; the extension caches analysis locally.\n- Install the .vsix from inside VS Code (Extension panel), not by double-clicking.",
+  "evidence": "README.md (3132 B) 描述 .mind 语义分析与 Python/C 双语言生成架构；repo_meta 的 35 个文件里实有 extension/src/semanticTokens.ts、bridge/src/deepseekClient.js、extension/syntaxes/mind.tmLanguage.json、package/使用教程.txt。"
+}

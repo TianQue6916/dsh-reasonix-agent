@@ -1,0 +1,13 @@
+{
+  "name": "Introduction-to-Algorithms-codetry",
+  "description": "CLRS Introduction to Algorithms — code drills & practice: C/C++/Python exercise folders (loops, pointers, structs, BFS, Josephus, Yanghui), plus a few linear algebra notes.",
+  "topics": [
+    "algorithms",
+    "clrs",
+    "data-structures",
+    "cpp-exercises",
+    "python-exercises"
+  ],
+  "llms_txt": "# 算法导论 · Introduction to Algorithms (code practice)\n\n> 学习《算法导论》过程中的 C/C++/Python 练习集合：按知识点平铺成目录，多为单次练习文件，另有少量手写数据结构与数学笔记。\n\n## 语言入门练习\n- 01  书写hello world: Visual Studio 工程骨架（.slnx/.vcxproj）+ 源.cpp\n- for循环: 循环与流程控制练习工程\n- 1009: OJ 题号目录（1009.c + VS 工程）\n- 3370  最小整数: OJ 题号目录，含 3370.cpp、try.cpp、2-10.cpp 多次尝试\n\n## 数据结构与算法\n- BTS.py: 二叉排序树练习\n- 约瑟夫环: 约瑟夫环算法练习\n- 杨辉三角: 杨辉三角输出练习\n- 成绩管理系统 / 通讯录管理系统: 结构体与文件操作的综合性小项目\n\n## 备注\n- 486 个文件、144 个顶层目录，结构扁平、命名中英混排，含 .c/.cpp/.py/.md/.mind/.sql 多语言混杂。\n- 少量数学笔记：基变换与坐标系的几何直观.md、对角化思想的起源与数学直觉.md、拉普拉斯展开定理的完整详细证明.md。\n- README.md 仅两行「算法导论 / 学习实践文件」，无版权或课程声明。",
+  "evidence": "依据 files=486、top 中 144 个扁平目录（BTS.py、约瑟夫环、杨辉三角、成绩管理系统、01  书写hello world、1009、3370  最小整数、基变换与坐标系的几何直观.md 等）与仅 14 字节的 README「算法导论 / 学习实践文件」。"
+}

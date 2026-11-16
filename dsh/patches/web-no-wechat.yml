@@ -1,0 +1,13 @@
+# 只给「同时开 desktop 实例」的场景用：
+# 关掉 web profile 的 wechat-bridge autoStart，避免两个 harness 抢同一个 iLink bot（同一条微信回两次）。
+# replace 语义 ⇒ config 必须写全，漏字段会丢。
+- id: dsh-wechat-bridge
+  name: "@lanbaolu/dsh-wechat-bridge"
+  config:
+    dataDir: ''
+    host: 127.0.0.1
+    port: 0
+    autoStart: false
+    provider: ''
+    model: ''
+    workingDirectory: ''

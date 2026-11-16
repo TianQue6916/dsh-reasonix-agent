@@ -17,6 +17,9 @@ importers:
       '@lanbaolu/dsh-wechat-bridge':
         specifier: 0.9.1
         version: 0.9.1(@deepseek-ai/schemastery@3.18.5)
+      '@local/dsh-plugin-fetch-file':
+        specifier: file:D:/Toolbox/dsh-plugin-fetch-file
+        version: file:D:/Toolbox/dsh-plugin-fetch-file
       '@local/dsh-plugin-goat-panel':
         specifier: link:D:/Toolbox/goat-gateway/dsh-plugin-goat-panel
         version: link:D:/Toolbox/goat-gateway/dsh-plugin-goat-panel
@@ -27,26 +30,29 @@ importers:
         specifier: 0.1.9
         version: 0.1.9
       billion-context:
-        specifier: ^0.1.212
-        version: 0.1.212(@types/node@16.9.1)
+        specifier: ^0.1.214
+        version: 0.1.214(@types/node@16.9.1)
       ds-harness-remote:
-        specifier: ^0.5.22
-        version: 0.5.23
-      dsh-deja:
-        specifier: ^0.23.1
-        version: 0.23.3
+        specifier: 0.6.4
+        version: 0.6.4
       dsh-headroom:
         specifier: git+https://github.com/giter00/dsh-headroom.git
         version: git+ssh://git@github.com/giter00/dsh-headroom.git#ca5de630fd9a4be1b0e0f900cc3260f52052019d
+      dsh-lan-bridge:
+        specifier: ^0.2.1
+        version: 0.2.1
       dsh-llm-latency:
         specifier: github:shengbinxu/dsh-llm-latency
         version: git+ssh://git@github.com/shengbinxu/dsh-llm-latency.git#ba2f10be1506532a19bd83ea8974217e544254fe
       dsh-mnemon:
         specifier: ^0.5.34
         version: 0.5.34
-      dsh-scroll-boost:
-        specifier: ^0.6.0
-        version: 0.6.0
+      dsh-pilot:
+        specifier: github:guo6x/dsh-pilot
+        version: https://codeload.github.com/guo6x/dsh-pilot/tar.gz/a1dc0b37b492a4243ac8e95dabdcda9958414ac0
+      dsh-reconnect:
+        specifier: 3.0.1
+        version: 3.0.1
       dshmarket:
         specifier: ^1.67.0
         version: 1.67.0(@deepseek-ai/schemastery@3.18.5)
@@ -202,6 +208,9 @@ packages:
       '@deepseek-ai/dsh-workspace': ^0.1.0-rc.6
       '@deepseek-ai/schemastery': ^3.18.1
 
+  '@local/dsh-plugin-fetch-file@file:D:/Toolbox/dsh-plugin-fetch-file':
+    resolution: {directory: D:/Toolbox/dsh-plugin-fetch-file, type: directory}
+
   '@local/dsh-thinking-language@file:D:/Toolbox/dsh-thinking-language':
     resolution: {directory: D:/Toolbox/dsh-thinking-language, type: directory}
 
@@ -246,41 +255,6 @@ packages:
   '@types/node@16.9.1':
     resolution: {integrity: sha512-QpLcX9ZSsq3YYUUnD3nFDY8H7wctAhQj/TFKL8Ya8v5fMm3CFXxo8zStsLAl780ltoYoo1WvKUVGBQK+1ifr7g==}
 
-  '@vshulcz/deja-vu-darwin-amd64@0.23.3':
-    resolution: {integrity: sha512-tu2r9/NbHUBYhkSXbAEwQGBMNaJiAvvVHXMWezfkfhX0r7A8i4uAgsQw6hjC+3wSAqYCv+lE2d6C9gStksB+Cg==}
-    cpu: [x64]
-    os: [darwin]
-
-  '@vshulcz/deja-vu-darwin-arm64@0.23.3':
-    resolution: {integrity: sha512-tHSJRn+pc7hZpzgtfZK7H3Jut4UhkBdw8STL0iZx4sqtpiCAoQfYRcU6rGySlzWt87eow9YYN8TUek8NFqXjdg==}
-    cpu: [arm64]
-    os: [darwin]
-
-  '@vshulcz/deja-vu-linux-amd64@0.23.3':
-    resolution: {integrity: sha512-u+1QFuiAqwWiHqVDFJaClLSfw3b5mCmngEz5Q1/FfIDGfphWiSqKoHbX79gZKQ8RJbmo2svcbr/GeqcXfH49RA==}
-    cpu: [x64]
-    os: [linux]
-
-  '@vshulcz/deja-vu-linux-arm64@0.23.3':
-    resolution: {integrity: sha512-H/N6CJLmnLKAnNJHZ+F1oqHQ5CpcxNsleZ3s24Xg+LDguPvX9THt1lySyPYrCd5oAtoN6QNIw+mQq62Q7DxSiw==}
-    cpu: [arm64]
-    os: [linux]
-
-  '@vshulcz/deja-vu-windows-amd64@0.23.3':
-    resolution: {integrity: sha512-+X4E8OeGq7cK76OrAZIYhdJq0pZPTlIirOp1yWQRnP5f/xRwjda/5K92xc/AIE3T6ERZVpvG5vqkQv0xZzrthQ==}
-    cpu: [x64]
-    os: [win32]
-
-  '@vshulcz/deja-vu-windows-arm64@0.23.3':
-    resolution: {integrity: sha512-ZmHhHTasWh9osQJiK2RnE9D7bNDYj3kVFcly4Qm9pinyDbM8YYrCwLWFQXXHHL/0BjcNiyvHdgYTAQDcfxQTFQ==}
-    cpu: [arm64]
-    os: [win32]
-
-  '@vshulcz/deja-vu@0.23.3':
-    resolution: {integrity: sha512-A+RZmoTW0QfHGkwUEpIl/Y2cRVzMdxmHo4MSvtjjoMQZRg9P3HEAZ5aAWwgjBq7dKLwd2YOB67865wKOAUnk9w==}
-    engines: {node: '>=18'}
-    hasBin: true
-
   '@weibaohui/dsh-smart-title@0.1.9':
     resolution: {integrity: sha512-IZfLKqtg6uLauqRoWrSuUtlOyMQ2ZjBV0wVc2ybNPUEfmJYF81yv+eqak5UKbT8RSvqZyMZAgD92aDV5KhQUlg==}
     engines: {dsh: '>=0.1.7-rc.2', node: '>=22.5'}
@@ -313,8 +287,8 @@ packages:
     resolution: {integrity: sha512-NZKeq9AfyQvEeNlN0zSYAaWrmBffJh3IELMZfRpJVWgrpEbtEpnjvzqBPf+mxoI287JohRDoa+/nsfqqiZmF6g==}
     engines: {node: '>= 6.0.0'}
 
-  billion-context@0.1.212:
-    resolution: {integrity: sha512-Bwjl4StlMNcE3JWe15iKLATwk5q8rgiNgR/isk5fCnOYfhtE8vsrtJPCqA5WGvsT2yJ9p/j3k4NUAkQER5qjjg==}
+  billion-context@0.1.214:
+    resolution: {integrity: sha512-09sddz0mfNo9tmgHxZya3f77UEvnj2fwDusTU5q/xVs47Tao2MYlGlvujMiVzj+Q/EQ/gNsYyV3xlPn8IIqfnA==}
     engines: {node: '>=20'}
     hasBin: true
 
@@ -356,8 +330,8 @@ packages:
     engines: {node: '>=12'}
     deprecated: Use your platform's native DOMException instead
 
-  ds-harness-remote@0.5.23:
-    resolution: {integrity: sha512-cXlYlLvnrFzOp0s09m11ePwbTXDiVxBJJh7fsKTZ/pVi9hcHyWpUW16U61qLsmzqxLS1owAyHZSPxLK3Ecw2Wg==}
+  ds-harness-remote@0.6.4:
+    resolution: {integrity: sha512-5su+nEttUldvhIoPrWrJbH3x5/D56BRsV3TPHbrjIQ4FP703ltCXqamQuVloFFQwzKP4LcNDzXMIbmjijKDcvg==}
     hasBin: true
     peerDependencies:
       '@deepseek-ai/cordis': '>=4.0.1 <5 || >=4.0.5-alpha.1 <4.0.6-0'
@@ -393,10 +367,6 @@ packages:
       '@deepseek-ai/dsh-client-ui-slots':
         optional: true
 
-  dsh-deja@0.23.3:
-    resolution: {integrity: sha512-UIguziORxifE100MKKWeJwIFwuCte/0/c8/UiO7fdSgfCcCI3y0jBe+BvZNyF99YNHER36S5r2QslwuY/9gY5Q==}
-    engines: {node: '>=18'}
-
   dsh-headroom@git+ssh://git@github.com/giter00/dsh-headroom.git#ca5de630fd9a4be1b0e0f900cc3260f52052019d:
     resolution: {commit: ca5de630fd9a4be1b0e0f900cc3260f52052019d, repo: git@github.com:giter00/dsh-headroom.git, type: git}
     version: 0.3.0
@@ -407,6 +377,11 @@ packages:
       '@deepseek-ai/dsh-llm': '>=0.0.1-rc.5 <0.1.0 || >=0.1.0-rc.1 <0.2.0-0'
       '@deepseek-ai/dsh-session': '>=0.0.1-rc.5 <0.1.0 || >=0.1.0-rc.1 <0.2.0-0'
       '@deepseek-ai/dsh-tools': '>=0.0.1-rc.5 <0.1.0 || >=0.1.0-rc.1 <0.2.0-0'
+
+  dsh-lan-bridge@0.2.1:
+    resolution: {integrity: sha512-YRsxNR2Wb0nOy6nxq5l8WwElWIkA6uUG1arTQ99eIQkzQNSekAHS/zBWYx++cEMUtI808dnjqp05I0eZeqlpvA==}
+    engines: {node: '>=18'}
+    hasBin: true
 
   dsh-llm-latency@git+ssh://git@github.com/shengbinxu/dsh-llm-latency.git#ba2f10be1506532a19bd83ea8974217e544254fe:
     resolution: {commit: ba2f10be1506532a19bd83ea8974217e544254fe, repo: git@github.com:shengbinxu/dsh-llm-latency.git, type: git}
@@ -569,9 +544,19 @@ packages:
       '@deepseek-ai/dsh-app-boot':
         optional: true
 
-  dsh-scroll-boost@0.6.0:
-    resolution: {integrity: sha512-oh+jUn+c6FlqjGaLQsR1hOq+kJ4GsJwKNfQaTcE3zD+DAvbaUxIcSuKkS+dExi6ZwJXq+Ur/UcxFB8g7qcf8cg==}
-    engines: {node: '>=20'}
+  dsh-pilot@https://codeload.github.com/guo6x/dsh-pilot/tar.gz/a1dc0b37b492a4243ac8e95dabdcda9958414ac0:
+    resolution: {gitHosted: true, integrity: sha512-iR0jpccnlSgUymt9g1uCUQui0h/eE7hmckhk4Httxm5VggVfvJ6fzJ2qjCwctXwtgEz33aCmIiaFLQU2EahjJg==, tarball: https://codeload.github.com/guo6x/dsh-pilot/tar.gz/a1dc0b37b492a4243ac8e95dabdcda9958414ac0}
+    version: 0.7.3
+    engines: {node: '>=22'}
+
+  dsh-reconnect@3.0.1:
+    resolution: {integrity: sha512-KgzinBx1NlImWMidjw/SXBvjksI+y8hHmqmAZZ6DC6h8SwChh4bunWLSR9uucsJhV0UVFsWohCv84lcsw4hUiQ==}
+    engines: {node: ^22.19.0 || >=24.0.0}
+    peerDependencies:
+      react: '>=18'
+    peerDependenciesMeta:
+      react:
+        optional: true
 
   dshmarket@1.67.0:
     resolution: {integrity: sha512-j0i9hlPpqNIRMitozdAdoQKilKY3AcsqDUzmOCiZ807h7T5XCZz2jxoubmvdn0Gh2LUrq43UTr6vzwWYlYXDbA==}
@@ -797,8 +782,8 @@ packages:
     resolution: {integrity: sha512-r6lPcBGxZXlIcymEu7InxDMhdW0KDxpLgoFLcguasxCaJ/SOIZwINatK9KY/tf+ZrlywOKU0UDj3ATXUBfxJXA==}
     engines: {node: '>=8'}
 
-  ws@8.22.0:
-    resolution: {integrity: sha512-Ydggc987+RO0AnWtZ/7Wq9FtNvcrL1b/RO0ud9mWjUPgDrsAAwQSF51sm2hm1XofbU/4jkpGEsLFsZZxU+1DOg==}
+  ws@8.23.0:
+    resolution: {integrity: sha512-wCkmX8QMOrKjgO8HW2WyDbTSGeqkocxgDzS9iR79rEAexty6/2qzilx3Ag8Tqf9ykop3irLKle0MtVn5qjVnoQ==}
     engines: {node: '>=10.0.0'}
     peerDependencies:
       bufferutil: ^4.0.1
@@ -1123,6 +1108,8 @@ snapshots:
       qrcode: 1.5.4
       qrcode-terminal: 0.12.0
 
+  '@local/dsh-plugin-fetch-file@file:D:/Toolbox/dsh-plugin-fetch-file': {}
+
   '@local/dsh-thinking-language@file:D:/Toolbox/dsh-thinking-language': {}
 
   '@roamhq/wrtc-darwin-arm64@0.10.0':
@@ -1165,33 +1152,6 @@ snapshots:
 
   '@types/node@16.9.1': {}
 
-  '@vshulcz/deja-vu-darwin-amd64@0.23.3':
-    optional: true
-
-  '@vshulcz/deja-vu-darwin-arm64@0.23.3':
-    optional: true
-
-  '@vshulcz/deja-vu-linux-amd64@0.23.3':
-    optional: true
-
-  '@vshulcz/deja-vu-linux-arm64@0.23.3':
-    optional: true
-
-  '@vshulcz/deja-vu-windows-amd64@0.23.3':
-    optional: true
-
-  '@vshulcz/deja-vu-windows-arm64@0.23.3':
-    optional: true
-
-  '@vshulcz/deja-vu@0.23.3':
-    optionalDependencies:
-      '@vshulcz/deja-vu-darwin-amd64': 0.23.3
-      '@vshulcz/deja-vu-darwin-arm64': 0.23.3
-      '@vshulcz/deja-vu-linux-amd64': 0.23.3
-      '@vshulcz/deja-vu-linux-arm64': 0.23.3
-      '@vshulcz/deja-vu-windows-amd64': 0.23.3
-      '@vshulcz/deja-vu-windows-arm64': 0.23.3
-
   '@weibaohui/dsh-smart-title@0.1.9': {}
 
   '@xterm/addon-serialize@0.14.0': {}
@@ -1214,7 +1174,7 @@ snapshots:
 
   aws-ssl-profiles@1.1.2: {}
 
-  billion-context@0.1.212(@types/node@16.9.1):
+  billion-context@0.1.214(@types/node@16.9.1):
     dependencies:
       mysql2: 3.24.6(@types/node@16.9.1)
       zod: 4.6.7
@@ -1255,13 +1215,13 @@ snapshots:
       webidl-conversions: 7.0.0
     optional: true
 
-  ds-harness-remote@0.5.23:
+  ds-harness-remote@0.6.4:
     dependencies:
       '@deepseek-ai/schemastery': 3.18.5
       '@xterm/addon-serialize': 0.14.0
       '@xterm/headless': 6.0.0
       qrcode: 1.5.4
-      ws: 8.22.0
+      ws: 8.23.0
       zod: 4.6.7
     optionalDependencies:
       '@roamhq/wrtc': 0.10.0
@@ -1269,11 +1229,9 @@ snapshots:
       - bufferutil
       - utf-8-validate
 
-  dsh-deja@0.23.3:
-    dependencies:
-      '@vshulcz/deja-vu': 0.23.3
-
   dsh-headroom@git+ssh://git@github.com/giter00/dsh-headroom.git#ca5de630fd9a4be1b0e0f900cc3260f52052019d: {}
+
+  dsh-lan-bridge@0.2.1: {}
 
   dsh-llm-latency@git+ssh://git@github.com/shengbinxu/dsh-llm-latency.git#ba2f10be1506532a19bd83ea8974217e544254fe: {}
 
@@ -1381,7 +1339,11 @@ snapshots:
       yaml: 2.9.1
       zod: 4.6.5
 
-  dsh-scroll-boost@0.6.0: {}
+  dsh-pilot@https://codeload.github.com/guo6x/dsh-pilot/tar.gz/a1dc0b37b492a4243ac8e95dabdcda9958414ac0: {}
+
+  dsh-reconnect@3.0.1:
+    dependencies:
+      '@deepseek-ai/schemastery': 3.18.5
 
   dshmarket@1.67.0(@deepseek-ai/schemastery@3.18.5):
     dependencies:
@@ -1624,7 +1586,7 @@ snapshots:
       string-width: 4.2.0
       strip-ansi: 6.0.0
 
-  ws@8.22.0: {}
+  ws@8.23.0: {}
 
   xml-parse-from-string@1.0.1:
     optional: true

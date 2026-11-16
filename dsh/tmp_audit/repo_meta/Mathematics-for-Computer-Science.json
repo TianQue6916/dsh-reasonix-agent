@@ -1,0 +1,23 @@
+{
+ "name": "Mathematics-for-Computer-Science",
+ "files": 5,
+ "top": [
+  "README.md",
+  "扫描件",
+  "教材",
+  "目录",
+  "章节结构索引.md"
+ ],
+ "lvl2": [
+  "扫描件/第18章 随机变量（扫描·按页码重排33页）.pdf",
+  "教材/MIT-6.042J-官方教材-Mathematics-for-Computer-Science-2015(英文原书,920页).pdf",
+  "目录/目录.docx"
+ ],
+ "sample": [
+  "README.md",
+  "扫描件/第18章 随机变量（扫描·按页码重排33页）.pdf",
+  "教材/MIT-6.042J-官方教材-Mathematics-for-Computer-Science-2015(英文原书,920页).pdf",
+  "目录/目录.docx",
+  "章节结构索引.md"
+ ]
+}

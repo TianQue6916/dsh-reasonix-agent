@@ -1,0 +1,75 @@
+# apply-silent-tasks  2026-11-11T18:44:01  WhatIf=False
+PATCH    dsh-bili-io
+   old: [C:\Program Files\PowerShell\7\pwsh.exe] [-NoProfile -File C:\Users\27063\.dsh-lab\tools\bili-io-tick.ps1]
+   new: [C:\Users\27063\.dsh\storages\tools\run-hidden.exe] ["C:\Program Files\PowerShell\7\pwsh.exe" -NoProfile -File C:\Users\27063\.dsh-lab\tools\bili-io-tick.ps1]
+   OK
+PATCH    dsh-bili-backup
+   old: [C:\Users\27063\AppData\Local\Programs\Python\Python313\python.exe] [C:\Users\27063\.dsh-lab\tools\backup-bili-index.py]
+   new: [C:\Users\27063\.dsh\storages\tools\run-hidden.exe] [C:\Users\27063\AppData\Local\Programs\Python\Python313\python.exe C:\Users\27063\.dsh-lab\tools\backup-bili-index.py]
+   OK
+PATCH    temp_http_8000
+   old: [C:\Users\27063\AppData\Local\Programs\Python\Python313\python.exe] [-m http.server 8000 --bind 0.0.0.0 --directory D:\b站视频\解析视频\数学分析]
+   new: [C:\Users\27063\.dsh\storages\tools\run-hidden.exe] [C:\Users\27063\AppData\Local\Programs\Python\Python313\python.exe -m http.server 8000 --bind 0.0.0.0 --directory D:\b站视频\解析视频\数学分析]
+   FAIL: 拒绝访问。
+
+PATCH    ocr_p003
+   old: [C:\Users\27063\AppData\Local\Programs\Python\Python313\python.exe] [C:\Users\27063\ocr_part003.py]
+   new: [C:\Users\27063\.dsh\storages\tools\run-hidden.exe] [C:\Users\27063\AppData\Local\Programs\Python\Python313\python.exe C:\Users\27063\ocr_part003.py]
+   FAIL: 拒绝访问。
+
+PATCH    ocr_p002
+   old: [powershell.exe] [-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -Command "Set-Location 'C:\Users\27063'; & 'C:\Users\27063\AppData\Local\Programs\Python\Python313\python.exe' 'C:\Users\27063\ocr_part002.py' 1> 'C:\Users\27063\ocr_part002.log' 2> 'C:\Users\27063\ocr_part002.err'"]
+   new: [C:\Users\27063\.dsh\storages\tools\run-hidden.exe] [C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -Command "Set-Location 'C:\Users\27063'; & 'C:\Users\27063\AppData\Local\Programs\Python\Python313\python.exe' 'C:\Users\27063\ocr_part002.py' 1> 'C:\Users\27063\ocr_part002.log' 2> 'C:\Users\27063\ocr_part002.err'"]
+   FAIL: 拒绝访问。
+
+PATCH    git_push
+   old: [powershell] [-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File C:\Windows\Temp\git_push.ps1]
+   new: [C:\Users\27063\.dsh\storages\tools\run-hidden.exe] [C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File C:\Windows\Temp\git_push.ps1]
+   FAIL: 拒绝访问。
+
+PATCH    GitHub-Mirror-Agent
+   old: [C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe] [-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File "D:\80-系统\Toolbox\gh-accel\watch-agent.ps1"]
+   new: [C:\Users\27063\.dsh\storages\tools\run-hidden.exe] [C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File "D:\80-系统\Toolbox\gh-accel\watch-agent.ps1"]
+   OK
+PATCH    GitHub-Mirror-Probe
+   old: [C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe] [-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File "D:\80-系统\Toolbox\gh-accel\run-probe.ps1"]
+   new: [C:\Users\27063\.dsh\storages\tools\run-hidden.exe] [C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File "D:\80-系统\Toolbox\gh-accel\run-probe.ps1"]
+   OK
+PATCH    dsh-SmartSnapshot
+   old: [powershell.exe] [-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File "D:\Toolbox\smart-snapshot\smart-snapshot.ps1"]
+   new: [C:\Users\27063\.dsh\storages\tools\run-hidden.exe] [C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File "D:\Toolbox\smart-snapshot\smart-snapshot.ps1"]
+   FAIL: 拒绝访问。
+
+PATCH    DshHostWatchdog
+   old: [powershell.exe] [-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File "C:\Users\27063\.dsh\storages\tools\host-watchdog.ps1"]
+   new: [C:\Users\27063\.dsh\storages\tools\run-hidden.exe] [C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File "C:\Users\27063\.dsh\storages\tools\host-watchdog.ps1"]
+   OK
+PATCH    cleanup_gui
+   old: [powershell.exe] [-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File C:\Windows\Temp\cleanup_gui.ps1]
+   new: [C:\Users\27063\.dsh\storages\tools\run-hidden.exe] [C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File C:\Windows\Temp\cleanup_gui.ps1]
+   FAIL: 拒绝访问。
+
+PATCH    ReasonixGitHubBackup
+   old: [powershell.exe] [-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File "C:\Users\27063\Desktop\reasonix-ops\backup-to-github.ps1"]
+   new: [C:\Users\27063\.dsh\storages\tools\run-hidden.exe] [C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File "C:\Users\27063\Desktop\reasonix-ops\backup-to-github.ps1"]
+   FAIL: 拒绝访问。
+
+PATCH    LeanToolchainInstall
+   old: [C:\Users\27063\.elan\bin\elan.exe] [toolchain install leanprover/lean4:stable]
+   new: [C:\Users\27063\.dsh\storages\tools\run-hidden.exe] [C:\Users\27063\.elan\bin\elan.exe toolchain install leanprover/lean4:stable]
+   FAIL: 拒绝访问。
+
+PATCH    pvz-lab-ilfix
+   old: [cmd.exe] [/c icacls "D:\50-游戏\pvz_inst" /setintegritylevel "(OI)(CI)Low" /T > C:\Users\27063\pvz_lab\ilfix.log 2>&1]
+   new: [C:\Users\27063\.dsh\storages\tools\run-hidden.exe] [C:\Windows\System32\cmd.exe /c icacls "D:\50-游戏\pvz_inst" /setintegritylevel "(OI)(CI)Low" /T > C:\Users\27063\pvz_lab\ilfix.log 2>&1]
+   OK
+PATCH    pvz-lab-probe
+   old: [cmd.exe] [/c "C:\Users\27063\AppData\Local\Programs\Python\Python313\python.exe" "C:\Users\27063\pvz_lab\il_probe2.py" > "C:\Users\27063\pvz_lab\il_probe2.out" 2>&1]
+   new: [C:\Users\27063\.dsh\storages\tools\run-hidden.exe] [C:\Windows\System32\cmd.exe /c "C:\Users\27063\AppData\Local\Programs\Python\Python313\python.exe" "C:\Users\27063\pvz_lab\il_probe2.py" > "C:\Users\27063\pvz_lab\il_probe2.out" 2>&1]
+   OK
+PATCH    pvz-probe
+   old: [C:\Users\27063\pvz_lab\probe.bat] []
+   new: [C:\Users\27063\.dsh\storages\tools\run-hidden.exe] [C:\Windows\System32\cmd.exe /c "C:\Users\27063\pvz_lab\probe.bat"]
+   OK
+
+# 结果：ok=8 skip=0 fail=8

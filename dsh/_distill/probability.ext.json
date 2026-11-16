@@ -1,0 +1,153 @@
+{
+ "subject": "probability",
+ "round": "ext",
+ "generated_at": "2026-11-08T00:23:07+08:00",
+ "sources": [
+  "C:/Users/27063/.reasonix/global-workspace/pages/DS_条件概率pr(A_B)解释.md",
+  "C:/Users/27063/.reasonix/global-workspace/pages/DS_条件概率中AC与BC的独立性分析.md",
+  "C:/Users/27063/.reasonix/global-workspace/pages/DS_利用Python算算十个骰子抛十次数字和为一百的概率.md",
+  "C:/Users/27063/.reasonix/global-workspace/pages/DS_概率论看了一半的题.md",
+  "C:/Users/27063/.reasonix/global-workspace/pages/DS_轮盘赌连续黑色概率计算.md",
+  "C:/Users/27063/.reasonix/global-workspace/pages/DS_扑克牌顺子与全黑概率比较.md",
+  "C:/Users/27063/.reasonix/global-workspace/pages/DS_σ代数在概率论中的定义与作用.md",
+  "C:/Users/27063/.reasonix/global-workspace/pages/DS_普林斯顿概率论读本例题定位.md",
+  "C:/Users/27063/.reasonix/global-workspace/pages/DS_普林斯顿概率论无MSTD内容.md",
+  "C:/Users/27063/.reasonix/global-workspace/pages/DS_MIT概率论课程中文翻译版介绍.md",
+  "C:/Users/27063/.reasonix/global-workspace/pages/DS_喷泉码概率补全编码.md",
+  "C:/Users/27063/.reasonix/global-workspace/pages/DS_月均消费统计.md"
+ ],
+ "insights": [
+  {
+   "type": "困惑",
+   "content": "他把条件概率读成事件的书写顺序：问「明明两个一样的事件ab和ba概率确不一样？」——把 P(A|B) 与 P(B|A) 当成 A∩B 的两种写法。P(A∩B)=P(B∩A) 恒等，方向差在分母换了「已知世界」。",
+   "tags": [
+    "概率",
+    "条件概率",
+    "贝叶斯"
+   ],
+   "importance": 5,
+   "evidence": "DS_条件概率中AC与BC的独立性分析.md L1028（提问）、L1032–L1110（医疗检测 base rate 0.001 答复）"
+  },
+  {
+   "type": "解法",
+   "content": "「为什么是除法」卡三轮（「没懂」→「？」→「还是没理解除法本质」），最后自己造出归一化意象：「浓度乘1就是总量，再新的除以一个参照系就是占比」。用比值缩放代替公式记忆，这是他打通条件概率的真实路径。",
+   "tags": [
+    "概率",
+    "条件概率",
+    "归一化"
+   ],
+   "importance": 5,
+   "evidence": "DS_条件概率pr(A_B)解释.md L102、L146、L152（三轮未通）、L482（自己给出浓度类比）"
+  },
+  {
+   "type": "已掌握",
+   "content": "能抓教材公式级错误：见到 Pr(A|B)=Pr(A)/Pr(B) 立刻反问「为什么不能约分」，逼出漏掉的 Pr(B|A) 因子（模型确认是排版错误）。他做的是边界体检：若此式成立，P(A)>P(B) 时概率会 >1。",
+   "tags": [
+    "概率",
+    "贝叶斯",
+    "教材核对"
+   ],
+   "importance": 5,
+   "evidence": "DS_条件概率中AC与BC的独立性分析.md L722（提问）、L726–L810（原文漏 Pr(B|A) 的认定）"
+  },
+  {
+   "type": "困惑",
+   "content": "把「n 次里出现连续五次黑」塌缩成「全是黑」：「算没有五次黑色的结果难道不是只需要算全是黑色的不就行了吗」。混淆「任意位置出现」与「整段全同」，事件的口语定义还没转成集合定义。",
+   "tags": [
+    "概率",
+    "事件定义",
+    "递归"
+   ],
+   "importance": 4,
+   "evidence": "DS_轮盘赌连续黑色概率计算.md L178（提问）、L182–L230（连续五次黑 ≠ 全黑的反例）"
+  },
+  {
+   "type": "层次",
+   "content": "高阶线性递推能读不能自建：反复抠「为什么就能消除顺序」「每个小组里恰好有 k! 个成员」，但一眼认出结构是斐波那契（「你怎么回事，这不是斐波那契吗」）。能模式匹配到已知对象，反向从模型写出递推仍缺。",
+   "tags": [
+    "概率",
+    "递推",
+    "斐波那契"
+   ],
+   "importance": 4,
+   "evidence": "DS_轮盘赌连续黑色概率计算.md L1106、L1170、L1408（消除顺序 / k! 个成员）"
+  },
+  {
+   "type": "层次",
+   "content": "主动区分 expectation 与 mean：「均值和期望值不一样吧」——期望是分布的参数（柯西不存在），均值是样本统计量（总能算）。概念分得清，但没构造过「样本均值剧烈波动」的反例自己验一遍。",
+   "tags": [
+    "概率",
+    "期望",
+    "柯西分布"
+   ],
+   "importance": 4,
+   "evidence": "DS_利用Python算算十个骰子抛十次数字和为一百的概率.md L1376（提问）、L1380–L1420（理论参数 vs 统计量的对照表）"
+  },
+  {
+   "type": "层次",
+   "content": "PGF / MGF / CF 只知道「都是某函数的期望」，分不清分工：「距生成函数……但这不就是期望吗？距啥意思」「Gx，Mx，faix究竟都是什么」。生成函数=把分布压进一个函数再求导解压，这一层未通。",
+   "tags": [
+    "概率",
+    "矩生成函数",
+    "特征函数"
+   ],
+   "importance": 3,
+   "evidence": "DS_概率论看了一半的题.md L2268、L2367（三兄弟对照表在 L2371–L2420）"
+  },
+  {
+   "type": "层次",
+   "content": "证明审计到实分析层：证 M_{X+Y}=M_X·M_Y 时不满足于「换着数」的比喻，要求先证「绝对收敛才可重排」，随后追问「这不是只证明了单层求和吗，双层怎么办」。能定位证明覆盖缺口，逼近 L3。",
+   "tags": [
+    "概率",
+    "绝对收敛",
+    "证明"
+   ],
+   "importance": 5,
+   "evidence": "DS_利用Python算算十个骰子抛十次数字和为一百的概率.md L1928、L2040（单层→双层追问）"
+  },
+  {
+   "type": "层次",
+   "content": "LLN / CLT 停在 L0–L1：只问「中心极限定理究竟是干什么的」，接受「样本均值趋正态」的用途叙事（民调 ±3%、正态调分），没问 iid、方差有限、柯西反例。全篇没有一次计算或模拟验证。",
+   "tags": [
+    "概率",
+    "中心极限定理",
+    "大数律"
+   ],
+   "importance": 4,
+   "evidence": "DS_概率论看了一半的题.md L2659（唯一一次提问，对话到此结束）"
+  },
+  {
+   "type": "层次",
+   "content": "信息论 / 编码只到 Hamming code 的胜率算术：能算三人 3/4、七人 7/8、失败集=码字被压到最少，却反复被「码字」定义绊住（「错误集合是码字吗？怎么又变成规范集合」）。entropy / mutual information / KL 零素材。",
+   "tags": [
+    "概率",
+    "汉明码",
+    "信息论"
+   ],
+   "importance": 4,
+   "evidence": "DS_条件概率中AC与BC的独立性分析.md L419、L1323、L1926（码字定义反复）；DS_喷泉码概率补全编码.md（回忆链条）"
+  },
+  {
+   "type": "待验证",
+   "content": "教材定位类回答是弱环且没被校验：轮盘赌递推反复问「这个内容出现在哪里」→「就连这个轮盘问题都没有」；柯西/泰勒/矩的章节号全靠联网推测。同篇模型把 9/230 判成口误，实为「两人任一人」口径（2×9/460）。",
+   "tags": [
+    "概率",
+    "教材定位",
+    "待验证"
+   ],
+   "importance": 4,
+   "evidence": "DS_轮盘赌连续黑色概率计算.md L69–L84、L930；DS_条件概率pr(A_B)解释.md L803–L895"
+  },
+  {
+   "type": "指针",
+   "content": "主教材 = 普林斯顿概率论读本（The Probability Lifesaver, Steven J. Miller），手上是盗版。他的元动作是给每条知识找书内锚点：第8章连续型、第9章期望、第10章卷积与变量替换、第20/21章 CLT、第三部分特殊分布。",
+   "tags": [
+    "概率",
+    "指针",
+    "教材结构"
+   ],
+   "importance": 3,
+   "evidence": "DS_普林斯顿概率论读本例题定位.md L11、L43、L131；DS_利用Python算算十个骰子抛十次数字和为一百的概率.md L1141–L1273"
+  }
+ ]
+}

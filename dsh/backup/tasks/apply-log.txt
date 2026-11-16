@@ -1,0 +1,38 @@
+# apply-silent-tasks  2026-11-11T18:46:15  WhatIf=True
+SKIP     dsh-bili-io  (已经是 run-hidden.exe 宿主)
+SKIP     dsh-bili-backup  (已经是 run-hidden.exe 宿主)
+PATCH    temp_http_8000
+   old: [C:\Users\27063\AppData\Local\Programs\Python\Python313\python.exe] [-m http.server 8000 --bind 0.0.0.0 --directory D:\b站视频\解析视频\数学分析]
+   new: [C:\Users\27063\.dsh\storages\tools\run-hidden.exe] [C:\Users\27063\AppData\Local\Programs\Python\Python313\python.exe -m http.server 8000 --bind 0.0.0.0 --directory D:\b站视频\解析视频\数学分析]
+PATCH    ocr_p003
+   old: [C:\Users\27063\AppData\Local\Programs\Python\Python313\python.exe] [C:\Users\27063\ocr_part003.py]
+   new: [C:\Users\27063\.dsh\storages\tools\run-hidden.exe] [C:\Users\27063\AppData\Local\Programs\Python\Python313\python.exe C:\Users\27063\ocr_part003.py]
+PATCH    ocr_p002
+   old: [powershell.exe] [-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -Command "Set-Location 'C:\Users\27063'; & 'C:\Users\27063\AppData\Local\Programs\Python\Python313\python.exe' 'C:\Users\27063\ocr_part002.py' 1> 'C:\Users\27063\ocr_part002.log' 2> 'C:\Users\27063\ocr_part002.err'"]
+   new: [C:\Users\27063\.dsh\storages\tools\run-hidden.exe] [C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -Command "Set-Location 'C:\Users\27063'; & 'C:\Users\27063\AppData\Local\Programs\Python\Python313\python.exe' 'C:\Users\27063\ocr_part002.py' 1> 'C:\Users\27063\ocr_part002.log' 2> 'C:\Users\27063\ocr_part002.err'"]
+PATCH    exe_uninstall
+   old: [powershell] [-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File C:\Windows\Temp\uninstall_exe_silent.ps1]
+   new: [C:\Users\27063\.dsh\storages\tools\run-hidden.exe] [C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File C:\Windows\Temp\uninstall_exe_silent.ps1]
+PATCH    git_push
+   old: [powershell] [-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File C:\Windows\Temp\git_push.ps1]
+   new: [C:\Users\27063\.dsh\storages\tools\run-hidden.exe] [C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File C:\Windows\Temp\git_push.ps1]
+SKIP     GitHub-Mirror-Agent  (已经是 run-hidden.exe 宿主)
+SKIP     GitHub-Mirror-Probe  (已经是 run-hidden.exe 宿主)
+PATCH    dsh-SmartSnapshot
+   old: [powershell.exe] [-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File "D:\Toolbox\smart-snapshot\smart-snapshot.ps1"]
+   new: [C:\Users\27063\.dsh\storages\tools\run-hidden.exe] [C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File "D:\Toolbox\smart-snapshot\smart-snapshot.ps1"]
+SKIP     DshHostWatchdog  (已经是 run-hidden.exe 宿主)
+PATCH    cleanup_gui
+   old: [powershell.exe] [-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File C:\Windows\Temp\cleanup_gui.ps1]
+   new: [C:\Users\27063\.dsh\storages\tools\run-hidden.exe] [C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File C:\Windows\Temp\cleanup_gui.ps1]
+PATCH    ReasonixGitHubBackup
+   old: [powershell.exe] [-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File "C:\Users\27063\Desktop\reasonix-ops\backup-to-github.ps1"]
+   new: [C:\Users\27063\.dsh\storages\tools\run-hidden.exe] [C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File "C:\Users\27063\Desktop\reasonix-ops\backup-to-github.ps1"]
+PATCH    LeanToolchainInstall
+   old: [C:\Users\27063\.elan\bin\elan.exe] [toolchain install leanprover/lean4:stable]
+   new: [C:\Users\27063\.dsh\storages\tools\run-hidden.exe] [C:\Users\27063\.elan\bin\elan.exe toolchain install leanprover/lean4:stable]
+SKIP     pvz-lab-ilfix  (已经是 run-hidden.exe 宿主)
+SKIP     pvz-lab-probe  (已经是 run-hidden.exe 宿主)
+SKIP     pvz-probe  (已经是 run-hidden.exe 宿主)
+
+# 结果：ok=9 skip=8 fail=0

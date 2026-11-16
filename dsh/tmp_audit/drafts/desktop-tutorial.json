@@ -1,0 +1,12 @@
+{
+  "name": "desktop-tutorial",
+  "description": "desktop-tutorial — empty placeholder repo, created automatically by GitHub Desktop on first sign-in; 0 files, no README, nothing to search",
+  "topics": [
+    "placeholder",
+    "empty-repo",
+    "github-desktop",
+    "scaffold"
+  ],
+  "llms_txt": "# desktop-tutorial\n\n> An empty placeholder repository created automatically by GitHub Desktop on first sign-in, used to prove the push path works. No files, no README, no searchable content.\n\n## Notes\n- files: 0; the tree is empty.\n- Kept only as a record that the GitHub Desktop client can reach this account.",
+  "evidence": "repo_meta/desktop-tutorial.json 显示 files=0、top/lvl2/sample 全为空，readmes.json 里该 key 是 {\"path\": null, \"msg\": \"Not Found\"}，故描述为空占位仓库。"
+}

@@ -4,16 +4,18 @@
   "dependencies": {
     "@ethanwong-hk/dsh-thinking-guard": "^1.0.2",
     "@lanbaolu/dsh-wechat-bridge": "0.9.1",
+    "@local/dsh-plugin-fetch-file": "file:D:/Toolbox/dsh-plugin-fetch-file",
     "@local/dsh-plugin-goat-panel": "link:D:/Toolbox/goat-gateway/dsh-plugin-goat-panel",
     "@local/dsh-thinking-language": "file:D:/Toolbox/dsh-thinking-language",
     "@weibaohui/dsh-smart-title": "0.1.9",
-    "billion-context": "^0.1.212",
-    "ds-harness-remote": "^0.5.22",
-    "dsh-deja": "^0.23.1",
+    "billion-context": "^0.1.214",
+    "ds-harness-remote": "0.6.4",
     "dsh-headroom": "git+https://github.com/giter00/dsh-headroom.git",
+    "dsh-lan-bridge": "^0.2.1",
     "dsh-llm-latency": "github:shengbinxu/dsh-llm-latency",
     "dsh-mnemon": "^0.5.34",
-    "dsh-scroll-boost": "^0.6.0",
+    "dsh-pilot": "github:guo6x/dsh-pilot",
+    "dsh-reconnect": "3.0.1",
     "dshmarket": "^1.67.0"
   },
   "dsh": {
@@ -28,11 +30,14 @@
         "dshmarket",
         "@lanbaolu/dsh-wechat-bridge",
         "@local/dsh-thinking-language",
+        "@local/dsh-plugin-fetch-file",
         "@ethanwong-hk/dsh-thinking-guard",
         "dsh-pilot",
         "billion-context",
         "@weibaohui/dsh-smart-title",
-        "dsh-llm-latency"
+        "dsh-llm-latency",
+        "dsh-reconnect",
+        "dsh-lan-bridge"
       ],
       "patchReload": "live"
     }

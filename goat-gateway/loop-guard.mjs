@@ -189,6 +189,49 @@ export class SseDeltaParser {
     } catch {
       return { malformed: true };
     }
+    // ── OpenAI Responses 协议（2026-11-11 加入）────────────────────────
+    // dsh 的 provider 可以配 `api: openai-responses`，此时上游按 Responses 规范
+    // 发扁平事件，没有 choices 字段：
+    //   {"type":"response.output_text.delta","delta":"..."}
+    //   {"type":"response.reasoning_text.delta","delta":"..."}
+    //   {"type":"response.completed","response":{"usage":{...}}}
+    // 不认这个的话，切到 responses 后本 guard 一条 channel 都产不出来，
+    // loop-guard.jsonl 直接停写，quota-http 的速度/连通性指标全部失准
+    // （2026-11-11 实测：切完 8 小时 jsonl 一条新记录都没有）。
+    if (typeof json.type === 'string' && json.type.indexOf('response.') === 0) {
+      if (typeof json.delta === 'string' && json.type.slice(-6) === '.delta') {
+        const isReasoning = json.type.indexOf('reasoning') !== -1;
+        return {
+          content: isReasoning ? '' : json.delta,
+          reasoning: isReasoning ? json.delta : '',
+          toolArgs: '',
+          finish: null,
+          usage: null,
+        };
+      }
+      if (json.type === 'response.completed' || json.type === 'response.incomplete') {
+        const u = (json.response || {}).usage;
+        if (u && typeof u === 'object') {
+          // 归一化成 chat.completions 的字段名，下游 readSpeedRows 一行都不用改
+          return {
+            content: '',
+            reasoning: '',
+            toolArgs: '',
+            finish: null,
+            usage: {
+              prompt_tokens: u.input_tokens,
+              completion_tokens: u.output_tokens,
+              total_tokens: u.total_tokens,
+              prompt_tokens_details: u.input_tokens_details,
+              completion_tokens_details: u.output_tokens_details,
+            },
+          };
+        }
+        return null;
+      }
+      return null;
+    }
+
     const choice = Array.isArray(json.choices) ? json.choices[0] : null;
     // 没有 choices 的 chunk 可能是纯 usage 尾巴；两者都没用就返回 null，
     // 调用方据此跳过，不必自己判 undefined。
@@ -256,6 +299,14 @@ export class LoopGuard {
       startTs: Date.now(),
       chans,
       hits: [],
+      // TTFT（time to first token）：第一个 channel 产出 token 的时刻。
+      // 2026-11-12 加。原因是速度指标口径必须对齐 vLLM / Artificial Analysis：
+      //   generation_time_ms = 第一个 output token → 最后一个（不含 prefill/TTFT）
+      //   tokens_per_second = 调度 → 最后一个（含 prefill）
+      // 以前只有 durMs，算出来的是后者，长期把 prefill 摊进分母 ——
+      // 实测固定开销 4.7–9 秒，导致「回答越短读数越低、上下文越长读数越低」。
+      // 有 ttftMs 后可以直接 (durMs - ttftMs) / (ct - 1)，不必再对窗口做回归拟合。
+      ttftMs: null,
     });
   }
 
@@ -274,6 +325,10 @@ export class LoopGuard {
     }
     c.chars += text.length;
     c.tail = (c.tail + text).slice(-this.cfg.tailChars);
+    // 第一个可见 token（content 或 reasoning 都算）到达的时刻 = TTFT。
+    // 注意记录的是「第一个 channel 首次产出」，不是 content 首次产出 ——
+    // reasoning 也算生成，与 usage 里的 reasoning_tokens 计入 completion 一致。
+    if (st.ttftMs == null) st.ttftMs = Date.now() - st.startTs;
 
     if (c.fast.novelty < c.minFast) {
       c.minFast = c.fast.novelty;
@@ -365,6 +420,7 @@ export class LoopGuard {
         key: st.meta.key || null,
         stream: st.meta.stream !== false,
         durMs: Date.now() - st.startTs,
+        ttftMs: st.ttftMs,
         outcome: outcome || null,
         chans,
         hits: st.hits,

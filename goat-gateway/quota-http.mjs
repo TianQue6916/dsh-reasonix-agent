@@ -320,7 +320,11 @@ function sendJson(req, res, body, corsHeaders, statusCode) {
 //   step/end                      终点
 // 主指标因此选 llm/retry 命中率（100% 覆盖），TTFT 只作参考。
 const SESS_ROOT = process.env.DSH_SESSIONS_DIR || 'C:/Users/27063/.dsh/sessions';
-const CONN_TTL_MS = Number(process.env.CONN_TTL_MS || 60000);
+// 2026-11-14: 60s -> 15s。
+// 原来 TTL 与客户端 60s 心跳同频，配合 stale-while-revalidate 的结果是：
+// t=0 命中缓存、t=60 刚过期又先回旧值、t=120 才拿到 t=60 算的 ——
+// 面板上的数永远是 60-120 秒前的。12h 窗口重算只要 ~385ms，15s 完全扛得住。
+const CONN_TTL_MS = Number(process.env.CONN_TTL_MS || 15000);
 // ── 主动探针（2026-11-09）────────────────────────────────────────────────
 // 为什么需要它：被动观测只看得到「你在用的时候」，你不用 dsh 的 10 小时会是一整片灰格。
 // 探针每 15 分钟打一次 `GET /v1/models` —— 这是本机唯一「真实打到上游、又不产生
@@ -498,9 +502,19 @@ function readSpeedRows() {
     let usage = u;
     if (typeof u === 'string') { try { usage = JSON.parse(u); } catch { usage = null; } }
     if (!usage || typeof usage !== 'object') continue;
-    const ct = Number(usage.completion_tokens) || 0;
+    // 2026-11-11：dsh 的 provider 切到 `api: openai-responses` 后，gateway 记录的
+    // usage 变成 OpenAI Responses 的字段名（output_tokens / input_tokens /
+    // output_tokens_details / input_tokens_details），不再是 chat.completions 的
+    // completion_tokens / prompt_tokens。这里两种都认 —— 否则切协议后 speed.n 直接归零，
+    // 面板上「速度」整行消失（2026-11-11 实测：connSpeed.n === 0 导致整行不渲染）。
+    const pickN = (a, b) => (typeof a === 'number' && isFinite(a) ? a
+      : (typeof b === 'number' && isFinite(b) ? b : 0));
+    const ct = pickN(usage.completion_tokens, usage.output_tokens);
     const d = Number(e.durMs) || 0;
-    if (!(ct > 0) || !(d > 0)) continue;
+    // 输出太少的请求不参与速度统计：探针自检、max_output_tokens=1 的连通性测试、
+    // 以及被截断的请求，它们的 tps 被固定开销（TTFT）主导，会把 p50 拽下来。
+    // 2026-11-11 实测：混入 2 条 ct=1 / 7501ms 的记录后，p50 从 68 掉到 34。
+    if (!(ct >= 50) || !(d > 0)) continue;
     let t = 0;
     try { t = Date.parse(e.ts); } catch { t = 0; }
     if (!t) continue;
@@ -509,14 +523,49 @@ function readSpeedRows() {
       model: e.model || '?',
       ct,
       durMs: d,
+      ttftMs: Number(e.ttftMs) || 0,
       tps: ct / (d / 1000),
-      rt: Number(((usage.completion_tokens_details || {}).reasoning_tokens)) || 0,
-      cached: Number(((usage.prompt_tokens_details || {}).cached_tokens)) || 0,
-      pt: Number(usage.prompt_tokens) || 0,
+      rt: pickN(((usage.completion_tokens_details || {}).reasoning_tokens),
+        ((usage.output_tokens_details || {}).reasoning_tokens)),
+      cached: pickN(((usage.prompt_tokens_details || {}).cached_tokens),
+        ((usage.input_tokens_details || {}).cached_tokens)),
+      pt: pickN(usage.prompt_tokens, usage.input_tokens),
     });
   }
   speedCache = { mtime: st.mtimeMs, at: Date.now(), rows };
   return rows;
+}
+
+/**
+ * 最小二乘拟合 `dur = a + b * ct`，用 1/b 作为纯 decode 速度。
+ *
+ * 为什么需要它：`tps = ct / durMs` 把排队、prefill、TTFT 一起摊进了分母。
+ * 2026-11-11 用 713 条样本实测：固定开销 a ≈ 4682 ms，斜率 b ≈ 10.77 ms/tok，
+ * 真实生成速度 92.8 tok/s，但 ct=377 的请求显示 43.3、ct=2623 的显示 79.5 ——
+ * 同一个速度只因回答长短不同就差一倍。pt 从 20k 涨到 300k 时读数也从 76 掉到 50，
+ * 那是 prefill 变长，不是模型变慢。
+ *
+ * 样本少于 40 条时不拟合（斜率会被噪声主导），调用方回落到端到端 p50。
+ */
+function fitDecode(rows) {
+  const n = rows.length;
+  if (n < 40) return null;
+  let sx = 0, sy = 0, sxx = 0, sxy = 0;
+  for (const r of rows) {
+    const x = r.ct, y = r.durMs;
+    sx += x; sy += y; sxx += x * x; sxy += x * y;
+  }
+  const den = n * sxx - sx * sx;
+  if (!(den > 0)) return null;
+  const b = (n * sxy - sx * sy) / den;
+  if (!(b > 0)) return null;
+  const a = (sy - b * sx) / n;
+  return {
+    n,
+    fixedMs: Math.round(a),
+    msPerTok: Math.round(b * 100) / 100,
+    decode: Math.round((1000 / b) * 10) / 10,
+  };
 }
 
 function buildSpeed(t0, hours) {
@@ -537,19 +586,47 @@ function buildSpeed(t0, hours) {
     const key = (d.getMonth() + 1) + "-" + String(d.getDate()).padStart(2, "0");
     let arr = byDay.get(key);
     if (!arr) { arr = []; byDay.set(key, arr); }
-    arr.push(r.tps);
+    arr.push(r);
   }
   const days = [];
   for (const [day, arr] of byDay) {
-    if (arr.length < 5) continue;                       // 样本太少的那天不参与峰谷
-    arr.sort((a, b) => a - b);
-    days.push({ day, n: arr.length, p50: Math.round(arr[Math.floor(arr.length / 2)] * 10) / 10 });
+    // 样本不足 40 条的日子不参与峰谷：fitDecode 需要 40 条才拟合，否则峰/谷会在
+    // decode 与端到端 p50 两种口径之间跳（2026-11-11：11-04 只有 17 条，decode 为 null）。
+    if (arr.length < 40) continue;
+    const dt = arr.map((r) => r.tps).sort((a, b) => a - b);
+    const fd = fitDecode(arr);
+    // 2026-11-12 修：同一天里存在两种口径 —— 有 ttftMs 的请求能算逐请求 decode，
+    // 旧记录没有 ttftMs 只能回归估。两种数放进同一个排序，「峰/谷」会拿苹果比橘子
+    // （实测：11-09 的 122.8 是回归估的，当天 0 条 TTFT；11-12 已有 199 条 TTFT，
+    //   分小时能到 142.6，却因为全天回归值 87.2 而排不到峰）。
+    // 所以优先用 TTFT 口径并在 decodeSrc 里标明来源，峰谷只在同口径内比较。
+    const wd = arr.filter((r) => typeof r.ttftMs === "number"
+      && r.ttftMs > 0 && r.ttftMs < r.durMs && r.ct > 1);
+    const decList = wd.map((r) => (r.ct - 1) / ((r.durMs - r.ttftMs) / 1000)).sort((a, b) => a - b);
+    const decTtft = decList.length >= 20
+      ? Math.round(decList[Math.floor(decList.length / 2)] * 10) / 10 : null;
+    days.push({
+      day,
+      n: arr.length,
+      p50: Math.round(dt[Math.floor(dt.length / 2)] * 10) / 10,
+      decode: decTtft != null ? decTtft : (fd ? fd.decode : null),
+      decodeSrc: decTtft != null ? "ttft" : (fd ? "fit" : null),
+      nTtft: wd.length,
+    });
   }
   days.sort((a, b) => (a.day < b.day ? -1 : 1));
   let week = null;
   if (rows7.length) {
+    const fit7 = fitDecode(rows7);
     const all7 = rows7.map((r) => r.tps).sort((a, b) => a - b);
-    const sortedDays = days.slice().sort((a, b) => a.p50 - b.p50);
+    // 峰/谷按 decode 排序（有 decode 用 decode，样本不足的那天回落到端到端 p50），
+    // 保证排序口径与面板显示口径一致。
+    const sk = (d) => (typeof d.decode === "number" ? d.decode : d.p50);
+    // 峰/谷只在同一口径的样本里比：有 ≥2 天带 TTFT 就只在这几天里选，
+    // 否则退回全部（并让客户端按 decodeSrc 标注）。
+    const ttftDays = days.filter((d) => d.decodeSrc === "ttft");
+    const pool = ttftDays.length >= 2 ? ttftDays : days;
+    const sortedDays = pool.slice().sort((a, b) => sk(a) - sk(b));
     week = {
       n: rows7.length,
       days: days.length,
@@ -557,12 +634,33 @@ function buildSpeed(t0, hours) {
       p50: Math.round(all7[Math.floor(all7.length / 2)] * 10) / 10,
       peak: sortedDays.length ? sortedDays[sortedDays.length - 1] : null,
       low: sortedDays.length ? sortedDays[0] : null,
+      decode: fit7 ? fit7.decode : null,
+      fixedMs: fit7 ? fit7.fixedMs : null,
       byDay: days,
     };
   }
 
   if (!rows.length) return Object.assign(base, { n: 0, week, note: '窗口内没有带 usage 的请求' });
 
+  const fit = fitDecode(rows);
+
+  // ── TTFT / TPOT（2026-11-12 加）：vLLM generation_time_ms 口径的逐条算法 ────────
+  // TPOT = (durMs - ttftMs) / (ct - 1)，纯 decode 速度 = 1000 / TPOT。
+  // 与 fitDecode 的关系：fit 是回归法（需 ≥40 条、给出固定开销 a 与斜率 b），
+  // TPOT 是逐条法（只需该条请求自己有 ttftMs），两者互为校验。
+  // 只统计 ttftMs>0 且 ct>1 的样本 —— 首 token 时间缺失的记录不能减，ct=1 时分母为 0。
+  const ttftList = [];
+  const tpotList = [];
+  for (const r of rows) {
+    if (!(r.ttftMs > 0)) continue;
+    ttftList.push(r.ttftMs);
+    if (!(r.durMs > r.ttftMs) || !(r.ct > 1)) continue;
+    const tp = (r.durMs - r.ttftMs) / (r.ct - 1);
+    if (tp > 0) tpotList.push(tp);
+  }
+  ttftList.sort((a, b) => a - b);
+  tpotList.sort((a, b) => a - b);
+  const pct2 = (arr, q) => (arr.length ? arr[Math.min(arr.length - 1, Math.floor(arr.length * q))] : null);
   const tps = rows.map((r) => r.tps).sort((a, b) => a - b);
   const at = (q) => Math.round(tps[Math.min(tps.length - 1, Math.floor(tps.length * q))] * 10) / 10;
   let ct = 0, rt = 0, cached = 0, pt = 0;
@@ -581,6 +679,22 @@ function buildSpeed(t0, hours) {
     n: rows.length,
     p10: at(0.1), p50, p90: at(0.9), max: Math.round(tps[tps.length - 1] * 10) / 10,
     ratio: Math.round((1000 * p50) / SPEED_BASELINE) / 10,
+    // 纯 decode 口径（2026-11-11 新增）：端到端 p50 受固定开销与上下文长度污染，
+    // 不能跨时段/跨协议比较；decode 才是模型真实出字速度，与 dsh 自带口径一致。
+    decode: fit ? fit.decode : null,
+    fixedMs: fit ? fit.fixedMs : null,
+    msPerTok: fit ? fit.msPerTok : null,
+    decodeN: fit ? fit.n : 0,
+    decodeRatio: fit ? Math.round((1000 * fit.decode) / SPEED_BASELINE) / 10 : null,
+    // TTFT 与 TPOT（2026-11-12 加）：vLLM / Artificial Analysis 对标口径。
+    // ttftN 与 decodeN 是不同的样本口径（前者只要有 ttftMs，后者要拟合成功），
+    // 面板上要分别标注，不能混着读。
+    ttftN: ttftList.length,
+    ttftP50: ttftList.length ? Math.round(pct2(ttftList, 0.5)) : null,
+    ttftP90: ttftList.length ? Math.round(pct2(ttftList, 0.9)) : null,
+    tpot: tpotList.length ? Math.round(pct2(tpotList, 0.5) * 10) / 10 : null,
+    tpotP90: tpotList.length ? Math.round(pct2(tpotList, 0.9) * 10) / 10 : null,
+    tpotRatio: tpotList.length ? Math.round((1000 / pct2(tpotList, 0.5)) / SPEED_BASELINE * 10) / 10 : null,
     reasoningShare: ct ? Math.round((1000 * rt) / ct) / 10 : null,
     cacheHit: pt ? Math.round((1000 * cached) / pt) / 10 : null,
     models,
@@ -708,11 +822,23 @@ function refreshConnectivity(hours, bucketMin) {
   })();
 }
 
-function connectivityCached(hours, bucketMin, force) {
+async function connectivityCached(hours, bucketMin, force) {
   const now = Date.now();
   const sameShape = connCache.body && connCache.body.hours === hours && connCache.body.bucketMin === bucketMin;
   if (connCache.body && !sameShape) connCache.body = null;   // 窗口形状变了才丢缓存
-  const fresh = connCache.body && (now - connCache.at) < CONN_TTL_MS && !force;
+
+  // 2026-11-14 修：force（面板 ⟳ 按钮）必须同步算完再返回。
+  // 原来 force 只是触发后台重算、立刻返回旧 body（实测 force=1 的 ageMs 仍是 8117ms、
+  // stale=true），于是「手动刷新」永远看不到新数据 —— 用户点了跟没点一样。
+  // 12h 窗口重算 ~385ms，同步等待完全可接受。
+  if (force) {
+    const body = await buildConnectivity(hours, bucketMin);
+    connCache.at = Date.now();
+    connCache.body = body;
+    return Object.assign({}, body, { stale: false, ageMs: 0, busy: false });
+  }
+
+  const fresh = connCache.body && (now - connCache.at) < CONN_TTL_MS;
   if (!fresh) refreshConnectivity(hours, bucketMin);         // stale-while-revalidate：立刻回旧值，后台补
   if (!connCache.body) return { ok: true, ts: now, warming: true, hours, bucketMin, buckets: [], totals: { steps: 0 } };
   return Object.assign({}, connCache.body, { stale: !fresh, ageMs: now - connCache.at, busy: connBusy });
@@ -743,7 +869,7 @@ const server = http.createServer(async (req, res) => {
         ? Math.min(24 * 60, Math.max(1, Number(rawHours) || 12))
         : Math.min(24 * 60, Math.max(1, (Number(rawDays) || 7) * 24));
       const bucketMin = Math.min(1440, Math.max(1, Number(url.searchParams.get('bucket') || (hours <= 12 ? 15 : 60)) || 15));
-      sendJson(req, res, connectivityCached(hours, bucketMin, url.searchParams.get('force') === '1'), cors);
+      sendJson(req, res, await connectivityCached(hours, bucketMin, url.searchParams.get('force') === '1'), cors);
     } catch (e) {
       res.writeHead(500, Object.assign({ 'Content-Type': 'application/json; charset=utf-8' }, cors));
       res.end(JSON.stringify({ ok: false, error: String((e && e.message) || e) }));
@@ -850,3 +976,13 @@ if (warmTimer.unref) warmTimer.unref();
 try { warmFileScan(); } catch {}  // 启动先热一次，首个 /cache 不必冷扫
 
 server.listen(PORT, '127.0.0.1', () => console.log('quota-http on ' + PORT));
+// 2026-11-14: 手机/平板经局域网 IP 打开 dsh 时，goat-panel 前端会请求 http://<LAN IP>:8790。
+// 因此在 LAN 地址上再开一个同 handler 的 listener；失败不影响回环服务。
+try {
+  const lanHost = process.env.QUOTA_HTTP_LAN || '192.168.0.100';
+  const listeners = server.listeners('request');
+  const lanServer = http.createServer((req, res) => { for (const h of listeners) h.call(lanServer, req, res); });
+  lanServer.on('clientError', () => {});
+  lanServer.on('error', (e) => console.log('quota-http LAN listen failed: ' + e.message));
+  lanServer.listen(PORT, lanHost, () => console.log('quota-http LAN on ' + lanHost + ':' + PORT));
+} catch (e) { console.log('quota-http LAN listen skipped: ' + e.message); }

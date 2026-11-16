@@ -79,3 +79,42 @@ storages/thread-edges.dot
 wechat-bridge/daemon.pid
 wechat-bridge/daemon-port.json
 speech-to-text/
+
+# --- Python 缓存 ---
+__pycache__/
+*.pyc
+
+# --- Edge 用户数据目录（2026-11-11 发现被 git add 误入库，746 MB / 3056 文件）---
+# AIGC 实验用的独立 Edge profile；里面的 Extensions/Cache/Storage 全是运行期派生物，不可重建但也不必入版本库。
+edge-aigc/
+
+# journal/ 是独立仓库（push 到 TianQue6916/diary），外层不再跟踪，消除双重状态（2026-11-11）
+journal/
+
+# ============================================================
+# 2026-11-16 治理：一次 `git add -A` 把 5765 文件 / 220 万行卷进暂存区
+# （dsh-autocommit 每 5 分钟跑一次，全部被 pre-commit hook 拒绝，
+#   于是一直卡着没人发现 —— 详见 logs/dsh-autocommit.log 里的假成功记录）
+# ============================================================
+
+# dsh 运行时依赖（273 MB，deps 可重建）
+dsh-runtimes/
+
+# 临时解包 / 探针产物
+tmp/
+
+# 本地开发 CA：ca.key / server.key 是私钥，本地仓库也不留
+certs/
+
+# .learn/run/ 是验证脚本的产物区（AGENTS 契约：跑验证一律写这里）
+.learn/run/
+
+# 远端票据 / 手机端安装包
+*.apk
+*.apk.part*
+
+# ds-harness-remote 的 server-credentials.json / device.json 是传输层凭据
+ds-harness-remote/
+
+# 延迟与贡献者统计是运行期累积数据
+llm-latency/

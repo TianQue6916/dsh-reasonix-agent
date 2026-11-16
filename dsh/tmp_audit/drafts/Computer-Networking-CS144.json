@@ -1,0 +1,14 @@
+{
+  "name": "Computer-Networking-CS144",
+  "description": "Stanford CS144 Computer Networking labs & notes — Lab 0-6 handouts, weekly lecture notes, MOOC unit notes, midterm & final practice exams with answers, textbook, subtitles, EN/中文",
+  "topics": [
+    "computer-networking",
+    "cs144",
+    "stanford",
+    "tcp-ip",
+    "labs",
+    "study-notes"
+  ],
+  "llms_txt": "# Computer Networking (Stanford CS144)\n\n> Bilingual (EN/中文) study pack for Stanford CS144 Introduction to Computer Networking: live lecture notes, MOOC unit notes, 7 labs, practice exams with answers, video subtitles.\n\n## 讲义 Notes\n- [01-课堂讲义](01-课堂讲义): 按周次的课堂讲义、期末复习与客座讲座，均为 `*.bilingual.md`\n- [02-慕课](02-慕课): Unit1–Unit8 MOOC 单元笔记（Internet/IP、Transport、Packet Switching、Congestion Control、Routing、Lower Layers、Security）\n\n## 实验与考试 Labs & exams\n- [03-实验Lab](03-实验Lab): Lab 0–6（字节流、TCP 接收端/发送端/连接、网络接口、IP 路由器）+ 抓包练习题目与答案\n- [04-考试](04-考试): 期中、期末练习题与答案各一套\n\n## 教材与字幕\n- [05-教材](05-教材): Peterson & Davie《计算机网络：系统方法》v6.1 PDF\n- [06-视频字幕](06-视频字幕): 课程视频中文字幕 `.srt`\n\n## 备注\n- 课程材料版权归 Stanford 与原作者所有，教材版权归出版方所有。\n- 正文中文为主，英文术语行内保留原词。\n",
+  "evidence": "README.md 目录结构与 tree 一致：03-实验Lab/ 下有 Lab 0 到 Lab 6 共 7 份 handout，04-考试/ 有 期中-练习-题目/答案 与 期末-练习-题目/答案，05-教材/Peterson-Davie-计算机网络-系统方法-v6.1.pdf，06-视频字幕/ 为 srt。"
+}

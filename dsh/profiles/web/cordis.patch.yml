@@ -277,6 +277,13 @@
           - id: subagent-language
             name: ../../.agent-presets/anchored-standard/subagent-language.mjs
 
+          # ── 设备环境（2026-11-08）────────────────────────────────────────────────────
+          # 同目录 device-context.mjs：每轮 system-prompt/assemble 实测本机 OS / 主机名 /
+          # 路径风格 / shell，追加到 persona prefix。理由见该文件头注释（dsh 不注入 device id，
+          # 且双机共享同一套记忆）。
+          - id: device-context
+            name: ../../.agent-presets/anchored-standard/device-context.mjs
+
           # ── identity ────────────────────────────────────────────────────────────────
 
           # Keep this text byte-identical to the Minimal preset. `complete` prevents the
@@ -685,6 +692,9 @@
                   provider: spawn
                   toolName: subagent
                   backgroundMode: continuable
+                  # 2026-11-15：child 首轮 header 带 101 个工具（主会话只有 2）；未配 agentPreset 时 catalog 退回 host 全量。
+                  agentPreset: anchored-standard
+                  allowedAgentPresets: [anchored-standard, learn]
 
               - id: tool-subagent-fork
                 name: '@deepseek-ai/dsh-tool-subagent'
@@ -741,6 +751,464 @@
               fetch: false
               searchTimeoutMs: 60000
 
+    # ── 学习模式 · study-coach ──────────────────────────────────────────────────
+    # 按用户画像合成的学习 preset（2026-11-15 建）。
+    # 机制来源（社区）：
+    #   * GrowingPPP/dsh-inquiry-preset —— 先预测再操作再观察，不自动判分
+    #   * Miaotofu01/Study-Mate —— 知识点依赖图 + 跨科目记忆
+    #   * Yihong89/dsh-teacher —— 错题 ledger + 间隔重复
+    #   * xiaobright/dsh-anchored-standard —— 注入控制与工具渐进（本 preset 不做锚定，
+    #     学习场景首轮就该工具齐全：数学推理需要 bash 跑 sympy/numpy 验证反例）
+    # 与 anchored-standard 的分工：
+    #   anchored-standard = 工程 / 工具链通道（首轮 2 工具锚定，晋升后渐进解锁）
+    #   learn             = 学习 / 推导通道（工具齐全，人设编码「先攻后守」）
+    - id: preset-learn
+      name: '@deepseek-ai/dsh-agent-preset'
+      config:
+        id: learn
+        name: "大一统理论与第一性原理"
+        description: "数学 / 计算机的学习通道：以人类文明积累的高度一次讲透（本质 → 形式 → 为什么是这个形式 → 历史坐标），未学概念就地详析，断言可验证。"
+        order: 7
+        plugins:
+
+          # ── tool probe ────────────────────────────────────────────────────────────
+          # 最小 tool-call 探针：只挂 tools/execute，把 (name, durMs, isError) 追加到
+          # $DSH_HOME/logs/tool-calls.jsonl。不接 OTel、不发网络、不改任何调用行为。
+          # 目的：用运行时证据验证 dsh-tools/lib/types/index.d.ts:58 的 waterfall 签名，
+          # 并在首次命中时 dump exec / result 的真实字段形状（那条 _shape 记录）。
+          # 首条 _shape 拿到后即可关掉（config.enabled: false）。
+          - id: tool-probe
+            name: ../../.agent-presets/anchored-standard/tool-probe.mjs
+            config:
+              enabled: true
+
+          # ── stall guard ─────────────────────────────────────────────────────────────
+          # 让「turn 永久冻住」在结构上不可能发生。dsh-llm / dsh-agent-loop 里没有 stream 级 timeout
+          # （dsh-llm 只 import 了 MAX_TIMER_DELAY_MS），agent-loop 的
+          # `for await (const chunk of stream)` 没有任何时限；再叠加 checkpoint-policy 的
+          # fail-closed flush barrier（`await ctx.sessions.flush(session)` 之后才 next()），
+          # 只要其中任一条 await 永不 settle，整个 step 就永久 pending（进程活着、零写入、
+          # gateway 零日志、无 crash）。本机实测已发生 11 次。
+          #
+          # 本模块不猜根因在哪条 await，而是给「turn 有进展」建立独立判据：
+          #   agent/pre-step              → 记 step 开始时刻（真卡死恰在「注入落盘后、请求发出前」，
+          #                                  那时还没有 start frame，所以计时起点必须在这里）
+          #   agent/assistant-stream 每帧 → 刷新 lastActivity
+          #   每 15s 扫一次               → idle > stallMs 就 agent.cancel()，让 turn 以 aborted
+          #                                 干净收尾，而不是永久冻住，把控制权交还用户。
+          #
+          # 故意不做 autoContinue —— thinking-guard 熔断后注入「继续」→ 新 attempt → 又空转
+          # → 又熔断，形成死循环并让问题看起来更严重；本模块只写日志 + cancel。
+          # 另含工具失败熔断：同一 session 同一工具连续失败 3 次 → 下一步注入一条提示，
+          # 要求换策略或停下来汇报（只在触发时注入，常态零开销）。
+          # 详见 .agent-presets/anchored-standard/stall-guard.mjs 的头注释；日志
+          # $DSH_HOME/logs/stall-guard.log。
+          # 放在 context-gate 之前的理由：waterfall 的 after-next transform 按逆注册序应用，
+          # 先注册 = 更外层 = 更后运行；本模块无论注入句子都应该落在 gate 之后，
+          # 不被 allowKinds 过滤掉。
+          - id: stall-guard
+            name: ../../.agent-presets/anchored-standard/stall-guard.mjs
+            config:
+              stallGuard:
+                enabled: true
+                stallMs: 240000
+                tickMs: 15000
+              toolBreaker:
+                enabled: true
+                maxConsecutiveFailures: 3
+
+          # ── thinking-language anchor ────────────────────────────────────────────────
+
+          # 在每一步生成前，把「思考链用中文」追加到上下文的最尾部（agent/pre-step，
+          # 追加一条 source.kind='thinking-anchor' 的 user 消息）。理由与实测数据见
+          # .agent-presets/anchored-standard/thinking-anchor.mjs 的头注释。
+          #
+          # 注册位置是**语义**的一部分，不是排版：agent/pre-step 的 after-next transform
+          # 按注册顺序的**逆序**执行（先注册 = 最外层 = 最后改写结果）。放在这里，
+          # 本行的消息会落在 git-context 的消息之后 —— 也就是真正紧贴生成点的那条。
+          # 挪到 git-context 之后会让 git-context 变成最后一条，锚点被推到前面。
+          #
+          # source.kind 已加入上面 context-gate 的 allowKinds：第一轮（unpromoted）
+          # 也要留下这条，因为首块的语言正是决定后续锁定的那一块。
+          - id: thinking-anchor
+            name: ../../.agent-presets/anchored-standard/thinking-anchor.mjs
+            config:
+              enabled: true
+
+          # ── 设备环境（2026-11-08）────────────────────────────────────────────────────
+          # 同目录 device-context.mjs：每轮 system-prompt/assemble 实测本机 OS / 主机名 /
+          # 路径风格 / shell，追加到 persona prefix。理由见该文件头注释（dsh 不注入 device id，
+          # 且双机共享同一套记忆）。
+          - id: device-context
+            name: ../../.agent-presets/anchored-standard/device-context.mjs
+
+          # ── identity ────────────────────────────────────────────────────────────────
+
+          # Keep this text byte-identical to the Minimal preset. `complete` prevents the
+          # Harness identity and per-tool guidance from changing the system prompt, while
+          # runtime-context suppression leaves task and repository rules to user messages
+          # and explicit file reads. Tool schemas and their runtime enforcement remain.
+          - id: persona
+            name: '@deepseek-ai/dsh-persona'
+            config:
+              prefix: |
+                你是张宇轩的数学与计算机科学导师。你的角色是**站在人类文明数千年积累之上**：把他要学的东西，以它最好的形式、最清晰的动机、最准确的历史位置交付给他。
+
+                ## 硬约束（违反其中任何一条，这次回答就算失败）
+                1. **一次性给完，绝不拆成让你自己做**。下面这些句式**一律不许出现**：「以下三问」「把它拆成几个问题」「你可以自己证明」「留给你填」「这是你后面要自己想通的」「现在动手」「先试试看」「你觉得呢」。他没学过的概念，问了也答不上——出题等于把学习成本转嫁给他。
+                2. **证明要一步步走完**，包括每一个引理。不许写「这个 lemma 你自己证一下」——把证明写出来，占几行没关系。
+                3. **不出题、不布置作业、不反问、不设空位**。练习权在他手上：他明确说「给我几道题」才给。
+                4. 不确定的就说「这是未经检验的结论」，绝不把猜测当事实。
+
+                ## 交付清单（发出去之前逐条自检，缺哪条就补上）
+                - [ ] **第一句是本质**：这个概念在人类知识里是什么、为什么会有它。
+                - [ ] **完整形式**摆出来了（定义 / 定理 / 算法），可照抄，不是复述大意。
+                - [ ] **直觉**：用他已知的东西打比方，说清它到底在说什么。
+                - [ ] **为什么必须是这个形式**：为什么定义里有两个量词、去掉一个会塌成什么样、换一种写法会丢什么。
+                - [ ] **一个完整例子**（带真实数字或代码，能跑就真跑并贴 stdout）+ **一个非例子**（不满足条件会怎样）。
+                - [ ] **历史坐标**：谁在什么年代被什么卡住、谁解决了、代价是什么。
+                - [ ] **他的落点 + 下一步**（有就点一句，没有不硬凑）：这在他的哪门课里出现过——`Strang 18.06` / `CSAPP` / `CLRS 6.006` / `6.042J` / `Thomson 实分析` / `概率论`，第几章或哪个定理，**顺手带一句、不要单开一节**；确实没有就说「这几门里没有直接对应，最接近的是 X」。**结尾一句话交代方向：下一个该拿下的是 X，因为它能解决 Y。**
+                - [ ] **没有出题、没有留空位、没有反问**（出现任何一条就删掉重写）。
+
+                ## 他的知识地图（给坐标时挂这些，别说他没学过的课）
+                - **6.042J 离散数学**（MIT）：逻辑与证明、集合、关系与函数、图论、数论、归纳与强归纳、生成函数、离散概率
+                - **CLRS / 6.006 算法**：排序、哈希表、二叉搜索树、图搜索（BFS/DFS）、最短路（Dijkstra/Bellman-Ford）、最小生成树、动态规划、NP 完全
+                - **CSAPP 深入理解计算机系统**：机器级表示、IEEE 754 浮点、汇编、cache 层次、链接、异常控制流、虚拟内存、并发
+                - **Strang 18.06 线性代数**：消元、向量空间、秩-零化度、正交与投影、行列式、特征值、SVD、最小二乘
+                - **Thomson 实分析**：集合论、实数完备性、序列与级数、拓扑基础（开/闭/紧/连通）、连续性与一致连续、Riemann 积分
+                - **概率论**：公理化、随机变量、期望方差、大数定律、中心极限定理
+                连接时优先挂到这些课的**章节名或定理名**（如「CSAPP 第 2 章的浮点」「Strang 的 rank-nullity」），不要编造页码。
+
+                ## 查记忆（他花力气建的，别让它在硬盘上睡觉）
+                涉及他**具体的课程进度 / 作业 / 旧笔记 / 以前问过的问题 / 他自己的翻译或笔记项目**时，先 `memory_search`（语料 400+ 条 fact 在 `~/.reasonix/memory`），命中后 `memory_read` 读全文再答。**纯概念问题不查。**
+
+                ## 其他
+                - 遇到他没学过的概念，**就地详析**：用他已知的节点建桥——它是什么、解决什么问题、边界在哪、和已知的哪个结构同构。不许只丢名字就走；讲不清就先不引入。他明确说「这个先不学」才跳过。
+                - 确实存在更一般的版本时可以说，但要用一句话交代它一般化在哪里、为什么现在用不上。
+                - 术语保留英文原词（theorem / proof / eigenvalue / injection 照抄），解释用中文。
+                - 他明确说「这里没懂」的，写进 .learn/gaps.md（卡在哪一步 / 缺哪个前置 / 下次先检查什么）。
+                - 要跑验证代码时，源码和产物一律写在 `~/.dsh/.learn/run/` 下（`mkdir -p` 先建），**不要往 home 根目录或桌面丢临时文件**。
+                - 空洞赞美（「很好」「这是个好问题」）一律不说。给判断，不给情绪。
+          - id: instruction-hint
+            name: ../../.agent-presets/anchored-standard/instruction-hint.mjs
+            config:
+              promoteOn: either
+              includeSubagents: true
+
+          # On-demand tool discovery (the tool-search pattern, local addition): the
+          # promoted catalog keeps a minimal resident set; heavier Standard tools
+          # (web_search, subagent, workflow, …) are unlocked on demand via
+          # dev_tool_search.
+          - id: dev-tool-search
+            name: ../../.agent-presets/anchored-standard/dev-tool-search.mjs
+
+          # ── shell ───────────────────────────────────────────────────────────────────
+
+          # `shell-env` stays in the HOST composition: `apps/cli/src/web.ts` injects it to
+          # publish `DSH_WEB_URL`/`DSH_WEB_MODE`, and a host row that injects a service is
+          # the criterion for host-plane ownership — injection resolves before any session
+          # exists, so there is no agent to key by. Behind a preset realm those variables
+          # never reached the model's shell at all. Both shell tools consume the host
+          # registry from here; their executors (`bash-sandbox`/`pwsh-sandbox`) are
+          # host-plane too.
+          - id: tool-bash
+            name: '@deepseek-ai/dsh-tool-bash'
+            # Disabled on EVERY platform, not just Windows: `dsh-tool-bash-persistent`
+            # below registers the same `bash` tool name into this same preset layer, and
+            # the tools registry rejects duplicates within one layer. The persistent
+            # shell (the Minimal preset's own shell) is the preset's bash; it consumes
+            # the host sandbox policy through the terminals realm.
+            disabled: true
+
+          - id: tool-pwsh
+            name: '@deepseek-ai/dsh-tool-pwsh'
+            disabled: !!js process.platform !== 'win32'
+
+          # The Minimal preset's shell: a PTY-backed persistent bash, schema-identical
+          # to the official `minimal` preset's `persistent-shell` group so the first
+          # request exposes exactly Minimal's real `bash` schema. ONE deliberate config
+          # difference: an adaptive `shellPath` — the terminal-bash plugin default
+          # `/bin/bash` where that absolute path exists (every host that ships it keeps
+          # the previous behavior), otherwise a bare `bash` resolved through the same
+          # scrubbed PATH the other harness tools use. The fallback exists because
+          # `/bin/bash` does not exist on NixOS and other hosts that keep bash
+          # elsewhere; there `execvp("/bin/bash")` exits during PTY startup ("PTY shell
+          # exited during startup") and every bash call fails. The PTY registry is an
+          # agent-owned service, so it lives in an entry-local realm; the backend still
+          # consumes the host sandbox policy and subprocess implementation, while the
+          # tool registers into this agent's scoped catalog.
+          #
+          # DISABLED ON WINDOWS: DSH's PTY backend is linux/darwin-only, so the
+          # persistent shell cannot serve win32. The `custom-bash` row below registers
+          # the same `bash` tool name there instead (platform-exclusive).
+          - id: persistent-shell
+            name: cordis:group
+            group: true
+            disabled: !!js process.platform === 'win32'
+            isolate:
+              terminals: true
+            config:
+              - id: pty
+                name: '@deepseek-ai/dsh-terminal'
+
+              - id: terminal-bash
+                name: '@deepseek-ai/dsh-terminal-bash'
+                config:
+                  shellPath: !!js "process.getBuiltinModule?.('node:fs')?.existsSync('/bin/bash')
+                    ? '/bin/bash' : 'bash'"
+                  timeoutMs: 300000
+
+              - id: persistent-bash
+                name: '@deepseek-ai/dsh-tool-bash-persistent'
+                config:
+                  timeoutMs: 300000
+                  description: |-
+                    Run commands in a bash shell
+                    * When invoking this tool, the contents of the "command" parameter does NOT need to be XML-escaped.
+                    * You don't have access to the internet via this tool.
+                    * You do have access to a mirror of common linux and python packages via apt and pip.
+                    * State is persistent across command calls and discussions with the user.
+                    * To inspect a particular line range of a file, e.g. lines 10-25, try 'sed -n 10,25p /path/to/the/file'.
+                    * Please avoid commands that may produce a very large amount of output.
+                    * Please run long lived commands in the background, e.g. 'sleep 10 &' or start a server in the background.
+
+          # Windows-only `bash` tool (see custom-bash.mjs): registers the SAME
+          # tool name as the persistent shell with a Minimal-compatible description, but
+          # executes through the ordinary cross-platform subprocess seam (`bash -c`)
+          # instead of a PTY. The shell is resolved WITHOUT a hardcoded install path
+          # (issue #24): `bashPath` unset probes the `git` executable's install root,
+          # then the well-known Git-for-Windows roots (Program Files(/x86), per-user
+          # LOCALAPPDATA, scoop's `current` junction), then plain `bash` on PATH — set
+          # `bashPath` explicitly only to pin a shell that probing cannot find. No OS
+          # sandbox confinement on Windows (landlock is linux-only); the tool
+          # description says so. When no bash exists at all the tool errors with
+          # guidance instead of switching shells — pwsh stays its own tool in the
+          # promoted catalog.
+          - id: custom-bash
+            name: ../../.agent-presets/anchored-standard/custom-bash.mjs
+            disabled: !!js process.platform !== 'win32'
+            config:
+              # 2026-10-29：与 persistent-bash 对齐（原来吃 custom-bash.mjs:54 的
+              # DEFAULT_TIMEOUT_MS = 120000）。这是兜底上限，模型仍应用 `timeout N` 前缀。
+              timeoutMs: 300000
+
+          # ── filesystem ──────────────────────────────────────────────────────────────
+
+          # Both register into the host `tools` registry and provide nothing, so
+          # they need no realm. The `fs` service and its policy stay in the host.
+          - id: tool-fs
+            name: '@deepseek-ai/dsh-tool-fs'
+
+          - id: tool-fs-search
+            name: '@deepseek-ai/dsh-tool-fs-search'
+            config:
+              sampleOverCapGlobResults: false
+
+          # The Minimal preset's second tool: `str_replace_editor` over a bare local
+          # filesystem, byte-identical in configuration to the official `minimal`
+          # preset's `filesystem` group. The editor's own realm shadows the host's
+          # sandboxed `fs` provider only inside this group, so the standard `read`/
+          # `write`/`edit` tools keep the sandboxed fs while the bootstrap editor uses
+          # the local one.
+          - id: bootstrap-filesystem
+            name: cordis:group
+            group: true
+            isolate:
+              fs: true
+            config:
+              - id: fs-local
+                name: '@deepseek-ai/dsh-fs-local'
+                config:
+                  cwd: !!js process.env.DSH_CWD ?? process.cwd()
+
+              - id: str-replace-editor
+                name: '@deepseek-ai/dsh-tool-str-replace-editor'
+                config:
+                  maxOutputChars: 16000
+
+          # ── background jobs ────────────────────────────────────────────────────────
+
+          # Only the model-facing controls. The task REGISTRY stays on the host plane:
+          # its producers sit outside any realm this file could put it in — `tool-bash`
+          # above resolves it with `ctx.get`, and an entry-local realm here is invisible
+          # to every sibling row, so `run_in_background` would answer "background jobs
+          # unavailable" while these controls sat in the catalog. The registry is keyed by
+          # owning agent anyway, so one host instance serves every session. What a preset
+          # chooses is whether its agent can collect and stop background work at all.
+          - id: tool-jobs
+            name: '@deepseek-ai/dsh-tool-jobs'
+
+          # ── skills ──────────────────────────────────────────────────────────────────
+
+          # The skill REGISTRY lives in the host composition and is layered per scope:
+          # these rows register into THIS preset's layer of it, so they need no realm.
+          # `skill-filesystem` contributes local-root discovery for agents on this
+          # preset. The full skill CATALOG injection (`dsh-tool-skill`, the ~9KB
+          # `<available_skills>` reminder) is REMOVED (local addition): it perturbs the
+          # trajectory (issue #6: 0/9 anchored with the catalog present vs ~81%
+          # without). Instead `skill-search` exposes two small on-demand tools —
+          # skill_search (list matching summaries) and skill_load (inject one skill's
+          # full instructions) — the tool-search pattern.
+          - id: skill-filesystem
+            name: '@deepseek-ai/dsh-skill-filesystem'
+
+          - id: skill-search
+            name: ../../.agent-presets/anchored-standard/skill-search.mjs
+
+          # ── memory ──────────────────────────────────────────────────────────────────
+          #
+          # On-demand access to the SHARED reasonix memory corpus (~/.reasonix/memory),
+          # so a dsh session and a reasonix session read one set of facts instead of
+          # forking. Read-only by design: reasonix stays the single writer of its facts
+          # and its MEMORY.md index, so the two-machine sync keeps working untouched.
+          # Ships no resident text (same reasoning as skill-search) — the model calls
+          # memory_search / memory_read only when a task needs them.
+          - id: memory-reasonix
+            name: ../../.agent-presets/anchored-standard/memory.mjs
+
+          # ── compaction ──────────────────────────────────────────────────────────────
+
+          # `compaction-basic` reads `toolResultPrune` through `ctx.get`, so the pruner must
+          # share this realm rather than sit outside it.
+          #
+          # `tokenMeter` is deliberately NOT in this realm: the meter stays on the HOST
+          # plane, and the rows here resolve that one instance. It takes no configuration,
+          # keys every fold by Session, and owns the context-meter projection units the
+          # browser reads for every session — behind a realm those units would come and go
+          # with whichever presets happen to be mounted. What a preset chooses is whether
+          # its agent compacts at all, which is `compaction-basic` below.
+          - id: compaction
+            name: cordis:group
+            group: true
+            isolate:
+              compaction: true
+              toolResultPruner: true
+            config:
+              - id: compaction-basic
+                name: '@deepseek-ai/dsh-compaction-basic'
+                # 2026-10-29 用户拍板：自动压缩 + 手动 compress 并存，阈值 0.65。
+                # 0.65 < 上游 bili 的 nudgeMaxContextLimitPct(0.70)，所以手动 compress 有机会先出手
+                # （bili 只有在会话已有 active 折叠块时才会本地应答 dsh 的 summarize 调用，#3733）。
+                config:
+                  auto: true
+                  thresholdRatio: 0.65
+                  maxTokens: 32768
+
+              - id: command-compact
+                name: '@deepseek-ai/dsh-command-compact'
+
+              - id: tool-result-pruner
+                name: '@deepseek-ai/dsh-compaction-tool-result-pruner'
+                config:
+                  thresholdChars: 32768
+                  headChars: 4096
+                  tailChars: 1024
+
+          # ── delegation and workflows ────────────────────────────────────────────────
+
+          # The `subagents` registry and its spawn/fork backends live in the HOST
+          # composition: the registry is a process singleton whose cross-session queries
+          # the api-proxy serves to the browser, and a provider name may only be
+          # registered once. This preset contributes the delegation TOOLS, which resolve
+          # that host registry.
+          #
+          # `workflows` is different — nothing outside an agent reads it — so every row
+          # that reaches it shares one entry-local realm here, and a consumer left
+          # outside would resolve a host registry this preset does not populate.
+          #
+          # `tool-subagent-report` is host-plane for the same reason as the registry,
+          # not because a preset may not want it: it registers a CONTINUABLE SETUP on
+          # that singleton rather than a tool this agent calls, and the setup list is
+          # not scope-aware — one copy per mounted preset means every child gets
+          # `report` registered once per live session, which throws on the second.
+          - id: delegation
+            name: cordis:group
+            group: true
+            isolate:
+              workflowEngine: true
+            config:
+              - id: tool-subagent-control
+                name: '@deepseek-ai/dsh-tool-subagent-control'
+
+              - id: tool-subagent-list-agents
+                name: '@deepseek-ai/dsh-tool-subagent-control/list-agents'
+
+              - id: tool-subagent
+                name: '@deepseek-ai/dsh-tool-subagent'
+                config:
+                  provider: spawn
+                  toolName: subagent
+                  backgroundMode: continuable
+                  # 2026-11-15：child 首轮 header 带 101 个工具（主会话只有 2）；未配 agentPreset 时 catalog 退回 host 全量。
+                  agentPreset: anchored-standard
+                  allowedAgentPresets: [anchored-standard, learn]
+
+              - id: tool-subagent-fork
+                name: '@deepseek-ai/dsh-tool-subagent'
+                config:
+                  provider: fork
+                  toolName: subagent_fork
+                  backgroundMode: continuable
+
+              # Product providers are host-plane singletons. Copy this preset, then
+              # remove `disabled` from either ordinary tool row to expose that product
+              # only to agents composed from the copy.
+              - id: tool-subagent-codex
+                name: '@deepseek-ai/dsh-tool-subagent'
+                disabled: true
+                config:
+                  provider: codex
+                  toolName: subagent_codex
+                  enableRunInBackground: false
+                  maxDepth: provider-managed
+
+              - id: tool-subagent-claude-code
+                name: '@deepseek-ai/dsh-tool-subagent'
+                disabled: true
+                config:
+                  provider: claude-code
+                  toolName: subagent_claude_code
+                  enableRunInBackground: false
+                  maxDepth: provider-managed
+
+              - id: workflow-ptc
+                name: '@deepseek-ai/dsh-workflow-ptc'
+                config:
+                  provider: spawn
+
+              - id: tool-workflow
+                name: '@deepseek-ai/dsh-tool-workflow'
+
+          # ── remaining model-facing rows ─────────────────────────────────────────────
+
+          - id: tool-ask-user
+            name: '@deepseek-ai/dsh-tool-ask-user'
+
+          - id: tool-todo
+            name: '@deepseek-ai/dsh-tool-todo'
+            config:
+              allowParallelInProgress: true
+
+          # The `web` service and its search provider stay in the host composition; only
+          # the model-facing tool is per-session.
+          - id: tool-web
+            name: '@deepseek-ai/dsh-tool-web'
+            config:
+              searchMaxResults: 74
+              fetch: false
+              searchTimeoutMs: 60000
+
+    # ── 学习模式 · study-coach ──────────────────────────────────────────────────
+    # 按用户画像合成的学习 preset（2026-11-15 建）。
+    # 机制来源（社区）：
+    #   * GrowingPPP/dsh-inquiry-preset —— 先预测再操作再观察，不自动判分
+    #   * Miaotofu01/Study-Mate —— 知识点依赖图 + 跨科目记忆
+    #   * Yihong89/dsh-teacher —— 错题 ledger + 间隔重复
+    #   * xiaobright/dsh-anchored-standard —— 注入控制与工具渐进（本 preset 不做锚定，
+    #     学习场景首轮就该工具齐全：数学推理需要 bash 跑 sympy/numpy 验证反例）
+    # 与 anchored-standard 的分工：
+    #   anchored-standard = 工程 / 工具链通道（首轮 2 工具锚定，晋升后渐进解锁）
+    #   learn             = 学习 / 推导通道（工具齐全，人设编码「先攻后守」）
     - id: mcp-goatquota
       name: '@deepseek-ai/dsh-mcp-client'
       config:
@@ -1630,12 +2098,14 @@
   config:
     enableGithub: true
     enableDeepseekSearch: true
+    deepseekSearchApiKeyEnv: "DEEPSEEK_SEARCH_API_KEY"
     enableBing: true
     enableWiki: true
     enableGoat: false
     enableDeepseek: false
     maxResults: 74
     deepseekSearchCount: 50
+    interleaveSources: true
     tagTitles: true
 # === 子 agent 并发上限：8 → 32（2026-10-28） ===
 # 源码 @deepseek-ai/dsh-subagent static Config:
@@ -1705,3 +2175,34 @@
       config:
         enabled: true
         throttleMs: 3600000
+
+# === DeepSeek 官方 API 只给 web_search 用（2026-11-08 用户约束）===
+# base 自带的两个 DeepSeek 搜索 provider 默认 apiKeyEnv: DEEPSEEK_API_KEY；
+# 除 web_search（local-search 的 deepseekSearch 源，走 /v1/tools/search）外一律禁用。
+- id: web-search-deepseek
+  disabled: true
+- id: web-deepseek-api
+  disabled: true
+
+# ── runtime hot memory 容量（2026-11-12 用户拍板扩容）────────────────────────
+# 默认 user 4096 / memory 10240，见 dsh-mnemon-source-runtime/lib/contracts-*.js:2-3；
+# zod 上限 MAX_RUNTIME_MEMORY_LIMIT_BYTES=1048576（同包 lib/index.js:14-15）。
+# 扩容不增加当前注入成本（实际内容 3875 + 8590 B），只是移除「加一条就得删一条」的阻碍。
+- id: mnemon-source-runtime
+  config:
+    userLimitBytes: 8192
+    memoryLimitBytes: 16384
+
+# === [2026-11-14] 覆盖 dsh-web-lan-access 的 0.0.0.0 绑定 ===
+# 新版 @deepseek-ai/dsh-host-webserver 拒绝 unspecified wildcard（会直接 startup failed），
+# 而 dsh-web-lan-access@1.3.2 的 bundle patch 正是设 host: '0.0.0.0'。
+# 用户层 patch 在 bundle 之后应用 ⇒ 这里把 host 收敛成具体网卡地址，polyfill 与 fence 仍由插件提供。
+# replace 语义 ⇒ config 必须写全（照 dump-config 抄）。
+- id: webserver
+  name: '@deepseek-ai/dsh-host-webserver'
+  config:
+    host: 192.168.0.100
+    port: !!js ctx.webStartup.port ?? 3080
+    compression: gzip
+    compressionLevel: 1
+    compressionThresholdBytes: 1024

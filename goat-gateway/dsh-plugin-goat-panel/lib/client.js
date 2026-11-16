@@ -43,6 +43,16 @@ window.__ModuleLoader__.load({
     // failure.code + step 起止时间戳），**不发起任何模型请求、不花 token**。
     // 服务端首扫 946 个 session 文件约 8 秒，之后走文件级 mtime 缓存 + 60s TTL。
     const CONN_ENDPOINT = "http://127.0.0.1:8790/connectivity";
+    // 2026-11-14: 手机/平板经局域网 IP 打开 dsh 时，127.0.0.1 指向设备自己 ⇒ 面板全空。
+    // 关键：求值推迟到真正 fetch 的时刻 —— 模块加载阶段绝不访问 location（上一版就是在这里炸的）。
+    // 只认 IPv4 且排除 127.x，其余（Electron 的 file:// 空 hostname / localhost / 异常）一律回 127.0.0.1。
+    function quotaHost() {
+      try {
+        var h = (typeof location !== "undefined" && location) ? String(location.hostname || "") : "";
+        return /^\d{1,3}(\.\d{1,3}){3}$/.test(h) && !/^127\./.test(h) ? h : "127.0.0.1";
+      } catch (e) { return "127.0.0.1"; }
+    }
+    function lanUrl(u) { try { return u.replace("//127.0.0.1:", "//" + quotaHost() + ":"); } catch (e) { return u; } }
     const REFRESH_MS = 15000;
     const LAYER_W = 470;
     const DAY_MS = 86400000;
@@ -139,7 +149,7 @@ window.__ModuleLoader__.load({
     function useQuota() {
       const [state, setState] = React.useState({ status: "loading", rows: [], ts: null, error: null });
       const load = React.useCallback((force) => {
-        fetch(ENDPOINT + (force ? "?force=1" : ""), { cache: force ? "reload" : "default" })
+        fetch(lanUrl(ENDPOINT) + (force ? "?force=1" : ""), { cache: force ? "reload" : "default" })
           .then((r) => r.json())
           .then((j) => setState({ status: j && j.ok ? "ok" : "error", rows: (j && j.rows) || [], ts: (j && j.ts) || new Date().toISOString(), error: j && j.error }))
           .catch((e) => setState({ status: "error", rows: [], ts: null, error: String((e && e.message) || e) }));
@@ -172,7 +182,7 @@ window.__ModuleLoader__.load({
         if (from) q.push("from=" + from);
         q.push("detail=1");
         if (force) q.push("force=1");
-        fetch(CACHE_ENDPOINT + "?" + q.join("&"), { cache: force ? "reload" : "default" })
+        fetch(lanUrl(CACHE_ENDPOINT) + "?" + q.join("&"), { cache: force ? "reload" : "default" })
           .then((r) => r.json())
           .then((j) => { if (alive) setState(j && j.ok ? j : null); })
           .catch(() => { if (alive) setState(null); });
@@ -203,9 +213,18 @@ window.__ModuleLoader__.load({
         let alive = true;
         const q = ["hours=12", "bucket=15"];   // 服务端窗口 12h / 15 分钟一格
         if (force) q.push("force=1");
-        fetch(CONN_ENDPOINT + "?" + q.join("&"), { cache: force ? "reload" : "default" })
+        fetch(lanUrl(CONN_ENDPOINT) + "?" + q.join("&"), { cache: force ? "reload" : "default" })
           .then((r) => r.json())
-          .then((j) => { if (alive) setState(j && j.ok ? j : null); })
+          .then((j) => {
+            if (!alive) return;
+            setState(j && j.ok ? j : null);
+            // 服务端是 stale-while-revalidate（TTL 已降到 15s）：心跳每 60 秒一次，
+            // 几乎必然撞上 stale=true —— 拿到的都是上一轮的旧值，面板看起来「不更新」。
+            // 这里 2 秒后补拉一次，把后台重算好的结果取回来。
+            if (j && j.ok && j.stale) {
+              setTimeout(() => { if (alive) setBeat((v) => v + 1); }, 2000);
+            }
+          })
           .catch(() => { if (alive) setState(null); });
         return () => { alive = false; };
       }, [enabled, days, nonce, beat]);
@@ -321,30 +340,49 @@ window.__ModuleLoader__.load({
       const connSpeedRow = connSpeed && connSpeed.n
         ? (() => {
             const wk = connSpeed.week || null;
+            // 主指标用纯 decode 速度（对窗口内样本拟合 dur = a + b*ct 后的 1/b），
+            // 不是端到端 ct/durMs。端到端把 TTFT + prefill（实测 4.7-9 秒）摊进分母，
+            // 结果「回答越短读数越低、上下文越长读数也越低」—— 不能用来判断 provider 快慢。
+            // decode 与 dsh 自带口径一致。
+            const dec = (typeof connSpeed.decode === "number" && connSpeed.decode > 0) ? connSpeed.decode : null;
+            const decRatio = (dec != null && typeof connSpeed.decodeRatio === "number")
+              ? connSpeed.decodeRatio : connSpeed.ratio;
+            const wv = (d) => (d && typeof d.decode === "number" ? d.decode : (d ? d.p50 : null));
             const trend = wk && wk.byDay && wk.byDay.length
               ? "一周逐日（中位 tok/s）：" + wk.byDay.map((x) => x.day + " " + x.p50 + "(" + x.n + ")").join(" · ")
               : "";
             return jsx.jsxs("div", {
               style: Object.assign({}, dim, { marginTop: "3px", opacity: 0.9 }),
-              title: "输出速度 = completion_tokens / durMs（端到端有效吞吐，含首 token 等待与排队）。"
-                + "当前值取最近 12 小时窗口；一周均/峰/谷取最近 7 天，峰与谷按**每天的中位数**比较"
-                + "（单条请求的极值只反映运气）。"
-                + " p10 " + connSpeed.p10 + " / p90 " + connSpeed.p90 + " / max " + connSpeed.max
-                + "，样本 " + connSpeed.n + " 个请求。"
+              title: "出字速度 = 对窗口内样本拟合 dur = a + b·ct，取 1/b（纯 decode，与 dsh 自带口径一致）。"
+                + "端到端 ct/durMs 会把首 token 等待与 prefill 摊进分母，"
+                + "导致回答越短、上下文越长读数越低，所以只作副值。"
+                + "当前窗口固定开销 a ≈ " + (connSpeed.fixedMs == null ? "?" : connSpeed.fixedMs) + " ms/请求，"
+                + "斜率 " + (connSpeed.msPerTok == null ? "?" : connSpeed.msPerTok) + " ms/tok，"
+                + "回归样本 " + (connSpeed.decodeN || 0) + " 条（不足 40 条时回落到端到端）。"
+                + "逐条口径（vLLM generation_time_ms = 首个 output token → 最后一个，不含 prefill）：TTFT p50 "
+                + (connSpeed.ttftP50 == null ? "?" : connSpeed.ttftP50) + " / p90 " + (connSpeed.ttftP90 == null ? "?" : connSpeed.ttftP90)
+                + " ms（" + (connSpeed.ttftN || 0) + " 条带首字时间），TPOT " + (connSpeed.tpot == null ? "?" : connSpeed.tpot)
+                + " ms/tok（p90 " + (connSpeed.tpotP90 == null ? "?" : connSpeed.tpotP90) + "，折合 "
+                + (connSpeed.tpot ? Math.round(1000 / connSpeed.tpot * 10) / 10 : "?") + " tok/s）。"
+                + "一周均/峰/谷取最近 7 天，峰与谷按每天的 decode（样本不足则按中位数）比较。"
+                + "端到端分位 p10 " + connSpeed.p10 + " / p90 " + connSpeed.p90 + " / max " + connSpeed.max
+                + "，窗口样本 " + connSpeed.n + " 个请求。"
                 + "reasoning 占 completion " + connSpeed.reasoningShare + "%，prompt cache 命中 "
                 + connSpeed.cacheHit + "%。"
-                + "基准 " + connSpeed.baseline + " tok/s（commandcode 上游 2026-09-27 前后实测 ~200，"
-                + "9-28 起断崖回落）。数据全部来自本地日志，没有额外发请求。 "
+                + "基准 " + connSpeed.baseline + " tok/s。数据全部来自本地日志，没有额外发请求。 "
                 + trend,
               children: [
-                jsx.jsx("span", { style: { opacity: 0.75 }, children: "速度 " }),
-                jsx.jsx("span", { style: { color: speedInk(connSpeed.ratio) }, children: connSpeed.p50 + " tok/s" }),
+                jsx.jsx("span", { style: { opacity: 0.75 }, children: "出字 " }),
+                jsx.jsx("span", { style: { color: speedInk(decRatio) },
+                  children: (dec == null ? connSpeed.p50 : dec) + " tok/s" }),
+                jsx.jsx("span", { style: { opacity: 0.5 }, children: " · 端到端 " + connSpeed.p50 }),
                 wk && wk.peak && wk.low
-                  ? jsx.jsx("span", { children: " · 一周 均 " + wk.mean + " / 峰 " + wk.peak.p50
-                      + " / 谷 " + wk.low.p50 })
+                  ? jsx.jsx("span", { children: " · 一周 均 "
+                      + (wk.decode == null ? wk.mean : wk.decode)
+                      + " / 峰 " + wv(wk.peak) + " / 谷 " + wv(wk.low) })
                   : null,
                 jsx.jsx("span", { style: { opacity: 0.7 }, children: " · 基准 " + connSpeed.baseline
-                  + " 的 " + connSpeed.ratio + "%" })
+                  + " 的 " + decRatio + "%" })
               ]
             });
           })()

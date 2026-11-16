@@ -1,0 +1,13 @@
+{
+  "name": "Computer-Systems-A-Programmer-s-Perspective",
+  "description": "CSAPP chapter & section index (Computer Systems: A Programmer's Perspective) — scanned TOC, Ch.2 info representation, Ch.8 exceptional control flow PDFs",
+  "topics": [
+    "csapp",
+    "computer-systems",
+    "systems-programming",
+    "textbook",
+    "study-notes"
+  ],
+  "llms_txt": "# Computer Systems: A Programmer's Perspective (CSAPP)\n\n> Chinese-edition CSAPP study archive: a chapter/section index plus three page-ordered scans (TOC, Ch.2, Ch.8) with personal handwritten annotations.\n\n## Scans\n- 扫描件/01-目录（扫描）.pdf: full book table of contents, 7 pages\n- 扫描件/02-第2章 信息的表示和处理（扫描）.pdf: Ch.2 Representation and Manipulation of Information, 2.1-2.2, p.25-48\n- 扫描件/03-第8章 异常控制流（扫描）.pdf: Ch.8 Exceptional Control Flow, 8.1-8.5, p.502-537\n\n## Index\n- CSAPP-章节结构索引.md: chapter -> section outline exported from the study notes tree\n\n## 备注\n- Scans were deduplicated (perceptual hash), OCR-adjusted and re-ordered by printed page number.\n- Textbook (c) Bryant / O'Hallaron, China Machine Press. Other chapters' notes are kept outside this repo.",
+  "evidence": "repo_meta 的 top/lvl2 仅有 README.md、CSAPP-章节结构索引.md 与 扫描件/ 下 3 个 PDF（共 5 文件），README 逐条写明 01-目录 7 页、02-第2章 p.25–48、03-第8章 p.502–537。"
+}

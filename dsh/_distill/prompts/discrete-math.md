@@ -5,8 +5,31 @@
 
 1. `C:\Users\27063\.reasonix\global-workspace\pages\DS_O(V+E)复杂度算法.md`
 2. `C:\Users\27063\.reasonix\global-workspace\pages\DS_六度分隔理论.md`
-3. `C:\Users\27063\.reasonix\global-workspace\pages\DS_最优子结构理论证明.md`
+3. `C:\Users\27063\.reasonix\global-workspace\pages\DS_宁夏大学离散数学挂科率分析.md`
+4. `C:\Users\27063\.reasonix\global-workspace\pages\DS_最优子结构理论证明.md`
+5. `C:\Users\27063\.reasonix\global-workspace\pages\DS_查找反证法在离散数学中的位置1-100.md`
+6. `C:\Users\27063\.reasonix\global-workspace\pages\DS_离散数学.md`
+7. `C:\Users\27063\.reasonix\global-workspace\pages\DS_离散数学_20260409.md`
+8. `C:\Users\27063\.reasonix\global-workspace\pages\DS_离散逻辑学.md`
+9. `C:\Users\27063\.reasonix\global-workspace\pages\DS_计算机离散数学.md`
+10. `C:\Users\27063\.reasonix\global-workspace\pages\DS_计算机离散数学_20260330.md`
+11. `C:\Users\27063\.reasonix\global-workspace\pages\DS_计算机离散数学_20260421.md`
+12. `C:\Users\27063\.reasonix\global-workspace\pages\DS_计算机离散数学_20260424.md`
+13. `C:\Users\27063\.reasonix\global-workspace\pages\DS_计算机离散数学与术语200-300.md`
+14. `C:\Users\27063\.reasonix\global-workspace\pages\DS_计算机离散数学基础概念解析.md`
 - 补充：补充素材：6.042J 讲义与题解
+
+## 已有条目（共 8 条，**不要重复**；矛盾时必须标 conflict）
+
+- 离散数学本体零素材：三段对话全在图论 / 算法的应用侧（六度分隔、最优子结构、O(V+E
+- 把建模原理当成待证定理：「查找人类文明如何证明最优子结构理论」。它实为 Bellman 
+- 最优子结构的标准证法是反证 + 剪切粘贴（cut-and-paste）：设子问题解非最优
+- 以复杂度为索引反查算法，不按章节学：「v加e复杂度的算法都有哪些」——先钉住 O(V+E
+- 把 DAG Relaxation 记成单个词「dagrelaxing」——知道「DAG 
+- 六度分隔只到 L1（会套用）：能当工具问「我和王虹怎么算」，接受 1 步 / 2 步 /
+- 六度分隔的具体数字全部是二手中文检索（Twitter/X 4.7 步、Facebook 
+- 把术语拼写当知识点问：「supper还是super」——判据是含义而非用法，说明此时关注
+
 
 ## 提炼维度（每条 insight 必须归入其中一类）
 
@@ -22,6 +45,10 @@
 
 1. 不准调用 `subagent` / `subagent_fork` / `workflow`；2. 不准加载任何 skill；
 3. 只读上面列出的文件，不写不改既有文件；4. 无证据不写，不要复述教材；5. 大文件按 `### ` 分段读。
+6. **冲突必须显式标注**：若素材里的事实与上面「已有条目」矛盾（层次不同 / 结论相反 / 前后期说法不一），
+   **不要静默选一边**，也不要只写新的那条 —— 写一条带 `"conflict": true` 的 insight，
+   `content` 写成「旧：<原判断> → 新：<新证据>（依据 …）」，`evidence` 给出两处位置。
+7. 与已有条目**重复**的不要重写；同主题但更深的证据才写，并注明「深化 #<原条目前缀>」。
 
 ## 输出
 

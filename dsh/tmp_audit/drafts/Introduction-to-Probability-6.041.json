@@ -1,0 +1,14 @@
+{
+  "name": "Introduction-to-Probability-6.041",
+  "description": "MIT 6.041 Probability — bilingual lecture notes, recitation solutions, problem sets, midterm/final exams, textbook chunks, tutorials",
+  "topics": [
+    "probability",
+    "mit-6-041",
+    "bertsekas",
+    "problem-sets",
+    "bilingual",
+    "study-notes"
+  ],
+  "llms_txt": "# Introduction to Probability · MIT 6.041\n\n> Bilingual (EN/中文) study pack for MIT 6.041 Probabilistic Systems Analysis: Bertsekas textbook chunks, lecture notes, recitation solutions, problem sets, exams and review material.\n\n## Lectures & textbook\n- [01-教材](01-教材): Bertsekas & Tsitsiklis Introduction to Probability, bilingual chunks covering p1-539\n- [02-讲义](02-讲义): lecture notes Lec01-Lec25 as .bilingual.md\n\n## Practice\n- [03-习题课](03-习题课): recitation solutions rec01-rec22\n- [04-习题集](04-习题集): problem sets\n- [05-考试](05-考试): midterm and final exams with solutions\n- [06-复习资料](06-复习资料): review material\n- [07-Tutorials](07-Tutorials): tutorial handouts\n\n## 备注\n- Chinese notes are interleaved with English originals; textbook copyright belongs to Athena Scientific / the authors.",
+  "evidence": "repo_meta top shows 01-教材/02-讲义/03-习题课/04-习题集/05-考试/06-复习资料/07-Tutorials, lvl2 shows prob_chunk01_p1-50.bilingual.md and Lec01-Lec25.bilingual.md plus prob-recNN-solutions.bilingual.md, and README.md names Bertsekas & Tsitsiklis and 期中/期末 exams."
+}

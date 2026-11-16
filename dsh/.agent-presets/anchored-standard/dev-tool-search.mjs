@@ -149,7 +149,11 @@ export function apply(ctx) {
       }
 
       try {
-        const wanted = query.toLowerCase().split(/[^a-z0-9_]+/).filter(Boolean)
+        // FIX (local, 2026-11-12): the old class `[^a-z0-9_]` treated every CJK
+        // character as a separator, so a Chinese query tokenized to [] and the
+        // scorer below (which requires wanted.length > 0) returned nothing.
+        // `\p{L}\p{N}` keeps CJK/Japanese/Korean words intact.
+        const wanted = query.toLowerCase().split(/[^\p{L}\p{N}_]+/u).filter(Boolean)
         // FIX: score instead of AND-filter. Exact name match ranks first;
         // otherwise every tool matching at least one token competes, ordered
         // by hit count (desc) then name. A long natural-language query no
@@ -158,7 +162,21 @@ export function apply(ctx) {
           .map((schema) => {
             const haystack = `${schema.name} ${schema.description ?? ''}`.toLowerCase()
             let score = 0
-            for (const token of wanted) if (haystack.includes(token)) score += 1
+            for (const token of wanted) {
+              if (haystack.includes(token)) {
+                score += 1
+                continue
+              }
+              // No CJK word segmentation here, so a chunk like 下载文件 never
+              // matches verbatim: accept any 2-gram overlap as a weak hit.
+              if (token.length >= 2 && /^[\p{Script=Han}]+$/u.test(token)) {
+                let hit = false
+                for (let i = 0; i + 2 <= token.length && !hit; i += 1) {
+                  hit = haystack.includes(token.slice(i, i + 2))
+                }
+                if (hit) score += 1
+              }
+            }
             return {
               schema,
               score,

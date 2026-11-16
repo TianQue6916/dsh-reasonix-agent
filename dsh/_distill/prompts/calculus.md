@@ -3,9 +3,37 @@
 
 ## 素材（只读，不要修改任何原文件）
 
-1. `C:\Users\27063\.reasonix\global-workspace\pages\DS_求极限题解法.md`
-2. `C:\Users\27063\.reasonix\global-workspace\pages\DS_高数期末复习.md`
-3. `C:\Users\27063\.reasonix\global-workspace\pages\DS_高等数学.md`
+1. `C:\Users\27063\.reasonix\global-workspace\pages\DS_万能代换在微积分中的应用.md`
+2. `C:\Users\27063\.reasonix\global-workspace\pages\DS_大一高数期末试卷解答总结.md`
+3. `C:\Users\27063\.reasonix\global-workspace\pages\DS_微积分基本定理.md`
+4. `C:\Users\27063\.reasonix\global-workspace\pages\DS_求极限题解法.md`
+5. `C:\Users\27063\.reasonix\global-workspace\pages\DS_深入学习微积分的教材推荐.md`
+6. `C:\Users\27063\.reasonix\global-workspace\pages\DS_简述微积分的本质.md`
+7. `C:\Users\27063\.reasonix\global-workspace\pages\DS_高数期末复习.md`
+8. `C:\Users\27063\.reasonix\global-workspace\pages\DS_高数满分对绩点影响分析.md`
+9. `C:\Users\27063\.reasonix\global-workspace\pages\DS_高斯创编高等数学时间推测.md`
+10. `C:\Users\27063\.reasonix\global-workspace\pages\DS_高等数学.md`
+11. `C:\Users\27063\.reasonix\global-workspace\pages\DS_高等数学I选择题详解.md`
+12. `C:\Users\27063\.reasonix\global-workspace\pages\DS_高等数学_20260415.md`
+13. `C:\Users\27063\.reasonix\global-workspace\pages\DS_高等数学中数列的角色转变.md`
+14. `C:\Users\27063\.reasonix\global-workspace\pages\DS_高等数学习题查找方法.md`
+15. `C:\Users\27063\.reasonix\global-workspace\pages\DS_高等数学同济八版二手价格指南.md`
+16. `C:\Users\27063\.reasonix\global-workspace\pages\DS_高等数学有几何吗，就是圆锥曲线这种.md`
+17. `C:\Users\27063\.reasonix\global-workspace\pages\DS_高等数学模拟卷详细解答.md`
+18. `C:\Users\27063\.reasonix\global-workspace\pages\DS_高等数学积分计算详解.md`
+
+
+## 已有条目（共 9 条，**不要重复**；矛盾时必须标 conflict）
+
+- 高数是他唯一有「卷子级」证据的科目：C / D / E / F / G / H 六套复习
+- 能自己点出栽点清单：「再看看我还有可能在哪里栽了」——方向导数忘单位化、判敛不先看通项是
+- 考前一天的策略是逆考试的：要一份「不用完整计算、只要求列式就能得分」的 18 题自测卷，
+- 按频率 × 权重配复习时间：要求把六套卷每道题的知识点列表，得到高频排序（交换次序 6 
+- 极限题只贴截图问「这个咋做」——形如 ((a^x+b^x+c^x)/3)^{1/x} 的
+- 解法两条：① 取 ln → 0/0 → L'Hôpital → ln(abc)/3 → 
+- 「常见无穷级数的和」那份清单（Σ1/n²=π²/6、Σ(−1)^n/(2n+1)=π/4
+- DS_三角函数与极限综合题.md 不存在，三角恒等变形这一层只剩一张抖音截图，无任何展开
+- 要重看级数只有两处：DS_高等数学.md 的「级数所有公式速查」（10 组公式 + 收敛
 
 
 ## 提炼维度（每条 insight 必须归入其中一类）
@@ -22,6 +50,10 @@
 
 1. 不准调用 `subagent` / `subagent_fork` / `workflow`；2. 不准加载任何 skill；
 3. 只读上面列出的文件，不写不改既有文件；4. 无证据不写，不要复述教材；5. 大文件按 `### ` 分段读。
+6. **冲突必须显式标注**：若素材里的事实与上面「已有条目」矛盾（层次不同 / 结论相反 / 前后期说法不一），
+   **不要静默选一边**，也不要只写新的那条 —— 写一条带 `"conflict": true` 的 insight，
+   `content` 写成「旧：<原判断> → 新：<新证据>（依据 …）」，`evidence` 给出两处位置。
+7. 与已有条目**重复**的不要重写；同主题但更深的证据才写，并注明「深化 #<原条目前缀>」。
 
 ## 输出
 

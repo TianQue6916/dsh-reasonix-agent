@@ -1,1 +1,19 @@
-{"name":"dsh-profile-headless","private":true,"dependencies":{"dsh-plugin-local-search":"link:D:/Toolbox/goat-gateway/dsh-plugin-local-search"},"dsh":{"profile":{"bundles":["@deepseek-ai/dsh-base","@deepseek-ai/dsh-headless","dsh-plugin-local-search"],"patchReload":"startup"}}}
+{
+  "name": "dsh-profile-headless",
+  "private": true,
+  "dependencies": {
+    "@local/dsh-plugin-fetch-file": "file:D:/Toolbox/dsh-plugin-fetch-file",
+    "dsh-plugin-local-search": "link:D:/Toolbox/goat-gateway/dsh-plugin-local-search"
+  },
+  "dsh": {
+    "profile": {
+      "bundles": [
+        "@deepseek-ai/dsh-base",
+        "@deepseek-ai/dsh-headless",
+        "dsh-plugin-local-search",
+        "@local/dsh-plugin-fetch-file"
+      ],
+      "patchReload": "startup"
+    }
+  }
+}

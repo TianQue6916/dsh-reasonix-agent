@@ -1,0 +1,13 @@
+{
+  "name": "Linear-Algebra-and-Learning-from-Data",
+  "description": "Linear Algebra and Learning from Data (Strang) — bilingual EN/中文 translations of chapters p001-250 and Parts IV-VII, 18.065 problem set solutions, lecture video transcripts.",
+  "topics": [
+    "linear-algebra",
+    "strang",
+    "learning-from-data",
+    "18-065",
+    "bilingual-notes"
+  ],
+  "llms_txt": "# Linear Algebra and Learning from Data (MIT 18.065)\n\n> Strang 教材《Linear Algebra and Learning from Data》的中英双语逐句翻译、18.065 习题课详解与视频转录稿，供自学者对照英文原书阅读。\n\n## 教材双语翻译\n- [01-教材双语翻译](01-教材双语翻译): 按册分块的正文双语译本（p001-050、p051-100、p101-150、p151-200、p201-250 及 Part IV-VII），含 .md 与排版 .pdf\n- [_sections](01-教材双语翻译/_sections): 按小节拆分的双语译注（IV.7 Clustering、IV.8 Completing Rank One、V.6 Markov Chains、VI.5 SGD ADAM、VII.3 Backpropagation 等）\n\n## 习题与视频\n- [02-习题课双语详解](02-习题课双语详解): 18.065 Problem Set I 各讲习题详解（Lecture 1-32 对应），每讲 .md + .pdf\n- [03-视频转录稿](03-视频转录稿): 课程视频转录文本\n\n## 备注\n- 原书英文电子版因版权原因未收录；公式与 LaTeX 环境保持英文原样。\n- 目录与文件名为中文，正文以中文为主体、英文术语行内嵌入。",
+  "evidence": "依据 top 目录 01-教材双语翻译/02-习题课双语详解/03-视频转录稿 与 README.md 中「双语逐句翻译」「18.065 Problem Set I 各讲习题详解」及 lvl2 下 Strang_LaLFD_part001_p001-050.bilingual.md 等真实路径。"
+}

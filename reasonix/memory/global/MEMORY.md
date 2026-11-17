@@ -329,7 +329,7 @@
 - [bili-无条件拒绝dsh原生compaction-20261023](bili-无条件拒绝dsh原生compaction-20261023.md) — /compact 永久失败的真实原因：bili 0.1.204 把 allowDshCompaction 的 opt-in 删了（#3651），拒绝变成无条件；session log 里 compaction/end 的 error 是 422 dsh_compaction_refused；UI 文案「could not produce a useful summary」有误导性；已删无效键；zstd session log 解法
 - [dsh-bili-压缩正确姿势](dsh-bili-压缩正确姿势.md) — bili 压缩机制、/compact 前提、全局化改造与手动 compress 流程（2026-10-23）
 - [windows-powershell-5.1-vs-7-与-dsh-pwsh-tool](windows-powershell-5.1-vs-7-与-dsh-pwsh-tool.md) — 本机 PowerShell 形态：5.1 内置 + 7.6.8 MSI 并存、dsh pwsh tool 的 exe 解析链与构造期缓存坑、WDAC 拦 5.1 脚本、$OutputEncoding 吞中文
-- [学习文档交付-linux端待处理文件夹](学习文档交付-linux端待处理文件夹.md) — 学习文档双端落盘规则（Windows D:\Desktop\课程文件\待处理文件夹 + Linux 天阙机同名目录），含两端路径、SSH 通道、Windows 端 sandbox 已放开待重启
+- [学习文档交付-linux端待处理文件夹](学习文档交付-linux端待处理文件夹.md) — 学习文档双端落盘规则（Windows D:\Desktop\课程文件\待处理文件夹 + Linux 天阙机同名目录），含两端路径、SSH 通道、目录层级差异
 - [dsh-sandbox-windows-写限制与danger-full-access](dsh-sandbox-windows-写限制与danger-full-access.md) — dsh 在 Windows 的 bash tool 固定跑 Low IL，D 盘等 Medium 目录写不进去；解法是提权给目录降 integrity level（2026-10-25 实测通）
 - [学习文档自检清单与出图坑-learn-translate](学习文档自检清单与出图坑-learn-translate.md) — learn-translate 学习文档交付前的判据化自检清单 + v1 十项问题 + matplotlib/heredoc 转义坑
 - [markdown-KaTeX渲染校验与无效数学公式](markdown-KaTeX渲染校验与无效数学公式.md) — MarkText 里 <无效数学公式> 的根因（\\[2pt] 的 \[ 被当成 display math 定界符）+ 两条 KaTeX 机械校验脚本与基线
@@ -434,6 +434,9 @@
 - [dsh-local插件声明改仓库内相对路径-2026-11](dsh-local插件声明改仓库内相对路径-2026-11.md) — 四个 dsh 本地插件从 D: 绝对路径迁到 ~/.dsh/plugins/ + link: 相对声明，D 盘改 junction；含"依赖声明静默丢失"坑
 - [dsh双端同步机制与排除规则-2026-11](dsh双端同步机制与排除规则-2026-11.md) — dsh 双端同步的真实机制（sync_dsh.py/SSH 非 git）与三条排除规则；额度面板后端隧道方案；3080/3081/3082 三实例
 - [github-备份提交作者必须匹配账号noreply-20261116](github-备份提交作者必须匹配账号noreply-20261116.md) — GitHub 自动备份「推成功了但主页看不到记录」的根因：提交作者用 backup@reasonix.local 导致 API author=null、贡献图不计入；改用账号 noreply 邮箱修复
+- [dsh-预设跨机不同步-根因与补法-20261117](dsh-预设跨机不同步-根因与补法-20261117.md) — 预设「文件同步了但 GUI 里没有」的根因：cordis.patch.yml 的 preset row 不在同步范围；含 Linux patch 里 Windows 绝对路径导致重启崩溃的雷与修法
+- [workbuddy-派发策略-质量优先](workbuddy-派发策略-质量优先.md) — WorkBuddy 翻译通道的派发纪律：质量优先、不计成本，20 秒间隔与细粒度分片不可为省时间压缩
+- [dsh-learn-preset-补齐规划row-20261117](dsh-learn-preset-补齐规划row-20261117.md) — learn preset 缺 8 个 row（含 plan-anchor）已补齐；mnemon 运行时记忆上限 4096 与 Source 侧 8192 不一致已对齐
 ## 归档说明
 - 原文全量备份：`~/.reasonix/memory-backup-20260816/`（59 份）与 `~/.reasonix/memory-backup-20260816-consolidate/`
 - 合并/蒸馏原始件：`~/.reasonix/memory-archive-20260816/`

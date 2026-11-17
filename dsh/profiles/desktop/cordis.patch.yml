@@ -841,6 +841,13 @@
         order: 7
         plugins:
 
+          # ↳ 2026-11-17 从 preset-anchored-standard 补齐（learn 原先缺这一行；row 本体逐字复制）
+          - id: host-log-tee
+            name: ../../.agent-presets/anchored-standard/host-log-tee.mjs
+            config:
+              enabled: true
+              heartbeatMs: 5000
+
           # ── stall guard ─────────────────────────────────────────────────────────────
           # 让「turn 永久冻住」在结构上不可能发生。dsh-llm / dsh-agent-loop 里没有 stream 级 timeout
           # （dsh-llm 只 import 了 MAX_TIMER_DELAY_MS），agent-loop 的
@@ -876,6 +883,34 @@
                 enabled: true
                 maxConsecutiveFailures: 3
 
+          # ↳ 2026-11-17 从 preset-anchored-standard 补齐（learn 原先缺这一行；row 本体逐字复制）
+          - id: concurrency-discipline
+            name: ../../.agent-presets/anchored-standard/concurrency-discipline.mjs
+            config:
+              concurrencyDiscipline:
+                enabled: true
+                cooldownSteps: 40
+                firstAfterSteps: 3
+                skipSubagents: true
+
+          # ↳ 2026-11-17 从 preset-anchored-standard 补齐（learn 原先缺这一行；row 本体逐字复制）
+          - id: session-age-warn
+            name: ../../.agent-presets/anchored-standard/session-age-warn.mjs
+            config:
+              sessionAgeWarn:
+                enabled: true
+                softSteps: 200
+                reWarnEvery: 80
+                skipSubagents: true
+
+          # ↳ 2026-11-17 从 preset-anchored-standard 补齐（learn 原先缺这一行；row 本体逐字复制）
+          - id: plan-anchor
+            name: ../../.agent-presets/anchored-standard/plan-anchor.mjs
+            config:
+              enabled: true
+              perSession: true
+              subagents: own
+
           # ── thinking-language anchor ────────────────────────────────────────────────
 
           # 在每一步生成前，把「思考链用中文」追加到上下文的最尾部（agent/pre-step，
@@ -893,6 +928,10 @@
             name: ../../.agent-presets/anchored-standard/thinking-anchor.mjs
             config:
               enabled: true
+
+          # ↳ 2026-11-17 从 preset-anchored-standard 补齐（learn 原先缺这一行；row 本体逐字复制）
+          - id: subagent-language
+            name: ../../.agent-presets/anchored-standard/subagent-language.mjs
 
           # ── identity ────────────────────────────────────────────────────────────────
 
@@ -1145,6 +1184,50 @@
           # memory_search / memory_read only when a task needs them.
           - id: memory-reasonix
             name: ../../.agent-presets/anchored-standard/memory.mjs
+
+          # ↳ 2026-11-17 从 preset-anchored-standard 补齐（learn 原先缺这一行；row 本体逐字复制）
+          - id: git-context
+            name: ../../.agent-presets/anchored-standard/git-context.mjs
+            config:
+              enabled: true
+              maxCommits: 3
+              # 会话 cwd 之外还要跟踪的仓库（cwd 优先，按仓库根去重）。
+              repos:
+                - 'C:/Users/27063/.dsh'
+
+          # ↳ 2026-11-17 从 preset-anchored-standard 补齐（learn 原先缺这一行；row 本体逐字复制）
+          - id: tool-goal
+            name: '@deepseek-ai/dsh-tool-goal'
+            # 2026-09-28 hardened after diagnosing "task stopped before it was done":
+            # the shipped default of 3 consecutive rounds is far too early to give up,
+            # since `tool:goal` guidance already says "difficulty, uncertainty, or
+            # useful remaining work is not blocked". Raise the floor so a goal can
+            # only be reported blocked after real persistence.
+            config:
+              blockedAfterConsecutiveRounds: 10
+
+          # ↳ 2026-11-17 从 preset-anchored-standard 补齐（learn 原先缺这一行；row 本体逐字复制）
+          - id: planning
+            name: cordis:group
+            group: true
+            isolate:
+              planMode: true
+            config:
+              - id: plan-mode
+                name: '@deepseek-ai/dsh-plan-mode'
+                config:
+                  section: |
+                    You are in plan mode. Stay in plan mode until exit_plan_mode succeeds or the user switches the session mode. Imperative language to implement changes means plan the implementation, not execute it. A user's conversational agreement — including an answer confirming something you asked — approves nothing and does not end plan mode; fold the confirmed decision into the plan and submit it through exit_plan_mode.
+
+                    Explore first. Use non-mutating reads, searches, static analysis, and checks to ground the plan in the actual repository. Do not edit or write files, change configuration, run formatters or code generation that rewrites tracked files, commit, or otherwise carry out the plan. Prefer existing functions and patterns over new machinery.
+
+                    The tool catalog stays the same across modes for request-cache stability. These plan-mode rules override any later tool description or guidance that suggests using mutation tools; those tools remain listed to keep the tool catalog unchanged. Do not use todo_write to track this planning phase: it tracks implementation after an approved plan, while the plan itself belongs in exit_plan_mode.
+
+                    Resolve discoverable facts by inspection. Use ask_user_question only for user-owned choices or material ambiguity that inspection cannot answer. Do not ask the user where code lives or how current behavior works when you can find out.
+
+                    Make the plan decision-complete: state the goal and success criteria; group implementation changes by subsystem; identify public API, schema, and data-flow changes; cover edge cases, failure modes, tests, acceptance criteria, and explicit assumptions. Keep it concise enough to review but detailed enough that another engineer can implement it without making design decisions.
+
+                    When ready, call exit_plan_mode with the complete plan markdown, starting with a # title. Make exit_plan_mode the only and final tool call in that assistant response: it presents the plan for approval, and implementation begins only in a later step after approval. Do not paste the final plan as a plain reply or ask "should I proceed?" through prose or ask_user_question. If review rejects it, incorporate the feedback and present again. If the review channel is unavailable or aborted, stay in plan mode and ask the user to switch modes manually; do not proceed with implementation.
 
           # ── compaction ──────────────────────────────────────────────────────────────
 
@@ -1936,6 +2019,15 @@
   config:
     remoteAccess: trusted-host
     timeoutMs: 10000
+    # 2026-11-17：把控制器侧的运行时记忆上限与 mnemon-source-runtime 对齐（那边已设
+    # userLimitBytes: 8192 / memoryLimitBytes: 16384）。此前只设了 Source 侧，控制器侧
+    # 仍是上游默认 4096 / 10240，于是 USER.md 5747 B 撞上 "automatic Git backup failed
+    # ... exceeds its 4096 byte limit"（MEMORY.md 10603 B 也会紧跟着撞 10240）。
+    # 上游把这两个值定义为可配置项就为此（omdsh-dev/dsh-mnemon PR #102 落地、#514 进设置页；
+    # 默认值保守，硬上限 1 MiB），改配置不算 hack。
+    runtimeMemory:
+      userLimitBytes: 8192
+      memoryLimitBytes: 16384
     defaultRecallLimit: 10
     embedding:
       enabled: true

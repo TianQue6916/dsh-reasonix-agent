@@ -115,3 +115,39 @@ Linux `~/ai-skills.legacy-20261116`），现役双机各 99 项且内容一致�
 另一个坑（同一天）：`dsh-autocommit.ps1` 的失败分支原来用 `2>$null` 吞掉 commit 的错误，
 日志只写「head 未前进」。现在把 git 的原文前 12 行写进日志（`git| ` 前缀）——
 **没有错误原文的「失败」等于没记录**。
+
+## learn preset 的 row 清单 = anchored-standard 减两行（2026-11-17 查清）
+
+`preset-learn` 原来只有 23 行（web）/ 22 行（desktop），缺 8 行：`host-log-tee`、
+`concurrency-discipline`、`session-age-warn`、`plan-anchor`、`subagent-language`、
+`git-context`、`tool-goal`、`planning`。症状：**learn 会话完全没有任务规划**
+（`~/.dsh/plans/<session>.md` 不建、不注入，TodoPanel 也没有 plan 投影）、
+无会话水位提醒、无 git 上下文、无 plan mode / goal 工具。
+
+根因是抄来源本身就没有：当初按 `.agent-presets/learn/preset-declaration.yml` 逐字搬，
+而那份文件 **0.1.7 起目录不再被扫描、从未被加载过**（2026-11-17 已改名
+`preset-declaration.yml.retired-20261117`），它的 plugins 只有 8 行。
+
+现在的约定：`preset-learn` ≈ `preset-anchored-standard` **只减 `tool-bootstrap` + `context-gate`**
+（那两个是「首轮 2 工具锚定 + 首轮清空注入」，learn 故意不要：学习场景首轮就该工具齐全）。
+改动任一边必须同步另一边，两份 patch（web / desktop）都要改。
+
+## 用脚本改 profiles/*/cordis.patch.yml 必须保住原行尾（2026-11-17 血泪）
+
+- `profiles/web/cordis.patch.yml` 是**纯 CRLF**；`profiles/desktop/cordis.patch.yml` 是**混合**
+  （636 CRLF + 1764 LF）。别「顺手统一」，那会让 diff 变成全文件重写。
+- 踩法：`open(p,'rb').read().decode()` → `split('
+')` 后原行仍带 `''`，
+  给插入行再补一个 `''` ⇒ `
+`。67 行变 CRCRLF 后 `git diff --numstat` 直接报
+  2291 增 / 2208 删（全文件重写），比真实改动 83 行大 27 倍。
+- 判据：`git diff --ignore-cr-at-eol --numstat -- <file>` 应等于真实改动行数；
+  写回后立刻查 `b.count(b'
+') == 0`。
+
+## dsh-mnemon 的 Git 备份一直失败（2026-11-17 发现，未修）
+
+`logs/host-stdio.log` 反复报：
+`[err] dsh-mnemon: automatic Git backup failed Error: runtime user memory holds 5747 bytes and exceeds its 4096 byte limit`。
+USER.md 实际 5747 B，而投影到 prompt 的上限是 8192 B —— **两套限额不一致**，
+所以「memory 读得到、备份永远失败」。要么把 mnemon 侧上限提到 ≥8192，要么把 USER.md 压到 4096 以下。

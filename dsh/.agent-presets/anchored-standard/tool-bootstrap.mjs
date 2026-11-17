@@ -100,6 +100,8 @@ export const name = 'anchored-tool-bootstrap'
  * assembly. The optional budget listener registers with `prepend: true` so a
  * later listener can never override the first-round cap after we set it.
  */
+import { readFileSync } from 'node:fs'
+
 export const inject = []
 
 /** Durable session event types that count as a promotion signal per mode. */
@@ -181,6 +183,76 @@ const RESIDENT_TASK_TOOLS = ['todo_write']
  * 只会静默忽略这些名字（它按 assembled 里实际存在的名字过滤，不报错）。
  */
 const RESIDENT_ACP_TOOLS = ['compress', 'decompress', 'search_context', 'acp_status', 'acp_cache']
+
+/**
+ * Windows computer-use 的核心工具（2026-11-17 加）。同一家族的第三个实例。
+ *
+ * WHY: 用户报「我的 browseruse 为什么用不了」，实测工具全在 catalog 里（`tools`
+ * 报 25 个 enabled:true）、后端也活着，但 promoted keep-set 一个都没留 —— 于是
+ * 模型看到的是一个没有 `mcp__wincu__*` 的工具面，表现就是「压根没有 browser 工具」。
+ * 比 RESIDENT_TASK_TOOLS 那次更糟：desktop/web 两个 profile 的 persona 里明写着
+ * 「GUI 与网页任务走 mcp__wincu__*，不要用 shell 绕路」，规则指向 keep-set 里已被
+ * 删掉的工具，永远不会触发；而模型也不知道该去 dev_tool_search 里搜「浏览器」。
+ *
+ * 只放读屏 + 点击 + 填值三件事的最小闭环，其余 20 个工具仍然走 dev_tool_search：
+ * 全量 25 个的 schema 加起来每次请求都要付，而 health / snapshot / click 这一个
+ * 组合已经能覆盖「这是哪个窗口 → 上面有什么 → 点它」的主线。
+ * `set_value` 是故意留的：没有它就只能点链接、不能填表，等于半残，schema 又很短。
+ *
+ * 代价：常驻 5 个 schema（粗估 ~1.2–1.6K tokens/请求）。
+ * 注意 headless profile **没有装** dsh-computer-use-win —— 那里的 keepTools
+ * missing-name 路径只会 warnOnce 一次，然后照常丢掉这几个名字，不会失败。
+ */
+const WINDOWS_GUI_RULES = [
+  'mcp__wincu__windows_computer_use_health',
+  'mcp__wincu__windows_computer_use_list_windows',
+  'mcp__wincu__windows_computer_use_snapshot',
+  'mcp__wincu__windows_computer_use_click',
+  'mcp__wincu__windows_computer_use_set_value',
+]
+
+/**
+ * Linux 侧：`@brucezhang1993/dsh-computer-use-linux` 把上游 `computer-use-linux`
+ * MCP server（AT-SPI 无障碍树 + 合成器窗口定位 + 截图 + Wayland/X11 输入）
+ * 桥接成 `mcp__cul__*` 的 18 个原生工具。
+ *
+ * 用通配而不是逐个列名字，是因为这 18 个名字由上游 MCP server 决定，不是 DSH
+ * 契约的一部分；硬编码清单在它改名或增删工具时会**静默失效**，症状又正好是
+ * 今天的「工具明明装了却看不见」。全量常驻在这里是合理的：Linux 上这是唯一的
+ * 桌面通道，少一个就是「看得见点不着」。
+ */
+const LINUX_GUI_RULES = ['mcp__cul__*']
+
+/**
+ * 本机 profile 可以再加 GUI 工具，而不必改这份共享 preset：
+ * `.agent-presets/anchored-standard/resident-gui-tools.<process.platform>.json`，
+ * 内容为字符串数组（支持 `前缀*` 通配）。文件不存在 = 只有上面的默认规则。
+ * 分平台命名是因为 ~/.dsh 常常是一个跨 Windows/Linux 双系统的 git 仓库，
+ * 同一个文件名会被另一侧覆盖。
+ */
+function loadPlatformGuiRules() {
+  const file = new URL(`resident-gui-tools.${process.platform}.json`, import.meta.url)
+  try {
+    const parsed = JSON.parse(readFileSync(file, 'utf8'))
+    const list = Array.isArray(parsed) ? parsed : parsed?.tools
+    if (!Array.isArray(list)) return []
+    return [...new Set(list.filter((entry) => typeof entry === 'string' && entry.length > 0))]
+  } catch {
+    return []
+  }
+}
+
+const GUI_RESIDENT_RULES = [...WINDOWS_GUI_RULES, ...LINUX_GUI_RULES, ...loadPlatformGuiRules()]
+
+/** 精确名字或 `前缀*` 通配是否命中某条 GUI 常驻规则。 */
+function matchesGuiRule(toolName, rules) {
+  for (const rule of rules) {
+    if (rule.endsWith('*')) {
+      if (toolName.startsWith(rule.slice(0, -1))) return true
+    } else if (toolName === rule) return true
+  }
+  return false
+}
 
 function stringList(value, field) {
   if (!Array.isArray(value) || value.length === 0 || value.some((item) => typeof item !== 'string' || item.length === 0)) {
@@ -275,7 +347,7 @@ export function apply(ctx, config) {
   }
 
   /** Narrow the assembled catalog to a keep-set; validate required names. */
-  const keepTools = (assembled, keep, missingAllowsFullCatalog) => {
+  const keepTools = (assembled, keep, missingAllowsFullCatalog, guiRules = []) => {
     const available = new Set(assembled.tools.map((tool) => tool.name))
     const missing = [...keep].filter((toolName) => !available.has(toolName))
     if (missing.length > 0) {
@@ -287,7 +359,7 @@ export function apply(ctx, config) {
     }
     return {
       ...assembled,
-      tools: assembled.tools.filter((tool) => keep.has(tool.name)),
+      tools: assembled.tools.filter((tool) => keep.has(tool.name) || matchesGuiRule(tool.name, guiRules)),
     }
   }
 
@@ -325,7 +397,7 @@ export function apply(ctx, config) {
         // dev_tool_search — instead of dumping the whole Standard catalog at
         // once (the post-promotion regression fix; see the header note).
         const keep = new Set([...bootstrapTools, ...RESIDENT_DISCOVERY_TOOLS, ...RESIDENT_MEMORY_TOOLS, ...RESIDENT_TASK_TOOLS, ...RESIDENT_ACP_TOOLS, ...unlockedFor(context.agent?.session)])
-        return keepTools(assembled, keep, false)
+        return keepTools(assembled, keep, false, GUI_RESIDENT_RULES)
       }
       // Controlled phase: the bootstrap pair; after a compaction, plus the
       // compaction work set so mid-task work can continue. Context control is

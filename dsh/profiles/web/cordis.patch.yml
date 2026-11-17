@@ -532,6 +532,12 @@
           - id: skill-search
             name: ../../.agent-presets/anchored-standard/skill-search.mjs
 
+          # 用户输入 /name → 确定性注入该 skill 的正文（不等模型自己调 skill_load）。
+          # 触发点 agent/pre-step：与用户消息同批采样；source.kind='skill-invocation'
+          # 是 context-gate allowKinds 唯一放行的 kind。理由见 skill-gesture.mjs 头注释。
+          - id: skill-gesture
+            name: ../../.agent-presets/anchored-standard/skill-gesture.mjs
+
           # ── memory ──────────────────────────────────────────────────────────────────
           #
           # On-demand access to the SHARED reasonix memory corpus (~/.reasonix/memory),
@@ -1093,6 +1099,12 @@
 
           - id: skill-search
             name: ../../.agent-presets/anchored-standard/skill-search.mjs
+
+          # 用户输入 /name → 确定性注入该 skill 的正文（不等模型自己调 skill_load）。
+          # 触发点 agent/pre-step：与用户消息同批采样；source.kind='skill-invocation'
+          # 是 context-gate allowKinds 唯一放行的 kind。理由见 skill-gesture.mjs 头注释。
+          - id: skill-gesture
+            name: ../../.agent-presets/anchored-standard/skill-gesture.mjs
 
           # ── memory ──────────────────────────────────────────────────────────────────
           #

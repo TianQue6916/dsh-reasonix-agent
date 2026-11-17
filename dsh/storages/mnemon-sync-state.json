@@ -79,6 +79,11 @@
 "m": 1793167363000000000,
 "s": 1709
 },
+"global/GUI-操作约定-优先副屏与浏览器通道.md": {
+"h": "4e7e664a442312c589531762539f4245e9ab8ae25b40c04d22b1e9da118d8477",
+"m": 1794908823978550800,
+"s": 2123
+},
 "global/MacKay信息论译校-两处硬坑.md": {
 "h": "6c671ae14fa647485b3df1079f287cc3126189238e06ccad0411bcfb01035973",
 "m": 1793132289000000000,
@@ -1159,6 +1164,11 @@
 "m": 1793206618000000000,
 "s": 4447
 },
+"global/linux-dsh-web-3080-port-conflict-20261117.md": {
+"h": "782bb3c1673d65d36603cdceb018557730fd40eb5918595ce42cf2dd2e28a851",
+"m": 1794908488323539200,
+"s": 3799
+},
 "global/linux-gateway-undici-ipv6-timeout.md": {
 "h": "3dd5e4f3c7bacb0873ff494dc21917db2fa6df462ed31968e59645aa8a310656",
 "m": 1792955230000000000,
@@ -1453,6 +1463,11 @@
 "h": "302ef51ccf1c214de2c352c8eb8aa58754fdbe149b2da26777fd2e314daed6e5",
 "m": 1789889109000000000,
 "s": 3282
+},
+"global/skill-gesture-slash-注入插件.md": {
+"h": "996816d3cdca22dc898d5564f31d3fc32464e1e94bc743a159a04211fa731b47",
+"m": 1794909671709698500,
+"s": 2774
 },
 "global/skill-search-weight-verified-and-false-bug-20260930.md": {
 "h": "e5cdd55bc112a474016825964e1553205d2317e6c424a44a9f6c9cd5dd2000ae",
@@ -2008,6 +2023,11 @@
 "h": "51da0289f374c66e6b0ef4e683860ae1e59ac6ae2ee588c3d53db1c820376e49",
 "m": 1790582469000000000,
 "s": 10227
+},
+"global/讲解输出规范-必须配图与出文档.md": {
+"h": "bb0efa7510ad4bce1f3d6d76a5179e73821efcddc08b6fb2b5f1ffa2c8c40533",
+"m": 1794909082844100400,
+"s": 2499
 },
 "global/译注判据-教材翻译模板.md": {
 "h": "e909ea111fffab6ede25e4f044df6bfcf63b513d585f1c9114d4b5c99d3ef71c",

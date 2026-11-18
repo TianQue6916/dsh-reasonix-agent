@@ -1399,7 +1399,7 @@
   config:
     provider: commandcode-goat
     model: deepseek/deepseek-v4.1-flash
-    reasoningEffort: max
+    reasoningEffort: high
 - id: llm-pi-ai
   name: "@deepseek-ai/dsh-llm-pi-ai"
   config:

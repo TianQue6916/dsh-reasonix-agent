@@ -445,6 +445,8 @@
 
 - [dsh-chat-图片无法预览-幻觉路径-20261117](dsh-chat-图片无法预览-幻觉路径-20261117.md) — chat「图片无法预览」定案：路径不存在（400/404）+ dsh-media-rescue 0.2.0 安装配置与本地一行 patch 实测记录
 
+- [billion-context-压缩配置现状](billion-context-压缩配置现状.md) — billion-context 0.1.214 的 compress 配置现值、窗口解析实测、以及 2026-11-18 的三处改动与理由
+- [天阙九泉音频链现状](天阙九泉音频链现状.md) — 天阙九泉（MECHREVO KUANGSHI）音频链实测 + 2026-11-18 已关闭 APO 效果栈（三个 endpoint 的 Disable_SysFx=1），含写入方法与回滚路径
 ## 归档说明
 - 原文全量备份：`~/.reasonix/memory-backup-20260816/`（59 份）与 `~/.reasonix/memory-backup-20260816-consolidate/`
 - 合并/蒸馏原始件：`~/.reasonix/memory-archive-20260816/`

@@ -441,6 +441,10 @@
 - [GUI-操作约定-优先副屏与浏览器通道](GUI-操作约定-优先副屏与浏览器通道.md) — Windows GUI 自动化的操作约定：browserTab 优先、物理输入先挪副屏、不抢主屏前台（2026-11-17 用户拍板 B 方案）
 - [讲解输出规范-必须配图与出文档](讲解输出规范-必须配图与出文档.md) — 讲解规范：数学讲解必须配图（并排对比双图），讲透默认出 md 文档而非只写聊天；含已落地的 SKILL.md v4.8 改动与可复用工具路径
 - [skill-gesture-slash-注入插件](skill-gesture-slash-注入插件.md) — skill-gesture 插件：/name 手势 → skill 正文确定性注入（dsh preset，替代模型自觉调用 skill_load）
+### 补录（202611180709，memory-index-heal）
+
+- [dsh-chat-图片无法预览-幻觉路径-20261117](dsh-chat-图片无法预览-幻觉路径-20261117.md) — chat「图片无法预览」定案：路径不存在（400/404）+ dsh-media-rescue 0.2.0 安装配置与本地一行 patch 实测记录
+
 ## 归档说明
 - 原文全量备份：`~/.reasonix/memory-backup-20260816/`（59 份）与 `~/.reasonix/memory-backup-20260816-consolidate/`
 - 合并/蒸馏原始件：`~/.reasonix/memory-archive-20260816/`

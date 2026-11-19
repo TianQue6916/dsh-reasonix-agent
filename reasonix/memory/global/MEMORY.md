@@ -447,6 +447,8 @@
 
 - [billion-context-压缩配置现状](billion-context-压缩配置现状.md) — billion-context 0.1.214 的 compress 配置现值、窗口解析实测、以及 2026-11-18 的三处改动与理由
 - [天阙九泉音频链现状](天阙九泉音频链现状.md) — 天阙九泉（MECHREVO KUANGSHI）音频链实测 + 2026-11-18 已关闭 APO 效果栈（三个 endpoint 的 Disable_SysFx=1），含写入方法与回滚路径
+- [城市壁纸目录-city4k](城市壁纸目录-city4k.md) — 4K 城市壁纸已落地目录、12 张清单，以及 Unsplash/Pexels CDN 实测下载策略
+- [天阙九泉-屏幕与壁纸规格](天阙九泉-屏幕与壁纸规格.md) — 天阙九泉的真实屏幕规格（2560×1600 16:10）、壁纸输出惯例与已交付目录
 ## 归档说明
 - 原文全量备份：`~/.reasonix/memory-backup-20260816/`（59 份）与 `~/.reasonix/memory-backup-20260816-consolidate/`
 - 合并/蒸馏原始件：`~/.reasonix/memory-archive-20260816/`

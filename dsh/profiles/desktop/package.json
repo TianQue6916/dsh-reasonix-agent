@@ -6,7 +6,7 @@
     "@local/dsh-plugin-fetch-file": "link:../../plugins/dsh-plugin-fetch-file",
     "@local/dsh-plugin-goat-panel": "link:../../plugins/dsh-plugin-goat-panel",
     "@local/dsh-thinking-language": "link:../../plugins/dsh-thinking-language",
-    "billion-context": "0.1.214",
+    "billion-context": "0.1.216",
     "ds-harness-remote": "^0.6.5",
     "dsh-better-sidebar": "0.28.2",
     "dsh-computer-use-win": "0.5.7",

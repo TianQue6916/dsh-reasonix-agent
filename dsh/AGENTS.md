@@ -137,12 +137,18 @@ Linux `~/ai-skills.legacy-20261116`），现役双机各 99 项且内容一致�
 - `profiles/web/cordis.patch.yml` 是**纯 CRLF**；`profiles/desktop/cordis.patch.yml` 是**混合**
   （636 CRLF + 1764 LF）。别「顺手统一」，那会让 diff 变成全文件重写。
 - 踩法：`open(p,'rb').read().decode()` → `split('
-')` 后原行仍带 `''`，
-  给插入行再补一个 `''` ⇒ `
+')` 后原行仍带 `'
+'`，
+  给插入行再补一个 `'
+'` ⇒ `
+
+
 `。67 行变 CRCRLF 后 `git diff --numstat` 直接报
   2291 增 / 2208 删（全文件重写），比真实改动 83 行大 27 倍。
 - 判据：`git diff --ignore-cr-at-eol --numstat -- <file>` 应等于真实改动行数；
-  写回后立刻查 `b.count(b'
+  写回后立刻查 `b.count(b'
+
+
 ') == 0`。
 
 ## dsh-mnemon 的 Git 备份一直失败（2026-11-17 发现，未修）
@@ -151,3 +157,15 @@ Linux `~/ai-skills.legacy-20261116`），现役双机各 99 项且内容一致�
 `[err] dsh-mnemon: automatic Git backup failed Error: runtime user memory holds 5747 bytes and exceeds its 4096 byte limit`。
 USER.md 实际 5747 B，而投影到 prompt 的上限是 8192 B —— **两套限额不一致**，
 所以「memory 读得到、备份永远失败」。要么把 mnemon 侧上限提到 ≥8192，要么把 USER.md 压到 4096 以下。
+
+## 数学公式的输出格式（2026-11-19）
+
+**一律用 `$...$`（行内）和 `$$...$$`（独立成块）写公式，禁止用 ```latex / ```tex 代码块。**
+
+理由：Android App（`ds-harness-remote` 0.6.4）与 Web 前端的 Markdown 渲染器只对
+`$...$` / `$$...$$` / ```math 走 KaTeX 分支；写成 `latex` 或 `tex` 代码块会被当普通代码渲染，
+在手机上显示为一坨灰底源码。社区同款修复见 `sbVAN/dsh-latex` 的 README：
+「公式显示成一段灰色代码 → 模型把公式写进了 ```latex / ```tex 代码块，而前端只对 ```math 和 `$...$` 生效」。
+
+多行推导用 `$$` 包块，不要用 `\[ ... \]`（Pandoc 风格，DSH 的 grammar 会误解析，见 `TianzeLuo/dsh-tex-block-normalizer`）。
+

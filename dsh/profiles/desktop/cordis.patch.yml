@@ -2241,7 +2241,7 @@
   name: dsh-context
   config:
     overviewAutoSteps: "300"
-    defaultOverviewRange: today
+    defaultOverviewRange: 30d
 
 # 2026-10-24：desktop profile 需要写 D:\Desktop（学习文档双端落盘；桌面是 junction → D:\Desktop）。
 # 此前 shell 跑在 Low IL 受限令牌（WRITE_RESTRICTED），D 盘全程 EPERM。

@@ -449,6 +449,9 @@
 - [天阙九泉音频链现状](天阙九泉音频链现状.md) — 天阙九泉（MECHREVO KUANGSHI）音频链实测 + 2026-11-18 已关闭 APO 效果栈（三个 endpoint 的 Disable_SysFx=1），含写入方法与回滚路径
 - [城市壁纸目录-city4k](城市壁纸目录-city4k.md) — 4K 城市壁纸已落地目录、12 张清单，以及 Unsplash/Pexels CDN 实测下载策略
 - [天阙九泉-屏幕与壁纸规格](天阙九泉-屏幕与壁纸规格.md) — 天阙九泉的真实屏幕规格（2560×1600 16:10）、壁纸输出惯例与已交付目录
+- [dsh-restart-once-schtasks-self-delete-20261120](dsh-restart-once-schtasks-self-delete-20261120.md) — schtasks 一次性重启任务不自删会在当晚再次 taskkill dsh；已修 restart-dsh.cmd 加自删行并删残留任务
+- [info-theory-lec07-notes-扩写产出](info-theory-lec07-notes-扩写产出.md) — IT Lec07（MacKay l7）8 条译者注扩写完成，含字数、术语格式规则与 4 处实质修正
+- [IT-full-notes-扩写-Lec06](IT-full-notes-扩写-Lec06.md) — IT-full Lec06 七条 note 扩写完成，产出路径与自检口径
 ## 归档说明
 - 原文全量备份：`~/.reasonix/memory-backup-20260816/`（59 份）与 `~/.reasonix/memory-backup-20260816-consolidate/`
 - 合并/蒸馏原始件：`~/.reasonix/memory-archive-20260816/`

@@ -710,11 +710,15 @@
     enableGithub: true
     enableDeepseekSearch: true
     deepseekSearchApiKeyEnv: "DEEPSEEK_SEARCH_API_KEY"
-    enableBing: true
+    # 2026-11-20：74 → 16，关 bing。社区基准 top-k 5–10（OpenRouter builder
+    # `maxSearchResults` Range 1-20 / recommended 3-10；LangSearch "begin with 5–10"）；
+    # bing 源对英文长 query 拆词、命中词典条目（实测 8 条全是 many 的词义页）⇒ 纯噪音，
+    # 且 interleave round-robin 让它每轮占一席，直接污染前 12 条。
+    enableBing: false
     enableWiki: true
     enableGoat: false
     enableDeepseek: false
-    maxResults: 74
+    maxResults: 16
     deepseekSearchCount: 50
     interleaveSources: true
     tagTitles: true

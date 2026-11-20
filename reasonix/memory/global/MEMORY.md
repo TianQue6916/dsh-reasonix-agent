@@ -452,6 +452,7 @@
 - [dsh-restart-once-schtasks-self-delete-20261120](dsh-restart-once-schtasks-self-delete-20261120.md) — schtasks 一次性重启任务不自删会在当晚再次 taskkill dsh；已修 restart-dsh.cmd 加自删行并删残留任务
 - [info-theory-lec07-notes-扩写产出](info-theory-lec07-notes-扩写产出.md) — IT Lec07（MacKay l7）8 条译者注扩写完成，含字数、术语格式规则与 4 处实质修正
 - [IT-full-notes-扩写-Lec06](IT-full-notes-扩写-Lec06.md) — IT-full Lec06 七条 note 扩写完成，产出路径与自检口径
+- [sunshine-mdns-chinese-hostname-fix](sunshine-mdns-chinese-hostname-fix.md) — 本机 Sunshine 的 Moonlight 找不到主机：根因是中文计算机名进了 mDNS SRV，修法是只改 DNS hostname
 ## 归档说明
 - 原文全量备份：`~/.reasonix/memory-backup-20260816/`（59 份）与 `~/.reasonix/memory-backup-20260816-consolidate/`
 - 合并/蒸馏原始件：`~/.reasonix/memory-archive-20260816/`

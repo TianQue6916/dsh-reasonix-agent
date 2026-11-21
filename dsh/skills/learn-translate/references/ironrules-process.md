@@ -47,6 +47,7 @@
 >
 > **怎么应用**：
 > 1. **一档模型制**：全流程统一 `dsh-remote -m deepseek-v4.1-flash`；`-e` 按难度选 off/low/high/max，没有 pro 档。
+>    **2026-11-21 更新（`-e` 已退役）**：`dsh-remote` 只是 Android 客户端 apk、PATH 里没有这个命令。现在执行难度旋钮的是内建 `subagent` 的 **`reasoning_effort`** 参数（`low / medium / high / max`）；effort id 由 adapter 拥有、**不许猜**，先 `list_subagent_models({provider, model})` 看枚举。**「不换模型」与「换 effort」是两件事**：改 `provider`/`model` 会删掉继承的 effort（`dsh-subagent/lib/index.js:329`）并重新 prefill；改 `reasoning_effort` 不动路由、不破 prompt cache。所以铁律 22 的本体（一档模型）不变，只是旋钮换了位置。分档：审稿/审计 `max`，写注/扩写/讲解默认 `high`，侦察/统计/落盘 `low`–`medium`。
 > 2. **小问题主代理直改**：修复注里的错字/粘连、补术语括号、调格式、回填错误等**局部机械小修**，一律主代理直改（或 `dsh-remote -m deepseek-v4.1-flash -e low "任务"`），不必动用大任务。
 > 3. **判定"是不是难问题"**：决定的是 **effort 与迭代轮数**，不是模型——需深度推理/长文生成/多步证明 → `-e max` + 必要时多轮；机械替换/格式核对/单点修复 → 主代理直改。
 > 4. **难任务的做法**：一批注整体扩写/重写 → `-e max` 一次成批；若只有个别注不合格，只对那几条**局部重跑**（`-e low/high` 小任务），不整批重跑。

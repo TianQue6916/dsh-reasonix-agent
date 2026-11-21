@@ -698,6 +698,9 @@
                   provider: spawn
                   toolName: subagent
                   backgroundMode: continuable
+                  # 2026-11-21：开模型侧子级路由选择，让 subagent 调用能带 provider/model/reasoning_effort；
+                  # 真正的白名单由 Host 的 subagent-model-selection-settings 决定（见文件下方同名条目）。
+                  modelSelectionSettings: true
                   # 2026-11-15：child 首轮 header 带 101 个工具（主会话只有 2）；未配 agentPreset 时 catalog 退回 host 全量。
                   agentPreset: anchored-standard
                   allowedAgentPresets: [anchored-standard, learn]
@@ -1234,6 +1237,9 @@
                   provider: spawn
                   toolName: subagent
                   backgroundMode: continuable
+                  # 2026-11-21：开模型侧子级路由选择，让 subagent 调用能带 provider/model/reasoning_effort；
+                  # 真正的白名单由 Host 的 subagent-model-selection-settings 决定（见文件下方同名条目）。
+                  modelSelectionSettings: true
                   # 2026-11-15：child 首轮 header 带 101 个工具（主会话只有 2）；未配 agentPreset 时 catalog 退回 host 全量。
                   agentPreset: anchored-standard
                   allowedAgentPresets: [anchored-standard, learn]
@@ -1321,6 +1327,16 @@
     provider: commandcode-goat
     model: deepseek/deepseek-v4.1-flash
     reasoningEffort: high
+# 2026-11-21：subagent 的模型侧路由白名单。enabled 且 allowedModels 非空时，
+# tool-subagent（modelSelectionSettings: true）才会给模型暴露 provider/model/reasoning_effort。
+# 与 GUI「设置 → subagent 模型选择」写的是同一个 patch 条目，两边等价。
+- id: subagent-model-selection-settings
+  name: '@deepseek-ai/dsh-tool-subagent/model-selection-settings'
+  config:
+    enabled: true
+    allowedModels:
+      - provider: commandcode-goat
+        model: deepseek/deepseek-v4.1-flash
 - id: llm-pi-ai
   name: "@deepseek-ai/dsh-llm-pi-ai"
   config:

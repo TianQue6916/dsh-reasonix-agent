@@ -453,6 +453,13 @@
 - [info-theory-lec07-notes-扩写产出](info-theory-lec07-notes-扩写产出.md) — IT Lec07（MacKay l7）8 条译者注扩写完成，含字数、术语格式规则与 4 处实质修正
 - [IT-full-notes-扩写-Lec06](IT-full-notes-扩写-Lec06.md) — IT-full Lec06 七条 note 扩写完成，产出路径与自检口径
 - [sunshine-mdns-chinese-hostname-fix](sunshine-mdns-chinese-hostname-fix.md) — 本机 Sunshine 的 Moonlight 找不到主机：根因是中文计算机名进了 mDNS SRV，修法是只改 DNS hostname
+- [译注扩写流水线-6.046J-a1lec21](译注扩写流水线-6.046J-a1lec21.md) — 6.046J 译者注扩写任务的落盘与验收工作法（@@ 占位反斜杠 + w.py 渲染/统计 + 三项正则自检），以及 a1_lec21 交付结果
+- [subagent思考强度参数](subagent思考强度参数.md) — dsh 的 subagent 已可控制思考强度（reasoning_effort），生效需重启 Electron + 开新会话；换 effort ≠ 换模型
+### 补录（202611210410，memory-index-heal）
+
+- [wps-watchdog-修复-2026-11-21](wps-watchdog-修复-2026-11-21.md) — WPS 后台守护卡死 17 小时的根因与修复；本机 GNOME Wayland 下 wmctrl 判据失效的实证
+- [zoro-接-goat-api-2026-11-19](zoro-接-goat-api-2026-11-19.md) — Zoro（文献翻译 app）已切到 goat：走本机 goat-gateway 8788，含 babeldoc 断链与 no_proxy 毒的两个坑及修法
+
 ## 归档说明
 - 原文全量备份：`~/.reasonix/memory-backup-20260816/`（59 份）与 `~/.reasonix/memory-backup-20260816-consolidate/`
 - 合并/蒸馏原始件：`~/.reasonix/memory-archive-20260816/`

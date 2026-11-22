@@ -128,4 +128,101 @@
 - 第三方工具/算法行为描述是否精确
 - 查证手段：web search / 教材原文 / GitHub / 论文 / 离线维基（见 2.2 全资源搜索）
 
+## 3.13 注工程：统计口径、回填与分工（2026-11-22 实测增补）
+
+> 来源：LaLFD 九文件注工程一轮（85 组注，实测数据在 `~/.dsh/.learn/run/lalfd/`）。这一节全是踩过的坑，不是设想。
+
+### 3.13.1 统计口径：`[note]` 块 ≠ 一条注
+
+同一个项目里注有**三种容器形态**，只按块数统计会得出相反结论（实测：交接文档按 `gen_notes_expand.py --scan` 报「37 注 / 7 个 md 0 注」，真实是 541 个 `[note]` 块 = 真注 123 + 短注 174 + OCR 脚注 284）：
+
+| 形态 | 例子 | 特点 |
+|---|---|---|
+| 行内 blockquote | `> <span style="color:#1e8449;">**[note] Note（译者注：…）:**</span> …` | 一条注一块，插在正文行之间 |
+| 节末小节 | `## 本节译者注` 下 3 段 `[note]` | **一条注横跨多块**，一节合计 600–8800 字 |
+| 标题式 | `### [note] page_211 ｜ 主题` | 注标题独立成行 |
+
+**判据**：
+1. 抓注 = blockquote 块内首 200 字含 `color:#1e8449`（区别于 `#7f8c8d` 图注/页说明、`#2471a3` 结构标签）。
+2. 聚合**注组**：相邻块行距 ≤6 且中间无 `## ` 标题 → 同组；**判定单位是组内合计 cjk**，不是单块。
+3. 必须分列「真注 / 短注 / OCR 脚注」三张表；OCR 脚注（含 `OCR` 或 `残作`）永远不参与扩写。
+
+### 3.13.2 功能性短注不扩（灌水判据）
+
+图注、目录说明、交叉引用（「本页示例在下一页继续」）、OCR 修正脚注，扩到 800 字只能靠复述正文。
+判据：`is_func()` = 含 `OCR`/`残作`，或首 300 字含「图 / Figure / 目录 / 见下页 / 下一页 / 交叉引用 / 本页为」。
+实测：一份文件里 6 个 34–87 字的块全是这类；把它们算进待扩清单会让工作量虚高 2 倍。
+
+### 3.13.3 组号是派生索引 → 必须 sha256 锚定
+
+组号由 `short_groups(file)` 每次现算：目标文件一改（合并/拆分/某组已扩到 ≥800 掉出 short 列表），组号整体漂移，而**字数/格式校验发现不了错位**（新块本身合格，只是插错地方）。
+
+判据：
+- 任务书/prompt 头部写 `TARGET_SHA256=<生成那一刻的 hash>`
+- 回填强制 `--expect-sha256`，不给或不符合 `exit 2`、**一个字节都不写**
+- 派发时给的行号必须取自**生成 prompt 那一刻**的 `groups.json`，不能凭记忆（实测：一条注的真实锚点是 2341 行的 `## The Sylvester Equation`，凭记忆给的 2165 会悬空）
+
+### 3.13.4 回填：块级替换，不是区间替换
+
+组区间 `[首块起点, 末块终点)` 内可能夹着**正文行**；按区间整段替换会把正文删掉，而「区间外零改动」查不出来（正文在区间内）。
+
+正确做法：**首块位置换新注、其余 note 块删除、块间非 note 行原样保留**。
+无损判据升级：替换后「**全文非 note 行序列**」必须与原文逐字一致（比「区间外一致」强，顺手挡掉误删正文）。
+
+### 3.13.5 两条体检闸门（都是实测踩出来的）
+
+1. **控制字符必须含 TAB**：`ord(c) < 32 and c != '\n'` —— **不能**写 `c not in '\n\t'`。
+   实测：`\times` 的 `\t` 被折成 TAB，`$2<TAB>imes3$` 只剩裸 `imes`，KaTeX 必炸，而 `grep`/白名单体检全过。
+   成因不一定是 heredoc：上游生成脚本的 raw string 里可能已经是真控制字符。
+2. **逐行 `$` 奇偶**：未配对的 `$` 会让公式正则（`\$[^$\n]{1,300}\$`）跨段吞掉正文，使 cjk **虚低**。
+   实测：一份注按现口径 732 字、按严格口径 902 字，差的 170 字正是被一对未配对 `$` 夹住的段落。
+
+### 3.13.6 分工判据：判断 vs 生成（不是「文本进文本出」）
+
+| 任务性质 | 归属 | 理由 |
+|---|---|---|
+| **判断**：审稿、挑错、验收、来源判定 | 本机 `subagent` + `reasoning_effort:"max"` | 强度可调；能跑 python 复算；能读仓库上下文 |
+| **生成**：写注、扩写、**按清单改注**、翻译、润色 | 远程 GUI 队列（WorkBuddy）；队列不可用时本机 `subagent`，**`reasoning_effort:"high"` 显式写**（不要靠「省略」，附实测见下） | 强度不可调但不需要；严格指令 + 固定输出格式即可，且不占本机算力 |
+
+> **「按清单改注」为什么不是 max**：判据已经由审稿人给出（「这行错了 → 改成那样」），写手只做替换与自检，不需要重新判断。给它 `max` 是浪费采样预算，而且会让它开始「顺便重写别的部分」。
+> **为什么不写「省略」**（2026-11-22 实测）：`list_subagent_models({provider:"commandcode-goat", model:"deepseek/deepseek-v4.1-flash"})` 只列出 5 档枚举 —— `off / low / medium / high / max`，**工具不报默认值**。所以「省略 = high」是未经检验的断言，技能原先那句「省略（默认 `high`）」应视为错误；一律显式写 `high` 或 `max`。
+>
+> **反面实测（2026-11-22 本轮）**：同一批活里，`7315eb41`（按 28 条审稿改 part001 四注）用默认 effort、`eea2c11d`（按 39 条审稿改 part002 十注）被我误给了 `max` —— 同一性质两种强度，这是执行不一致，不是设计。教训：**分档看「谁在判断」，不看「文本进文本出」**；审稿人 max，写手默认，两者别混。
+| **工具链**：任务书、回填、校验、dupcheck、KaTeX、commit | 本机脚本 | 需要文件系统与 git |
+
+**联网前移**：写注要查一手来源（铁律 7/29/36），但远程队列的搜索不可复现（给不出可点开的 URL）。做法是**本机先 `web_search` 落 `sources.json`，prompt 里塞好并明写「不准自己上网查；空的写『未能一手核实』」**。
+
+**远程队列不可用时的退路**（2026-11-22 实测：WorkBuddy 积分耗尽）：生成类任务全部改派本机 `subagent`，effort 按任务定 —— 写注/扩写/按清单改 = 默认 `high`（撑字数是模板活，`max` 只烧预算）；审稿/挑错/验收 = `max`。写注并发 **4 路是拐点**（16 核 P/E 异构，>8 路溢到 E-core）。
+
+**失败先续用**：subagent 报 failed 时先 `send_message` 补自包含指令（路径 + 要做的事 + 验收判据），只有「无产物 / 环境级错误」才重派。
+
+### 3.13.7 证明先引权威；Lean 只做 L1 附件
+
+注里带证明 → 必须给一手出处（教材章节+定理号 / 论文卷期页码 / DOI / arXiv id）；无出处的自造证明在审稿中标 FAIL，改成「引用 + 一句思路」。找不到就只写思路与结论并标「未能一手核实」。
+
+Lean 4 + mathlib 的实际状态（2026-11-22 两轮实测，**结论已被第二轮推翻过一次**）：
+
+**第一轮（只有 core）**：core Lean 4.32.2 能验「具体数值 / 有限和 / 具体矩阵」（5 条 `by decide` 全过，单文件 515–605 ms）；但 `ring` 不在 core、`import Mathlib` 失败、`Module.finrank`/`Matrix.rank` 全 Unknown identifier ⇒ rank-nullity、Cauchy–Schwarz、PSD 在 core 里**无法陈述**。
+
+**第二轮（装上 mathlib4 v4.32.2，已成功）**：三条定理**真证**（无 sorry、exit 0、stdout 空）——AM-GM（`nlinarith [sq_nonneg (a-b)]`）、Cauchy–Schwarz（`real_inner_le_norm`）、`A.det ≠ 0 → A.rank = 2`（`Matrix.isUnit_iff_isUnit_det` + `Matrix.rank_of_isUnit` + `simpa`，3 行）。项目在 `C:\Users\27063\.dsh\.learn\run\lalfd\lean\mathlib_proj\`（7.1 GB，含 6.3 GB oleans）。
+
+| 成本项 | 实测 |
+|---|---|
+| clone mathlib4（SJTU shallow tag）| **36 s** / 158 MB |
+| 7 个依赖包 | ~5 min / 200 MB |
+| cache 下载 8639 个 ltar（32 路）| **19 min** / 442 MB |
+| cache 解压 | 105 s / 6.3 GB oleans |
+| `lake env lean` 每次（`import Mathlib` 冷启动）| **64 s** |
+| 一次性总墙钟 | ~3 h（其中网络排障占 2/3）|
+
+**单位成本**：注里的定理若能对到 mathlib 现成 lemma → **5–20 行、3–6 分钟/条**（主要开销是 64 s 冷启动 + 1–2 轮 `#check` 修名）；要从零造 lemma 的注 → 小时级。
+
+⇒ **修订后的判据**：注里的一般定理**可以**配 Lean 证明，前提是能对到现成 lemma；不能对到的不做（成本小时级，不如 sympy 数值核对 + 引用出处）。纯数值断言仍用 sympy（170 行覆盖 3 条注、<1 s）。
+
+**三个环境坑（都会静默失败）**：
+1. `~/.curlrc` 里写 `ssl-no-revoke` —— **这是钥匙**：`CRYPT_E_NO_REVOCATION_CHECK 0x80092012` 会让 elan / mathlib cache 的所有 HTTPS 静默失败。
+2. `~/.gitconfig` 里 dev-sidecar 的 `url.https://ghpxy.hwinzniej.top/https://github.com/.insteadof` 会 403；用 `GIT_CONFIG_GLOBAL=/tmp/gcfg` 绕开。
+3. v4.32.2 的 cache ltar **只在 legacy container**（`https://lakecache.blob.core.windows.net/mathlib4/f/<hash>.ltar`），默认链 `mathlib4-master`/`mathlib4-forks` 全 404 ⇒ `MATHLIB_CACHE_FROM=legacy`；另 `lake exe cache get` 用 cwd 的 `git rev-parse HEAD`，项目在别的 git 仓库内会拿到错 hash ⇒ 临时写 `gitdir:` 指向 `.lake/packages/mathlib/.git`。
+4. `elan default_toolchain=stable` 会让每次 `lean` 先下 4.36 并 SSL 失败，必须钉 `ELAN_TOOLCHAIN=leanprover/lean4:v4.32.2`。
+
 ---

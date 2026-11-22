@@ -1184,6 +1184,21 @@
 "m": 1793554463000000000,
 "s": 1732
 },
+"global/lalfd-note-pipeline.md": {
+"h": "fb7a1b7509fd5d8fc3cab41cfb835020c410876e5c12bbc4edc7a16cbf8e3859",
+"m": 1795348807144978800,
+"s": 3328
+},
+"global/lean-mathlib-windows-env.md": {
+"h": "f50da8133b8906e44073e669a20d021647bf40c5a1a1097eaa70b98c82b8c052",
+"m": 1795355974442581500,
+"s": 2402
+},
+"global/lean-mathlib4-v4322-装机-本机网络解法.md": {
+"h": "672d434312dbdf0df52b838dfa8875cb11f804b3342e62e78b91c55267110b71",
+"m": 1795355906987261300,
+"s": 2444
+},
 "global/learn-translate-补注-worker-纪律.md": {
 "h": "e178889c0b43587be9977fc2eead4eae6ac98deb691d8ad843d0b9c9219244ef",
 "m": 1793133089000000000,
@@ -1778,6 +1793,11 @@
 "h": "45beea6d1974ac683ff94d3c7a8705880bab8dd1d0d54808fe44d569ab94f95e",
 "m": 1794393359809494400,
 "s": 5198
+},
+"global/两台机器拓扑与-SSH-直连.md": {
+"h": "1f09e2959fce2263fe9d1bb67ac5d4ee7b60db0d31faa9663af870a8ea608c49",
+"m": 1795344037776149900,
+"s": 1897
 },
 "global/人-AI讨论协议-审稿人角色与防sycophancy.md": {
 "h": "66a3fc78b807c270bad24f17cec556f1561cf366eb2e9f058cacca269f89e8da",

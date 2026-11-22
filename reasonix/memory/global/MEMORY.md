@@ -461,6 +461,10 @@
 - [zoro-接-goat-api-2026-11-19](zoro-接-goat-api-2026-11-19.md) — Zoro（文献翻译 app）已切到 goat：走本机 goat-gateway 8788，含 babeldoc 断链与 no_proxy 毒的两个坑及修法
 
 - [dsh-会话停止渲染-开流竞态](dsh-会话停止渲染-开流竞态.md) — DSH 0.2.1-rc.2 切换会话后视图冻结的根因（开流被 outgoing retirement abort，无重试）与规避手段
+- [两台机器拓扑与-SSH-直连](两台机器拓扑与-SSH-直连.md) — 两台机器的网络拓扑与 SSH 别名（网线直连 tianque-lan）、Linux 规格、dsh web 3081 + remote 插件链路
+- [lalfd-note-pipeline](lalfd-note-pipeline.md) — LaLFD 译者注工程：路径、行尾、写盘选择、回填纪律与 effort 分档（本机实测，含 sha-vs-mtime 教训）
+- [lean-mathlib4-v4322-装机-本机网络解法](lean-mathlib4-v4322-装机-本机网络解法.md) — 本机 Lean/mathlib4 安装路径与三个致命网络坑（SJTU 镜像 / ssl-no-revoke / legacy container / git rev-parse hack）
+- [lean-mathlib-windows-env](lean-mathlib-windows-env.md) — Lean 4.32.2 + mathlib4 在本机的安装位置、真证样例、成本与四个静默失败坑
 ## 归档说明
 - 原文全量备份：`~/.reasonix/memory-backup-20260816/`（59 份）与 `~/.reasonix/memory-backup-20260816-consolidate/`
 - 合并/蒸馏原始件：`~/.reasonix/memory-archive-20260816/`

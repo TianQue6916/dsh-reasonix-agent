@@ -460,6 +460,7 @@
 - [wps-watchdog-修复-2026-11-21](wps-watchdog-修复-2026-11-21.md) — WPS 后台守护卡死 17 小时的根因与修复；本机 GNOME Wayland 下 wmctrl 判据失效的实证
 - [zoro-接-goat-api-2026-11-19](zoro-接-goat-api-2026-11-19.md) — Zoro（文献翻译 app）已切到 goat：走本机 goat-gateway 8788，含 babeldoc 断链与 no_proxy 毒的两个坑及修法
 
+- [dsh-会话停止渲染-开流竞态](dsh-会话停止渲染-开流竞态.md) — DSH 0.2.1-rc.2 切换会话后视图冻结的根因（开流被 outgoing retirement abort，无重试）与规避手段
 ## 归档说明
 - 原文全量备份：`~/.reasonix/memory-backup-20260816/`（59 份）与 `~/.reasonix/memory-backup-20260816-consolidate/`
 - 合并/蒸馏原始件：`~/.reasonix/memory-archive-20260816/`
